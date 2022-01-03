@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Hey Electra, ESP Wi-Fi Manager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:,">
+    <!-- turn off == slow && off no use if we are n AP accesspont mode
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+  <body>
+    <div class="topnav">
+      <h1>Hey Electra, ESP Wi-Fi Manager</h1>
+    </div>
+    <div class="content">
+      <div class="card-grid">
+        <div class="card">
+          <form action="/" method="POST">
+            <p><small>Wifi router name broadcasted in the air</small><br>
+              <label for="ssid">SSID</label>
+              <input type="text" id="ssid" name="ssid"><br>
+              <small>Wifi router password</small><br>
+              <label for="pass">Password</label>
+              <input type="text" id="pass" name="pass"><br>
+
+              <hr>
+
+
+
+              <input type="checkbox" id="dhcp" name="dhcp" onclick="myFunction()" checked> <label for="dhch">Use DHCP</label><br>
+
+
+              <label for="ip">IP Address</label>
+              <input type="text" id="ip" name="ip" value="192.168.178.12"><br>
+
+              <label for="gateway">Gateway</label>
+              <input type="text" id="gateway" name="gateway" value="192.168.178.1"><br>
+
+
+
+              <label for="subnet">Subnet</label>
+              <input type="text" id="subnet" name="sbnet" value="255.255.255.0"><br>
+              <script>
+                myFunction();
+
+                function myFunction() {
+                  // Get the checkbox
+                  var checkBox = document.getElementById("dhcp");
+
+
+                  // If the checkbox is checked
+                  if (checkBox.checked == true) {
+                    document.getElementById("ip").disabled = true;
+                    document.getElementById("gateway").disabled = true;
+                    document.getElementById("subnet").disabled = true;
+                  } else {
+                    document.getElementById("ip").disabled = false;
+                    document.getElementById("gateway").disabled = false;
+                    document.getElementById("subnet").disabled = false;
+                  }
+                }
+
+              </script>
+              <hr><br>
+              <label for="mdns">mDNS URL </label><input type="button" id="url" name="mdns"><br>
+              <label for="mdns">mDNS Address </label>
+              <input type="text" id="mdns" name="mdns" value="living" oninput='document.getElementById("url").value="http://"+document.getElementById("mdns").value+".local";'><br>
+
+              <script>
+                document.getElementById("url").value = "http://" + document.getElementById("mdns").value + ".local";
+
+              </script>
+Android use BonjourBrowser App to see mDNS URL's / devices in local network
+              <hr>
+
+              <label for="relaispin">Relais GPIO </label>
+              <input type="text" id="relaispin" name="relaispin" value="5"><br>
+
+
+
+              <label for="statusledpin">Status LED GPIO </label>
+              <input type="text" id="statusledpin" name="statusledpin" value="8"><br>
+
+              <label for="buttonpin">Button GPIO </label>
+              <input type="text" id="buttonpin" name="buttonpin" value="3"><br>
+
+              <hr>
+
+              <label for="ntptime">NTP time server</label>
+              <input type="text" id="ntptime" name="ntptime" value="http://time.google.com"><br>
+              <label for="ntptimeoffset">Time offset</label>
+             
+              <select name="ntptimeoffset" id="ntptimeoffset">
+                <option value="-12">-12</option>
+                <option value="-11">-11</option>
+                <option value="-10">-10</option>
+                <option value="-9">-9</option>
+                <option value="-8">-8</option>
+                <option value="-7">-7</option>
+                <option value="-6">-6</option>
+                <option value="-5">-5</option>
+                <option value="-4">-4</option>
+                <option value="-3">-3</option>
+                <option value="-2">-2</option>
+                <option value="-1">-1</option>
+                <option value="0" selected>0</option>
+                <option value="+1">+1</option>
+                <option value="+2">+2</option>
+                <option value="+3">+3</option>
+                <option value="+4">+4</option>
+                <option value="+5">+5</option>
+                <option value="+6">+6</option>
+                <option value="+7">+7</option>
+                <option value="+8">+8</option>
+                <option value="+9">+9</option>
+                <option value="+10">+10</option>
+                <option value="+11">+11</option>
+                <option value="+12">+12</option>
+              </select>
+              <br>
+              <hr>
+              <input type="submit" value="Submit">
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    Edit html pages online<br>
+    wifimanager.html <a href="https://jsfiddle.net/luberth/4avpquhs/show" traget="Manage_Electra">https://jsfiddle.net/luberth/4avpquhs/show</a><br>
+    index.html <a href="https://jsfiddle.net/luberth/sx61b08t/show" target="index_Electra"> https://jsfiddle.net/luberth/sx61b08t/show</a><br>
+    schedule.html <a href="https://jsfiddle.net/luberth/ow3zceyn/show/" target="Schedule_Electra">https://jsfiddle.net/luberth/ow3zceyn/show/</a><br>
+    <br><br><br>
+    <a href="https://github.com/ldijkman/Hey_Electra/tree/main/ESP32/RandomNerd" target="Hey_Electra">https://github.com/ldijkman/Hey_Electra/tree/main/ESP32/RandomNerd</a><br><br>
+    OTA over the Air Update => on index.hml
+  </body>
+
+</html>
