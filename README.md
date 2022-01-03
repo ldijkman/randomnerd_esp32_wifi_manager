@@ -19,4 +19,6 @@ configure your settings  (warning for uppercase / caps start character on text f
 
 link to zip download https://github.com/ldijkman/randomnerd_esp32_wifi_manager/archive/refs/heads/main.zip
 
+https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
+
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Screenshot_20220103-185651_Chrome.jpg">
