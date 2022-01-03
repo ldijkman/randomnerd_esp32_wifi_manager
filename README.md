@@ -16,3 +16,5 @@ upload data directory to spiffs
 connect to esp32 wifi AccesPoint direct and browse to 192.168.4.1
 
 configure your settings  (warning for uppercase / caps start on text field)
+
+link to zip download https://github.com/ldijkman/randomnerd_esp32_wifi_manager/archive/refs/heads/main.zip
