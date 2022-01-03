@@ -11,7 +11,7 @@ arduino ide
 
 program esp32 with the ino file
 
-upload data directory to spiffs HOWTODOTHAT?! https://randomnerdtutorials.com/install-esp32-filesystem-uploader-arduino-ide/
+upload data directory to spiffs => HOWTODOTHAT?! => https://randomnerdtutorials.com/install-esp32-filesystem-uploader-arduino-ide/
 
 connect to esp32 wifi AccesPoint "ESP-WIFI-MANAGER" direct and browse to 192.168.4.1
 
