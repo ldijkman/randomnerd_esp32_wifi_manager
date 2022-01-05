@@ -22,3 +22,7 @@ link to zip download https://github.com/ldijkman/randomnerd_esp32_wifi_manager/a
 https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Screenshot_20220103-185651_Chrome.jpg">
+
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/1a797308-f351-432d-aa6e-2dd87f9fd5ff.jpeg">
+
+Http://paypal.me/LDijkman
