@@ -255,9 +255,9 @@ void setup() {
   relaispin = readFile(SPIFFS, relaispinPath);
   Serial.println(relaispin);
   statusledpin = readFile(SPIFFS, statusledpinPath);
-  Serial.println(buttonpin);
+  Serial.println(statusledpin);
   buttonpin = readFile(SPIFFS, buttonpinPath);
-  Serial.println(relaispin);
+  Serial.println(buttonpin);
   ntptime = readFile(SPIFFS, ntptimePath);
   Serial.println(ntptime);
   ntptimeoffset = readFile(SPIFFS, ntptimeoffsetPath);
