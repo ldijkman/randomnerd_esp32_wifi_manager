@@ -64,7 +64,10 @@ String subnet;
 String mdns;
 String dhcpcheck;
 String relaispin;
-
+String statusledpin;
+String buttonpin;
+String ntptime;
+String ntptimeoffset;
 
 // File paths to save input values permanently
 const char* ssidPath = "/ssid.txt";
@@ -73,8 +76,13 @@ const char* ipPath = "/ip.txt";
 const char* gatewayPath = "/gateway.txt";
 const char* subnetPath = "/subnet.txt";
 const char* mdnsPath = "/mdns.txt";
-const char* relaispinPath = "/relaispin.txt";
 const char* dhcpcheckPath = "/dhcpcheck.txt";
+const char* relaispinPath = "/relaispin.txt";
+const char* statusledpinPath = "/statusledpin.txt";
+const char* buttonpinPath = "/buttonpin.txt";
+const char* ntptimePath = "/ntptime.txt";
+const char* ntptimeoffsetPath = "/ntptimeoffset.txt";
+
 
 //next should become an input field for mdns dot local name in wifimanager
 String mdnsdotlocalurl = "electra";    // becomes http://electra.local     give each device a unique name
@@ -244,7 +252,16 @@ void setup() {
   Serial.println(mdnsdotlocalurl);
   dhcpcheck = readFile(SPIFFS, dhcpcheckPath);
   Serial.println(dhcpcheck);
-
+  relaispin = readFile(SPIFFS, relaispinPath);
+  Serial.println(relaispin);
+  statusledpin = readFile(SPIFFS, statusledpinPath);
+  Serial.println(buttonpin);
+  buttonpin = readFile(SPIFFS, buttonpinPath);
+  Serial.println(relaispin);
+  ntptime = readFile(SPIFFS, ntptimePath);
+  Serial.println(ntptime);
+  ntptimeoffset = readFile(SPIFFS, ntptimeoffsetPath);
+  Serial.println(ntptimeoffset);
 
   if (initWiFi()) {
     // Route for root / web page
@@ -374,7 +391,47 @@ void setup() {
             Serial.println(dhcpcheck);
             writeFile(SPIFFS, dhcpcheckPath, dhcpcheck.c_str());            // Write file to save value
           }
-
+          // HTTP POST dhcp value on
+          const char* PARAM_INPUT_8 = "relaispin";                // Search for parameter in HTTP POST request
+          if (p->name() == PARAM_INPUT_8) {
+            relaispin = p->value().c_str();
+            Serial.print("relaispin set to: ");
+            Serial.println(relaispin);
+            writeFile(SPIFFS, relaispinPath, relaispin.c_str());            // Write file to save value
+          }
+          // HTTP POST dhcp value on
+          const char* PARAM_INPUT_9 = "statusledpin";                // Search for parameter in HTTP POST request
+          if (p->name() == PARAM_INPUT_9) {
+            statusledpin = p->value().c_str();
+            Serial.print("statusledpin set to: ");
+            Serial.println(statusledpin);
+            writeFile(SPIFFS, statusledpinPath, statusledpin.c_str());            // Write file to save value
+          }
+          // HTTP POST dhcp value on
+          const char* PARAM_INPUT_10 = "buttonpin";                // Search for parameter in HTTP POST request
+          if (p->name() == PARAM_INPUT_10) {
+            buttonpin = p->value().c_str();
+            Serial.print("buttonpin set to: ");
+            Serial.println(buttonpin);
+            writeFile(SPIFFS, buttonpinPath, buttonpin.c_str());            // Write file to save value
+          }
+          // HTTP POST dhcp value on
+          const char* PARAM_INPUT_11 = "ntptime";                // Search for parameter in HTTP POST request
+          if (p->name() == PARAM_INPUT_11) {
+            ntptime = p->value().c_str();
+            Serial.print("ntptime set to: ");
+            Serial.println(ntptime);
+            writeFile(SPIFFS, ntptimePath, ntptime.c_str());            // Write file to save value
+          }
+          // HTTP POST dhcp value on
+          const char* PARAM_INPUT_12 = "ntptimeoffset";                // Search for parameter in HTTP POST request
+          if (p->name() == PARAM_INPUT_12) {
+            ntptimeoffset = p->value().c_str();
+            Serial.print("ntptimeoffset set to: ");
+            Serial.println(ntptimeoffset);
+            writeFile(SPIFFS, ntptimeoffsetPath, ntptimeoffset.c_str());            // Write file to save value
+          }
+          
 
 
           //Serial.printf("POST[%s]: %s\n", p->name().c_str(), p->value().c_str());
