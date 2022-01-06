@@ -369,6 +369,7 @@ void setup() {
           // HTTP POST ip value
           const char* PARAM_INPUT_3 = "ip";                   // Search for parameter in HTTP POST request
           if (p->name() == PARAM_INPUT_3) {
+            dhcpcheck="off";
             writeFile(SPIFFS, dhcpcheckPath, "off");          //dhcp unchecked . if we recieve post with ip set dhcpcheck.txt file to off
             ip = p->value().c_str();
             Serial.print("IP Address set to: ");
