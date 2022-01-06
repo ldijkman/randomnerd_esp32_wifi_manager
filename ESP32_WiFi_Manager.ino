@@ -11,6 +11,7 @@
   BrainPain free home automation
   Blondes friendly home automation
   Home Automation for Dummies
+  
   each swith / device its own human friendly URL with webpage
      and each webpage should show an automaticly scanned linked list of all mDNS URL's devices in local network
   
