@@ -448,8 +448,9 @@ void setup() {
           //Serial.printf("POST[%s]: %s\n", p->name().c_str(), p->value().c_str());
         }
       }
+      if (dhcpcheck == "on") {ip="dhcp ip adress";}
       request->send(200, "text/html", "<h1>Done. ESP restart,<br> connect router <br>go to: " + ip + " <br><a href=\"http://" + mdnsdotlocalurl + ".local\">http://" + mdnsdotlocalurl + ".local</a> Android use BonjourBrowser App</h1>");
-      delay(3000);
+      delay(5000);
       ESP.restart();
     });
     server.begin();
