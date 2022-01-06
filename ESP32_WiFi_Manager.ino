@@ -1,3 +1,4 @@
+
 // Hey Electra!
 /*********
   http://electra.local
@@ -114,7 +115,7 @@ unsigned long previousMillis = 0;
 const long interval = 10000;  // interval to wait for Wi-Fi connection (milliseconds)
 
 // Set LED GPIO
-const int ledPin = 5;    // wemos uno sized esp32 board
+int ledPin = 5;    // wemos uno sized esp32 board
 // Stores LED state
 
 String ledState;
@@ -240,9 +241,7 @@ void setup() {
 
   initSPIFFS();
 
-  // Set GPIO 2 as an OUTPUT
-  pinMode(ledPin, OUTPUT);
-  digitalWrite(ledPin, LOW);
+ 
 
   // Load values saved in SPIFFS
   ssid = readFile(SPIFFS, ssidPath);
@@ -261,6 +260,10 @@ void setup() {
   Serial.println(dhcpcheck);
   relaispin = readFile(SPIFFS, relaispinPath);
   Serial.println(relaispin);
+  
+  ledPin=relaispin.toInt();
+  Serial.println(relaispin);
+  
   statusledpin = readFile(SPIFFS, statusledpinPath);
   Serial.println(statusledpin);
   buttonpin = readFile(SPIFFS, buttonpinPath);
@@ -269,6 +272,15 @@ void setup() {
   Serial.println(ntptime);
   ntptimeoffset = readFile(SPIFFS, ntptimeoffsetPath);
   Serial.println(ntptimeoffset);
+
+
+
+ // Set GPIO ledPin as an OUTPUT
+  pinMode(ledPin, OUTPUT);
+  digitalWrite(ledPin, LOW);
+
+
+
 
   if (initWiFi()) {
     // Route for root / web page
