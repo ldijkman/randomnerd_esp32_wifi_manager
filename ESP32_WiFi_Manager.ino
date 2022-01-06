@@ -44,6 +44,7 @@
 *********/
 
 // https://github.com/ldijkman/Hey_Electra/blob/main/ESP32/RandomNerd/ESP32_WiFi_Manager.ino
+// https://github.com/ldijkman/randomnerd_esp32_wifi_manager
 
 #include <Arduino.h>
 #include <WiFi.h>
