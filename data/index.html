@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>Hey Electra, ESP WEB SERVER</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="icon" sizes="192x192" href="android-chrome-192x192.png">
-   <!--  font use is very slow == turned off
+    <!--  font use is very slow == turned off
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  -->  
-</head>
+  -->
+  </head>
+
   <body>
     <div class="topnav">
       <h1>http://%MDNSNAME%.local</h1>
@@ -17,66 +19,78 @@
     <div class="content">
       <div class="card-grid">
         <div class="card">
-          <p class="card-title"><!--  font use is very slow turned off <i class="fas fa-lightbulb"></i> --> <h2>http://%MDNSNAME%.local</h2>GPIO %relais% %button% %statusled% var here<br>NTP time here<br>inching countdown timer off here<br></p>
-          <p>
+          <p class="card-title">
+            <!--  font use is very slow turned off <i class="fas fa-lightbulb"></i> -->
+            <h2>http://%MDNSNAME%.local</h2>GPIO %relais% %button% %statusled% var here<br>NTP time here<br>inching OFF Delay countdown timer here<br>
+          </p>
+          <p>     
             <a href="on"><button class="button-on">ON</button></a>
             <a href="off"><button class="button-off">OFF</button></a>
           </p>
           <p class="state">State: %STATE%</p>
-          <img src="%STATE%.gif" width="65" height="98">
+         <img src="%STATE%.gif" width="65" height="98">
         </div>
       </div>
-<br><a href="wifimanager.html">wifimanager.html</a><br>
-<br><a href="schedule.html">timed settings schedule.html</a><br><br>
-wanted settable countdown off timer is this called inching<br>
-<form action="/timer">
-  <label for="timer">OFF Delay Seconds</label>
-  <input type="number" id="offtimer" name="offtimer" value="3600" size="6">
-  <input type="submit" value="Set">
-</form>
-<br>
-automaticly generated mDNS scanned linked list of all local network devices URL should be here in future <br>
-https://github.com/ldijkman/Hey_Electra/blob/main/ESP32/ESP32_mDNS_list.ino<br>
-http://kitchen.local<br>
-http://living.local<br>
-http://garage.local<br>
-http://hall.local<br>
-http://garden.local<br>
-http://cellar.local<br>
-http://darkroom.local<br>
-https://github.com/ldijkman/Hey_Electra/blob/main/ESP32/ESP32_mDNS_list.ino<br>
+      <br><a href="wifimanager.html">wifimanager.html</a><br>
+      <br><a href="schedule.html">timed settings schedule.html</a><br><br>
+      wanted settable countdown off timer is this called inching<br>
+      <form action="/timer">
+        <label for="timer">OFF Delay Seconds</label>
+        <input type="number" id="offtimer" name="offtimer" value="3600" size="6">
+        <input type="submit" value="Set">
+      </form>
+      <br>
+      automaticly generated mDNS scanned linked list of all local network devices URL should be here in future <br>
+      https://github.com/ldijkman/Hey_Electra/blob/main/ESP32/ESP32_mDNS_list.ino<br>
+      http://kitchen.local<br>
+      http://living.local<br>
+      http://garage.local<br>
+      http://hall.local<br>
+      http://garden.local<br>
+      http://cellar.local<br>
+      http://darkroom.local<br>
+      https://github.com/ldijkman/Hey_Electra/blob/main/ESP32/ESP32_mDNS_list.ino<br>
 
     </div>
-    
-Edit html pages online<br>
-  wifimanager.html <a href="https://jsfiddle.net/luberth/4avpquhs/show">https://jsfiddle.net/luberth/4avpquhs/show</a><br>
-index.html <a href="https://jsfiddle.net/luberth/sx61b08t/show"> https://jsfiddle.net/luberth/sx61b08t/show</a><br>
-schedule.html <a href="https://jsfiddle.net/luberth/ow3zceyn/show/">https://jsfiddle.net/luberth/ow3zceyn/show/</a><br>
-<br>
-<br>
-<br>
-<a href="https://play.google.com/store/apps/details?id=de.wellenvogel.bonjourbrowser&hl=en&gl=US" target="bonjour">
-Android Phone?<br>Use Bonjour Browser App <br>to see list/browse all mDNS URL's / Devices in your local network<br>https://play.google.com/store/apps/details?id=de.wellenvogel.bonjourbrowser</a><br>
-<br>
-<a href="/status">/status  gives text 0 or 1 status for external programs</a><br>
-<a href="/on">/on   for external programs</a><br>
-<a href="/off">/off   for external programs</a><br>
-<a href="/timer=3600">/timer=3600    turn off after 3600 seconds   </a><br>
-<br>
-<br>
-<a href="/list">/list    list files in spiffs on webpage</a><br>
 
-<br><br><hr><h3>
-optional: i2c BME280 sensor<br>
-Each Device / Room<br><hr>
-Temperature 20C<br>
-Humidity 60%<br>
-Pressure 1080 Milibar<br>
-<hr>
-</h3>
+    Edit html pages online<br>
+    wifimanager.html <a href="https://jsfiddle.net/luberth/4avpquhs/show">https://jsfiddle.net/luberth/4avpquhs/show</a><br>
+    index.html <a href="https://jsfiddle.net/luberth/sx61b08t/show"> https://jsfiddle.net/luberth/sx61b08t/show</a><br>
+    schedule.html <a href="https://jsfiddle.net/luberth/ow3zceyn/show/">https://jsfiddle.net/luberth/ow3zceyn/show/</a><br>
+    <br>
+    <br>
+    <br>
+    <a href="https://play.google.com/store/apps/details?id=de.wellenvogel.bonjourbrowser&hl=en&gl=US" target="bonjour">
+      Android Phone?<br>Use Bonjour Browser App <br>to see list/browse all mDNS URL's / Devices in your local network<br>https://play.google.com/store/apps/details?id=de.wellenvogel.bonjourbrowser</a><br>
+    <br>
+    <a href="/status">/status gives text 0 or 1 status for external programs</a><br>
+    <a href="/on">/on for external programs</a><br>
+    <a href="/off">/off for external programs</a><br>
+    <a href="/timer=3600">/timer=3600 turn off after 3600 seconds </a><br>
+    <br>
+    <br>
+    <a href="/list">/list list files in spiffs on webpage</a><br>
+     <br>
+<a href="/resetwifitoap">/resetwifitoap delete ssid.txt and pass.txt restart to AP accesspoint to reconfigure wifi</a><br>
+    <br><br>
+    <hr>
+    <h3>
+      optional: i2c BME280 sensor<br>
+      Each Device / Room<br>
+      <hr>
+      Temperature 20C<br>
+      Humidity 60%<br>
+      Pressure 1080 Milibar<br>
+      <hr>
+    </h3>
 
-<a href="/update">OTA<br>Over The Air Update</a>
-<br><br>
-<a href="https://github.com/ldijkman/Hey_Electra/tree/main/ESP32/RandomNerd" target="Hey_Electra">https://github.com/ldijkman/Hey_Electra/tree/main/ESP32/RandomNerd</a><br><br>
+    <a href="/update">OTA<br>Over The Air Update</a>
+    <br>
+    DO NOT like the OTA FILE upload <br>
+    its a complete spiffs erase replace, must use a .spiffs.bin file<br>
+    i would like to select a file or multiple files to add/overwrite to spiffs<br>
+    Maybe a filemanager, c99shell alike ;-)<br> <br>
+    <a href="https://github.com/ldijkman/Hey_Electra/tree/main/ESP32/RandomNerd" target="Hey_Electra">https://github.com/ldijkman/Hey_Electra/tree/main/ESP32/RandomNerd</a><br><br><a href="https://github.com/ldijkman/Hey_Electra/tree/main/ESP32/RandomNerd">https://github.com/ldijkman/Hey_Electra/tree/main/ESP32/RandomNerd</a><br><br>
   </body>
+
 </html>
