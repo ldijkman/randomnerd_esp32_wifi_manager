@@ -1,7 +1,5 @@
+
 /*********
-
-Hey Electra!
-
   http://electra.local
     http://living.local
          http://kitchen.local
@@ -13,16 +11,11 @@ Hey Electra!
   Home Automation for Dummies
   each swith / device its own human friendly URL with webpage
      and each webpage should show an automaticly scanned linked list of all mDNS URL's devices in local network
-  
-  *******************************************************************************************************************************************   
-  started with the example code from
+  started with the example from
   Rui Santos
   Complete instructions at https://RandomNerdTutorials.com/esp32-wi-fi-manager-asyncwebserver/
-  *******************************************************************************************************************************************
-  
   you need to upload the data directory to spiffs => Arduino IDE => Tools => ESP32 Sketch Data Upload (turn serial monitor off else failure)
     howto add to Arduino IDE and use spiffs upload tool  https://randomnerdtutorials.com/install-esp32-filesystem-uploader-arduino-ide/
-    
   added mdns dot local URL
     wanted should show a scan to list all mdns devices dot local urls in local network automaticly on devices webpage
             https://github.com/ldijkman/Hey_Electra/blob/main/ESP32/ESP32_mDNS_list.ino
@@ -47,7 +40,6 @@ Hey Electra!
 *********/
 
 // https://github.com/ldijkman/Hey_Electra/blob/main/ESP32/RandomNerd/ESP32_WiFi_Manager.ino
-// https://github.com/ldijkman/randomnerd_esp32_wifi_manager
 
 #include <Arduino.h>
 #include <WiFi.h>
@@ -295,6 +287,16 @@ void setup() {
     server.on("/status", HTTP_GET, [](AsyncWebServerRequest * request) {
       int readval = digitalRead(ledPin);
       request->send(200, "text/txt", String(readval));
+    });
+
+
+    //  /resetwifitoap    
+    server.on("/resetwifitoap", HTTP_GET, [](AsyncWebServerRequest * request) {
+      SPIFFS.remove("/ssid.txt");
+      SPIFFS.remove("/pass.txt");
+ request->send(200, "text/html", "<h1>deleted wifi credentials ssid.txt and pass.txt<br>Done. ESP restart,<br>connect to AP access point ESP WIFI MANAGER <br>to configure wifi settings again</h1>");
+      delay(5000);
+      ESP.restart();
     });
 
     server.on("/list", HTTP_GET, [](AsyncWebServerRequest * request) {    // /list files in spiffs on webpage
