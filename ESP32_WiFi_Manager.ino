@@ -313,8 +313,8 @@ void setup() {
     server.on("/resetwifitoap", HTTP_GET, [](AsyncWebServerRequest * request) {
       SPIFFS.remove("/ssid.txt");
       SPIFFS.remove("/pass.txt");
- request->send(200, "text/html", "<h1>deleted wifi credentials ssid.txt and pass.txt<br>Done. ESP restart,<br>connect to AP access point ESP WIFI MANAGER <br>to configure wifi settings again</h1>");
-      delay(5000);
+request->send(200, "text/html", "<h1>deleted wifi credentials ssid.txt and pass.txt<br>Done.<br>ESP restart,<br>connect to AP access point ESP WIFI MANAGER <br>to configure wifi settings again<br><a href=\"http://192.168.4.1\">http://192.168.4.1</a></h1>");
+       delay(5000);
       ESP.restart();
     });
 
