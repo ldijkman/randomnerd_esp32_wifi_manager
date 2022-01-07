@@ -469,8 +469,8 @@ request->send(200, "text/html", "<h1>deleted wifi credentials ssid.txt and pass.
         }
       }
       if (dhcpcheck == "on") {ip="dhcp ip adress";}
-      request->send(200, "text/html", "<h1>Done. ESP restart,<br> connect router <br>go to: " + ip + " <br><a href=\"http://" + mdnsdotlocalurl + ".local\">http://" + mdnsdotlocalurl + ".local</a> Android use BonjourBrowser App</h1>");
-      delay(5000);
+      request->send(200, "text/html", "<h1>Done. ESP restart,<br> connect router <br>go to: <a href=\"http://" + ip + "\">"+ ip + "</a><br><a href=\"http://" + mdnsdotlocalurl + ".local\">http://" + mdnsdotlocalurl + ".local</a> Android use BonjourBrowser App</h1>");
+     delay(5000);
       ESP.restart();
     });
     server.begin();
