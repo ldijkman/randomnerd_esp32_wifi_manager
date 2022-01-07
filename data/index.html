@@ -23,12 +23,22 @@
             <!--  font use is very slow turned off <i class="fas fa-lightbulb"></i> -->
             <h2>http://%MDNSNAME%.local</h2>GPIO %relais% %button% %statusled% var here<br>NTP time here<br>inching OFF Delay countdown timer here<br>
           </p>
-          <p>     
+          <p>
             <a href="on"><button class="button-on">ON</button></a>
             <a href="off"><button class="button-off">OFF</button></a>
+
           </p>
           <p class="state">State: %STATE%</p>
-         <img src="%STATE%.gif" width="65" height="98">
+          <script>
+            if ("%STATE%" == "ON") {
+              document.write('<a href="/off"><img src="%STATE%.gif" width="65" height="98"></a>');
+            }
+            if ("%STATE%" == "OFF") {
+              document.write('<a href="/on"><img src="%STATE%.gif" width="65" height="98"></a>');
+            }
+
+          </script>
+          
         </div>
       </div>
       <br><a href="wifimanager.html">wifimanager.html</a><br>
@@ -70,8 +80,8 @@
     <br>
     <br>
     <a href="/list">/list list files in spiffs on webpage</a><br>
-     <br>
-<a href="/resetwifitoap">/resetwifitoap delete ssid.txt and pass.txt restart to AP accesspoint to reconfigure wifi</a><br>
+    <br>
+    <a href="/resetwifitoap">/resetwifitoap delete ssid.txt and pass.txt restart to AP accesspoint to reconfigure wifi</a><br>
     <br><br>
     <hr>
     <h3>
@@ -90,7 +100,7 @@
     its a complete spiffs erase replace, must use a .spiffs.bin file<br>
     i would like to select a file or multiple files to add/overwrite to spiffs<br>
     Maybe a filemanager, c99shell alike ;-)<br> <br>
-    <a href="https://github.com/ldijkman/Hey_Electra/tree/main/ESP32/RandomNerd" target="Hey_Electra">https://github.com/ldijkman/Hey_Electra/tree/main/ESP32/RandomNerd</a><br><br><a href="https://github.com/ldijkman/Hey_Electra/tree/main/ESP32/RandomNerd">https://github.com/ldijkman/Hey_Electra/tree/main/ESP32/RandomNerd</a><br><br>
+    <a href="https://github.com/ldijkman/Hey_Electra/tree/main/ESP32/RandomNerd" target="Hey_Electra">https://github.com/ldijkman/Hey_Electra/tree/main/ESP32/RandomNerd</a><br><br><a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager">https://github.com/ldijkman/randomnerd_esp32_wifi_manager</a><br><br>
   </body>
 
 </html>
