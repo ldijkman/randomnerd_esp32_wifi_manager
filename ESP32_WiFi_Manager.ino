@@ -240,11 +240,14 @@ String processor(const String& var) {
   }
   else if (var == "MDNSNAME") {
     return String(mdnsdotlocalurl);
-  }  else if (var == "GATEWAY") {
+  } else if (var == "IP") {
+    return WiFi.localIP().toString();
+  } else if (var == "GATEWAY") {
     return WiFi.gatewayIP().toString();
+  }else if (var == "SUBNET") {
+    return WiFi.subnetMask().toString();
   }
 
-  
   return String();
 }
 
