@@ -241,7 +241,7 @@ String processor(const String& var) {
   else if (var == "MDNSNAME") {
     return String(mdnsdotlocalurl);
   }  else if (var == "GATEWAY") {
-    return WiFi.gatewayIP().toString()
+    return WiFi.gatewayIP().toString();
   }
 
   
