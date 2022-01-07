@@ -45,6 +45,14 @@
     wanted add available wifi broadcaster in the air ssid scan to wifimanager.html
   [x] wanted relais http://url_or_ip/status status html or text url webpage 0 or 1 for external programs status display
           http:// url or ip  /status   returns text 0 ro 1 for remote monitoring
+          
+          
+          https://randomnerdtutorials.com/esp32-save-data-permanently-preferences/
+          ESP32 Save Data Permanently using Preferences Library
+          maybe this is better for saving settings
+          maybe this will survive spiffs sketch data upload or ota file system upload
+          
+          
 *********/
 
 // https://github.com/ldijkman/Hey_Electra/blob/main/ESP32/RandomNerd/ESP32_WiFi_Manager.ino
