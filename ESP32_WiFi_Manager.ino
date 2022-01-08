@@ -6,24 +6,24 @@
          http://kitchen.local
               http://garage.local
                    ETCETERA!
-                   
+
   Easy No Hassle home automation
   BrainPain free home automation
   Blondes friendly home automation
   Home Automation for Dummies
-  
+
   each swith / device its own human friendly URL with webpage
      and each webpage should show an automaticly scanned linked list of all mDNS URL's devices in local network
-  
+
   ******************************************************************************************************************************
   started with the example from
   Rui Santos
   Complete instructions at https://RandomNerdTutorials.com/esp32-wi-fi-manager-asyncwebserver/
   ******************************************************************************************************************************
-  
+
   you need to upload the data directory to spiffs => Arduino IDE => Tools => ESP32 Sketch Data Upload (turn serial monitor off else failure)
     howto add to Arduino IDE and use spiffs upload tool  https://randomnerdtutorials.com/install-esp32-filesystem-uploader-arduino-ide/
-  
+
   added mdns dot local URL
     wanted should show a scan to list all mdns devices dot local urls in local network automaticly on devices webpage
             https://github.com/ldijkman/Hey_Electra/blob/main/ESP32/ESP32_mDNS_list.ino
@@ -45,20 +45,20 @@
     wanted add available wifi broadcaster in the air ssid scan to wifimanager.html
   [x] wanted relais http://url_or_ip/status status html or text url webpage 0 or 1 for external programs status display
           http:// url or ip  /status   returns text 0 ro 1 for remote monitoring
-          
-          
+
+
           https://randomnerdtutorials.com/esp32-save-data-permanently-preferences/
           ESP32 Save Data Permanently using Preferences Library
           maybe this is better for saving settings
           maybe this will survive spiffs sketch data upload or ota file system upload
-          
-          
+
+
           when in dhcp no ip address is known/shown on exit page wifimanager
-          it should be possible to do a temp from ap to apsta connection to show user dhcp address 
+          it should be possible to do a temp from ap to apsta connection to show user dhcp address
           but i have seen it only once in a german wifimanager
           https://www.john-lassen.de/en/projects/esp-8266-arduino-ide-webconfig
-          
-          
+
+
 *********/
 
 // https://github.com/ldijkman/Hey_Electra/blob/main/ESP32/RandomNerd/ESP32_WiFi_Manager.ino
@@ -67,14 +67,14 @@
 #include <Arduino.h>
 #include <WiFi.h>
 #include <ESPAsyncWebServer.h>            // https://github.com/me-no-dev/ESPAsyncWebServer
-                                          // download zip from above->Arduino IDE->menu->tab->sketch->include library->add ZIP library
+// download zip from above->Arduino IDE->menu->tab->sketch->include library->add ZIP library
 #include <AsyncTCP.h>                     // https://github.com/me-no-dev/AsyncTCP
-                                          // download zip from above->Arduino IDE->menu->tab->sketch->include library->add ZIP library
+// download zip from above->Arduino IDE->menu->tab->sketch->include library->add ZIP library
 #include "SPIFFS.h"
 #include <ESPmDNS.h>
 //#include <NoDelay.h>                    // nonblocking delay https://www.arduino.cc/reference/en/libraries/nodelay/
 #include <AsyncElegantOTA.h>              // https://github.com/ayushsharma82/AsyncElegantOTA
-                                          // download zip from above->Arduino IDE->menu->tab->sketch->include library->add ZIP library
+// download zip from above->Arduino IDE->menu->tab->sketch->include library->add ZIP library
 
 
 // Create AsyncWebServer object on port 80
@@ -96,6 +96,8 @@ String statusledpin;
 String buttonpin;
 String ntptime;
 String ntptimeoffset;
+String offdelay;
+int offdelayint;
 
 // File paths to save input values permanently
 const char* ssidPath = "/ssid.txt";
@@ -110,7 +112,7 @@ const char* statusledpinPath = "/statusledpin.txt";
 const char* buttonpinPath = "/buttonpin.txt";
 const char* ntptimePath = "/ntptime.txt";
 const char* ntptimeoffsetPath = "/ntptimeoffset.txt";
-
+const char* offdelayPath = "/offdelay.txt";
 
 //next should become an input field for mdns dot local name in wifimanager
 String mdnsdotlocalurl = "electra";    // becomes http://electra.local     give each device a unique name
@@ -251,13 +253,16 @@ String processor(const String& var) {
     return String();
   }
   else if (var == "MDNSNAME") {                  // in index.html noted as &MDNSNAME&
-    return String(mdnsdotlocalurl);
+    return String(mdnsdotlocalurl)  ;
   } else if (var == "IP") {                      // in index.html noted as &IP&
     return WiFi.localIP().toString();
   } else if (var == "GATEWAY") {                // in index.html noted as &GATEWAY&
     return WiFi.gatewayIP().toString();
-  }else if (var == "SUBNET") {                  // in index.html noted as &SUBNET&
+  } else if (var == "SUBNET") {                  // in index.html noted as &SUBNET&
     return WiFi.subnetMask().toString();
+  }
+  else if (var == "OFFDELAY") {                  // in index.html noted as &OFFDELAY&
+    return offdelay.c_str();
   }
 
   return String();
@@ -269,7 +274,7 @@ void setup() {
 
   initSPIFFS();
 
- 
+
 
   // Load values saved in SPIFFS
   ssid = readFile(SPIFFS, ssidPath);
@@ -288,10 +293,10 @@ void setup() {
   Serial.println(dhcpcheck);
   relaispin = readFile(SPIFFS, relaispinPath);
   Serial.println(relaispin);
-  
-  ledPin=relaispin.toInt();
+
+  ledPin = relaispin.toInt();
   Serial.println(relaispin);
-  
+
   statusledpin = readFile(SPIFFS, statusledpinPath);
   Serial.println(statusledpin);
   buttonpin = readFile(SPIFFS, buttonpinPath);
@@ -302,8 +307,13 @@ void setup() {
   Serial.println(ntptimeoffset);
 
 
+  offdelay = readFile(SPIFFS, offdelayPath);
+  Serial.println(offdelay);
 
- // Set GPIO ledPin as an OUTPUT
+  offdelayint = offdelay.toInt();
+  Serial.println(offdelay);
+
+  // Set GPIO ledPin as an OUTPUT
   pinMode(ledPin, OUTPUT);
   digitalWrite(ledPin, LOW);
 
@@ -336,16 +346,16 @@ void setup() {
     });
 
 
-    //  /resetwifitoap    
+    //  /resetwifitoap
     server.on("/resetwifitoap", HTTP_GET, [](AsyncWebServerRequest * request) {
       SPIFFS.remove("/ssid.txt");
       SPIFFS.remove("/pass.txt");
-request->send(200, "text/html", "<h1>deleted wifi credentials ssid.txt and pass.txt<br>Done.<br>ESP restart,<br>connect to AP access point ESP WIFI MANAGER <br>to configure wifi settings again<br><a href=\"http://192.168.4.1\">http://192.168.4.1</a></h1>");
-       delay(5000);
+      request->send(200, "text/html", "<h1>deleted wifi credentials ssid.txt and pass.txt<br>Done.<br>ESP restart,<br>connect to AP access point ESP WIFI MANAGER <br>to configure wifi settings again<br><a href=\"http://192.168.4.1\">http://192.168.4.1</a></h1>");
+      delay(5000);
       ESP.restart();
     });
-    
-       server.on("/timer", HTTP_POST, [](AsyncWebServerRequest * request) {
+
+    server.on("/timer", HTTP_POST, [](AsyncWebServerRequest * request) {
       int params = request->params();
       for (int i = 0; i < params; i++) {
         AsyncWebParameter* p = request->getParam(i);
@@ -353,15 +363,16 @@ request->send(200, "text/html", "<h1>deleted wifi credentials ssid.txt and pass.
           // HTTP POST ssid value
           const char* PARAM_INPUT_20 = "off";                  // Search for parameter in HTTP POST request
           if (p->name() == PARAM_INPUT_20) {
-            int inchingdelay;
-            inchingdelay = p->value().toInt();
-            Serial.print("inchingdelay set to: ");
-            Serial.println(inchingdelay);
+            offdelay = p->value().toInt();
+            Serial.print("offdelay set to: ");
+            Serial.println(offdelay);
             // Write file to save value
-            //writeFile(SPIFFS, ssidPath, ssid.c_str());
-          }      
+            writeFile(SPIFFS, offdelayPath, offdelay.c_str());
+            offdelayint = offdelay.toInt();
+            Serial.println(offdelayint);
+          }
         }
-      }  
+      }
       request->send(SPIFFS, "/index.html", "text/html", false, processor);
     });
 
@@ -430,7 +441,7 @@ request->send(200, "text/html", "<h1>deleted wifi credentials ssid.txt and pass.
           // HTTP POST ip value
           const char* PARAM_INPUT_3 = "ip";                   // Search for parameter in HTTP POST request
           if (p->name() == PARAM_INPUT_3) {
-            dhcpcheck="off";
+            dhcpcheck = "off";
             writeFile(SPIFFS, dhcpcheckPath, "off");          //dhcp unchecked . if we recieve post with ip set dhcpcheck.txt file to off
             ip = p->value().c_str();
             Serial.print("IP Address set to: ");
@@ -510,15 +521,17 @@ request->send(200, "text/html", "<h1>deleted wifi credentials ssid.txt and pass.
             Serial.println(ntptimeoffset);
             writeFile(SPIFFS, ntptimeoffsetPath, ntptimeoffset.c_str());            // Write file to save value
           }
-          
+
 
 
           //Serial.printf("POST[%s]: %s\n", p->name().c_str(), p->value().c_str());
         }
       }
-      if (dhcpcheck == "on") {ip="dhcp ip adress";}
-      request->send(200, "text/html", "<h1>Done. ESP restart,<br> connect router <br>go to: <a href=\"http://" + ip + "\">"+ ip + "</a><br><a href=\"http://" + mdnsdotlocalurl + ".local\">http://" + mdnsdotlocalurl + ".local</a> Android use BonjourBrowser App</h1>");
-     delay(5000);
+      if (dhcpcheck == "on") {
+        ip = "dhcp ip adress";
+      }
+      request->send(200, "text/html", "<h1>Done. ESP restart,<br> connect router <br>go to: <a href=\"http://" + ip + "\">" + ip + "</a><br><a href=\"http://" + mdnsdotlocalurl + ".local\">http://" + mdnsdotlocalurl + ".local</a> Android use BonjourBrowser App</h1>");
+      delay(5000);
       ESP.restart();
     });
     server.begin();
