@@ -56,15 +56,20 @@
 *********/
 
 // https://github.com/ldijkman/Hey_Electra/blob/main/ESP32/RandomNerd/ESP32_WiFi_Manager.ino
+// https://github.com/ldijkman/randomnerd_esp32_wifi_manager
 
 #include <Arduino.h>
 #include <WiFi.h>
 #include <ESPAsyncWebServer.h>            // https://github.com/me-no-dev/ESPAsyncWebServer
+                                          // download zip from above->Arduino IDE->menu->tab->sketch->include library->add ZIP library
 #include <AsyncTCP.h>                     // https://github.com/me-no-dev/AsyncTCP
+                                          // download zip from above->Arduino IDE->menu->tab->sketch->include library->add ZIP library
 #include "SPIFFS.h"
 #include <ESPmDNS.h>
-//#include <NoDelay.h>                   // nonblocking delay https://www.arduino.cc/reference/en/libraries/nodelay/
-#include <AsyncElegantOTA.h>             // https://github.com/ayushsharma82/AsyncElegantOTA
+//#include <NoDelay.h>                    // nonblocking delay https://www.arduino.cc/reference/en/libraries/nodelay/
+#include <AsyncElegantOTA.h>              // https://github.com/ayushsharma82/AsyncElegantOTA
+                                          // download zip from above->Arduino IDE->menu->tab->sketch->include library->add ZIP library
+
 
 // Create AsyncWebServer object on port 80
 AsyncWebServer server(80);
