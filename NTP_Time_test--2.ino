@@ -60,7 +60,7 @@ void loop() {
   Serial.println(timeClient.getDay());
   Serial.println(timeClient.getEpochTime());
 
-  
+  second_ = second(unix_epoch);
 
     minute_ = minute(unix_epoch);
 
@@ -105,7 +105,8 @@ void loop() {
     
 Serial.println("  ");
 Serial.println("seconds today");
-Serial.print((hour_*60*60)+(minute_*60)+(second_));
+unsigned long secondstoday = ((hour_*60*60)+(minute_*60)+second_);
+Serial.print(secondstoday);
     Serial.println("  ");
 
     Serial.print(day(unix_epoch));
