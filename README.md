@@ -29,4 +29,20 @@ ESP32 3Euro wifi I/O development board cheapest toy for many hours of fun or fru
 
 Bit like a 1995 PC 486DX2 200Mhz with WiFi FingerNail Sized
 
+# like next, and dont like it
+
+do not like that it has no usb connection
+
+Needs an FTDI programmer at3.3v or esp01 programmer with some wires
+
+
+
+ESP32 relay module 90...250~VAC
+
+
+
+![AC90-250V-1-CH-ESP32-Relay-Development-Board-Onboard-ESP32-WROOM-32E-WiFi-BLE-Module-RST jpg_Q90](https://user-images.githubusercontent.com/45427770/147869576-b0d2661a-d553-4a80-832f-896d3b2ce9ca.jpg)
+
+AC90-250V 1 CH ESP32 Relay Development Board Onboard ESP32-WROOM-32E WiFi BLE Module RST IO0 Button Relay Module
+
 Http://paypal.me/LDijkman
