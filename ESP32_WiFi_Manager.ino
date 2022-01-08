@@ -53,6 +53,12 @@
           maybe this will survive spiffs sketch data upload or ota file system upload
           
           
+          when in dhcp no ip address is known/shown on exit page wifimanager
+          it should be possible to do a temp from ap to apsta connection to show user dhcp address 
+          but i have seen it only once in a german wifimanager
+          https://www.john-lassen.de/en/projects/esp-8266-arduino-ide-webconfig
+          
+          
 *********/
 
 // https://github.com/ldijkman/Hey_Electra/blob/main/ESP32/RandomNerd/ESP32_WiFi_Manager.ino
