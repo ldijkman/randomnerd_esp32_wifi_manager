@@ -67,15 +67,27 @@ void printTime() {
 
   Serial.println("\n");
 
-  String curdate = String(time.tm_mday) + "/" +  String(time.tm_mon) + "/" +  String(time.tm_year + 1900);
+  String curdate = tsaz(time.tm_mday) + "/" +  tsaz(time.tm_mon) + "/" +  tsaz(time.tm_year + 1900);
   Serial.println(curdate); 
   
-  String curtime = String(time.tm_hour) + ":" +  String(time.tm_min) + ":" +  String(time.tm_sec);
+  String curtime = tsaz(time.tm_hour) + ":" +  tsaz(time.tm_min) + ":" +  tsaz(time.tm_sec);
   Serial.println(curtime); 
 }
 
 
-
+String tsaz(int data)  // to string add zero
+{
+  String st = "";
+  if (data < 10)
+  {
+    st = "0" + String(data);
+  }
+  else
+  {
+    st = String(data);
+  }
+  return st;
+}
 
 
 
