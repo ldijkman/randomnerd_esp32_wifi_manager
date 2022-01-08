@@ -104,9 +104,15 @@ void loop() {
     Serial.print("  ");
     
 Serial.println("  ");
-Serial.println("seconds today");
+Serial.print("seconds today ");
 unsigned long secondstoday = ((hour_*60*60)+(minute_*60)+second_);
-Serial.print(secondstoday);
+Serial.println(secondstoday);
+    Serial.println("  ");
+
+    Serial.println("  ");
+Serial.print("minutes today ");
+unsigned long minutes = ((hour_*60)+(minute_));
+Serial.println(minutes);
     Serial.println("  ");
 
     Serial.print(day(unix_epoch));
