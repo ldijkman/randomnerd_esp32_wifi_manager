@@ -232,8 +232,9 @@ bool initWiFi() {
 }
 
 // Replaces placeholder with LED state value
+// replaces the text between %match% in spiffs index.html on upload with actual variables
 String processor(const String& var) {
-  if (var == "STATE") {
+  if (var == "STATE") {                 // in index.html noted as &STATE&
     if (digitalRead(ledPin)) {
       ledState = "ON";
     }
@@ -243,13 +244,13 @@ String processor(const String& var) {
     return ledState;
     return String();
   }
-  else if (var == "MDNSNAME") {
+  else if (var == "MDNSNAME") {                  // in index.html noted as &MDNSNAME&
     return String(mdnsdotlocalurl);
-  } else if (var == "IP") {
+  } else if (var == "IP") {                      // in index.html noted as &IP&
     return WiFi.localIP().toString();
-  } else if (var == "GATEWAY") {
+  } else if (var == "GATEWAY") {                // in index.html noted as &GATEWAY&
     return WiFi.gatewayIP().toString();
-  }else if (var == "SUBNET") {
+  }else if (var == "SUBNET") {                  // in index.html noted as &SUBNET&
     return WiFi.subnetMask().toString();
   }
 
