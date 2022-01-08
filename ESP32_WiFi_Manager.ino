@@ -344,6 +344,27 @@ request->send(200, "text/html", "<h1>deleted wifi credentials ssid.txt and pass.
        delay(5000);
       ESP.restart();
     });
+    
+       server.on("/timer", HTTP_POST, [](AsyncWebServerRequest * request) {
+      int params = request->params();
+      for (int i = 0; i < params; i++) {
+        AsyncWebParameter* p = request->getParam(i);
+        if (p->isPost()) {
+          // HTTP POST ssid value
+          const char* PARAM_INPUT_20 = "off";                  // Search for parameter in HTTP POST request
+          if (p->name() == PARAM_INPUT_20) {
+            int inchingdelay;
+            inchingdelay = p->value().toInt();
+            Serial.print("inchingdelay set to: ");
+            Serial.println(inchingdelay);
+            // Write file to save value
+            //writeFile(SPIFFS, ssidPath, ssid.c_str());
+          }      
+        }
+      }  
+      request->send(SPIFFS, "/index.html", "text/html", false, processor);
+    });
+
 
     server.on("/list", HTTP_GET, [](AsyncWebServerRequest * request) {    // /list files in spiffs on webpage
       if (!SPIFFS.begin(true)) {
