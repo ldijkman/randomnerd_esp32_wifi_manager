@@ -44,11 +44,12 @@
       <br><a href="wifimanager.html">wifimanager.html</a><br>
       <br><a href="schedule.html">timed settings schedule.html</a><br><br>
       wanted settable countdown off timer is this called inching<br>
-      <form action="/timer">
+      <form action="/timer" method="POST">
         <label for="timer">OFF Delay Seconds</label>
-        <input type="number" id="offtimer" name="offtimer" value="3600" size="6">
+        <input type="number" id="offtimer" name="off" value="3600" size="6">
         <input type="submit" value="Set">
       </form>
+post is /timer?off=3600
       <br>
       automaticly generated mDNS scanned linked list of all local network devices URL should be here in future <br>
       https://github.com/ldijkman/Hey_Electra/blob/main/ESP32/ESP32_mDNS_list.ino<br>
