@@ -1,7 +1,7 @@
 test bin files for ota upload
 files where made when programming and uploading data sketch an ESP32 WROVER 8mb
 
-
+<pre>
 esptool.py v2.6
 Serial port /dev/ttyUSB1
 Connecting.....
@@ -104,3 +104,4 @@ Hash of data verified.
 
 Leaving...
 Hard resetting via RTS pin...
+</pre>
