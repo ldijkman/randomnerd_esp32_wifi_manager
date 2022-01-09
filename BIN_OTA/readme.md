@@ -36,11 +36,11 @@ Leaving...
 Hard resetting via RTS pin...
 
 
+---
 
 
 
-
-
+---
 
 
 esptool.py v2.6
