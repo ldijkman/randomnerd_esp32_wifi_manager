@@ -42,9 +42,17 @@ wifimanager.html https://jsfiddle.net/luberth/4avpquhs/show
 
 index.html https://jsfiddle.net/luberth/sx61b08t/show
 
-schedule.html https://jsfiddle.net/luberth/ow3zceyn/show/
+schedule.html https://jsfiddle.net/luberth/ow3zceyn/show
 
+---
 
+Android  Phone use
+
+BonjourBrowser App to see list browse all human friendly mDNS URL devices on your local network 
+
+https://www.google.com/url?sa=t&source=web&rct=j&url=https://play.google.com/store/apps/details%3Fid%3Dde.wellenvogel.bonjourbrowser%26hl%3Den_US%26gl%3DUS%26auao%3Dfalse%26referrer%3Dutm_source%253Dgoogle%2526utm_medium%253Dorganic%2526utm_term%253Dbonjourbrowser%26pcampaignid%3DAPPU_1_ernaYePEAo2SsAfW3YTwDQ&ved=2ahUKEwjj6ZnFu6T1AhUNCewKHdYuAd4Q5IQBegQIEhAF&usg=AOvVaw1zeecq3MdBk4kBQpHW4IZP
+
+---
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Screenshot_ESP32_WiFi_Manager.jpg">
 
