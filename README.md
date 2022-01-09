@@ -49,7 +49,7 @@ schedule.html https://jsfiddle.net/luberth/ow3zceyn/show/
 
 ESP32 3Euro wifi I/O development board cheapest toy for many hours of fun or frustration for nerds
 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/1a797308-f351-432d-aa6e-2dd87f9fd5ff.jpeg">
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP32_Fingers.jpeg">
 
 Bit like a 1995 PC 486DX2 200Mhz with WiFi FingerNail Sized
 
