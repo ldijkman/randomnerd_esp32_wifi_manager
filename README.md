@@ -17,7 +17,8 @@ connect to esp32 wifi AccesPoint "ESP-WIFI-MANAGER" direct and browse to 192.168
 
 configure your settings  (warning for uppercase / caps start character on text field)
 
-link to zip download https://github.com/ldijkman/randomnerd_esp32_wifi_manager/archive/refs/heads/main.zip
+---
+## link to zip download https://github.com/ldijkman/randomnerd_esp32_wifi_manager/archive/refs/heads/main.zip
 
 ---
 
