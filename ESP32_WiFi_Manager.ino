@@ -415,7 +415,8 @@ void setup() {
     // Connect to Wi-Fi network with SSID and password
     Serial.println("Setting AP (Access Point)");
     // NULL sets an open Access Point
-    WiFi.softAP("ESP-WIFI-MANAGER", NULL);
+    String broadcastintheair = String("ESP-WIFI-MANAGER-") + WiFi.macAddress().c_str();  // want a unique broadcast id for each device
+    WiFi.softAP(broadcastintheair.c_str(), NULL);                                        // i do not know strings and chars thing drive me nuts
 
     IPAddress IP = WiFi.softAPIP();
     Serial.print("AP IP address: ");
