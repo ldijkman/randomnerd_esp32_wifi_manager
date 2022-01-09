@@ -23,10 +23,6 @@
 
   you need to upload the data directory to spiffs => Arduino IDE => Tools => ESP32 Sketch Data Upload (turn serial monitor off else failure)
     howto add to Arduino IDE and use spiffs upload tool  https://randomnerdtutorials.com/install-esp32-filesystem-uploader-arduino-ide/
-    
-    arduino ide wants to place the ino file in a new directory
-    make sure to move the data directory in the arduino ide created directory
-    arduino ide->menu->sketch->show sketch folder->should show the data direcory
 
   added mdns dot local URL
     wanted should show a scan to list all mdns devices dot local urls in local network automaticly on devices webpage
@@ -61,7 +57,7 @@
           it should be possible to do a temp from ap to apsta connection to show user dhcp address
           but i have seen it only once in a german wifimanager
           https://www.john-lassen.de/en/projects/esp-8266-arduino-ide-webconfig
-          no i am mistaking
+          no wrong i am mistaking
 
 
 *********/
@@ -258,16 +254,18 @@ String processor(const String& var) {
     return String();
   }
   else if (var == "MDNSNAME") {                  // in index.html noted as &MDNSNAME&
-    return String(mdnsdotlocalurl)  ;
+    return String(mdnsdotlocalurl);
   } else if (var == "IP") {                      // in index.html noted as &IP&
     return WiFi.localIP().toString() + " DHCP: " + dhcpcheck ;
   } else if (var == "GATEWAY") {                // in index.html noted as &GATEWAY&
     return WiFi.gatewayIP().toString();
   } else if (var == "SUBNET") {                  // in index.html noted as &SUBNET&
-    return WiFi.subnetMask().toString() + " DNS: " + WiFi.dnsIP().toString();
-  }
-  else if (var == "OFFDELAY") {                  // in index.html noted as &OFFDELAY&
+    return WiFi.subnetMask().toString() + "<br>DNS: " + WiFi.dnsIP().toString() + "<br>MAC: " + WiFi.macAddress();
+  } else if (var == "OFFDELAY") {                  // in index.html noted as &OFFDELAY&
     return offdelay.c_str();
+  } else if (var == "NTPTIME") {                  // in index.html noted as &NTPTIME&
+    String mystring = "time ntp";
+    return mystring;
   }
 
   return String();
@@ -314,6 +312,9 @@ void setup() {
 
   offdelay = readFile(SPIFFS, offdelayPath);
   Serial.println(offdelay);
+  if (offdelay.toInt() < 10) {
+    offdelay = 360;
+  }
 
   offdelayint = offdelay.toInt();
   Serial.println(offdelay);
