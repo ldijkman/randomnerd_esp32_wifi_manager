@@ -411,10 +411,12 @@ void setup() {
         str += "\r\n";
         file = root.openNextFile();
       }
-      str += "totalBytes ";
+      str += "\r\n";
+      str += "\r\n";
+      str += "totalBytes    ";
       str += SPIFFS.totalBytes();
       str += "\r\n";
-      str += "usedBytes ";
+      str += "usedBytes    ";
       str += SPIFFS.usedBytes();
       str += "\r\n";
       str += "freeBytes??? ";
