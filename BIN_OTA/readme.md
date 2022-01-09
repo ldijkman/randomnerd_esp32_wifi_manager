@@ -6,7 +6,7 @@ files where made when programming and uploading data sketch an ESP32 WROVER 8mb 
 
 https://www.google.com/search?q=ESP32+WROVER+8mb+38pin+devkit
 
-Download the files to your phone tablet computer
+Download the files to your phone, tablet or computer
 
 ---
 
