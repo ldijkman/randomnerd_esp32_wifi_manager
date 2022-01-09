@@ -23,6 +23,8 @@ arduino ide wants to place the file in a new directory
 
 make sure to move the data directory in the arduino ide created directory
 
+arduino ide->menu->sketch->show sketch folder->should show the data direcory
+
 https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Screenshot_20220103-185651_Chrome.jpg">
