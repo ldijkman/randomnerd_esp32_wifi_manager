@@ -86,6 +86,8 @@ AC90-250V 1 CH ESP32 Relay Development Board Onboard ESP32-WROOM-32E WiFi BLE Mo
 
 DANGER!!! Do not Touch Electra with your bare hands!
 
+A penny for sharing my thoughts
+
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLNoeBfsrNTL5n1iIsYfQWDR0MopN59bRpxw&usqp=CAU">
 
 Http://paypal.me/LDijkman
