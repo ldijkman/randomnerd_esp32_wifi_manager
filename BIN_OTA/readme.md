@@ -21,6 +21,8 @@ Because of disk erased lost config data
 ---
 
 <pre>
+Output from arduino ide on linux raspberry pi 400
+
 esptool.py v2.6
 Serial port /dev/ttyUSB1
 Connecting.....
