@@ -413,7 +413,7 @@ void setup() {
       }
       str += "\r\n";
       str += "\r\n";
-      str += "totalBytes    ";
+      str += "totalBytes   ";
       str += SPIFFS.totalBytes();
       str += "\r\n";
       str += "usedBytes    ";
