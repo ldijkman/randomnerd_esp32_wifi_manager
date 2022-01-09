@@ -1,6 +1,8 @@
 # randomnerd_esp32_wifi_manager
 randomnerd_esp32_wifi_manager
 
+ESP32 RELAIS
+
 NO WiFi settings hardcoded  (ssid pass ip gateway subnet mdns)
 
 DHCP IP or Fixed IP ADDRESS
