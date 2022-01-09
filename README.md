@@ -18,13 +18,17 @@ connect to esp32 wifi AccesPoint "ESP-WIFI-MANAGER" direct and browse to 192.168
 configure your settings  (warning for uppercase / caps start character on text field)
 
 link to zip download https://github.com/ldijkman/randomnerd_esp32_wifi_manager/archive/refs/heads/main.zip
+
 ---
+
 arduino ide wants to place the ino file in a new directory
 
 make sure to move the data directory in the arduino ide created directory
 
 arduino ide->menu->sketch->show sketch folder->should show the data direcory
+
 ---
+
 https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Screenshot_20220103-185651_Chrome.jpg">
