@@ -27,7 +27,7 @@ configure your settings  (warning for uppercase / caps start character on text f
 
 arduino ide wants to place the ino file in a new directory
 
-make sure to move the data directory in the arduino ide created directory
+make sure to move the data directory into the arduino ide created directory
 
 arduino ide->menu->sketch->show sketch folder->should show the data direcory
 
