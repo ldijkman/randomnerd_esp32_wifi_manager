@@ -1,5 +1,5 @@
 
-// standalone ntp test => does not use much code
+// ESP32 standalone ntp test => does not use much code
 // https://github.com/ldijkman/randomnerd_esp32_wifi_manager/
 
 #include <WiFi.h>
@@ -92,7 +92,7 @@ String tsaz(int data)  // to string add zero
 
 
 
-// standalone ntp test => does not use much code
+// ESP32 standalone ntp test => does not use much code
 // https://github.com/ldijkman/randomnerd_esp32_wifi_manager/
 
 
