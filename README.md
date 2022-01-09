@@ -9,7 +9,7 @@ mDNS URL
 
 Arduino IDE
 
-program esp32 with the ino file
+program the ESP32 with the file -> ESP32_WiFi_Manager.ino
 
 upload data directory to spiffs => HOWTODOTHAT?! => https://randomnerdtutorials.com/install-esp32-filesystem-uploader-arduino-ide/
 
