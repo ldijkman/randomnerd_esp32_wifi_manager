@@ -1,4 +1,7 @@
-test bin files for ota upload
+a test bin files for ota upload
+
+over the air OTA upload link on bottom of index.html switch page
+
 files where made when programming and uploading data sketch an ESP32 WROVER 8mb
 
 <pre>
