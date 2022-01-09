@@ -32,6 +32,17 @@ arduino ide->menu->sketch->show sketch folder->should show the data direcory
 
 https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
 
+
+Edit html pages online
+
+wifimanager.html https://jsfiddle.net/luberth/4avpquhs/show
+
+index.html https://jsfiddle.net/luberth/sx61b08t/show
+
+schedule.html https://jsfiddle.net/luberth/ow3zceyn/show/
+
+
+
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Screenshot_20220103-185651_Chrome.jpg">
 
 ESP32 3Euro wifi I/O development board cheapest toy for many hours of fun or frustration for nerds
