@@ -10,7 +10,7 @@ const char* password =  "ikwilerin";
 
 
 
-
+//////////////////////////////////////////////////////
 void setup()
 {
   Serial.begin(115200);
@@ -40,6 +40,7 @@ South America south-america.pool.ntp.org
 
 
 
+/////////////////////////////////////////////////
 void loop()
 {
   printTime();
@@ -49,17 +50,7 @@ void loop()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+/////////////////////////////////////////////
 void printTime() {
 
   struct tm time;
@@ -79,6 +70,10 @@ void printTime() {
 }
 
 
+
+
+
+/////////////////////////////////////////////////
 String tsaz(int data)  // to string add zero
 {
   String st = "";
