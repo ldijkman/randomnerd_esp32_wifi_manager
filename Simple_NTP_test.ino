@@ -1,3 +1,7 @@
+
+// standalone ntp test => does not use much code
+// https://github.com/ldijkman/randomnerd_esp32_wifi_manager/
+
 #include <WiFi.h>
 
 const char* ssid = "Bangert-30-Andijk";
@@ -93,6 +97,8 @@ String tsaz(int data)  // to string add zero
 
 
 
+// standalone ntp test => does not use much code
+// https://github.com/ldijkman/randomnerd_esp32_wifi_manager/
 
 
 
