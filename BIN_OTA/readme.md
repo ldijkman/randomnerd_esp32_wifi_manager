@@ -6,6 +6,20 @@ files where made when programming and uploading data sketch an ESP32 WROVER 8mb 
 
 https://www.google.com/search?q=ESP32+WROVER+8mb+38pin+devkit
 
+Download the files to your phone tablet computer
+
+---
+
+1 upload wifimanager code
+
+2 upload spifs bin code
+
+Connect wifi direct ap mode
+
+Because of disk erased lost config data
+
+---
+
 <pre>
 esptool.py v2.6
 Serial port /dev/ttyUSB1
