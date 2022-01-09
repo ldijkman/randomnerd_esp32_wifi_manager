@@ -10,11 +10,11 @@ Download the files to your phone tablet computer
 
 ---
 
-1 upload wifimanager code
+1 upload wifimanager ino bin code
 
-2 upload spifs bin code
+2 upload wifimanager spifs bin code
 
-Connect wifi direct ap mode
+Connect wifi direct AP AccesPoint mode again
 
 Because of disk erased lost config data
 
