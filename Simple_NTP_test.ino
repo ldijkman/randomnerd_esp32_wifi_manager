@@ -19,10 +19,10 @@ void setup()
 
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
-    Serial.println("Connecting...");
+    Serial.println("Trying to Connect to WiFi router...");
   }
 
-  Serial.println("Connected with success");
+  Serial.println("YES!, Connected with success");
 
 /*
 Worldwide  pool.ntp.org
