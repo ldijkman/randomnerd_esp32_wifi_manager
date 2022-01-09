@@ -23,6 +23,10 @@
 
   you need to upload the data directory to spiffs => Arduino IDE => Tools => ESP32 Sketch Data Upload (turn serial monitor off else failure)
     howto add to Arduino IDE and use spiffs upload tool  https://randomnerdtutorials.com/install-esp32-filesystem-uploader-arduino-ide/
+    
+    arduino ide wants to place the ino file in a new directory
+    make sure to move the data directory in the arduino ide created directory
+    arduino ide->menu->sketch->show sketch folder->should show the data direcory
 
   added mdns dot local URL
     wanted should show a scan to list all mdns devices dot local urls in local network automaticly on devices webpage
