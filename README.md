@@ -1,6 +1,6 @@
 # Hey Electra! <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/data/Electra_192x192.png">
-# randomnerd_esp32_wifi_manager
-randomnerd_esp32_wifi_manager
+# RandomNerd_ESP32_WiFi_Manager
+RandomNerd_ESP32_WiFi_Manager
 
 ESP32 RELAIS
 
