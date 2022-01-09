@@ -2,7 +2,9 @@ a test bin files for ota upload
 
 over the air OTA upload link on bottom of index.html switch page
 
-files where made when programming and uploading data sketch an ESP32 WROVER 8mb
+files where made when programming and uploading data sketch an ESP32 WROVER 8mb 38pin devkit
+
+https://www.google.com/search?q=ESP32+WROVER+8mb+38pin+devkit
 
 <pre>
 esptool.py v2.6
