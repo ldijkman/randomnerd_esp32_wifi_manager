@@ -53,7 +53,7 @@ BonjourBrowser App to see list browse all human friendly mDNS URL devices on you
 https://www.google.com/url?sa=t&source=web&rct=j&url=https://play.google.com/store/apps/details%3Fid%3Dde.wellenvogel.bonjourbrowser
 
 ---
-
+ESP32 wifi manager screenshot
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Screenshot_ESP32_WiFi_Manager.jpg">
 
 ESP32 3Euro wifi I/O development board cheapest toy for many hours of fun or frustration for nerds
