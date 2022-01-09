@@ -411,6 +411,15 @@ void setup() {
         str += "\r\n";
         file = root.openNextFile();
       }
+      str += "totalBytes ";
+      str += SPIFFS.totalBytes();
+      str += "\r\n";
+      str += "usedBytes ";
+      str += SPIFFS.usedBytes();
+      str += "\r\n";
+      str += "freeBytes??? ";
+      str += SPIFFS.totalBytes()-SPIFFS.usedBytes();
+      str += "\r\n";
       request->send(200, "text/txt", str);
     });
 
