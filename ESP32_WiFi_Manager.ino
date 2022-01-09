@@ -259,7 +259,7 @@ String processor(const String& var) {
   } else if (var == "GATEWAY") {                // in index.html noted as &GATEWAY&
     return WiFi.gatewayIP().toString();
   } else if (var == "SUBNET") {                  // in index.html noted as &SUBNET&
-    return WiFi.subnetMask().toString();
+    return WiFi.subnetMask().toString() + " DNS: " + WiFi.dnsIP().toString();
   }
   else if (var == "OFFDELAY") {                  // in index.html noted as &OFFDELAY&
     return offdelay.c_str();
@@ -351,6 +351,13 @@ void setup() {
       SPIFFS.remove("/ssid.txt");
       SPIFFS.remove("/pass.txt");
       request->send(200, "text/html", "<h1>deleted wifi credentials ssid.txt and pass.txt<br>Done.<br>ESP restart,<br>connect to AP access point ESP WIFI MANAGER <br>to configure wifi settings again<br><a href=\"http://192.168.4.1\">http://192.168.4.1</a></h1>");
+      delay(5000);
+      ESP.restart();
+    });
+
+    //  /reboot
+    server.on("/reboot", HTTP_GET, [](AsyncWebServerRequest * request) {
+      request->send(200, "text/html", "<h1>Huh, Reboot Electra, Restart ESP32<br><a href=\"http://" + WiFi.localIP().toString()  + "\">http://" + WiFi.localIP().toString() + "</a></h1>");
       delay(5000);
       ESP.restart();
     });
