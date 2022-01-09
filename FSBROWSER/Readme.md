@@ -10,4 +10,6 @@ Wow lots of info howto ESPAsyncWebServer
 
 https://github.com/me-no-dev/ESPAsyncWebServer/
 
+Esp32 inbrowser filemanager upload download editor
+
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/FSBROWSER/Screenshot_20220109-214636_Chrome.jpg">
