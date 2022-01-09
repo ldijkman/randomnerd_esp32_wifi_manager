@@ -1,4 +1,4 @@
-Hey Electra! <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/data/Electra_192x192.png">
+# Hey Electra! <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/data/Electra_192x192.png">
 # randomnerd_esp32_wifi_manager
 randomnerd_esp32_wifi_manager
 
