@@ -3,11 +3,11 @@ randomnerd_esp32_wifi_manager
 
 NO WiFi settings hardcoded  (ssid pass ip gateway subnet mdns)
 
-dhcp IP or fixed ip 
+DHCP IP or Fixed IP ADDRESS
 
-mdns url
+mDNS URL
 
-arduino ide
+Arduino IDE
 
 program esp32 with the ino file
 
