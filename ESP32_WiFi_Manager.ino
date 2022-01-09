@@ -58,6 +58,12 @@
           but i have seen it only once in a german wifimanager
           https://www.john-lassen.de/en/projects/esp-8266-arduino-ide-webconfig
           no wrong i am mistaking
+          
+          
+          ESP32 is dual core = 2 processors
+          i think i use one
+          looks like espasyncwebsrver does not like delaying in loop
+          would it be possible to run parts of the code on the second unused core / processor?
 
 
 *********/
