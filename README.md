@@ -64,6 +64,8 @@ Android chrome ≣ add to home screen
 
 ESP32 3Euro wifi I/O development board cheapest toy for many hours of fun or frustration for nerds
 
+EDP32 wroom 38pin devkit https://www.google.com/search?q=EDP32+wroom+devkitc+38pin
+
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP32_Fingers.jpeg">
 
 Bit like a 1995 PC 486DX2 200Mhz with WiFi FingerNail Sized
