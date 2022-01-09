@@ -78,4 +78,6 @@ ESP32 relay module 90...250~VAC
 
 AC90-250V 1 CH ESP32 Relay Development Board Onboard ESP32-WROOM-32E WiFi BLE Module RST IO0 Button Relay Module
 
+DANGER!!! Do not Touch Electra with your bare hands!
+
 Http://paypal.me/LDijkman
