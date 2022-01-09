@@ -4,8 +4,8 @@
 
 #include <WiFi.h>
 
-const char* ssid = "Bangert-30-Andijk";
-const char* password =  "ikwilerin";
+const char* ssid = "Bangert-30-Andijk";  // wifi router broadcasted name in the air
+const char* password =  "ikwilerin";     // wifi rouer password
 
 
 
