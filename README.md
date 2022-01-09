@@ -48,7 +48,7 @@ schedule.html https://jsfiddle.net/luberth/ow3zceyn/show
 
 Android  Phone use
 
-BonjourBrowser App to see list browse all human friendly mDNS URL devices on your local network 
+BonjourBrowser App to see / list / browse all human friendly mDNS URL / ESP devices on your local network 
 
 https://www.google.com/url?sa=t&source=web&rct=j&url=https://play.google.com/store/apps/details%3Fid%3Dde.wellenvogel.bonjourbrowser
 
