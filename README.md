@@ -19,7 +19,7 @@ configure your settings  (warning for uppercase / caps start character on text f
 
 link to zip download https://github.com/ldijkman/randomnerd_esp32_wifi_manager/archive/refs/heads/main.zip
 
-arduino ide wants to place the file in a new directory
+arduino ide wants to place the ino file in a new directory
 
 make sure to move the data directory in the arduino ide created directory
 
