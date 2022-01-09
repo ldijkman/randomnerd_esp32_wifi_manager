@@ -56,11 +56,11 @@ https://www.google.com/url?sa=t&source=web&rct=j&url=https://play.google.com/sto
 ESP32 wifi manager screenshot
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Screenshot_ESP32_WiFi_Manager.jpg">
 
-Android phone chrome add to home screen
+Android phone chrome  ≣  add to home screen
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Screenshot_20220109-135523_One%20UI%20Home.jpg">
 
-Android chrome add to home screen
+Android chrome ≣ add to home screen
 
 ESP32 3Euro wifi I/O development board cheapest toy for many hours of fun or frustration for nerds
 
