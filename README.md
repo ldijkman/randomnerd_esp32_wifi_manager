@@ -1,9 +1,9 @@
 # randomnerd_esp32_wifi_manager
 randomnerd_esp32_wifi_manager
 
-no wifi settings hardcoded  (ssid pass ip gateway subnet mdns)
+NO WiFi settings hardcoded  (ssid pass ip gateway subnet mdns)
 
-dhcp or fixed ip 
+dhcp IP or fixed ip 
 
 mdns url
 
