@@ -29,7 +29,7 @@ arduino ide wants to place the ino file in a new directory
 
 make sure to move the data directory into the arduino ide created directory
 
-arduino ide->menu->sketch->show sketch folder->should show the data direcory
+arduino ide->menu->sketch->show sketch folder->should show the data directory
 
 ---
 
