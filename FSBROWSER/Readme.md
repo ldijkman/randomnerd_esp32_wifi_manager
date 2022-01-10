@@ -22,6 +22,8 @@ Esp32 inbrowser filemanager upload download editor
 
 # https://github.com/holgerlembke/ESPxWebFlMgr
 
+hmm looks like no spiffs only litlefs flash file 
+
 Example basicwsagzip (ESP8266 and ESP32)
 More real life:
 
