@@ -66,7 +66,11 @@ Android chrome ≣ add to home screen
 
 ESP32 3Euro wifi I/O development board cheapest toy for many hours of fun or frustration for nerds
 
+ESP32-WROOM-32E 4 MByte - 32 Mbit think there are also 2byte/16mbit versions
+
 EsP32 WROOM 38pin devkit https://www.google.com/search?q=EDP32+wroom+devkitc+38pin
+
+ESP32-WROVER with 8 MByte / 64 MBit
 
 ESP32 WROVER 38pin devkit https://www.google.com/search?q=EDP32+wrover+devkitc+38pin
 
