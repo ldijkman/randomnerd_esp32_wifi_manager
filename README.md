@@ -50,7 +50,7 @@ schedule.html https://jsfiddle.net/luberth/ow3zceyn/show
 
 Android mDNS Browser
 
-Android  Phone use
+Android  Phone / Tablet Use:
 
 BonjourBrowser App to see / list / browse all human friendly mDNS URL / ESP devices on your local network 
 
