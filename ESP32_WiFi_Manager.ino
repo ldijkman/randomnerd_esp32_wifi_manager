@@ -260,9 +260,9 @@ String processor(const String& var) {
     return String();
   }
   else if (var == "MDNSNAME") {                  // in index.html noted as &MDNSNAME&
-    return ssid+"<br>"+String(mdnsdotlocalurl);
+    return String(mdnsdotlocalurl);
   } else if (var == "IP") {                      // in index.html noted as &IP&
-    return WiFi.localIP().toString() + " DHCP: " + dhcpcheck ;
+    return ssid+"<br>"+WiFi.localIP().toString() + " DHCP: " + dhcpcheck ;
   } else if (var == "GATEWAY") {                // in index.html noted as &GATEWAY&
     return WiFi.gatewayIP().toString();
   } else if (var == "SUBNET") {                  // in index.html noted as &SUBNET&
