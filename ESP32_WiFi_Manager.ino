@@ -260,7 +260,7 @@ String processor(const String& var) {
     return String();
   }
   else if (var == "MDNSNAME") {                  // in index.html noted as &MDNSNAME&
-    return String(mdnsdotlocalurl);
+    return ssid+"<br>"+String(mdnsdotlocalurl);
   } else if (var == "IP") {                      // in index.html noted as &IP&
     return WiFi.localIP().toString() + " DHCP: " + dhcpcheck ;
   } else if (var == "GATEWAY") {                // in index.html noted as &GATEWAY&
