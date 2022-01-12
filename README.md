@@ -104,15 +104,11 @@ A penny for sharing my thoughts
 
 Http://paypal.me/LDijkman
 
-.
+...
 
 ..
 
-...
-
-....
-
-.....
+.
 
 Do Not Burn and Forget
 
