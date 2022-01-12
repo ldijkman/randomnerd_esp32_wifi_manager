@@ -1,3 +1,114 @@
+// should be cleaned
+
+body {
+ 
+  
+ 
+ 
+}
+
+h1 {
+  text-align: center;
+  font-family: Tahoma, Arial, sans-serif;
+  color: #06D85F;
+  margin: 80px 0;
+}
+
+.box {
+  width: 40%;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.2);
+  padding: 35px;
+  border: 2px solid #fff;
+  border-radius: 20px/50px;
+  background-clip: padding-box;
+  text-align: center;
+}
+
+.button {
+  font-size: 2em;
+  padding: 3px;
+  color: #dbd75e;
+  border: 1px solid #000;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 1s ease-out;
+  
+  background: #1b06d8;
+}
+.button:hover {
+  background: #06D85F;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  //transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px){
+  .box{
+    width: 90%;
+  }
+  .popup{
+    width: 90%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 html {
   font-family: Arial, Helvetica, sans-serif; 
   display: inline-block; 
@@ -10,7 +121,7 @@ h1 {
 }
 
 p { 
-  font-size: 1.4rem;
+  font-size: 1.1rem;
 }
 
 .topnav { 
@@ -24,7 +135,6 @@ body {
 
 .content { 
   padding: 5%;
-background-color: #9fa1a6;
 }
 
 .card-grid { 
@@ -41,7 +151,7 @@ background-color: #9fa1a6;
 }
 
 .card-title { 
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: bold;
   color: #034078
 }
@@ -54,8 +164,8 @@ input[type=submit] {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-  width: 100px;
+  font-size: 18px;
+  width: 30%;
   margin-right: 10px;
   border-radius: 4px;
   transition-duration: 0.4s;
@@ -66,6 +176,16 @@ input[type=submit]:hover {
 }
 
 input[type=text], input[type=number], select {
+  width: 40%;
+  padding: 8px 10px;
+  margin: 18px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=url], input[type=number], select {
   width: 50%;
   padding: 12px 20px;
   margin: 18px;
@@ -76,14 +196,14 @@ input[type=text], input[type=number], select {
 }
 
 label {
-  font-size: 1.2rem; 
+  font-size: 1rem; 
 }
 .value{
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #1282A2;  
 }
 .state {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #1282A2;
 }
 button {
@@ -91,7 +211,7 @@ button {
   color: #FEFCFB;
   padding: 15px 32px;
   text-align: center;
-  font-size: 16px;
+  font-size: 30px;
   width: 100px;
   border-radius: 4px;
   transition-duration: 0.4s;
