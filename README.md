@@ -103,3 +103,11 @@ A penny for sharing my thoughts
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLNoeBfsrNTL5n1iIsYfQWDR0MopN59bRpxw&usqp=CAU">
 
 Http://paypal.me/LDijkman
+
+.
+..
+...
+....
+.....
+Do Not Burn and Forget
+
