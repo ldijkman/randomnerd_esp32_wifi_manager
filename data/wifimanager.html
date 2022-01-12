@@ -13,18 +13,18 @@
 
   <body>
     <div class="topnav">
-      <h1>Hey Electra, ESP Wi-Fi Manager</h1>
+      <h1>Hey Electra, ESP32 WiFi Manager</h1>
     </div>
     <div class="content">
       <div class="card-grid">
         <div class="card">
           <form action="/" method="POST">
-            <p><small>Wifi router name broadcasted in the air</small><br>
+            <p><small>Wifi router to connect to, name broadcasted in the air</small><br>
               <label for="ssid">SSID</label>
-              <input type="text" id="ssid" name="ssid"><br>
-              <small>Wifi router password</small><br>
+              <input type="text" id="ssid" name="ssid" autocapitalize="none"><br>
+              <small>Wifi router to connect to password</small><br>
               <label for="pass">Password</label>
-              <input type="text" id="pass" name="pass"><br>
+              <input type="text" id="pass" name="pass" autocapitalize="none"><br>
 
               <hr>
 
@@ -37,9 +37,34 @@
               <input type="text" id="ip" name="ip" value="192.168.178.12"><br>
               Gateway = IP address of router admin page?<br>
               <label for="gateway">Gateway</label>
-              <input type="text" id="gateway" name="gateway" value="192.168.178.1" title="find windows=ipconfig, linux=netstat -r"><br>
+              <input type="text" id="gateway" name="gateway" value="192.168.178.1" title="find windows=ipconfig, linux=netstat -r">
 
-
+<a class="button" href="#popup1"><b>?</b></a><br>
+<div id="popup1" class="overlay">
+	<div class="popup">
+  <!-- pure CSS popup bit from https://codepen.io/imprakash/pen/GgNMXO -->
+		<a class="close" href="#">&times;</a>
+		<div class="content">
+    <small>Me no NetWork Expert!</small><br>
+			GateWay<br>
+      Maybe IP of your wifi router Admin / Config page?<br>
+      windows->DOS terminal CMD?->ipconfig <br>
+      linux->netstat -r<br>
+      Android fing app ?<br>
+      <br>
+      SUBNET lookup in router?<br>
+      maybe?<br>
+      255.255.255.0<br>
+      255.255.0.0<br><br>
+      or first use DHCP <br>
+      and check bottom switch index.html<br>
+      for network info<br>
+      use that network info for fixed ip<br><br>
+      mDNS URL use normal URL friendly characters<br>
+      no spaces and special chars<br>
+		</div>
+	</div>
+</div>
 
               <label for="subnet">Subnet</label>
               <input type="text" id="subnet" name="subnet" value="255.255.255.0"><br>
@@ -65,16 +90,16 @@
 
               </script>
               <hr>
-               Give each device a unique url?!<br>
+               Give each ESP32 device a Unique URL?!<br>
               <label for="mdns">mDNS URL </label><input type="button" id="url" name="mdns"><br>
-              <label for="mdns">mDNS Address </label>
-              <input type="text" id="mdns" name="mdns" value="living" oninput='document.getElementById("url").value="http://"+document.getElementById("mdns").value+".local";'><br>
+              <label for="mdns">http://</label>
+              <input type="text" id="mdns" name="mdns" autocapitalize="none" value="living" oninput='document.getElementById("url").value="http://"+document.getElementById("mdns").value+".local";'>.local<br>
 
               <script>
                 document.getElementById("url").value = "http://" + document.getElementById("mdns").value + ".local";
 
               </script>
-Android use BonjourBrowser App to see mDNS URL's / devices in local network
+Android use BonjourBrowser App to see/list/browse all mDNS URL's / devices in local network
               <hr>
 
               <label for="relaispin">Relais GPIO </label>
@@ -90,8 +115,67 @@ Android use BonjourBrowser App to see mDNS URL's / devices in local network
 
               <hr>
 
-              <label for="ntptime">NTP time server</label>
-              <input type="text" id="ntptime" name="ntptime" value="http://time.google.com"><br>
+              <label for="ntptime">NTP Network Time Server <br> http://</label>
+              <input type="text" id="ntptime" name="ntptime" value="time.google.com">
+              <a class="button" href="#popup2"><b>?</b></a><br>
+<div id="popup2" class="overlay">
+	<div class="popup">
+  <!-- pure CSS popup bit from https://codepen.io/imprakash/pen/GgNMXO -->
+		<a class="close" href="#">&times;</a>
+		<div class="content">
+    <small>Me no NTP Expert!</small><br><br>
+    time.google.com<br><br>
+    <table>
+<thead>
+  <tr>
+    <th> </th>
+    <th></th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Worldwide</td>
+    <td>pool.ntp.org</td>
+  </tr>
+  <tr>
+    <td>Asia</td>
+    <td>asia.pool.ntp.org</td>
+  </tr>
+  <tr>
+    <td>Europe</td>
+    <td>europe.pool.ntp.org</td>
+  </tr>
+  <tr>
+    <td>North America</td>
+    <td>north-america.pool.ntp.org</td>
+  </tr>
+  <tr>
+    <td>Oceania</td>
+    <td>oceania.pool.ntp.org</td>
+  </tr>
+  <tr>
+    <td>South America</td>
+    <td>south-america.pool.ntp.org</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody>
+</table>
+
+      
+		</div>
+	</div>
+</div>
               <label for="ntptimeoffset">Time offset</label>
              
               <select name="ntptimeoffset" id="ntptimeoffset">
@@ -123,7 +207,7 @@ Android use BonjourBrowser App to see mDNS URL's / devices in local network
               </select>
               <br>
               <hr>
-              <input type="submit" value="Submit">
+              <input type="submit" value="Save Settings">
             </p>
           </form>
         </div>
