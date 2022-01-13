@@ -46,6 +46,12 @@ index.html https://jsfiddle.net/luberth/sx61b08t/show
 
 schedule.html https://jsfiddle.net/luberth/ow3zceyn/show
 
+
+---
+
+Ip input test https://codepen.io/ldijkman/pen/xxXmXMd?editors=1010
+
+
 ---
 
 Android mDNS Browser
