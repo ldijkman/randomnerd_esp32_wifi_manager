@@ -65,6 +65,10 @@ Apple phone human friendly mDNS URL.local tested / worked on saphari and chrome
 ESP32 wifi manager screenshot
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Screenshot_ESP32_WiFi_Manager.jpg">
 
+Index.html
+
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Screenshot_20220114-200120_Chrome.jpg">
+
 Android phone chrome  ≣  add to home screen
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Screenshot_20220109-135523_One%20UI%20Home.jpg">
