@@ -49,11 +49,6 @@ schedule.html https://jsfiddle.net/luberth/ow3zceyn/show
 
 ---
 
-Ip input test https://codepen.io/ldijkman/pen/xxXmXMd?editors=1010
-
-
----
-
 Android mDNS Browser
 
 Android  Phone / Tablet Use:
@@ -121,4 +116,10 @@ Http://paypal.me/LDijkman
 .
 
 Do Not Burn and Forget
+
+---
+at the moment trying
+
+Ip input test https://codepen.io/ldijkman/pen/xxXmXMd?editors=1010
+
 
