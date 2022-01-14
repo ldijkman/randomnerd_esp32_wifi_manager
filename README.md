@@ -63,6 +63,10 @@ BonjourBrowser App to see / list / browse all human friendly mDNS URL / ESP devi
 https://www.google.com/url?sa=t&source=web&rct=j&url=https://play.google.com/store/apps/details%3Fid%3Dde.wellenvogel.bonjourbrowser
 
 ---
+
+Apple phone human friendly mDNS URL.local tested / worked on saphari and chrome
+
+---
 ESP32 wifi manager screenshot
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Screenshot_ESP32_WiFi_Manager.jpg">
 
