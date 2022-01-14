@@ -122,6 +122,8 @@ at the moment trying
 
 Ip input test https://codepen.io/ldijkman/pen/xxXmXMd?editors=1010
 
+https://codepen.io/pen/?template=xxXmXMd
+
 input text with option select https://jsfiddle.net/luberth/b5e6s7x8/show
 
 
