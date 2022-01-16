@@ -140,5 +140,7 @@ Esp32 alexa i2c mic https://youtu.be/re-dSV_a0tM
 
 DIY alexa https://github.com/atomic14/diy-alexa
 
-Esp32 box  
+Esp32 espressif the box  
 https://esp32.com/viewforum.php?f=44&sid=488fe9512f2482e48533b0d931896541
+
+https://esp32.com/viewtopic.php?f=44&t=25021
