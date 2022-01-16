@@ -77,6 +77,14 @@ Android phone chrome  ≣  add to home screen
 
 Android chrome ≣ add to home screen
 
+Esp32 scan for other debices on the local network
+
+Mdns scan on esp32 not correct yet serial monitor
+
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/20220116_200340.jpg">
+
+
+
 ESP32 3Euro wifi I/O development board cheapest toy for many hours of fun or frustration for nerds
 
 ESP32-WROOM-32E 32 Mbit == 4 MByte  think there are also 2byte/16mbit versions
