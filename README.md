@@ -61,6 +61,8 @@ https://www.google.com/url?sa=t&source=web&rct=j&url=https://play.google.com/sto
 
 Apple phone human friendly mDNS URL.local tested / worked on apple-saphari and apple-chrome
 
+Apple does not need an app for mdns == included in ios
+
 ---
 ESP32 wifi manager screenshot
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Screenshot_ESP32_WiFi_Manager.jpg">
