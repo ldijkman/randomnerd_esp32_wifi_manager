@@ -110,18 +110,46 @@
                 }
 
               </script>
+
+              <script>
+                // this also works on touch screen
+                function charremove() {
+                  var textt = document.getElementById("mdns").value; // read the inputfield
+
+                  //document.getElementById("url").value="http://"++".local
+                  let result = textt.replace(/[^a-zA-Z0-9-']/g, ""); // not replace a-z A-Z 0-9 and - for nothing "" replace everything else for nothing ""
+
+                  document.getElementById("mdns").value = result; // return to inputfield cleaned up
+                  document.getElementById("url").value = "http://" + result + ".local"; // return to url field
+                }
+
+              </script>
+
               <hr>
               Give each ESP32 device a Unique URL?!<br>
-              
-               <label for="mmdns" border="0" >mDNS URL </label> 
-              
-               <input type="label" id="url" style="color: green"><br>
-               <font color="red"><b>
-               <small>Allowed Characters a-z A-Z 0-9 and -<br></small>
-               </b></font>
+
+              <label for="mmdns" border="0">mDNS URL </label>
+
+              <input type="label" id="url" style="color: green"><br>
+              <font color="red"><b>
+                  <small>Allowed Characters a-z A-Z 0-9 and -<br></small>
+                </b></font>
               <label for="mdns">http://</label>
+              <input type="text" oninput="charremove()" id="mdns" name="mdns" autocapitalize="none" value="living">.local<br>
+              <!--  
+                 <label for="mdns">http://</label>
               <input type="text" id="mdns" name="mdns" autocapitalize="none" value="living" oninput='document.getElementById("url").value="http://"+document.getElementById("mdns").value+".local";' onkeypress="return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45">.local<br>
+           
+              onkeypress only allow some characters 
+              a-z A-Z 0-9 and - 
+              maybe A-Z is also not allowed but it works
+      
+              https://www.w3schools.com/charsets/ref_html_ascii.asp 
+              -->
+
               <!-- 
+              Hmmm does not work on touch screen android
+              
               onkeypress only allow some characters 
               a-z A-Z 0-9 and - 
               maybe A-Z is also not allowed but it works
@@ -162,7 +190,7 @@
                 <option value="north-america.pool.ntp.org">north-america.pool.ntp.org</option>
                 <option value="oceania.pool.ntp.org">oceania.pool.ntp.org</option>
                 <option value="south-america.pool.ntp.org">south-america.pool.ntp.org</option>
-                <option value="au.pool.ntp.org">Australia = au.pool.ntp.org</option>
+                <option value="au.pool.ntp.org">Australia au.pool.ntp.org</option>
               </select>
 
               <a class="button" href="#popup2"><b>?</b></a><br>
