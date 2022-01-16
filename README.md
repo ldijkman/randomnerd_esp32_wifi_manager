@@ -59,7 +59,7 @@ https://www.google.com/url?sa=t&source=web&rct=j&url=https://play.google.com/sto
 
 ---
 
-Apple phone human friendly mDNS URL.local tested / worked on saphari and chrome
+Apple phone human friendly mDNS URL.local tested / worked on apple-saphari and apple-chrome
 
 ---
 ESP32 wifi manager screenshot
