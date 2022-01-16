@@ -139,3 +139,6 @@ should b possible to first boot dhcp after connect store ip/gate/sub restart/reb
 Esp32 alexa i2c mic https://youtu.be/re-dSV_a0tM
 
 DIY alexa https://github.com/atomic14/diy-alexa
+
+Esp32 box  
+https://esp32.com/viewforum.php?f=44&sid=488fe9512f2482e48533b0d931896541
