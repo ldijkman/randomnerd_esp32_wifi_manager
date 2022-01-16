@@ -135,3 +135,5 @@ input text with option select https://jsfiddle.net/luberth/b5e6s7x8/show
 people have problems with what to fill in on ip gateway and subnetmask fields
 
 should b possible to first boot dhcp after connect store ip/gate/sub restart/reboot and use read ip/gate/sub data and start with fixed ip
+
+Esp32 alexa i2c mic https://youtu.be/re-dSV_a0tM
