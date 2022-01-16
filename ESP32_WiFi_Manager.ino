@@ -20,9 +20,18 @@
   Rui Santos
   Complete instructions at https://RandomNerdTutorials.com/esp32-wi-fi-manager-asyncwebserver/
   ******************************************************************************************************************************
+  
+  i use arduino ide linux arm32 1.8.13 on raspberry pi
+  i use arduino ide linux arm32 1.8.19 on raspberry pi
 
   you need to upload the data directory to spiffs => Arduino IDE => Tools => ESP32 Sketch Data Upload (turn serial monitor off else failure)
     howto add to Arduino IDE and use spiffs upload tool  https://randomnerdtutorials.com/install-esp32-filesystem-uploader-arduino-ide/
+        or  place this/next zip file in => arduino/tools/ directory  
+                    https://github.com/me-no-dev/arduino-esp32fs-plugin/releases/
+                    https://github.com/me-no-dev/arduino-esp32fs-plugin/releases/download/1.0/ESP32FS-1.0.zip
+           and unzip it there
+           restart arduino
+           now you should have in the menu  => Arduino IDE => Tools => ESP32 Sketch Data Upload  
 
   added mdns dot local URL
     wanted should show a scan to list all mdns devices dot local urls in local network automaticly on devices webpage
