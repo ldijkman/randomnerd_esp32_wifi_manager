@@ -237,8 +237,10 @@ bool initWiFi() {
       return false;
     }
   }
-
+  delay(500);
+  Serial.println("");
   Serial.println(WiFi.localIP());
+  
 
   if (!MDNS.begin(mdnsdotlocalurl.c_str())) {
     Serial.println("Error setting up MDNS responder!");
