@@ -148,11 +148,11 @@ people have problems with what to fill in on ip gateway and subnetmask fields
 
 should b possible to first boot dhcp after connect store ip/gate/sub restart/reboot and use read ip/gate/sub data and start with fixed ip
 
-Esp32 alexa i2c mic https://youtu.be/re-dSV_a0tM
+Esp32 alexa i2s mic/speaker https://youtu.be/re-dSV_a0tM
 
 DIY alexa https://github.com/atomic14/diy-alexa
 
-Esp32 espressif the box  
+Esp32 espressif the box == looks like it sells well == sold out 
 https://esp32.com/viewforum.php?f=44&sid=488fe9512f2482e48533b0d931896541
 
 https://esp32.com/viewtopic.php?f=44&t=25021
