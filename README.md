@@ -79,9 +79,13 @@ Android chrome ≣ add to home screen
 
 Esp32 scan for other debices on the local network
 
-Mdns scan on esp32 not correct yet serial monitor
+Mdns scan on esp32 serial monitor scanstr html links to other devices in the network
 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/20220116_200340.jpg">
+Electra scans every 10 seconds to see what devices there are in the local network
+
+if you add a device => it will list
+
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/mdns_scan_html_links.jpg">
 
 
 
