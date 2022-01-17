@@ -170,3 +170,8 @@ Esp32 espressif the box == looks like it sells well == sold out
 https://esp32.com/viewforum.php?f=44&sid=488fe9512f2482e48533b0d931896541
 
 https://esp32.com/viewtopic.php?f=44&t=25021
+
+---
+
+pi@raspberrypi:~ $ avahi-browse -r -all
+
