@@ -154,7 +154,7 @@ after connect store ip/gate/sub restart/reboot and use read ip/gate/sub data
 
 and restart with fixed ip == autoconnect 2.0?
 
-asked maker of bonjoutbrowser app if he can display network info in his bonjoutbrowser app
+asked maker of bonjourbrowser app if he can display network info in his bonjoutbrowser app
 
 to make life eassier
 
