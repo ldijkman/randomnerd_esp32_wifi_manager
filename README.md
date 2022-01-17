@@ -65,15 +65,15 @@ Apple does not need an app for mdns == included in ios
 
 ---
 ESP32 wifi manager screenshot
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Screenshot_ESP32_WiFi_Manager.jpg">
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/Screenshot_ESP32_WiFi_Manager.jpg">
 
 Index.html
 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Screenshot_20220114-200120_Chrome.jpg">
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/Screenshot_20220114-200120_Chrome.jpg">
 
 Android phone chrome  ≣  add to home screen
 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Screenshot_20220109-135523_One%20UI%20Home.jpg">
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/Screenshot_20220109-135523_One%20UI%20Home.jpg">
 
 Android chrome ≣ add to home screen
 
@@ -85,7 +85,7 @@ Electra scans every 10 seconds to see what devices there are in the local networ
 
 if you add a device => it will list a link on each devices webpage with a human friendly link
 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/mdns_scan_html_links.jpg">
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/mdns_scan_html_links.jpg">
 
 
 
@@ -99,7 +99,7 @@ ESP32-WROVER with 64 MBit == 8 MByte
 
 ESP32 WROVER 38pin devkit https://www.google.com/search?q=EDP32+wrover+devkitc+38pin
 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP32_Fingers.jpeg">
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/ESP32_Fingers.jpeg">
 
 Bit like a 1995 PC 486DX2 200Mhz with WiFi FingerNail Sized
 
