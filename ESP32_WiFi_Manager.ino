@@ -619,28 +619,36 @@ void loop() {
 // for now prints to serial monitor
 // https://github.com/ldijkman/Hey_Electra/blob/main/ESP32/ESP32_mDNS_list.ino
 
+String scanstr = "";
+
 void browseService(const char * service, const char * proto) {
-  Serial.printf("Browsing for service _%s._%s.local. ... ", service, proto);
+  //scanstr += ("Browsing for service _%s._%s.local. ... ", service, proto);
   int n = MDNS.queryService(service, proto);
+  scanstr = "";
   if (n == 0) {
-    Serial.println("no services found");
+    scanstr += "no other Dervices found in local network<br>program more devices with this software<br>and see the power off Electra ;-)<br>\n\r";
   } else {
-    Serial.print(n);
-    Serial.println(" service(s) found");
-    for (int i = 0; i < n; ++i) {
-      // Print details for each service found
-      Serial.print("  ");
-      Serial.print(i + 1);
-      Serial.print(": ");
-      Serial.print(MDNS.hostname(i));
-      Serial.print(" (");
-      Serial.print(MDNS.IP(i));
-      Serial.print(":");
-      Serial.print(MDNS.port(i));
-      Serial.println(")");
+    scanstr += "\n\r";
+    scanstr += n;
+    scanstr += " Other Device(s) found on local network";
+    scanstr += "\n\r";
+    Serial.print(scanstr);
+    scanstr = "";
+    for (int i = 0; i < n; i++) {
+      scanstr += "  ";
+      scanstr += i + 1;
+      scanstr += ": <a href=\"http://";
+      scanstr += MDNS.IP(i).toString();
+      scanstr += "\">http://";
+      scanstr += MDNS.hostname(i);
+      scanstr += ".local</a><br>";
+      //scanstr += MDNS.port(i);
+      scanstr += "\n\r";
     }
   }
-  Serial.println();
+  Serial.print(scanstr);
+  scanstr = "";
+
 
 
   // Got it working???
