@@ -2,6 +2,10 @@
 # RandomNerd_ESP32_WiFi_Manager
 RandomNerd_ESP32_WiFi_Manager
 
+not so handy older video https://www.youtube.com/watch?app=desktop&v=mrQwdB_dm_U
+
+       Bet you can make a better video ;-)
+
 ESP32 RELAIS
 
 NO WiFi settings hardcoded  (ssid pass ip gateway subnet mdns)
