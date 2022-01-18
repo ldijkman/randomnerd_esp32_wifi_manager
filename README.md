@@ -42,7 +42,7 @@ arduino ide->menu->sketch->show sketch folder->should show the data directory
 https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
 
 
-Edit html pages online
+Preview or Edit html pages online
 
 wifimanager.html https://jsfiddle.net/luberth/4avpquhs/show
 
