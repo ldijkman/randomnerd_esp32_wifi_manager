@@ -70,31 +70,31 @@ Apple does not need an app for mdns == included in ios
 
 ---
 
-ESP32 wifi manager screenshot
+# ESP32 wifi manager screenshot
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/Screenshot_ESP32_WiFi_Manager.jpg">
 
 ---
 
-Index.html
+# Index.html
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/Screenshot_20220114-200120_Chrome.jpg">
 
 ---
 
-## Electra Schedule  (not Working yet... Help?)
+## Electra Schedule, Schedule Electra (not Working yet... Help?)
 
-Easy set overview and a load of switchtimes (more and better as most commercial payed programs/apps)
+Easy set & overview and a load of switchtimes (more and better as most commercial paid programs/apps)
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/Screenshot_20220118-182856_Chrome.jpg">
 
 ---
 
-Android phone chrome  ≣  add to home screen
+# Android phone chrome  ≣  add to home screen
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/Screenshot_20220109-135523_One%20UI%20Home.jpg">
 
-Android chrome ≣ add to home screen
+# Android chrome ≣ add to home screen
 
 ---
 
