@@ -82,7 +82,7 @@ Index.html
 
 ---
 
-Electra Schedule  (not orking yet... Help?)
+## Electra Schedule  (not Working yet... Help?)
 
 Easy set overview and a load of switchtimes (more and better as most commercial payed programs/apps)
 
