@@ -43,7 +43,7 @@ https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
 
 ---
 
-# Preview or Edit html pages online
+# Preview or Edit HTML pages online
 
 wifimanager.html https://jsfiddle.net/luberth/4avpquhs/show
 
@@ -82,7 +82,9 @@ Android phone chrome  ≣  add to home screen
 
 Android chrome ≣ add to home screen
 
-Esp32 scan for other debices on the local network
+---
+
+Esp32 scan for other devices on the local network
 
 Mdns scan on esp32 serial monitor scanstr html links to other devices in the network
 
