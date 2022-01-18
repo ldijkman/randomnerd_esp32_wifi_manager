@@ -21,8 +21,8 @@
   Complete instructions at https://RandomNerdTutorials.com/esp32-wi-fi-manager-asyncwebserver/
   ******************************************************************************************************************************
   
-  i use arduino ide linux arm32 1.8.13 on raspberry pi
-  i use arduino ide linux arm32 1.8.19 on raspberry pi
+  i use arduino ide linux arm32 1.8.13 on raspberry pi  https://www.arduino.cc/en/software
+  i use arduino ide linux arm32 1.8.19 on raspberry pi  https://www.arduino.cc/en/software
 
   you need to upload the data directory to spiffs => Arduino IDE => Tools => ESP32 Sketch Data Upload (turn serial monitor off else failure)
     howto add to Arduino IDE and use spiffs upload tool  https://randomnerdtutorials.com/install-esp32-filesystem-uploader-arduino-ide/
