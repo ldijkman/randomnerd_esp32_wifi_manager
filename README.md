@@ -86,6 +86,8 @@ Apple does not need an app for mdns == included in ios
 
 Easy set & overview and a load of switchtimes (more and better as most commercial paid programs/apps)
 
+Each device its own schedule webpage
+
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/Screenshot_20220118-182856_Chrome.jpg">
 
 ---
