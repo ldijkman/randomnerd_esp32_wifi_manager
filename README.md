@@ -2,7 +2,7 @@
 # RandomNerd_ESP32_WiFi_Manager
 RandomNerd_ESP32_WiFi_Manager
 
-not so handy older video http://m.youtube.com/watch?app=desktop&v=mrQwdB_dm_U
+not so handy older video http://m.youtube.com/watch?v=mrQwdB_dm_U
 
        Bet you can make a better video ;-)
 
