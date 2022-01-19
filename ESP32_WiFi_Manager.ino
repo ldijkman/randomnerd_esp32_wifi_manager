@@ -699,4 +699,7 @@ void browseService(const char * service, const char * proto) {
   // http://paypal.me/LDijkman
 }
 // me no programmer, just trying, wasting loads of time drinking loads of coffee, but makes more sense to me as solving crossword puzzles
+// Made in Portugal / Made in Holland
+
+
 
