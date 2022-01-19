@@ -656,6 +656,8 @@ void browseService(const char * service, const char * proto) {
   }
   Serial.print(scanstr);
   scanstr = "";
+  
+  Serial.print("WiFi.status == ");
   Serial.println(WiFi.status());
 
 
