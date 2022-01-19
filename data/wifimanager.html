@@ -36,7 +36,7 @@
 
               <input type="label" id="fixed" value=" Yes we use DHCP"><br>
               <label for="ip">IP Address</label>
-              <input type="text" id="ip" name="ip" value="%WM_IP%"><br>
+              <input type="number" id="ip" name="ip" value="%WM_IP%"><br>
 
 
 
@@ -45,7 +45,7 @@
 
               Gateway = IP address of router admin page?<br>
               <label for="gateway">Gateway</label>
-              <input type="text" id="gateway" name="gateway" value="%WM_GW%" title="find windows=ipconfig, linux=netstat -r">
+              <input type="number" id="gateway" name="gateway" value="%WM_GW%" title="find windows=ipconfig, linux=netstat -r">
 
               <a class="button" href="#popup1"><b>?</b></a><br>
               <div id="popup1" class="overlay">
@@ -75,7 +75,7 @@
               </div>
 
               <label for="subnet">Subnet</label>
-              <input type="text" id="subnet" name="subnet" value="%WM_SN%">
+              <input type="number" id="subnet" name="subnet" value="%WM_SN%">
               <br>
               <script>
                 myFunction();
@@ -87,6 +87,10 @@
 
                   // If the checkbox is checked
                   if (checkBox.checked == true) {
+                    document.getElementById("ip").type = "text";
+                    document.getElementById("gateway").type = "text";
+                    document.getElementById("subnet").type = "text";
+
                     document.getElementById("ip").value = "auto router will do this";
                     document.getElementById("gateway").value = "auto router will do this";
                     document.getElementById("subnet").value = "auto router will do this";
@@ -97,6 +101,11 @@
 
                     document.getElementById("fixed").value = "Yes DHCP";
                   } else {
+                    document.getElementById("ip").type = "text"; // would like to use number so that a number keyboard comes up on phone but that doe not allow multiple points  192.168 and then i cannot enter a point
+                    // type text and ip shows a keyboard on phone 
+                    document.getElementById("gateway").type = "text";
+                    document.getElementById("subnet").type = "text";
+
                     document.getElementById("ip").disabled = false;
                     document.getElementById("gateway").disabled = false;
                     document.getElementById("subnet").disabled = false;
@@ -117,7 +126,7 @@
                   var textt = document.getElementById("mdns").value; // read the inputfield
 
                   //document.getElementById("url").value="http://"++".local
-                  let result = textt.replace(/[^a-zA-Z0-9-']/g, ""); // not replace a-z A-Z 0-9 and - for nothing "" replace everything else for nothing ""
+                  let result = textt.replace(/[^a-zA-Z0-9-]/g, ""); // not replace a-z A-Z 0-9 and - for nothing "" replace everything else for nothing ""
 
                   document.getElementById("mdns").value = result; // return to inputfield cleaned up
                   document.getElementById("url").value = "http://" + result + ".local"; // return to url field
@@ -129,8 +138,13 @@
               Give each ESP32 device a Unique URL?!<br>
 
               <label for="mmdns" border="0">mDNS URL </label>
+              <script>
+                function focusInput() {
+                  document.getElementById("mdns").focus();
+                }
 
-              <input type="label" id="url" style="color: green"><br>
+              </script>
+              <input type="button" id="url" style="color: green" onclick="focusInput()"></label><br>
               <font color="red"><b>
                   <small>Allowed Characters a-z A-Z 0-9 and -<br></small>
                 </b></font>
@@ -164,19 +178,19 @@
               Android use BonjourBrowser App to see/list/browse all mDNS URL's / devices in local network<br>
               Apple understands mDNS out off the box<br>
               My raspberry pi does mDNS<br>
-              Microsoft do not use it<br>
+              Microsoft (i) Do not use it<br>
               <hr>
 
               <label for="relaispin">Relais GPIO </label>
-              <input type="text" id="relaispin" name="relaispin" value="5"><br>
+              <input type="number" id="relaispin" name="relaispin" value="5"><br>
 
 
 
               <label for="statusledpin">Status LED GPIO </label>
-              <input type="text" id="statusledpin" name="statusledpin" value="8"><br>
+              <input type="number" id="statusledpin" name="statusledpin" value="8"><br>
 
               <label for="buttonpin">Button GPIO </label>
-              <input type="text" id="buttonpin" name="buttonpin" value="3"><br>
+              <input type="number" id="buttonpin" name="buttonpin" value="3"><br>
 
               <hr>
 
@@ -184,7 +198,7 @@
               <input type="text" id="ntptime" name="ntptime" value="time.google.com"><br>
               <select name="plan" id="plan" onchange='document.getElementById("ntptime").value =document.getElementById("plan").value;'>
                 <option value="time.google.com" selected>time.google.com</option>
-                <option value="pool.ntp.org">pool.ntp.org </option>
+                <option value="pool.ntp.org">This World pool.ntp.org </option>
                 <option value="asia.pool.ntp.org">asia.pool.ntp.org</option>
                 <option value="europe.pool.ntp.org">europe.pool.ntp.org</option>
                 <option value="north-america.pool.ntp.org">north-america.pool.ntp.org</option>
