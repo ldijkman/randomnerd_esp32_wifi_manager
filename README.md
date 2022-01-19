@@ -114,7 +114,7 @@ Mdns scan on esp32 serial monitor scanstr html links to other devices in the net
 
 Electra scans every 10 seconds to see what devices there are in the local network
 
-if you add a device => it will list a link on each devices webpage with a human friendly link
+if you add a new device => it will list a link on each devices webpage with a human friendly link
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/mdns_scan_html_links.jpg">
 
