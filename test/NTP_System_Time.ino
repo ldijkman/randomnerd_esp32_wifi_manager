@@ -1,4 +1,6 @@
 // https://gist.github.com/Tech500/bc4bd77a357b8d401cd13487ef6de800
+// https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/test
+//
 //  NTP_System_Time.ino
 //schufti  --of ESP8266.com Forum provided source for NTP time.
 //Developer of code not given
@@ -228,3 +230,4 @@ String getDateTime()
 
 }
 // https://gist.github.com/Tech500/bc4bd77a357b8d401cd13487ef6de800
+// https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/test
