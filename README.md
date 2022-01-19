@@ -1,3 +1,9 @@
+if you use my version of the randomnerd wifimanager
+
+      i think it is better not to post problems to Rui's & Sara's randomnerd tutorials Page
+
+           use https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
+
 # Hey Electra! <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/data/Electra_192x192.png"> DANGER!!!
 # RandomNerd_ESP32_WiFi_Manager
 RandomNerd_ESP32_WiFi_Manager
