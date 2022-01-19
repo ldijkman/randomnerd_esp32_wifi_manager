@@ -634,7 +634,7 @@ void browseService(const char * service, const char * proto) {
   int n = MDNS.queryService(service, proto);
   scanstr = "";
   if (n == 0) {
-    scanstr += "no other Devices found in local network<br>\n\r program more devices with this software<br>\n\r and see the power off Electra ;-)<br>\n\r";
+    scanstr += "No other Devices found in local network<br>\n\r Program more devices with this software<br>\n\r  And See / Release the power off Electra ;-)<br>\n\r";
   } else {
     scanstr += "\n\r";
     scanstr += n;
