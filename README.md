@@ -110,6 +110,11 @@ if you add a device => it will list a link on each devices webpage with a human 
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/mdns_scan_html_links.jpg">
 
+-
+
+--
+
+---
 
 
 ESP32 3Euro wifi I/O development board cheapest toy for many hours of fun or frustration for nerds
