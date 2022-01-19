@@ -655,19 +655,42 @@ void browseService(const char * service, const char * proto) {
     }
   }
   Serial.print(scanstr);
+  Serial.println("");
   scanstr = "";
-  
+
   Serial.print("WiFi.status == ");
   Serial.println(WiFi.status());
-  /*
-    WL_IDLE_STATUS      = 0,
-    WL_NO_SSID_AVAIL    = 1,
-    WL_SCAN_COMPLETED   = 2,
-    WL_CONNECTED        = 3,
-    WL_CONNECT_FAILED   = 4,
-    WL_CONNECTION_LOST  = 5,
-    WL_DISCONNECTED     = 6
-*/
+
+  switch (WiFi.status()) {
+    case 0:
+      Serial.println("WL_IDLE_STATUS");
+      break;
+    case 1:
+      Serial.println("WL_NO_SSID_AVAIL");
+      break;
+    case 2:
+      Serial.println("WL_SCAN_COMPLETED");
+      break;
+    case 3:
+      Serial.println("WL_CONNECTED");
+      break;
+    case 4:
+      Serial.println("WL_CONNECT_FAILED");
+      break;
+    case 5:
+      Serial.println("WL_CONNECTION_LOST");
+      break;
+    case 6:
+      Serial.println("WL_DISCONNECTED");
+      break;
+    default:
+      // if nothing else matches, do the default
+      // default is optional
+      break;
+  }
+  Serial.println("");
+
+
 
 
   // Got it working???
