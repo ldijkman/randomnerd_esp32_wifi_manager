@@ -695,7 +695,7 @@ void browseService(const char * service, const char * proto) {
 
 
   // Got it working???
-  // Share a video link https://github.com/ldijkman/Hey_Electra/discussions
+  // Share a video link https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
   // Bet you can do better as me => https://www.youtube.com/watch?v=mrQwdB_dm_U
   // http://paypal.me/LDijkman
 }
