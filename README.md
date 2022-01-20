@@ -108,6 +108,10 @@ Each device its own schedule webpage
 
 ---
 
+
+
+
+
 Esp32 scan for other devices on the local network
 
 Mdns scan on esp32 serial monitor scanstr html links to other devices in the network
@@ -124,7 +128,11 @@ if you add a new device => it will list a link to it on each devices webpage wit
 
 ---
 
+# my arduino settings for ESP32
 
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220120_183555.jpg">
+
+---
 ESP32 3Euro wifi I/O development board cheapest toy for many hours of fun or frustration for nerds
 
 ESP32-WROOM-32E 32 Mbit == 4 MByte  think there are also 2byte/16mbit versions
