@@ -29,6 +29,7 @@
 
           </p>
           <p class="state">State: %STATE%</p>
+          some things should be updated by websockets or ajax == help?<br>
           <script>
             if ("%STATE%" == "ON") {
               document.write('<a href="/off"><img src="%STATE%.gif" width="65" height="98"></a>');
@@ -42,7 +43,12 @@
         </div>
       </div>
       <br><a href="wifimanager.html">wifimanager.html</a><br>
-      <br><a href="schedule.html">timed settings schedule.html</a><br><br>
+      wifimanager loads from here<br>
+      but submit does not work from STA mode<br>
+      POST is in the else part or AP mode part of the code <br> 
+      <br>
+      Schedule Electra, Electra Schedule<br>
+      <a href="schedule.html">timed settings schedule.html</a><br><br>
       wanted settable countdown off timer is this called inching<br>
       <form action="/timer" method="POST">
         <label for="timer">OFF Delay %OFFDELAY% Seconds</label>
@@ -50,8 +56,10 @@
         <input type="submit" value="Set">
       </form>
 POST is /timer?off=%OFFDELAY%
-      <br>
+      <br><br>
+      
       automaticly generated mDNS scanned linked list of all local network devices URL should be here in future <br>
+      %MDNSSCAN%<br>
       https://github.com/ldijkman/Hey_Electra/blob/main/ESP32/ESP32_mDNS_list.ino<br>
       http://kitchen.local<br>
       http://living.local<br>
@@ -81,12 +89,17 @@ POST is /timer?off=%OFFDELAY%
     <br>
     <br>
     <a href="/list">/list list files in spiffs on webpage</a><br>
+    <input type="button" onclick="window.location.href='/list';" value="List files in Spiffs" width="80%">
+    <br>
     <br>
     <a href="/reboot">/reboot restart Electra</a><br>
-    <br>
+     <input type="button" onclick="window.location.href='/reboot';" value="Reboot Restart Electra" width="80%" >
+    <br><br>
     <a href="/resetwifitoap">/resetwifitoap delete ssid.txt and pass.txt restart to AP accesspoint to reconfigure wifi</a><br>
+     <input type="checkbox" id="check"  onclick='document.getElementById("resettoap").disabled=!document.getElementById("check").checked;' onUnSelect='document.getElementById("resettoap").disabled=!document.getElementById("check").checked;'>Enable <input type="button" id="resettoap" onclick="window.location.href='/resetwifitoap';" value="/resetwifitoap" width="80%" disabled=true>
     <br><br>
     <hr>
+    
     <h3>
       optional: i2c BME280 sensor<br>
       Each Device / Room<br>
@@ -102,7 +115,10 @@ POST is /timer?off=%OFFDELAY%
     DO NOT like the OTA FILE upload <br>
     its a complete spiffs erase replace, must use a .spiffs.bin file<br>
     i would like to select a file or multiple files to add/overwrite to spiffs<br>
-    Maybe a filemanager, c99shell alike ;-)<br> <br>
+    Maybe a filemanager, c99shell r57shell alike ;-)<br> 
+    <br>
+    would it be possible to add FSBrowser<br>
+    for uploading files to ESP32 and edit HTML files inbrowser online in/on ESP32<br><br>
     <br><br>
   <a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager">https://github.com/ldijkman/randomnerd_esp32_wifi_manager</a><br><br>
     <br>
@@ -115,5 +131,7 @@ Subnet: %SUBNET%<br>
  %NETWORKINFO%<br>
 <br>
 <a href="Http://paypal.me/LDijkman">A penny for sharing my thoughts</a><br><br>
+A &copy;&Ograve;&Oacute;&THORN;&egrave;&reg; Test.<br>
+&copy;opy&reg;ight 2021...2022 Dirk Luberth Dijkman<br><br>
  </body>
 </html>
