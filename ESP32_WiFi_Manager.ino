@@ -699,8 +699,9 @@ void browseService(const char * service, const char * proto) {
   // Bet you can do better as me => https://www.youtube.com/watch?v=mrQwdB_dm_U
   // http://paypal.me/LDijkman
 }
-// me no programmer, just trying, wasting loads of time drinking loads of coffee, but makes more sense to me as solving crossword puzzles
-// Made in Portugal / Made in Holland
+// Me NO programmer, just trying, wasting loads of time drinking loads of coffee, but makes more sense to me as solving crossword puzzles
+// My Mothers and Fathers Language whas Dutch, Thats what she learned me, That Explains my poor Englisch.
+// Partly Made in Portugal &&  Partly Made in Holland
 
 
 
