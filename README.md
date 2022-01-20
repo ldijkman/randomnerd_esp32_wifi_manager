@@ -141,6 +141,8 @@ Bit like a 1995 PC 486DX2 200Mhz with WiFi FingerNail Sized
 
 # like next, and dont like it
 
+# X-HX0293A
+
 do not like that it has no usb connection
 
 Needs an FTDI programmer at3.3v or esp01 programmer with some wires
