@@ -39,11 +39,11 @@ Play and have fun with Electra
 
 ---
 
-arduino ide wants to place the ino file in a new directory
+arduino ide wants to place the ino file in a new directory => "ESP32_WiFi_Manager"
 
-make sure to move the data directory into the arduino ide created directory
+make sure to move the "data" directory into the arduino ide created directory => "ESP32_WiFi_Manager"
 
-arduino ide->menu->sketch->show sketch folder->should show the data directory
+arduino ide->menu->sketch->show sketch folder->should show the "data" directory
 
 ---
 
