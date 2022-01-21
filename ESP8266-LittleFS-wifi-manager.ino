@@ -622,7 +622,7 @@ unsigned long startmillis = 0;
 
 void loop() {
   
-  MDNS.update();   // looks like this is needed only for esp8266
+  MDNS.update();   // looks like this is needed only for esp8266 otherwise i dont see mdns url in bonjourbrowser not needed for esp32
 
   if (millis() - startmillis >= 10000) {    // non blocking delay 10 seconds
     startmillis = millis();                 // scan for mdns devices urls every ??? seconds
