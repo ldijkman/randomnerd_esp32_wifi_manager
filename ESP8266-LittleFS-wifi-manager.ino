@@ -1,6 +1,8 @@
 // quick modification for test esp8266
 // esp8266 LittleFS mDNS wifimanager
-// tested on a 4mb wemos d1 mini esp8266 with relais shield relais gpio 5
+// tested on a 4mb wemos d1 mini esp8266 with relais shield relais gpio 5 == WORKING
+// tested on esp8266 nodemcu 4mb onboard LED gpio16 == WORKING
+
 
 // my esp8266 arduino ide settings https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220121_172823.jpg
 //     should be possible to program sonoff basic with esp8285 with these  esp8266 settings also
