@@ -42,11 +42,9 @@
           
         </div>
       </div>
-      <br><a href="wifimanager.html">wifimanager.html</a><br>
-       <input type="button" onclick="window.location.href='wifimanager.html';" value="wifimanager.html" width="200px"><br>
-      wifimanager loads from here<br>
-      but submit does not work from STA mode<br>
-      POST is in the else part or AP mode part of the code <br> 
+      <br> <input type="checkbox" id="managecheck"  onclick='document.getElementById("manage").disabled=!document.getElementById("managecheck").checked;' onUnSelect='document.getElementById("resettoap").disabled=!document.getElementById("check").checked;'>Enable 
+       <input type="button" id="manage"onclick="window.location.href='wifimanager.html';" value="wifimanager.html" width="200px" disabled><br>
+      wifimanager config from STA works in ESP8266 version <br> 
       <br>
       Schedule Electra, Electra Schedule<br>
       <a href="schedule.html">timed settings schedule.html</a><br>
@@ -140,7 +138,4 @@ Electra, A &copy;&Ograve;&Oacute;&THORN;&egrave;&reg; Test.<br>
 &copy;opy&reg;ight 2021...2022 Dirk Luberth Dijkman<br><br>
  </body>
 </html>
-
-
-
 
