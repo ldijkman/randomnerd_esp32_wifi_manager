@@ -12,6 +12,8 @@
 //             unzip in arduino/tools directory...restart arduino...now you should have in the menu  => Arduino IDE => Tools => ESP8266 LittleFS Data Upload
 
 
+// now possible to reconfigure wifimanager from STA mode (esp8266 version)
+
 
 
 //*********************
