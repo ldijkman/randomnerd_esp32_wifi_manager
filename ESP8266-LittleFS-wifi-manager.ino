@@ -1,3 +1,7 @@
+
+// tested on a 4mb wemos d1 mini esp8266 with relas shield relais gpio 5
+
+
 //*********************
 //     Hey Electra!
 /*********************
