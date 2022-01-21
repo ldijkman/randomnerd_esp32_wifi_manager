@@ -95,14 +95,10 @@
 //#include <NoDelay.h>                    // nonblocking delay https://www.arduino.cc/reference/en/libraries/nodelay/
 #include <AsyncElegantOTA.h>              // https://github.com/ayushsharma82/AsyncElegantOTA
 // download zip from above->Arduino IDE->menu->tab->sketch->include library->add ZIP library
-
-
-
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
 #include <ESPAsyncTCP.h>
 #include <ESPAsyncWebServer.h>
-
 #include <ESP8266mDNS.h>
 #include <AsyncElegantOTA.h>              // https://github.com/ayushsharma82/AsyncElegantOTA
 */
@@ -182,9 +178,13 @@ IPAddress subnetMask(0, 0, 0, 0);
 
 
 
-// Timer variables
+// Timer variables 
+unsigned long currentMillis = 0;
 unsigned long previousMillis = 0;
-const long interval = 10000;  // interval to wait for Wi-Fi connection (milliseconds)
+const long interval = 10000;  // interval to wait for Wi-Fi connection (milliseconds) removed did not work on esp8266 wifi connect crash reboot
+
+ 
+  
 
 // Set LED GPIO
 int ledPin = 5;    // wemos uno sized esp32 board
@@ -261,17 +261,16 @@ bool initWiFi() {
   WiFi.begin(ssid.c_str(), pass.c_str());
   Serial.println("Connecting to WiFi...");
 
-  unsigned long currentMillis = millis();
-  previousMillis = currentMillis;
+
 int i = 0;
   while (WiFi.status() != WL_CONNECTED) {
-    //currentMillis = millis();
-    //if (currentMillis - previousMillis >= interval) {
-      //Serial.println("Failed to connect.");
-     // return false;
-   // }
-     delay(1000);
-    Serial.print(++i); Serial.print(' ');
+    if (i>=20) {
+      Serial.println("Failed to connect. in 20sec");
+      return false;
+    }
+    delay(1000);
+    Serial.print(i); Serial.print(' ');
+    i++;
   }
   delay(500);
   Serial.println("");
