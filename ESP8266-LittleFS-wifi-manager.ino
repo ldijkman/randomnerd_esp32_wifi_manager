@@ -1,6 +1,8 @@
 // quick modification for test esp8266
 // esp8266 LittleFS mDNS wifimanager
-// tested on a 4mb wemos d1 mini esp8266 with relas shield relais gpio 5
+// tested on a 4mb wemos d1 mini esp8266 with relais shield relais gpio 5
+
+// my esp8266 arduino ide settings https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220121_172823.jpg
 
 // LittleFS upload tool for arduino 
 //             https://github.com/earlephilhower/arduino-esp8266littlefs-plugin
