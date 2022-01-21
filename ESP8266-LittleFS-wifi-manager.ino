@@ -3,7 +3,7 @@
 // esp8266 LittleFS mDNS wifimanager
 // tested on a 4mb wemos d1 mini esp8266 with relais shield relais gpio 5 == WORKING                  4mb(fs 2mb~ota 1019kb)
 // tested on esp8266 nodemcu 4mb onboard LED gpio16 == WORKING (LED inverted)                         4mb(fs 2mb~ota 1019kb)
-// tested on sonoff basic esp8285 1mb (programmed with esp8266 settings relais gpio13 == WORKING ;-)  1mb(fs 512~ota 246) 
+// tested on sonoff basic esp8285 1mb (programmed with esp8266 settings relais gpio13 == WORKING ;-)  1mb(fs 512~ota 246)
 
 // my esp8266 arduino ide settings https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220121_172823.jpg
 
@@ -33,17 +33,17 @@
   Rui Santos
   Complete instructions at https://RandomNerdTutorials.com/esp32-wi-fi-manager-asyncwebserver/
   ******************************************************************************************************************************
-  
+
   i use arduino ide linux arm32 1.8.13 on raspberry pi  https://www.arduino.cc/en/software
   i use arduino ide linux arm32 1.8.19 on raspberry pi  https://www.arduino.cc/en/software
   you need to upload the data directory to LittleFS => Arduino IDE => Tools => ESP32 Sketch Data Upload (turn serial monitor off else failure)
     howto add to Arduino IDE and use LittleFS upload tool  https://randomnerdtutorials.com/install-esp32-filesystem-uploader-arduino-ide/
-        or  place this/next zip file in => arduino/tools/ directory  
+        or  place this/next zip file in => arduino/tools/ directory
                     https://github.com/me-no-dev/arduino-esp32fs-plugin/releases/
                     https://github.com/me-no-dev/arduino-esp32fs-plugin/releases/download/1.0/ESP32FS-1.0.zip
            and unzip it there
            restart arduino
-           now you should have in the menu  => Arduino IDE => Tools => ESP32 Sketch Data Upload  
+           now you should have in the menu  => Arduino IDE => Tools => ESP32 Sketch Data Upload
   added mdns dot local URL
     wanted should show a scan to list all mdns devices dot local urls in local network automaticly on devices webpage
             https://github.com/ldijkman/Hey_Electra/blob/main/ESP32/ESP32_mDNS_list.ino
@@ -74,8 +74,8 @@
           but i have seen it only once in a german wifimanager
           https://www.john-lassen.de/en/projects/esp-8266-arduino-ide-webconfig
           no wrong i am mistaking
-          
-          
+
+
           ESP32 is dual core = 2 processors
           i think i use one
           looks like espasyncwebsrver does not like delaying in loop
@@ -87,23 +87,23 @@
 
 
 /*
-#include <Arduino.h>
-#include <WiFi.h>
-#include <ESPAsyncWebServer.h>            // https://github.com/me-no-dev/ESPAsyncWebServer
-// download zip from above->Arduino IDE->menu->tab->sketch->include library->add ZIP library
-#include <AsyncTCP.h>                     // https://github.com/me-no-dev/AsyncTCP
-// download zip from above->Arduino IDE->menu->tab->sketch->include library->add ZIP library
-#include "LittleFS.h"
-#include <ESPmDNS.h>
-//#include <NoDelay.h>                    // nonblocking delay https://www.arduino.cc/reference/en/libraries/nodelay/
-#include <AsyncElegantOTA.h>              // https://github.com/ayushsharma82/AsyncElegantOTA
-// download zip from above->Arduino IDE->menu->tab->sketch->include library->add ZIP library
-#include <Arduino.h>
-#include <ESP8266WiFi.h>
-#include <ESPAsyncTCP.h>
-#include <ESPAsyncWebServer.h>
-#include <ESP8266mDNS.h>
-#include <AsyncElegantOTA.h>              // https://github.com/ayushsharma82/AsyncElegantOTA
+  #include <Arduino.h>
+  #include <WiFi.h>
+  #include <ESPAsyncWebServer.h>            // https://github.com/me-no-dev/ESPAsyncWebServer
+  // download zip from above->Arduino IDE->menu->tab->sketch->include library->add ZIP library
+  #include <AsyncTCP.h>                     // https://github.com/me-no-dev/AsyncTCP
+  // download zip from above->Arduino IDE->menu->tab->sketch->include library->add ZIP library
+  #include "LittleFS.h"
+  #include <ESPmDNS.h>
+  //#include <NoDelay.h>                    // nonblocking delay https://www.arduino.cc/reference/en/libraries/nodelay/
+  #include <AsyncElegantOTA.h>              // https://github.com/ayushsharma82/AsyncElegantOTA
+  // download zip from above->Arduino IDE->menu->tab->sketch->include library->add ZIP library
+  #include <Arduino.h>
+  #include <ESP8266WiFi.h>
+  #include <ESPAsyncTCP.h>
+  #include <ESPAsyncWebServer.h>
+  #include <ESP8266mDNS.h>
+  #include <AsyncElegantOTA.h>              // https://github.com/ayushsharma82/AsyncElegantOTA
 */
 
 
@@ -125,7 +125,7 @@
 
 #include "LittleFS.h"
 #include <AsyncElegantOTA.h>              // https://github.com/ayushsharma82/AsyncElegantOTA
-#include <ESPAsyncWebServer.h>            
+#include <ESPAsyncWebServer.h>
 
 
 
@@ -185,13 +185,13 @@ IPAddress subnetMask(0, 0, 0, 0);
 
 
 
-// Timer variables 
+// Timer variables
 unsigned long currentMillis = 0;
 unsigned long previousMillis = 0;
 const long interval = 10000;  // interval to wait for Wi-Fi connection (milliseconds) removed did not work on esp8266 wifi connect crash reboot
 
- 
-  
+
+
 
 // Set LED GPIO
 int ledPin = 5;    // wemos uno sized esp32 board
@@ -269,9 +269,9 @@ bool initWiFi() {
   Serial.println("Connecting to WiFi...");
 
 
-int i = 0;
+  int i = 0;
   while (WiFi.status() != WL_CONNECTED) {
-    if (i>=20) {
+    if (i >= 20) {
       Serial.println("Failed to connect. in 20sec");
       return false;
     }
@@ -282,7 +282,7 @@ int i = 0;
   delay(500);
   Serial.println("");
   Serial.println(WiFi.localIP());
-  
+
 
   if (!MDNS.begin(mdnsdotlocalurl.c_str())) {
     Serial.println("Error setting up MDNS responder!");
@@ -315,7 +315,7 @@ String processor(const String& var) {
   else if (var == "MDNSNAME") {                  // in index.html noted as &MDNSNAME&
     return String(mdnsdotlocalurl);
   } else if (var == "IP") {                      // in index.html noted as &IP&
-    return ssid+"<br>"+WiFi.localIP().toString() + " DHCP: " + dhcpcheck ;
+    return ssid + "<br>" + WiFi.localIP().toString() + " DHCP: " + dhcpcheck ;
   } else if (var == "GATEWAY") {                // in index.html noted as &GATEWAY&
     return WiFi.gatewayIP().toString();
   } else if (var == "SUBNET") {                  // in index.html noted as &SUBNET&
@@ -478,6 +478,13 @@ void setup() {
       request->send(200, "text/txt", str);
     });
 
+
+
+    checkpost();   // post submit for AP and STA?
+
+
+
+
     AsyncElegantOTA.begin(&server);    // Start ElegantOTA
     server.begin();
   }
@@ -487,9 +494,9 @@ void setup() {
     // NULL sets an open Access Point
     //String broadcastintheair = String("ESP-WIFI-MANAGER-") + WiFi.macAddress().c_str();  // want a unique broadcast id for each device
     String broadcastintheair = String("ESP-WIFI-MANAGER-");  // want a unique broadcast id for each device
-    
+
     WiFi.softAP(broadcastintheair.c_str(), NULL);                                        // i do not know, strings and chars thing drive me nuts
-                                                                                         // i have seen all errors possible, getting this working ;-)
+    // i have seen all errors possible, getting this working ;-)
 
     IPAddress IP = WiFi.softAPIP();
     Serial.print("AP IP address: ");
@@ -502,125 +509,12 @@ void setup() {
 
     server.serveStatic("/", LittleFS, "/");
 
-    server.on("/", HTTP_POST, [](AsyncWebServerRequest * request) {
-      int params = request->params();
-      for (int i = 0; i < params; i++) {
-        AsyncWebParameter* p = request->getParam(i);
-        if (p->isPost()) {
-          // HTTP POST ssid value
-          const char* PARAM_INPUT_1 = "ssid";                  // Search for parameter in HTTP POST request
-          if (p->name() == PARAM_INPUT_1) {
-            ssid = p->value().c_str();
-            Serial.print("SSID set to: ");
-            Serial.println(ssid);
-            // Write file to save value
-            writeFile(LittleFS, ssidPath, ssid.c_str());
-          }
-          // HTTP POST pass value
-          const char* PARAM_INPUT_2 = "pass";                 // Search for parameter in HTTP POST request
-          if (p->name() == PARAM_INPUT_2) {
-            pass = p->value().c_str();
-            Serial.print("Password set to: ");
-            Serial.println(pass);
-            // Write file to save value
-            writeFile(LittleFS, passPath, pass.c_str());
-          }
-          // HTTP POST ip value
-          const char* PARAM_INPUT_3 = "ip";                   // Search for parameter in HTTP POST request
-          if (p->name() == PARAM_INPUT_3) {
-            dhcpcheck = "off";
-            writeFile(LittleFS, dhcpcheckPath, "off");          //dhcp unchecked . if we recieve post with ip set dhcpcheck.txt file to off
-            ip = p->value().c_str();
-            Serial.print("IP Address set to: ");
-            Serial.println(ip);
-            writeFile(LittleFS, ipPath, ip.c_str());            // Write file to save value
-          }
-          // HTTP POST gateway value
-          const char* PARAM_INPUT_4 = "gateway";              // Search for parameter in HTTP POST request
-          if (p->name() == PARAM_INPUT_4) {
-            gateway = p->value().c_str();
-            Serial.print("gateway Address set to: ");
-            Serial.println(gateway);
-            writeFile(LittleFS, gatewayPath, gateway.c_str());          // Write file to save value
-          }
 
-          // HTTP POST subnet value
-          const char* PARAM_INPUT_5 = "subnet";               // Search for parameter in HTTP POST request
-          if (p->name() == PARAM_INPUT_5) {
-            subnet = p->value().c_str();
-            Serial.print("subnet Address set to: ");
-            Serial.println(subnet);
-            writeFile(LittleFS, subnetPath, subnet.c_str());            // Write file to save value
-          }
-          // HTTP POST mdns value
-          const char* PARAM_INPUT_6 = "mdns";                 // Search for parameter in HTTP POST request
-          if (p->name() == PARAM_INPUT_6) {
-            mdnsdotlocalurl = p->value().c_str();
-            Serial.print("mdnsdotlocalurl Address set to: ");
-            Serial.println(mdnsdotlocalurl);
-            writeFile(LittleFS, mdnsPath, mdnsdotlocalurl.c_str());            // Write file to save value
-          }
-          // HTTP POST dhcp value on
-          const char* PARAM_INPUT_7 = "dhcp";                // Search for parameter in HTTP POST request
-          if (p->name() == PARAM_INPUT_7) {
-            dhcpcheck = p->value().c_str();
-            Serial.print("dhcpcheck set to: ");
-            Serial.println(dhcpcheck);
-            writeFile(LittleFS, dhcpcheckPath, dhcpcheck.c_str());            // Write file to save value
-          }
-          // HTTP POST dhcp value on
-          const char* PARAM_INPUT_8 = "relaispin";                // Search for parameter in HTTP POST request
-          if (p->name() == PARAM_INPUT_8) {
-            relaispin = p->value().c_str();
-            Serial.print("relaispin set to: ");
-            Serial.println(relaispin);
-            writeFile(LittleFS, relaispinPath, relaispin.c_str());            // Write file to save value
-          }
-          // HTTP POST dhcp value on
-          const char* PARAM_INPUT_9 = "statusledpin";                // Search for parameter in HTTP POST request
-          if (p->name() == PARAM_INPUT_9) {
-            statusledpin = p->value().c_str();
-            Serial.print("statusledpin set to: ");
-            Serial.println(statusledpin);
-            writeFile(LittleFS, statusledpinPath, statusledpin.c_str());            // Write file to save value
-          }
-          // HTTP POST dhcp value on
-          const char* PARAM_INPUT_10 = "buttonpin";                // Search for parameter in HTTP POST request
-          if (p->name() == PARAM_INPUT_10) {
-            buttonpin = p->value().c_str();
-            Serial.print("buttonpin set to: ");
-            Serial.println(buttonpin);
-            writeFile(LittleFS, buttonpinPath, buttonpin.c_str());            // Write file to save value
-          }
-          // HTTP POST dhcp value on
-          const char* PARAM_INPUT_11 = "ntptime";                // Search for parameter in HTTP POST request
-          if (p->name() == PARAM_INPUT_11) {
-            ntptime = p->value().c_str();
-            Serial.print("ntptime set to: ");
-            Serial.println(ntptime);
-            writeFile(LittleFS, ntptimePath, ntptime.c_str());            // Write file to save value
-          }
-          // HTTP POST dhcp value on
-          const char* PARAM_INPUT_12 = "ntptimeoffset";                // Search for parameter in HTTP POST request
-          if (p->name() == PARAM_INPUT_12) {
-            ntptimeoffset = p->value().c_str();
-            Serial.print("ntptimeoffset set to: ");
-            Serial.println(ntptimeoffset);
-            writeFile(LittleFS, ntptimeoffsetPath, ntptimeoffset.c_str());            // Write file to save value
-          }
+
+    checkpost();   // post submit for AP and STA?
 
 
 
-          //Serial.printf("POST[%s]: %s\n", p->name().c_str(), p->value().c_str());
-        }
-      }
-      if (dhcpcheck == "on") {
-        ip = "dhcp ip adress";
-      }
-      request->send(200, "text/html", "<h1>Done. ESP restart,<br> connect router <br>go to: <a href=\"http://" + ip + "\">" + ip + "</a><br><a href=\"http://" + mdnsdotlocalurl + ".local\">http://" + mdnsdotlocalurl + ".local</a> Android use BonjourBrowser App</h1>");
-      delay(5000);
-      ESP.restart();
-    });
     server.begin();
   }
 }
@@ -628,7 +522,7 @@ void setup() {
 unsigned long startmillis = 0;
 
 void loop() {
-  
+
   MDNS.update();   // looks like this is needed only for esp8266 otherwise i dont see mdns url in bonjourbrowser not needed for esp32
 
   if (millis() - startmillis >= 10000) {    // non blocking delay 10 seconds
@@ -667,6 +561,137 @@ void loop() {
 }
 
 
+
+void checkpost() {
+  server.on("/", HTTP_POST, [](AsyncWebServerRequest * request) {
+    int params = request->params();
+    for (int i = 0; i < params; i++) {
+      AsyncWebParameter* p = request->getParam(i);
+      if (p->isPost()) {
+        // HTTP POST ssid value
+        const char* PARAM_INPUT_1 = "ssid";                  // Search for parameter in HTTP POST request
+        if (p->name() == PARAM_INPUT_1) {
+          ssid = p->value().c_str();
+          Serial.print("SSID set to: ");
+          Serial.println(ssid);
+          // Write file to save value
+          writeFile(LittleFS, ssidPath, ssid.c_str());
+        }
+        // HTTP POST pass value
+        const char* PARAM_INPUT_2 = "pass";                 // Search for parameter in HTTP POST request
+        if (p->name() == PARAM_INPUT_2) {
+          pass = p->value().c_str();
+          Serial.print("Password set to: ");
+          Serial.println(pass);
+          // Write file to save value
+          writeFile(LittleFS, passPath, pass.c_str());
+        }
+        // HTTP POST ip value
+        const char* PARAM_INPUT_3 = "ip";                   // Search for parameter in HTTP POST request
+        if (p->name() == PARAM_INPUT_3) {
+          dhcpcheck = "off";
+          writeFile(LittleFS, dhcpcheckPath, "off");          //dhcp unchecked . if we recieve post with ip set dhcpcheck.txt file to off
+          ip = p->value().c_str();
+          Serial.print("IP Address set to: ");
+          Serial.println(ip);
+          writeFile(LittleFS, ipPath, ip.c_str());            // Write file to save value
+        }
+        // HTTP POST gateway value
+        const char* PARAM_INPUT_4 = "gateway";              // Search for parameter in HTTP POST request
+        if (p->name() == PARAM_INPUT_4) {
+          gateway = p->value().c_str();
+          Serial.print("gateway Address set to: ");
+          Serial.println(gateway);
+          writeFile(LittleFS, gatewayPath, gateway.c_str());          // Write file to save value
+        }
+
+        // HTTP POST subnet value
+        const char* PARAM_INPUT_5 = "subnet";               // Search for parameter in HTTP POST request
+        if (p->name() == PARAM_INPUT_5) {
+          subnet = p->value().c_str();
+          Serial.print("subnet Address set to: ");
+          Serial.println(subnet);
+          writeFile(LittleFS, subnetPath, subnet.c_str());            // Write file to save value
+        }
+        // HTTP POST mdns value
+        const char* PARAM_INPUT_6 = "mdns";                 // Search for parameter in HTTP POST request
+        if (p->name() == PARAM_INPUT_6) {
+          mdnsdotlocalurl = p->value().c_str();
+          Serial.print("mdnsdotlocalurl Address set to: ");
+          Serial.println(mdnsdotlocalurl);
+          writeFile(LittleFS, mdnsPath, mdnsdotlocalurl.c_str());            // Write file to save value
+        }
+        // HTTP POST dhcp value on
+        const char* PARAM_INPUT_7 = "dhcp";                // Search for parameter in HTTP POST request
+        if (p->name() == PARAM_INPUT_7) {
+          dhcpcheck = p->value().c_str();
+          Serial.print("dhcpcheck set to: ");
+          Serial.println(dhcpcheck);
+          writeFile(LittleFS, dhcpcheckPath, dhcpcheck.c_str());            // Write file to save value
+        }
+        // HTTP POST dhcp value on
+        const char* PARAM_INPUT_8 = "relaispin";                // Search for parameter in HTTP POST request
+        if (p->name() == PARAM_INPUT_8) {
+          relaispin = p->value().c_str();
+          Serial.print("relaispin set to: ");
+          Serial.println(relaispin);
+          writeFile(LittleFS, relaispinPath, relaispin.c_str());            // Write file to save value
+        }
+        // HTTP POST dhcp value on
+        const char* PARAM_INPUT_9 = "statusledpin";                // Search for parameter in HTTP POST request
+        if (p->name() == PARAM_INPUT_9) {
+          statusledpin = p->value().c_str();
+          Serial.print("statusledpin set to: ");
+          Serial.println(statusledpin);
+          writeFile(LittleFS, statusledpinPath, statusledpin.c_str());            // Write file to save value
+        }
+        // HTTP POST dhcp value on
+        const char* PARAM_INPUT_10 = "buttonpin";                // Search for parameter in HTTP POST request
+        if (p->name() == PARAM_INPUT_10) {
+          buttonpin = p->value().c_str();
+          Serial.print("buttonpin set to: ");
+          Serial.println(buttonpin);
+          writeFile(LittleFS, buttonpinPath, buttonpin.c_str());            // Write file to save value
+        }
+        // HTTP POST dhcp value on
+        const char* PARAM_INPUT_11 = "ntptime";                // Search for parameter in HTTP POST request
+        if (p->name() == PARAM_INPUT_11) {
+          ntptime = p->value().c_str();
+          Serial.print("ntptime set to: ");
+          Serial.println(ntptime);
+          writeFile(LittleFS, ntptimePath, ntptime.c_str());            // Write file to save value
+        }
+        // HTTP POST dhcp value on
+        const char* PARAM_INPUT_12 = "ntptimeoffset";                // Search for parameter in HTTP POST request
+        if (p->name() == PARAM_INPUT_12) {
+          ntptimeoffset = p->value().c_str();
+          Serial.print("ntptimeoffset set to: ");
+          Serial.println(ntptimeoffset);
+          writeFile(LittleFS, ntptimeoffsetPath, ntptimeoffset.c_str());            // Write file to save value
+        }
+
+
+
+        //Serial.printf("POST[%s]: %s\n", p->name().c_str(), p->value().c_str());
+      }
+    }
+    if (dhcpcheck == "on") {
+      ip = "dhcp ip adress";
+    }
+    request->send(200, "text/html", "<h1>Done. ESP restart,<br> connect router <br>go to: <a href=\"http://" + ip + "\">" + ip + "</a><br><a href=\"http://" + mdnsdotlocalurl + ".local\">http://" + mdnsdotlocalurl + ".local</a> Android use BonjourBrowser App</h1>");
+    delay(5000);
+    ESP.restart();
+  });
+
+
+
+}
+
+
+
+
+
+
 // next only works/shows its great usefulness if there are more ESP mDNS URL devices on the local network
 // scanned mdns url linked list should be on main webpage refreshed every ?? seconds
 // for now prints to serial monitor
@@ -694,7 +719,7 @@ void browseService(const char * service, const char * proto) {
       scanstr += MDNS.IP(i).toString();
       scanstr += "\">http://";
       scanstr += MDNS.hostname(i);
-    //scanstr += ".local</a><br>";    // esp32 does it different ???
+      //scanstr += ".local</a><br>";    // esp32 does it different ???
       scanstr += "</a><br>";          // esp8266 does it different ???
       //scanstr += MDNS.port(i);
       scanstr += "\n\r";
@@ -707,7 +732,7 @@ void browseService(const char * service, const char * proto) {
   Serial.print("WiFi.status == ");
   Serial.print(WiFi.status());
   Serial.print(": ");
-  
+
   switch (WiFi.status()) {
     case 0:
       Serial.println("WL_IDLE_STATUS");
