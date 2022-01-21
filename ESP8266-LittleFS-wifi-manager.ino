@@ -495,7 +495,8 @@ void setup() {
     Serial.println("Setting AP (Access Point)");
     // NULL sets an open Access Point
     //String broadcastintheair = String("ESP-WIFI-MANAGER-") + WiFi.macAddress().c_str();  // want a unique broadcast id for each device
-    String broadcastintheair = String("ESP-WIFI-MANAGER-");  // want a unique broadcast id for each device
+    //String broadcastintheair = String("ESP-WIFI-MANAGER-") + WiFi.macAddress().c_str();  // esp32   want a unique broadcast id for each device
+    String broadcastintheair = String("ESP-WIFI-MANAGER-") + ESP.getChipId();              // esp8266 want a unique broadcast id for each device
 
     WiFi.softAP(broadcastintheair.c_str(), NULL);                                        // i do not know, strings and chars thing drive me nuts
     // i have seen all errors possible, getting this working ;-)
