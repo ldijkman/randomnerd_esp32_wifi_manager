@@ -615,7 +615,8 @@ void setup() {
 unsigned long startmillis = 0;
 
 void loop() {
-  MDNS.update();
+  
+  MDNS.update();   // looks like this is needed only for esp8266
 
   if (millis() - startmillis >= 10000) {    // non blocking delay 10 seconds
     startmillis = millis();                 // scan for mdns devices urls every ??? seconds
