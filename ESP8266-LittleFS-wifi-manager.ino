@@ -694,7 +694,8 @@ void browseService(const char * service, const char * proto) {
       scanstr += MDNS.IP(i).toString();
       scanstr += "\">http://";
       scanstr += MDNS.hostname(i);
-      scanstr += ".local</a><br>";
+    //scanstr += ".local</a><br>";    // esp32 does it different ???
+      scanstr += "</a><br>";          // esp8266 does it different ???
       //scanstr += MDNS.port(i);
       scanstr += "\n\r";
     }
