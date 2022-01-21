@@ -108,21 +108,25 @@
 
 
 
+#ifdef ESP32 //////////////////////
 
-#ifdef ESP32 ///////////////////
 #include <FS.h>
-#include <ESPmDNS.h>
 #include <WiFi.h>
+#include <ESPmDNS.h>
 #include <AsyncTCP.h>
-#elif defined(ESP8266) ///////////////////////////
+
+#elif defined(ESP8266) //////////////////////
+
 #include <ESP8266WiFi.h>
-#include <ESPAsyncTCP.h> //https://github.com/me-no-dev/ESPAsyncTCP
+#include <ESPAsyncTCP.h>                  // https://github.com/me-no-dev/ESPAsyncTCP
 #include <ESP8266mDNS.h>
+
 #endif //////////////////////
 
 #include "LittleFS.h"
 #include <AsyncElegantOTA.h>              // https://github.com/ayushsharma82/AsyncElegantOTA
-#include <ESPAsyncWebServer.h>
+#include <ESPAsyncWebServer.h>            
+
 
 
 
