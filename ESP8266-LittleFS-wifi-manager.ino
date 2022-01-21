@@ -5,7 +5,7 @@
 // my esp8266 arduino ide settings https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220121_172823.jpg
 //     should be possible to program sonoff basic with esp8285 with these  esp8266 settings also
 
-// LittleFS upload tool for arduino 
+// LittleFS upload tool for Arduino IDE
 //             https://github.com/earlephilhower/arduino-esp8266littlefs-plugin
 
 
