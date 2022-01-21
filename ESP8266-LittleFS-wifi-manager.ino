@@ -1,3 +1,4 @@
+// quick modification for test esp8266
 // esp8266 LittleFS mDNS wifimanager
 // tested on a 4mb wemos d1 mini esp8266 with relas shield relais gpio 5
 
