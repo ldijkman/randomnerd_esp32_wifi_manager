@@ -1,6 +1,8 @@
 
 // tested on a 4mb wemos d1 mini esp8266 with relas shield relais gpio 5
 
+// LittleFS upload tool for arduino 
+//             https://github.com/earlephilhower/arduino-esp8266littlefs-plugin
 
 //*********************
 //     Hey Electra!
