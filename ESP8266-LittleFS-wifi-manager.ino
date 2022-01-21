@@ -1,12 +1,11 @@
-// quick modification for test esp8266
-// esp8266 LittleFS mDNS wifimanager
-// tested on a 4mb wemos d1 mini esp8266 with relais shield relais gpio 5 == WORKING 4mb(fs 2mb~ota 1019kb)
-// tested on esp8266 nodemcu 4mb onboard LED gpio16 == WORKING (LED inverted) 4mb(fs 2mb~ota 1019kb)
-// tested on sonoff basic esp8285 1mb (prograammed with esp8266 settings 1mb(fs 512~ota 246) relais gpio13 == WORKING ;-)
+// quick modification for test change from esp32 & spiffs to esp8266 & littlefs  https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions/4
 
+// esp8266 LittleFS mDNS wifimanager
+// tested on a 4mb wemos d1 mini esp8266 with relais shield relais gpio 5 == WORKING                  4mb(fs 2mb~ota 1019kb)
+// tested on esp8266 nodemcu 4mb onboard LED gpio16 == WORKING (LED inverted)                         4mb(fs 2mb~ota 1019kb)
+// tested on sonoff basic esp8285 1mb (prograammed with esp8266 settings relais gpio13 == WORKING ;-) 1mb(fs 512~ota 246) 
 
 // my esp8266 arduino ide settings https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220121_172823.jpg
-//     should be possible to program sonoff basic with esp8285 with these  esp8266 settings also
 
 // LittleFS upload tool for Arduino IDE
 //             https://github.com/earlephilhower/arduino-esp8266littlefs-plugin
