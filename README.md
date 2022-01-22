@@ -146,6 +146,10 @@ it could use an extra column for preview files
 
 and maybe c99shell like icons is better, letter confuse me is D for Download or Delete, is  R Rename or Remove
 
+icons in c99shell are an array of encoded base64 images https://github.com/4Hackerz/C99-Shell/blob/4a0b6f06c82a69c87ee23e413e55860d3df15ed3/c99.php#L2676
+
+  decode base64 encoded images https://base64.guru/converter/decode/image
+
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220122_053531.jpg">
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220122_053548.jpg">
