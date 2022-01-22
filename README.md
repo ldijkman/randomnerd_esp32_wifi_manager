@@ -142,6 +142,8 @@ upload another html/css and make Electra look different?! or modify, hack or edi
 
 Can you do that with your paid app? ;-)
 
+looks like it also does multifile upload if multi-selected files are dropped on dropzone
+
 https://github.com/holgerlembke/ESPxWebFlMgr
 
 it could use an extra column for preview files   
