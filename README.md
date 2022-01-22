@@ -183,11 +183,15 @@ image array starts at line 2676
 
 # ESP8266 NodeMCU 4mb?
 
+https://www.google.com/search?q=ESP8266+NodeMCU+4mb
+
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/esp_8266_nodemcu.png">
 
 ---
 
-# ESP8266 Wemos D1 Mini with Relais Shield 4mb?
+# ESP8266 Wemos D1 Mini with Relais Shield 4mb? External Antenna?
+
+https://www.google.com/search?q=ESP8266+Wemos+D1+Mini+4mb
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/ESP8266_wemos_d1_mini_with_relais_shield.png">
 
