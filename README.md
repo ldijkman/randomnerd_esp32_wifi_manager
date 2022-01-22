@@ -102,7 +102,7 @@ Each device its own schedule webpage
 
 # Android phone chrome  ≣  add to home screen
 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/Screenshot_20220109-135523_One%20UI%20Home.jpg" width="50%">
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/Screenshot_20220109-135523_One%20UI%20Home.jpg" width="30%">
 
 # Android chrome ≣ add to home screen
 
