@@ -175,6 +175,10 @@ image array starts at line 2676
 
 ---
 
+# Electra's Heart will Beat on Next Devices, Electra likes to have some BrainbCells like 4mb
+
+---
+
 # ESP8266 NodeMCU 4mb?
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/esp_8266_nodemcu.png">
