@@ -80,7 +80,7 @@ Apple does not need an app for mdns == included in ios
 
 # ESP32 wifi manager screenshot
 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/Screenshot_ESP32_WiFi_Manager.jpg">
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/Screenshot_ESP32_WiFi_Manager.jpg" width="50%">
 
 ---
 
