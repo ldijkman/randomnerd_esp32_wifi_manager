@@ -1,11 +1,13 @@
 Electra Has something to Say http://84.107.155.75/gotit.php
 ---
 
-if you use my version of the randomnerd wifimanager
+if you use MY version of the randomnerd wifimanager
 
-i think it is better not to post problems to Rui's & Sara's randomnerd tutorials Page
+i think it is better NOT to post problems to Rui's & Sara's RandomNerd Tutorials Page
 
-use https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
+My version is so different, They will think you are Nuts, Crazy, Talking NonSense. 
+
+Use https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
 
 ---
 
