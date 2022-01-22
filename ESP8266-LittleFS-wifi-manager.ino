@@ -11,6 +11,8 @@
 //             https://github.com/earlephilhower/arduino-esp8266littlefs-plugin
 //             unzip in arduino/tools directory...restart arduino...now you should have in the menu  => Arduino IDE => Tools => ESP8266 LittleFS Data Upload
 
+// Arduino ide makes a new directory for the ino file
+//      make sure to copy the data directory into the arduino created directory
 
 // now possible to reconfigure wifimanager from STA mode (esp8266 version)
 
