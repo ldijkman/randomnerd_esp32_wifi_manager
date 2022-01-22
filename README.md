@@ -131,6 +131,8 @@ if you add a new device => it will list a link to it on each devices webpage wit
 
 # OnLine InBrowser Manage Contents of LittleFS on ESP8266, FileManager
 
+https://github.com/holgerlembke/ESPxWebFlMgr
+
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220122_053531.jpg">
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220122_053548.jpg">
