@@ -138,11 +138,18 @@ if you add a new device => it will list a link to it on each devices webpage wit
 
 ---
 
-# my arduino settings for ESP32
+# My Arduino IDE Settings for ESP32 4mb / 8mb
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220120_183555.jpg">
 
 ---
+
+# My Arduino IDE Settings for ESP8266 4mb
+
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220120_183555.jpg">
+
+---
+
 ESP32 3Euro wifi I/O development board cheapest toy for many hours of fun or frustration for nerds
 
 ESP32-WROOM-32E 32 Mbit == 4 MByte  think there are also 2byte/16mbit versions
