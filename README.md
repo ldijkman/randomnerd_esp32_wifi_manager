@@ -229,7 +229,7 @@ AC90-250V 1 CH ESP32 Relay Development Board Onboard ESP32-WROOM-32E WiFi BLE Mo
 
 ## Contact With 230VAC versions of Electra Maybe a Shocking Experience
 
-## That may Kill You!
+## Electra can Kill You!
 
 # A penny for sharing my thoughts
 
