@@ -1,3 +1,5 @@
+<img src="http://84.107.155.75/gotit.php">
+
 if you use my version of the randomnerd wifimanager
 
 i think it is better not to post problems to Rui's & Sara's randomnerd tutorials Page
