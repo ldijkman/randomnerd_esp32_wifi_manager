@@ -339,7 +339,7 @@ String processor(const String& var) {
     mystring += " DHCP: " + dhcpcheck + "<br>";
     mystring += "IP: " + WiFi.localIP().toString() + "<br>";
     mystring += "GateWay: " + WiFi.gatewayIP().toString() + "<br>";
-    mystring +=  "<a href=\"" + WiFi.gatewayIP().toString() + "\">Maybe WiFiRouter Admin / Config page</a><br>";
+    mystring +=  "<a href=\"http://" + WiFi.gatewayIP().toString() + "\">Maybe WiFiRouter Admin / Config page</a><br>";
     mystring += "Subnet: " + WiFi.subnetMask().toString() + "<br>";
     mystring += "DNS: " + WiFi.dnsIP().toString() + "<br>";
     mystring += "MAC: " + WiFi.macAddress() + "<br>";
