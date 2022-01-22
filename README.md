@@ -158,9 +158,15 @@ https://github.com/holgerlembke/ESPxWebFlMgr
 
 ---
 
-# ESP8266 NodeMCU 4mb
+# ESP8266 NodeMCU 4mb?
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/esp_8266_nodemcu.png">
+
+---
+
+# ESP8266 Wemos D1 Mini with Relais Shield 4mb?
+
+https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/ESP8266_wemos_d1_mini_with_relais_shield.png
 
 ---
 
