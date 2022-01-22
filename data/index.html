@@ -39,26 +39,25 @@
             }
 
           </script>
-          
+
         </div>
       </div>
-      <br> <input type="checkbox" id="managecheck"  onclick='document.getElementById("manage").disabled=!document.getElementById("managecheck").checked;' onUnSelect='document.getElementById("resettoap").disabled=!document.getElementById("check").checked;'>Enable 
-       <input type="button" id="manage"onclick="window.location.href='wifimanager.html';" value="wifimanager.html" width="200px" disabled><br>
-      wifimanager config from STA works in ESP8266 version <br> 
+      <br> <input type="checkbox" id="managecheck" onclick='document.getElementById("manage").disabled=!document.getElementById("managecheck").checked;' onUnSelect='document.getElementById("resettoap").disabled=!document.getElementById("check").checked;'>Enable
+      <input type="button" id="manage" onclick="window.location.href='wifimanager.html';" value="wifimanager.html" width="200px" disabled><br>
+      wifimanager reconfigure from STATION networkmode works in ESP8266 version <br>
       <br>
-      Schedule Electra, Electra Schedule<br>
-      <a href="schedule.html">timed settings schedule.html</a><br>
+      Schedule Electra, Electra Schedule timed switching<br>
       <input type="button" onclick="window.location.href='schedule.html';" value="Electra timed settings schedule.html" width="200px"><br>
       <br>
       wanted settable countdown off timer is this called inching<br>
       <form action="/timer" method="POST">
         <label for="timer">OFF Delay %OFFDELAY% Seconds</label>
-           <input type="number" id="offtimer" name="off" value="%OFFDELAY%" min="10" size="6">
+        <input type="number" id="offtimer" name="off" value="%OFFDELAY%" min="10" size="6">
         <input type="submit" value="Set">
       </form>
-POST is /timer?off=%OFFDELAY%
+      POST is /timer?off=%OFFDELAY%
       <br><br>
-      
+
       automaticly generated mDNS scanned linked list of all local network devices URL should be here in future <br>
       %MDNSSCAN%<br>
       https://github.com/ldijkman/Hey_Electra/blob/main/ESP32/ESP32_mDNS_list.ino<br>
@@ -89,27 +88,32 @@ POST is /timer?off=%OFFDELAY%
     <a href="/timer=3600">/timer=3600 turn off after 3600 seconds </a><br>
     <br>
     <br>
-    <a href="/list">/list list files in spiffs on webpage</a><br>
-    <input type="button" onclick="window.location.href='/list';" value="List files in Spiffs" width="200px">
+    <input type="button" onclick="window.location.href='/list';" value="List Files" width="200px">
     <br>
     <br>
-    <a href="/reboot">/reboot restart Electra</a><br>
     <input type="button" onclick="window.location.href='/reboot';" value="Reboot Restart Electra" width="200px">
     <br>
     <br>
-    /resetwifitoap delete ssid.txt and pass.txt <br>
-    restart to AP accesspoint to reconfigure wifi<br>
-     <input type="checkbox" id="check"  onclick='document.getElementById("resettoap").disabled=!document.getElementById("check").checked;' onUnSelect='document.getElementById("resettoap").disabled=!document.getElementById("check").checked;'>Enable <input type="button" id="resettoap" onclick="window.location.href='/resetwifitoap';" value="/resetwifitoap" width="200px" disabled=true>
+    Delete ssid.txt and pass.txt <br>
+    Restart to AP AccessPoint to reconfigure WiFi<br>
+    <input type="checkbox" id="check" onclick='document.getElementById("resettoap").disabled=!document.getElementById("check").checked;' onUnSelect='document.getElementById("resettoap").disabled=!document.getElementById("check").checked;'>Enable <input type="button" id="resettoap" onclick="window.location.href='/resetwifitoap';" value="/resetwifitoap" width="200px" disabled=true>
     <br><br>
     <hr>
-    
+
     <h3>
-      optional: i2c BME280 sensor<br>
+      future optional: i2c BME280 sensor<br>
       Each Device / Room<br>
       <hr>
       Temperature 20C<br>
       Humidity 60<br>
       Pressure 1080 Milibar<br>
+      <hr>
+    </h3>
+    <h3>
+      future optional: i2c oled screen<br>
+      print mdns url to screen<br>
+      print IP to screen<br>
+      print time / date to screen<br>
       <hr>
     </h3>
 
@@ -118,24 +122,25 @@ POST is /timer?off=%OFFDELAY%
     DO NOT like the OTA FILE upload <br>
     its a complete spiffs erase replace, must use a .spiffs.bin file<br>
     i would like to select a file or multiple files to add/overwrite to spiffs<br>
-    Maybe a filemanager, c99shell r57shell alike ;-)<br> 
+    Maybe a filemanager, c99shell r57shell alike ;-)<br>
     <br>
     would it be possible to add FSBrowser<br>
     for uploading files to ESP32 and edit HTML files inbrowser online in/on ESP32<br><br>
     <br><br>
-  <a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager">https://github.com/ldijkman/randomnerd_esp32_wifi_manager</a><br><br>
+    <a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager">https://github.com/ldijkman/randomnerd_esp32_wifi_manager</a><br><br>
     <br>
-<br>
-%MDNSNAME%.local<br>
-IP: %IP%<br>
-Gateway: <a href="http://%GATEWAY%">%GATEWAY% Router Admin</a><br>
-Subnet: %SUBNET%<br>
-<br>
- %NETWORKINFO%<br>
-<br>
-<a href="Http://paypal.me/LDijkman">A penny for sharing my thoughts</a><br><br>
-Electra, A &copy;&Ograve;&Oacute;&THORN;&egrave;&reg; Test.<br>
-&copy;opy&reg;ight 2021...2022 Dirk Luberth Dijkman<br><br>
- </body>
+    <br>
+    %MDNSNAME%.local<br>
+    IP: %IP%<br>
+    Gateway: <a href="http://%GATEWAY%">%GATEWAY% Router Admin</a><br>
+    Subnet: %SUBNET%<br>
+    <br>
+    %NETWORKINFO%<br>
+    <br>
+    <a href="Http://paypal.me/LDijkman">A penny for sharing my thoughts</a><br><br>
+    Electra, A &copy;&Ograve;&Oacute;&THORN;&egrave;&reg; Test.<br>
+    &copy;opy&reg;ight 2021...2022 Dirk Luberth Dijkman<br><br>
+  </body>
+
 </html>
 
