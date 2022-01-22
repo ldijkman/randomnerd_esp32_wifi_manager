@@ -127,6 +127,16 @@ if you add a new device => it will list a link to it on each devices webpage wit
 --
 
 ---
+# Electra's Sneak Preview, Future up/download edit delete
+
+# online inbrowser on ESP FileManager
+
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220122_053531.jpg">
+
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220122_053531.jpg">
+
+
+---
 
 # my arduino settings for ESP32
 
