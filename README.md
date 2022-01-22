@@ -152,6 +152,8 @@ and maybe c99shell like icons is better, letter confuse me is D for Download or 
 
 icons in c99shell are an array of encoded base64 images https://github.com/4Hackerz/C99-Shell/blob/4a0b6f06c82a69c87ee23e413e55860d3df15ed3/c99.php#L2676
 
+Warning DO Not put above file on a php webserver or putins army wil f-up your device
+
 image array starts at line 2676
 
   decode base64 encoded images https://base64.guru/converter/decode/image
