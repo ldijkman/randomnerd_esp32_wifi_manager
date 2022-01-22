@@ -98,7 +98,7 @@ Easy set & overview and a load of switchtimes (more and better as most commercia
 
 Each device its own schedule webpage
 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/Screenshot_20220118-182856_Chrome.jpg" width="50%">
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/Screenshot_20220118-182856_Chrome.jpg">
 
 ---
 
