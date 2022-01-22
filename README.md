@@ -127,9 +127,9 @@ if you add a new device => it will list a link to it on each devices webpage wit
 --
 
 ---
-# Electra's Sneak Preview, Future up/download edit delete
+# Electra's Sneak Sleak Preview, Future Up/Download, Edit, Delete
 
-# online inbrowser on ESP FileManager
+# OnLine InBrowser Manage Contents of LittleFS on ESP8266, FileManager
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220122_053531.jpg">
 
