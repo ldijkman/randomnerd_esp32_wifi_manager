@@ -86,7 +86,7 @@ Apple does not need an app for mdns == included in ios
 
 # Index.html
 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/Screenshot_20220114-200120_Chrome.jpg">
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/Screenshot_20220114-200120_Chrome.jpg" width="50%">
 
 ---
 
@@ -96,13 +96,13 @@ Easy set & overview and a load of switchtimes (more and better as most commercia
 
 Each device its own schedule webpage
 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/Screenshot_20220118-182856_Chrome.jpg">
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/Screenshot_20220118-182856_Chrome.jpg" width="50%">
 
 ---
 
 # Android phone chrome  ≣  add to home screen
 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/Screenshot_20220109-135523_One%20UI%20Home.jpg">
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/Screenshot_20220109-135523_One%20UI%20Home.jpg" width="50%">
 
 # Android chrome ≣ add to home screen
 
