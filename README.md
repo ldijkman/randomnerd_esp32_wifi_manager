@@ -1,4 +1,4 @@
-http://84.107.155.75/gotit.php
+Electra Has something to Say http://84.107.155.75/gotit.php
 
 if you use my version of the randomnerd wifimanager
 
