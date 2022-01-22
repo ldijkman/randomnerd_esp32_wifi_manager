@@ -158,6 +158,12 @@ https://github.com/holgerlembke/ESPxWebFlMgr
 
 ---
 
+# ESP8266 NodeMCU 4mb
+
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/esp_8266_nodemcu.png">
+
+---
+
 ESP32 3Euro wifi I/O development board cheapest toy for many hours of fun or frustration for nerds
 
 ESP32-WROOM-32E 32 Mbit == 4 MByte  think there are also 2byte/16mbit versions
