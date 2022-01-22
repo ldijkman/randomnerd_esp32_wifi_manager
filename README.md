@@ -131,6 +131,12 @@ if you add a new device => it will list a link to it on each devices webpage wit
 
 ## OnLine InBrowser Manage Contents of LittleFS on ESP8266, FileManager
 
+Would be nice to change the smell feel and look of Electra with different Skins
+
+upload another html/css and make Electra look different?! or modify, hack it yourself
+
+Can you do that with your paid app? ;-)
+
 https://github.com/holgerlembke/ESPxWebFlMgr
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220122_053531.jpg">
