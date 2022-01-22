@@ -142,6 +142,10 @@ Can you do that with your paid app? ;-)
 
 https://github.com/holgerlembke/ESPxWebFlMgr
 
+it could use an extra column for preview files   
+
+and maybe c99shell like icons is better, letter confuse me is D for Download or Delete, is  R Rename or Remove
+
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220122_053531.jpg">
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220122_053548.jpg">
