@@ -175,7 +175,9 @@ image array starts at line 2676
 
 ---
 
-# Electra's Heart will Beat on Next Devices, Electra likes to have some BrainbCells like 4mb
+# Electra's Heart will Beat on Next Devices
+
+## Electra likes to have some BrainCells, 4mb makes her Happy
 
 ---
 
