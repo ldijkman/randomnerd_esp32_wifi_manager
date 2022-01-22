@@ -127,9 +127,9 @@ if you add a new device => it will list a link to it on each devices webpage wit
 --
 
 ---
-# Electra's Sneak Sleak Preview, Future Up/Download, Edit, Delete
+## Electra's Sneak Sleek Peek Preview, Future Up/Download, Edit, Delete
 
-# OnLine InBrowser Manage Contents of LittleFS on ESP8266, FileManager
+## OnLine InBrowser Manage Contents of LittleFS on ESP8266, FileManager
 
 https://github.com/holgerlembke/ESPxWebFlMgr
 
