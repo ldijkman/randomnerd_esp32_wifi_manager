@@ -138,7 +138,7 @@ if you add a new device => it will list a link to it on each devices webpage wit
 
 ## OnLine InBrowser Manage Contents of LittleFS on ESP8266, FileManager
 
-Would it be nice to change the feel, look, sound, taste, smell of Electra with different Skins
+Wouldn't it be nice to change the feel, look, sound, taste, smell of Electra with different Skins
 
 upload another html/css and make Electra look different?! or modify, hack or edit it online, inbrowser, yourself
 
