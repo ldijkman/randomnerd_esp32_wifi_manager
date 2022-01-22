@@ -148,13 +148,13 @@ https://github.com/holgerlembke/ESPxWebFlMgr
 
 # My Arduino IDE Settings for ESP32 4mb / 8mb
 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220120_183555.jpg">
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220120_183555.jpg" width="50%">
 
 ---
 
 # My Arduino IDE Settings for ESP8266 4mb
 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220120_183555.jpg">
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220120_183555.jpg" width="50%">
 
 ---
 
