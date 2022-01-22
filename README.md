@@ -5,7 +5,7 @@ if you use MY version of the randomnerd wifimanager
 
 i think it is better NOT to post problems to Rui's & Sara's RandomNerd Tutorials Page
 
-My version CQ Electra is SO Different, They will think you are Nuts, Crazy, Talking NonSense. AbraCaDabra ;-)
+My version CQ Electra is SO Different, They Rui & Sara will think you are Nuts, Crazy, Talking NonSense. AbraCaDabra ;-)
 
 Use https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
 
