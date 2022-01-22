@@ -11,8 +11,6 @@
 //             https://github.com/earlephilhower/arduino-esp8266littlefs-plugin
 //             unzip in arduino/tools directory...restart arduino...now you should have in the menu  => Arduino IDE => Tools => ESP8266 LittleFS Data Upload
 
-// Arduino ide makes a new directory for the ino file
-//      make sure to copy the data directory into the arduino created directory
 
 // now possible to reconfigure wifimanager from STA mode (esp8266 version)
 
@@ -194,7 +192,7 @@ unsigned long currentMillis = 0;
 unsigned long previousMillis = 0;
 const long interval = 10000;  // interval to wait for Wi-Fi connection (milliseconds) removed did not work on esp8266 wifi connect crash reboot
 
-
+String scanstr = "";  // %MDNSSCAN%
 
 
 // Set LED GPIO
@@ -328,6 +326,9 @@ String processor(const String& var) {
     return offdelay.c_str();
   } else if (var == "NTPTIME") {                  // in index.html noted as &NTPTIME&
     String mystring = "time ntp";
+    return mystring;
+  }else if (var == "MDNSSCAN") {                  // in index.html noted as %MDNSSCAN%
+    String mystring = scanstr;
     return mystring;
   }
 
@@ -704,8 +705,6 @@ void checkpost() {
 // for now prints to serial monitor
 // https://github.com/ldijkman/Hey_Electra/blob/main/ESP32/ESP32_mDNS_list.ino
 
-String scanstr = "";
-
 void browseService(const char * service, const char * proto) {
   //scanstr += ("Browsing for service _%s._%s.local. ... ", service, proto);
   int n = MDNS.queryService(service, proto);
@@ -734,7 +733,6 @@ void browseService(const char * service, const char * proto) {
   }
   Serial.print(scanstr);
   Serial.println("");
-  scanstr = "";
 
   Serial.print("WiFi.status == ");
   Serial.print(WiFi.status());
@@ -779,8 +777,5 @@ void browseService(const char * service, const char * proto) {
 }
 // Me NO programmer, just trying, wasting loads of time drinking loads of coffee, but makes more sense to me as solving crossword puzzles
 // My Mothers and Fathers Language whas Dutch, Thats what they learned me, That Explains my poor Englisch.
-// Electra, A ©ÒÓÞè® Test.
-// ©opy®ight 2021...2022 Dirk Luberth Dijkman
 // Partly Made in Portugal &&  Partly Made in Holland
 // Electra, Please let me Sleep
-
