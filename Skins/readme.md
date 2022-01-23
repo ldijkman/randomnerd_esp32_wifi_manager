@@ -22,9 +22,9 @@ or we can edit the files in ESP's LittleFS online inbrowser with the filemanager
 ---
 make next run on espassyncwebserver?
 
-https://github.com/holgerlembke/ESPxWebFlMgr
+https://github.com/holgerlembke/ESPxWebFlMgr  did not compile crc32.h CRC32.h
 
-i changed a file so that esp8266 does compile from arduino ide examples
+i changed crc32.h CRC32.h so that esp8266 does compile from arduino ide examples
 
 https://github.com/ldijkman/ESPxWebFlMgr
 
