@@ -20,7 +20,7 @@ We can upload index.htm or style.css to modify Electra's Skin
 or we can edit the files in ESP's LittleFS online inbrowser with the filemanager ESPxWebFlMgr
 
 ---
-make next run on espassyncwebserver?
+make next run on espasyncwebserver?
 
 https://github.com/holgerlembke/ESPxWebFlMgr  did not compile crc32.h CRC32.h
 
@@ -28,3 +28,6 @@ i changed crc32.h CRC32.h so that esp8266 does compile from arduino ide examples
 
 https://github.com/ldijkman/ESPxWebFlMgr  download zip && sketch add zip library
 
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220122_053531.jpg">
+
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220122_053548.jpg">
