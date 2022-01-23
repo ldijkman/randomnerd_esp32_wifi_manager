@@ -187,6 +187,8 @@ Need for Speed, ElectrA on Steroids => CPU Frequency: "160 MHz" foto says 80MHz
 
 ## Electra likes to have some BrainCells, 4MB makes her Happy
 
+make sure some say 8mb but if its 8mbit, then it is 1MByte, Electra Says Bigger is Better, minimal 32mbit==4MByte 
+
 ---
 
 # ESP8266 NodeMCU 32mbit=4MByte?
