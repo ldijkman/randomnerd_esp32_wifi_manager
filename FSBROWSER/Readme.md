@@ -20,7 +20,7 @@ Esp32 inbrowser filemanager upload download editor
 
 ---
 
-# https://github.com/holgerlembke/ESPxWebFlMgr
+# https://github.com/ldijkman/ESPxWebFlMgr
 
 hmm looks like no spiffs only litlefs flash file 
 
@@ -30,4 +30,8 @@ More real life:
 implements a file based web server (cut and paste ready on its own sketch tab)
 allows serving gzipped files
 
-<img src="https://raw.githubusercontent.com/holgerlembke/ESP8266WebFlMgr/master/img/screenshot2.png">
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220122_053531.jpg">
+
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220122_053548.jpg">
+
+<img src="https://github.com/ldijkman/ESPxWebFlMgr/blob/master/img/20220123_150041.jpg">
