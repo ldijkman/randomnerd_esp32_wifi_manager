@@ -185,11 +185,11 @@ Need for Speed, ElectrA on Steroids => CPU Frequency: "160 MHz" foto says 80MHz
 
 # Electra's Heart will Beat on Next Devices
 
-## Electra likes to have some BrainCells, 4mb makes her Happy
+## Electra likes to have some BrainCells, 4MB makes her Happy
 
 ---
 
-# ESP8266 NodeMCU 4mb?
+# ESP8266 NodeMCU 32mbit=4MByte?
 
 https://www.google.com/search?q=ESP8266+NodeMCU+4mb
 
@@ -197,7 +197,7 @@ https://www.google.com/search?q=ESP8266+NodeMCU+4mb
 
 ---
 
-# ESP8266 Wemos D1 Mini with Relais Shield 4mb? External Antenna?
+# ESP8266 Wemos D1 Mini with Relais Shield 32mbit=4MByte? External Antenna?
 
 https://www.google.com/search?q=ESP8266+Wemos+D1+Mini+4mb
 
