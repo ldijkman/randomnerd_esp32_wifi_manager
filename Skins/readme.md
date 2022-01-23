@@ -17,4 +17,14 @@ if Electra had a FileManager https://github.com/ldijkman/randomnerd_esp32_wifi_m
 
 We can upload index.htm or style.css to modify Electra's Skin
 
-or we can edit the files in ESP's LittleFS online inbrowser with the filemanager
+or we can edit the files in ESP's LittleFS online inbrowser with the filemanager ESPxWebFlMgr
+
+---
+make next run on espassyncwebserver?
+
+https://github.com/holgerlembke/ESPxWebFlMgr
+
+i changed a file so that esp8266 does compile from arduino ide examples
+
+https://github.com/ldijkman/ESPxWebFlMgr
+
