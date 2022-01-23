@@ -177,7 +177,7 @@ image array starts at line 2676
 
 Need for Speed, ElectrA on Steroids => CPU Frequency: "160 MHz" foto says 80MHz
 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220120_183555.jpg" width="50%">
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220121_172823.jpg" width="50%">
 
 Need for Speed, ElectrA on Steroids => CPU Frequency: "160 MHz" foto says 80MHz
 
