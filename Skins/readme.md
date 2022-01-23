@@ -26,5 +26,5 @@ https://github.com/holgerlembke/ESPxWebFlMgr  did not compile crc32.h CRC32.h
 
 i changed crc32.h CRC32.h so that esp8266 does compile from arduino ide examples
 
-https://github.com/ldijkman/ESPxWebFlMgr
+https://github.com/ldijkman/ESPxWebFlMgr  download zip && sketch add zip library
 
