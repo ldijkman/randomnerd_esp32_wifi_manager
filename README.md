@@ -208,6 +208,13 @@ https://www.google.com/search?q=ESP8266+Wemos+D1+Mini+4mb
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/ESP8266_wemos_d1_mini_with_relais_shield.png">
 
 ---
+# ESP8266 sinilink relais ESP12F think 32mbit=4MByte?
+
+https://www.google.com/search?q=xy-wf36v+sinilink+wifi
+
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/xinilink.png">
+
+---
 
 ESP32 3Euro wifi I/O development board cheapest toy for many hours of fun or frustration for nerds
 
