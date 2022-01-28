@@ -1,3 +1,8 @@
+## NOTE: issue on the persistance of credentials in the core3.x of 8266, which does not work
+## https://github.com/ldijkman/ESPxWebFlMgr/issues/3
+
+---
+
 Bonjour!
 
 Electra Has something to Say http://84.107.155.75/gotit.php
