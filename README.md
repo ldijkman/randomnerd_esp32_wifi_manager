@@ -336,7 +336,7 @@ each device a human friendly URL http://kitchen,local    http://living.local etc
 
 each device its webpage lists automaticly all other devices in the local network wit a link to its URL http://kitchen,local    http://living.local etc
 
-each device  its own webpage
+each device  its own webpage (browse trough your house)
 
 each device its on easy to set & overview timed settings (loads of timed settings possible)
 
