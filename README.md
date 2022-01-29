@@ -326,5 +326,28 @@ pi@raspberrypi:~ $ avahi-browse -r -all
 
 # Electra 4 YouToo!?
 
+# Electra
+
+Simple advanced home automation
+
+each device a handy wifimanager config page, fixed, dhcp, mDNS, NTP, i/o, change settings from AP or STA mode
+
+each device a human friendly URL http://kitchen,local    http://living.local etc
+
+each device its webpage lists automaticly all other devices in the local network wit a link to its URL http://kitchen,local    http://living.local etc
+
+each device  its own webpage
+
+each device its on easy to set & overview timed settings (loads of timed settings possible)
+
+Skins html/css for the main page editable uploadeble so create your own look for Electra 
+
+each device its own filemanager/editor/upload/download
+
+i must have forgot something
+
+http://github.com/ldijkman/randomnerd_esp32_wifi_manager
+
+
 impressive Espressif
 
