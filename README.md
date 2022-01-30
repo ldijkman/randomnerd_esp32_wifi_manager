@@ -1,5 +1,5 @@
 ## NOTE: issue on the persistance of credentials in the core3.x of 8266, which does not work
-## https://github.com/ldijkman/ESPxWebFlMgr/issues/3
+## Solution => https://github.com/ldijkman/ESPxWebFlMgr/issues/3
 
 ---
 
