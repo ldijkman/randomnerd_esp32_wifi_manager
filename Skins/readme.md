@@ -13,7 +13,7 @@ Help Electra Make Look Better?
 
 ===
 
-if Electra had a FileManager https://github.com/ldijkman/randomnerd_esp32_wifi_manager#electras-sneak-sleek-peek-preview-future-updownload-edit-delete
+if Electra had a FileManager https://github.com/ldijkman/ESPxWebFlMgr
 
 We can upload index.htm or style.css to modify Electra's Skin
 
