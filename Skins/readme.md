@@ -8,7 +8,7 @@ Maybe a darker Skin, more app alike styled would be better for Electra
 
 Anyone handy with HTML / CSS?
 
-Help Electra Make Look Better?
+Help Electra Make Look Better?  https://jsfiddle.net/luberth/sx61b08t/show
 
 
 ===
