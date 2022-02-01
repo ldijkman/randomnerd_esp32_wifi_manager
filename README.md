@@ -215,6 +215,8 @@ https://www.google.com/search?q=ESP8266+Wemos+D1+Mini+4mb
 ---
 # ESP8266 sinilink relais ESP12F think 32mbit=4MByte?
 
+https://templates.blakadder.com/sinilink_XY-WF36V.html
+
 looks like there are 2 types in voltage
 
 not sure if you can program it via usb => maybe ftdi esp01 via pcdb pad holes == i do not like that
