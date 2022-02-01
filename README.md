@@ -351,5 +351,8 @@ i must have forgot something
 http://github.com/ldijkman/randomnerd_esp32_wifi_manager
 
 
+# #MeToo #Electra
+# Electra 4 YouToo!?
+
 impressive Espressif
 
