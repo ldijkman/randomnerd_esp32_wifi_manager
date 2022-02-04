@@ -273,34 +273,6 @@ Http://paypal.me/LDijkman
 
 Do Not Burn and Forget
 
----
-at the moment trying
-
-Ip input test https://codepen.io/ldijkman/pen/xxXmXMd?editors=1010
-
-https://codepen.io/pen/?template=xxXmXMd
-
-input text with option select https://jsfiddle.net/luberth/b5e6s7x8/show
-
----
-
-people have problems with what to fill in on ip gateway and subnetmask fields
-
-should be possible to first boot dhcp 
-
-after connect store ip/gate/sub restart/reboot and use read ip/gate/sub data 
-
-and restart with fixed ip == autoconnect 2.0?
-
-asked maker of bonjourbrowser app if he can display network info in his bonjoutbrowser app
-
-to make life eassier
-
----
-
-Esp32 alexa i2s mic/speaker https://youtu.be/re-dSV_a0tM
-
-DIY alexa https://github.com/atomic14/diy-alexa
 
 ---
 
