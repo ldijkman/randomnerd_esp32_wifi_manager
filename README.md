@@ -331,7 +331,7 @@ each device  its own webpage (browse trough your house)
 
 each device its on easy to set & overview timed settings (loads of timed settings possible)
 
-Skins html/css for the main page editable uploadeble so create your own look for Electra 
+Skins html/css for the main page editable uploadeble so create your own look for Electra / share your design?
 
 each device its own filemanager/editor/upload/download
 
