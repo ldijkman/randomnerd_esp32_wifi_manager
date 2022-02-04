@@ -309,6 +309,10 @@ each device its own filemanager/editor/upload/download
 
 i must have forgot something => no ads, data privacy, no payments
 
+
+### Electra is like normal people not a fan of MQTT Mosquitoes
+but maybe, she has to live with them
+
 Help Electra? https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions !
 
 
