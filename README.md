@@ -337,7 +337,7 @@ each device its own filemanager/editor/upload/download
 
 i must have forgot something => no ads, data privacy, no payments
 
-http://github.com/ldijkman/randomnerd_esp32_wifi_manager
+Help Electra? https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions !
 
 
 impressive Espressif
