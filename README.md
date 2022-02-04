@@ -159,6 +159,7 @@ looks like it also does multifile upload if multi-selected files are dropped on 
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220122_053548.jpg">
 
+## https://github.com/ldijkman/ESPxWebFlMgr
 
 ---
 
@@ -251,7 +252,7 @@ AC90-250V 1 CH ESP32 Relay Development Board Onboard ESP32-WROOM-32E WiFi BLE Mo
 
 ## WARNING!!! Do not Touch Electra with your bare hands!
 
-## Contact With 230VAC versions of Electra Maybe a Shocking Experience
+## Contact With 110~VAC / 230~VAC versions of Electra Maybe a Shocking Experience
 
 ## Electra can Kill You!
 
