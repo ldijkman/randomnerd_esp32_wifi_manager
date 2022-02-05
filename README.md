@@ -1,3 +1,6 @@
+# the ESP8266 version is better / furter
+---
+
 ## NOTE: issue on the persistance of credentials in the core3.x of 8266, which does not work
 ## Solution => https://github.com/ldijkman/ESPxWebFlMgr/issues/3
 
