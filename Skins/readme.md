@@ -1,6 +1,6 @@
 U Got that Look!, Anyone handy with HTML / CSS? #5
 
-U Got that Look! https://www.youtube.com/watch?v=_jCuroTbqBI
+U Got that Look! https://www.youtube.com/watch?v=_jCuroTbqBI , color you peach and black
 
 Electra looks a bit HTMLisch
 
