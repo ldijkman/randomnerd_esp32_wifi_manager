@@ -4,5 +4,14 @@ black background grey text
 
 removed most text
 
-the text between percentage is replaced on upload to browser  %MDNSSCAN%
+the text between percentage is replaced on upload to browser  
 
+%MDNSSCAN%
+
+%NETWORKINFO%
+
+%OFFDELAY% 
+
+%MDNSNAME%
+
+%STATUS%
