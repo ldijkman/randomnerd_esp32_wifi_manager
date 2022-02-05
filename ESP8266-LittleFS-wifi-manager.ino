@@ -1,3 +1,8 @@
+
+// https://www.youtube.com/watch?v=5wrMgU-uW78
+
+// https://youtu.be/K94DvxUGsOo
+
 // quick modification for test change from esp32 & spiffs to esp8266 & littlefs  https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions/4
 
 // esp8266 LittleFS mDNS wifimanager
