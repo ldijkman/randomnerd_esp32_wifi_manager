@@ -1,6 +1,6 @@
 U Got that Look!, Anyone handy with HTML / CSS? #5
 
-U Got that Look!
+U Got that Look! https://www.youtube.com/watch?v=_jCuroTbqBI
 
 Electra looks a bit HTMLisch
 
