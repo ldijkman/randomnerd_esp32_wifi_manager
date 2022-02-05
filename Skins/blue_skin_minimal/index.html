@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Hey Electra, ESP WEB SERVER http://%MDNSNAME%.local </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" sizes="192x192" href="Electra_192x192.png">
+    <!--  font use is very slow == turned off
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  -->
+  </head>
+
+  <body bgcolor="darkblue" text="gray">
+    <div class="topnav">
+      <h1>http://%MDNSNAME%.local</h1>
+    </div>
+    <div class="content">
+      <div class="card-grid">
+        <div class="card">
+          <p class="card-title">
+            <!--  font use is very slow turned off <i class="fas fa-lightbulb"></i> -->
+            <h2>http://%MDNSNAME%.local</h2>GPIO %relais% %button% %statusled% var here<br>NTP time %NTPTIME%<br>OFFDelay: %OFFDELAY%<br>
+          </p>
+          <p>
+            <a href="on"><button class="button-on">ON</button></a>
+            <a href="off"><button class="button-off">OFF</button></a>
+
+          </p>
+          <p class="state">State: %STATE%</p>
+          some things should be updated by websockets or ajax == help?<br>
+          <script>
+            if ("%STATE%" == "ON") {
+              document.write('<a href="/off"><img src="%STATE%.gif" width="65" height="98"></a>');
+            }
+            if ("%STATE%" == "OFF") {
+              document.write('<a href="/on"><img src="%STATE%.gif" width="65" height="98"></a>');
+            }
+
+          </script>
+
+        </div>
+      </div>
+      <br> <input type="checkbox" id="managecheck" onclick='document.getElementById("manage").disabled=!document.getElementById("managecheck").checked;' onUnSelect='document.getElementById("resettoap").disabled=!document.getElementById("check").checked;'>Enable
+      <input type="button" id="manage" onclick="window.location.href='wifimanager.html';" value="wifimanager.html" width="200px" disabled><br>
+      <br>
+      <br>
+     <br>
+      <input type="button" onclick="window.location.href='schedule.html';" value="Electra timed settings schedule.html" width="200px"><br>
+      <br>
+      
+      <form action="/timer" method="POST">
+        <label for="timer">OFF Delay %OFFDELAY% Seconds</label><br>
+        <input type="number" id="offtimer" name="off" value="%OFFDELAY%" min="10" size="6">
+        <input type="submit" value="Set">
+      </form><br>
+     %OFFDELAY%
+      <br><br>
+      %MDNSSCAN%<br>
+
+    </div>
+
+    <br>
+    <input type="button" onclick="window.location.href='/list';" value="List Files" width="200px">
+    <br>
+    <br>
+    <input type="button" onclick="window.location.href='/reboot';" value="Reboot Restart Electra" width="200px">
+    <br>
+    <br>
+    <input type="checkbox" id="check" onclick='document.getElementById("resettoap").disabled=!document.getElementById("check").checked;' onUnSelect='document.getElementById("resettoap").disabled=!document.getElementById("check").checked;'>Enable <input type="button" id="resettoap" onclick="window.location.href='/resetwifitoap';" value="/resetwifitoap" width="200px" disabled=true>
+    <br><br>
+   <br>
+   <br>
+      %NETWORKINFO%<br>
+      <br>
+      <a href="Http://paypal.me/LDijkman">A penny for sharing my thoughts</a><br><br>
+      Electra, A ©ÒÓÞè® Test.<br>
+      <input type="button" id="CopyRight_2021_2022_Luberth_Dijkman" onclick="window.location.href='https://m.facebook.com/luberth.dijkman';"><br><br>
+      Hey Google, Who is the Smartest of them All?!<br>
+
+
+      <script>
+        const d = new Date();
+        let year = d.getFullYear();
+        document.getElementById("CopyRight_2021_2022_Luberth_Dijkman").value = "Copyright 2021..." + year + " Dirk Luberth Dijkman";
+
+      </script>
+      <!-- Copyright 2021...2022 Dirk Luberth Dijkman -->
+  </body>
