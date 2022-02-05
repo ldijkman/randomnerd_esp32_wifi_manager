@@ -742,13 +742,14 @@ void browseService(const char * service, const char * proto) {
       scanstr += "  ";
       scanstr += i + 1;
       scanstr += ": <a href=\"http://";
-      scanstr += MDNS.IP(i).toString();
+      scanstr += MDNS.IP(i).toString()+":";
+      scanstr += MDNS.port(i);
       scanstr += "\">http://";
       scanstr += MDNS.hostname(i);
       //scanstr += ".local</a><br>";    // esp32 does it different ???
       scanstr += "</a><br>";          // esp8266 does it different ???
-      //scanstr += MDNS.port(i);
       scanstr += "\n\r";
+ 
     }
   }
   Serial.print(scanstr);
