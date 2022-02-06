@@ -1,4 +1,4 @@
-# the ESP8266 version is better / furter
+# the ESP8266 version is better / leading / further
 
 ESP8266-LittleFS-wifi-manager.ino
 
