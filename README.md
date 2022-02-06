@@ -315,6 +315,7 @@ each device its own filemanager/editor/upload/download
 
 i must have forgot something => no ads, data privacy, no payments
 
+![mosquito](https://user-images.githubusercontent.com/45427770/152668207-f400a39e-72a9-42c0-a6d2-412865e8dea2.jpeg)
 
 ### Electra is like normal people not a fan of MQTT Mosquitoes
 but maybe, she has to live with them
