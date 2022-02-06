@@ -16,7 +16,7 @@ the text between percentage is replaced on upload to browser
 
 %STATUS%
 
-
+<pre>
 // Replaces placeholder with LED state value
 // replaces the text between %match% in spiffs index.html on upload with actual variables
 String processor(const String& var) {
@@ -47,3 +47,4 @@ String processor(const String& var) {
 
   return String();
 }
+</pre>
