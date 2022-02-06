@@ -1,5 +1,7 @@
 Microsoft windows users if mDNS does not work => https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/HELP.TXT
 
+Andoid phone / tablet users mDNS does not work => https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/HELP.TXT
+
 # the ESP8266 version is better / leading / further
 
 ESP8266-LittleFS-wifi-manager.ino
