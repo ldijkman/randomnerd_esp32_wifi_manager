@@ -322,7 +322,9 @@ but maybe, she has to live with them
 Help Electra? https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions !
 
 
-Soon, The power of Electra wil run on an Gazilion devices ;-)
+Soon, The power of Electra wil run on a Gazilion devices ;-)
+
+All you need is Electra!
 
 impressive Espressif
 
