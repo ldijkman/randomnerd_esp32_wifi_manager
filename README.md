@@ -1,3 +1,5 @@
+Microsoft windows users UGH, http://?*URL*?.local may not work for you, just install http://apple.com/itunes that makes http://?*URL*?.local to work 
+
 # the ESP8266 version is better / leading / further
 
 ESP8266-LittleFS-wifi-manager.ino
