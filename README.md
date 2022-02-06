@@ -2,6 +2,8 @@ Microsoft windows users UGH, mDNS http://?*URL*?.local may not work for you,
 
 just install http://apple.com/itunes that makes mDNS http://?*URL*?.local to work for you
 
+wow microsoft realy sux to download this, must find a frienlier way
+
 
 
 # the ESP8266 version is better / leading / further
