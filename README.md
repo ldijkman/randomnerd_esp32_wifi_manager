@@ -1,12 +1,4 @@
-Microsoft windows users UGH, mDNS http://?*URL*?.local may not work for you, 
-
-just install http://apple.com/itunes that makes mDNS http://?*URL*?.local to work for you
-
-Bonjour for WinDOS might be eassier https://support.apple.com/kb/DL999?locale=nl_NL worked on windos 7 for me, above did not work / install
-
-now there is a mDNResponder.exe, Bonjour Service running in windows taskmanager
-
-
+Microsoft windows users if mDNS does not work => https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/HELP.TXT
 
 # the ESP8266 version is better / leading / further
 
