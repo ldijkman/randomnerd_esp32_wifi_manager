@@ -64,7 +64,6 @@ String processor(const String& var) {
 </pre>
 
 
-![2022-02-06-104305_1360x768_scrot](https://user-images.githubusercontent.com/45427770/152675306-5a8bd987-a842-45c9-a705-6a70049d9712.png)
-
+![2022-02-06-112111_1360x768_scrot](https://user-images.githubusercontent.com/45427770/152676515-6aaa1204-0681-4a14-b9b3-503a7d360bc6.png)
 
 
