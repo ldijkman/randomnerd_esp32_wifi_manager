@@ -2,7 +2,7 @@ Microsoft windows users UGH, mDNS http://?*URL*?.local may not work for you,
 
 just install http://apple.com/itunes that makes mDNS http://?*URL*?.local to work for you
 
-Bonjour for WinDOS might be eassier https://support.apple.com/kb/DL999?locale=nl_NLor you
+Bonjour for WinDOS might be eassier https://support.apple.com/kb/DL999?locale=nl_NL
 
 
 
