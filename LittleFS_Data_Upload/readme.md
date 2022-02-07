@@ -6,7 +6,7 @@ download / place
 
 https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/LittleFS_Data_Upload/ESP8266LittleFS-2.6.0%20(1).zip
 
-in /Arduino/tools/
+in /Arduino/tools/   directory / map
 
 and unpack / unzip it there
 
