@@ -10,6 +10,8 @@ in /Arduino/tools/   directory / map
 
 and unpack / unzip it there
 
+restart arduino ide
+
 ---
 
 
