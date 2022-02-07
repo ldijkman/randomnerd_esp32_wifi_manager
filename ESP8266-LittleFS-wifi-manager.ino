@@ -1,6 +1,8 @@
 
 
 
+
+
 // https://www.youtube.com/watch?v=3kg8DjFIe7k
 
 // https://www.youtube.com/watch?v=5wrMgU-uW78
@@ -543,14 +545,7 @@ void setup() {
 
     server.serveStatic("/", LittleFS, "/");
 
-
-
     checkpost();   // post submit for AP and STA?
-
-    if (postsuccesfull == 1) {
-      delay(5000);
-      ESP.restart();
-    }
 
     server.begin();
   }
@@ -559,6 +554,13 @@ void setup() {
 unsigned long startmillis = 0;
 
 void loop() {
+
+    if (postsuccesfull == 1) {
+      postsuccesfull = 0;
+      delay(5000);
+      Serial.println("");Serial.println("Restart");Serial.println("");
+      ESP.restart();
+    }
 
   MDNS.update();   // looks like this is needed only for esp8266 otherwise i dont see mdns url in bonjourbrowser not needed for esp32
 
@@ -812,3 +814,8 @@ void browseService(const char * service, const char * proto) {
 // My Mothers and Fathers Language whas Dutch, Thats what they learned me, That Explains my poor Englisch.
 // Partly Made in Portugal &&  Partly Made in Holland
 // Electra, Please let me Sleep
+//
+// Soon Electra will Power a Gazillion Devices
+
+
+
