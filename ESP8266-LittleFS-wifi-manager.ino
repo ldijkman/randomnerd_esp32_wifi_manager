@@ -1,7 +1,6 @@
 
 
 
-
 // https://www.youtube.com/watch?v=3kg8DjFIe7k
 
 // https://www.youtube.com/watch?v=5wrMgU-uW78
@@ -549,7 +548,8 @@ void setup() {
     checkpost();   // post submit for AP and STA?
 
     if (postsuccesfull == 1) {
-      ESP.reset();
+      delay(5000);
+      ESP.restart();
     }
 
     server.begin();
