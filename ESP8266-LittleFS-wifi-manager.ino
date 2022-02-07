@@ -1,10 +1,6 @@
 
 
 
-
-
-
-
 // https://www.youtube.com/watch?v=3kg8DjFIe7k
 
 // https://www.youtube.com/watch?v=5wrMgU-uW78
@@ -721,7 +717,7 @@ void checkpost() {
     if (dhcpcheck == "on") {
       ip = "dhcp ip adress";
     }
-    request->send(200, "text/html", "<h1>Done.<br> Restarting ESP8266 <br> connect router <br>go to: <a href=\"http://" + ip + "\">" + ip + "</a><br><a href=\"http://" + mdnsdotlocalurl + ".local\">http://" + mdnsdotlocalurl + ".local</a> Android use BonjourBrowser App</h1>");
+    request->send(200, "text/html", "<meta http-equiv=\"refresh\" content=\"15; url=http://"+mdnsdotlocalurl+".local\"><h1>Done.<br> Restarting ESP8266 <br>This page wil reload to mDNS URL address in 15 seconds<br> connect router <br>go to: <a href=\"http://" + ip + "\">" + ip + "</a><br><a href=\"http://" + mdnsdotlocalurl + ".local\">http://" + mdnsdotlocalurl + ".local</a> Android use BonjourBrowser App</h1>");
   
     postsuccesfull = 1;
 
