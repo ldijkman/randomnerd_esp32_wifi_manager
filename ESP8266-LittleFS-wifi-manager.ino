@@ -3,6 +3,8 @@
 
 
 
+
+
 // https://www.youtube.com/watch?v=3kg8DjFIe7k
 
 // https://www.youtube.com/watch?v=5wrMgU-uW78
@@ -767,6 +769,8 @@ void browseService(const char * service, const char * proto) {
     }
   }
   Serial.print(scanstr);
+  Serial.println("");
+  Serial.println("Soon Electra will Power a Gazillion Devices");
   Serial.println("");
 
   Serial.print("WiFi.status == ");
