@@ -1,6 +1,7 @@
 
 
 
+
 // https://www.youtube.com/watch?v=3kg8DjFIe7k
 
 // https://www.youtube.com/watch?v=5wrMgU-uW78
@@ -44,7 +45,6 @@
   Rui Santos
   Complete instructions at https://RandomNerdTutorials.com/esp32-wi-fi-manager-asyncwebserver/
   ******************************************************************************************************************************
-
   i use arduino ide linux arm32 1.8.13 on raspberry pi  https://www.arduino.cc/en/software
   i use arduino ide linux arm32 1.8.19 on raspberry pi  https://www.arduino.cc/en/software
   you need to upload the data directory to LittleFS => Arduino IDE => Tools => ESP32 Sketch Data Upload (turn serial monitor off else failure)
@@ -85,8 +85,6 @@
           but i have seen it only once in a german wifimanager
           https://www.john-lassen.de/en/projects/esp-8266-arduino-ide-webconfig
           no wrong i am mistaking
-
-
           ESP32 is dual core = 2 processors
           i think i use one
           looks like espasyncwebsrver does not like delaying in loop
@@ -98,7 +96,7 @@
 
 
 /*
-  #include <Arduino.h>
+
   #include <WiFi.h>
   #include <ESPAsyncWebServer.h>            // https://github.com/me-no-dev/ESPAsyncWebServer
   // download zip from above->Arduino IDE->menu->tab->sketch->include library->add ZIP library
@@ -117,7 +115,7 @@
   #include <AsyncElegantOTA.h>              // https://github.com/ayushsharma82/AsyncElegantOTA
 */
 
-
+#include <Arduino.h>
 
 #ifdef ESP32 //////////////////////
 
@@ -177,6 +175,8 @@ const char* buttonpinPath = "/buttonpin.txt";
 const char* ntptimePath = "/ntptime.txt";
 const char* ntptimeoffsetPath = "/ntptimeoffset.txt";
 const char* offdelayPath = "/offdelay.txt";
+
+int postsuccesfull = 0;
 
 //next should become an input field for mdns dot local name in wifimanager
 String mdnsdotlocalurl = "electra";    // becomes http://electra.local     give each device a unique name
@@ -548,7 +548,9 @@ void setup() {
 
     checkpost();   // post submit for AP and STA?
 
-
+    if (postsuccesfull == 1) {
+      ESP.reset();
+    }
 
     server.begin();
   }
@@ -715,20 +717,10 @@ void checkpost() {
     if (dhcpcheck == "on") {
       ip = "dhcp ip adress";
     }
-    request->send(200, "text/html", "<h1>Done. ESP restart,<br> connect router <br>go to: <a href=\"http://" + ip + "\">" + ip + "</a><br><a href=\"http://" + mdnsdotlocalurl + ".local\">http://" + mdnsdotlocalurl + ".local</a> Android use BonjourBrowser App</h1>");
-    Serial.println("exit page with info should be send now");
-    Serial.println("exit page with info should be send now");
-    Serial.println("exit page with info should be send now");
-    Serial.println("exit page with info should be send now");
-    Serial.println("exit page with info should be send now");
-    Serial.println("exit page with info should be send now");
-    Serial.println("exit page with info should be send now");
-    Serial.println("exit page with info should be send now");
-    Serial.println("exit page with info should be send now");
-    Serial.println("exit page with info should be send now");
-    // i do not know why but above exit page after post with connect info is not send it did on esp32 but not on esp8266 
-    delay(10000);  // wait 10sec to send the exit page should wait for an ok?
-    ESP.restart();
+    request->send(200, "text/html", "<h1>Done.<br> Restarting ESP8266 <br> connect router <br>go to: <a href=\"http://" + ip + "\">" + ip + "</a><br><a href=\"http://" + mdnsdotlocalurl + ".local\">http://" + mdnsdotlocalurl + ".local</a> Android use BonjourBrowser App</h1>");
+  
+    postsuccesfull = 1;
+
   });
 
 
@@ -762,14 +754,14 @@ void browseService(const char * service, const char * proto) {
       scanstr += "  ";
       scanstr += i + 1;
       scanstr += ": <a href=\"http://";
-      scanstr += MDNS.IP(i).toString()+":";
+      scanstr += MDNS.IP(i).toString() + ":";
       scanstr += MDNS.port(i);
       scanstr += "\">http://";
       scanstr += MDNS.hostname(i);
       //scanstr += ".local</a><br>";    // esp32 does it different ???
       scanstr += "</a><br>";          // esp8266 does it different ???
       scanstr += "\n\r";
- 
+
     }
   }
   Serial.print(scanstr);
