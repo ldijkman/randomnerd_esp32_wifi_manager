@@ -24,4 +24,6 @@ Create a directory named data and any files you want in the file system there.
 Make sure you have selected a board, port, and closed Serial Monitor.
 Select Tools > ESP8266 LittleFS Data Upload menu item. This should start uploading the files into ESP8266 flash file system. When done, IDE status bar will display LittleFS Image Uploaded message. Might take a few minutes for large file system sizes.
 Screenshot
-</pre>![screenshot](https://user-images.githubusercontent.com/45427770/152723622-2bec70b2-84cc-4a51-9234-c781dff7ecc2.png)
+</pre>
+
+![screenshot](https://user-images.githubusercontent.com/45427770/152723622-2bec70b2-84cc-4a51-9234-c781dff7ecc2.png)
