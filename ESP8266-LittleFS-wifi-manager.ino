@@ -716,6 +716,16 @@ void checkpost() {
       ip = "dhcp ip adress";
     }
     request->send(200, "text/html", "<h1>Done. ESP restart,<br> connect router <br>go to: <a href=\"http://" + ip + "\">" + ip + "</a><br><a href=\"http://" + mdnsdotlocalurl + ".local\">http://" + mdnsdotlocalurl + ".local</a> Android use BonjourBrowser App</h1>");
+    Serial.println("exit page with info should be send now");
+    Serial.println("exit page with info should be send now");
+    Serial.println("exit page with info should be send now");
+    Serial.println("exit page with info should be send now");
+    Serial.println("exit page with info should be send now");
+    Serial.println("exit page with info should be send now");
+    Serial.println("exit page with info should be send now");
+    Serial.println("exit page with info should be send now");
+    Serial.println("exit page with info should be send now");
+    Serial.println("exit page with info should be send now");
     // i do not know why but above exit page after post with connect info is not send it did on esp32 but not on esp8266 
     delay(10000);  // wait 10sec to send the exit page should wait for an ok?
     ESP.restart();
