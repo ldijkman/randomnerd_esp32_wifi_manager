@@ -26,4 +26,6 @@ Select Tools > ESP8266 LittleFS Data Upload menu item. This should start uploadi
 Screenshot
 </pre>
 
+# make sure you closed Serial Monitor. othewise error
+
 ![screenshot](https://user-images.githubusercontent.com/45427770/152723622-2bec70b2-84cc-4a51-9234-c781dff7ecc2.png)
