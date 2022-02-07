@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Hey Electra, ESP WEB SERVER http://%MDNSNAME%.local </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" sizes="192x192" href="Electra_192x192.png">
+    <!--  font use is very slow == turned off
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  -->
+  </head>
+
+  <body>
+    <div class="topnav">
+      <h1>http://%MDNSNAME%.local</h1>
+    </div>
+    <div class="content">
+      <div class="card-grid">
+        <div class="card">
+          <p class="card-title">
+            <!--  font use is very slow turned off <i class="fas fa-lightbulb"></i> -->
+            <h2>http://%MDNSNAME%.local</h2>GPIO %relais% %button% %statusled% var here<br>NTP time %NTPTIME%<br>OFFDelay: %OFFDELAY%<br>
+          </p>
+          <p>
+            <a href="on"><button class="button-on">ON</button></a>
+            <a href="off"><button class="button-off">OFF</button></a>
+
+          </p>
+          <p class="state">State: %STATE%</p>
+          some things should be updated by websockets or ajax == help?<br>
+          <script>
+            if ("%STATE%" == "ON") {
+              document.write('<a href="/off"><img src="%STATE%.gif" width="65" height="98"></a>');
+            }
+            if ("%STATE%" == "OFF") {
+              document.write('<a href="/on"><img src="%STATE%.gif" width="65" height="98"></a>');
+            }
+
+          </script>
+
+        </div>
+      </div>
+      <br> <input type="checkbox" id="managecheck" onclick='document.getElementById("manage").disabled=!document.getElementById("managecheck").checked;' onUnSelect='document.getElementById("resettoap").disabled=!document.getElementById("check").checked;'>Enable
+      <input type="button" id="manage" onclick="window.location.href='wifimanager.html';" value="wifimanager.html" width="200px" disabled><br>
+      wifimanager reconfigure from STATION networkmode works in ESP8266 version <br>
+      <br>
+      Schedule Electra, Electra Schedule timed switching<br>
+      <input type="button" onclick="window.location.href='schedule.html';" value="Electra timed settings schedule.html" width="200px"><br>
+      <br>
+      wanted settable countdown off timer is this called inching<br>
+      <form action="/timer" method="POST">
+        <label for="timer">OFF Delay %OFFDELAY% Seconds</label>
+        <input type="number" id="offtimer" name="off" value="%OFFDELAY%" min="10" size="6">
+        <input type="submit" value="Set">
+      </form>
+      POST is /timer?off=%OFFDELAY%
+      <br><br>
+
+      mDNS Scan<br>
+      Linked list of all local network devices<br><br>
+      %MDNSSCAN%<br>
+      <br>
+      Should be udated with ajax or websockets == Help Electra?<br>
+      <br>
+
+    </div>
+
+    Edit html pages online<br>
+    wifimanager.html <a href="https://jsfiddle.net/luberth/4avpquhs/show">https://jsfiddle.net/luberth/4avpquhs/show</a><br>
+    index.html <a href="https://jsfiddle.net/luberth/sx61b08t/show"> https://jsfiddle.net/luberth/sx61b08t/show</a><br>
+    schedule.html <a href="https://jsfiddle.net/luberth/ow3zceyn/show/">https://jsfiddle.net/luberth/ow3zceyn/show/</a><br>
+    <br>
+    <br>
+    <br>
+    <a href="https://play.google.com/store/apps/details?id=de.wellenvogel.bonjourbrowser&hl=en&gl=US" target="bonjour">
+      Android Phone?<br>Use Bonjour Browser App <br>to see list/browse all mDNS URL's / Devices in your local network<br>https://play.google.com/store/apps/details?id=de.wellenvogel.bonjourbrowser</a><br>
+    <br>
+    <a href="/status">/status gives text 0 or 1 status for external programs</a><br>
+    <a href="/on">/on for external programs</a><br>
+    <a href="/off">/off for external programs</a><br>
+    <a href="/timer=3600">/timer=3600 turn off after 3600 seconds </a><br>
+    <br>
+    <br>
+    <input type="button" onclick="window.location.href='/list';" value="List Files" width="200px">
+    <br>
+    <br>
+    <input type="button" onclick="window.location.href='/reboot';" value="Reboot Restart Electra" width="200px">
+    <br>
+    <br>
+    Delete ssid.txt and pass.txt <br>
+    Restart to AP AccessPoint to reconfigure WiFi<br>
+    <input type="checkbox" id="check" onclick='document.getElementById("resettoap").disabled=!document.getElementById("check").checked;' onUnSelect='document.getElementById("resettoap").disabled=!document.getElementById("check").checked;'>Enable <input type="button" id="resettoap" onclick="window.location.href='/resetwifitoap';" value="/resetwifitoap" width="200px" disabled=true>
+    <br><br>
+    <hr>
+
+    <h3>
+      future optional: i2c BME280 sensor<br>
+      Each Device / Room<br>
+      <hr>
+      Temperature 20C<br>
+      Humidity 60<br>
+      Pressure 1080 Milibar<br>
+      <hr>
+    </h3>
+    <h3>
+      future optional: i2c oled screen<br>
+      print mdns url to screen<br>
+      print IP to screen<br>
+      print time / date to screen<br>
+      <hr>
+    </h3>
+    <button onclick="window.location.href='/update';">OTA<br>Over The Air Update</button><br>
+
+    <br>
+    DO NOT like the OTA FILE upload <br>
+    its a complete spiffs erase replace, must use a .spiffs.bin file<br>
+    i would like to select a file or multiple files to add/overwrite to spiffs<br>
+    Maybe a filemanager, c99shell r57shell alike ;-)<br>
+    <br>
+    would it be possible to add FSBrowser<br>
+    for uploading files to ESP32 and edit HTML files inbrowser online in/on ESP32<br>
+    <a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/README.md#electras-sneak-sleek-peek-preview-future-updownload-edit-delete" target="filemanager">Electras-sneak-sleek-peek-preview-future-updownload-edit-delete</< /a><br>
+      <br><br>
+      <a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager">https://github.com/ldijkman/randomnerd_esp32_wifi_manager</a><br>
+      <br>
+      <br>
+      <br>
+      %NETWORKINFO%<br>
+      <br>
+      <a href="Http://paypal.me/LDijkman">A penny for sharing my thoughts</a><br><br>
+      Electra, A &copy;&Ograve;&Oacute;&THORN;&egrave;&reg; Test.<br>
+      <input type="button" id="CopyRight_2021_2022_Luberth_Dijkman" onclick='window.open("https://m.facebook.com/luberth.dijkman");';><br><br>
+      Soon Electra will Power a Gazillion Devices<br>
+      <br>
+      Hey Google, Who is the Smartest of them All?!<br>
+
+
+      <script>
+        const d = new Date();
+        let year = d.getFullYear();
+        document.getElementById("CopyRight_2021_2022_Luberth_Dijkman").value = "Copyright 2021..." + year + " Dirk Luberth Dijkman";
+
+      </script>
+      <!-- Copyright 2021...2022 Dirk Luberth Dijkman -->
+  </body>
+
+</html>

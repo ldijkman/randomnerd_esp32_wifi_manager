@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Hey Electra, ESP Wi-Fi Manager</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:,">
+    <!-- turn off == slow && off no use if we are in AP AccessPoint mode
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+  </head>
+
+  <body>
+    <div class="topnav">
+      <h1>Hey Electra, ESP32 WiFi Manager</h1>
+    </div>
+    <div class="content">
+      <div class="card-grid">
+        <div class="card">
+          <form action="/" method="POST">
+            <p><small>Wifi router to connect to, name broadcasted in the air</small><br>
+              <label for="ssid">SSID</label>
+              <input type="text" id="ssid" name="ssid" autocapitalize="none"><br>
+              <small>Wifi router to connect to password</small><br>
+              <label for="pass">Password</label>
+              <input type="text" id="pass" name="pass" autocapitalize="none"><br>
+
+              <hr>
+
+
+
+              <input type="checkbox" id="dhcp" name="dhcp" onclick="myFunction()" checked> <label for="dhch">Use DHCP</label>
+
+              <input type="label" id="fixed" value=" Yes we use DHCP"><br>
+              <label for="ip">IP Address</label>
+              <input type="number" id="ip" name="ip" value="%WM_IP%"><br>
+
+
+
+
+
+
+              Gateway = IP address of router admin page?<br>
+              <label for="gateway">Gateway</label>
+              <input type="number" id="gateway" name="gateway" value="%WM_GW%" title="find windows=ipconfig, linux=netstat -r">
+
+              <a class="button" href="#popup1"><b>?</b></a><br>
+              <div id="popup1" class="overlay">
+                <div class="popup">
+                  <!-- pure CSS popup bit from https://codepen.io/imprakash/pen/GgNMXO -->
+                  <a class="close" href="#">&times;</a>
+                  <div class="content" style="text-align: left;">
+                    <small>Me no NetWork Expert!</small><br>
+                    GateWay<br>
+                    Maybe IP of WiFi router Admin / Config page?<br>
+                    windows->DOS terminal CMD?->ipconfig <br>
+                    linux->netstat -r<br>
+                    Android fing app ?<br>
+                    <br>
+                    SUBNET lookup in router?<br>
+                    maybe?<br>
+                    255.255.255.0<br>
+                    255.255.0.0<br><br>
+                    or first use DHCP <br>
+                    and check bottom switch index.html<br>
+                    for network info<br>
+                    use that network info for fixed ip<br><br>
+                    mDNS URL use normal URL friendly characters<br>
+                    no spaces and special chars<br>
+                  </div>
+                </div>
+              </div>
+
+              <label for="subnet">Subnet</label>
+              <input type="number" id="subnet" name="subnet" value="%WM_SN%">
+              <br>
+              <script>
+                myFunction();
+
+                function myFunction() {
+                  // Get the checkbox
+                  var checkBox = document.getElementById("dhcp");
+
+
+                  // If the checkbox is checked
+                  if (checkBox.checked == true) {
+                    document.getElementById("ip").type = "text";
+                    document.getElementById("gateway").type = "text";
+                    document.getElementById("subnet").type = "text";
+
+                    document.getElementById("ip").value = "auto router will do this";
+                    document.getElementById("gateway").value = "auto router will do this";
+                    document.getElementById("subnet").value = "auto router will do this";
+
+                    document.getElementById("ip").disabled = true;
+                    document.getElementById("gateway").disabled = true;
+                    document.getElementById("subnet").disabled = true;
+
+                    document.getElementById("fixed").value = "Yes DHCP";
+                  } else {
+                    document.getElementById("ip").type = "text"; // would like to use number so that a number keyboard comes up on phone but that doe not allow multiple points  192.168 and then i cannot enter a point
+                    // type text and ip shows a keyboard on phone 
+                    document.getElementById("gateway").type = "text";
+                    document.getElementById("subnet").type = "text";
+
+                    document.getElementById("ip").disabled = false;
+                    document.getElementById("gateway").disabled = false;
+                    document.getElementById("subnet").disabled = false;
+
+                    document.getElementById("ip").value = "";
+                    document.getElementById("gateway").value = "";
+                    document.getElementById("subnet").value = "";
+
+                    document.getElementById("fixed").value = "Fixed IP Fill in next 3 fields";
+                  }
+                }
+
+              </script>
+
+              <script>
+                // this also works on touch screen
+                function charremove() {
+                  var textt = document.getElementById("mdns").value; // read the inputfield
+
+                  //document.getElementById("url").value="http://"++".local
+                  let result = textt.replace(/[^a-zA-Z0-9-]/g, ""); // not replace a-z A-Z 0-9 and - for nothing "" replace everything else for nothing ""
+
+                  document.getElementById("mdns").value = result; // return to inputfield cleaned up
+                  document.getElementById("url").value = "http://" + result + ".local"; // return to url field
+                }
+
+              </script>
+
+              <hr>
+              Give each ESP32 device a Unique URL?!<br>
+
+              <label for="mmdns" border="0">mDNS URL </label>
+              <script>
+                function focusInput() {
+                  document.getElementById("mdns").focus();
+                }
+
+              </script>
+              <input type="button" id="url" style="color: green" onclick="focusInput()"></label><br>
+              <font color="red"><b>
+                  <small>Allowed Characters a-z A-Z 0-9 and -<br></small>
+                </b></font>
+              <label for="mdns">http://</label>
+              <input type="text" oninput="charremove()" id="mdns" name="mdns" autocapitalize="none" value="living">.local<br>
+              <!--  
+                 <label for="mdns">http://</label>
+              <input type="text" id="mdns" name="mdns" autocapitalize="none" value="living" oninput='document.getElementById("url").value="http://"+document.getElementById("mdns").value+".local";' onkeypress="return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57) || event.charCode == 45">.local<br>
+           
+              onkeypress only allow some characters 
+              a-z A-Z 0-9 and - 
+              maybe A-Z is also not allowed but it works
+      
+              https://www.w3schools.com/charsets/ref_html_ascii.asp 
+              -->
+
+              <!-- 
+              Hmmm does not work on touch screen android
+              
+              onkeypress only allow some characters 
+              a-z A-Z 0-9 and - 
+              maybe A-Z is also not allowed but it works
+      
+              https://www.w3schools.com/charsets/ref_html_ascii.asp 
+              -->
+
+              <script>
+                document.getElementById("url").value = "http://" + document.getElementById("mdns").value + ".local";
+
+              </script>
+              Android use BonjourBrowser App to see/list/browse all mDNS URL's / devices in local network<br>
+              Apple understands mDNS out off the box<br>
+              My raspberry pi does mDNS<br>
+              Microsoft (i) Do not use it<br>
+              <hr>
+
+              <label for="relaispin">Relais GPIO </label>
+              <input type="number" id="relaispin" name="relaispin" value="5">
+              invert<input type="checkbox" id="invertrp" ><br>
+
+
+
+              <label for="statusledpin">Status LED GPIO </label>
+              <input type="number" id="statusledpin" name="statusledpin" value="8">
+               invert<input type="checkbox" id="invertsl" ><br>
+
+              <label for="buttonpin">Button GPIO </label>
+              <input type="number" id="buttonpin" name="buttonpin" value="3">
+              invert<input type="checkbox" id="invertbp" ><br>
+
+              <hr>
+
+              <label for="ntptime">NTP Network Time Server <br> http://</label>
+              <input type="text" id="ntptime" name="ntptime" value="time.google.com"><br>
+              <select name="plan" id="plan" onchange='document.getElementById("ntptime").value =document.getElementById("plan").value;'>
+                <option value="time.google.com" selected>time.google.com</option>
+                <option value="pool.ntp.org">This World pool.ntp.org </option>
+                <option value="asia.pool.ntp.org">asia.pool.ntp.org</option>
+                <option value="europe.pool.ntp.org">europe.pool.ntp.org</option>
+                <option value="north-america.pool.ntp.org">north-america.pool.ntp.org</option>
+                <option value="oceania.pool.ntp.org">oceania.pool.ntp.org</option>
+                <option value="south-america.pool.ntp.org">south-america.pool.ntp.org</option>
+                <option value="au.pool.ntp.org">Australia au.pool.ntp.org</option>
+              </select>
+
+              <a class="button" href="#popup2"><b>?</b></a><br>
+              <div id="popup2" class="overlay">
+                <div class="popup">
+                  <!-- pure CSS popup bit from https://codepen.io/imprakash/pen/GgNMXO -->
+                  <a class="close" href="#">&times;</a>
+                  <div class="content">
+                    <small>Me no NTP Expert!</small><br><br>
+                    time.google.com<br><br>
+                    <table style="text-align: left;">
+                      <thead>
+                        <tr>
+                          <th> </th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Worldwide</td>
+                          <td>pool.ntp.org</td>
+                        </tr>
+                        <tr>
+                          <td>Asia</td>
+                          <td>asia.pool.ntp.org</td>
+                        </tr>
+                        <tr>
+                          <td>Europe</td>
+                          <td>europe.pool.ntp.org</td>
+                        </tr>
+                        <tr>
+                          <td>North America</td>
+                          <td>north-america.pool.ntp.org</td>
+                        </tr>
+                        <tr>
+                          <td>Oceania</td>
+                          <td>oceania.pool.ntp.org</td>
+                        </tr>
+                        <tr>
+                          <td>South America</td>
+                          <td>south-america.pool.ntp.org</td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+
+                  </div>
+                </div>
+              </div>
+              <label for="ntptimeoffset">Time offset</label>
+
+              <select name="ntptimeoffset" id="ntptimeoffset">
+                <option value="-12">-12</option>
+                <option value="-11">-11</option>
+                <option value="-10">-10</option>
+                <option value="-9">-9</option>
+                <option value="-8">-8</option>
+                <option value="-7">-7</option>
+                <option value="-6">-6</option>
+                <option value="-5">-5</option>
+                <option value="-4">-4</option>
+                <option value="-3">-3</option>
+                <option value="-2">-2</option>
+                <option value="-1">-1</option>
+                <option value="0" selected>0</option>
+                <option value="+1">+1</option>
+                <option value="+2">+2</option>
+                <option value="+3">+3</option>
+                <option value="+4">+4</option>
+                <option value="+5">+5</option>
+                <option value="+6">+6</option>
+                <option value="+7">+7</option>
+                <option value="+8">+8</option>
+                <option value="+9">+9</option>
+                <option value="+10">+10</option>
+                <option value="+11">+11</option>
+                <option value="+12">+12</option>
+              </select>
+              <br>
+              <hr>
+              <input type="submit" value="Save Settings">
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    Edit html pages online<br>
+    wifimanager.html <a href="https://jsfiddle.net/luberth/4avpquhs/show" traget="Manage_Electra">https://jsfiddle.net/luberth/4avpquhs/show</a><br>
+    index.html <a href="https://jsfiddle.net/luberth/sx61b08t/show" target="index_Electra"> https://jsfiddle.net/luberth/sx61b08t/show</a><br>
+    schedule.html <a href="https://jsfiddle.net/luberth/ow3zceyn/show/" target="Schedule_Electra">https://jsfiddle.net/luberth/ow3zceyn/show/</a><br>
+    <br><br><br>
+    <a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/" target="Hey_Electra">https://github.com/ldijkman/randomnerd_esp32_wifi_manager/</a><br><br>
+    OTA over the Air Update => on index.hml
+  </body>
+
+</html>
+
