@@ -4,7 +4,7 @@ https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/LittleFS_Dat
 
 in /Arduino/tools/
 
-and unpack
+and unpack / unzip it there
 
 ---
 
