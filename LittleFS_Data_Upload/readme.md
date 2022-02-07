@@ -1,5 +1,7 @@
 for the ESP8266 LittleFS version
 
+No "ESP8266 LittleFS data upload" in your Arduino IDE Tools menu => do next
+
 download / place 
 
 https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/LittleFS_Data_Upload/ESP8266LittleFS-2.6.0%20(1).zip
