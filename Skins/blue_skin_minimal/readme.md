@@ -1,6 +1,6 @@
 to get the idea of a skin
 
-blue background grey text
+blue background grey text Computer Blue https://www.youtube.com/watch?v=bt0XdyBgSnE
 
 removed most text
 
