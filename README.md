@@ -32,7 +32,11 @@ RandomNerd_ESP32_WiFi_Manager
 
 not so handy older video http://m.youtube.com/watch?v=mrQwdB_dm_U
 
-       Bet you can make a better video ;-) https://www.youtube.com/watch?v=WfqDLlxB5ig
+       Bet you can make a better video ;-) 
+       
+maybe a better video https://www.youtube.com/watch?v=WfqDLlxB5ig
+
+
 
 ESP32 RELAIS / ESSP8266 WiFi relais
 
