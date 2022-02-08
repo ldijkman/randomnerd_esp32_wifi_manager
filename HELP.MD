@@ -13,7 +13,7 @@ just install http://apple.com/itunes that makes mDNS http://?URL?.local to work 
 
 Bonjour for WinDOS might be eassier https://support.apple.com/kb/DL999?locale=nl_NL worked on windos 7 for me, above did not work / install
 
-now there is a mDNResponder.exe, Bonjour Service running in windows taskmanager
+now there is a mDNSResponder.exe, Bonjour Service running in windows taskmanager
 
 ---
 ---
