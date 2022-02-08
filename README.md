@@ -38,7 +38,7 @@ maybe a better video https://www.youtube.com/watch?v=WfqDLlxB5ig
 
 
 
-ESP32 RELAIS / ESSP8266 WiFi relais
+ESP32 WiFi relais / ESP8266 WiFi relais
 
 NO WiFi settings hardcoded  (ssid pass ip gateway subnet mdns)
 
