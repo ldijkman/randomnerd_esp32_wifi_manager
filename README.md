@@ -96,6 +96,10 @@ https://www.google.com/url?sa=t&source=web&rct=j&url=https://play.google.com/sto
 
 ---
 
+MicroSoft Windows install Apple iTunes or Bonjour printer services and mDNS should work then
+
+---
+
 Apple phone human friendly mDNS URL.local tested / worked on apple-saphari and apple-chrome
 
 Apple does not need an app for mdns == included in ios
