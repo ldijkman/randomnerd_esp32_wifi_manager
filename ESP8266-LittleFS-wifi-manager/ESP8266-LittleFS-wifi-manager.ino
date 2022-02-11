@@ -115,10 +115,13 @@
 */
 
 #include <Arduino.h>
+#include "Hash.h"         // otherwise error sha1???? websockets
+//#include <WiFi.h>
 
 #ifdef ESP32 //////////////////////
 
 #include <FS.h>
+#include <SPIFFS.h>
 #include <WiFi.h>
 #include <ESPmDNS.h>
 #include <AsyncTCP.h>
@@ -133,16 +136,18 @@
 
 #include "LittleFS.h"
 #include <AsyncElegantOTA.h>              // https://github.com/ayushsharma82/AsyncElegantOTA
+
 #include <ESPAsyncWebServer.h>
+#include <ArduinoJson.h>
 
 
 
 
 // Create AsyncWebServer object on port 80
 AsyncWebServer server(80);
+AsyncWebSocket ws("/ws");
 
-
-
+const uint8_t DEBOUNCE_DELAY = 10; // in milliseconds
 
 //Variables to save values from HTML form
 String ssid;
@@ -192,7 +197,6 @@ String mdnsdotlocalurl = "electra";    // becomes http://electra.local     give 
 IPAddress localIP(0, 0, 0, 0);
 IPAddress gatewayIP(0, 0, 0, 0);
 IPAddress subnetMask(0, 0, 0, 0);
-
 
 
 // Timer variables
@@ -250,6 +254,10 @@ void writeFile(fs::FS &fs, const char * path, const char * message) {
     Serial.println("- frite failed");
   }
 }
+
+
+
+
 
 // Initialize WiFi
 bool initWiFi() {
@@ -315,6 +323,8 @@ bool initWiFi() {
 // Replaces placeholder with LED state value
 // replaces the text between %match% in LittleFS index.html on upload with actual variables
 String processor(const String& var) {
+ 
+  // it has become a bit copy paste mess relaspin ledpin ledstate
   if (var == "STATE") {                 // in index.html noted as &STATE&
     if (digitalRead(ledPin)) {
       ledState = "ON";
@@ -322,8 +332,7 @@ String processor(const String& var) {
     else {
       ledState = "OFF";
     }
-    return ledState;
-    return String();
+    return String(ledState);
   }
   else if (var == "MDNSNAME") {                                      // in index.html noted as %MDNSNAME%
     return String(mdnsdotlocalurl);
@@ -368,6 +377,7 @@ void setup() {
   Serial.begin(115200);
 
   initLittleFS();
+  initWebSocket();
 
 
 
@@ -422,6 +432,7 @@ void setup() {
     // Route for root / web page
     server.on("/", HTTP_GET, [](AsyncWebServerRequest * request) {
       request->send(LittleFS, "/index.html", "text/html", false, processor);
+      notifyClients();
     });
     server.serveStatic("/", LittleFS, "/");
 
@@ -429,12 +440,14 @@ void setup() {
     server.on("/on", HTTP_GET, [](AsyncWebServerRequest * request) {
       digitalWrite(ledPin, HIGH);
       request->send(LittleFS, "/index.html", "text/html", false, processor);
+      notifyClients();
     });
 
     // Route to set GPIO state to LOW
     server.on("/off", HTTP_GET, [](AsyncWebServerRequest * request) {
       digitalWrite(ledPin, LOW);
       request->send(LittleFS, "/index.html", "text/html", false, processor);
+      notifyClients();
     });
 
     //  /status returns text 0 ro 1 for remote monitoring
@@ -520,6 +533,7 @@ void setup() {
 
     AsyncElegantOTA.begin(&server);    // Start ElegantOTA
     server.begin();
+
   }
   else {
     // Connect to Wi-Fi network with SSID and password == setup an AP AccessPoint for wifi direct connect
@@ -553,12 +567,21 @@ unsigned long startmillis = 0;
 
 void loop() {
 
-    if (postsuccesfull == 1) {
-      postsuccesfull = 0;
-      delay(5000);
-      Serial.println("");Serial.println("Restart");Serial.println("");
-      ESP.restart();
-    }
+  ws.cleanupClients();
+
+  // if ( digitalread hardware_button.pressed()) {
+  // while  ( digitalread hardware_button.pressed()) {//bounce}
+  // }
+  // toggle state
+  // notifyClients();
+  // }
+
+  if (postsuccesfull == 1) {
+    postsuccesfull = 0;
+    delay(5000);
+    Serial.println(""); Serial.println("Restart"); Serial.println("");
+    ESP.restart();
+  }
 
   MDNS.update();   // looks like this is needed only for esp8266 otherwise i dont see mdns url in bonjourbrowser not needed for esp32
 
@@ -717,8 +740,8 @@ void checkpost() {
     if (dhcpcheck == "on") {
       ip = "dhcp ip adress";
     }
-    request->send(200, "text/html", "<meta http-equiv=\"refresh\" content=\"15; url=http://"+mdnsdotlocalurl+".local\"><h1>Done.<br> Restarting ESP8266 <br>This page wil reload to mDNS URL address in 15 seconds<br> connect router <br>go to: <a href=\"http://" + ip + "\">" + ip + "</a><br><a href=\"http://" + mdnsdotlocalurl + ".local\">http://" + mdnsdotlocalurl + ".local</a> Android use BonjourBrowser App</h1>");
-  
+    request->send(200, "text/html", "<meta http-equiv=\"refresh\" content=\"15; url=http://" + mdnsdotlocalurl + ".local\"><h1>Done.<br> Restarting ESP8266 <br>This page wil reload to mDNS URL address in 15 seconds<br> connect router <br>go to: <a href=\"http://" + ip + "\">" + ip + "</a><br><a href=\"http://" + mdnsdotlocalurl + ".local\">http://" + mdnsdotlocalurl + ".local</a> Android use BonjourBrowser App</h1>");
+
     postsuccesfull = 1;
 
   });
@@ -803,6 +826,87 @@ void browseService(const char * service, const char * proto) {
   Serial.println("");
 
 
+}
+
+// ----------------------------------------------------------------------------
+// WebSocket initialization
+// ----------------------------------------------------------------------------
+// copyed code from https://github.com/m1cr0lab-esp32/remote-control-with-websocket
+// copyed code from https://github.com/rheinz/remote-control-with-websocket
+
+void notifyClients() {
+  const uint8_t size = JSON_OBJECT_SIZE(1);
+  StaticJsonDocument<size> json;
+  
+  // it has become a bit copy paste mess relaspin ledpin ledstate
+   Serial.println(ledState);
+  json["status"] = ledState.c_str();
+
+  char buffer[17];
+  size_t len = serializeJson(json, buffer);
+  ws.textAll(buffer, len);
+}
+
+void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
+  AwsFrameInfo *info = (AwsFrameInfo*)arg;
+  if (info->final && info->index == 0 && info->len == len && info->opcode == WS_TEXT) {
+
+    const uint8_t size = JSON_OBJECT_SIZE(1);
+    StaticJsonDocument<size> json;
+    DeserializationError err = deserializeJson(json, data);
+    if (err) {
+      Serial.print(F("deserializeJson() failed with code "));
+      Serial.println(err.c_str());
+      return;
+    }
+
+
+// it has become a bit copy paste mess relaspin ledpin ledstate
+    const char *action = json["action"];
+    if (strcmp(action, "toggle") == 0) {
+      //ledPin = !ledPin;
+      if (digitalRead(ledPin) == 0) {
+        digitalWrite(ledPin, HIGH);
+        ledState = "ON";
+      } else {
+        digitalWrite(ledPin, LOW);
+        ledState = "OFF";
+      }
+      Serial.println(ledState);
+      notifyClients();
+    }
+  }
+}
+
+void onEvent(AsyncWebSocket       *server,
+             AsyncWebSocketClient *client,
+             AwsEventType          type,
+             void                 *arg,
+             uint8_t              *data,
+             size_t                len) {
+
+  switch (type) {
+    case WS_EVT_CONNECT:
+      Serial.printf("WebSocket client #%u connected from %s\n", client->id(), client->remoteIP().toString().c_str());
+      break;
+    case WS_EVT_DISCONNECT:
+      Serial.printf("WebSocket client #%u disconnected\n", client->id());
+      break;
+    case WS_EVT_DATA:
+      handleWebSocketMessage(arg, data, len);
+      break;
+    case WS_EVT_PONG:
+    case WS_EVT_ERROR:
+      break;
+  }
+}
+
+
+
+
+void initWebSocket() {
+  ws.onEvent(onEvent);
+  server.addHandler(&ws);
 
 
   // Got it working???
@@ -816,6 +920,3 @@ void browseService(const char * service, const char * proto) {
 // Electra, Please let me Sleep
 //
 // Soon Electra will Power a Gazillion Devices
-
-
-
