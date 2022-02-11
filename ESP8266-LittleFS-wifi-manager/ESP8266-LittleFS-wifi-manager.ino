@@ -1,6 +1,8 @@
 
 
 
+
+
 // https://www.youtube.com/watch?v=3kg8DjFIe7k
 
 // https://www.youtube.com/watch?v=5wrMgU-uW78
@@ -441,6 +443,7 @@ void setup() {
     // Route to set GPIO state to HIGH
     server.on("/on", HTTP_GET, [](AsyncWebServerRequest * request) {
       digitalWrite(ledPin, HIGH);
+      ledState = "ON";
       request->send(LittleFS, "/index.html", "text/html", false, processor);
       notify = 1;
     });
@@ -448,6 +451,7 @@ void setup() {
     // Route to set GPIO state to LOW
     server.on("/off", HTTP_GET, [](AsyncWebServerRequest * request) {
       digitalWrite(ledPin, LOW);
+      ledState = "OFF";
       request->send(LittleFS, "/index.html", "text/html", false, processor);
       notify = 1;
     });
