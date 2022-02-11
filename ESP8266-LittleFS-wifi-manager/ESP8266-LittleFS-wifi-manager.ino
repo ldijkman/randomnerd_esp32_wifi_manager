@@ -48,6 +48,7 @@
   Complete instructions at https://RandomNerdTutorials.com/esp32-wi-fi-manager-asyncwebserver/
   3 weeks later (s)he added with gateway field and littlefs
   https://randomnerdtutorials.com/esp8266-nodemcu-wi-fi-manager-asyncwebserver/
+  haha, line 98 same typo  Serial.println("- frite failed");
   
   ******************************************************************************************************************************
   i use arduino ide linux arm32 1.8.13 on raspberry pi  https://www.arduino.cc/en/software
