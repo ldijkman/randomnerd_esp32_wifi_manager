@@ -1,8 +1,6 @@
 
 
 
-
-
 // https://www.youtube.com/watch?v=3kg8DjFIe7k
 
 // https://www.youtube.com/watch?v=5wrMgU-uW78
@@ -42,13 +40,9 @@
   each swith / device its own human friendly URL with webpage
      and each webpage should show an automaticly scanned linked list of all mDNS URL's devices in local network
   ******************************************************************************************************************************
-  
   started with the example from
   Rui Santos
   Complete instructions at https://RandomNerdTutorials.com/esp32-wi-fi-manager-asyncwebserver/
-  3 weeks later (s)he added with gateway field and littlefs
-  https://randomnerdtutorials.com/esp8266-nodemcu-wi-fi-manager-asyncwebserver/
-  
   ******************************************************************************************************************************
   i use arduino ide linux arm32 1.8.13 on raspberry pi  https://www.arduino.cc/en/software
   i use arduino ide linux arm32 1.8.19 on raspberry pi  https://www.arduino.cc/en/software
@@ -840,7 +834,7 @@ void browseService(const char * service, const char * proto) {
       break;
   }
   Serial.println("");
-
+  notifyClients();
 
 }
 
@@ -851,16 +845,20 @@ void browseService(const char * service, const char * proto) {
 // copyed code from https://github.com/rheinz/remote-control-with-websocket
 
 void notifyClients() {
-  const uint8_t size = JSON_OBJECT_SIZE(1);
+  const unsigned int size = JSON_OBJECT_SIZE(1024);//i do not know
   StaticJsonDocument<size> json;
 
   // it has become a bit copy paste mess relaspin ledpin ledstate
-  Serial.println(ledState);
-  json["status"] = ledState.c_str();
+  //Serial.println(ledState.c_str());
+  //Serial.println(scanstr);
+  json["status"] = ledState.c_str(); // relais status
+  json["scan"] = scanstr.c_str();   // mdnsscan
 
-  char buffer[17];
-  size_t len = serializeJson(json, buffer);
+  char buffer[1024];   //i do not know
+   serializeJson(json, Serial);
+  size_t len = serializeJson(json, buffer); //print to serial monitor
   ws.textAll(buffer, len);
+  Serial.println(buffer);
 }
 
 void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
@@ -875,6 +873,7 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
       Serial.println(err.c_str());
       return;
     }
+
 
 
     // it has become a bit copy paste mess relaspin ledpin ledstate
