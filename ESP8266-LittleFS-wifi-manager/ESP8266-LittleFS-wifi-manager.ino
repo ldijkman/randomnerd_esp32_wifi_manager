@@ -42,9 +42,13 @@
   each swith / device its own human friendly URL with webpage
      and each webpage should show an automaticly scanned linked list of all mDNS URL's devices in local network
   ******************************************************************************************************************************
+  
   started with the example from
   Rui Santos
   Complete instructions at https://RandomNerdTutorials.com/esp32-wi-fi-manager-asyncwebserver/
+  3 weeks later (s)he added with gateway field and littlefs
+  https://randomnerdtutorials.com/esp8266-nodemcu-wi-fi-manager-asyncwebserver/
+  
   ******************************************************************************************************************************
   i use arduino ide linux arm32 1.8.13 on raspberry pi  https://www.arduino.cc/en/software
   i use arduino ide linux arm32 1.8.19 on raspberry pi  https://www.arduino.cc/en/software
