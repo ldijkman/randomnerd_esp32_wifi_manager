@@ -587,6 +587,7 @@ void loop() {
 
   if (notify == 1) {        // switch from url /on / off notifyClients
     notify = 0;
+    delay(250);
     notifyClients();
   }
 
