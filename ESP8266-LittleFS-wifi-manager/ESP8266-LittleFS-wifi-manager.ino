@@ -181,6 +181,7 @@ const char* ntptimeoffsetPath = "/ntptimeoffset.txt";
 const char* offdelayPath = "/offdelay.txt";
 
 int postsuccesfull = 0;
+int notify = 0;
 
 //next should become an input field for mdns dot local name in wifimanager
 String mdnsdotlocalurl = "electra";    // becomes http://electra.local     give each device a unique name
@@ -212,6 +213,7 @@ int ledPin = 5;    // wemos uno sized esp32 board
 // Stores LED state
 
 String ledState;
+
 
 // Initialize LittleFS
 void initLittleFS() {
@@ -323,7 +325,7 @@ bool initWiFi() {
 // Replaces placeholder with LED state value
 // replaces the text between %match% in LittleFS index.html on upload with actual variables
 String processor(const String& var) {
- 
+
   // it has become a bit copy paste mess relaspin ledpin ledstate
   if (var == "STATE") {                 // in index.html noted as &STATE&
     if (digitalRead(ledPin)) {
@@ -432,7 +434,7 @@ void setup() {
     // Route for root / web page
     server.on("/", HTTP_GET, [](AsyncWebServerRequest * request) {
       request->send(LittleFS, "/index.html", "text/html", false, processor);
-      notifyClients();
+      notify = 1;
     });
     server.serveStatic("/", LittleFS, "/");
 
@@ -440,14 +442,14 @@ void setup() {
     server.on("/on", HTTP_GET, [](AsyncWebServerRequest * request) {
       digitalWrite(ledPin, HIGH);
       request->send(LittleFS, "/index.html", "text/html", false, processor);
-      notifyClients();
+      notify = 1;
     });
 
     // Route to set GPIO state to LOW
     server.on("/off", HTTP_GET, [](AsyncWebServerRequest * request) {
       digitalWrite(ledPin, LOW);
       request->send(LittleFS, "/index.html", "text/html", false, processor);
-      notifyClients();
+      notify = 1;
     });
 
     //  /status returns text 0 ro 1 for remote monitoring
@@ -581,6 +583,11 @@ void loop() {
     delay(5000);
     Serial.println(""); Serial.println("Restart"); Serial.println("");
     ESP.restart();
+  }
+
+  if (notify == 1) {        // switch from url /on / off notifyClients
+    notify = 0;
+    notifyClients();
   }
 
   MDNS.update();   // looks like this is needed only for esp8266 otherwise i dont see mdns url in bonjourbrowser not needed for esp32
@@ -837,9 +844,9 @@ void browseService(const char * service, const char * proto) {
 void notifyClients() {
   const uint8_t size = JSON_OBJECT_SIZE(1);
   StaticJsonDocument<size> json;
-  
+
   // it has become a bit copy paste mess relaspin ledpin ledstate
-   Serial.println(ledState);
+  Serial.println(ledState);
   json["status"] = ledState.c_str();
 
   char buffer[17];
@@ -861,7 +868,7 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
     }
 
 
-// it has become a bit copy paste mess relaspin ledpin ledstate
+    // it has become a bit copy paste mess relaspin ledpin ledstate
     const char *action = json["action"];
     if (strcmp(action, "toggle") == 0) {
       //ledPin = !ledPin;
