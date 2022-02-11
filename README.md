@@ -3,7 +3,7 @@ Microsoft windows & Andoid phone / tablet users if mDNS does not work =>  https:
 # the ESP8266 version is better / leading / further
 
 ESP8266-LittleFS-wifi-manager.ino 
-- moved the file inside the folder => /ESP8266-LittleFS-wifi-manage/ESP8266-LittleFS-wifi-manager.ino
+- moved the file inside the folder => /ESP8266-LittleFS-wifi-manager/ESP8266-LittleFS-wifi-manager.ino
 
 ---
 
