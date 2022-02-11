@@ -45,6 +45,7 @@ function onMessage(event) {
     let data = JSON.parse(event.data);
     document.getElementById('ledstate').innerHTML = data.status;
     document.getElementById('image').src = data.status+".gif";
+    document.getElementById('mdnsscan').innerHTML = data.scan;
 }
 
 // ----------------------------------------------------------------------------
