@@ -118,18 +118,16 @@ button:active {
           </p>
 <div id="ledstate">%STATE%</div>
 <br><br>
-      mDNS Scan<br>
-      Linked list of all local network devices<br><br>
+      <p>LAN mDNS Scan</p>
       <div id="mdnsscan"></div>
 <br><br>
         </div>
       </div>
+<br><br>
       <br> <input type="checkbox" id="managecheck" onclick='document.getElementById("manage").disabled=!document.getElementById("managecheck").checked;' onUnSelect='document.getElementById("resettoap").disabled=!document.getElementById("check").checked;'>Enable
-      <input type="button" id="manage" onclick="window.location.href='wifimanager.html';" value="wifimanager.html" width="200px" disabled><br>
-      wifimanager reconfigure from STATION networkmode works in ESP8266 version <br>
+      <input type="button" id="manage" onclick="window.location.href='wifimanager.html';" value="WiFiManager" width="200px" disabled><br>
       <br>
-      Schedule Electra, Electra Schedule timed switching<br>
-      <input type="button" onclick="window.location.href='schedule.html';" value="Electra timed settings schedule.html" width="200px"><br>
+      <input type="button" onclick="window.location.href='schedule.html';" value="Schedule Electra, Electra Schedule timed switching" width="200px"><br>
       <br>
       wanted settable countdown off timer is this called inching<br>
       <form action="/timer" method="POST">
