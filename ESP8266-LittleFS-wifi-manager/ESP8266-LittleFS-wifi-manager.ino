@@ -140,8 +140,18 @@
 
 #include <ESPAsyncWebServer.h>
 #include <ArduinoJson.h>
+//#include <time.h>
+#include <NTPClient.h>
+#include <WiFiUdp.h>
 
+WiFiUDP ntpUDP;
+NTPClient timeClient(ntpUDP, "pool.ntp.org");   // do not know how to make this variable yet
 
+//Week Days
+String weekDays[7] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+
+//Month names
+String months[12] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
 
 // Create AsyncWebServer object on port 80
@@ -183,6 +193,10 @@ const char* offdelayPath = "/offdelay.txt";
 
 int postsuccesfull = 0;
 int notify = 0;
+
+
+
+String formattedTime;
 
 //next should become an input field for mdns dot local name in wifimanager
 String mdnsdotlocalurl = "electra";    // becomes http://electra.local     give each device a unique name
@@ -566,11 +580,24 @@ void setup() {
 
     server.begin();
   }
+
+  ///if (ntptime=="")ntptime="time.google.com";  // should be ntptimeserver
+
+  Serial.println(ntptime.c_str());
+
+  timeClient.begin();
+  timeClient.setTimeOffset((ntptimeoffset.toInt() * 3600));
+  Serial.print("ntptimeoffset sec "); Serial.println((ntptimeoffset.toInt() * 3600));
 }
 
 unsigned long startmillis = 0;
 
 void loop() {
+  timeClient.update();
+
+
+
+
 
   ws.cleanupClients();
 
@@ -599,6 +626,66 @@ void loop() {
   if (millis() - startmillis >= 10000) {    // non blocking delay 10 seconds
     startmillis = millis();                 // scan for mdns devices urls every ??? seconds
     browseService("http", "tcp");
+
+    Serial.println(ntptime.c_str());
+    Serial.print("ntptimeoffset sec "); Serial.println((ntptimeoffset.toInt() * 3600));
+
+    unsigned long epochTime = timeClient.getEpochTime();
+    // Serial.print("Epoch Time: ");
+    // Serial.println(epochTime);    // Epoch Time: 1644662416
+
+
+    formattedTime = timeClient.getFormattedTime();
+    Serial.print("Formatted Time: ");
+    Serial.println(formattedTime);  // Formatted Time: 10:40:16
+
+
+
+    int currentHour = timeClient.getHours();
+    Serial.print("Hour: ");
+    Serial.println(currentHour);
+
+    int currentMinute = timeClient.getMinutes();
+    Serial.print("Minutes: ");
+    Serial.println(currentMinute);
+
+    int currentSecond = timeClient.getSeconds();
+    Serial.print("Seconds: ");
+    Serial.println(currentSecond);
+
+    String weekDay = weekDays[timeClient.getDay()];
+    Serial.print("Week Day: ");
+    Serial.println(weekDay);
+
+    //Get a time structure
+    struct tm *ptm = gmtime ((time_t *)&epochTime);
+
+    int monthDay = ptm->tm_mday;
+    Serial.print("Month day: ");
+    Serial.println(monthDay);
+
+    int currentMonth = ptm->tm_mon + 1;
+    Serial.print("Month: ");
+    Serial.println(currentMonth);
+
+    String currentMonthName = months[currentMonth - 1];
+    Serial.print("Month name: ");
+    Serial.println(currentMonthName);
+
+    int currentYear = ptm->tm_year + 1900;
+    Serial.print("Year: ");
+    Serial.println(currentYear);
+
+    //Print complete date:
+    String currentDate = String(currentYear) + "-" + String(currentMonth) + "-" + String(monthDay);
+    Serial.print("Current date: ");
+    Serial.println(currentDate);
+
+    Serial.println("");
+
+
+
+
   }
 
 
@@ -853,10 +940,11 @@ void notifyClients() {
   //Serial.println(ledState.c_str());
   //Serial.println(scanstr);
   json["status"] = ledState.c_str(); // relais status
+  json["time"] = formattedTime.c_str();
   json["scan"] = scanstr.c_str();   // mdnsscan
 
   char buffer[1024];   //i do not know
-   serializeJson(json, Serial);
+  serializeJson(json, Serial);
   size_t len = serializeJson(json, buffer); //print to serial monitor
   ws.textAll(buffer, len);
   Serial.println(buffer);
@@ -923,6 +1011,34 @@ void onEvent(AsyncWebSocket       *server,
 void initWebSocket() {
   ws.onEvent(onEvent);
   server.addHandler(&ws);
+}
+
+
+
+
+
+
+
+/////////////////////////////////////////////////
+String tsaz(int data)  // to string add zero
+{
+  //String curdate = tsaz(time.tm_mday) + "/" +  tsaz(time.tm_mon) + "/" +  tsaz(time.tm_year + 1900);
+  //Serial.println(curdate);
+
+  //String curtime = tsaz(time.tm_hour) + ":" +  tsaz(time.tm_min) + ":" +  tsaz(time.tm_sec);
+  //Serial.println(curtime);
+
+
+  String st = "";
+  if (data < 10)
+  {
+    st = "0" + String(data);
+  }
+  else
+  {
+    st = String(data);
+  }
+  return st;
 
 
   // Got it working???
