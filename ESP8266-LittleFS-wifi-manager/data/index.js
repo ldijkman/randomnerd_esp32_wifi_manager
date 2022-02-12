@@ -46,6 +46,7 @@ function onMessage(event) {
     document.getElementById('ledstate').innerHTML = data.status;
     document.getElementById('image').src = data.status+".gif";
     document.getElementById('mdnsscan').innerHTML = data.scan;
+    document.getElementById('NTPTime').innerHTML = data.time;
 }
 
 // ----------------------------------------------------------------------------
