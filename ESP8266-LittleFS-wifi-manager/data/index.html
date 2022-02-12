@@ -117,21 +117,11 @@ button:active {
 
           </p>
 <div id="ledstate">%STATE%</div>
-
- <!--
-         <p class="state">State: %STATE%</p>
-          some things should be updated by websockets or ajax == help?<br>
-          <script>
-
-            if ("%STATE%" == "ON") {
-              document.write('<a href="/off"><img src="%STATE%.gif" width="65" height="98"></a>');
-            }
-            if ("%STATE%" == "OFF") {
-              document.write('<a href="/on"><img src="%STATE%.gif" width="65" height="98"></a>');
-            }
-
-          </script>
--->
+<br><br>
+      mDNS Scan<br>
+      Linked list of all local network devices<br><br>
+      <div id="mdnsscan"></div>
+<br><br>
         </div>
       </div>
       <br> <input type="checkbox" id="managecheck" onclick='document.getElementById("manage").disabled=!document.getElementById("managecheck").checked;' onUnSelect='document.getElementById("resettoap").disabled=!document.getElementById("check").checked;'>Enable
@@ -149,10 +139,6 @@ button:active {
       </form>
       POST is /timer?off=%OFFDELAY%
       <br><br>
-
-      mDNS Scan<br>
-      Linked list of all local network devices<br><br>
-      <div id="mdnsscan"></div>
       
       % off--MDNSSCAN--off %<br>
       <br>
@@ -237,6 +223,13 @@ button:active {
 
       </script>
       <!-- Copyright 2021...2022 Dirk Luberth Dijkman -->
+
+<iframe src="https://www.trekcore.com/audio/computer/voice/pleasespecifyhowyouwouldliketoproceed_ep.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
+
+<audio id="player" autoplay>
+    <source src="audio/source.mp3" type="audio/mp3">
+</audio>
+
   </body>
 
 </html>
