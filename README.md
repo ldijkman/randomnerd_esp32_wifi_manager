@@ -340,3 +340,5 @@ All you need is Electra!
 
 impressive Espressif
 
+Electra is a Star 370.64 Light Years Far in a Expanding Universe https://www.youtube.com/watch?v=9Lgf2VU_M70
+
