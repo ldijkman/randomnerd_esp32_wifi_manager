@@ -1,6 +1,7 @@
 
 
 
+
 // https://www.youtube.com/watch?v=3kg8DjFIe7k
 
 // https://www.youtube.com/watch?v=5wrMgU-uW78
@@ -775,7 +776,7 @@ void browseService(const char * service, const char * proto) {
   int n = MDNS.queryService(service, proto);
   scanstr = "";
   if (n == 0) {
-    scanstr += "No other Devices found in local network<br>\n\r Program more devices with this software<br>\n\r  And See / Release the power off Electra ;-)<br>\n\r";
+    scanstr += "<font color=\"red\"><b>No other Devices found in local network<br>\n\r Program more devices with this software<br>\n\r  And See / Release the power off Electra ;-)<br></b></font>\n\r";
   } else {
     scanstr += "\n\r";
     scanstr += n;
