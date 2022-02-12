@@ -104,19 +104,14 @@ button:active {
       <div class="card-grid">
         <div class="card">
           <p class="card-title">
-             <h2>%MDNSNAME%</h2><br>
-          NTP Time<div id="NTPTime"></div><br>
-          OFF Delay<div id="OFFDelay"></div>  
+             <h2>%MDNSNAME%</h2>
+          NTP Time<div id="NTPTime"></div>
+          OFF Delay<div id="OFFDelay">%OFFDELAY%</div>  
           </p>
-          <p>
-<!--
-            <a href="on"><button class="button-on">ON</button></a>
-            <a href="off"><button class="button-off">OFF</button></a>
--->
+<br>
+<p>
 <button id="toggle"><img src="%STATE%.gif" id="image" width="65" height="98"></button>
-
-
-          </p>
+</p>
 <div id="ledstate">%STATE%</div>
 <br><br>
       <p>LAN mDNS Scan</p>
