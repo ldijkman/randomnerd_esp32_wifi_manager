@@ -1,12 +1,12 @@
 
 //////////////////////////////////////////////////////////////////////////
 
-this one uses a fork from ESPASYNC library
-https://github.com/lorol/ESPAsyncWebServer
-or
-https://github.com/ldijkman/ESPAsyncWebServer
+//this one uses a fork from ESPASYNC library
+//https://github.com/lorol/ESPAsyncWebServer
+//or
+//https://github.com/ldijkman/ESPAsyncWebServer
 
-donwload zip and replace existing spasync library
+donwload zip and replace existing ESPAsyncWebServer library, on my pi  /home/pi/Arduino/libraries/ESPAsyncWebServer-master
 
 
 ////////////////////////////////////////////////////////////////////////////
@@ -609,7 +609,8 @@ void setup() {
         }
       }
 
-      request->send(404);
+     // request->send(404);
+      request->send(MYFS, "/index.htm", "text/html", false);
     });
     server.onFileUpload([](AsyncWebServerRequest * request, const String & filename, size_t index, uint8_t *data, size_t len, bool final) {
       if (!index)
@@ -1221,3 +1222,7 @@ String tsaz(int data)  // to string add zero
 // Electra, Please let me Sleep
 //
 // Soon Electra will Power a Gazillion Devices
+
+
+
+
