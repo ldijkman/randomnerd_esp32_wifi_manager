@@ -145,7 +145,7 @@
 #include <WiFiUdp.h>
 
 WiFiUDP ntpUDP;
-NTPClient timeClient(ntpUDP, "pool.ntp.org");   // do not know how to make this variable yet
+NTPClient timeClient(ntpUDP, "time.google.com");   // do not know how to make this variable yet
 
 //Week Days
 String weekDays[7] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
@@ -581,8 +581,8 @@ void setup() {
     server.begin();
   }
 
-  ///if (ntptime=="")ntptime="time.google.com";  // should be ntptimeserver
 
+  NTPClient timeClient(ntpUDP, ntptime.c_str());   // do not know how to make this variable yet
   Serial.println(ntptime.c_str());
 
   timeClient.begin();
@@ -592,6 +592,10 @@ void setup() {
 
 unsigned long startmillis = 0;
 
+
+
+
+// loop // // loop // // loop // // loop // // loop // // loop // // loop // // loop // // loop // 
 void loop() {
   timeClient.update();
 
@@ -627,7 +631,7 @@ void loop() {
     startmillis = millis();                 // scan for mdns devices urls every ??? seconds
     browseService("http", "tcp");
 
-    Serial.println(ntptime.c_str());
+    Serial.print("ntpserver ");Serial.println(ntptime.c_str());
     Serial.print("ntptimeoffset sec "); Serial.println((ntptimeoffset.toInt() * 3600));
 
     unsigned long epochTime = timeClient.getEpochTime();
