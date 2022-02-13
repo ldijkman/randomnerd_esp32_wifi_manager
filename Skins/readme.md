@@ -1,3 +1,6 @@
+share your HTML/CSS skin in https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
+
+
 U Got that Look!, Anyone handy with HTML / CSS? #5
 
 U Got that Look! https://www.youtube.com/watch?v=_jCuroTbqBI , color you peach and black
