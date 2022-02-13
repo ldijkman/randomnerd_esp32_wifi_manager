@@ -4,6 +4,7 @@ Microsoft windows & Andoid phone / tablet users if mDNS does not work =>  https:
 
 ESP8266-LittleFS-wifi-manager.ino 
 - moved the ESP8266 .INO file inside the folder => /ESP8266-LittleFS-wifi-manager/ESP8266-LittleFS-wifi-manager.ino
+- also ESP8266-LittleFS-wifi-manager_with_editor.ino with data map is there
 
 ---
 
