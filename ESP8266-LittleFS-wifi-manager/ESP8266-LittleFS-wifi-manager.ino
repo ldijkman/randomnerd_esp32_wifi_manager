@@ -378,7 +378,7 @@ String processor(const String& var) {
     mystring += "DNS: " + WiFi.dnsIP().toString() + "<br>";
     mystring += "MAC: " + WiFi.macAddress() + "<br>";
     mystring += "NTP Server: " + ntptime + "<br>";
-    mystring += "NTP Offset " + ntptimeoffset; + " hour <br>";
+    mystring += "NTP Offset " + ntptimeoffset + " hour <br>";
     return mystring;
   }
 
@@ -582,14 +582,18 @@ void setup() {
 
     server.begin();
   }
-
-
+ 
+  int offset=(ntptimeoffset.toInt() * 3600);
+  timeClient.setTimeOffset(offset);  
+  Serial.print("ntptimeoffset sec "); Serial.println(offset);
+  
   NTPClient timeClient(ntpUDP, ntptime.c_str());   // do not know how to make this variable yet
   Serial.println(ntptime.c_str());
 
+ 
   timeClient.begin();
-  timeClient.setTimeOffset((ntptimeoffset.toInt() * 3600));
-  Serial.print("ntptimeoffset sec "); Serial.println((ntptimeoffset.toInt() * 3600));
+
+
 }
 
 unsigned long startmillis = 0;
