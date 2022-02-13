@@ -137,7 +137,7 @@ function startTime() {
     m = checkTime(m);
     s = checkTime(s);
     
-    document.getElementById("date_time").innerHTML=(h + ":" + m + ":" + s + " - "+day[ddd]+" "+dd+" "+mth[mm]+" "+yy+" ");
+    document.getElementById("date_time").innerHTML=(h + ":" + m + ":" + s + " - "+day[ddd-1]+" "+dd+" "+mth[mm]+" "+yy+" ");
     
     var t = setTimeout(function () {
         startTime()

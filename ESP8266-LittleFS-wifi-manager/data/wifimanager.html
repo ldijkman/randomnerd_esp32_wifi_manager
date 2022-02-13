@@ -130,7 +130,7 @@
               </script>
 
               <hr>
-              Give each ESP32 device a Unique URL?!<br>
+              <font color="red">Give each ESP32 device a Unique URL?!</font><br>
 
               <label for="mmdns" border="0">mDNS URL </label>
               <script>
@@ -170,13 +170,15 @@
                 document.getElementById("url").value = "http://" + document.getElementById("mdns").value + ".local";
 
               </script>
+              <small>
               Android use BonjourBrowser App to see/list/browse all mDNS URL's / devices in local network<br>
               Apple understands mDNS out off the box<br>
               My raspberry pi does mDNS<br>
-              Microsoft (i) Do not use it <br>
+              Microsoft (i) Do not use it<br>
               (Windows mDNS => Install Apple iTunes or Bonjour printer Services for WinDos)<br>
+              </small>
               <hr>
-
+              <small>Nodemcu LED=16, Wemos D1 mini relais=5</small><br> 
               <label for="relaispin">Relais GPIO </label>
               <input type="number" id="relaispin" name="relaispin" value="5">
               invert<input type="checkbox" id="invertrp" ><br>
