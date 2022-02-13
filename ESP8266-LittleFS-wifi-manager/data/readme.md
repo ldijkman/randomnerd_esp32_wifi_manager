@@ -1,1 +1,1 @@
-upload this to spiffs the esp8266 littlefs
+upload this to the esp8266 littlefs
