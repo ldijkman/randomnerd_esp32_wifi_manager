@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Sonoff a Switch multi range slider timeline ESP8266 ESP8285 WiFi relays timed switch</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <script
+    type="text/javascript"
+    src="/js/lib/dummy.js"
+    
+  ></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.css">
+
+  <style id="compiled-css" type="text/css">
+      
+/* 
+external css version 15.5.0
+change the slider CSS a little bit 
+so that handle does not block the view at guide rail
+ */
+
+.noUi-horizontal .noUi-handle {
+  width: 34px;
+  height: 6px;  //28
+  right: -17px;
+  top: -6px;  //6
+}
+
+    /* EOS */
+  </style>
+
+  <script id="insert"></script>
+
+
+</head>
+<body>
+    <a href="https://jsfiddle.net/luberth/ow3zceyn/show/" target="mine">version 13 https://jsfiddle.net/luberth/ow3zceyn/show/</a>
+<br>Sonoff a Switch !<br>
+Big Better Landscape!<br><br>
+<br>
+EWelink only 4 on/off schedule timers? (and 4 me hard to understand the working)<br>
+Are you done with the EWElink advertisements in the app<br>
+Do not want to Share your Phone/Data with Winnie-the-Pooh<br>
+Tasmota Home Assistant, Domoticz to advanced, to complex,  to Nerdy?!<br>
+<br>
+<b>Home Automation made Safe & Easy at no Charge!</b> <br>
+logical mDNS human friendly http://*.local adresses for the relais switches webpage<br>
+User defined friendly url like http://kitchen.local, http://living.local, http://hallway.local, http://cellar.local<br>
+each device automaticly shows a scanned linked list of other devices in the local network on its webpage<br>
+if a new device is added and configured via accesspoint wifi manager it automaticly appears in linked list on all other devices webpages <br>
+and it scanned / linked lists all other http://***.local devices on its own webpage<br>no wifisettings no mdns http://***.local and relais i/o settings hardcoded, all settings user defineble<br>so every device can be programmed with the same code<br><br>
+on Android you can use <a href ="https://play.google.com/store/apps/details?id=de.wellenvogel.bonjourbrowser&hl=en&gl=US" target="hi Electra">Bonjour browser app </a>to see and navigate all devices on the local network<br>or with apple saphari just go to for example http://living.local and from that webpage you can click links to all other devices on the local network<br><br>
+Test to Easy set/overview/timeline auto switch times for ESP8266 ESP8285  WiFi Relais WebServerPage<br><br><br>
+esp8266 comes with different memory sizes?<br>
+my wemos d1 r1 mini with relais shield has a 32mbit chip = 4MB<br>
+<br>
+<a href="http://www.google.com/search?q=nouislider" target="Hey Electra open it in a new browser tab">http://www.google.com/search?q=nouislider</a><br>
+used external nouislider 15.5.0 js en css<br>
+https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.js<br>
+https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.css<br>
+https://cdnjs.com/libraries/noUiSlider<br>
+
+<br><b>writes time data to browser developer console on slider change</b><br>
+open console with keyboard shortcut Ctrl Shift J (on Windows & raspberry pi)<br>	
+Later for JSon data pass??? from browser to ESP8266 ESP8285<br>
+<br>
+<hr>
+<input type="checkbox" id ="checkmonday" name="checkmonday" onchange="boxes()" checked><b>Monday</b> 
+<br><br><br>
+<div id="monday"></div>
+<br><br><br><br>
+<form>
+<input type="checkbox" id ="ct1m" name="cmonday[]" onchange="turnoff()" checked>
+ON <input type ="time" id="mt1" oninput="timeset('mt1')"> OFF <input type ="time" id="mt2" oninput="timeset('mt2')"><br>
+<input type="checkbox" id ="ct2m" name="cmonday[]" onchange="turnoff()" checked>
+ON <input type ="time" id="mt3" oninput="timeset('mt3')"> OFF <input type ="time" id="mt4" oninput="timeset('mt4')"><br>
+<input type="checkbox" id ="ct3m" name="cmonday[]" onchange="turnoff()" checked>
+ON <input type ="time" id="mt5" oninput="timeset('mt5')"> OFF <input type ="time" id="mt6" oninput="timeset('mt6')"><br>
+</form>
+<hr>
+<hr>
+<input type="checkbox" id ="checktuesday" name="checktuesday" onchange="boxes()" checked><b>Tuesday</b>
+<br><br><br>
+<div id="tuesday"></div>
+<br><br><br><br>
+<form>
+<input type="checkbox" id ="ct1tu" onchange="turnoff()" checked>
+ON <input type ="time" id="tut1" oninput="timeset('tut1')"> OFF <input type ="time" id="tut2" oninput="timeset('tut2')"><br>
+<input type="checkbox" id ="ct2tu" onchange="turnoff()" checked>
+ON <input type ="time" id="tut3" oninput="timeset('tut3')"> OFF <input type ="time" id="tut4" oninput="timeset('tut4')"><br>
+<input type="checkbox" id ="ct3tu" onchange="turnoff()" checked>
+ON <input type ="time" id="tut5" oninput="timeset('tut5')"> OFF <input type ="time" id="tut6" oninput="timeset('tut6')"><br>
+</form>
+<hr>
+<center></center>
+<hr>
+<input type="checkbox" checked><b>Wednesday</b>
+<br><br><br>
+<div id="wednesday"></div>
+<br><br><br><br>
+<form>
+<input type="checkbox" id ="ct1w" onchange="turnoff()" checked>
+ON <input type ="time" id="wt1" oninput="timeset('wt1')"> OFF <input type ="time" id="wt2" oninput="timeset('wt2')"><br>
+<input type="checkbox" id ="ct2w" onchange="turnoff()" checked>
+ON <input type ="time" id="wt3" oninput="timeset('wt3')"> OFF <input type ="time" id="wt4" oninput="timeset('wt4')"><br>
+<input type="checkbox" id ="ct3w" onchange="turnoff()" checked>
+ON <input type ="time" id="wt5" oninput="timeset('wt5')"> OFF <input type ="time" id="wt6" oninput="timeset('wt6')"><br>
+</form>
+<hr>
+<center></center>
+<hr>
+<input type="checkbox" checked><b>Thursday</b><br>
+<br><div id="thursday">
+</div>
+<br><br><br><br>
+<form>
+<input type="checkbox" id ="ct1th" onchange="turnoff()" checked>
+ON <input type ="time" id="tht1" oninput="timeset('tht1')"> OFF <input type ="time" id="tht2" oninput="timeset('tht2')"><br>
+<input type="checkbox" id ="ct2th" onchange="turnoff()" checked>
+ON <input type ="time" id="tht3" oninput="timeset('tht3')"> OFF <input type ="time" id="tht4" oninput="timeset('tht4')"><br>
+<input type="checkbox" id ="ct3th" onchange="turnoff()" checked>
+ON <input type ="time" id="tht5" oninput="timeset('tht5')"> OFF <input type ="time" id="tht6" oninput="timeset('tht6')"><br>
+</form>
+<hr>
+<center></center>
+<hr>
+<input type="checkbox"><b>Friday</b><br>
+<br><div id="friday">
+</div>
+<br><br><br><br>
+<form>
+<input type="checkbox" id ="ct1fr" onchange="turnoff()" checked>
+ON <input type ="time" id="frt1" oninput="timeset('frt1')"> OFF <input type ="time" id="frt2" oninput="timeset('frt2')"><br>
+<input type="checkbox" id ="ct2fr" onchange="turnoff()" checked>
+ON <input type ="time" id="frt3" oninput="timeset('frt3')"> OFF <input type ="time" id="frt4" oninput="timeset('tht4')"><br>
+<input type="checkbox" id ="ct3fr" onchange="turnoff()" checked>
+ON <input type ="time" id="frt5" oninput="timeset('frt5')"> OFF <input type ="time" id="frt6" oninput="timeset('frt6')"><br>
+</form>
+<hr>
+<center></center>
+<hr>
+<input type="checkbox"><b>Saturday</b><br>
+<br><div id="saturday">
+</div>
+<br><br><br><br>
+<form>
+<input type="checkbox" id ="ct1sa" onchange="turnoff()" checked>
+ON <input type ="time" id="sat1" oninput="timeset('sat1')"> OFF <input type ="time" id="sat2" oninput="timeset('sat2')"><br>
+<input type="checkbox" id ="ct2sa" onchange="turnoff()" checked>
+ON <input type ="time" id="sat3" oninput="timeset('sat3')"> OFF <input type ="time" id="sat4" oninput="timeset('sat4')"><br>
+<input type="checkbox" id ="ct3sa" onchange="turnoff()" checked>
+ON <input type ="time" id="sat5" oninput="timeset('sat5')"> OFF <input type ="time" id="sat6" oninput="timeset('sat6')"><br>
+</form>
+<hr>
+<center></center>
+<hr>
+<input type="checkbox"><b>Sunday</b><br>
+<br><div id="sunday">
+</div>
+<br><br><br><br>
+<form>
+<input type="checkbox" id ="ct1su" onchange="turnoff()" checked>
+ON <input type ="time" id="sut1" oninput="timeset('sut1')"> OFF <input type ="time" id="sut2" oninput="timeset('sut2')"><br>
+<input type="checkbox" id ="ct2su" onchange="turnoff()" checked>
+ON <input type ="time" id="sut3" oninput="timeset('sut3')"> OFF <input type ="time" id="sut4" oninput="timeset('sut4')"><br>
+<input type="checkbox" id ="ct3su" onchange="turnoff()" checked>
+ON <input type ="time" id="sut5" oninput="timeset('sut5')"> OFF <input type ="time" id="sut6" oninput="timeset('sut6')"><br>
+</form>
+<hr>
+<center></center>
+<hr>
+<input type="checkbox"><b>Every Day of the Week</b><br>
+<br><div id="everyday">
+</div>
+<br><br><br><br>
+<form>
+<input type="checkbox" id ="ct1ed" onchange="turnoff()" checked>
+ON <input type ="time" id="edt1" oninput="timeset('edt1')"> OFF <input type ="time" id="edt2" oninput="timeset('edt2')"><br>
+<input type="checkbox" id ="ct2ed" onchange="turnoff()" checked>
+ON <input type ="time" id="edt3" oninput="timeset('edt3')"> OFF <input type ="time" id="edt4" oninput="timeset('edt4')"><br>
+<input type="checkbox" id ="ct3ed" onchange="turnoff()" checked>
+ON <input type ="time" id="edt5" oninput="timeset('edt5')"> OFF <input type ="time" id="edt6" oninput="timeset('edt6')"><br>
+</form>
+<hr><input type="checkbox"><b>Weekdays Monday ... Friday</b><br>
+<br><div id="weekdays">
+</div>
+<br><br><br><br>
+<form>
+<input type="checkbox" id ="ct1wd" onchange="turnoff()" checked>
+ON <input type ="time" id="wdt1" oninput="timeset('wdt1')"> OFF <input type ="time" id="wdt2" oninput="timeset('wdt2')"><br>
+<input type="checkbox" id ="ct2wd" onchange="turnoff()" checked>
+ON <input type ="time" id="wdt3" oninput="timeset('wdt3')"> OFF <input type ="time" id="wdt4" oninput="timeset('wdt4')"><br>
+<input type="checkbox" id ="ct3wd" onchange="turnoff()" checked>
+ON <input type ="time" id="wdt5" oninput="timeset('wdt5')"> OFF <input type ="time" id="wdt6" oninput="timeset('wdt6')"><br>
+</form>
+<hr><input type="checkbox"><b>Weekends Saturday Sunday</b> <br>
+<br><div id="weekends">
+</div>
+<br><br><br><br>
+<form>
+<input type="checkbox" id ="ct1wend" onchange="turnoff()" checked>
+ON <input type ="time" id="wendt1" oninput="timeset('wendt1')"> OFF <input type ="time" id="wendt2" oninput="timeset('wendt2')"><br>
+<input type="checkbox" id ="ct2wend" onchange="turnoff()" checked>
+ON <input type ="time" id="wendt3" oninput="timeset('wendt3')"> OFF <input type ="time" id="wendt4" oninput="timeset('wendt4')"><br>
+<input type="checkbox" id ="ct3wend" onchange="turnoff()" checked>
+ON <input type ="time" id="wendt5" oninput="timeset('wendt5')"> OFF <input type ="time" id="wendt6" oninput="timeset('wendt6')"><br>
+</form>
+<hr><input type="checkbox"><b>User Defined Days</b><br>
+<table style="border-collapse: collapse;" border = "1">
+	<tbody>
+		<tr>
+			<td> mon </td>
+			<td> tue </td>
+			<td >wed </td>
+			<td> thu </td>
+			<td> fri </td>
+			<td> sat </td>
+			<td> sun </td>
+		</tr>
+		<tr>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+		</tr>
+	</tbody>
+</table>
+<br><br><br>
+<br><div id="userdefined">
+</div>
+<br><br><br><br>
+<form>
+<input type="checkbox" id ="ct1ud" onchange="turnoff()" checked>
+ON <input type ="time" id="udt1" oninput="timeset('udt1')"> OFF <input type ="time" id="udt2" oninput="timeset('udt2')"><br>
+<input type="checkbox" id ="ct2ud" onchange="turnoff()" checked>
+ON <input type ="time" id="udt3" oninput="timeset('udt3')"> OFF <input type ="time" id="udt4" oninput="timeset('udt4')"><br>
+<input type="checkbox" id ="ct3ud" onchange="turnoff()" checked>
+ON <input type ="time" id="udt5" oninput="timeset('udt5')"> OFF <input type ="time" id="udt6" oninput="timeset('udt6')"><br>
+</form>
+<hr><hr><br>
+<input type="checkbox"><b>User Defined Days on even and/or odd weeknumbers </b><br>
+<table style="border-collapse: collapse;" border = "1">
+	<tbody>
+		<tr>
+			<td> mon </td>
+			<td> tue </td>
+			<td >wed </td>
+			<td> thu </td>
+			<td> fri </td>
+			<td> sat </td>
+			<td> sun </td>
+		</tr>
+		<tr>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+		</tr>
+	</tbody>
+</table>
+<table style="border-collapse: collapse;" border = "1">
+<tbody>
+		<tr>
+			<td> even weeknumber </td>
+			<td> odd weeknumber </td>
+		</tr>
+		<tr>
+			<td><center><input type="checkbox"></center> </td>
+			<td><center><input type="checkbox"></center> </td>
+		</tr>
+	</tbody>
+</table>
+<hr><hr><br>
+<input type="checkbox"><b>User Defined Days on even and/or odd weeknumbers </b><br>
+<table style="border-collapse: collapse;" border = "1">
+	<tbody>
+		<tr>
+			<td> mon </td>
+			<td> tue </td>
+			<td >wed </td>
+			<td> thu </td>
+			<td> fri </td>
+			<td> sat </td>
+			<td> sun </td>
+		</tr>
+		<tr>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+		</tr>
+	</tbody>
+</table>
+<table style="border-collapse: collapse;" border = "1">
+<tbody>
+		<tr>
+			<td> even weeknumber </td>
+			<td> odd weeknumber </td>
+		</tr>
+		<tr>
+			<td><center><input type="checkbox"></center> </td>
+			<td><center><input type="checkbox"></center></td>
+		</tr>
+	</tbody>
+</table>
+<hr><hr><br>
+changed to behaviour drag<br>
+drag by handles only<br>
+to prevent accidental touch change<br>
+<br>
+hmmmm???? why is drag connected handles still working<br>
+<br>
+how do i make the timescale better <br>
+red line marker actual time on bar<br>
+marker sunrise, sunset on bar<br>
+<br>
+join / merge overlapping tooltips<br>
+enable disable a day / slider with checkbox or disable/hide a set on/off handles<br>
+<br><br>
+<a href="http://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/tree/main/test/art_test_1/Remote_WiFi_Sense_Switch" target="hey_Electra_open_a_new_window">
+http://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/tree/main/test/art_test_1/Remote_WiFi_Sense_Switch</a><br><br><b><br>
+Hey Electra?!, Please let me Sleep!<br>
+<br>
+<br>
+<br>
+<hr>
+<h1>Electra, Could use some Help?!</h1><h4>
+putting this timerset webpage inside next ESP8266 ESP8285 relais webserver code
+</h4><a href="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/art_test_1/Remote_WiFi_Sense_Switch/ESP8266_MDNS_Hostname_relais_switch_list_other_on_webpage.ino.ino" target="Electra_go4it">https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/art_test_1/Remote_WiFi_Sense_Switch/ESP8266_MDNS_Hostname_relais_switch_list_other_on_webpage.ino.ino</a>
+<br>
+<hr>
+<br><br><br>
+ <a href="https://m.facebook.com/groups/esp32smartthermostat/" target="Hey Electra open it in a new browser tab">https://m.facebook.com/groups/esp32smartthermostat</a><br>
+ <center>
+<br>
+Done with it, within a week, Saying Hi Google<br>
+Oh Alexa sounds like Calling Jeff Bezos's Bitch<br>
+Who wants to say, Hi Bixby, Siri, Cortana<br>
+<br>
+Hey Electra, You make Sense!<br>
+<br>
+<a href="https://github.com/ldijkman/Hey_Electra" target="Hey_Electra">https://github.com/ldijkman/Hey_Electra</a>
+<br><br>A &copy;&Ograve;&Oacute;&THORN;&egrave;&reg; Test. 2021<br><br>
+<a href="https://www.youtube.com/watch?v=XzO9jGPtrhc" target="The_King_had_a_girlfriend_named_Electra">https://www.youtube.com/watch?v=XzO9jGPtrhc</a>
+</center>
+
+    <script type="text/javascript">//<![CDATA[
+
+
+// external js version 15.5.0
+
+
+var numberToTime = function(n) {
+  // 0 to 1440 minutes a day convert it to hh:mm
+  // document.getElementById("demon").innerHTML = n;
+  // n = 0 to 1440 
+  var hour = Math.floor(n / 60); // h or hh
+  var minute = Math.floor(n - hour * 60); // m or mm
+  if (minute <= 9) minute = "0" + minute; // mm
+  if (hour <= 9) hour = "0" + hour; // hh
+  return hour + ":" + minute; // hh:mm
+  // next is not working correct quite some minutes calculated wrong
+  // return `0${n / 60 ^ 0}`.slice(-2) + ':' + ('0' + n % 60).slice(-2);
+}
+
+var numberToTime2 = function(n) {
+
+  var hour = Math.floor(n / 60);
+  return hour;
+}
+
+
+// add a leasing zero for 0 to 9 0h:mm and hh:mm
+// for input type time
+var numberToTime3 = function(n) {
+  // 0 to 1440 minutes a day convert it to hh:mm
+  // document.getElementById("demon").innerHTML = n;
+  // n = 0 to 1440 
+  var hour = Math.floor(n / 60); // h or hh
+  var minute = Math.floor(n - hour * 60); // m or mm
+  if (minute <= 9) minute = "0" + minute; // mm
+  // if (hour <= 9)hour = "0"+hour;       // hh
+  return hour + ":" + minute; // hh:mm
+
+}
+
+
+
+//next variables should be set by ESP8266 ESP8285 before/on pageload replaced with values actual values know by esp
+
+
+
+var mon_1 = 6 * 60; // on hours in minutes
+var mon_2 = 9 * 60; // off hours in minutes
+var mon_3 = 11 * 60; // on hours in minutes
+var mon_4 = 13 * 60; // off hours in minute
+var mon_5 = 19 * 60; // on hours in minutes
+var mon_6 = 23 * 60; // off hours in minutes
+
+var tue_1 = 1 * 60; // on hours in minutes
+var tue_2 = 7 * 60; // off hours in minutes
+var tue_3 = 18 * 60; // on hours in minutes
+var tue_4 = 19 * 60; // off hours in minutes
+var tue_5 = 21 * 60; // on hours in minutes
+var tue_6 = 23 * 60 + 30; // off hours in minutes
+
+var wed_1 = 5 * 60; // on hours in minutes
+var wed_2 = 6 * 60; // off hours in minutes
+var wed_3 = 16 * 60; // on hours in minutes
+var wed_4 = 18 * 60; // off hours in minutes
+var wed_5 = 20 * 60; // on hours in minutes
+var wed_6 = 22 * 60 + 45; // off hours in minutes
+
+var thu_1 = 5 * 60; // on hours in minutes
+var thu_2 = 6 * 60; // off hours in minutes
+var thu_3 = 16 * 60; // on hours in minutes
+var thu_4 = 18 * 60; // off hours in minutes
+var thu_5 = 20 * 60; // on hours in minutes
+var thu_6 = 22 * 60 + 45; // off hours in minutes
+
+var fri_1 = 5 * 60; // on hours in minutes
+var fri_2 = 6 * 60; // off hours in minutes
+var fri_3 = 16 * 60; // on hours in minutes
+var fri_4 = 18 * 60; // off hours in minutes
+var fri_5 = 20 * 60; // on hours in minutes
+var fri_6 = 22 * 60 + 45; // off hours in minutes
+
+var sat_1 = 5 * 60; // on hours in minutes
+var sat_2 = 6 * 60; // off hours in minutes
+var sat_3 = 16 * 60; // on hours in minutes
+var sat_4 = 18 * 60; // off hours in minutes
+var sat_5 = 20 * 60; // on hours in minutes
+var sat_6 = 22 * 60 + 45; // off hours in minutes
+
+var sun_1 = 5 * 60; // on hours in minutes
+var sun_2 = 6 * 60; // off hours in minutes
+var sun_3 = 16 * 60; // on hours in minutes
+var sun_4 = 18 * 60; // off hours in minutes
+var sun_5 = 20 * 60; // on hours in minutes
+var sun_6 = 22 * 60 + 45; // off hours in minutes
+
+var everyday_1 = 5 * 60; // on hours in minutes
+var everyday_2 = 6 * 60; // off hours in minutes
+var everyday_3 = 16 * 60; // on hours in minutes
+var everyday_4 = 18 * 60; // off hours in minutes
+var everyday_5 = 20 * 60; // on hours in minutes
+var everyday_6 = 22 * 60 + 45; // off hours in minutes
+
+var weekdays_1 = 5 * 60; // on hours in minutes
+var weekdays_2 = 6 * 60; // off hours in minutes
+var weekdays_3 = 16 * 60; // on hours in minutes
+var weekdays_4 = 18 * 60; // off hours in minutes
+var weekdays_5 = 20 * 60; // on hours in minutes
+var weekdays_6 = 22 * 60 + 45; // off hours in minutes
+
+var weekends_1 = 5 * 60; // on hours in minutes
+var weekends_2 = 6 * 60; // off hours in minutes
+var weekends_3 = 16 * 60; // on hours in minutes
+var weekends_4 = 18 * 60; // off hours in minutes
+var weekends_5 = 20 * 60; // on hours in minutes
+var weekends_6 = 22 * 60 + 45; // off hours in minutes
+
+var userdefined_1 = 5 * 60; // on hours in minutes
+var userdefined_2 = 6 * 60; // off hours in minutes
+var userdefined_3 = 16 * 60; // on hours in minutes
+var userdefined_4 = 18 * 60; // off hours in minutes
+var userdefined_5 = 20 * 60; // on hours in minutes
+var userdefined_6 = 22 * 60 + 45; // off hours in minutes
+
+
+
+
+
+
+
+
+var slider = document.getElementById("monday");
+noUiSlider.create(monday, {
+  start: [mon_1, mon_2, mon_3, mon_4, mon_5, mon_6],
+  connect: [false, true, false, true, false, true, false],
+  step: 1,
+  behaviour: "none",
+  tooltips: [true, true, true, true, true, true],
+  format: {
+    to: numberToTime, // numberToTime3 tooltip no leading 0 for hours
+    from: Number
+  },
+  range: {
+    'min': 0,
+    'max': 1440
+  },
+  pips: {
+    mode: 'count',
+    values: 25,
+    format: {
+      to: numberToTime2,
+      from: Number
+    },
+  }
+
+});
+
+
+
+
+
+var slider = document.getElementById("tuesday");
+noUiSlider.create(tuesday, {
+  start: [tue_1, tue_2, tue_3, tue_4, tue_5, tue_6],
+  connect: [false, true, false, true, false, true, false],
+  step: 1,
+  behaviour: "none",
+  tooltips: [true, true, true, true, true, true],
+  format: {
+    to: numberToTime, // numberToTime3 no leading 0 for hours
+    from: Number
+  },
+  range: {
+    'min': 0,
+    'max': 1440
+  },
+  pips: {
+    mode: 'count',
+    values: 25,
+    format: {
+      to: numberToTime2,
+      from: Number
+    },
+  }
+});
+
+
+
+
+var slider = document.getElementById("wednesday");
+noUiSlider.create(wednesday, {
+  start: [wed_1, wed_2, wed_3, wed_4, wed_5, wed_6],
+  connect: [false, true, false, true, false, true, false],
+  step: 1,
+  behaviour: "none",
+  tooltips: [true, true, true, true, true, true],
+  format: {
+    to: numberToTime, // numberToTime3 no leading 0 for hours
+    from: Number
+  },
+  range: {
+    'min': 0,
+    'max': 1440
+  },
+  pips: {
+    mode: 'count',
+    values: 25,
+    format: {
+      to: numberToTime2,
+      from: Number
+    },
+  }
+});
+
+
+
+
+var slider = document.getElementById("thursday");
+noUiSlider.create(thursday, {
+  start: [thu_1, thu_2, thu_3, thu_4, thu_5, thu_6],
+  connect: [false, true, false, true, false, true, false],
+  step: 1,
+  behaviour: "none",
+  tooltips: [true, true, true, true, true, true],
+  format: {
+    to: numberToTime, // numberToTime3 no leading 0 for hours
+    from: Number
+  },
+  range: {
+    'min': 0,
+    'max': 1440
+  },
+  pips: {
+    mode: 'count',
+    values: 25,
+    format: {
+      to: numberToTime2,
+      from: Number
+    },
+  }
+});
+
+
+
+
+var slider = document.getElementById("friday");
+noUiSlider.create(friday, {
+  start: [fri_1, fri_2, fri_3, fri_4, fri_5, fri_6],
+  connect: [false, true, false, true, false, true, false],
+  step: 1,
+  behaviour: "none",
+  tooltips: [true, true, true, true, true, true],
+  format: {
+    to: numberToTime, // numberToTime3 no leading 0 for hours
+    from: Number
+  },
+  range: {
+    'min': 0,
+    'max': 1440
+  },
+  pips: {
+    mode: 'count',
+    values: 25,
+    format: {
+      to: numberToTime2,
+      from: Number
+    },
+  }
+});
+
+
+
+
+var slider = document.getElementById("saturday");
+noUiSlider.create(saturday, {
+  start: [sat_1, sat_2, sat_3, sat_4, sat_5, sat_6],
+  connect: [false, true, false, true, false, true, false],
+  step: 1,
+  behaviour: "none",
+  tooltips: [true, true, true, true, true, true],
+  format: {
+    to: numberToTime, // numberToTime3 no leading 0 for hours
+    from: Number
+  },
+  range: {
+    'min': 0,
+    'max': 1440
+  },
+  pips: {
+    mode: 'count',
+    values: 25,
+    format: {
+      to: numberToTime2,
+      from: Number
+    },
+  }
+});
+
+
+
+
+var slider = document.getElementById("sunday");
+noUiSlider.create(sunday, {
+  start: [sun_1, sun_2, sun_3, sun_4, sun_5, sun_6],
+  connect: [false, true, false, true, false, true, false],
+  step: 1,
+  behaviour: "none",
+  tooltips: [true, true, true, true, true, true],
+  format: {
+    to: numberToTime, // numberToTime3 no leading 0 for hours
+    from: Number
+  },
+  range: {
+    'min': 0,
+    'max': 1440
+  },
+  pips: {
+    mode: 'count',
+    values: 25,
+    format: {
+      to: numberToTime2,
+      from: Number
+    },
+  }
+});
+
+
+
+var slider = document.getElementById("everyday");
+noUiSlider.create(everyday, {
+  start: [everyday_1, everyday_2, everyday_3, everyday_4, everyday_5, everyday_6],
+  connect: [false, true, false, true, false, true, false],
+  step: 1,
+  behaviour: "none",
+  tooltips: [true, true, true, true, true, true],
+  format: {
+    to: numberToTime, // numberToTime3 no leading 0 for hours
+    from: Number
+  },
+  range: {
+    'min': 0,
+    'max': 1440
+  },
+  pips: {
+    mode: 'count',
+    values: 25,
+    format: {
+      to: numberToTime2,
+      from: Number
+    },
+  }
+});
+
+
+
+
+var slider = document.getElementById("weekdays");
+noUiSlider.create(weekdays, {
+  start: [weekdays_1, weekdays_2, weekdays_3, weekdays_4, weekdays_5, weekdays_6],
+  connect: [false, true, false, true, false, true, false],
+  step: 1,
+  behaviour: "none",
+  tooltips: [true, true, true, true, true, true],
+  format: {
+    to: numberToTime, // numberToTime3 no leading 0 for hours
+    from: Number
+  },
+  range: {
+    'min': 0,
+    'max': 1440
+  },
+  pips: {
+    mode: 'count',
+    values: 25,
+    format: {
+      to: numberToTime2,
+      from: Number
+    },
+  }
+});
+
+
+
+
+var slider = document.getElementById("weekends");
+noUiSlider.create(weekends, {
+  start: [weekends_1, weekends_2, weekends_3, weekends_4, weekends_5, weekends_6],
+  connect: [false, true, false, true, false, true, false],
+  step: 1,
+  behaviour: "none",
+  tooltips: [true, true, true, true, true, true],
+  format: {
+    to: numberToTime, // numberToTime3 no leading 0 for hours
+    from: Number
+  },
+  range: {
+    'min': 0,
+    'max': 1440
+  },
+  pips: {
+    mode: 'count',
+    values: 25,
+    format: {
+      to: numberToTime2,
+      from: Number
+    },
+  }
+});
+
+
+
+
+
+var slider = document.getElementById("userdefined");
+noUiSlider.create(userdefined, {
+  start: [userdefined_1, userdefined_2, userdefined_3, userdefined_4, userdefined_5, userdefined_6],
+  connect: [false, true, false, true, false, true, false],
+  step: 1,
+  behaviour: "none",
+  tooltips: [true, true, true, true, true, true],
+  format: {
+    to: numberToTime, // numberToTime3 no leading 0 for hours
+    from: Number
+  },
+  range: {
+    'min': 0,
+    'max': 1440
+  },
+  pips: {
+    mode: 'count',
+    values: 25,
+    format: {
+      to: numberToTime2,
+      from: Number
+    },
+  }
+});
+
+
+
+
+
+
+
+
+boxes() // check the checkboxes
+
+
+
+
+function boxes() {
+  //https://refreshless.com/nouislider/more/#section-disable
+  if (checkmonday.checked) {
+    monday.removeAttribute('disabled');
+  } else {
+    monday.setAttribute('disabled', true);
+  }
+
+
+  if (checktuesday.checked) {
+    tuesday.removeAttribute('disabled');
+  } else {
+    tuesday.setAttribute('disabled', true);
+  }
+
+
+}
+
+
+
+function turnoff() {
+  //https://refreshless.com/nouislider/more/#section-disable
+  /*
+  if (document.getElementsByName("cmonday[]").checked) {
+    monday.removeAttribute('disabled');
+  } else {
+    monday.setAttribute('disabled', true);
+  }
+
+ 
+  if (checktuesday.checked) {
+    tuesday.removeAttribute('disabled');
+  } else {
+    tuesday.setAttribute('disabled', true);
+  }
+  
+}
+*/
+}
+
+var checkbox2 = document.getElementById('ct1m'),
+  checkbox3 = document.getElementById('ct2m'),
+  origins = monday.getElementsByClassName('noUi-origin');
+
+ct1m.addEventListener('click', function() {
+ monday.noUiSlider.set([ 0]);
+  monday.noUiSlider.set([null, 0]);
+  toggle.call(this, origins[0]);
+  toggle.call(this, origins[1]);
+});
+
+
+ct2m.addEventListener('click', function() {
+ monday.noUiSlider.set([ null,null,0]);
+  monday.noUiSlider.set([null,null,null, 0]);
+  toggle.call(this, origins[2]);
+  toggle.call(this, origins[3]);
+});
+
+ct3m.addEventListener('click', function() {
+ monday.noUiSlider.set([ null,null,null,null,1440]);
+  monday.noUiSlider.set([null,null,null,null,null, 1440]);
+  toggle.call(this, origins[4]);
+  toggle.call(this, origins[5]);
+});
+
+
+function toggle(element) {
+
+  // If the checkbox is checked, disabled the slider.
+  // Otherwise, re-enable it.
+
+  if (this.checked) {
+    element.removeAttribute('disabled');
+
+  } else {
+    element.setAttribute('disabled', true);
+  }
+}
+
+
+
+
+// wich input type time field gives new data oninput(timeset(wichfield))
+function timeset(wich) {
+  //document.getElementById("checkbox").checked = true;
+  //tuesday.noUiSlider.set(getElementById("leftvalue").value);
+  //tuesday.noUiSlider.set([null, getElementById("rigthvalue").value]);
+
+  var x = document.getElementById(wich).value;
+
+  var a = x.split(':'); // split it at the colons
+
+  // Hours x 60 minutes + minutes = time in minutes.
+  var minutes = (+a[0]) * 60 + (+a[1]);
+
+  //document.getElementById("demooff").innerHTML = minutes;
+  console.log("wich " + wich.id); // maybe a bit strange
+
+
+  switch (wich) { // wich input type time field gives new data oninput
+
+    case "mt1":
+      monday.noUiSlider.set(minutes);
+      break;
+    case "mt2":
+      monday.noUiSlider.set([null, minutes]);
+      break;
+    case "mt3":
+      monday.noUiSlider.set([null, null, minutes]);
+      break;
+    case "mt4":
+      monday.noUiSlider.set([null, null, null, minutes]);
+      break;
+    case "mt5":
+      monday.noUiSlider.set([null, null, null, null, minutes]);
+      break;
+    case "mt6":
+      monday.noUiSlider.set([null, null, null, null, null, minutes]);
+      break;
+
+
+    case "tut1":
+      tuesday.noUiSlider.set(minutes);
+      break;
+    case "tut2":
+      tuesday.noUiSlider.set([null, minutes]);
+      break;
+    case "tut3":
+      tuesday.noUiSlider.set([null, null, minutes]);
+      break;
+    case "tut4":
+      tuesday.noUiSlider.set([null, null, null, minutes]);
+      break;
+    case "tut5":
+      tuesday.noUiSlider.set([null, null, null, null, minutes]);
+      break;
+    case "tut6":
+      tuesday.noUiSlider.set([null, null, null, null, null, minutes]);
+      break;
+
+
+    case "wt1":
+      wednesday.noUiSlider.set(minutes);
+      break;
+    case "wt2":
+      wednesday.noUiSlider.set([null, minutes]);
+      break;
+    case "wt3":
+      wednesday.noUiSlider.set([null, null, minutes]);
+      break;
+    case "wt4":
+      wednesday.noUiSlider.set([null, null, null, minutes]);
+      break;
+    case "wt5":
+      wednesday.noUiSlider.set([null, null, null, null, minutes]);
+      break;
+    case "wt6":
+      wednesday.noUiSlider.set([null, null, null, null, null, minutes]);
+      break;
+
+
+    case "tht1":
+      thursday.noUiSlider.set(minutes);
+      break;
+    case "tht2":
+      thursday.noUiSlider.set([null, minutes]);
+      break;
+    case "tht3":
+      thursday.noUiSlider.set([null, null, minutes]);
+      break;
+    case "tht4":
+      thursday.noUiSlider.set([null, null, null, minutes]);
+      break;
+    case "tht5":
+      thursday.noUiSlider.set([null, null, null, null, minutes]);
+      break;
+    case "tht6":
+      thursday.noUiSlider.set([null, null, null, null, null, minutes]);
+      break;
+
+
+    case "frt1":
+      friday.noUiSlider.set(minutes);
+      break;
+    case "frt2":
+      friday.noUiSlider.set([null, minutes]);
+      break;
+    case "frt3":
+      friday.noUiSlider.set([null, null, minutes]);
+      break;
+    case "frt4":
+      friday.noUiSlider.set([null, null, null, minutes]);
+      break;
+    case "frt5":
+      friday.noUiSlider.set([null, null, null, null, minutes]);
+      break;
+    case "frt6":
+      friday.noUiSlider.set([null, null, null, null, null, minutes]);
+      break;
+
+
+
+    case "sat1":
+      saturday.noUiSlider.set(minutes);
+      break;
+    case "sat2":
+      saturday.noUiSlider.set([null, minutes]);
+      break;
+    case "sat3":
+      saturday.noUiSlider.set([null, null, minutes]);
+      break;
+    case "sat4":
+      saturday.noUiSlider.set([null, null, null, minutes]);
+      break;
+    case "sat5":
+      saturday.noUiSlider.set([null, null, null, null, minutes]);
+      break;
+    case "sat6":
+      saturday.noUiSlider.set([null, null, null, null, null, minutes]);
+      break;
+
+
+    case "sut1":
+      sunday.noUiSlider.set(minutes);
+      break;
+    case "sut2":
+      sunday.noUiSlider.set([null, minutes]);
+      break;
+    case "sut3":
+      sunday.noUiSlider.set([null, null, minutes]);
+      break;
+    case "sut4":
+      sunday.noUiSlider.set([null, null, null, minutes]);
+      break;
+    case "sut5":
+      sunday.noUiSlider.set([null, null, null, null, minutes]);
+      break;
+    case "sut6":
+      sunday.noUiSlider.set([null, null, null, null, null, minutes]);
+      break;
+
+
+    case "edt1":
+      everyday.noUiSlider.set(minutes);
+      break;
+    case "edt2":
+      everyday.noUiSlider.set([null, minutes]);
+      break;
+    case "edt3":
+      everyday.noUiSlider.set([null, null, minutes]);
+      break;
+    case "edt4":
+      everyday.noUiSlider.set([null, null, null, minutes]);
+      break;
+    case "edt5":
+      everyday.noUiSlider.set([null, null, null, null, minutes]);
+      break;
+    case "edt6":
+      everyday.noUiSlider.set([null, null, null, null, null, minutes]);
+      break;
+
+
+    case "wdt1":
+      weekdays.noUiSlider.set(minutes);
+      break;
+    case "wdt2":
+      weekdays.noUiSlider.set([null, minutes]);
+      break;
+    case "wdt3":
+      weekdays.noUiSlider.set([null, null, minutes]);
+      break;
+    case "wdt4":
+      weekdays.noUiSlider.set([null, null, null, minutes]);
+      break;
+    case "wdt5":
+      weekdays.noUiSlider.set([null, null, null, null, minutes]);
+      break;
+    case "wdt6":
+      weekdays.noUiSlider.set([null, null, null, null, null, minutes]);
+      break;
+
+
+    case "wendt1":
+      weekends.noUiSlider.set(minutes);
+      break;
+    case "wendt2":
+      weekends.noUiSlider.set([null, minutes]);
+      break;
+    case "wendt3":
+      weekends.noUiSlider.set([null, null, minutes]);
+      break;
+    case "wendt4":
+      weekends.noUiSlider.set([null, null, null, minutes]);
+      break;
+    case "wendt5":
+      weekends.noUiSlider.set([null, null, null, null, minutes]);
+      break;
+    case "wendt6":
+      weekends.noUiSlider.set([null, null, null, null, null, minutes]);
+      break;
+
+
+    case "udt1":
+      userdefined.noUiSlider.set(minutes);
+      break;
+    case "udt2":
+      userdefined.noUiSlider.set([null, minutes]);
+      break;
+    case "udt3":
+      userdefined.noUiSlider.set([null, null, minutes]);
+      break;
+    case "udt4":
+      userdefined.noUiSlider.set([null, null, null, minutes]);
+      break;
+    case "udt5":
+      userdefined.noUiSlider.set([null, null, null, null, minutes]);
+      break;
+    case "udt6":
+      userdefined.noUiSlider.set([null, null, null, null, null, minutes]);
+      break;
+
+  }
+
+
+}
+
+
+
+// event triggered when slider is changed cq set
+monday.noUiSlider.on('set', function() {
+  writetoconsole(monday); // pass parameter monday
+});
+
+tuesday.noUiSlider.on('set', function() {
+  writetoconsole(tuesday); // pass parameter tuesday
+});
+
+wednesday.noUiSlider.on('set', function() {
+  writetoconsole(wednesday);
+});
+
+thursday.noUiSlider.on('set', function() {
+  writetoconsole(thursday);
+});
+
+friday.noUiSlider.on('set', function() {
+  writetoconsole(friday);
+});
+
+saturday.noUiSlider.on('set', function() {
+  writetoconsole(saturday);
+});
+
+sunday.noUiSlider.on('set', function() {
+  writetoconsole(sunday);
+});
+
+everyday.noUiSlider.on('set', function() {
+  writetoconsole(everyday);
+});
+
+weekdays.noUiSlider.on('set', function() {
+  writetoconsole(weekdays);
+});
+
+weekends.noUiSlider.on('set', function() {
+  writetoconsole(weekends);
+});
+
+userdefined.noUiSlider.on('set', function() {
+  writetoconsole(userdefined);
+});
+
+
+
+
+// set input type time fields from slider            
+monday.noUiSlider.on('update', function(values, handle, unEncodedValues) {
+
+  mt1.value = values[0];
+  mt2.value = values[1];
+  mt3.value = values[2];
+  mt4.value = values[3];
+  mt5.value = values[4];
+  mt6.value = values[5];
+
+  console.log("monday unEncodedValues " + unEncodedValues);
+});
+
+
+// set input type time fields from slider            
+tuesday.noUiSlider.on('update', function(values, handle, unEncodedValues) {
+
+  tut1.value = values[0];
+  tut2.value = values[1];
+  tut3.value = values[2];
+  tut4.value = values[3];
+  tut5.value = values[4];
+  tut6.value = values[5];
+
+  console.log("tuesday unEncodedValues " + unEncodedValues);
+});
+
+
+// set input type time fields from slider            
+wednesday.noUiSlider.on('update', function(values, handle, unEncodedValues) {
+
+  wt1.value = values[0];
+  wt2.value = values[1];
+  wt3.value = values[2];
+  wt4.value = values[3];
+  wt5.value = values[4];
+  wt6.value = values[5];
+
+  console.log("wednesday unEncodedValues " + unEncodedValues);
+});
+
+
+// set input type time fields from slider            
+thursday.noUiSlider.on('update', function(values, handle, unEncodedValues) {
+
+  tht1.value = values[0];
+  tht2.value = values[1];
+  tht3.value = values[2];
+  tht4.value = values[3];
+  tht5.value = values[4];
+  tht6.value = values[5];
+
+  console.log("thursday unEncodedValues " + unEncodedValues);
+});
+
+
+// set input type time fields from slider            
+friday.noUiSlider.on('update', function(values, handle, unEncodedValues) {
+
+  frt1.value = values[0];
+  frt2.value = values[1];
+  frt3.value = values[2];
+  frt4.value = values[3];
+  frt5.value = values[4];
+  frt6.value = values[5];
+
+  console.log("friday unEncodedValues " + unEncodedValues);
+});
+
+
+// set input type time fields from slider            
+saturday.noUiSlider.on('update', function(values, handle, unEncodedValues) {
+
+  sat1.value = values[0];
+  sat2.value = values[1];
+  sat3.value = values[2];
+  sat4.value = values[3];
+  sat5.value = values[4];
+  sat6.value = values[5];
+
+  console.log("saturday unEncodedValues " + unEncodedValues);
+});
+
+
+// set input type time fields from slider            
+sunday.noUiSlider.on('update', function(values, handle, unEncodedValues) {
+
+  sut1.value = values[0];
+  sut2.value = values[1];
+  sut3.value = values[2];
+  sut4.value = values[3];
+  sut5.value = values[4];
+  sut6.value = values[5];
+
+  console.log("sunday unEncodedValues " + unEncodedValues);
+});
+
+
+// set input type time fields from slider            
+everyday.noUiSlider.on('update', function(values, handle, unEncodedValues) {
+
+  edt1.value = values[0];
+  edt2.value = values[1];
+  edt3.value = values[2];
+  edt4.value = values[3];
+  edt5.value = values[4];
+  edt6.value = values[5];
+
+  console.log("everyday unEncodedValues " + unEncodedValues);
+});
+
+
+// set input type time fields from slider            
+weekdays.noUiSlider.on('update', function(values, handle, unEncodedValues) {
+
+  wdt1.value = values[0];
+  wdt2.value = values[1];
+  wdt3.value = values[2];
+  wdt4.value = values[3];
+  wdt5.value = values[4];
+  wdt6.value = values[5];
+
+  console.log("weekdays unEncodedValues " + unEncodedValues);
+});
+
+
+// set input type time fields from slider            
+weekends.noUiSlider.on('update', function(values, handle, unEncodedValues) {
+
+  wendt1.value = values[0];
+  wendt2.value = values[1];
+  wendt3.value = values[2];
+  wendt4.value = values[3];
+  wendt5.value = values[4];
+  wendt6.value = values[5];
+
+  console.log("weekends unEncodedValues " + unEncodedValues);
+});
+
+
+// set input type time fields from slider            
+userdefined.noUiSlider.on('update', function(values, handle, unEncodedValues) {
+
+  udt1.value = values[0];
+  udt2.value = values[1];
+  udt3.value = values[2];
+  udt4.value = values[3];
+  udt5.value = values[4];
+  udt6.value = values[5];
+
+  console.log("userdefined unEncodedValues " + unEncodedValues);
+});
+
+
+
+
+function convertH2M(timeInHour) { // convert hh:mm to time in minutes
+  var timeParts = timeInHour.split(':');
+  return Number(timeParts[0]) * 60 + Number(timeParts[1]);
+}
+
+
+function writetoconsole(wich) { // wich holds wich day slider
+  // i dont Know wich give error object div
+  // wich.id looks like its the div
+  // why can i just not pass a string writetoconsole("tuesday") 
+  // i am a colliflowerfarmerprogrammer
+  // it works like this but not correct i think
+  console.log(wich.id + " " + wich.noUiSlider.get()); // print wichday slider time array to console
+  const fruits = wich.noUiSlider.get();
+  let xxx = fruits.length; // see how many elements in array
+  //var xx=convertH2M);
+  console.log("arraylength " + xxx);
+  console.log(wich.id + " ON OFF times in minutes ");
+  console.log("hours x 60 + minutes = timeinminutes");
+  if (xxx == 2 || xxx == 4 || xxx == 6) {
+    console.log("ON  " + convertH2M(fruits[0])); // time in minutes
+    console.log("OFF " + convertH2M(fruits[1])); // time in minutes
+  }
+  if (xxx == 4 || xxx == 6) {
+    console.log("ON  " + convertH2M(fruits[2])); // time in minutes
+    console.log("OFF " + convertH2M(fruits[3])); // time in minutes
+  }
+  if (xxx == 6) {
+    console.log("ON  " + convertH2M(fruits[4])); // time in minutes
+    console.log("OFF " + convertH2M(fruits[5])); // time in minutes
+  }
+}
+
+
+
+  //]]></script>
+
+  <script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: "h2tqgecy"
+      }], "*")
+    }
+
+    // always overwrite window.name, in case users try to set it manually
+    window.name = "result"
+  </script>
+
+ <br>
+    <a href="Http://paypal.me/LDijkman">A penny for sharing my thoughts</a><br><br>
+    Electra, A &copy;&Ograve;&Oacute;&THORN;&egrave;&reg; Test.<br>
+    &copy;opy&reg;ight 2021...2022 Dirk Luberth Dijkman<br><br>
+</body>
+</html>
