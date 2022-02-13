@@ -1,12 +1,12 @@
 
 
+// i have placed some videos on youtube
+// for video overview 
+// https://www.youtube.com/user/LuberthDijkman/videos
+
+// DO NOT FORGET TO SUBSCRIBE ?! ;-)
 
 
-// https://www.youtube.com/watch?v=3kg8DjFIe7k
-
-// https://www.youtube.com/watch?v=5wrMgU-uW78
-
-// https://youtu.be/K94DvxUGsOo
 
 // quick modification for test change from esp32 & spiffs to esp8266 & littlefs  https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions/4
 
