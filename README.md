@@ -208,6 +208,7 @@ make sure some say 8mb but if its 8mbit, then it is 1MByte, Electra Says Bigger 
 ## Wemos d1 mini pro wopping 16mb
 - https://www.wemos.cc/en/latest/d1/d1_mini_pro.html
 
+![d1_mini_pro_v2 0 0_1_16x16](https://user-images.githubusercontent.com/45427770/153766464-39055ec0-5265-44cf-8071-bc2db98fa9b4.jpg)
 
 ---
 
