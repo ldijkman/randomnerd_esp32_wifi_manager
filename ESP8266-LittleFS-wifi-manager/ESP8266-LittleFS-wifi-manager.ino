@@ -377,6 +377,8 @@ String processor(const String& var) {
     mystring += "Subnet: " + WiFi.subnetMask().toString() + "<br>";
     mystring += "DNS: " + WiFi.dnsIP().toString() + "<br>";
     mystring += "MAC: " + WiFi.macAddress() + "<br>";
+    mystring += "NTP Server: " + ntptime + "<br>";
+    mystring += "NTP Offset " + ntptimeoffset; + " hour <br>";
     return mystring;
   }
 
