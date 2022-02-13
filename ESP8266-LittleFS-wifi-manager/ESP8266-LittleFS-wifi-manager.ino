@@ -171,7 +171,7 @@ String dhcpcheck;
 String relaispin;
 String statusledpin;
 String buttonpin;
-String ntptime;
+String ntpserver;
 String ntptimeoffset;
 String offdelay;
 int offdelayint;
@@ -187,7 +187,7 @@ const char* dhcpcheckPath = "/dhcpcheck.txt";
 const char* relaispinPath = "/relaispin.txt";
 const char* statusledpinPath = "/statusledpin.txt";
 const char* buttonpinPath = "/buttonpin.txt";
-const char* ntptimePath = "/ntptime.txt";
+const char* ntpserverPath = "/ntpserver.txt";
 const char* ntptimeoffsetPath = "/ntptimeoffset.txt";
 const char* offdelayPath = "/offdelay.txt";
 
@@ -377,7 +377,7 @@ String processor(const String& var) {
     mystring += "Subnet: " + WiFi.subnetMask().toString() + "<br>";
     mystring += "DNS: " + WiFi.dnsIP().toString() + "<br>";
     mystring += "MAC: " + WiFi.macAddress() + "<br>";
-    mystring += "NTP Server: " + ntptime + "<br>";
+    mystring += "NTP Server: " + ntpserver + "<br>";
     mystring += "NTP Offset " + ntptimeoffset + " hour <br>";
     return mystring;
   }
@@ -425,8 +425,8 @@ void setup() {
   Serial.println(statusledpin);
   buttonpin = readFile(LittleFS, buttonpinPath);
   Serial.println(buttonpin);
-  ntptime = readFile(LittleFS, ntptimePath);
-  Serial.println(ntptime);
+  ntpserver = readFile(LittleFS, ntpserverPath);
+  Serial.println(ntpserver);
   ntptimeoffset = readFile(LittleFS, ntptimeoffsetPath);
   Serial.println(ntptimeoffset);
 
@@ -588,7 +588,7 @@ void setup() {
   Serial.print("ntptimeoffset sec "); Serial.println(offset);
   
   NTPClient timeClient(ntpUDP, ntptime.c_str());   // do not know how to make this variable yet
-  Serial.println(ntptime.c_str());
+  Serial.println(ntpserver.c_str());
 
  
   timeClient.begin();
@@ -637,7 +637,7 @@ void loop() {
     startmillis = millis();                 // scan for mdns devices urls every ??? seconds
     browseService("http", "tcp");
 
-    Serial.print("ntpserver ");Serial.println(ntptime.c_str());
+    Serial.print("ntpserver ");Serial.println(ntpserver.c_str());
     Serial.print("ntptimeoffset sec "); Serial.println((ntptimeoffset.toInt() * 3600));
 
     unsigned long epochTime = timeClient.getEpochTime();
@@ -824,12 +824,12 @@ void checkpost() {
           writeFile(LittleFS, buttonpinPath, buttonpin.c_str());            // Write file to save value
         }
         // HTTP POST dhcp value on
-        const char* PARAM_INPUT_11 = "ntptime";                // Search for parameter in HTTP POST request
+        const char* PARAM_INPUT_11 = "ntpserver";                // Search for parameter in HTTP POST request
         if (p->name() == PARAM_INPUT_11) {
-          ntptime = p->value().c_str();
-          Serial.print("ntptime set to: ");
-          Serial.println(ntptime);
-          writeFile(LittleFS, ntptimePath, ntptime.c_str());            // Write file to save value
+          ntpserver = p->value().c_str();
+          Serial.print("ntpserver set to: ");
+          Serial.println(ntpserver);
+          writeFile(LittleFS, ntpserverPath, ntpserver.c_str());            // Write file to save value
         }
         // HTTP POST dhcp value on
         const char* PARAM_INPUT_12 = "ntptimeoffset";                // Search for parameter in HTTP POST request
