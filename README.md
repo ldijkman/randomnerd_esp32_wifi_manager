@@ -205,6 +205,12 @@ make sure some say 8mb but if its 8mbit, then it is 1MByte, Electra Says Bigger 
 
 ---
 
+## Wemos d1 mini pro wopping 16mb
+- https://www.wemos.cc/en/latest/d1/d1_mini_pro.html
+
+
+---
+
 # ESP8266 NodeMCU 32mbit=4MByte?
 
 https://www.google.com/search?q=ESP8266+NodeMCU+4mb
