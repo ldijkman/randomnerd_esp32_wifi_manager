@@ -1126,6 +1126,7 @@ void onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient * client, AwsEventT
   } else if (type == WS_EVT_PONG) {
     Serial.printf("ws[%s][%u] pong[%u]: %s\n", server->url(), client->id(), len, (len) ? (char*)data : "");
   } else if (type == WS_EVT_DATA) {
+     handleWebSocketMessage(arg, data, len); //////////////////////// it is i, luberth old line insert
     AwsFrameInfo * info = (AwsFrameInfo*)arg;
     String msg = "";
     if (info->final && info->index == 0 && info->len == len) {
@@ -1222,6 +1223,10 @@ String tsaz(int data)  // to string add zero
 // Electra, Please let me Sleep
 //
 // Soon Electra will Power a Gazillion Devices
+
+
+
+
 
 
 
