@@ -587,7 +587,7 @@ void setup() {
   timeClient.setTimeOffset(offset);  
   Serial.print("ntptimeoffset sec "); Serial.println(offset);
   
-  NTPClient timeClient(ntpUDP, ntptime.c_str());   // do not know how to make this variable yet
+  NTPClient timeClient(ntpUDP, ntpserver.c_str());   // do not know how to make this variable yet
   Serial.println(ntpserver.c_str());
 
  
