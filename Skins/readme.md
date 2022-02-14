@@ -6,7 +6,7 @@ share your HTML/CSS skin in https://github.com/ldijkman/randomnerd_esp32_wifi_ma
 
 U Got that Look!, Anyone handy with HTML / CSS? #5
 
-U Got that Look! https://www.youtube.com/watch?v=_jCuroTbqBI , color you peach and black
+U Got that Look! https://www.youtube.com/watch?v=_jCuroTbqBI , Color you Peach and Black
 
 Electra looks a bit HTMLisch
 
@@ -19,22 +19,23 @@ Help Electra Make Look Better?  https://jsfiddle.net/luberth/sx61b08t/show
 
 ===
 
-if Electra had a FileManager https://github.com/ldijkman/ESPxWebFlMgr
+if Electra had a FileManager 
+
+https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-LittleFS-wifi-manager/ESP8266-LittleFS-wifi-manager_with_editor
 
 We can upload index.htm or style.css to modify Electra's Skin
 
 or we can edit the files in ESP's LittleFS online inbrowser with the filemanager https://github.com/ldijkman/ESPxWebFlMgr
 
----
-make next run on espasyncwebserver?
-
 for the moment i switched to a working example of espasyncwebserver littlefs fsbrowser  
 
-github.com/holgerlembke/ESPxWebFlMgr  did not compile crc32.h CRC32.h
+---
 
-i changed crc32.h CRC32.h so that esp8266 does compile from arduino ide examples
+make next run on espasyncwebserver?
 
-fork https://github.com/ldijkman/ESPxWebFlMgr  download zip && sketch add zip library
+github.com/holgerlembke/ESPxWebFlMgr
+
+fork https://github.com/ldijkman/ESPxWebFlMgr
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220122_053531.jpg">
 
