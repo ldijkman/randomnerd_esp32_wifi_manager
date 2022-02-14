@@ -1,3 +1,6 @@
+
+just an example to show you to i have in mind
+
 share your HTML/CSS skin in https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
 
 
@@ -25,6 +28,8 @@ or we can edit the files in ESP's LittleFS online inbrowser with the filemanager
 ---
 make next run on espasyncwebserver?
 
+for the moment i switched to a working example of espasyncwebserver littlefs fsbrowser  
+
 github.com/holgerlembke/ESPxWebFlMgr  did not compile crc32.h CRC32.h
 
 i changed crc32.h CRC32.h so that esp8266 does compile from arduino ide examples
@@ -34,3 +39,9 @@ fork https://github.com/ldijkman/ESPxWebFlMgr  download zip && sketch add zip li
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220122_053531.jpg">
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220122_053548.jpg">
+
+for the moment i switched to a working example of espasyncwebserver littlefs fsbrowser
+
+![2022-02-14-050521_1360x768_scrot](https://user-images.githubusercontent.com/45427770/153798383-350826d3-80b8-42d5-bbbc-6b688a0fd56b.png)
+
+
