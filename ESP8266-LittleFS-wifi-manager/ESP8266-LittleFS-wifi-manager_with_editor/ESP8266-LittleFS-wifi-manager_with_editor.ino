@@ -741,59 +741,58 @@ void loop() {
     Serial.print("ntpserver "); Serial.println(ntpserver.c_str());
     Serial.print("ntptimeoffset sec "); Serial.println((ntptimeoffset.toInt() * 3600));
 
+// https://randomnerdtutorials.com/esp8266-nodemcu-date-time-ntp-client-server-arduino/
     unsigned long epochTime = timeClient.getEpochTime();
     // Serial.print("Epoch Time: ");
     // Serial.println(epochTime);    // Epoch Time: 1644662416
 
 
     formattedTime = timeClient.getFormattedTime();
-    Serial.print("Formatted Time: ");
-    Serial.println(formattedTime);  // Formatted Time: 10:40:16
-
-
+    //Serial.print("Formatted Time: ");
+    //Serial.println(formattedTime);  // Formatted Time: 10:40:16
 
     int currentHour = timeClient.getHours();
-    Serial.print("Hour: ");
-    Serial.println(currentHour);
+ //   Serial.print("Hour: ");
+ //   Serial.println(currentHour);
 
     int currentMinute = timeClient.getMinutes();
-    Serial.print("Minutes: ");
-    Serial.println(currentMinute);
+ //   Serial.print("Minutes: ");
+ //   Serial.println(currentMinute);
 
     int currentSecond = timeClient.getSeconds();
-    Serial.print("Seconds: ");
-    Serial.println(currentSecond);
+//    Serial.print("Seconds: ");
+//    Serial.println(currentSecond);
 
     String weekDay = weekDays[timeClient.getDay()];
-    Serial.print("Week Day: ");
-    Serial.println(weekDay);
+//    Serial.print("Week Day: ");
+//    Serial.println(weekDay);
 
     //Get a time structure
     struct tm *ptm = gmtime ((time_t *)&epochTime);
 
     int monthDay = ptm->tm_mday;
-    Serial.print("Month day: ");
-    Serial.println(monthDay);
+//    Serial.print("Month day: ");
+//    Serial.println(monthDay);
 
     int currentMonth = ptm->tm_mon + 1;
-    Serial.print("Month: ");
-    Serial.println(currentMonth);
+//    Serial.print("Month: ");
+//    Serial.println(currentMonth);
 
     String currentMonthName = months[currentMonth - 1];
-    Serial.print("Month name: ");
-    Serial.println(currentMonthName);
+//    Serial.print("Month name: ");
+//    Serial.println(currentMonthName);
 
     int currentYear = ptm->tm_year + 1900;
-    Serial.print("Year: ");
-    Serial.println(currentYear);
+//    Serial.print("Year: ");
+//    Serial.println(currentYear);
 
     //Print complete date:
-    String currentDate = String(currentYear) + "-" + String(currentMonth) + "-" + String(monthDay);
-    Serial.print("Current date: ");
-    Serial.println(currentDate);
+//    String currentDate = String(currentYear) + "-" + String(currentMonth) + "-" + String(monthDay);
+//    Serial.print("Current date: ");
+//    Serial.println(currentDate);
 
-    Serial.println("");
-
+//    Serial.println("");
+// https://randomnerdtutorials.com/esp8266-nodemcu-date-time-ntp-client-server-arduino/
 
 
 
@@ -1177,7 +1176,7 @@ void onEvent(AsyncWebSocket       *server,
 
 void initWebSocket() {
   ws.onEvent(onEvent);
-  // ws.onEvent(onWsEvent); //
+  // ws.onEvent(onWsEvent); // part of fsbrowser example turned off
   server.addHandler(&ws);
 
 }
@@ -1272,29 +1271,7 @@ void onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient * client, AwsEventT
 }
 ////////////////////////////////////////////////////
 
-
-
-/////////////////////////////////////////////////
-String tsaz(int data)  // to string add zero
-{
-  //String curdate = tsaz(time.tm_mday) + "/" +  tsaz(time.tm_mon) + "/" +  tsaz(time.tm_year + 1900);
-  //Serial.println(curdate);
-
-  //String curtime = tsaz(time.tm_hour) + ":" +  tsaz(time.tm_min) + ":" +  tsaz(time.tm_sec);
-  //Serial.println(curtime);
-
-
-  String st = "";
-  if (data < 10)
-  {
-    st = "0" + String(data);
-  }
-  else
-  {
-    st = String(data);
-  }
-  return st;
-}*/
+*/
 
   // Got it working???
   // Share a video link https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
