@@ -1144,6 +1144,7 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
       offdelay  = atoi(off_delay);
       Serial.print("off_delay="); Serial.println(off_delay);
       Serial.print("offdelay="); Serial.println(offdelay);
+      notifyClients();
     }
   }
 }
