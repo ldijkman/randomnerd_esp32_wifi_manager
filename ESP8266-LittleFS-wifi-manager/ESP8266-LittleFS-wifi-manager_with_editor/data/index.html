@@ -102,7 +102,7 @@ button:active {
    
   </head>
 
-  <body>
+  <body bgcolor="pink">
     <div class="topnav">
       <h1>http://%MDNSNAME%.local</h1>
     </div>
@@ -165,7 +165,9 @@ function checkTime(i) {
 <br><br>
       <p>LAN mDNS Scan</p>
       <div id="mdnsscan"> %MDNSSCAN%<br></div>
-<br><br>
+<input type="number" id="offdelay"  value="%OFFDELAY%" min="10" size="8" style="width: 100px; padding: 10px; border: 1px solid black"><br>
+     <button id="offdelaybutton">Send json offdelay</button><br>
+     <br>
         </div>
       </div>
 <br><br>
@@ -174,31 +176,30 @@ function checkTime(i) {
       <br>
       <input type="button" onclick="window.location.href='schedule.html';" value="Schedule Electra, Electra Schedule timed switching" width="200px"><br>
       <br>
-      wanted settable countdown off timer is this called inching<br>
+<!--
       <form action="/timer" method="POST">
         <label for="timer">OFF Delay %OFFDELAY% Seconds</label>
         <input type="number" id="offtimer" name="off" value="%OFFDELAY%" min="10" size="6">
         
 
 <input type="submit" value="Set"><br>
+  POST is /timer?off=%OFFDELAY%<br>
 
       </form>
-<br>
+-->
 
-<input type="number" id="offdelay"  value="%OFFDELAY%" min="10" size="6"><br>
-     <button id="offdelaybutton">Send json</button>  
-      POST is /timer?off=%OFFDELAY%
-      <br>
+
       <br>
       <br>
 
     </div>
 
-    Edit the Files this ESP8266<br>
-    <a href="edit">EDIT Electra's Skin</a><br>
-  <input type="button" id="Electra CopyRight_2021_2022_Luberth_Dijkman" onclick='window.open("/edit");' value="Edit Electras Skin"><br>
+    Edit the Files on this ESP8266 LittleFS<br>
+   
+    <input type="button" id="Electra CopyRight_2021_2022_Luberth_Dijkman" onclick='window.open("/edit");' value="Edit Electras Skin"><br>
   <br>
-  <a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/Skins">Skins for Electra, Download and Share your Skin></a><br>
+  <br>
+  <input type="button" id="Electra Skins" onclick='window.open("https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/Skins");' value="Skins for Electra, Download and Share your Skin"><br>
     <br>
     <br>
     <a href="https://play.google.com/store/apps/details?id=de.wellenvogel.bonjourbrowser&hl=en&gl=US" target="bonjour">
@@ -284,3 +285,4 @@ function checkTime(i) {
   </body>
 
 </html>
+
