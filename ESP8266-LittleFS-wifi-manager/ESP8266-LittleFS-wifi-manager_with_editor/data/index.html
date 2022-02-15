@@ -178,8 +178,15 @@ function checkTime(i) {
       <form action="/timer" method="POST">
         <label for="timer">OFF Delay %OFFDELAY% Seconds</label>
         <input type="number" id="offtimer" name="off" value="%OFFDELAY%" min="10" size="6">
-        <input type="submit" value="Set">
+        
+
+<input type="submit" value="Set"><br>
+
       </form>
+<br>
+
+<input type="number" id="offdelay"  value="%OFFDELAY%" min="10" size="6"><br>
+     <button id="offdelaybutton">Send json</button>  
       POST is /timer?off=%OFFDELAY%
       <br>
       <br>

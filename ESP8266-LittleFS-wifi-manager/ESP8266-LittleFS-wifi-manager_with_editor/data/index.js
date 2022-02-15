@@ -55,8 +55,14 @@ function onMessage(event) {
 
 function initButton() {
     document.getElementById('toggle').addEventListener('click', onToggle);
+    document.getElementById('offdelaybutton').addEventListener('click', onOffdelay);
 }
 
 function onToggle(event) {
     websocket.send(JSON.stringify({'action':'toggle'}));
+}
+
+function onOffdelay(event) {
+     temp=document.getElementById('offdelay').value;
+    websocket.send(JSON.stringify({'offdelay':'+String(temp)+'}));
 }
