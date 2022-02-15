@@ -2,6 +2,7 @@
 just an example to show you 
 - Wath i have in mind https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/Skins
 - change the look of your wifi relais switch by edit or upload new index.html and maybe other image/js/css files for index.html Skin
+- each wifi relais switch has its own fsbrowser filemanager / editor
 
 share your HTML/CSS skin in https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
 
