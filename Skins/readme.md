@@ -1,5 +1,6 @@
 
-just an example to show you to i have in mind https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/Skins
+just an example to show you 
+- Wath i have in mind https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/Skins
 
 share your HTML/CSS skin in https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
 
