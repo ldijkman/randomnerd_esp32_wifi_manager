@@ -1,5 +1,12 @@
 
-//////////////////////////////////////////////////////////////////////////
+
+
+// Got it working???
+// Share a video link https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
+//
+// Bet you can do better as me => https://www.youtube.com/user/LuberthDijkman/videos
+//
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 //this one uses a fork from ESPASYNC library
 //https://github.com/lorol/ESPAsyncWebServer
@@ -9,7 +16,7 @@
 //donwload zip and replace existing ESPAsyncWebServer library, on my pi  /home/pi/Arduino/libraries/ESPAsyncWebServer-master
 
 
-////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -1045,6 +1052,7 @@ void notifyClients() {
   //Serial.println(scanstr);
   json["status"] = ledState.c_str(); // relais status
   json["time"] = formattedTime.c_str();
+  json["offdelay"] = offdelay.c_str();
   json["scan"] = scanstr.c_str();   // mdnsscan
 
   char buffer[1024];   //i do not know
@@ -1176,6 +1184,9 @@ void initWebSocket() {
 
 
 
+/*
+ * luberth => turned off  part from fs browser example
+
 //////////////////////////////////////////////////////////////
 void onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient * client, AwsEventType type, void * arg, uint8_t *data, size_t len) {
   if (type == WS_EVT_CONNECT) {
@@ -1283,13 +1294,13 @@ String tsaz(int data)  // to string add zero
     st = String(data);
   }
   return st;
-
+}*/
 
   // Got it working???
   // Share a video link https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
-  // Bet you can do better as me => https://www.youtube.com/watch?v=mrQwdB_dm_U
+  // Bet you can do better as me => https://www.youtube.com/user/LuberthDijkman/videos
   // http://paypal.me/LDijkman
-}
+
 // Me NO programmer, just trying, wasting loads of time drinking loads of coffee, but makes more sense to me as solving crossword puzzles
 // My Mothers and Fathers Language whas Dutch, Thats what they learned me, That Explains my poor Englisch.
 // Partly Made in Portugal &&  Partly Made in Holland
