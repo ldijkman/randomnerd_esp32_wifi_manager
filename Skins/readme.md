@@ -43,6 +43,10 @@ fork https://github.com/ldijkman/ESPxWebFlMgr
 
 for the moment i switched to a working example of espasyncwebserver littlefs fsbrowser
 
+https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-LittleFS-wifi-manager/ESP8266-LittleFS-wifi-manager_with_editor
+
 ![2022-02-14-050521_1360x768_scrot](https://user-images.githubusercontent.com/45427770/153798383-350826d3-80b8-42d5-bbbc-6b688a0fd56b.png)
+
+https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-LittleFS-wifi-manager/ESP8266-LittleFS-wifi-manager_with_editor
 
 
