@@ -24,7 +24,7 @@ esp8266 espasyncwebserver littlefs fsbrowser inbrowser filemanager editor / web 
 
 esp8266 espasyncwebserver littlefs fsbrowser inbrowser filemanager editor / web editor / esp8266 webserver manager editor
 <pre>
-Keyboard Shortcuts
+Ace Editor Keyboard Shortcuts
 showSettingsMenu : Ctrl-,
 goToNextError : Alt-E
 goToPreviousError : Alt-Shift-E
