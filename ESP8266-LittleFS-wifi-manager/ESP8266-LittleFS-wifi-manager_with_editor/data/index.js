@@ -47,6 +47,7 @@ function onMessage(event) {
     document.getElementById('image').src = data.status+".gif";
     document.getElementById('mdnsscan').innerHTML = data.scan;
     document.getElementById('NTPTime').innerHTML = data.time;
+    document.getElementById('OFFDelay').innerHTML = data.offdelay;
 }
 
 // ----------------------------------------------------------------------------
@@ -66,4 +67,3 @@ function onOffdelay(event) {
      var temp=document.getElementById('offdelay').value;
     websocket.send(JSON.stringify({'off_delay':temp}));
 }
-
