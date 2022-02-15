@@ -64,5 +64,5 @@ function onToggle(event) {
 
 function onOffdelay(event) {
      temp=document.getElementById('offdelay').value;
-    websocket.send(JSON.stringify({'offdelay':'+String(temp)+'}));
+    websocket.send(JSON.stringify({'off_delay':'+String(temp)+'}));
 }
