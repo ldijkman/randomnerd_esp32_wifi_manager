@@ -23,6 +23,18 @@ esp8266 espasyncwebserver littlefs fsbrowser inbrowser filemanager editor / web 
 ![2022-02-14-050521_1360x768_scrot](https://user-images.githubusercontent.com/45427770/153995945-d61782d0-ca96-4251-aa6f-e1b0894bfecd.png)
 
 esp8266 espasyncwebserver littlefs fsbrowser inbrowser filemanager editor / web editor / esp8266 webserver manager editor
+
+
+2 browser windows side by side, Easy Edit
+- left browser is editing index.html file on esp8266 webserver
+- right browser is showing result of index.html served from esp8266 webserver
+
+![2022-02-15-172738_1360x768_scrot](https://user-images.githubusercontent.com/45427770/154131558-36e44ea1-dc44-4e5d-9e36-244f83d8a7be.png)
+
+error 404 page served from esp8266 = index.htm without l
+
+![2022-02-15-200504_1360x768_scrot](https://user-images.githubusercontent.com/45427770/154131612-115b9fc0-1a83-439c-b9c2-06c3615ab155.png)
+
 <pre>
 Ace Editor Keyboard Shortcuts
 showSettingsMenu : Ctrl-,
@@ -120,14 +132,3 @@ alignCursors : Ctrl-Alt-A
 findAll : Ctrl-Alt-K
 showKeyboardShortcuts : Ctrl-Alt-H
 </pre>
-
-2 browser windows side by side, Easy Edit
-- left browser is editing index.html file on esp8266 webserver
-- right browser is showing result of index.html served from esp8266 webserver
-
-![2022-02-15-172738_1360x768_scrot](https://user-images.githubusercontent.com/45427770/154131558-36e44ea1-dc44-4e5d-9e36-244f83d8a7be.png)
-
-error 404 page served from esp8266 = index.htm without l
-
-![2022-02-15-200504_1360x768_scrot](https://user-images.githubusercontent.com/45427770/154131612-115b9fc0-1a83-439c-b9c2-06c3615ab155.png)
-
