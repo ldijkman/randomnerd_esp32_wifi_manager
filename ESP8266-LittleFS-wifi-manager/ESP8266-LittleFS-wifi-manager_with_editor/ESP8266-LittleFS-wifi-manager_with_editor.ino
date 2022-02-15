@@ -6,7 +6,7 @@
 //or
 //https://github.com/ldijkman/ESPAsyncWebServer
 
-donwload zip and replace existing ESPAsyncWebServer library, on my pi  /home/pi/Arduino/libraries/ESPAsyncWebServer-master
+//donwload zip and replace existing ESPAsyncWebServer library, on my pi  /home/pi/Arduino/libraries/ESPAsyncWebServer-master
 
 
 ////////////////////////////////////////////////////////////////////////////
@@ -122,10 +122,15 @@ donwload zip and replace existing ESPAsyncWebServer library, on my pi  /home/pi/
 
 #include <LittleFS.h>
 #define MYFS LittleFS
-#include <AsyncElegantOTA.h>              // https://github.com/ayushsharma82/AsyncElegantOTA
+//#include <AsyncElegantOTA.h>   //do not like it           // https://github.com/ayushsharma82/AsyncElegantOTA
 #include <SPIFFSEditor.h>
 
 #include <ESPAsyncWebServer.h>
+//this one uses a fork from ESPASYNC library
+//https://github.com/lorol/ESPAsyncWebServer
+//or
+//https://github.com/ldijkman/ESPAsyncWebServer
+
 #include <ArduinoJson.h>
 //#include <time.h>
 #include <NTPClient.h>
@@ -269,7 +274,10 @@ void writeFile(fs::FS &fs, const char * path, const char * message) {
   }
   if (file.print(message)) {
     Serial.println("- file written");
-  } else {
+  } else {//this one uses a fork from ESPASYNC library
+    //https://github.com/lorol/ESPAsyncWebServer
+    //or
+    //https://github.com/ldijkman/ESPAsyncWebServer
     Serial.println("- frite failed");
   }
 }
@@ -457,13 +465,13 @@ void setup() {
     server.addHandler(&events);
 
     server.addHandler(new SPIFFSEditor(http_username, http_password, MYFS));
-    
+
     // Route for root / web page
     server.on("/", HTTP_GET, [](AsyncWebServerRequest * request) {
       request->send(MYFS, "/index.html", "text/html", false, processor);
       notify = 1;
     });
-    
+
     //server.serveStatic("/", LittleFS, "/");
     server.serveStatic("/", MYFS, "/").setDefaultFile("/index.htm");
 
@@ -609,7 +617,7 @@ void setup() {
         }
       }
 
-     // request->send(404);
+      // request->send(404);
       request->send(MYFS, "/index.htm", "text/html", false);
     });
     server.onFileUpload([](AsyncWebServerRequest * request, const String & filename, size_t index, uint8_t *data, size_t len, bool final) {
@@ -643,7 +651,7 @@ void setup() {
 
 
 
-   // AsyncElegantOTA.begin(&server);    // Start ElegantOTA
+    // AsyncElegantOTA.begin(&server);    // Start ElegantOTA
     server.begin();
 
   }///////////////////////////////////////////////////////////////////
@@ -1045,6 +1053,49 @@ void notifyClients() {
   ws.textAll(buffer, len);
   Serial.println(buffer);
 }
+/*
+  void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
+  //AwsFrameInfo *info = (AwsFrameInfo*)arg;
+  //if (info->final && info->index == 0 && info->len == len && info->opcode == WS_TEXT){
+    const uint8_t size = JSON_OBJECT_SIZE(1);
+    StaticJsonDocument<size> json;
+    DeserializationError err = deserializeJson(json, data);
+    if (err) {
+      Serial.print(F("deserializeJson() failed with code "));
+      Serial.println(err.c_str());
+      return;
+    }
+    deserializeJson(json, Serial);
+
+
+    // it has become a bit copy paste mess relaspin ledpin ledstate
+   const char * action = json["action"];
+   Serial.println("action");
+   Serial.println(action);
+    if (action) {
+       Serial.println("i am in action");
+      if (strcmp(action, "toggle") == 0) {
+        //ledPin = !ledPin;
+        if (digitalRead(ledPin) == 0) {
+          digitalWrite(ledPin, HIGH);
+          ledState = "ON";
+        } else {
+          digitalWrite(ledPin, LOW);
+          ledState = "OFF";
+        }
+        Serial.println(ledState);
+        notifyClients();
+
+      }
+    }
+    Serial.println("off_delay");
+    const char * off_delay = json["off_delay"];
+     Serial.println(off_delay);
+
+
+  //}
+  }
+*/
 
 void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
   AwsFrameInfo *info = (AwsFrameInfo*)arg;
@@ -1058,12 +1109,16 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
       Serial.println(err.c_str());
       return;
     }
-
+    // deserializeJson(json, Serial);
 
 
     // it has become a bit copy paste mess relaspin ledpin ledstate
     const char *action = json["action"];
-    if (strcmp(action, "toggle") == 0) {
+    const char * off_delay = json["off_delay"];
+
+
+    Serial.print("action="); Serial.println(action);
+    if (json["action"] == "toggle") {
       //ledPin = !ledPin;
       if (digitalRead(ledPin) == 0) {
         digitalWrite(ledPin, HIGH);
@@ -1074,6 +1129,14 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
       }
       Serial.println(ledState);
       notifyClients();
+    }
+
+    Serial.print("off_delay="); Serial.println(off_delay);
+    Serial.print("offdelay="); Serial.println(offdelay);
+    if (json["off_delay"]) {
+      offdelay  = atoi(off_delay);
+      Serial.print("off_delay="); Serial.println(off_delay);
+      Serial.print("offdelay="); Serial.println(offdelay);
     }
   }
 }
@@ -1106,7 +1169,7 @@ void onEvent(AsyncWebSocket       *server,
 
 void initWebSocket() {
   ws.onEvent(onEvent);
-  ws.onEvent(onWsEvent); //
+  // ws.onEvent(onWsEvent); //
   server.addHandler(&ws);
 
 }
@@ -1126,8 +1189,11 @@ void onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient * client, AwsEventT
   } else if (type == WS_EVT_PONG) {
     Serial.printf("ws[%s][%u] pong[%u]: %s\n", server->url(), client->id(), len, (len) ? (char*)data : "");
   } else if (type == WS_EVT_DATA) {
-     handleWebSocketMessage(arg, data, len); //////////////////////// it is i, luberth old line insert
+
     AwsFrameInfo * info = (AwsFrameInfo*)arg;
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    //handleWebSocketMessage(arg, data, len); //////////////////////// it is i, luberth old line insert
+    ///////////////////////////////////////////////////////////////////////////////
     String msg = "";
     if (info->final && info->index == 0 && info->len == len) {
       //the whole message is in a single frame and we got all of it's data
@@ -1136,6 +1202,7 @@ void onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient * client, AwsEventT
       if (info->opcode == WS_TEXT) {
         for (size_t i = 0; i < info->len; i++) {
           msg += (char) data[i];
+          //Serial.print("line 1151 "); Serial.println(char(data[i]));
         }
       } else {
         char buff[3];
@@ -1145,6 +1212,8 @@ void onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient * client, AwsEventT
         }
       }
       Serial.printf("%s\n", msg.c_str());
+      Serial.print(msg);
+
 
       if (info->opcode == WS_TEXT)
         client->text("I got your text message");
@@ -1184,6 +1253,10 @@ void onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient * client, AwsEventT
         }
       }
     }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    //handleWebSocketMessage(arg, data, len); //////////////////////// it is i, luberth old line insert
+    ///////////////////////////////////////////////////////////////////////////////
   }
 }
 ////////////////////////////////////////////////////
@@ -1223,11 +1296,3 @@ String tsaz(int data)  // to string add zero
 // Electra, Please let me Sleep
 //
 // Soon Electra will Power a Gazillion Devices
-
-
-
-
-
-
-
-
