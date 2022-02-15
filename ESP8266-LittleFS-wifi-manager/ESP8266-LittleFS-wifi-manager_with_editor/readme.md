@@ -121,6 +121,10 @@ findAll : Ctrl-Alt-K
 showKeyboardShortcuts : Ctrl-Alt-H
 </pre>
 
+2 browser windows side by side, Easy Edit
+- 1 editing index.html file on esp8266 webserver
+- right browser is showing result of index.html served from esp8266 webserver
+
 ![2022-02-15-172738_1360x768_scrot](https://user-images.githubusercontent.com/45427770/154131558-36e44ea1-dc44-4e5d-9e36-244f83d8a7be.png)
 
 ![2022-02-15-200504_1360x768_scrot](https://user-images.githubusercontent.com/45427770/154131612-115b9fc0-1a83-439c-b9c2-06c3615ab155.png)
