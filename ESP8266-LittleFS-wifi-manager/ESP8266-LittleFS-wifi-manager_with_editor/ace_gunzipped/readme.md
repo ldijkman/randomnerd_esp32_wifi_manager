@@ -1,7 +1,11 @@
 ace gz files unzipped to view the source
 
-paste in jsfiddle prettify to make it a bit readeable
+edit is the html file
+
+paste in jsfiddle and use tidy  to make it a bit readeable
 
 should be possible to make a tryit like editor edit and preview side by side
+
+but i do not know how yet
 
 https://jsfiddle.net/luberth/hftvs72o/1/
