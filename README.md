@@ -126,6 +126,8 @@ Easy set & overview and a load of switchtimes (more and better as most commercia
 
 Each device its own schedule webpage
 
+not only for light switching but could also be handy for automated garden watering, Etcetra
+
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/Screenshot_20220118-182856_Chrome.jpg">
 
 ---
