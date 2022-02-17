@@ -35,3 +35,9 @@ could you make a video how you do this???
 ---
 
 Yowza, that’s a lot of files. Try again with fewer than 100 files.
+
+i dont know maybe you do it with 
+
+https://www.espressif.com/en/support/download/other-tools?keys=&field_type_tid%5B%5D=14
+
+but thats mswindows thats not for my linux pi
