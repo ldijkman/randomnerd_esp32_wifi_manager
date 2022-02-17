@@ -1,3 +1,5 @@
+https://www.youtube.com/user/LuberthDijkman/videos
+
 Microsoft windows & Andoid phone / tablet users if mDNS does not work =>  https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/HELP.MD
 
 # the ESP8266 version is better / leading / further
@@ -352,3 +354,6 @@ impressive Espressif
 
 Electra is a Star 370.64 Light Years Far in a Expanding Universe https://www.youtube.com/watch?v=9Lgf2VU_M70
 
+---
+https://www.youtube.com/user/LuberthDijkman/videos
+---
