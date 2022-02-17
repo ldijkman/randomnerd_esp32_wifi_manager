@@ -1,6 +1,6 @@
 files Thursday 17 february 2022 
 
-Binary files for ESP8266 32mbit == 4MByte (eesz=4M2M, 2MB FS LittleFS)
+Binary files for ESP8266 32mbit == 4MByte <small>(eesz=4M2M, 2MB FS LittleFS)</small>
 
 maybe these settings may be handy for u
 
