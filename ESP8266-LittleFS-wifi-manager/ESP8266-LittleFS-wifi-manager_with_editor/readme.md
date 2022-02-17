@@ -14,7 +14,7 @@ like i did on this TFT LCD display https://www.youtube.com/watch?v=3qviv5TOcVo
 
 - red = 2 cannot get a status value from switch url
 - green = light=on 1 a status value from switch url
-- red = light=off 0 a status value from switch url
+- gray = light=off 0 a status value from switch url
 
 ![2022-02-15-045728_1360x768_scrot](https://user-images.githubusercontent.com/45427770/153990182-4e595ad1-138c-45d6-97d7-112c2c0ade88.png)
 
