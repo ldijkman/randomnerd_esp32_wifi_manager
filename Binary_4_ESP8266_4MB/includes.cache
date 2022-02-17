@@ -1,0 +1,267 @@
+[
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/cores/esp8266"
+  },
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/variants/generic"
+  },
+  {
+    "Sourcefile": "/tmp/arduino_build_731423/sketch/ESP8266-LittleFS-wifi-manager_with_editor.ino.cpp",
+    "Include": "Hash.h",
+    "Includepath": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/Hash/src"
+  },
+  {
+    "Sourcefile": "/tmp/arduino_build_731423/sketch/ESP8266-LittleFS-wifi-manager_with_editor.ino.cpp",
+    "Include": "ESP8266WiFi.h",
+    "Includepath": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266WiFi/src"
+  },
+  {
+    "Sourcefile": "/tmp/arduino_build_731423/sketch/ESP8266-LittleFS-wifi-manager_with_editor.ino.cpp",
+    "Include": "ESPAsyncTCP.h",
+    "Includepath": "/home/pi/Arduino/libraries/ESPAsyncTCP-master/src"
+  },
+  {
+    "Sourcefile": "/tmp/arduino_build_731423/sketch/ESP8266-LittleFS-wifi-manager_with_editor.ino.cpp",
+    "Include": "ESP8266mDNS.h",
+    "Includepath": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266mDNS/src"
+  },
+  {
+    "Sourcefile": "/tmp/arduino_build_731423/sketch/ESP8266-LittleFS-wifi-manager_with_editor.ino.cpp",
+    "Include": "LittleFS.h",
+    "Includepath": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/LittleFS/src"
+  },
+  {
+    "Sourcefile": "/tmp/arduino_build_731423/sketch/ESP8266-LittleFS-wifi-manager_with_editor.ino.cpp",
+    "Include": "SPIFFSEditor.h",
+    "Includepath": "/home/pi/Arduino/libraries/ESPAsyncWebServer-master/src"
+  },
+  {
+    "Sourcefile": "/tmp/arduino_build_731423/sketch/ESP8266-LittleFS-wifi-manager_with_editor.ino.cpp",
+    "Include": "ArduinoJson.h",
+    "Includepath": "/home/pi/Arduino/libraries/ArduinoJson/src"
+  },
+  {
+    "Sourcefile": "/tmp/arduino_build_731423/sketch/ESP8266-LittleFS-wifi-manager_with_editor.ino.cpp",
+    "Include": "NTPClient.h",
+    "Includepath": "/home/pi/Arduino/libraries/NTPClient-master"
+  },
+  {
+    "Sourcefile": "/tmp/arduino_build_731423/sketch/ESP8266-LittleFS-wifi-manager_with_editor.ino.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/Hash/src/Hash.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266WiFi/src/BearSSLHelpers.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266WiFi/src/CertStoreBearSSL.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266WiFi/src/ESP8266WiFi.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266WiFi/src/ESP8266WiFiAP.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266WiFi/src/ESP8266WiFiGeneric.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266WiFi/src/ESP8266WiFiGratuitous.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266WiFi/src/ESP8266WiFiMulti.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266WiFi/src/ESP8266WiFiSTA-WPS.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266WiFi/src/ESP8266WiFiSTA.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266WiFi/src/ESP8266WiFiScan.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266WiFi/src/WiFiClient.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266WiFi/src/WiFiClientSecureAxTLS.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266WiFi/src/WiFiClientSecureBearSSL.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266WiFi/src/WiFiServer.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266WiFi/src/WiFiServerSecureAxTLS.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266WiFi/src/WiFiServerSecureBearSSL.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266WiFi/src/WiFiUdp.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/Arduino/libraries/ESPAsyncTCP-master/src/AsyncPrinter.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/Arduino/libraries/ESPAsyncTCP-master/src/ESPAsyncTCP.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/Arduino/libraries/ESPAsyncTCP-master/src/ESPAsyncTCPbuffer.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/Arduino/libraries/ESPAsyncTCP-master/src/SyncClient.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/Arduino/libraries/ESPAsyncTCP-master/src/tcp_axtls.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266mDNS/src/ESP8266mDNS.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266mDNS/src/ESP8266mDNS_Legacy.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266mDNS/src/LEAmDNS.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266mDNS/src/LEAmDNS_Control.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266mDNS/src/LEAmDNS_Helpers.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266mDNS/src/LEAmDNS_Structs.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/ESP8266mDNS/src/LEAmDNS_Transfer.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/LittleFS/src/LittleFS.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/LittleFS/src/lfs.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/.arduino15/packages/esp8266/hardware/esp8266/2.7.4/libraries/LittleFS/src/lfs_util.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/Arduino/libraries/ESPAsyncWebServer-master/src/AsyncEventSource.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/Arduino/libraries/ESPAsyncWebServer-master/src/AsyncWebSocket.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/Arduino/libraries/ESPAsyncWebServer-master/src/SPIFFSEditor.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/Arduino/libraries/ESPAsyncWebServer-master/src/WebAuthentication.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/Arduino/libraries/ESPAsyncWebServer-master/src/WebHandlers.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/Arduino/libraries/ESPAsyncWebServer-master/src/WebRequest.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/Arduino/libraries/ESPAsyncWebServer-master/src/WebResponses.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/Arduino/libraries/ESPAsyncWebServer-master/src/WebServer.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/home/pi/Arduino/libraries/NTPClient-master/NTPClient.cpp",
+    "Include": "",
+    "Includepath": null
+  }
+]
