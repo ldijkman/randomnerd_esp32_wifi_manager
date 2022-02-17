@@ -80,6 +80,10 @@ esp8266 espasyncwebserver littlefs fsbrowser inbrowser filemanager editor / web 
 - left browser is editing index.html file on esp8266 webserver
 - right browser is showing result of index.html served from esp8266 webserver
 
+https://www.youtube.com/watch?v=xB29f0v1zLc
+
+https://www.youtube.com/user/LuberthDijkman/videos
+
 ---
 
 https://jsfiddle.net/luberth/hftvs72o/show
