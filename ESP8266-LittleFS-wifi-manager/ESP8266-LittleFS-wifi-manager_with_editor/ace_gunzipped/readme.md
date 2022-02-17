@@ -14,7 +14,11 @@ but i do not know how yet
 - left browser is editing index.html file on esp8266 webserver
 - right browser is showing result of index.html served from esp8266 webserver
 
+---
+
 https://jsfiddle.net/luberth/hftvs72o/show
+
+---
 
 https://github.com/esp8266/Arduino/issues/1939
 
