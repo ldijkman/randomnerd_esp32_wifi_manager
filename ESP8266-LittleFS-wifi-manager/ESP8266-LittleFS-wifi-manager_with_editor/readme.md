@@ -76,6 +76,8 @@ esp8266 espasyncwebserver littlefs fsbrowser inbrowser filemanager editor / web 
 - left browser is editing index.html file on esp8266 webserver
 - right browser is showing result of index.html served from esp8266 webserver
 
+https://github.com/esp8266/Arduino/issues/1939
+
 ![2022-02-15-172738_1360x768_scrot](https://user-images.githubusercontent.com/45427770/154131558-36e44ea1-dc44-4e5d-9e36-244f83d8a7be.png)
 
 error 404 page served from esp8266 = index.htm without l
