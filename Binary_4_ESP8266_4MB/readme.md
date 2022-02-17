@@ -2,11 +2,23 @@ files Thursday 17 february 2022
 
 Binary files for ESP8266 32mbit == 4MByte
 
-Maybe more people are able to test it this way
+Maybe more people are able to try / test it this way
 
-not all finnished
+not all finnished == but most is working
 
-but most is working
+---
+
+program and connect your computer / phone / tablet wifi to ESP Access Point direct connect
+
+browse to 192.168.4.1 for wifi manager and configure ESP8266 for your wifirouter
+
+hope the rest gos automaticly
+
+succes
+
+show me a video if you got it working????
+
+---
 
 maybe you know how this works
 
