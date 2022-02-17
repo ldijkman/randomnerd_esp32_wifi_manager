@@ -8,7 +8,9 @@ not all finnished == but most is working
 
 ---
 
-program and connect your computer / phone / tablet wifi to ESP Access Point direct connect
+program ESP9266 with ino bin and littlefs bin 
+
+connect your computer / phone / tablet wifi to ESP Access Point direct connect
 
 browse to 192.168.4.1 for wifi manager and configure ESP8266 for your wifirouter
 
