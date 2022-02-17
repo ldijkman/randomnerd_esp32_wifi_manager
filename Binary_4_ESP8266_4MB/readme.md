@@ -2,6 +2,8 @@ files Thursday 17 february 2022
 
 Binary files for ESP8266 32mbit == 4MByte (eesz=4M2M, 2MB FS LittleFS)
 
+maybe these settings may be handy for u
+
 "fqbn": "esp8266:esp8266:generic:xtal=160,vt=flash,exception=legacy,ssl=all,ResetMethod=nodemcu,CrystalFreq=26,FlashFreq=80,FlashMode=qio,eesz=4M2M,led=2,sdk=nonosdk_190703,ip=lm2f,dbg=Disabled,lvl=None____,wipe=none,baud=115200",
 
 Maybe more people are able to try / test it this way
