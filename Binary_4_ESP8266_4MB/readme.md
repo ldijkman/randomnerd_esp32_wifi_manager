@@ -2,7 +2,7 @@ files Thursday 17 february 2022
 
 Binary files for ESP8266 32mbit == 4MByte ---------------> (eesz=4M2M, 4MB of wich 2MB is set/used for FS LittleFS)
 
-maybe these settings may be handy for u
+my Arduino IDE Compiler settings, maybe these settings are handy for u?
 
 "fqbn": "esp8266:esp8266:generic:xtal=160,vt=flash,exception=legacy,ssl=all,ResetMethod=nodemcu,CrystalFreq=26,FlashFreq=80,FlashMode=qio,eesz=4M2M,led=2,sdk=nonosdk_190703,ip=lm2f,dbg=Disabled,lvl=None____,wipe=none,baud=115200",
 
@@ -12,15 +12,15 @@ not all finnished == but most is working
 
 ---
 
-program ESP9266 with ino bin and littlefs bin 
+program ESP8266 with ino bin and littlefs bin 
 
 connect your computer / phone / tablet wifi to ESP Access Point direct connect
 
 browse to 192.168.4.1 for wifi manager and configure ESP8266 for your wifirouter
 
-hope the rest gos automaticly
+hope the rest goes automaticly (MS Windows users might need to install Apple iTunes to get mDNS URL .local working)
 
-succes
+Succes!!! Play and have Fun with Electra, Warning Fiddling with Electra can Kill You!
 
 show me a video if you got it working????
 
