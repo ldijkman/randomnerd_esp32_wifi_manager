@@ -222,7 +222,7 @@ make sure some say 8mb but if its 8mbit, then it is 1MByte, Electra Says Bigger 
 
 https://www.google.com/search?q=ESP8266+NodeMCU+4mb
 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/esp_8266_nodemcu.png">
+![esp_8266_nodemcu](https://user-images.githubusercontent.com/45427770/154727553-0d2af6f9-0b45-4041-b24e-0cdb7f8bb81f.png)
 
 ---
 
