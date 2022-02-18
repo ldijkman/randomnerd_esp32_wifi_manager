@@ -38,7 +38,7 @@ maybe you know how this works
 
 could you make a video how you do this???
 
-or could u / willing to write an HowTo
+or could u / willing to write an HowTo https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions/15
 
 ---
 
