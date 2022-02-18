@@ -259,7 +259,8 @@ ESP32-WROVER with 64 MBit == 8 MByte
 
 ESP32 WROVER 38pin devkit https://www.google.com/search?q=EDP32+wrover+devkitc+38pin
 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/ESP32_Fingers.jpeg">
+
+![ESP32_Fingers (1)](https://user-images.githubusercontent.com/45427770/154620851-f51390e8-7447-4f58-b59b-a9d15d7fe159.jpeg)
 
 Bit like a 1995 PC 486DX2 200Mhz with WiFi FingerNail Sized
 
