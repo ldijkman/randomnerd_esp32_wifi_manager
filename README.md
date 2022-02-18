@@ -218,6 +218,17 @@ make sure some say 8mb but if its 8mbit, then it is 1MByte, Electra Says Bigger 
 
 ---
 
+HW-622 ESP8266 WIFI Relay Module Network Relay Module yunshan 32mbit==4MByte
+SUX wifi AP password not as google yunshan123456780 == 1234567890 connects but no page on 192.168.4.1
+very BAD silkscreen connection info
+but if you know it, its a cheap chinese board with chinese crappy software and no description
+needs a 3.3v ftdi programmer or esp01 programmer with wires
+but Electra can make it great
+
+![Diymore-ESP8266-ESP-12F-Wifi-Draadloze-Module-1-Kanaals-Relais-Shield-10A-Dc-7-30V jpg_Q90](https://user-images.githubusercontent.com/45427770/154747270-e167475f-ce83-48fb-911b-f499d40ffc8d.jpg)
+
+---
+
 # ESP8266 NodeMCU 32mbit=4MByte?
 
 https://www.google.com/search?q=ESP8266+NodeMCU+4mb
