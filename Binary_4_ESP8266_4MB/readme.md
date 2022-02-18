@@ -36,6 +36,8 @@ maybe you know how this works
 
 could you make a video how you do this???
 
+or could u / willing to write an HowTo
+
 ---
 
 Yowza, that’s a lot of files. Try again with fewer than 100 files.
