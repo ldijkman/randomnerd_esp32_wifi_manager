@@ -214,8 +214,7 @@ make sure some say 8mb but if its 8mbit, then it is 1MByte, Electra Says Bigger 
 ## Wemos d1 mini pro wopping 128mbit=16MByte?
 - https://www.wemos.cc/en/latest/d1/d1_mini_pro.html
 
-![ESP8266_lolin_wemos_d1_mini_pro_128mbit_16MByte](https://user-images.githubusercontent.com/45427770/154610719-b496e72d-03cd-4e57-b847-8a1c8338ff70.jpg)
-
+![ESP8266_lolin_wemos_d1_mini_pro_128mbit_16MByte](https://user-images.githubusercontent.com/45427770/154620287-352f3651-5007-4757-b9ca-52d84d7eab6d.jpg)
 
 ---
 
