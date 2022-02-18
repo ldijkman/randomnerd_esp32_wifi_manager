@@ -245,7 +245,8 @@ had a look at the app == nah == Electra will be better in the future
 
 https://www.google.com/search?q=xy-wf36v+sinilink+wifi
 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/xinilink.png">
+
+![xinilink](https://user-images.githubusercontent.com/45427770/154726742-0a345bae-076f-4f4a-a338-37a7a8403d5e.png)
 
 ---
 
