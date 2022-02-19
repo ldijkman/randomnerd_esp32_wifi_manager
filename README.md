@@ -5,6 +5,7 @@ Login for LittleFSbrowser FileManager / Ace js Editor == admin / admin
 - - Solution => https://github.com/ldijkman/ESPxWebFlMgr/issues/3
 - Bonjour!
 - - Electra Has something to Say http://84.107.155.75/gotit.php
+- added a map/directory with binary files for people who program the ESP8266 that way
 
 # the ESP8266 version is better / leading / further
 
