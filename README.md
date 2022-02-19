@@ -1,4 +1,4 @@
-# Login for FSbrowser FileManager / Editor == admin / admin
+## Login for LittleFSbrowser FileManager / Editor == admin / admin
 ---
 https://www.youtube.com/user/LuberthDijkman/videos
 ---
