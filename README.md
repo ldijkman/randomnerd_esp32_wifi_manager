@@ -1,4 +1,4 @@
-## Login for LittleFSbrowser FileManager / Editor == admin / admin
+## Login for LittleFSbrowser FileManager / Ace js Editor == admin / admin
 ---
 https://www.youtube.com/user/LuberthDijkman/videos
 ---
