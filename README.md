@@ -3,8 +3,7 @@ Login for LittleFSbrowser FileManager / Ace js Editor == admin / admin
 - Microsoft windows & Andoid phone / tablet users if mDNS does not work =>  https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/HELP.MD
 - NOTE: issue on the persistance of credentials in the core3.x of 8266, which does not work
 - - Solution => https://github.com/ldijkman/ESPxWebFlMgr/issues/3
-- Bonjour!
-- - Electra Has something to Say http://84.107.155.75/gotit.php
+- Bonjour!, Electra Has something to Say http://84.107.155.75/gotit.php
 - added a map/directory with binary files for people who program the ESP8266 that way
 
 # the ESP8266 version is better / leading / further
@@ -12,17 +11,8 @@ Login for LittleFSbrowser FileManager / Ace js Editor == admin / admin
 ESP8266-LittleFS-wifi-manager.ino 
 - moved the ESP8266 .INO file inside the folder => /ESP8266-LittleFS-wifi-manager/ESP8266-LittleFS-wifi-manager.ino
 - also ESP8266-LittleFS-wifi-manager_with_editor.ino with data map is there
-
----
-
-if you use MY version of the randomnerd wifimanager
-
-i think it is better NOT to post problems to Rui's & Sara's RandomNerd Tutorials Page
-
-My version CQ Electra is SO Different, They Rui & Sara will think you are Nuts, Crazy, Talking NonSense. AbraCaDabra ;-)
-
-Use https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
-
+- Questions, Answers, Suggestions => Use https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
+- 
 ---
 
 # Hey Electra! <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/data/Electra_192x192.png"> DANGER!!!
