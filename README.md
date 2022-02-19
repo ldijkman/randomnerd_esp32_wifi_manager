@@ -364,6 +364,8 @@ impressive Espressif
 
 Electra is a Star 370.64 Light Years Far in a Expanding Universe https://www.youtube.com/watch?v=9Lgf2VU_M70
 
+Electra is Huge, Radius 4.2159 million km ;-)
+
 ---
 https://www.youtube.com/user/LuberthDijkman/videos
 ---
