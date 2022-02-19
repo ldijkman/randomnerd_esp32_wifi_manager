@@ -182,16 +182,10 @@ function checkTime(i) {
         <label for="timer">OFF Delay %OFFDELAY% Seconds</label>
         <input type="number" id="offtimer" name="off" value="%OFFDELAY%" min="10" size="6">
         
-
 <input type="submit" value="Set"><br>
   POST is /timer?off=%OFFDELAY%<br>
-
       </form>
 -->
-
-
-      <br>
-      <br>
 
     </div>
 
@@ -202,9 +196,6 @@ function checkTime(i) {
   <br>
   <input type="button" id="Electra Skins" onclick='window.open("https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/Skins");' value="Skins for Electra, Download and Share your Skin"><br>
     <br>
-    <br>
-    <a href="https://play.google.com/store/apps/details?id=de.wellenvogel.bonjourbrowser&hl=en&gl=US" target="bonjour">
-      Android Phone?<br>Use Bonjour Browser App <br>to see list/browse all mDNS URL's / Devices in your local network<br>https://play.google.com/store/apps/details?id=de.wellenvogel.bonjourbrowser</a><br>
     <br>
     <a href="/status">/status gives text 0 or 1 status for external programs</a><br>
     <a href="/on">/on for external programs</a><br>
@@ -233,32 +224,22 @@ function checkTime(i) {
       Pressure 1080 Milibar<br>
       <hr>
     </h3>
-    <h3>
-      future optional: i2c oled screen<br>
-      print mdns url to screen<br>
-      print IP to screen<br>
-      print time / date to screen<br>
-      <hr>
-    </h3>
-    <button onclick="window.location.href='/update';">OTA<br>Over The Air Update</button><br>
 
-    <br>
-    DO NOT like the OTA FILE upload <br>
-    its a complete spiffs erase replace, must use a .spiffs.bin file<br>
-    i would like to select a file or multiple files to add/overwrite to spiffs<br>
-    Maybe a filemanager, c99shell r57shell alike ;-)<br>
-    <br>
-    would it be possible to add FSBrowser<br>
-    for uploading files to ESP32 and edit HTML files inbrowser online in/on ESP32<br>
-    <a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/README.md#electras-sneak-sleek-peek-preview-future-updownload-edit-delete" target="filemanager">Electras-sneak-sleek-peek-preview-future-updownload-edit-delete</< /a><br>
-      <br><br>
-      <a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager">https://github.com/ldijkman/randomnerd_esp32_wifi_manager</a><br>
-      <br>
+<br>upload with <a href="/edit" target="edit">Filemanager</a><br>
+<a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Binary_4_ESP8266_4MB/ESP8266-LittleFS-wifi-manager_with_editor.ino.bin?raw=true" target="BIN">ESP8266-LittleFS-wifi-manager_with_editor.ino.bin</a><br>
+    then<br>
+    <button onclick="window.location.href='/update';">UpDate ino Code</button><br>
+
+   
       <br>
       <br>
       %NETWORKINFO%<br>
       <br>
-      <a href="Http://paypal.me/LDijkman">A penny for sharing my thoughts</a><br><br>
+      <br>
+      <a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager" target="bonjour">https://github.com/ldijkman/randomnerd_esp32_wifi_manager</a><br>
+      <br>
+      <br>
+      <a href="Http://paypal.me/LDijkman" target="bonjour">A penny for sharing my thoughts</a><br><br>
       Electra, A &copy;&Ograve;&Oacute;&THORN;&egrave;&reg; Test.<br>
       <input type="button" id="CopyRight_2021_2022_Luberth_Dijkman" onclick='window.open("https://m.facebook.com/luberth.dijkman");';><br><br>
       Soon Electra will Power a Gazillion Devices<br>
