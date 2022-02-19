@@ -14,6 +14,9 @@ Login for LittleFSbrowser FileManager / Ace js Editor == admin / admin
 ESP8266-LittleFS-wifi-manager.ino 
 - moved the ESP8266 .INO file inside the folder => /ESP8266-LittleFS-wifi-manager/ESP8266-LittleFS-wifi-manager.ino
 - also ESP8266-LittleFS-wifi-manager_with_editor.ino with data map is there
+-
+- added a map/directory with binary files for people who program the ESP8266 that way
+
 
 ---
 
