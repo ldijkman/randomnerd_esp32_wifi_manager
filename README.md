@@ -40,11 +40,12 @@ DHCP IP or Fixed IP ADDRESS
 
 mDNS URL
 
-Arduino IDE
+Arduino IDE (the ESP8266 version uses LittleFS)
 
 program the ESP32 with the file -> ESP32_WiFi_Manager.ino
 
-upload data directory to spiffs => HOWTODOTHAT?! => https://randomnerdtutorials.com/install-esp32-filesystem-uploader-arduino-ide/
+upload data directory to spiffs => HOWTODOTHAT?! => https://randomnerdtutorials.com/install-esp32-filesystem-uploader-arduino-ide/ 
+- (the ESP8266 version uses LittleFS)
 
 connect to esp32 wifi AccesPoint "ESP-WIFI-MANAGER" direct and browse to 192.168.4.1
 
