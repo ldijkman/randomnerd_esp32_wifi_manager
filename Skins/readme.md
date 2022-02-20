@@ -32,7 +32,7 @@ We can upload index.htm or style.css to modify Electra's Skin
 
 or we can edit the files in ESP's LittleFS online inbrowser with the filemanager https://github.com/ldijkman/ESPxWebFlMgr
 
-for the moment i switched to a working example of espasyncwebserver littlefs fsbrowser  
+for the moment i switched to a working example of espasyncwebserver littlefs fsbrowser ESP8266 
 
 ---
 
