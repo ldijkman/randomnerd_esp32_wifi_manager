@@ -178,10 +178,29 @@
               (Windows mDNS => Install Apple iTunes or Bonjour printer Services for WinDos)<br>
               </small>
               <hr>
-              <small>Nodemcu LED=16, Wemos D1 mini relais=5</small><br> 
+              
               <label for="relaispin">Relais GPIO </label>
               <input type="number" id="relaispin" name="relaispin" value="5">
               invert<input type="checkbox" id="invertrp" ><br>
+          
+          
+               <select name="boardselect" id="boardselect"onchange='document.getElementById("relaispin").value = document.getElementById("boardselect").value;'>
+                <option value="16">LED 16 NodeMCU</option>
+                <option value="5">Relais 5 Wemos D1 Mini relais shield</option>
+                <option value=""></option>
+                <option value="2">LED 2 Yunshan 7-30V 10A Relay Board (HW-622)</option>
+                <option value="4">Relais 4 Yunshan 7-30V 10A Relay Board (HW-622)</option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value=""></option>
+                <option value="" selected>Select board Relais or LED</option>
+              </select>
+<!-- if you know more to add => https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions -->
+
 
 
 
