@@ -42,10 +42,10 @@ or could u / willing to write an HowTo https://github.com/ldijkman/randomnerd_es
 
 ---
 
-Yowza, that’s a lot of files. Try again with fewer than 100 files.
-
-i dont know maybe you do it with 
-
 https://www.espressif.com/en/support/download/other-tools?keys=&field_type_tid%5B%5D=14
 
-but thats mswindows thats not for my linux pi
+# jak started windows 7 laptop
+# looks like this works 
+
+![ESP8266_download_tool](https://user-images.githubusercontent.com/45427770/154829873-ca5841cd-37e6-44ee-b582-d828457fe07a.png)
+
