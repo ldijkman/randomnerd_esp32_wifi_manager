@@ -46,6 +46,8 @@ https://www.espressif.com/en/support/download/other-tools?keys=&field_type_tid%5
 
 # jak started windows 7 laptop
 # looks like this works 
+# ino bin at 0x0
+# mklittlefs bin at 0x200000
 
 ![ESP8266_download_tool](https://user-images.githubusercontent.com/45427770/154829873-ca5841cd-37e6-44ee-b582-d828457fe07a.png)
 
