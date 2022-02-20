@@ -60,7 +60,7 @@ or maybe with ESPEASY
 - https://github.com/letscontrolit/ESPEasy/releases
 - - https://github.com/letscontrolit/ESPEasy/releases/download/mega-20211224/ESPEasy_dist.zip
 
-na no noting easier about that
+nah no, that does not make it easier
 
 cannot set filesystem bin
 
