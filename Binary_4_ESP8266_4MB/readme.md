@@ -63,6 +63,10 @@ Robotdyn Uno WiFi ESP8266 - Robotdyn Mega WiFi ESP8266
 - run / serial monitor Dip 56 on
 - or run all dip off
 
+---
+
+## Soon Electra will power a Gazillion Devices
+
 
 
 
