@@ -12,7 +12,7 @@ not all finnished == but most is working
 
 program ESP8266 with ino bin and littlefs bin 
 
-connect your computer / phone / tablet WiFi to "ESP-WIFI-MANAGER-(?????)" Access Point direct connect
+connect your computer / phone / tablet WiFi to "ESP-WIFI-MANAGER-(?????)" Access Point, WiFi Direct Connect
 
 Browse to 192.168.4.1 for wifi manager and configure ESP8266 for your wifirouter
 
@@ -22,7 +22,7 @@ hope the rest goes automaticly
 
 Succes!!! Play and have Fun with Electra, Warning Fiddling with Electra can Kill You!
 
-Show me a video if you got it working????
+<b>Show me a video if you got it working????</b>
 
 ---
 
