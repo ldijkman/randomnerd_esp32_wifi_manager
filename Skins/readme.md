@@ -56,3 +56,8 @@ https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-Litt
 https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-LittleFS-wifi-manager/ESP8266-LittleFS-wifi-manager_with_editor
 
 
+---
+
+## Soon Electra will Power a Gazillion Devices
+
+---
