@@ -21,7 +21,7 @@ program ESP8266 with *.ino.bin and *.littlefs.bin
 - - Android phone/tablet use Bonjourbrowser App to see list browse mDNS https://play.google.com/store/apps/details?id=de.wellenvogel.bonjourbrowser&hl=nl&gl=US
 
 Succes!!! Play and have Fun with Electra
-- Warning Fiddling with Electra can Kill You!
+- Warning, Fiddling with Electra can Kill You!
 
 <b>Show me a video if you got it working????</b>
 
