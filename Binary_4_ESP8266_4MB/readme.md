@@ -44,8 +44,8 @@ Download next 2 files to your computer
 https://www.espressif.com/en/support/download/other-tools?keys=&field_type_tid%5B%5D=14
 - https://www.espressif.com/sites/default/files/tools/flash_download_tool_3.9.2.zip
 
-# jak started windows 7 laptop
-# looks like this works 
+# jak, started second hand windows 7 laptop (normally My usb stick x86 linux raspberry/debian)
+# This works 
 # ino bin at 0x0
 # mklittlefs bin at 0x200000
 - be sure that there are 5 zeros after the 0x2
