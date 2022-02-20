@@ -51,3 +51,13 @@ https://www.espressif.com/en/support/download/other-tools?keys=&field_type_tid%5
 
 ![ESP8266_download_tool](https://user-images.githubusercontent.com/45427770/154829873-ca5841cd-37e6-44ee-b582-d828457fe07a.png)
 
+
+---
+
+not yet
+
+or maybe with ESPEASY
+- https://github.com/letscontrolit/ESPEasy/releases
+- - https://github.com/letscontrolit/ESPEasy/releases/download/mega-20211224/ESPEasy_dist.zip
+
+
