@@ -117,7 +117,7 @@ Apple does not need an app for mdns == included in ios
 
 Easy set & overview and a load of switchtimes (more and better as most commercial paid programs/apps)
 
-Each device its own schedule webpage
+Each wifi relais switch its own schedule webpage
 
 <b>Electra not only for light switching but could also be handy for automated garden watering, Etcetra</b>
 
