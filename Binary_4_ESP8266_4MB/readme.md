@@ -28,9 +28,9 @@ Show me a video if you got it working????
 
 ### Download next 2 files to your computer
 
-...ino.bin https://github.com/ldijkman/randomnerd_esp32_wifi_manager/raw/main/Binary_4_ESP8266_4MB/ESP8266-LittleFS-wifi-manager_with_editor.ino.bin
+*.ino.bin https://github.com/ldijkman/randomnerd_esp32_wifi_manager/raw/main/Binary_4_ESP8266_4MB/ESP8266-LittleFS-wifi-manager_with_editor.ino.bin
 
-...mklittlefs.bin https://github.com/ldijkman/randomnerd_esp32_wifi_manager/raw/main/Binary_4_ESP8266_4MB/ESP8266-LittleFS-wifi-manager_with_editor.mklittlefs.bin
+*.mklittlefs.bin https://github.com/ldijkman/randomnerd_esp32_wifi_manager/raw/main/Binary_4_ESP8266_4MB/ESP8266-LittleFS-wifi-manager_with_editor.mklittlefs.bin
 
 
 ## Download / Install, huh ESP8266 downloadtool == uploadtool?
@@ -40,10 +40,11 @@ https://www.espressif.com/en/support/download/other-tools?keys=&field_type_tid%5
 
 ### jak, started second hand windows 7 laptop (normally My usb stick x86 linux raspberry/debian)
 # This works 
-# ino bin at 0x0
-# mklittlefs bin at 0x200000
+# *.ino.bin at 0x0
+# *.mklittlefs.bin at 0x200000
 - be sure that there are 5 zeros after the 0x2
-- do not forget the checkboxes in front off the bin files, files an 0x0 0x200000 should light up green
+- do not forget the checkboxes in front off the bin files
+- - files and 0x0, 0x200000 should light up green
 - - for some ESP8266 (RobotDyn Uno/Mega WiFi) boards i have to install a driver to see the COM Port in list
 - - - CH34x_Install_Windows_v3_4.zip
 - - - https://www.google.com/search?q=CH34x_Install_Windows_v3_4.zip
