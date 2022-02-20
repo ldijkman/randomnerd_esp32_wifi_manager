@@ -60,6 +60,7 @@ Robotdyn Uno WiFi ESP8266 32mbit==4MByte - Robotdyn Mega WiFi ESP8266 32mbit==4M
 - program Dip 567 to on
 - run / serial monitor Dip 56 on
 - or run = all dip off
+- - LED on this board is GPIO 14
 
 ---
 
