@@ -24,7 +24,7 @@ Succes!!! Play and have Fun with Electra
 - Warning, Fiddling with Electra can Kill You!
 
 <b>Show me a video if you got it working????</b>
-
+- https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
 ---
 
 ### Download next 2 files to your computer
