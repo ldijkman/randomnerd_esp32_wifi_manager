@@ -127,6 +127,8 @@ schedule.html https://jsfiddle.net/luberth/ow3zceyn/show
 
 schedule.html https://jsfiddle.net/luberth/ow3zceyn/show
 
+![2022-02-20-161828_1360x768_scrot](https://user-images.githubusercontent.com/45427770/154849826-e7b08c4b-a10c-4a26-a15a-ba8f3d238e4f.png)
+
 ---
 
 # Android phone chrome  ≣  add to home screen
