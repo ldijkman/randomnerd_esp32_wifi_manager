@@ -2,7 +2,7 @@ BIN files Thursday 17 february 2022
 # Program the ESP8266 with a simple tool
 # For normal People
 
-Binary files for ESP8266 32mbit == 4MByte
+Binary files for ESP8266 (For All board types with 32mbit == 4MByte)
 
 Maybe more people are able to try / test it this way
 
@@ -10,15 +10,15 @@ not all finnished == but most is working
 
 ---
 
-program ESP8266 with ino bin and littlefs bin 
+program ESP8266 with *.ino.bin and *.littlefs.bin 
 
-connect your computer / phone / tablet WiFi to "ESP-WIFI-MANAGER-(?????)" Access Point, WiFi Direct Connect
+- connect your computer / phone / tablet WiFi to "ESP-WIFI-MANAGER-(?????)" Access Point, WiFi Direct Connect
 
-Browse to 192.168.4.1 for wifi manager and configure ESP8266 for your wifirouter
+- Browse to 192.168.4.1 for wifi manager and configure ESP8266 for your wifirouter
 
-hope the rest goes automaticly
-- (MS Windows users might need to install Apple iTunes to get mDNS URL .local working)
-- Android phone/tablet use Bonjourbrowser App to see list browse mDNS https://play.google.com/store/apps/details?id=de.wellenvogel.bonjourbrowser&hl=nl&gl=US
+- hope the rest goes automaticly
+- - (MS Windows users might need to install Apple iTunes to get mDNS URL .local working)
+- - Android phone/tablet use Bonjourbrowser App to see list browse mDNS https://play.google.com/store/apps/details?id=de.wellenvogel.bonjourbrowser&hl=nl&gl=US
 
 Succes!!! Play and have Fun with Electra, Warning Fiddling with Electra can Kill You!
 
