@@ -22,6 +22,8 @@ hope the rest goes automaticly
 - (MS Windows users might need to install Apple iTunes to get mDNS URL .local working)
 - Android us Bonjourbrowser App to see list browse mDNS https://play.google.com/store/apps/details?id=de.wellenvogel.bonjourbrowser&hl=nl&gl=US
 
+## login pw for littleFSbrowser filemanager texteditor == admin / admin
+
 Succes!!! Play and have Fun with Electra, Warning Fiddling with Electra can Kill You!
 
 show me a video if you got it working????
