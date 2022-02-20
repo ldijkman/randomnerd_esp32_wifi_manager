@@ -1,4 +1,6 @@
 files Thursday 17 february 2022 
+# Program the ESP8266 with a simple tool
+# For normal People
 
 Binary files for ESP8266 32mbit == 4MByte ---------------> (eesz=4M2M, 4MB of wich 2MB is set/used for FS LittleFS)
 
