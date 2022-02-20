@@ -56,7 +56,7 @@ https://www.espressif.com/en/support/download/other-tools?keys=&field_type_tid%5
 
 ![ESP8266_download_tool](https://user-images.githubusercontent.com/45427770/154829873-ca5841cd-37e6-44ee-b582-d828457fe07a.png)
 
-### Ja dat is jouw laptop Pieter! ;-)
+### Ja dat is jouw laptop Pieter Man! ;-)
 
 ---
 Robotdyn Uno WiFi ESP8266 32mbit==4MByte - Robotdyn Mega WiFi ESP8266 32mbit==4MByte
