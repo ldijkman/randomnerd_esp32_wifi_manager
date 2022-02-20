@@ -121,7 +121,11 @@ Each device its own schedule webpage
 
 <b>not only for light switching but could also be handy for automated garden watering, Etcetra</b>
 
+schedule.html https://jsfiddle.net/luberth/ow3zceyn/show
+
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/Screenshot_20220118-182856_Chrome.jpg">
+
+schedule.html https://jsfiddle.net/luberth/ow3zceyn/show
 
 ---
 
