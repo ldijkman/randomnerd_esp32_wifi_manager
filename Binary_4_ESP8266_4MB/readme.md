@@ -40,6 +40,7 @@ maybe you know how this works
 ## huh ESP8266 downloadtool == uploadtool?
 
 https://www.espressif.com/en/support/download/other-tools?keys=&field_type_tid%5B%5D=14
+- https://www.espressif.com/sites/default/files/tools/flash_download_tool_3.9.2.zip
 
 # jak started windows 7 laptop
 # looks like this works 
