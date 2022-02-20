@@ -1,4 +1,4 @@
-files Thursday 17 february 2022 
+BIN files Thursday 17 february 2022 
 # Program the ESP8266 with a simple tool
 # For normal People
 
@@ -12,9 +12,9 @@ not all finnished == but most is working
 
 program ESP8266 with ino bin and littlefs bin 
 
-connect your computer / phone / tablet wifi to ESP Access Point direct connect
+connect your computer / phone / tablet WiFi to "ESP-WIFI-MANAGER-(?????)" Access Point direct connect
 
-browse to 192.168.4.1 for wifi manager and configure ESP8266 for your wifirouter
+Browse to 192.168.4.1 for wifi manager and configure ESP8266 for your wifirouter
 
 hope the rest goes automaticly
 - (MS Windows users might need to install Apple iTunes to get mDNS URL .local working)
@@ -33,7 +33,7 @@ Show me a video if you got it working????
 ...mklittlefs.bin https://github.com/ldijkman/randomnerd_esp32_wifi_manager/raw/main/Binary_4_ESP8266_4MB/ESP8266-LittleFS-wifi-manager_with_editor.mklittlefs.bin
 
 
-## huh ESP8266 downloadtool == uploadtool?
+## Download / Install, huh ESP8266 downloadtool == uploadtool?
 
 https://www.espressif.com/en/support/download/other-tools?keys=&field_type_tid%5B%5D=14
 - https://www.espressif.com/sites/default/files/tools/flash_download_tool_3.9.2.zip
