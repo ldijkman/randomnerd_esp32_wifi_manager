@@ -48,7 +48,7 @@ https://www.espressif.com/en/support/download/other-tools?keys=&field_type_tid%5
 # looks like this works 
 # ino bin at 0x0
 # mklittlefs bin at 0x200000
-- be sure tha there aree 5 zeros after the 2
+- be sure that there are 5 zeros after the 0x2
 - do not forget the checkboxes in front off the bin files, files an 0x0 0x200000 should light up green
 
 ![ESP8266_download_tool](https://user-images.githubusercontent.com/45427770/154829873-ca5841cd-37e6-44ee-b582-d828457fe07a.png)
