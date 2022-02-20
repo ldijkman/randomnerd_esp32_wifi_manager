@@ -119,7 +119,7 @@ Easy set & overview and a load of switchtimes (more and better as most commercia
 
 Each device its own schedule webpage
 
-<b>not only for light switching but could also be handy for automated garden watering, Etcetra</b>
+<b>Electra not only for light switching but could also be handy for automated garden watering, Etcetra</b>
 
 schedule.html https://jsfiddle.net/luberth/ow3zceyn/show
 
