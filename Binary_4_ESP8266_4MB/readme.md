@@ -57,13 +57,11 @@ https://www.espressif.com/en/support/download/other-tools?keys=&field_type_tid%5
 not yet
 
 or maybe with ESPEASY
-- https://github.com/letscontrolit/ESPEasy/releases
-- - https://github.com/letscontrolit/ESPEasy/releases/download/mega-20211224/ESPEasy_dist.zip
 
 nah no, that does not make it easier
 
-cannot set filesystem bin
+cannot set fs filesystem bin
 
-maybe later
+
 
 
