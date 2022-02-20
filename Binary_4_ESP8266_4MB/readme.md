@@ -43,7 +43,7 @@ https://www.espressif.com/en/support/download/other-tools?keys=&field_type_tid%5
 # This works 
 # *.ino.bin at 0x0
 # *.mklittlefs.bin at 0x200000
-- be sure that there are 5 zeros after the 0x2
+- <b>be sure that there are 5 zeros after the 0x2</b>
 - do not forget the checkboxes in front off the bin files
 - - files and 0x0, 0x200000 should light up green
 - - for some ESP8266 (RobotDyn Uno/Mega WiFi) boards i have to install a driver to see the COM Port in list
