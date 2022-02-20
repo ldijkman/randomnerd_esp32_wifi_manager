@@ -54,13 +54,7 @@ https://www.espressif.com/en/support/download/other-tools?keys=&field_type_tid%5
 
 ---
 
-not yet
 
-or maybe with ESPEASY
-
-nah no, that does not make it easier
-
-cannot set fs filesystem bin
 
 
 
