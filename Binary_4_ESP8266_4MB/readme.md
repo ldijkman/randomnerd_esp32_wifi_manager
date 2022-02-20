@@ -14,7 +14,7 @@ program ESP8266 with *.ino.bin and *.littlefs.bin
 
 - connect your computer / phone / tablet WiFi to "ESP-WIFI-MANAGER-(?????)" Access Point, WiFi Direct Connect
 
-- Browse to 192.168.4.1 for wifi manager and configure ESP8266 for your wifirouter
+- Browse to http://192.168.4.1 for wifi manager and configure ESP8266 for your wifirouter
 
 - hope the rest goes automaticly
 - - (MS Windows users might need to install Apple iTunes to get mDNS URL .local working)
