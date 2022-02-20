@@ -34,14 +34,6 @@ maybe you know how this works
 
 1 is 2mb littlefs bin https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Binary_4_ESP8266_4MB/ESP8266-LittleFS-wifi-manager_with_editor.mklittlefs.bin
 
----
-
-could you make a video how you do this???
-
-or could u / willing to write an HowTo https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions/15
-
----
-
 https://www.espressif.com/en/support/download/other-tools?keys=&field_type_tid%5B%5D=14
 
 # jak started windows 7 laptop
