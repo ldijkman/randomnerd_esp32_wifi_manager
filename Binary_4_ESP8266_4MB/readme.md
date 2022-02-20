@@ -22,11 +22,11 @@ hope the rest goes automaticly
 
 Succes!!! Play and have Fun with Electra, Warning Fiddling with Electra can Kill You!
 
-show me a video if you got it working????
+Show me a video if you got it working????
 
 ---
 
-Download next 2 files to your computer
+### Download next 2 files to your computer
 
 1 is ino bin https://github.com/ldijkman/randomnerd_esp32_wifi_manager/raw/main/Binary_4_ESP8266_4MB/ESP8266-LittleFS-wifi-manager_with_editor.ino.bin
 
@@ -61,7 +61,7 @@ Robotdyn Uno WiFi ESP8266 32mbit==4MByte - Robotdyn Mega WiFi ESP8266 32mbit==4M
 
 ---
 
-## login pw for littleFSbrowser filemanager texteditor == admin / admin
+## login password for littleFSbrowser filemanager texteditor == admin / admin
 
 ## Soon Electra will power a Gazillion Devices
 
