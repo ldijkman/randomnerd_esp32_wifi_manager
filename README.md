@@ -5,6 +5,7 @@ Login for LittleFSbrowser FileManager / Ace js Editor == admin / admin
 - - Solution => https://github.com/ldijkman/ESPxWebFlMgr/issues/3
 - Bonjour!, Electra Has something to Say http://84.107.155.75/gotit.php
 - added a map/directory with binary files for people who program the ESP8266 that way
+- - - https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/Binary_4_ESP8266_4MB
 - Questions, Answers, Suggestions => Use https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
 -
 - Got it Working => show me a video ;-) 
@@ -16,6 +17,7 @@ ESP8266-LittleFS-wifi-manager.ino
 - also ESP8266-LittleFS-wifi-manager_with_editor.ino with data map is there
 -
 - added a map/directory with binary files for people who program the ESP8266 that way
+- - https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/Binary_4_ESP8266_4MB
 
 
 ---
