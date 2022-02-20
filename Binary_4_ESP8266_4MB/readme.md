@@ -58,10 +58,10 @@ https://www.espressif.com/en/support/download/other-tools?keys=&field_type_tid%5
 
 
 ---
-Robotdyn Uno WiFi ESP8266 - Robotdyn Mega WiFi ESP8266
+Robotdyn Uno WiFi ESP8266 32mbit==4MByte - Robotdyn Mega WiFi ESP8266 32mbit==4MByte
 - program Dip 567 to on
 - run / serial monitor Dip 56 on
-- or run all dip off
+- or run = all dip off
 
 ---
 
