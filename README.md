@@ -350,7 +350,7 @@ Skins html/css for the main page editable uploadeble so create your own look for
 
 each device its own filemanager/editor/upload/download
 
-i must have forgot something => no ads, data privacy, no payments
+i must have forgot something => <b>no ads, data privacy, no payments</b>
 
 ![mosquito](https://user-images.githubusercontent.com/45427770/152668207-f400a39e-72a9-42c0-a6d2-412865e8dea2.jpeg)
 
