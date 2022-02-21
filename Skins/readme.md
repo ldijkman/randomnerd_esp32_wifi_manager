@@ -12,7 +12,7 @@ just an example to show you
 
 Designrules:
 - small filesize local images
-- local js or scriptserver http://cdnjs.com
+- local js css or scriptserver http://cdnjs.com
 - totalsize small / minimal?
 
 share your HTML/CSS skin in https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
