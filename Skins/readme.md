@@ -10,6 +10,11 @@ just an example to show you
 - design a nice skin and leave a "made by" link to your homepage
 - showoff how good you are ;-)
 
+Designrules:
+- small filesize local images
+- local js or scriptserver http://cdnjs.com
+- totalsize small / minimal?
+
 share your HTML/CSS skin in https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
 
 
