@@ -6,7 +6,7 @@ just an example to show you
 - each wifi relais switch has its own fsbrowser filemanager / editor
 
 ### Are you a webdesigner
-- this is your change to get some traffic to your homepage
+- this is your chance to get some traffic to your homepage
 - design a nice skin and leave a link to your homepage
 - showoff how good you are ;-)
 
