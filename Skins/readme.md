@@ -8,7 +8,7 @@ just an example to show you
 ### Are you a webdesigner
 - this is your change to get some traffic to your homepage
 - design a nice skin and leave a link to your homepage
-- showof how good you are ;-)
+- showoff how good you are ;-)
 
 share your HTML/CSS skin in https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
 
