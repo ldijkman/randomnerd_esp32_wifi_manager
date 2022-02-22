@@ -50,6 +50,11 @@ https://www.espressif.com/en/support/download/other-tools?keys=&field_type_tid%5
 - - - CH34x_Install_Windows_v3_4.zip
 - - - https://www.google.com/search?q=CH34x_Install_Windows_v3_4.zip
 
+# NEW
+- or download Combined BIN https://github.com/ldijkman/randomnerd_esp32_wifi_manager/raw/main/Binary_4_ESP8266_4MB/Electra_Combined_only_this_at_0x0.bin
+- only this one at 0x0
+
+
 ![ESP8266_download_tool](https://user-images.githubusercontent.com/45427770/154829873-ca5841cd-37e6-44ee-b582-d828457fe07a.png)
 
 ### Ja dat is jouw laptop Pieter Man! ;-)
