@@ -41,21 +41,8 @@ https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-Litt
 
 We can upload index.htm or style.css to modify Electra's Skin
 
-or we can edit the files in ESP's LittleFS online inbrowser with the filemanager https://github.com/ldijkman/ESPxWebFlMgr
-
-for the moment i switched to a working example of espasyncwebserver littlefs fsbrowser ESP8266 
-
----
-
-make next run on espasyncwebserver?
-
-github.com/holgerlembke/ESPxWebFlMgr
-
-fork https://github.com/ldijkman/ESPxWebFlMgr
-
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220122_053531.jpg">
-
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220122_053548.jpg">
+or we can edit the files in ESP's LittleFS online inbrowser with the filemanager 
+- ace js webeditor cloudeditor syntax colored
 
 for the moment i switched to a working example of espasyncwebserver littlefs fsbrowser ESP8266
 
