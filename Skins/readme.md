@@ -45,7 +45,7 @@ We can upload index.htm or style.css to modify Electra's Skin
 or we can edit the files in ESP's LittleFS online inbrowser with the filemanager 
 - ace js webeditor cloudeditor syntax colored
 
-for the moment i switched to a working example of espasyncwebserver littlefs fsbrowser ESP8266
+ a working espasyncwebserver littlefs fsbrowser ESP8266 on every wifi relais switch you program with Electra
 
 https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-LittleFS-wifi-manager/ESP8266-LittleFS-wifi-manager_with_editor
 
