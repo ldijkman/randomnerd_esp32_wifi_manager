@@ -1,4 +1,5 @@
-Login for LittleFSbrowser FileManager / Ace js Editor == admin / admin
+Login for LittleFSbrowser FileManager / Ace js Editor == 
+- admin / admin
 
 just an example to show you 
 - What i have in mind https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/Skins
