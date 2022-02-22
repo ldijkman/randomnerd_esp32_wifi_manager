@@ -46,7 +46,7 @@ or we can edit the files in ESP's LittleFS online inbrowser with the filemanager
 - ace js webeditor cloudeditor syntax colored
 
  a working espasyncwebserver littlefs fsbrowser ESP8266 on every wifi relais switch you program with Electra
-
+- https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/Binary_4_ESP8266_4MB
 https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-LittleFS-wifi-manager/ESP8266-LittleFS-wifi-manager_with_editor
 
 ![2022-02-14-050521_1360x768_scrot](https://user-images.githubusercontent.com/45427770/153798383-350826d3-80b8-42d5-bbbc-6b688a0fd56b.png)
