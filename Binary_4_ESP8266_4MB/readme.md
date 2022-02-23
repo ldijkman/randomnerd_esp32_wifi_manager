@@ -57,6 +57,11 @@ https://www.espressif.com/en/support/download/other-tools?keys=&field_type_tid%5
 
 ![ESP8266_download_tool](https://user-images.githubusercontent.com/45427770/154829873-ca5841cd-37e6-44ee-b582-d828457fe07a.png)
 
+One bin
+
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Binary_4_ESP8266_4MB/20220223_033932.jpg">
+
+
 ### Ja dat is jouw laptop Pieter Man! ;-)
 Smeerlap, stond vol met p*rn*.
 
