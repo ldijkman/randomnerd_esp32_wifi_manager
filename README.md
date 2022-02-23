@@ -1,6 +1,7 @@
 Login for LittleFSbrowser FileManager / Ace js Editor == admin / admin
 - <b>added a map/directory with binary files for people who program the ESP8266 that way / the easy way
-- - - https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/Binary_4_ESP8266_4MB</b>
+- - - https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/Binary_4_ESP8266_4MB
+- - - also for 8MB / 16MB Boards</b>
 - https://www.youtube.com/user/LuberthDijkman/videos
 - Microsoft windows & Andoid phone / tablet users if mDNS does not work =>  https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/HELP.MD
 - NOTE: issue on the persistance of credentials in the core3.x of 8266, which does not work
@@ -18,6 +19,7 @@ ESP8266-LittleFS-wifi-manager.ino
 -
 - added a map/directory with binary files for people who program the ESP8266 that way / the easy way
 - - https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/Binary_4_ESP8266_4MB
+- - also for 8MB / 16MB Boards</b>
 
 
 ---
