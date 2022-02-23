@@ -4,7 +4,9 @@ BIN files Sunday 20 february 2022
 
 Binary files for ESP8266 (For All board types with 32mbit == 4MByte)
 - also works for 64mbit==8MByte Flash, Uno r3 wifi / Mega 2560 wifi boards
-
+- also works for 128mbit==16MByte lolin wemos d1 mini pro
+- - not sure if FS above 2MB is useable
+- 
 Maybe more people are able to try / test it this way
 
 not all finnished == but most is working
