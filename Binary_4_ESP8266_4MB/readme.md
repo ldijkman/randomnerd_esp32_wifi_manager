@@ -3,7 +3,7 @@ BIN files Sunday 20 february 2022
 # For normal People
 
 Binary files for ESP8266 (For All board types with 32mbit == 4MByte)
-- also works for 64mbit==8MByte Flash uno r3 wifi mega 2560 wifi boards
+- also works for 64mbit==8MByte Flash, Uno r3 wifi / Mega 2560 wifi boards
 
 Maybe more people are able to try / test it this way
 
