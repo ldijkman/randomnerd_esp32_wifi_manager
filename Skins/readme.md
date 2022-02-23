@@ -15,6 +15,7 @@ Designrules:
 - small filesize local images
 - local js css or scriptserver http://cdnjs.com
 - totalsize small / minimal?
+- no tracking images, scripts, url's
 
 share your HTML/CSS skin in https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
 
