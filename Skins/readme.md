@@ -8,7 +8,7 @@ just an example to show you
 
 ### Are you a webdesigner?!
 - this is your chance to get some traffic to your homepage
-- design a nice skin and leave a "made by" link to your homepage
+- design a nice skin and leave a "made by ..."  or "Skin Design by ..." link to your homepage
 - showoff how good you are ;-)
 
 Designrules:
