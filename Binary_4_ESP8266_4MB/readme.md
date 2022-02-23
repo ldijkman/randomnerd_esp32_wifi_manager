@@ -3,6 +3,7 @@ BIN files Sunday 20 february 2022
 # For normal People
 
 Binary files for ESP8266 (For All board types with 32mbit == 4MByte)
+- also works for 64mbit==8MByte Flash uno r3 wifi mega 2560 wifi boards
 
 Maybe more people are able to try / test it this way
 
@@ -50,14 +51,13 @@ https://www.espressif.com/en/support/download/other-tools?keys=&field_type_tid%5
 - - - CH34x_Install_Windows_v3_4.zip
 - - - https://www.google.com/search?q=CH34x_Install_Windows_v3_4.zip
 
-
-![ESP8266_download_tool](https://user-images.githubusercontent.com/45427770/154829873-ca5841cd-37e6-44ee-b582-d828457fe07a.png)
-
 # NEW
 - or download Combined BIN https://github.com/ldijkman/randomnerd_esp32_wifi_manager/raw/main/Binary_4_ESP8266_4MB/Electra_Combined_only_this_at_0x0.bin
 - only this one at 0x0  (== 2 BIN files in 1 BIN file )
 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Binary_4_ESP8266_4MB/20220223_033932.jpg">
+
+![ESP8266_download_tool](https://user-images.githubusercontent.com/45427770/154829873-ca5841cd-37e6-44ee-b582-d828457fe07a.png)
+
 
 
 ### Ja dat is jouw laptop Pieter Man! ;-)
