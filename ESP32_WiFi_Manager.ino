@@ -1,3 +1,11 @@
+
+
+
+please try the esp8266 version == much further better
+  https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/Binary_4_ESP8266_4MB
+  https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-LittleFS-wifi-manager/ESP8266-LittleFS-wifi-manager_with_editor
+
+
 //*********************
 //     Hey Electra!
 /*********************
