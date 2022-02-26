@@ -113,7 +113,6 @@ button:active {
              <h2>%MDNSNAME%</h2>
           NTP Time<div id="NTPTime"></div>
           Browser <div id="date_time"></div>
-          OFFcountdown<div id="OFFcountdwn">%OFFCOUNTDOWN%</div>  
           </p>
 <script>
 <!-- maybe only get time from ESP8266 https://jsfiddle.net/yeyene/snqpkuhr/ -->
@@ -165,6 +164,7 @@ function checkTime(i) {
 <br><br>
       <p>LAN mDNS Scan</p>
       <div id="mdnsscan"> %MDNSSCAN%<br></div><br>
+      OFFcountdown<div id="OFFcountdwn">%OFFCOUNTDOWN%</div>  
       OFF Delay<div id="OFFDelay">%OFFDELAY%</div>  
 <input type="number" id="offdelay"  value="%OFFDELAY%" min="10" size="8" style="width: 100px; padding: 10px; border: 1px solid black"><br>
      <button id="offdelaybutton">Send json offdelay</button><br>

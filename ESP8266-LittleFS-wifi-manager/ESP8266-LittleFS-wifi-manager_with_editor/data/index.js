@@ -48,6 +48,7 @@ function onMessage(event) {
     document.getElementById('mdnsscan').innerHTML = data.scan;
     document.getElementById('NTPTime').innerHTML = data.time;
     document.getElementById('OFFDelay').innerHTML = data.offdelay;
+    document.getElementById('OFFcountdwn').innerHTML = data.offcnt;
 }
 
 // ----------------------------------------------------------------------------
