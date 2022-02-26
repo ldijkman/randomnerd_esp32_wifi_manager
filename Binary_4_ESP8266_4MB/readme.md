@@ -3,9 +3,9 @@ Russian?, You are not welcome here,
 - go away and protest against your maniac insane leader
 ------------------
 
-### seperate bin files updated saturday 26 februari 2022 added countdown off timer
+### BIN files updated saturday 26 februari 2022 added countdown off timer
 
-older combined BIN file Sunday 20 february 2022 have to start windows to combine, do not know how to do it in linux
+
 
 # Program the ESP8266 with a simple tool
 # For normal People
