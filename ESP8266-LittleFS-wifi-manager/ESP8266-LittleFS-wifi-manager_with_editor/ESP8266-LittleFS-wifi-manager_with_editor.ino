@@ -721,7 +721,7 @@ void loop() {
     Relays_OFF(); // Turn relaispin OFF
   } else {
     OFFcountdown = (lampontime / 1000 - (millis() - lamponstart) / 1000);
-    if ((millis() / 1000) % 2) {
+    if ((millis() / 500) % 2) {
       // Serial.println("1");
       if (flag == 0) {
         notifyClients();                     // send countdown once every half second
