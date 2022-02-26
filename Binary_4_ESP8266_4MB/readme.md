@@ -1,6 +1,6 @@
 
 Russian?, You are not welcome here, 
-- go away and protest against your maniac leader
+- go away and protest against your maniac insane leader
 ------------------
 
 ### seperate bin files updated saturday 26 februari 2022 added countdown off timer
