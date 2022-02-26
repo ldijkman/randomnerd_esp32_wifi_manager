@@ -484,16 +484,18 @@ void setup() {
 
     // Route to set GPIO state to HIGH
     server.on("/on", HTTP_GET, [](AsyncWebServerRequest * request) {
-      digitalWrite(ledPin, HIGH);
-      ledState = "ON";
+      Relays_ON();
+      // digitalWrite(ledPin, HIGH);
+      // ledState = "ON";
       request->send(MYFS, "/index.html", "text/html", false, processor);
       notify = 1;
     });
 
     // Route to set GPIO state to LOW
     server.on("/off", HTTP_GET, [](AsyncWebServerRequest * request) {
-      digitalWrite(ledPin, LOW);
-      ledState = "OFF";
+      Relays_OFF();
+      // digitalWrite(ledPin, LOW);
+      // ledState = "OFF";
       request->send(MYFS, "/index.html", "text/html", false, processor);
       notify = 1;
     });
@@ -705,13 +707,31 @@ void setup() {
 unsigned long startmillis = 0;
 
 
-
-
+unsigned long lamponstart;
+unsigned long lampontime; //inching
+unsigned long OFFcountdown;
+int flag;
 // loop // // loop // // loop // // loop // // loop // // loop // // loop // // loop // // loop //
 void loop() {
   timeClient.update();
   ws.cleanupClients();
 
+  lampontime = offdelay.toInt() * 1000UL;
+  if ((millis() - lamponstart)  > lampontime ) { // turn lamp off 2 minutes after start from webbutton     compare stored TempLong to current millis() counter  screen timeout
+    Relays_OFF(); // Turn relaispin OFF
+  } else {
+    OFFcountdown = (lampontime / 1000 - (millis() - lamponstart) / 1000);
+    if ((millis() / 1000) % 2) {
+      // Serial.println("1");
+      if (flag == 0) {
+        notifyClients();                     // send countdown once every half second
+        flag = 1;
+      }
+    } else {                                 // not half second reset sendonce flag
+      // Serial.println("0");
+      flag = 0;
+    }
+  }
   // if ( digitalread hardware_button.pressed()) {
   // while  ( digitalread hardware_button.pressed()) {//bounce}
   // }
@@ -741,7 +761,7 @@ void loop() {
     Serial.print("ntpserver "); Serial.println(ntpserver.c_str());
     Serial.print("ntptimeoffset sec "); Serial.println((ntptimeoffset.toInt() * 3600));
 
-// https://randomnerdtutorials.com/esp8266-nodemcu-date-time-ntp-client-server-arduino/
+    // https://randomnerdtutorials.com/esp8266-nodemcu-date-time-ntp-client-server-arduino/
     unsigned long epochTime = timeClient.getEpochTime();
     // Serial.print("Epoch Time: ");
     // Serial.println(epochTime);    // Epoch Time: 1644662416
@@ -752,47 +772,47 @@ void loop() {
     //Serial.println(formattedTime);  // Formatted Time: 10:40:16
 
     int currentHour = timeClient.getHours();
- //   Serial.print("Hour: ");
- //   Serial.println(currentHour);
+    //   Serial.print("Hour: ");
+    //   Serial.println(currentHour);
 
     int currentMinute = timeClient.getMinutes();
- //   Serial.print("Minutes: ");
- //   Serial.println(currentMinute);
+    //   Serial.print("Minutes: ");
+    //   Serial.println(currentMinute);
 
     int currentSecond = timeClient.getSeconds();
-//    Serial.print("Seconds: ");
-//    Serial.println(currentSecond);
+    //    Serial.print("Seconds: ");
+    //    Serial.println(currentSecond);
 
     String weekDay = weekDays[timeClient.getDay()];
-//    Serial.print("Week Day: ");
-//    Serial.println(weekDay);
+    //    Serial.print("Week Day: ");
+    //    Serial.println(weekDay);
 
     //Get a time structure
     struct tm *ptm = gmtime ((time_t *)&epochTime);
 
     int monthDay = ptm->tm_mday;
-//    Serial.print("Month day: ");
-//    Serial.println(monthDay);
+    //    Serial.print("Month day: ");
+    //    Serial.println(monthDay);
 
     int currentMonth = ptm->tm_mon + 1;
-//    Serial.print("Month: ");
-//    Serial.println(currentMonth);
+    //    Serial.print("Month: ");
+    //    Serial.println(currentMonth);
 
     String currentMonthName = months[currentMonth - 1];
-//    Serial.print("Month name: ");
-//    Serial.println(currentMonthName);
+    //    Serial.print("Month name: ");
+    //    Serial.println(currentMonthName);
 
     int currentYear = ptm->tm_year + 1900;
-//    Serial.print("Year: ");
-//    Serial.println(currentYear);
+    //    Serial.print("Year: ");
+    //    Serial.println(currentYear);
 
     //Print complete date:
-//    String currentDate = String(currentYear) + "-" + String(currentMonth) + "-" + String(monthDay);
-//    Serial.print("Current date: ");
-//    Serial.println(currentDate);
+    //    String currentDate = String(currentYear) + "-" + String(currentMonth) + "-" + String(monthDay);
+    //    Serial.print("Current date: ");
+    //    Serial.println(currentDate);
 
-//    Serial.println("");
-// https://randomnerdtutorials.com/esp8266-nodemcu-date-time-ntp-client-server-arduino/
+    //    Serial.println("");
+    // https://randomnerdtutorials.com/esp8266-nodemcu-date-time-ntp-client-server-arduino/
 
 
 
@@ -959,9 +979,21 @@ void checkpost() {
 }
 
 
+void Relays_ON() {
+  digitalWrite(ledPin, HIGH);
+  if (ledState == "ON")return;
+  ledState = "ON";
+  lamponstart = millis();
+  notifyClients();
+}
 
-
-
+void Relays_OFF() {
+  digitalWrite(ledPin, LOW);
+  if (ledState == "OFF")return;
+  ledState = "OFF";
+  OFFcountdown = 0;
+  notifyClients();
+}
 
 // next only works/shows its great usefulness if there are more ESP mDNS URL devices on the local network
 // scanned mdns url linked list should be on main webpage refreshed every ?? seconds
@@ -1052,6 +1084,7 @@ void notifyClients() {
   json["status"] = ledState.c_str(); // relais status
   json["time"] = formattedTime.c_str();
   json["offdelay"] = offdelay.c_str();
+  json["offcnt"] = OFFcountdown;
   json["scan"] = scanstr.c_str();   // mdnsscan
 
   char buffer[1024];   //i do not know
@@ -1128,11 +1161,13 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
     if (json["action"] == "toggle") {
       //ledPin = !ledPin;
       if (digitalRead(ledPin) == 0) {
-        digitalWrite(ledPin, HIGH);
-        ledState = "ON";
+        Relays_ON();
+        //digitalWrite(ledPin, HIGH);
+        //ledState = "ON";
       } else {
-        digitalWrite(ledPin, LOW);
-        ledState = "OFF";
+        Relays_OFF();
+        //digitalWrite(ledPin, LOW);
+        //ledState = "OFF";
       }
       Serial.println(ledState);
       notifyClients();
@@ -1185,10 +1220,10 @@ void initWebSocket() {
 
 
 /*
- * luberth => turned off  part from fs browser example
+   luberth => turned off  part from fs browser example
 
-//////////////////////////////////////////////////////////////
-void onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient * client, AwsEventType type, void * arg, uint8_t *data, size_t len) {
+  //////////////////////////////////////////////////////////////
+  void onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient * client, AwsEventType type, void * arg, uint8_t *data, size_t len) {
   if (type == WS_EVT_CONNECT) {
     Serial.printf("ws[%s][%u] connect\n", server->url(), client->id());
     client->printf("Hello Client %u :)", client->id());
@@ -1269,15 +1304,15 @@ void onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient * client, AwsEventT
     //handleWebSocketMessage(arg, data, len); //////////////////////// it is i, luberth old line insert
     ///////////////////////////////////////////////////////////////////////////////
   }
-}
-////////////////////////////////////////////////////
+  }
+  ////////////////////////////////////////////////////
 
 */
 
-  // Got it working???
-  // Share a video link https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
-  // Bet you can do better as me => https://www.youtube.com/user/LuberthDijkman/videos
-  // http://paypal.me/LDijkman
+// Got it working???
+// Share a video link https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
+// Bet you can do better as me => https://www.youtube.com/user/LuberthDijkman/videos
+// http://paypal.me/LDijkman
 
 // Me NO programmer, just trying, wasting loads of time drinking loads of coffee, but makes more sense to me as solving crossword puzzles
 // My Mothers and Fathers Language whas Dutch, Thats what they learned me, That Explains my poor Englisch.
