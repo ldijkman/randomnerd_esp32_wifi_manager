@@ -120,6 +120,19 @@
 //#include <WiFi.h>
 
 
+
+#include <Wire.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_BME280.h>
+
+#define SEALEVELPRESSURE_HPA (1013.25)
+Adafruit_BME280 bme; // I2C
+
+unsigned BME280status;
+
+
+
+
 #include <ESP8266WiFi.h>
 #include <ESPAsyncTCP.h>                  // https://github.com/me-no-dev/ESPAsyncTCP
 #include <ESP8266mDNS.h>
@@ -464,6 +477,24 @@ void setup() {
 
 
 
+
+  Serial.println(F("BME280 test"));
+  if (ledPin == 4 || ledPin == 5) {   // 4 5 normal i2c pins but used on some boards for relais
+    Wire.begin(14, 12);               // use 14 and 12 for i2c on d5 d6
+  }
+  BME280status = bme.begin(0x76);   // The device's I2C address is either 0x76 or 0x77.
+  if (!BME280status) {
+    Serial.println("Could not find a valid BME280 sensor, check wiring, address, sensor ID!");
+    Serial.print("SensorID was: 0x"); Serial.println(bme.sensorID(), 16);
+    // while (1)
+    //delay(5000);
+  }
+
+
+
+
+
+
   if (initWiFi()) {
 
     events.onConnect([](AsyncEventSourceClient * client) {
@@ -705,12 +736,12 @@ void setup() {
 }
 
 unsigned long startmillis = 0;
-
-
 unsigned long lamponstart;
 unsigned long lampontime; //inching
 unsigned long OFFcountdown;
 int flag;
+float T = 0.0, H = 0.0, P = 0.0;
+
 // loop // // loop // // loop // // loop // // loop // // loop // // loop // // loop // // loop //
 void loop() {
   timeClient.update();
@@ -814,8 +845,30 @@ void loop() {
     //    Serial.println("");
     // https://randomnerdtutorials.com/esp8266-nodemcu-date-time-ntp-client-server-arduino/
 
+    //Serial.print("Temperature = ");
+    //Serial.print(bme.readTemperature());
+    // Serial.println(" *C");
 
+    // Serial.print("Pressure = ");
 
+    // Serial.print(bme.readPressure() / 100.0F);
+    //  Serial.println(" hPa");
+
+    // Serial.print("Approx. Altitude = ");
+    // Serial.print(bme.readAltitude(SEALEVELPRESSURE_HPA));
+    // Serial.println(" m");
+
+    // Serial.print("Humidity = ");
+    // Serial.print(bme.readHumidity());
+    // Serial.println(" %");
+    if (BME280status) {
+      int t = (bme.readTemperature() * 10);
+      int h = (bme.readHumidity() * 10);
+      int p = bme.readPressure() / 100.0F;
+      T = (t / 10); // to get 1 decimal place
+      H = (h / 10);
+      P = p;
+    }
   }
 
 
@@ -985,6 +1038,7 @@ void Relays_ON() {
   ledState = "ON";
   lamponstart = millis();
   notifyClients();
+  return;
 }
 
 void Relays_OFF() {
@@ -993,6 +1047,7 @@ void Relays_OFF() {
   ledState = "OFF";
   OFFcountdown = 0;
   notifyClients();
+  return;
 }
 
 // next only works/shows its great usefulness if there are more ESP mDNS URL devices on the local network
@@ -1085,7 +1140,14 @@ void notifyClients() {
   json["time"] = formattedTime.c_str();
   json["offdelay"] = offdelay.c_str();
   json["offcnt"] = OFFcountdown;
+  json["T"] = T;
+  json["H"] = H;
+  json["P"] = P;
   json["scan"] = scanstr.c_str();   // mdnsscan
+
+
+
+
 
   char buffer[1024];   //i do not know
   serializeJson(json, Serial);
@@ -1160,7 +1222,8 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
     Serial.print("action="); Serial.println(action);
     if (json["action"] == "toggle") {
       //ledPin = !ledPin;
-      if (digitalRead(ledPin) == 0) {
+      //if (digitalRead(ledPin) == 0) {
+      if (ledState == "OFF") {
         Relays_ON();
         //digitalWrite(ledPin, HIGH);
         //ledState = "ON";
