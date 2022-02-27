@@ -170,7 +170,23 @@ function checkTime(i) {
       <p>LAN mDNS Scan</p>
       <div id="mdnsscan"> %MDNSSCAN%<br></div><br>
       OFFcountdown<div id="OFFcountdwn">%OFFCOUNTDOWN%</div> 
-        
+      <div id="jabadabba"></div>
+<script>
+// div countdown seconds to h m s 
+function mylFunction() {
+const container = document.getElementById('OFFcountdwn');
+var hours=parseInt(container.textContent/3600);
+var minutes=parseInt(container.textContent/60)-(hours*60);
+var seconds=parseInt(container.textContent)-((minutes*60)+(hours*3600));
+console.log(hours+":"+minutes+":"+seconds);
+document.getElementById("jabadabba").innerHTML=hours+":"+minutes+":"+seconds;
+//console.log(container.textContent);
+//console.log(container.innerText);
+}
+
+setInterval(mylFunction, 1000);
+
+</script>
 <script>
 // div countdown seconds to h m s 
 function mylFunction() {
