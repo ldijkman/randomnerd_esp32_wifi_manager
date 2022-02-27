@@ -104,6 +104,7 @@ wemos think relais is on D1 wich is also i2c
 
 ![WeMos-D1-mini-esp8266-pinout-mischianti](https://user-images.githubusercontent.com/45427770/155879701-09fb8524-b42e-4957-9be0-e9acc608147c.png)
 picture https://www.mischianti.org/
+
 ---
 
 nodemcu pinout
