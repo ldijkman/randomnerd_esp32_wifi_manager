@@ -49,6 +49,9 @@ function onMessage(event) {
     document.getElementById('NTPTime').innerHTML = data.time;
     document.getElementById('OFFDelay').innerHTML = data.offdelay;
     document.getElementById('OFFcountdwn').innerHTML = data.offcnt;
+   document.getElementById('T').innerHTML = data.T;
+    document.getElementById('H').innerHTML = data.H;
+    document.getElementById('P').innerHTML = data.P;
 }
 
 // ----------------------------------------------------------------------------
