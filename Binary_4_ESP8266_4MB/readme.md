@@ -103,12 +103,13 @@ wemos think relais is on D1 wich is also i2c
 - - then i2c pins are d5 d6 (gpio12 gpio14)  SCL SDA
 
 ![WeMos-D1-mini-esp8266-pinout-mischianti](https://user-images.githubusercontent.com/45427770/155879701-09fb8524-b42e-4957-9be0-e9acc608147c.png)
-
+picture https://www.mischianti.org/
 ---
 
 nodemcu pinout
 
 ![NodeMcu-V21-CP2102-Lua-ESP8266-pinout-mischianti-high-resolution](https://user-images.githubusercontent.com/45427770/155881391-281d12c5-810a-437b-9245-e10ef1266067.png)
+picture https://www.mischianti.org/
 
 
 Do or did you see any ads???
