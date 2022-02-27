@@ -169,7 +169,19 @@ function checkTime(i) {
 <br><br>
       <p>LAN mDNS Scan</p>
       <div id="mdnsscan"> %MDNSSCAN%<br></div><br>
-      OFFcountdown<div id="OFFcountdwn">%OFFCOUNTDOWN%</div>  
+      OFFcountdown<div id="OFFcountdwn">%OFFCOUNTDOWN%</div> 
+        
+<script>
+function mylFunction() {
+const container = document.getElementById('OFFcountdwn');
+console.log(parseInt(container.textContent/3600));
+console.log(container.textContent-parseInt(container.textContent/3500)*3600);
+//console.log(container.innerText);
+}
+setInterval(mylFunction, 1000);
+</script>
+        
+        
       OFF Delay<div id="OFFDelay">%OFFDELAY%</div>  
 <input type="number" id="offdelay"  value="%OFFDELAY%" min="10" size="8" style="width: 100px; padding: 10px; border: 1px solid black"><br>
      <button id="offdelaybutton">Send json offdelay</button><br>
