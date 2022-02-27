@@ -1,5 +1,6 @@
 
 Russian?, You are not welcome here, 
+- https://m.facebook.com/story.php?story_fbid=7056697161070064&id=100001895517582&m_entstream_source=feed_mobile
 - go away and protest against your maniac insane leader
 ------------------
 ### BIN files updated sunday 27 februari 2022 added BME280 i2c Sensor
