@@ -4,7 +4,7 @@ Russian?, You are not welcome here,
 ------------------
 ### BIN files updated sunday 27 februari 2022 added BME280 i2c Sensor
 - you do not have to connect a sensor but it is possible to get room temperature humidity and barometric pressure
-- i2c note:
+- i2c note: SCL SDA
 - if relais on d1 or d2 == gpio4 or gpio5    
 -  then software reroutes i2c on other pins d5 d6 gpio14 gpio12 ==  Wire.begin(14, 12);   
 -
@@ -100,7 +100,7 @@ Test 12345
 
 wemos think relais is on D1 wich is also i2c
 - so software changes i2c pins if d1 or d2 (gpio4 or gpio5) is used by relais 
-- - then i2c pins are d5 d6 (gpio12 gpio14)
+- - then i2c pins are d5 d6 (gpio12 gpio14)  SCL SDA
 
 ![WeMos-D1-mini-esp8266-pinout-mischianti](https://user-images.githubusercontent.com/45427770/155879701-09fb8524-b42e-4957-9be0-e9acc608147c.png)
 
