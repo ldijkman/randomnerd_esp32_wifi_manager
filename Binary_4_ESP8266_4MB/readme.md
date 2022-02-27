@@ -1,7 +1,9 @@
-
+<b>
 Russian?, You are not welcome here, 
-- https://m.facebook.com/story.php?story_fbid=7056697161070064&id=100001895517582&m_entstream_source=feed_mobile
+- https://youtu.be/1cCoRdJHscQ
 - go away and protest against your maniac insane leader
+</b>
+
 ------------------
 ### BIN files updated sunday 27 februari 2022 added BME280 i2c Sensor
 - you do not have to connect a sensor but it is possible to get room temperature humidity and barometric pressure
