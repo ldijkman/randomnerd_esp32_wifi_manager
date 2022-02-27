@@ -96,6 +96,8 @@ Test 12345
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220221_034042.jpg">
 
 
+---
+
 wemos think relais is on D1 wich is also i2c
 - so software changes i2c pins if d1 or d2 is used by relais 
 - - then d5 d6 is i2c
