@@ -172,13 +172,20 @@ function checkTime(i) {
       OFFcountdown<div id="OFFcountdwn">%OFFCOUNTDOWN%</div> 
         
 <script>
+// div countdown seconds to h m s 
 function mylFunction() {
 const container = document.getElementById('OFFcountdwn');
-console.log(parseInt(container.textContent/3600));
-console.log(container.textContent-parseInt(container.textContent/3500)*3600);
+var hours=parseInt(container.textContent/3600);
+var minutes=parseInt(container.textContent/60)-(hours*60);
+var seconds=parseInt(container.textContent)-((minutes*60)+(hours*3600));
+console.log(hours+":"+minutes+":"+seconds);
+//console.log(minutes);
+//console.log(seconds);
+//console.log(container.textContent-parseInt(container.textContent/3500)*3600);
 //console.log(container.innerText);
 }
 setInterval(mylFunction, 1000);
+
 </script>
         
         
