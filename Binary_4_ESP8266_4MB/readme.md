@@ -96,5 +96,7 @@ Test 12345
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220221_034042.jpg">
 
 
+![WeMos-D1-mini-esp8266-pinout-mischianti](https://user-images.githubusercontent.com/45427770/155879701-09fb8524-b42e-4957-9be0-e9acc608147c.png)
+
 
 Do or did you see any ads???
