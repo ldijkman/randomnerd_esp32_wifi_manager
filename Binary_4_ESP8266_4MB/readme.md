@@ -3,6 +3,7 @@ Russian?, You are not welcome here,
 - go away and protest against your maniac insane leader
 ------------------
 ### BIN files updated sunday 27 februari 2022 added BME280 i2c Sensor
+- you do not have to connect a sensor but it is possible to get room temperature humidity and barometric pressure
 - i2c note:
 - if (ledPin == 4 || ledPin == 5) {     // d1 d2 4 5 normal i2c pins but used on some boards for relais
 -    Wire.begin(14, 12);               // then use 14 and 12 for i2c on d5 d6
