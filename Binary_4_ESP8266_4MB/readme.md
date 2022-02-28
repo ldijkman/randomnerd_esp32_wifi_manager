@@ -8,7 +8,7 @@ Russian?, You are not welcome here,
 ### BIN files updated sunday 27 februari 2022 added BME280 i2c Sensor
 - you do not have to connect a sensor but it is possible to get room temperature humidity and barometric pressure
 - i2c note: SCL SDA
-- if relais on d1 or d2 == gpio4 or gpio5    
+- if relais on d1 or d2 == gpio4 or gpio5    (wemos d1 mini relais shield uses D1 or D2 i think)
 -  then software reroutes i2c on other pins d5 d6 gpio14 gpio12 ==  Wire.begin(14, 12);   
 -
 BIN files updated saturday 26 februari 2022 added countdown off timer
