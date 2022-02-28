@@ -1,4 +1,4 @@
-control your local devices from touch screens
+control your local devices from touch screens (also)
 
 mDNS scan for devices in local network
 
