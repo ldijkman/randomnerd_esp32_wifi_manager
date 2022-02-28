@@ -96,9 +96,10 @@ button {
 button:active {
   transform: translateY(2px);
 }
-
+  
+/* card backcolor change here */
 .card { 
-  background-color: pink; 
+  background-color: pink;                           /* card backcolor change here */
   box-shadow: 2px 2px 12px 1px rgba(140,140,140,.5);
 }
 
@@ -107,7 +108,7 @@ button:active {
    
   </head>
 
-  <body bgcolor="red">
+  <body bgcolor="red">                  <!-- /* HTMML Page background bgcolor change here */ -->    
     <div class="topnav">
       <h1>http://%MDNSNAME%.local</h1>
     </div>
@@ -170,36 +171,23 @@ function checkTime(i) {
       <p>LAN mDNS Scan</p>
       <div id="mdnsscan"> %MDNSSCAN%<br></div><br>
       OFFcountdown<div id="OFFcountdwn">%OFFCOUNTDOWN%</div> 
-      <div id="jabadabba"></div>
+       <div id="jabadabba"></div>
 <script>
-// div countdown seconds to h m s 
+// div countdown seconds to h:mm:ss jabadabba div
 function mylFunction() {
 const container = document.getElementById('OFFcountdwn');
 var hours=parseInt(container.textContent/3600);
 var minutes=parseInt(container.textContent/60)-(hours*60);
 var seconds=parseInt(container.textContent)-((minutes*60)+(hours*3600));
-console.log(hours+":"+minutes+":"+seconds);
-document.getElementById("jabadabba").innerHTML=hours+":"+minutes+":"+seconds;
-//console.log(container.textContent);
+var mm="";
+var ms="";
+if (minutes<=9)mm="0";
+if (seconds<=9)ms="0";
+document.getElementById("jabadabba").innerHTML=hours+":"+mm+minutes+":"+ms+seconds;
+console.log(hours+":"+mm+minutes+":"+ms+seconds);
 //console.log(container.innerText);
 }
 
-setInterval(mylFunction, 1000);
-
-</script>
-<script>
-// div countdown seconds to h m s 
-function mylFunction() {
-const container = document.getElementById('OFFcountdwn');
-var hours=parseInt(container.textContent/3600);
-var minutes=parseInt(container.textContent/60)-(hours*60);
-var seconds=parseInt(container.textContent)-((minutes*60)+(hours*3600));
-console.log(hours+":"+minutes+":"+seconds);
-//console.log(minutes);
-//console.log(seconds);
-//console.log(container.textContent-parseInt(container.textContent/3500)*3600);
-//console.log(container.innerText);
-}
 setInterval(mylFunction, 1000);
 
 </script>
