@@ -14,12 +14,12 @@
 
 /**
  * ----------------------------------------------------------------------------
- * ESP32 Remote Control with WebSocket
- * ----------------------------------------------------------------------------
- * © 2020 Stéphane Calderoni
+ * there may be a bit left off ESP32 Remote Control with WebSocket © 2020 Stéphane Calderoni
  * ----------------------------------------------------------------------------
  */
-
+  
+ <!-- /* better not use percent character in HTML, it will break the onupload percenttags, or use them in pairs of 2  */ --> 
+  
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 * {
   margin: 0;
@@ -107,10 +107,12 @@ button:active {
 </style>
    
   </head>
+  
+  <!-- /* better not use percent character in HTML, it will break the onupload percenttags, or use them in pairs of 2  */ --> 
 
   <body bgcolor="red">                  <!-- /* HTMML Page background bgcolor change here */ -->    
     <div class="topnav">
-      <h1>http://%MDNSNAME%.local</h1>
+      <h1>http://%MDNSNAME%.local</h1>  <!-- /* between the percent is a variable processed / filled in on upload */ -->  
     </div>
     <div class="content">
       <div class="card-grid">
@@ -170,8 +172,8 @@ function checkTime(i) {
 <br><br>
       <p>LAN mDNS Scan</p>
       <div id="mdnsscan"> %MDNSSCAN%<br></div><br>
-      OFFcountdown<div id="OFFcountdwn">%OFFCOUNTDOWN%</div> 
-       <div id="jabadabba"></div>
+      OFFcountdown<div id="OFFcountdwn">%OFFCOUNTDOWN%</div>  <!-- /* div will be filled percent upload and json websocket */ --> 
+       <div id="jabadabba"></div>                             <!-- /* div will be filled by next javascript */ -->  
 <script>
 // div countdown seconds to h:mm:ss jabadabba div
 function mylFunction() {
