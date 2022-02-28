@@ -11,7 +11,7 @@ Russian?, You are not welcome here,
 - if relais on d1 or d2 == gpio4 or gpio5    
 -  then software reroutes i2c on other pins d5 d6 gpio14 gpio12 ==  Wire.begin(14, 12);   
 -
-### BIN files updated saturday 26 februari 2022 added countdown off timer
+BIN files updated saturday 26 februari 2022 added countdown off timer
 
 
 
