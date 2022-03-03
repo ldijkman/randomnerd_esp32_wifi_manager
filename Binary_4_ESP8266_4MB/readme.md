@@ -5,7 +5,7 @@ Russian?, You are not welcome here,
 </b>
 
 ------------------
-### ittlefs.bin updated 3 march 2022 playing with time picker for offdelay https://github.com/ShaneGH/analogue-time-picker
+...littlefs.bin updated 3 march 2022 playing with time picker for offdelay https://github.com/ShaneGH/analogue-time-picker
 ### BIN files updated monday 28 februari 2022 added BME280 i2c Sensor
 - you do not have to connect a sensor but it is possible to get room temperature humidity and barometric pressure
 - i2c note: SCL SDA
