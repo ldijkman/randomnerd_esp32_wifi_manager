@@ -1,4 +1,6 @@
 // https://github.com/ShaneGH/analogue-time-picker
+// https://github.com/ShaneGH/analogue-time-picker/blob/master/LICENSE
+// https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-LittleFS-wifi-manager/ESP8266-LittleFS-wifi-manager_with_editor/data
 
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -1892,8 +1894,12 @@ var timePickerInput = timePickerInput_create;
 // add css to page
 enable();
 
-// https://github.com/ShaneGH/analogue-time-picker
 
 /***/ })
 /******/ ]);
 });
+
+// https://github.com/ShaneGH/analogue-time-picker
+// https://github.com/ShaneGH/analogue-time-picker/blob/master/LICENSE
+// https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-LittleFS-wifi-manager/ESP8266-LittleFS-wifi-manager_with_editor/data
+
