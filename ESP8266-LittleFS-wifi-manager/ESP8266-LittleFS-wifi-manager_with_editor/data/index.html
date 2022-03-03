@@ -199,6 +199,24 @@ setInterval(mylFunction, 1000);
 <input type="number" id="offdelay"  value="%OFFDELAY%" min="10" size="8" style="width: 100px; padding: 10px; border: 1px solid black"><br>
      <button id="offdelaybutton">Send json offdelay</button><br>
      <br>
+           
+            <div class="section">
+                <div class="display">
+                    <button class="mdl-button mdl-button--raised mdl-button--colored" id="modal">Set offdelay Test</button>
+                </div>
+                <div class="code" hidden>
+                    <pre>                        <code>
+document
+    .getElementById("modal")
+    .addEventListener("click", function () {
+        timePickerModal({
+            time: new Date()
+        });
+    });
+                        </code>
+                    </pre>
+                </div>
+            </div>
         </div>
       </div>
 <br><br>
@@ -296,7 +314,17 @@ setInterval(mylFunction, 1000);
 " type="audio/mp3">
 </audio>
 <!-- ;-) Do people actually shit their pants when they are scared?  ;-) -->
-      
+                  
+
+<script src="analogue-time-picker.js"></script>
+            <script>
+                (function () {
+                    var code = document.querySelectorAll(".code pre code");
+                    for (var i = 0; i < code.length; i++ ) {
+                        eval(code[i].innerHTML);
+                    }
+                }());
+            </script>
       
   </body>
 
