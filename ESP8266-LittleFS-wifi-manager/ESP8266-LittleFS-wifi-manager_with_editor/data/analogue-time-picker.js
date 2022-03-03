@@ -1,3 +1,5 @@
+// https://github.com/ShaneGH/analogue-time-picker
+
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
@@ -1890,7 +1892,7 @@ var timePickerInput = timePickerInput_create;
 // add css to page
 enable();
 
-
+// https://github.com/ShaneGH/analogue-time-picker
 
 /***/ })
 /******/ ]);
