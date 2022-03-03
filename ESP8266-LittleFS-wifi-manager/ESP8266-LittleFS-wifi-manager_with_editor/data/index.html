@@ -200,23 +200,13 @@ setInterval(mylFunction, 1000);
      <button id="offdelaybutton">Send json offdelay</button><br>
      <br>
            
-            <div class="section">
-                <div class="display">
-                    <button class="mdl-button mdl-button--raised mdl-button--colored" id="modal">Set offdelay Test</button>
-                </div>
-                <div class="code" hidden>
-                    <pre>                        <code>
-document
-    .getElementById("modal")
-    .addEventListener("click", function () {
-        timePickerModal({
-            time: new Date()
-        });
-    });
-                        </code>
-                    </pre>
-                </div>
-            </div>
+              <div style="padding: 20px">
+                touch text field to open input picker test<br>
+                 <input type="text" id="inpt" style="text-align: right; padding: 8px; font-size: px; margin-bottom: 20px;" value="00:00" />
+                 <div id="test1"></div>
+              </div> 
+           
+          
         </div>
       </div>
 <br><br>
@@ -317,14 +307,22 @@ document
                   
 
 <script src="analogue-time-picker.js"></script>
-            <script>
-                (function () {
-                    var code = document.querySelectorAll(".code pre code");
-                    for (var i = 0; i < code.length; i++ ) {
-                        eval(code[i].innerHTML);
-                    }
-                }());
-            </script>
+     <script>
+        (function (test1) {
+
+            timePickerInput({
+                inputElement: document.getElementById("inpt"),
+                mode: 24,
+                time: {hour: 00, minute: 15},
+                width: "400px"
+            });
+
+            var i = 0;
+            x.onTimeChanged((h, m) => document.getElementById("time").innerHTML = `${++i}: ${`0${h}`.slice(-2)}:${`0${m}`.slice(-2)}`);
+
+          
+        }(document.getElementById("test1")));
+    </script>
       
   </body>
 
