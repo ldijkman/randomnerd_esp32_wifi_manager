@@ -13,7 +13,7 @@ Russian?, You are not welcome here,
 -
 BIN files updated saturday 26 februari 2022 added countdown off timer
 
-Comppiled version of:
+Compiled version of:
 - https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-LittleFS-wifi-manager/ESP8266-LittleFS-wifi-manager_with_editor
 
 # Program the ESP8266 with a simple tool
