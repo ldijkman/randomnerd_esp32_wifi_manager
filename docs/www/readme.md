@@ -1,4 +1,4 @@
 timepicker test
 
 
-https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/docs/www/TimePicker_test.html
+https://ldijkman.github.io/randomnerd_esp32_wifi_manager/docs/www/TimePicker_test.html
