@@ -38,7 +38,7 @@
             });
 
             var i = 0;
-            x.onTimeChanged((h, m) => document.getElementById("time").innerHTML = `${++i}: ${`0${h}`.slice(-2)*3600}+${`0${m}`.slice(-2)*60}`+ "Time to Seconds "+h*3600+m*60" Seconds "+m);
+            x.onTimeChanged((h, m) => document.getElementById("time").innerHTML = `${++i}: ${`0${h}`.slice(-2)*3600}+${`0${m}`.slice(-2)*60}`+ "Time to Seconds "+h*3600+m*60+" Seconds "+m);
 
             document.getElementById("h12").addEventListener("click", () => x.set12h());
             document.getElementById("h24").addEventListener("click", () => x.set24h());
