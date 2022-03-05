@@ -1,0 +1,49 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-teal.min.css" /> -->
+    
+</head>
+<body>
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+    <script src="analogue-time-picker.js"></script>
+
+    <div style="padding: 20px">
+        <input type="text" id="inpt" style="text-align: right; padding: 8px; font-size: 120%; margin-bottom: 20px;" value="   3   :   5    pm     " />
+        <div id="test1">
+        </div>
+        <div id="time">time</div>
+        <div id="time2"></div>
+        <br />
+        <button id="h12">12h</button>
+        <button id="h24">24h</button>
+    </div>
+    <script>
+        (function (test1) {
+
+            var x = timePicker({
+                element: test1, 
+                time: {hour: 2, minute: 00},
+                mode: 24,
+                width: "300px"
+            });
+
+            timePickerInput({
+                inputElement: document.getElementById("inpt"),
+                // element: test1, 
+                mode: 12,
+                time: {hour: 2, minute: 00},
+                width: "200px"
+            });
+
+            var i = 0;
+            x.onTimeChanged((h, m) => document.getElementById("time").innerHTML = `${++i}: ${`0${h}`.slice(-2)}:${`0${m}`.slice(-2)}`);
+
+            document.getElementById("h12").addEventListener("click", () => x.set12h());
+            document.getElementById("h24").addEventListener("click", () => x.set24h());
+        }(document.getElementById("test1")));
+    </script>
+</body>
+
+</html>
