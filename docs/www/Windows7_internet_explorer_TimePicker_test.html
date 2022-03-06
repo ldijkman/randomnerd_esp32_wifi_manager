@@ -30,7 +30,7 @@ https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/www
     <script src="analogue-time-picker.js"></script>
 
     <div style="padding: 20px">
-        <input type="text" id="inpt" onClick="test1" style="text-align: right; padding: 8px; font-size: 120%; margin-bottom: 20px;" value="   10   :   10   " />
+        <input type="text" id="inpt" onClick="test1" style="text-align: right; padding: 8px; font-size: 120%; margin-bottom: 20px;" value="10:10" />
         <div id="test1">
         </div>
         <div id="time">time</div>
@@ -60,9 +60,10 @@ https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/www
             var i = 0;
             //x.onTimeChanged((h, m) => document.getElementById("time").innerHTML = `${++i}: ${`0${h}`.slice(-2)*3600}+${`0${m}`.slice(-2)*60}`+ "Time to Seconds "+((h*3600)+(m*60))+" Seconds ");
 
-            document.getElementById("h12").addEventListener("click", () => x.set12h());
-            document.getElementById("h24").addEventListener("click", () => x.set24h());
-        }(document.getElementById("test1"));
+           // document.getElementById("h12").addEventListener("click", () => x.set12h());
+           // document.getElementById("h24").addEventListener("click", () => x.set24h());
+        }
+        document.getElementById("test1");
         
         
         
