@@ -33,7 +33,16 @@ https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/www
 
     <div style="padding: 20px">
         <p style="color:red"><b>Click textfield to open timepicker</b></p>
-        <input type="text" id="inpt" onClick="test1()" onChange='tosecondss()' onInput='document.getElementById("result").value=document.getElementById("inpt").value;' style="text-align: right; padding: 8px; font-size: 120%; margin-bottom: 20px;" value="10:10" /><br>
+        <input type="text" id="inpt" onClick="test1()"  onInput='document.getElementById("result").value=document.getElementById("inpt").value;' style="text-align: right; padding: 8px; font-size: 120%; margin-bottom: 20px;" value="10:10" /><br>
+        <script>
+            document.getElementById("inpt").addEventListener("change", function() {
+                   tosecondss();
+                //onChange='tosecondss()'
+            });
+            
+        </script>
+        
+        
         onChange should put it in next txt<br>
         <input type="text" id="result" onClick='document.getElementById("result").value=document.getElementById("inpt").value;' >
          time to seconds <input type="text" id="secondss"><br>
