@@ -70,6 +70,7 @@ https://www.espressif.com/en/support/download/other-tools?keys=&field_type_tid%5
 - - for some ESP8266 (RobotDyn Uno/Mega WiFi) boards i have to install a driver to see the COM Port in list
 - - - CH34x_Install_Windows_v3_4.zip
 - - - https://www.google.com/search?q=CH34x_Install_Windows_v3_4.zip
+-  or maybe CP2102 chip https://www.google.com/search?q=nodemcu+cp2102+driver
 
 
 ![ESP8266_download_tool](https://user-images.githubusercontent.com/45427770/154829873-ca5841cd-37e6-44ee-b582-d828457fe07a.png)
