@@ -121,5 +121,8 @@ picture https://www.mischianti.org/
 ![NodeMcu-V3-CH340-Lua-ESP8266-pinout-mischianti-low-resolution](https://user-images.githubusercontent.com/45427770/155927695-04cdb781-7502-487b-8685-b1340a4bf61a.jpg)
 picture https://www.mischianti.org/
 
+
+---
+
 Do or did you see any ads???
 - http://paypal.me/LDijkman
