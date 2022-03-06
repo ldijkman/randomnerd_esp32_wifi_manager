@@ -34,7 +34,8 @@ https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/www
     <div style="padding: 20px">
         click textfield to open timepicker<br>
         <input type="text" id="inpt" onClick="test1()" onChange="document.getElementById("result").value=this.value;" style="text-align: right; padding: 8px; font-size: 120%; margin-bottom: 20px;" value="10:10" /><br>
-        <input type="text" id="result">
+        onChange should put it in next txt<br>
+        <input type="text" id="result" onClick="this.value=document.getElementById("inpt").value;" >
         <div id="test1">
         </div>
         <div id="time">time</div>
