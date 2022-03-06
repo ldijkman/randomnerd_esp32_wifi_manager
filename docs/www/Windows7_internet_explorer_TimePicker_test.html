@@ -39,9 +39,9 @@ https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/www
          time to seconds <input type="text" id="seconds"><br>
         <script>
             function toseconds(){
-                var text =document.getElementById("result").value;
+                var text = document.getElementById("result").value;
                 const myArray = text.split(":");
-                document.getElementById("seconds").value = (myArray[0]*3600)+(myArray[1]*60);
+                document.getElementById("seconds").value = ((myArray[0]*3600)+(myArray[1]*60));
             }
         </script>
         <div id="test1">
