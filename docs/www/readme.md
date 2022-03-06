@@ -7,6 +7,8 @@ does anyone care??? i do
 
 https://ldijkman.github.io/randomnerd_esp32_wifi_manager/www/TimePicker_test.html 
 
+https://ldijkman.github.io/randomnerd_esp32_wifi_manager/www/Windows7_internet_explorer_TimePicker_test.html
+
 prefer plain javascript no extra load of i do not understand jquery
 
 not working
