@@ -52,6 +52,7 @@ https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/www
         <a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions/19">https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions/19</a><br>
    <br>
         added readonly="readonly" to input type text analogue-time-picker.js prevent keyboard popup on android <br>
+        added el.dispatchEvent(new Event('change')); to trigger fire onchange event on textfield analogue-time-picker.js<br>
         </div>
     <script>
         function test1() {
@@ -76,9 +77,7 @@ https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/www
 
            // document.getElementById("h12").addEventListener("click", () => x.set12h());
            // document.getElementById("h24").addEventListener("click", () => x.set24h());
-var el = document.getElementById('inpt');
-//el.value='New Value'
-el.dispatchEvent(new Event('change'));
+
         }
         document.getElementById("test1");
         
