@@ -1815,6 +1815,7 @@ function timePickerInput_create(input) {
         modal.onOk(function (h, m) {
             // assuming that the timePickerModal call will have validated the mode
             el.value = timeToString(h, m, input.mode || 24);
+            el.dispatchEvent(new Event('change'));  //luberth
         });
         modal.onDispose(function () { return modal = null; });
     };
