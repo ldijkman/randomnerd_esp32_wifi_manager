@@ -122,6 +122,10 @@ picture https://www.mischianti.org/
 picture https://www.mischianti.org/
 
 
+![esp12-E-pinout-hight-resolution-mischianti](https://user-images.githubusercontent.com/45427770/157373672-f14436e8-9b20-4dca-bbf3-424a4b3daf41.png)
+
+picture https://www.mischianti.org/2021/05/04/esp-12-high-resolution-pinout-and-specs/
+
 ---
 
 Do or did you see any ads???
