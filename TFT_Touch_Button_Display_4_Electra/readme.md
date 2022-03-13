@@ -29,7 +29,11 @@ each tft touch can also be a relais switch that joins/shares in the mdns devices
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/TFT_Touch_Button_Display_4_Electra/20220313_062319.jpg">
 
+maybe better to select an ip from network mDNS scan, why enter it
+
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/TFT_Touch_Button_Display_4_Electra/20220313_062335.jpg">
+
+maybe better to select an ip from network mDNS scan, why enter it
 
 # Sonoff a Switch
  
