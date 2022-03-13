@@ -1,8 +1,8 @@
 # Touch Electra, Electra Touch
 
-ESP32 TFT_Espi Touch screen control
-
-
+ESP32 SPI TFT_Espi Touch screen control i2c BME280 i2c DS3231 RTC
+- experimental test program == messy, for 4mbyte and up esp32 devices
+---
 
 
 
