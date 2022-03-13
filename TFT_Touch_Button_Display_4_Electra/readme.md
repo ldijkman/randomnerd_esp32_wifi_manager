@@ -21,6 +21,15 @@ use url/on url/off for on / off
 use url/status for button color
 
 each tft touch can also be a relais switch that joins/shares in the mdns devices in the local network
+
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/TFT_Touch_Button_Display_4_Electra/20220313_062242.jpg">
+
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/TFT_Touch_Button_Display_4_Electra/20220313_062300.jpg">
+
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/TFT_Touch_Button_Display_4_Electra/20220313_062319.jpg">
+
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/TFT_Touch_Button_Display_4_Electra/20220313_062335.jpg">
+
  
  https://www.youtube.com/watch?v=3qviv5TOcVo
  
