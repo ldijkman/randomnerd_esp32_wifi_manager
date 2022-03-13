@@ -63,7 +63,7 @@ void settings_three_screen() {
         Serial.println(i);
         HTTPClient http;
 
-        http.begin(sonoffaddress[i] + "/value");                            // Specify the URL
+        http.begin(sonoffaddress[i] + "/status");                            // Specify the URL
         //Serial.println(sonoffaddress[i] + "/value");
         http.setConnectTimeout(100);
         int httpCode = http.GET();                                         // Make the request
@@ -433,8 +433,8 @@ void sendit(int wich) {
   HTTPClient http;
   http.setConnectTimeout(100);
   // toggle
-  if ( sonoffstatus[wich] == 0)http.begin(sonoffaddress[wich] + "/LED=ON"); //Specify the URL
-  if ( sonoffstatus[wich] == 1)http.begin(sonoffaddress[wich] + "/LED=OFF"); //Specify the URL
+  if ( sonoffstatus[wich] == 0)http.begin(sonoffaddress[wich] + "/on"); //Specify the URL
+  if ( sonoffstatus[wich] == 1)http.begin(sonoffaddress[wich] + "/off"); //Specify the URL
 
   int httpCode = http.GET();                                                  //Make the request
 
@@ -511,7 +511,7 @@ void sendon(int wich) {
   HTTPClient http;
   http.setConnectTimeout(100);
   // toggle
-  http.begin(sonoffaddress[wich] + "/LED=ON"); //Specify the URL
+  http.begin(sonoffaddress[wich] + "/on"); //Specify the URL
 
 
   int httpCode = http.GET();                                                  //Make the request
@@ -539,7 +539,7 @@ void sendoff(int wich) {
   http.setConnectTimeout(100);
   // toggle
 
-  http.begin(sonoffaddress[wich] + "/LED=OFF"); //Specify the URL
+  http.begin(sonoffaddress[wich] + "/off"); //Specify the URL
 
   int httpCode = http.GET();                                                  //Make the request
 

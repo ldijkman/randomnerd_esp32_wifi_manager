@@ -46,7 +46,7 @@ void settings_two_screen() {
 
     HTTPClient http;
 http.setConnectTimeout(100);
-    http.begin(sonoffaddress[0] + "/value"); //Specify the URL
+    http.begin(sonoffaddress[0] + "/satus"); //Specify the URL
     int httpCode = http.GET();                                                  //Make the request
 
     if (httpCode > 0) { //Check for the returning code
@@ -107,7 +107,7 @@ http.setConnectTimeout(100);
 
       HTTPClient http;
 http.setConnectTimeout(100);
-      http.begin(sonoffaddress[0] + "/LED=OFF"); //Specify the URL
+      http.begin(sonoffaddress[0] + "/off"); //Specify the URL
       int httpCode = http.GET();                                                  //Make the request
 
       if (httpCode > 0) { //Check for the returning code
@@ -145,7 +145,7 @@ http.setConnectTimeout(100);
 
       HTTPClient http;
 http.setConnectTimeout(100);
-      http.begin(sonoffaddress[0] + "/LED=ON"); //Specify the URL
+      http.begin(sonoffaddress[0] + "/on"); //Specify the URL
       int httpCode = http.GET();                                                  //Make the request
 
       if (httpCode > 0) { //Check for the returning code

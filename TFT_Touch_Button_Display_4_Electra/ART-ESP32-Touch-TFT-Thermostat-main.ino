@@ -255,12 +255,12 @@ String sonoffaddress[10]={
 "http://10.10.100.1", 
 "http://10.10.100.1", 
 "http://10.10.100.1",
-"http://10.10.100.1"
+"http://10.10.100.118"
 };
 
 int sonoffstatus[10];
 
-String buttontext[15] = {"Sonoff 1","Sonoff 2","Sonoff 3","Sonoff 4","Sonoff 5","Sonoff 6"};
+String buttontext[15] = {"Sonoff 1","Sonoff 2","Sonoff 3","Sonoff 4","Sonoff 5","Bedroom"};
 
 //String buttontext[1] = "Sonoff 2"; 
 //String buttontext[2] = ;
@@ -696,7 +696,7 @@ void loop() {
     
     if (now.hour() * 60 + now.minute() == (remotelightoninminutes) && now.second() <= 10 ) {
       HTTPClient http;
-      http.begin(sonoffaddress[0] + "/LED=ON"); //Specify the URL
+      http.begin(sonoffaddress[0] + "/on"); //Specify the URL
       int httpCode = http.GET();                                                  //Make the request
 
       if (httpCode > 0) { //Check for the returning code
@@ -714,7 +714,7 @@ void loop() {
     }
     if (now.hour() * 60 + now.minute()  == (remotelightoffinminutes) && now.second() <= 10 ) {
       HTTPClient http;
-      http.begin(sonoffaddress[0] + "/LED=OFF"); //Specify the URL
+      http.begin(sonoffaddress[0] + "/off"); //Specify the URL
       int httpCode = http.GET();                                                  //Make the request
 
       if (httpCode > 0) { //Check for the returning code

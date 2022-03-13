@@ -201,7 +201,7 @@ readfromeeprom();
 
       HTTPClient http;
 
-      http.begin(sonoffaddress[1] + "/value");                            // Specify the URL
+      http.begin(sonoffaddress[1] + "/status");                            // Specify the URL
       //Serial.println(sonoffaddress[i] + "/value");
       http.setConnectTimeout(100);
       int httpCode = http.GET();                                         // Make the request
