@@ -2,6 +2,10 @@
 
 ESP32 SPI TFT_Espi Touch screen control i2c BME280 i2c DS3231 RTC
 - experimental test program == messy, for 4mbyte and up esp32 devices
+
+ART-ESP32-Touch-TFT-Thermostat-main.ino
+- is the main file for arduino editor
+- other files should be in the same directory they will be included Tabs files in arduino ide
 ---
 
 
