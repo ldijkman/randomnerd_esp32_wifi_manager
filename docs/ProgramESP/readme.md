@@ -1,4 +1,4 @@
-program esp from webbrowser
+program esp from webbrowser (not working yet)
 
 https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/index.html 2 bins uses manifest2.json
 
