@@ -1,7 +1,6 @@
 {
   "name": "Electra",
   "version": "March 2022",
-  "home_assistant_domain": "",
   "new_install_prompt_erase": false,
   "builds": [
     {
