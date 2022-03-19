@@ -9,7 +9,7 @@
       "chipFamily": "ESP8266",
       "parts": [
         { "path": "ESP8266-LittleFS-wifi-manager_with_editor.ino.bin", "offset": 0 },
-        { "path": "ESP8266-LittleFS-wifi-manager_with_editor.mklittlefs.bin", "offset": 0x200000 }
+        { "path": "ESP8266-LittleFS-wifi-manager_with_editor.mklittlefs.bin", "offset": 200000 }
       ]
     }
   ]
