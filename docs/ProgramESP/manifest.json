@@ -1,7 +1,7 @@
 {
   "name": "Electra",
-  "version": "2021.11.0",
-  "home_assistant_domain": "esphome",
+  "version": "March 2022",
+  "home_assistant_domain": "",
   "new_install_prompt_erase": false,
   "builds": [
     {
