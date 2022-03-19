@@ -1,0 +1,15 @@
+
+{
+  "name": "Electra",
+  "version": "March 2022",
+  "home_assistant_domain": "",
+  "new_install_prompt_erase": false,
+  "builds": [
+    {
+      "chipFamily": "ESP8266",
+      "parts": [
+        { "path": "Electra_Combined_only_this_at_0x0.bin", "offset": 0 }
+      ]
+    }
+  ]
+}
