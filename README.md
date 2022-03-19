@@ -389,3 +389,10 @@ Electra is Huge, Radius 4.2159 million km ;-)
 ---
 https://www.youtube.com/user/LuberthDijkman/videos
 ---
+<center>
+       
+       # Electra
+       
+       <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Electra.jpg">
+       
+       # Electra
