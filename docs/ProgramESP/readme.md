@@ -1,5 +1,5 @@
 program esp from webbrowser
 
-https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/index.html 2 bins
+https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/index.html 2 bins uses manifest2.json
 
-https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/programesp.html 1 combined bin
+https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/programesp.html 1 combined bin uses manifest.json
