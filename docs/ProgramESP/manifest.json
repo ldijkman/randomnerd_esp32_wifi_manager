@@ -7,7 +7,7 @@
     {
       "chipFamily": "ESP8266",
       "parts": [
-        { "path": "Electra_Combined_only_this_at_0x0.bin", "offset": 0 }
+        { "path": "https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/docs/ProgramESP/Electra_Combined_only_this_at_0x0.bin?raw=true", "offset": 0 }
       ]
     }
   ]
