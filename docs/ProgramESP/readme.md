@@ -1,6 +1,10 @@
-inBrowser program esp8266  from webbrowser (not succeful working yet)
+inBrowser programming ESP8266 32mbit==4MByte with Electra, NO Tools Needed.  
 
 https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/index.html 2 bins uses manifest2.json
+
+---
+
+(not succeful working yet)
 
 https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/programesp.html 1 combined bin uses manifest.json
 
