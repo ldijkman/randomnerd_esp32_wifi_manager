@@ -391,8 +391,9 @@ https://www.youtube.com/user/LuberthDijkman/videos
 ---
 
 <center><p align="center">       
-# Electra
+<h1> Electra<br>
        
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Electra.jpg">
-       </p>     
+<br>           
 # Electra
+       </p> 
