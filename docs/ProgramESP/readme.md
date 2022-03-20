@@ -1,4 +1,4 @@
-program esp from webbrowser (not succeful working yet) https://github.com/esphome/esp-web-tools
+inBrowser program esp8266  from webbrowser (not succeful working yet)
 
 https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/index.html 2 bins uses manifest2.json
 
