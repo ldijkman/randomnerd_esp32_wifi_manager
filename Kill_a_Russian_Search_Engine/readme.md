@@ -6,7 +6,7 @@
 - go away and protest against your maniac insane leader
 
 - 3 million elderly, women and children on the run with no food and water in freezing weather
-- Putin targeting civilians mollesting complete cities
+- Putin targeting civilians, mollesting complete cities
 - Yandex.ru you suck, tell the Russian People the truth
 
 ---
