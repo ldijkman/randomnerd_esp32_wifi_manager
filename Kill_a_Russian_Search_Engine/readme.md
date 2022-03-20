@@ -4,7 +4,6 @@
 # Russian?, You are not welcome here, 
 - https://youtu.be/1cCoRdJHscQ
 - go away and protest against your maniac insane leader
-
 - 3 million Ukranian People, elderly, women and children on the run with no food and water in freezing weather
 - Putin targeting civilians, mollesting complete cities
 - Yandex.ru you suck, tell the Russian People the truth
