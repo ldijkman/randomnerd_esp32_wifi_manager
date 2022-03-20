@@ -4,4 +4,4 @@ https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/index.html 2
 
 https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/programesp.html 1 combined bin uses manifest.json
 
-must be an https:// connextion on chrome or edge browser
+must be an https:// connection on chrome or edge browser
