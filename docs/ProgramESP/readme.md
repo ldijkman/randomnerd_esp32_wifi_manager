@@ -4,7 +4,7 @@ https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/index.html 2
 
 ---
 
-(not succeful working yet)
+(not succeful working yet) not sure maybe it is my raspberry pi chromium thats is not working
 
 https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/programesp.html 1 combined bin uses manifest.json
 
