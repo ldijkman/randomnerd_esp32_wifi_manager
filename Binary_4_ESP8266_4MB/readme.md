@@ -8,7 +8,7 @@ Russian?, You are not welcome here,
 ---
 # Look Mum, No Tools needed
 
-# program the ESP8266 32mbit==4Mbyte inBrowser 
+# program the ESP8266 32mbit==4MByte inBrowser 
 ### https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/index.html
 
 ---
