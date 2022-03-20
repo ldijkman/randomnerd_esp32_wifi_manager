@@ -4,11 +4,9 @@ Russian?, You are not welcome here,
 - go away and protest against your maniac insane leader
 </b>
 
-------------------
-
-# **********************************************************
 
 ---
+
 # Look Mum, No Tools needed
 
 # program the ESP8266 32mbit==4MByte inBrowser 
@@ -16,9 +14,7 @@ Russian?, You are not welcome here,
 
 ---
 
-# **********************************************************
 
----
 
 ...littlefs.bin updated 3 march 2022 playing with time picker for offdelay https://github.com/ShaneGH/analogue-time-picker mis seconds
 ### BIN files updated monday 28 februari 2022 added BME280 i2c Sensor
