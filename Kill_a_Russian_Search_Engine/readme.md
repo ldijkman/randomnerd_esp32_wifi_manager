@@ -1,4 +1,5 @@
 ---
+
 # Putin is a Criminal
 # Make Putin Pay
 # Russian?, You are not welcome here, 
@@ -8,7 +9,9 @@
 - Putin targeting civilians, mollesting complete cities
 - Yandex.ru you suck, tell the Russian People the truth
 
-GitHub stop supporting yandex?  https://github.com/yandex
+GitHub stop supporting yandex? 
+
+https://github.com/yandex
 
 https://github.com/contact/report-abuse?report=yandex
 
