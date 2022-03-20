@@ -9,6 +9,7 @@
 - Putin targeting civilians, mollesting complete cities
 - Yandex.ru you suck, tell the Russian People the truth
 
+
 GitHub stop supporting yandex? 
 
 https://github.com/yandex
