@@ -5,6 +5,15 @@ Russian?, You are not welcome here,
 </b>
 
 ------------------
+---
+# Look Mum, No Tools needed
+
+# program the ESP8266 32mbit/4Mbyte inBrowser 
+https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/index.html
+
+---
+
+
 ...littlefs.bin updated 3 march 2022 playing with time picker for offdelay https://github.com/ShaneGH/analogue-time-picker mis seconds
 ### BIN files updated monday 28 februari 2022 added BME280 i2c Sensor
 - you do not have to connect a sensor but it is possible to get room temperature humidity and barometric pressure
