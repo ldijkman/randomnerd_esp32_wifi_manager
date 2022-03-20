@@ -9,10 +9,17 @@ Russian?, You are not welcome here,
 # Look Mum, No Tools needed
 
 # program the ESP8266 32mbit/4Mbyte inBrowser 
-https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/index.html
+# https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/index.html
+<script
+  type="module"
+  src="https://unpkg.com/esp-web-tools@7.2.0/dist/web/install-button.js?module"
+></script>
+<esp-web-install-button
+  manifest="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/ProgramESP/manifest2.json"
+></esp-web-install-button>
 
 ---
-
+---
 
 ...littlefs.bin updated 3 march 2022 playing with time picker for offdelay https://github.com/ShaneGH/analogue-time-picker mis seconds
 ### BIN files updated monday 28 februari 2022 added BME280 i2c Sensor
