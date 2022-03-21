@@ -1,0 +1,15 @@
+
+{
+  "name": "Electra",
+  "version": "March 2022",
+  "new_install_prompt_erase": true,
+  "builds": [
+    {
+      "chipFamily": "ESP8266",
+      "parts": [
+        { "path": "https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/ProgramESPESP8266-LittleFS-wifi-manager_with_editor.ino.bin", "offset": 0 },
+        { "path": "https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/ProgramESPESP8266-LittleFS-wifi-manager_with_editor.mklittlefs.bin", "offset": 2097152 }
+      ]
+    }
+  ]
+}
