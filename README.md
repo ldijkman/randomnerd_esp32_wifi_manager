@@ -6,7 +6,9 @@ Russian?, You are not welcome here,
 
 ------
 
-
+## New, program ESP8266 InBrowser, NO tools needed
+-  tested on 4mbyte ESP8266 nodemcu, wemos d1 (uno sized board), wemos d1 mini.
+-  https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/index.html
 
 Login for LittleFSbrowser FileManager / Ace js Editor == admin / admin
 - <b>added a map/directory with binary files for people who program the ESP8266 that way / the easy way
