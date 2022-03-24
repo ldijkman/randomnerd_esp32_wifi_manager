@@ -10,6 +10,8 @@ Russian?, You are not welcome here,
 -  tested on 4mbyte ESP8266 nodemcu, wemos d1 (uno sized board), wemos d1 mini.
 -  https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/index.html
 
+------
+
 Login for LittleFSbrowser FileManager / Ace js Editor == admin / admin
 - <b>added a map/directory with binary files for people who program the ESP8266 that way / the easy way
 - - - https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/Binary_4_ESP8266_4MB
