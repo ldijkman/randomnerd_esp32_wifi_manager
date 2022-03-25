@@ -194,9 +194,7 @@ upload another html/css and make Electra look different?! or modify, hack or edi
 
 
 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220122_053548.jpg">
 
-## https://github.com/ldijkman/ESPxWebFlMgr
 
 ---
 
