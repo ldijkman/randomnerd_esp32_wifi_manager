@@ -177,7 +177,7 @@ if you add a new device => it will list a link to it on each devices webpage wit
 
 ---
 # FSBrowser filesystembrowser?
-## Electra's  Up/Download, Edit, Delete
+## Electra's  Up/Download, Edit, Delete, Create
 # ace js online inbrowser filemanager / Editor, cloudeditor / webeditor
 - edit the files on your ESP8266 webserver / or create files on the webserver
 
