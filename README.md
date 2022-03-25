@@ -176,7 +176,9 @@ if you add a new device => it will list a link to it on each devices webpage wit
 --
 
 ---
-## Electra's Sneak Sleek Peek Preview, Future Up/Download, Edit, Delete
+## Electra's  Up/Download, Edit, Delete
+# ace js online inbrowser filemanager / Editor, cloudeditor / webeditor
+- edit the files on your ESP8266 webserver / or create files on the webserver
 
 ## OnLine InBrowser Manage Contents of LittleFS on ESP8266, FileManager
 
@@ -186,13 +188,11 @@ upload another html/css and make Electra look different?! or modify, hack or edi
 
 <b>Can you do that with your ad bloaded or paid app? ;-)</b>
 
-looks like it also does multifile upload if multi-selected files are dropped on dropzone
 
-## https://github.com/ldijkman/ESPxWebFlMgr
 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220122_053531.jpg">
+<img src="https://user-images.githubusercontent.com/45427770/154131558-36e44ea1-dc44-4e5d-9e36-244f83d8a7be.png">
 
-## https://github.com/ldijkman/ESPxWebFlMgr
+
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/20220122_053548.jpg">
 
