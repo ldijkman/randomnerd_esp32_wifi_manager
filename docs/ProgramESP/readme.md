@@ -27,3 +27,6 @@ esptool.py v3.2-dev
 Flash params set to 0x0240
 Wrote 0x3fa000 bytes to file /home/pi/Downloads/Newe/merged-flash.bin, ready to flash to offset 0x0
 
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/raw/main/Electra.jpg">
+
+Soon Electra will Power a Gazillion Devices
