@@ -2,6 +2,7 @@
 Russian?, You are not welcome here, 
 - https://youtu.be/1cCoRdJHscQ
 - go away and protest against your maniac insane leader
+- https://youtu.be/rNuBGslqbWA
 </b>
 
 ------
