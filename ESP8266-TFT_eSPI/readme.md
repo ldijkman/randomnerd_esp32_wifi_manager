@@ -2,8 +2,8 @@
 
 want to make an ESP8266 touch display for Electra
 
-
 Will try TFT Touch LCD with ESP8266 NodeMCU 12E TFT_eSPI https://www.google.com/search?q=nodemcu
+-also same pinout tested on ESP8266 Wemos D1 R2 12F == succesfull 
 
 https://github.com/Bodmer/TFT_eSPI
 
@@ -13,6 +13,7 @@ ESP8266 NodeMCU 12E TFT connections
 - vcc == +5vdc in
 - gnd == gnd
 - reset == d4
+- cs == d8
 - dc/rs == d3
 - sdi(mosi) == d7
 - sck == d5
@@ -28,6 +29,7 @@ ESP8266 NodeMCU 12E TFT connections
 - // #define TFT_RST   4  // Reset pin (could connect to RST pin)
 - #define TFT_RST   PIN_D4  // Set TFT_RST to -1 if display RESET is connected to ESP32 board RST
 
+### make sure to set the right tft driver for your display
 
 ESP8266 NodeMCU 12E tft_espi meters example test
 
@@ -48,3 +50,6 @@ picture https://www.mischianti.org/
 
 ![NodeMcu-V3-CH340-Lua-ESP8266-pinout-mischianti-low-resolution](https://user-images.githubusercontent.com/45427770/155927695-04cdb781-7502-487b-8685-b1340a4bf61a.jpg)
 picture https://www.mischianti.org/
+
+wemos d1 r2 pinout
+![wemos_d1_r2_pinout](https://user-images.githubusercontent.com/45427770/161381406-6ab25a4e-1d82-4d2e-8db5-e0682ff61cc4.jpg)
