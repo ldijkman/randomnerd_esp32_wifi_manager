@@ -10,24 +10,33 @@ https://github.com/Bodmer/TFT_eSPI
 https://youtu.be/jgfdkedoNfE
 
 ESP8266 NodeMCU 12E TFT connections
-- vcc == +5vdc in
-- gnd == gnd
-- reset == d4
-- cs == d8
-- dc/rs == d3
-- sdi(mosi) == d7
-- sck == d5
-- led == +3.3vdc  (could make it PWM to set backlight brightness)
-- sdo(miso) == d6
+- VCC == +5vdc in
+- GND == gnd
+- CS == D8
+- RESET == D4
+- DC/RS == D3
+- SDI(MOSI) == D7
+- SCK == D5
+- LED == +3.3vdc  (could make it PWM to set backlight brightness)
+- SDO(MISO) == D6
+-
+- touch not tested yet
+- TIRQ == not used
+- T_DO == shared with SDO(MISO)
+- T_DIN == shared with SDI(MOSI)
+- T_CS == D2
+- T_CLK == shared with SCK
 -
 - as defined in tft_espi user_setup.h
-- #define TFT_MISO  PIN_D6
-- #define TFT_MOSI  PIN_D7
-- #define TFT_SCLK  PIN_D5
-- #define TFT_CS   PIN_D8  // Chip select control pin
-- #define TFT_DC     PIN_D3  // Data Command control pin
-- // #define TFT_RST   4  // Reset pin (could connect to RST pin)
-- #define TFT_RST   PIN_D4  // Set TFT_RST to -1 if display RESET is connected to ESP32 board RST
+- #define TFT_MISO     PIN_D6
+- #define TFT_MOSI     PIN_D7
+- #define TFT_SCLK     PIN_D5
+- #define TFT_CS       PIN_D8      // Chip select control pin
+- #define TFT_DC       PIN_D3      // Data Command control pin
+- // #define TFT_RST   4           // Reset pin (could connect to RST pin)
+- #define TFT_RST      PIN_D4      // Set TFT_RST to -1 if display RESET is connected to ESP32 board RST
+-
+-#define TOUCH_CS PIN_D2           // Chip select pin (T_CS) of touch screen
 
 ### make sure to set the right tft driver for your display
 
