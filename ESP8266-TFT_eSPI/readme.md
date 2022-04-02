@@ -62,10 +62,12 @@ picture https://www.mischianti.org/
 wemos d1 r2 pinout
 ![wemos_d1_r2_pinout](https://user-images.githubusercontent.com/45427770/161381406-6ab25a4e-1d82-4d2e-8db5-e0682ff61cc4.jpg)
 
-<p align="center">       
+---
+
 # Electra Touch
-  
+
+<p align="center">         
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Electra.jpg">
-           
-### Soon Electra wil Power a Gazillion Devices!
 </p> 
+
+### Soon Electra wil Power a Gazillion Devices!
