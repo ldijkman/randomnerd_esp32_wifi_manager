@@ -7,16 +7,17 @@ https://github.com/Bodmer/TFT_eSPI
 
 https://youtu.be/jgfdkedoNfE
 
-nodemcu tft connections
-- vcc == 5vdc in
+ESP8266 NodeMCU 12E TFT connections
+- vcc == +5vdc in
 - gnd == gnd
 - reset == d4
 - dc/rs == d3
 - sdi(mosi) == d7
 - sck == d5
-- led == 3.3v
+- led == +3.3vdc  (could make it PWM to set backlight brightness)
 - sdo(miso) == d6
 -
+- as defined in tft_espi user_setup.h
 - #define TFT_MISO  PIN_D6
 - #define TFT_MOSI  PIN_D7
 - #define TFT_SCLK  PIN_D5
