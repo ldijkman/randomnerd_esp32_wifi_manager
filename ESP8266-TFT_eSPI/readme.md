@@ -7,6 +7,24 @@ https://github.com/Bodmer/TFT_eSPI
 
 https://youtu.be/jgfdkedoNfE
 
+nodemcu tft connections
+- vcc == 5vdc in
+- gnd == gnd
+- reset == d4
+- dc/rs == d3
+- sdi(mosi) == d7
+- sck == d5
+- led == 3.3v
+- sdo(miso) == d6
+-
+- #define TFT_MISO  PIN_D6
+- #define TFT_MOSI  PIN_D7
+- #define TFT_SCLK  PIN_D5
+- #define TFT_CS   PIN_D8  // Chip select control pin
+- #define TFT_DC     PIN_D3  // Data Command control pin
+- // #define TFT_RST   4  // Reset pin (could connect to RST pin)
+- #define TFT_RST   PIN_D4  // Set TFT_RST to -1 if display RESET is connected to ESP32 board RST
+
 
 ESP8266 NodeMCU 12E tft_espi meters example test
 
