@@ -39,6 +39,7 @@ same tft_espi meters example but running on esp32 https://www.youtube.com/watch?
 
 # prototype setup
 ESP8266 Wemos D1 R1 12F with arduino mega proto pcb perf board shield and 3,5inch SPI touch TFT
+- PCB Shield https://wiki.keyestudio.com/KS0323_Keyestudio_MEGA2560_Prototype_Circuit_Breakout_Board_PCB_10PCS
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220402_135300.jpg">
 
