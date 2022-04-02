@@ -1,3 +1,8 @@
+
+
+// nodemcu esp8266 settings that worked for me tft_espi tft lcd no touch yet
+
+
 //                            USER DEFINED SETTINGS
 //   Set driver type, fonts to be loaded, pins used and SPI control method etc
 //
