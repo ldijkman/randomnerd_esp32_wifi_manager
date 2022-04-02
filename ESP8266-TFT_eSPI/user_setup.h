@@ -158,7 +158,7 @@
 //#define TFT_RST   4  // Reset pin (could connect to RST pin)
 #define TFT_RST   PIN_D4  // Set TFT_RST to -1 if display RESET is connected to ESP32 board RST
 
-//#define TOUCH_CS 21     // Chip select pin (T_CS) of touch screen
+#define TOUCH_CS PIN_D2     // Chip select pin (T_CS) of touch screen
 
 
 
