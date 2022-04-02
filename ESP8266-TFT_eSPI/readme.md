@@ -3,7 +3,7 @@
 want to make an ESP8266 touch display for Electra
 
 Will try TFT Touch LCD with ESP8266 NodeMCU 12E TFT_eSPI https://www.google.com/search?q=nodemcu
--also same pinout tested on ESP8266 Wemos D1 R2 12F == succesfull 
+-also same pinout tested on ESP8266 Wemos D1 R2 12F arduino uno sized == succesfull 
 
 https://github.com/Bodmer/TFT_eSPI
 
@@ -38,7 +38,7 @@ same tft_espi meters example but running on esp32 https://www.youtube.com/watch?
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220402_091959.jpg">
 
 # prototype setup
-ESP8266 Wemos D1 R1 12F with arduino mega proto pcb perf board shield and 3,5inch SPI touch TFT
+ESP8266 Wemos D1 R1 12F arduino uno sized with arduino mega proto pcb perf board shield and 3,5inch SPI touch TFT
 - PCB Shield https://wiki.keyestudio.com/KS0323_Keyestudio_MEGA2560_Prototype_Circuit_Breakout_Board_PCB_10PCS
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220402_135300.jpg">
