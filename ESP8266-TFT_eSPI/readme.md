@@ -2,6 +2,8 @@
 
 want to make an ESP8266 touch display for Electra
 
+Easy Home Automation
+
 ---
 
 idea: do a local network scan for other mDNS "Electra" devices: 
