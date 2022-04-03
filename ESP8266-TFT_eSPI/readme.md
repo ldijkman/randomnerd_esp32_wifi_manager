@@ -54,10 +54,13 @@ same tft_espi meters example but running on esp32 https://www.youtube.com/watch?
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220402_091959.jpg">
 
 # prototype setup
-ESP8266 Wemos D1 R1 12F arduino uno sized with arduino mega proto pcb perf board shield and 3,5inch SPI touch TFT
-- PCB Shield https://wiki.keyestudio.com/KS0323_Keyestudio_MEGA2560_Prototype_Circuit_Breakout_Board_PCB_10PCS
-- https://www.google.com/search?q=ESP8266+Wemos+D1+R2+12F+arduino+uno+sized&oq=ESP8266+Wemos+D1+R2+12F+arduino+uno+sized
-- Touch SPI TFT https://www.google.com/search?q=sku+msp3520&oq=sku+msp3520
+ESP8266 Wemos D1 R1 12F arduino uno sized 
+- with arduino mega proto pcb perf board shield
+- and 3,5inch SPI touch TFT
+- 
+- - PCB Shield https://wiki.keyestudio.com/KS0323_Keyestudio_MEGA2560_Prototype_Circuit_Breakout_Board_PCB_10PCS
+- - https://www.google.com/search?q=ESP8266+Wemos+D1+R2+12F+arduino+uno+sized&oq=ESP8266+Wemos+D1+R2+12F+arduino+uno+sized
+- - Touch SPI TFT https://www.google.com/search?q=sku+msp3520&oq=sku+msp3520
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220403_084314.jpg">
 
