@@ -2,6 +2,9 @@
 
 // nodemcu esp8266 settings that worked for me tft_espi tft lcd no touch yet
 
+// file shoulde be at /home/pi/Arduino/libraries/TFT_eSPI/
+// windows somewhere on disk /Arduino/libraries/TFT_eSPI
+// online original verion https://github.com/Bodmer/TFT_eSPI/blob/master/User_Setup.h
 
 //                            USER DEFINED SETTINGS
 //   Set driver type, fonts to be loaded, pins used and SPI control method etc
