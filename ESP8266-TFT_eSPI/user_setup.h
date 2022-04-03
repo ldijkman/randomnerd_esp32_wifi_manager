@@ -2,10 +2,6 @@
 
 // nodemcu esp8266 settings that worked for me tft_espi tft lcd no touch yet
 
-// file shoulde be at /home/pi/Arduino/libraries/TFT_eSPI/
-// windows somewhere on disk /Arduino/libraries/TFT_eSPI/
-// online original verion https://github.com/Bodmer/TFT_eSPI/blob/master/User_Setup.h
-
 //                            USER DEFINED SETTINGS
 //   Set driver type, fonts to be loaded, pins used and SPI control method etc
 //
@@ -173,12 +169,12 @@
 #define TFT_MISO  PIN_D6
 #define TFT_MOSI  PIN_D7
 #define TFT_SCLK  PIN_D5
-#define TFT_CS   PIN_D8  // Chip select control pin
+#define TFT_CS   PIN_D8     // Chip select control pin
 #define TFT_DC     PIN_D3  // Data Command control pin
-//#define TFT_RST   4  // Reset pin (could connect to RST pin)
-#define TFT_RST   PIN_D4  // Set TFT_RST to -1 if display RESET is connected to ESP32 board RST
+                           // Reset pin (could connect to RST pin)
+#define TFT_RST   -1       // Set TFT_RST to -1 if display RESET is connected to ESP32 board RST
 
-#define TOUCH_CS PIN_D2     // Chip select pin (T_CS) of touch screen
+#define TOUCH_CS PIN_D4     // Chip select pin (T_CS) of touch screen
 
 // hhmmmm d2 is i2c pin  better use d4 and connect reset to rst
 
