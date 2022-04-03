@@ -50,7 +50,7 @@ ESP8266 NodeMCU 12E TFT connections
 
 ESP8266 NodeMCU 12E tft_espi meters example test
 
-same tft_espi meters example but running on esp32 https://www.youtube.com/watch?v=pkHV_xGdL-s
+YT video of same tft_espi meters example but running on esp32 https://www.youtube.com/watch?v=pkHV_xGdL-s
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220402_091959.jpg">
 
