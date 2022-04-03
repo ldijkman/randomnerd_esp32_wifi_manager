@@ -1,6 +1,6 @@
 /*
 
-touch calibrate test 
+TFT touch calibrate test 
 
 and
 
