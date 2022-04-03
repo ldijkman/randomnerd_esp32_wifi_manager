@@ -64,6 +64,10 @@ ESP8266 Wemos D1 R2 12F arduino uno sized
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220403_084314.jpg">
 
+ prototype setup
+
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220403_085010.jpg">
+
 arduino ide settings
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220402_115032.jpg">
