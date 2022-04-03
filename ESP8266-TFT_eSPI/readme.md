@@ -26,11 +26,11 @@ ESP8266 NodeMCU 12E TFT connections
 - SDI(MOSI) == D7
 - SCK == D5
 - LED == +3.3vdc  (could make it PWM to set backlight brightness)
-- SDO(MISO) == D6
+- SDO(MISO) == (not used/needed and Do not share / connect on ILI9488, if shared with T_DO touch will not work on ILI9488)
 -
 - touch not tested yet
 - TIRQ == not used
-- T_DO == shared with SDO(MISO) == D6
+- T_DO == D6
 - T_DIN == shared with SDI(MOSI) == D7
 - T_CS == D4    
 - T_CLK == shared with SCK == D5
