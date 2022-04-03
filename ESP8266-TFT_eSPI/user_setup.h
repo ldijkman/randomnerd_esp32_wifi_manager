@@ -239,6 +239,6 @@
 // If the VSPI port is in use and pins are not accessible (e.g. TTGO T-Beam)
 // then uncomment the following line:
 
-#define USE_HSPI_PORT
+#define USE_HSPI_PORT 
 
 
