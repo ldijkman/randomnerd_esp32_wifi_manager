@@ -47,6 +47,7 @@ ESP8266 NodeMCU 12E TFT connections
 - #define TOUCH_CS     PIN_D4      // Chip select pin (T_CS) of touch screen
 -
 - - D1, D2 free for i2c BME280?! 
+- - D0 for Relais (but is high at boot, wich is no problem for me)
 
 ### make sure to set the right tft driver for your display
 - edit user_setup.h located in /home/pi/Arduino/libraries/TFT_eSPI/user_setup.h
