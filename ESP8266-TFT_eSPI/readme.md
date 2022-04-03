@@ -44,6 +44,7 @@ ESP8266 NodeMCU 12E TFT connections
 - #define TFT_RST      PIN_D4      // Set TFT_RST to -1 if display RESET is connected to ESP32 board RST
 -
 - #define TOUCH_CS PIN_D2           // Chip select pin (T_CS) of touch screen, d2 maybe not handy is also an i2c pin
+- - - maybe better to use tft_rst d4 and connect tft_rst to reset leaves i2c free to use
 
 ### make sure to set the right tft driver for your display
 - edit user_setup.h located in /home/pi/Arduino/libraries/TFT_eSPI/user_setup.h
