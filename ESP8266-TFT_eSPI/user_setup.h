@@ -20,11 +20,28 @@
 //
 // ##################################################################################
 
+// Define STM32 to invoke optimised processor support (only for STM32)
+//#define STM32
 
+// Defining the STM32 board allows the library to optimise the performance
+// for UNO compatible "MCUfriend" style shields
+//#define NUCLEO_64_TFT
+//#define NUCLEO_144_TFT
 
+// STM32 8 bit parallel only:
+// If STN32 Port A or B pins 0-7 are used for 8 bit parallel data bus bits 0-7
+// then this will improve rendering performance by a factor of ~8x
+//#define STM_PORTA_DATA_BUS
+//#define STM_PORTA_DATA_BUS
+
+// Tell the library to use 8 bit parallel mode (otherwise SPI is assumed)
+//#define TFT_PARALLEL_8_BIT
+
+// Display type -  only define if RPi display
+//#define RPI_DISPLAY_TYPE // 20MHz maximum SPI
 
 // Only define one driver, the other ones must be commented out
-//////////////#define ILI9341_DRIVER
+//#define ILI9341_DRIVER
 //#define ST7735_DRIVER      // Define additional parameters below for this display
 //#define ILI9163_DRIVER     // Define additional parameters below for this display
 //#define S6D02A1_DRIVER
@@ -33,31 +50,66 @@
 //#define ILI9481_DRIVER
 //#define ILI9486_DRIVER
 
-//#define ILI9488_DRIVER     // WARNING: Do not connect ILI9488 display SDO to MISO if other devices share the SPI bus (TFT SDO does NOT tristate when CS is high)
+#define ILI9488_DRIVER     // WARNING: Do not connect ILI9488 display SDO to MISO if other devices share the SPI bus (TFT SDO does NOT tristate when CS is high)
 
 //#define ST7789_DRIVER      // Full configuration option, define additional parameters below for this display
 //#define ST7789_2_DRIVER    // Minimal configuration option, define additional parameters below for this display
 //#define R61581_DRIVER
 //#define RM68140_DRIVER
 
-#define ST7796_DRIVER        // my 4 inch display
+//#define ST7796_DRIVER
 
 //#define SSD1963_480_DRIVER    // Untested
 //#define SSD1963_800_DRIVER    // Untested
 //#define SSD1963_800ALT_DRIVER // Untested
 
+// Some displays support SPI reads via the MISO pin, other displays have a single
+// bi-directional SDA pin and the library will try to read this via the MOSI line.
+// To use the SDA line for reading data from the TFT uncomment the following line:
 
+// #define TFT_SDA_READ      // This option is for ESP32 ONLY, tested with ST7789 display only
+
+// For ST7735, ST7789 and ILI9341 ONLY, define the colour order IF the blue and red are swapped on your display
+// Try ONE option at a time to find the correct colour order for your display
+
+//  #define TFT_RGB_ORDER TFT_RGB  // Colour order Red-Green-Blue
+//  #define TFT_RGB_ORDER TFT_BGR  // Colour order Blue-Green-Red
+
+// For M5Stack ESP32 module with integrated ILI9341 display ONLY, remove // in line below
+
+// #define M5STACK
 
 // For ST7789, ST7735 and ILI9163 ONLY, define the pixel width and height in portrait orientation
 // #define TFT_WIDTH  80
 // #define TFT_WIDTH  128
-// #define TFT_WIDTH  240 // ST7789 240 x 240 and 240 x 320
+ //#define TFT_WIDTH  240 // ST7789 240 x 240 and 240 x 320
 // #define TFT_HEIGHT 160
 // #define TFT_HEIGHT 128
 // #define TFT_HEIGHT 240 // ST7789 240 x 240
 // #define TFT_HEIGHT 320 // ST7789 240 x 320
 
+// For ST7735 ONLY, define the type of display, originally this was based on the
+// colour of the tab on the screen protector film but this is not always true, so try
+// out the different options below if the screen does not display graphics correctly,
+// e.g. colours wrong, mirror images, or tray pixels at the edges.
+// Comment out ALL BUT ONE of these options for a ST7735 display driver, save this
+// this User_Setup file, then rebuild and upload the sketch to the board again:
 
+// #define ST7735_INITB
+// #define ST7735_GREENTAB
+// #define ST7735_GREENTAB2
+// #define ST7735_GREENTAB3
+// #define ST7735_GREENTAB128    // For 128 x 128 display
+// #define ST7735_GREENTAB160x80 // For 160 x 80 display (BGR, inverted, 26 offset)
+// #define ST7735_REDTAB
+// #define ST7735_BLACKTAB
+// #define ST7735_REDTAB160x80   // For 160 x 80 display with 24 pixel offset
+
+// If colours are inverted (white shows as black) then uncomment one of the next
+// 2 lines try both options, one of the options should correct the inversion.
+
+// #define TFT_INVERSION_ON
+// #define TFT_INVERSION_OFF
 
 
 // ##################################################################################
@@ -140,6 +192,8 @@
 //#define TFT_RST  -1  // Set TFT_RST to -1 if the display RESET is connected to NodeMCU RST or 3.3V
 
 
+
+
 // Display SDO/MISO  to NodeMCU pin D6 (or leave disconnected if not reading TFT)
 // Display LED       to NodeMCU pin VIN (or 5V, see below)
 // Display SCK       to NodeMCU pin D5
@@ -159,6 +213,10 @@
 #define TFT_RST   PIN_D4  // Set TFT_RST to -1 if display RESET is connected to ESP32 board RST
 
 #define TOUCH_CS PIN_D2     // Chip select pin (T_CS) of touch screen
+
+// hhmmmm d2 is i2c pin  better use d4 and connect reset to rst
+
+
 
 
 
