@@ -5,7 +5,7 @@ want to make an ESP8266 touch display for Electra
 ---
 
 idea: do a local network scan for other mDNS "Electra" devices
-- and show a touch control butoon on screen. button color reveals status of the other device
+- and show a touch controlled buttons on screen. button color reveals status of the other devices
 
 ---
 
