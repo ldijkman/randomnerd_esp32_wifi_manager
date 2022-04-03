@@ -29,10 +29,10 @@ ESP8266 NodeMCU 12E TFT connections
 -
 - touch not tested yet
 - TIRQ == not used
-- T_DO == shared with SDO(MISO)
-- T_DIN == shared with SDI(MOSI)
+- T_DO == shared with SDO(MISO) == D6
+- T_DIN == shared with SDI(MOSI) == D7
 - T_CS == D2    d2 maybe not handy is also an i2c pin
-- T_CLK == shared with SCK
+- T_CLK == shared with SCK == D5
 -
 - as defined in tft_espi user_setup.h
 - #define TFT_MISO     PIN_D6
