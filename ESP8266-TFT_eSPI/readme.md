@@ -77,7 +77,7 @@ picture https://www.mischianti.org/
 
 ---
 
-## Wemos D1 R2 pinout arduino uno sized board ESP8266 12F 
+## Wemos D1 R2 pinout arduino uno sized board ESP8266 12F 32mbit==4MByte
 
 https://www.google.com/search?q=Wemos+D1+R2+pinout+arduino+uno+sized+board&oq=Wemos+D1+R2+pinout+arduino+uno+sized+board
 
