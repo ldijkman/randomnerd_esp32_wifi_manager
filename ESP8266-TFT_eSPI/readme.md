@@ -74,6 +74,9 @@ ESP8266 Wemos D1 R2 12F arduino uno sized
 
 # Just Stack it
 
+## Electra Needs a Case
+- 3D Printed ;-)
+
 arduino ide settings
 - "fqbn": "esp8266:esp8266:generic:xtal=160,vt=flash,exception=legacy,ssl=all,ResetMethod=nodemcu,CrystalFreq=26,FlashFreq=40,FlashMode=dout,eesz=4M2M,led=2,sdk=nonosdk_190703,ip=lm2f,dbg=Disabled,lvl=None____,wipe=all,baud=115200",
   
