@@ -11,15 +11,15 @@ and
 
  Needs Font 2 (also Font 4 if using large centered scale label)
 
-  #########################################################################
-  ###### DON'T FORGET TO UPDATE THE User_Setup.h FILE IN THE LIBRARY ######
+  ##################################################################################################
+  ###### DON'T FORGET TO UPDATE THE User_Setup.h FILE IN THE Arduino TFT_eSPI LIBRARY directory ######
   
   raspberry pi /home/pi/Arduino/libraries/TFT_eSPI/User_Setup.h
   windows your arduino location
   
   my settings https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/user_setup.h
   
-  #########################################################################
+  ##################################################################################################
  */
 
 #include <SPI.h>
