@@ -31,7 +31,7 @@ ESP8266 NodeMCU 12E TFT connections
 - TIRQ == not used
 - T_DO == shared with SDO(MISO)
 - T_DIN == shared with SDI(MOSI)
-- T_CS == D2
+- T_CS == D2    d2 maybe not handy is also an i2c pin
 - T_CLK == shared with SCK
 -
 - as defined in tft_espi user_setup.h
@@ -43,7 +43,7 @@ ESP8266 NodeMCU 12E TFT connections
 - // #define TFT_RST   4           // Reset pin (could connect to RST pin)
 - #define TFT_RST      PIN_D4      // Set TFT_RST to -1 if display RESET is connected to ESP32 board RST
 -
-- #define TOUCH_CS PIN_D2           // Chip select pin (T_CS) of touch screen
+- #define TOUCH_CS PIN_D2           // Chip select pin (T_CS) of touch screen, d2 maybe not handy is also an i2c pin
 
 ### make sure to set the right tft driver for your display
 
