@@ -34,7 +34,7 @@ ESP8266 NodeMCU 12E TFT connections
 - T_CS == D2    d2 maybe not handy is also an i2c pin
 - T_CLK == shared with SCK == D5
 -
-- as defined in tft_espi user_setup.h
+- as defined in tft_espi user_setup.h /home/pi/Arduino/libraries/TFT_eSPI/user_setup.h
 - #define TFT_MISO     PIN_D6
 - #define TFT_MOSI     PIN_D7
 - #define TFT_SCLK     PIN_D5
@@ -46,7 +46,7 @@ ESP8266 NodeMCU 12E TFT connections
 - #define TOUCH_CS PIN_D2           // Chip select pin (T_CS) of touch screen, d2 maybe not handy is also an i2c pin
 
 ### make sure to set the right tft driver for your display
-- edit user_setup.h located in arduino/librries/tft_espi/
+- edit user_setup.h located in /home/pi/Arduino/libraries/TFT_eSPI/user_setup.h
 
 ESP8266 NodeMCU 12E tft_espi meters example test
 
