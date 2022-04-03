@@ -169,12 +169,12 @@
 #define TFT_MISO  PIN_D6
 #define TFT_MOSI  PIN_D7
 #define TFT_SCLK  PIN_D5
-#define TFT_CS   PIN_D8     // Chip select control pin
-#define TFT_DC     PIN_D3  // Data Command control pin
+#define TFT_CS    PIN_D8   // Chip select control pin
+#define TFT_DC    PIN_D3   // Data Command control pin
                            // Reset pin (could connect to RST pin)
 #define TFT_RST   -1       // Set TFT_RST to -1 if display RESET is connected to ESP32 board RST
 
-#define TOUCH_CS PIN_D4     // Chip select pin (T_CS) of touch screen
+#define TOUCH_CS PIN_D4    // Chip select pin (T_CS) of touch screen
 
 // hhmmmm d2 is i2c pin  better use d4 and connect reset to rst
 
@@ -239,6 +239,6 @@
 // If the VSPI port is in use and pins are not accessible (e.g. TTGO T-Beam)
 // then uncomment the following line:
 
-#define USE_HSPI_PORT 
+#define USE_HSPI_PORT
 
 
