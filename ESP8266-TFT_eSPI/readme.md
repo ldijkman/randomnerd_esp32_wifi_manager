@@ -2,6 +2,13 @@
 
 want to make an ESP8266 touch display for Electra
 
+---
+
+idea: do a local network scan for other mDNS "Electra" devices
+- and show a touch control butoon on screen. button color reveals status of the other device
+
+---
+
 Will try TFT Touch LCD with ESP8266 NodeMCU 12E TFT_eSPI https://www.google.com/search?q=nodemcu
 -also same pinout tested on ESP8266 Wemos D1 R2 12F arduino uno sized == succesfull 
 
