@@ -62,6 +62,7 @@ ESP8266 Wemos D1 R2 12F arduino uno sized
 - - PCB Shield https://wiki.keyestudio.com/KS0323_Keyestudio_MEGA2560_Prototype_Circuit_Breakout_Board_PCB_10PCS
 - - https://www.google.com/search?q=ESP8266+Wemos+D1+R2+12F+arduino+uno+sized&oq=ESP8266+Wemos+D1+R2+12F+arduino+uno+sized
 - - Touch SPI TFT https://www.google.com/search?q=sku+msp3520&oq=sku+msp3520
+- - - http://www.lcdwiki.com/3.5inch_SPI_Module_ILI9488_SKU:MSP3520
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220403_084314.jpg">
 
