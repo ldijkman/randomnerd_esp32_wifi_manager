@@ -20,27 +20,9 @@
 //
 // ##################################################################################
 
-// Define STM32 to invoke optimised processor support (only for STM32)
-//#define STM32
-
-// Defining the STM32 board allows the library to optimise the performance
-// for UNO compatible "MCUfriend" style shields
-//#define NUCLEO_64_TFT
-//#define NUCLEO_144_TFT
-
-// STM32 8 bit parallel only:
-// If STN32 Port A or B pins 0-7 are used for 8 bit parallel data bus bits 0-7
-// then this will improve rendering performance by a factor of ~8x
-//#define STM_PORTA_DATA_BUS
-//#define STM_PORTA_DATA_BUS
-
-// Tell the library to use 8 bit parallel mode (otherwise SPI is assumed)
-//#define TFT_PARALLEL_8_BIT
-
-// Display type -  only define if RPi display
-//#define RPI_DISPLAY_TYPE // 20MHz maximum SPI
 
 // Only define one driver, the other ones must be commented out
+
 //#define ILI9341_DRIVER
 //#define ST7735_DRIVER      // Define additional parameters below for this display
 //#define ILI9163_DRIVER     // Define additional parameters below for this display
@@ -63,21 +45,12 @@
 //#define SSD1963_800_DRIVER    // Untested
 //#define SSD1963_800ALT_DRIVER // Untested
 
-// Some displays support SPI reads via the MISO pin, other displays have a single
-// bi-directional SDA pin and the library will try to read this via the MOSI line.
-// To use the SDA line for reading data from the TFT uncomment the following line:
-
-// #define TFT_SDA_READ      // This option is for ESP32 ONLY, tested with ST7789 display only
 
 // For ST7735, ST7789 and ILI9341 ONLY, define the colour order IF the blue and red are swapped on your display
 // Try ONE option at a time to find the correct colour order for your display
 
 //  #define TFT_RGB_ORDER TFT_RGB  // Colour order Red-Green-Blue
 //  #define TFT_RGB_ORDER TFT_BGR  // Colour order Blue-Green-Red
-
-// For M5Stack ESP32 module with integrated ILI9341 display ONLY, remove // in line below
-
-// #define M5STACK
 
 // For ST7789, ST7735 and ILI9163 ONLY, define the pixel width and height in portrait orientation
 // #define TFT_WIDTH  80
@@ -117,16 +90,6 @@
 // Section 2. Define the pins that are used to interface with the display here
 //
 // ##################################################################################
-
-// If a backlight control signal is available then define the TFT_BL pin in Section 2
-// below. The backlight will be turned ON when tft.begin() is called, but the library
-// needs to know if the LEDs are ON with the pin HIGH or LOW. If the LEDs are to be
-// driven with a PWM signal or turned OFF/ON then this must be handled by the user
-// sketch. e.g. with digitalWrite(TFT_BL, LOW);
-
-// #define TFT_BL   32            // LED back-light control pin
-// #define TFT_BACKLIGHT_ON HIGH  // Level to turn ON back-light (HIGH or LOW)
-
 
 
 // We must use hardware SPI, a minimum of 3 GPIO pins is needed.
@@ -279,14 +242,4 @@
 
 #define USE_HSPI_PORT
 
-// Comment out the following #define if "SPI Transactions" do not need to be
-// supported. When commented out the code size will be smaller and sketches will
-// run slightly faster, so leave it commented out unless you need it!
 
-// Transaction support is needed to work with SD library but not needed with TFT_SdFat
-// Transaction support is required if other SPI devices are connected.
-
-// Transactions are automatically enabled by the library for an ESP32 (to use HAL mutex)
-// so changing it here has no effect
-
-// #define SUPPORT_TRANSACTIONS
