@@ -8,7 +8,7 @@ Russian?, You are not welcome here,
 ------
 
 ## New, program ESP8266 InBrowser, NO tools needed
--  tested on 4mbyte ESP8266 nodemcu, wemos d1 (uno sized board), wemos d1 mini.
+-  tested on 4mbyte ESP8266 NodeMCU, WeMos D1 R2(uno sized board ESP12F), wemos d1 mini.
 -  https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/index.html
 
 ------
