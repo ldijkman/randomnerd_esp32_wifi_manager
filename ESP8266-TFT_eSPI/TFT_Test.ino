@@ -19,6 +19,8 @@ and
   
   my settings https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/user_setup.h
   
+  https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-TFT_eSPI
+  
   ##################################################################################################
  */
 
