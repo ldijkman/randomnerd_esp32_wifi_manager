@@ -54,7 +54,7 @@ same tft_espi meters example but running on esp32 https://www.youtube.com/watch?
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220402_091959.jpg">
 
 # prototype setup
-ESP8266 Wemos D1 R1 12F arduino uno sized 
+ESP8266 Wemos D1 R2 12F arduino uno sized 
 - with arduino mega proto pcb perf board shield
 - and 3,5inch SPI touch TFT
 - 
