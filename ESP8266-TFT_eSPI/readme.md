@@ -75,7 +75,12 @@ picture https://www.mischianti.org/
 ![NodeMcu-V3-CH340-Lua-ESP8266-pinout-mischianti-low-resolution](https://user-images.githubusercontent.com/45427770/155927695-04cdb781-7502-487b-8685-b1340a4bf61a.jpg)
 picture https://www.mischianti.org/
 
-wemos d1 r2 pinout
+---
+
+# Wemos D1 R2 pinout arduino uno sized boar
+
+https://www.google.com/search?q=Wemos+D1+R2+pinout+arduino+uno+sized+board&oq=Wemos+D1+R2+pinout+arduino+uno+sized+board
+
 ![wemos_d1_r2_pinout](https://user-images.githubusercontent.com/45427770/161381406-6ab25a4e-1d82-4d2e-8db5-e0682ff61cc4.jpg)
 
 ---
