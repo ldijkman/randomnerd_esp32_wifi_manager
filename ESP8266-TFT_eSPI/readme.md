@@ -76,6 +76,10 @@ ESP8266 Wemos D1 R2 12F arduino uno sized
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220403_085010.jpg">
 
+# more wires for touch
+
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220403_210051.jpg">
+
 # Just Stack it
 
 ## Electra Needs a Case
