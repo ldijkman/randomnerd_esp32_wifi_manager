@@ -46,6 +46,7 @@ ESP8266 NodeMCU 12E TFT connections
 - #define TOUCH_CS PIN_D2           // Chip select pin (T_CS) of touch screen, d2 maybe not handy is also an i2c pin
 
 ### make sure to set the right tft driver for your display
+- edit user_setup.h located in arduino/librries/tft_espi/
 
 ESP8266 NodeMCU 12E tft_espi meters example test
 
