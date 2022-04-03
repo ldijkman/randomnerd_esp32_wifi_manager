@@ -11,7 +11,7 @@ idea: do a local network scan for other mDNS "Electra" devices:
 ---
 
 Will try TFT Touch LCD with ESP8266 NodeMCU 12E TFT_eSPI https://www.google.com/search?q=nodemcu
--also same pinout tested on ESP8266 Wemos D1 R2 12F arduino uno sized == succesfull 
+- also same pinout tested on ESP8266 Wemos D1 R2 12F arduino uno sized == succesfull 
 
 https://github.com/Bodmer/TFT_eSPI
 
