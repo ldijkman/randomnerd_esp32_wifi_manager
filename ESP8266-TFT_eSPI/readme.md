@@ -90,5 +90,6 @@ https://www.google.com/search?q=Wemos+D1+R2+pinout+arduino+uno+sized+board&oq=We
 <p align="center">         
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Electra.jpg">
 </p> 
-
+<p align="center"> 
 ### Soon Electra wil Power a Gazillion Devices!
+</p>
