@@ -1,7 +1,8 @@
 # Touch Electra == Electra with tft touch display
 
 
-this version uses a fork of the espasyncwebserver for LittleFSBrowser
+this version uses a fork of the espasyncwebserver for LittleFSBrowser ACE js webeditor / cloudeditor 
+- (edit the ESP8266 webserver files inbrowser)
 
 make sure u use LittleFS data upload, NOT SPIFFS
 
