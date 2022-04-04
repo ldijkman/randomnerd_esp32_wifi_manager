@@ -86,6 +86,7 @@ ESP8266 Wemos D1 R2 12F arduino uno sized
 
 # EasyEDA Design a PCB inbrowser and order it inbrowser Cheap at JLCPCB
 - https://easyeda.com/search?wd=arduino+mega+shield+pcb&indextype=components
+- wemos d1 r2 shield https://easyeda.com/component/1130d6e76349418f8add4e80361826aa
 
 ---
 
