@@ -108,6 +108,7 @@ picture https://www.mischianti.org/
 https://www.google.com/search?q=Wemos+D1+R2+pinout+arduino+uno+sized+board&oq=Wemos+D1+R2+pinout+arduino+uno+sized+board
 
 ![wemos_d1_r2_pinout](https://user-images.githubusercontent.com/45427770/161381406-6ab25a4e-1d82-4d2e-8db5-e0682ff61cc4.jpg)
+picture https://protosupplies.com/product/esp8266-d1-r2-wifi-processor-with-uno-footprint/
 
 ---
 
