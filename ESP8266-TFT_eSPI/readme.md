@@ -82,6 +82,16 @@ ESP8266 Wemos D1 R2 12F arduino uno sized
 
 # Just Stack it
 
+---
+
+# EsyEDA Design a PCB inbrowwser
+- https://easyeda.com/search?wd=arduino+mega+shield+pcb&indextype=components
+
+---
+
+
+
+
 ## Electra Needs a Case
 - 3D Printed ;-)
 
