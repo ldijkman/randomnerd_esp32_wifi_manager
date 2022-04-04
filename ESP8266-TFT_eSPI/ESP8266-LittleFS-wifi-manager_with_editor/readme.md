@@ -2,7 +2,7 @@
 
 
 this version uses a fork of the espasyncwebserver for LittleFSBrowser ACE js webeditor / cloudeditor 
-- (edit the ESP8266 webserver files inbrowser)
+- (edit the ESP8266 LittleFS webserver files inbrowser)
 
 make sure u use LittleFS data upload, NOT SPIFFS
 
