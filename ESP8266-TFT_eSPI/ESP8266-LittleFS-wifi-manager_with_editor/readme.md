@@ -212,3 +212,15 @@ alignCursors : Ctrl-Alt-A
 findAll : Ctrl-Alt-K
 showKeyboardShortcuts : Ctrl-Alt-H
 </pre>
+
+# Electra Touch
+
+<p align="center">         
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Electra.jpg">
+</p> 
+<h1><b>
+<p align="center"> 
+Soon Electra wil Power a Gazillion Devices! 
+</p>
+</b></h1>
+https://github.com/ldijkman/randomnerd_esp32_wifi_manager
