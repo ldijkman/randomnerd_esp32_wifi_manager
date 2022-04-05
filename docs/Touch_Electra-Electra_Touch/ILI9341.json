@@ -1,7 +1,7 @@
 
 {
   "name": "Touch Electra TFT ILI9341",
-  "version": "March 2022",
+  "version": "April 2022",
   "new_install_prompt_erase": true,
   "builds": [
     {
