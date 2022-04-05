@@ -2,6 +2,7 @@
 
 not yet == Easy install Electra Touch on ESP8266 from browser
 - 2 versions ILI9341_DRIVER and ILI9488_DRIVER for  480 x 320 SPI TFT Touch display.
+- - ESP Web installer https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_Electra-Electra_Touch/
 
 want to make an ESP8266 touch display for Electra
 
