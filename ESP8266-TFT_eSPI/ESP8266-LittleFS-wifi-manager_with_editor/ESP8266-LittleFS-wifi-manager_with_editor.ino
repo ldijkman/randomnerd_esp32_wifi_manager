@@ -1,21 +1,19 @@
 
 // Electra Touch == with tft touch screen
 
-// https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-TFT_eSPI
-
 /*
   ##################################################################################################
   ###### DON'T FORGET TO UPDATE THE User_Setup.h FILE IN THE Arduino TFT_eSPI LIBRARY directory ######
-  
+
   raspberry pi /home/pi/Arduino/libraries/TFT_eSPI/User_Setup.h
   windows your arduino location
-  
+
   my settings https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/user_setup.h
-  
+
   https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-TFT_eSPI
-  
+
   ##################################################################################################
- */
+*/
 // Got it working???
 // Share a video link https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions
 //
@@ -175,12 +173,16 @@ unsigned BME280status;
 #include <SPI.h>
 
 #include <TFT_eSPI.h> // Hardware-specific library 
-                      // https://github.com/Bodmer/TFT_eSPI
-                      // download zip and install lib from zip => sketch => include library => add zip library
-                      // https://github.com/Bodmer/TFT_eSPI/archive/refs/heads/master.zip
+// https://github.com/Bodmer/TFT_eSPI
+// download zip and install lib from zip => sketch => include library => add zip library
+// https://github.com/Bodmer/TFT_eSPI/archive/refs/heads/master.zip
 
 TFT_eSPI tft = TFT_eSPI();       // Invoke custom library
 
+#define CALIBRATION_FILE "/Touch_Calibrate"
+
+// Set REPEAT_CAL to true instead of false or 1 or 0 to run calibration
+byte REPEAT_CAL = 0;     // repeat call flag for calibration
 
 
 
@@ -388,11 +390,17 @@ bool initWiFi() {
     }
   }
 
+
   MDNS.addService("http", "tcp", 80);
 
   Serial.print("http://");
   Serial.print(mdnsdotlocalurl);
   Serial.println(".local");
+
+  tft.println("connected to wifirouter");
+  tft.println(WiFi.localIP());
+  tft.print(mdnsdotlocalurl);
+  tft.println(".local");
   return true;
 }
 
@@ -459,23 +467,25 @@ void setup() {
 
   initLittleFS();
   initWebSocket();
- 
- 
+
+
   tft.init();
   tft.setRotation(1);
 
   touch_calibrate();
-  
+
   tft.fillScreen(TFT_BLACK);
+
+  tft.drawRoundRect(1, 1, 479, 319, 2, TFT_GREEN); // screen size outline
 
   tft.setCursor(20, 0);
   tft.setTextFont(2);
-  tft.setTextSize(1);
+  tft.setTextSize(2);
 
-  
+
   tft.setTextColor(TFT_GREEN, TFT_BLACK);
-  tft.println("Touch Electra");
-  tft.println("Me Too!");
+  tft.println("Touch Electra, Electra Touch");
+
 
   // Load values saved in LittleFS
   ssid = readFile(MYFS, ssidPath);
@@ -749,6 +759,10 @@ void setup() {
     //String broadcastintheair = String("ESP-WIFI-MANAGER-") + WiFi.macAddress().c_str();  // want a unique broadcast id for each device
     //String broadcastintheair = String("ESP-WIFI-MANAGER-") + WiFi.macAddress().c_str();  // esp32   want a unique broadcast id for each device
     String broadcastintheair = String("ESP-WIFI-MANAGER-") + ESP.getChipId();              // esp8266 want a unique broadcast id for each device
+
+    tft.println("connect wifi direct");
+    tft.println(String("ESP-WIFI-MANAGER-") + ESP.getChipId());
+    tft.println("and browse to 192.168.4.1");
 
     WiFi.softAP(broadcastintheair.c_str(), NULL);                                        // i do not know, strings and chars thing drive me nuts
     // i have seen all errors possible, getting this working ;-)
@@ -1333,43 +1347,72 @@ void touch_calibrate()
 {
   uint16_t calData[5];
   uint8_t calDataOK = 0;
+  Serial.println("function calibrate");
 
-  // Calibrate
-  tft.fillScreen(TFT_BLACK);
-  tft.setCursor(20, 0);
-  tft.setTextFont(2);
-  tft.setTextSize(1);
-  tft.setTextColor(TFT_WHITE, TFT_BLACK);
 
-  tft.println("Touch corners as indicated");
+      if (!MYFS.begin()) {
+        Serial.println("An Error has occurred while mounting LittleFS");
+        return;
+      }
 
-  tft.setTextFont(1);
-  tft.println();
 
-  tft.calibrateTouch(calData, TFT_MAGENTA, TFT_BLACK, 15);
-
-  Serial.println(); Serial.println();
-  Serial.println("// Use this calibration code in setup():");
-  Serial.print("  uint16_t calData[5] = ");
-  Serial.print("{ ");
-
-  for (uint8_t i = 0; i < 5; i++)
-  {
-    Serial.print(calData[i]);
-    if (i < 4) Serial.print(", ");
+  // check if calibration file exists and size is correct
+  if (MYFS.exists(CALIBRATION_FILE)) {
+    if (REPEAT_CAL)
+    {
+      // Delete if we want to re-calibrate
+      MYFS.remove(CALIBRATION_FILE);
+    }
+    else
+    {
+      File f = MYFS.open(CALIBRATION_FILE, "r");
+      if (f) {
+        if (f.readBytes((char *)calData, 14) == 14)
+          calDataOK = 1;
+        f.close();
+      }
+    }
   }
 
-  Serial.println(" };");
-  Serial.print("  tft.setTouch(calData);");
-  Serial.println(); Serial.println();
+  if (calDataOK && !REPEAT_CAL) {
+    // calibration data valid
+    tft.setTouch(calData);
+  } else {
+    // data not valid so recalibrate
+    tft.fillScreen(TFT_BLACK);
+    tft.setCursor(20, 20);
+    tft.setTextFont(1);
+    tft.setTextSize(2);
+    tft.setTextColor(TFT_WHITE, TFT_BLACK);
 
-  tft.fillScreen(TFT_BLACK);
-  
-  tft.setTextColor(TFT_GREEN, TFT_BLACK);
-  tft.println("Calibration complete!");
-  tft.println("Calibration code sent to Serial port.");
+    tft.println("Touch corners as indicated");
 
-  delay(4000);
+    tft.setTextFont(1);
+    tft.println();
+
+    if (REPEAT_CAL) {
+      tft.setTextColor(TFT_RED, TFT_BLACK);
+      tft.println("Set REPEAT_CAL to false");
+      tft.println("to stop this running again!");
+    }
+
+    tft.calibrateTouch(calData, TFT_GREEN, TFT_BLACK, 25);
+
+    tft.fillScreen(TFT_BLACK);
+    tft.drawRoundRect(1, 1, 479, 319, 2, TFT_DARKGREY);
+    tft.setTextColor(TFT_GREEN, TFT_BLACK);
+    tft.setCursor(30, 110);
+    tft.println("Calibration complete!");
+    delay(4000);
+    tft.fillScreen(TFT_BLACK);
+
+    // store data
+    File f = MYFS.open(CALIBRATION_FILE, "w");
+    if (f) {
+      f.write((const unsigned char *)calData, 14);
+      f.close();
+    }
+  }
 }
 
 
