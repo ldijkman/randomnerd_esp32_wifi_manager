@@ -7,7 +7,7 @@ should become a webpage for inbrowser programming "Electra Touch" ESP8266 Touch 
 # Electra Touch
 
 <p align="center">         
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Electra.jpg">
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/raw/main/Electra.jpg">
 </p> 
 <h1><b>
 <p align="center"> 
