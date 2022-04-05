@@ -1,5 +1,5 @@
 
-// Electra Touch == with tft touch screen
+// Electra Touch == with tft touch screen designed for 480x320 pixels
 // https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-TFT_eSPI
 /*
   ##################################################################################################
