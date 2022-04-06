@@ -1,7 +1,7 @@
 # Touch Electra
 
 ## Easy install Electra Touch TFT on ESP8266 from Browser
-- 3 versions 
+- 3 versions to choose from
 - - ILI9341_DRIVER for SPI TFT Touch display.
 - - ILI9488_DRIVER  for SPI TFT Touch display.
 - - ST7796_DRIVER for SPI TFT Touch display.
