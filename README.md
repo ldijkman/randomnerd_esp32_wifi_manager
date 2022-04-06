@@ -11,6 +11,8 @@ Russian?, You are not welcome here,
 ## New, program ESP8266 InBrowser, NO tools needed
 -  tested on 4mbyte ESP8266 NodeMCU, WeMos D1 R2(uno sized board ESP12F), wemos d1 mini.
 -  https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/index.html
+-  ### Touch Electra, TFT_eSPI Touch,  install from browser on ESP8266 12E / 12F
+- - - https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-TFT_eSPI
 
 ------
 
