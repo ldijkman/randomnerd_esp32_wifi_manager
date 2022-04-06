@@ -1,7 +1,7 @@
 
 
 {
-  "name": "Touch Electra TFT ILI9488",
+  "name": "Touch Electra TFT ST7796",
   "version": "April 2022",
   "new_install_prompt_erase": true,
   "builds": [
