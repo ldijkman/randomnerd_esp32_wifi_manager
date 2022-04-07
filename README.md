@@ -2,7 +2,7 @@
 Russian?, You are not welcome here, 
 - https://youtu.be/1cCoRdJHscQ
 - go away and protest against your maniac insane leader
-- https://youtu.be/rNuBGslqbWA
+- https://en.m.wikipedia.org/wiki/2022_Russian_invasion_of_Ukraine
 </b>
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/img_1_1649085291012.jpg">
