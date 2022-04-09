@@ -179,16 +179,39 @@ unsigned BME280status;
 
 TFT_eSPI tft = TFT_eSPI();       // Invoke custom library
 
-#define CALIBRATION_FILE "/Touch_Calibrate"
+#define CALIBRATION_FILE "/Touch_Calibrate.txt"
 
 // Set REPEAT_CAL to true instead of false or 1 or 0 to run calibration
 byte REPEAT_CAL = 0;     // repeat call flag for calibration
 
 
+// Color definitions
+#define BLACK       0x0000
+#define BLUE        0x001F
+#define RED         0xF800
+#define GREEN       0x07E0
+#define CYAN        0x07FF
+#define MAGENTA     0xF81F
+#define YELLOW      0xFFE0
+#define WHITE       0xFFFF
+#define NAVY        0x000F
+#define DARKGREEN   0x03E0
+#define DARKCYAN    0x03EF
+#define MAROON      0x7800
+#define PURPLE      0x780F
+#define OLIVE       0x7BE0
+#define LIGHTGREY   0xC618
+#define GRAY        0xBE18
+#define DARKGREY    0x4208
+#define ORANGE      0xFD20
+#define GREENYELLOW 0xAFE5
+#define PINK        0xF81F
 
+#define dutchorange 0xfbc0
+#define iceblue     0x1dfb
+// pitty you can not enter a colorcode on next page RGB565 colours: https://chrishewett.com/blog/true-rgb565-colour-picker/
 
-#define TFT_GREY 0x5AEBft = TFT_eSPI();       // Invoke custom library
-
+uint16_t x, y; //touch x y
 
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "time.google.com");   // do not know how to make this variable yet
@@ -279,7 +302,7 @@ String scanstr = "";  // %MDNSSCAN%
 int ledPin = 5;    // wemos uno sized esp32 board
 // Stores LED state
 
-String ledState;
+String ledState = "OFF";
 
 
 // Initialize LittleFS
@@ -366,16 +389,18 @@ bool initWiFi() {
 
   WiFi.begin(ssid.c_str(), pass.c_str());
   Serial.println("Connecting to WiFi...");
-
+  tft.println("Connecting to WiFi. ");
 
   int i = 0;
   while (WiFi.status() != WL_CONNECTED) {
     if (i >= 20) {
       Serial.println("Failed to connect. in 20sec");
+      tft.println("Connect fail 20sec");
       return false;
     }
     delay(1000);
     Serial.print(i); Serial.print(' ');
+    tft.print(i);
     i++;
   }
   delay(500);
@@ -475,12 +500,12 @@ void setup() {
   touch_calibrate();
 
   tft.fillScreen(TFT_BLACK);
-
+  tft.drawRoundRect(1, 1, 319, 239, 2, 0x5AEB); // screen size outline
   tft.drawRoundRect(1, 1, 479, 319, 2, TFT_GREEN); // screen size outline
 
   tft.setCursor(20, 0);
   tft.setTextFont(2);
-  tft.setTextSize(2);
+  tft.setTextSize(1);
 
 
   tft.setTextColor(TFT_GREEN, TFT_BLACK);
@@ -808,11 +833,43 @@ void loop() {
   timeClient.update();
   ws.cleanupClients();
 
+
+
+
+  if (tft.getTouch(&x, &y)) {           //  gets x, y and only print to seial monitor i there is a touch
+
+     Serial.print(x);                    //  print touch xy position to serial monitor for debug
+     Serial.print(",");
+     Serial.println(y);
+    // tft.setTextColor(GREEN, BLACK);                    // draw text to tft screen for debug
+    // tft.setCursor(120 , 30);
+    // tft.print("X="); tft.print(x); tft.print(" ");
+    // tft.setCursor(200, 30);
+    // tft.print("Y="); tft.print(y); tft.print(" ");
+    //tft.drawPixel(x, y, TFT_GREEN);         // draw touch position pixel
+  }
+
+    drawButton(200, 100, 60, 30,"BUTTON", 7, 7); // x. y. width. height. buttontext textoffset x. y
+
+  if (TouchButton(200, 100, 60, 30)) {
+    if (ledState == "OFF") {
+      Relays_ON();
+      delay(250);
+      return;
+    }
+    if (ledState == "ON") {
+      Relays_OFF();
+      delay(250);
+      return;
+    }
+  }
+
   lampontime = offdelay.toInt() * 1000UL;
   if ((millis() - lamponstart)  > lampontime ) { // turn lamp off 2 minutes after start from webbutton     compare stored TempLong to current millis() counter  screen timeout
     Relays_OFF(); // Turn relaispin OFF
   } else {
     OFFcountdown = (lampontime / 1000 - (millis() - lamponstart) / 1000);
+    if (ledState == "OFF")OFFcountdown=0;
     if ((millis() / 500) % 2) {
       // Serial.println("1");
       if (flag == 0) {
@@ -830,6 +887,9 @@ void loop() {
   // toggle state
   // notifyClients();
   // }
+         tft.fillRoundRect(135, 110, 50, 10, 0, BLACK);  // erase old text
+           tft.setCursor(155, 107);
+          tft.println(OFFcountdown);
 
   if (postsuccesfull == 1) {
     postsuccesfull = 0;
@@ -846,9 +906,18 @@ void loop() {
 
   MDNS.update();   // looks like this is needed only for esp8266 otherwise i dont see mdns url in bonjourbrowser not needed for esp32
 
+  tft.setCursor(225, 0);
+  //tft.setTextFont(2);
+  //tft.setTextSize(1);
+  //tft.setTextColor(TFT_GREEN, TFT_BLACK);
+  tft.println(formattedTime);
+
+
   if (millis() - startmillis >= 10000) {    // non blocking delay 10 seconds
     startmillis = millis();                 // scan for mdns devices urls every ??? seconds
     browseService("http", "tcp");
+
+
 
     Serial.print("ntpserver "); Serial.println(ntpserver.c_str());
     Serial.print("ntptimeoffset sec "); Serial.println((ntptimeoffset.toInt() * 3600));
@@ -1350,10 +1419,10 @@ void touch_calibrate()
   Serial.println("function calibrate");
 
 
-      if (!MYFS.begin()) {
-        Serial.println("An Error has occurred while mounting LittleFS");
-        return;
-      }
+  if (!MYFS.begin()) {
+    Serial.println("An Error has occurred while mounting LittleFS");
+    return;
+  }
 
 
   // check if calibration file exists and size is correct
@@ -1415,6 +1484,53 @@ void touch_calibrate()
   }
 }
 
+
+
+
+
+
+
+
+
+
+void drawButton(int x, int y, int w, int h, String buttontext, int xoffset, int yoffset)
+{
+  if (ledState == "OFF") {
+    tft.drawRoundRect(x, y, w, h, 3, LIGHTGREY); // outter button color
+     tft.setTextColor(LIGHTGREY, TFT_BLACK);
+  }
+  if (ledState == "ON") {
+    tft.drawRoundRect(x, y, w, h, 3, GREEN); // outter button color
+     tft.setTextColor(TFT_GREEN, TFT_BLACK);
+  }
+    tft.setCursor(x + xoffset, y + yoffset);
+    tft.print(buttontext);
+}
+
+
+
+
+
+
+byte TouchButton(int xx, int yy, int ww, int hh)
+{
+  //tft.getTouch(&x, &y);
+  if (x > xx && x < xx + ww && y > yy && y < yy + hh) {
+    tft.drawRoundRect(xx, yy, ww, hh, 4, GREEN);                // bit off visual touch
+    //tft.drawRoundRect(xx + 1, yy + 1, ww - 2, hh - 2, 4, GREEN); // bit off visual touch
+    delay(50);
+    tft.drawRoundRect(xx, yy, ww, hh, 4, BLACK);                // bit off visual touch
+    //tft.drawRoundRect(xx + 1, yy + 1, ww - 2, hh - 2, 4, BLACK); // bit off visual touch
+    delay(50);
+    tft.drawRoundRect(xx, yy, ww, hh, 4, WHITE);                // bit off visual touch
+    // tft.drawRoundRect(xx + 1, yy + 1, ww - 2, hh - 2, 4, LIGHTGREY); // bit off visual touch
+    x = 0;
+    y = 0;
+    return 1;
+  } else {
+    return 0;
+  }
+}
 
 /*
    luberth => turned off  part from fs browser example
