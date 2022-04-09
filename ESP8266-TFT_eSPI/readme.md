@@ -9,6 +9,8 @@
 -
 - if you delete the file touch_calibrate.txt on the ESP with webeditor ACE js CloudEditor http:// IP or mDNS /edit
 - - then on next reboot a touch calibrate again
+- D0==GPIO16 free for relais
+- D1, D2 for i2c BME280 temperature / humidity / millibar pressure
 
 want to make an ESP8266 touch display for Electra
 
