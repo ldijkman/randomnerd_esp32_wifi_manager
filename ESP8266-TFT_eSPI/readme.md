@@ -6,6 +6,9 @@
 - - ILI9488_DRIVER  for SPI TFT Touch display.
 - - ST7796_DRIVER for SPI TFT Touch display.
 - - ESP Web installer https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_Electra-Electra_Touch/
+-
+- if you delete the file touch_calibrate.txt on the ESP with webeditor ACE js CloudEditor http:// IP or mDNS /edit
+- - then on next reboot a touch calibrate again
 
 want to make an ESP8266 touch display for Electra
 
