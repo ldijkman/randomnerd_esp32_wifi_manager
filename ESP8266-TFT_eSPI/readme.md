@@ -97,6 +97,8 @@ ESP8266 Wemos D1 R2 12F arduino uno sized
 
 # Just Stack it
 
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220410_133314.jpg">
+
 ---
 
 # EasyEDA Design a PCB inbrowser and order it inbrowser Cheap at JLCPCB
