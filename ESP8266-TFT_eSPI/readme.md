@@ -97,6 +97,8 @@ ESP8266 Wemos D1 R2 12F arduino uno sized
 
 # Just Stack it
 
+### storm in brain, make GUI scalable for 320x240 and 480x320
+
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220410_133314.jpg">
 
 ---
