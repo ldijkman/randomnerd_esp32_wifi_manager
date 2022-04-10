@@ -1,4 +1,5 @@
 
+
 // Electra Touch == with tft touch screen designed for 320x240 - 480x320 pixels
 // https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-TFT_eSPI
 /*
@@ -883,9 +884,30 @@ void loop() {
     //tft.drawPixel(x, y, TFT_GREEN);         // draw touch position pixel
   }
 
-  drawButton(200, 100, 60, 30, "BUTTON", 7, 7); // x. y. width. height(down from y). buttontext textoffset x. y
+// think this does not make it any easier ;-) but draw and touch can use same parameters
+// well i am no programmer, just playing
+struct button{int x; int y; int w; int h; String t; int ox; int oy;};  // mixed types array
 
-  if (TouchButton(200, 100, 60, 30)) {
+button but1={200, 100, 60, 30, "BUTTON", 7, 7};            // topleft x, y, width, height(down from y), buttontext textoffset x, y
+button but2={50, 120, 100, 60, "BUTTON2", 20, 20};         // topleft x, y, width, height(down from y), buttontext textoffset x, y
+
+  drawButton(but1.x, but1.y, but1.w, but1.h, but1.t, but1.ox, but1.oy); 
+  drawButton(but2.x, but2.y, but2.w, but2.h, but2.t, but2.ox, but2.oy); 
+  
+  if (TouchButton(but1.x, but1.y, but1.w, but1.h)) {
+    if (ledState == "OFF") {
+      Relays_ON();
+      delay(250);
+      return;
+    }
+    if (ledState == "ON") {
+      Relays_OFF();
+      delay(250);
+      return;
+    }
+  }
+
+    if (TouchButton(but2.x, but2.y, but2.w, but2.h)) {
     if (ledState == "OFF") {
       Relays_ON();
       delay(250);
