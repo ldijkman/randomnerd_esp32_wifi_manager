@@ -403,5 +403,5 @@ https://www.youtube.com/user/LuberthDijkman/videos
 <h1> Electra<br>       
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Electra.jpg">
 <br>           
-Electra
+All You Need is Electra
 </p> 
