@@ -1,6 +1,4 @@
 
-
-
 // Electra Touch == with tft touch screen designed for 320x240 - 480x320 pixels
 // https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-TFT_eSPI
 /*
@@ -900,9 +898,12 @@ struct button{int x; int y; int w; int h; String t; int ox; int oy;};  // mixed 
 
 button but1={200, 100, 60, 30, "BUTTON", 7, 7};            // topleft x, y, width, height(down from y), buttontext textoffset x, y
 button but2={50, 120, 100, 60, "BUTTON2", 20, 20};         // topleft x, y, width, height(down from y), buttontext textoffset x, y
-
+//button same on different screen siizes test
+button but3={0.5*tft.width(), 0.5*tft.height(), 0.75*tft.width()-0.5*tft.width(), 0.75*tft.height()-0.5*tft.height(), "scaled", 20, 20};
+ 
   drawButton(but1.x, but1.y, but1.w, but1.h, but1.t, but1.ox, but1.oy); 
   drawButton(but2.x, but2.y, but2.w, but2.h, but2.t, but2.ox, but2.oy); 
+  drawButton(but3.x, but3.y, but3.w, but3.h, but3.t, but3.ox, but3.oy); 
   
   if (TouchButton(but1.x, but1.y, but1.w, but1.h)) {
     if (ledState == "OFF") {
@@ -918,6 +919,19 @@ button but2={50, 120, 100, 60, "BUTTON2", 20, 20};         // topleft x, y, widt
   }
 
     if (TouchButton(but2.x, but2.y, but2.w, but2.h)) {
+    if (ledState == "OFF") {
+      Relays_ON();
+      delay(250);
+      return;
+    }
+    if (ledState == "ON") {
+      Relays_OFF();
+      delay(250);
+      return;
+    }
+  }
+
+      if (TouchButton(but3.x, but3.y, but3.w, but3.h)) {
     if (ledState == "OFF") {
       Relays_ON();
       delay(250);
