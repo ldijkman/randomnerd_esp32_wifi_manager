@@ -893,12 +893,15 @@ void loop() {
   }
 
 // think this does not make it any easier ;-) but draw and touch can use same parameters
-// well i am no programmer, just playing
+// well i am no programmer, just playing, this is the best my brain can come up with, only sleeped at lowest possible technical school education
 struct button{int x; int y; int w; int h; String t; int ox; int oy;};  // mixed types array
 
 button but1={200, 100, 60, 30, "BUTTON", 7, 7};            // topleft x, y, width, height(down from y), buttontext textoffset x, y
 button but2={50, 120, 100, 60, "BUTTON2", 20, 20};         // topleft x, y, width, height(down from y), buttontext textoffset x, y
-//button same on different screen siizes test
+// button3 same on different screen sizes test
+// this will be a button from screen center to center of rightbottom screen quarter
+// it will be the same scaled on 320x240 and 480x320 screens 
+// only the buttontext is not scaled / centered on bigger screen  
 button but3={0.5*tft.width(), 0.5*tft.height(), 0.75*tft.width()-0.5*tft.width(), 0.75*tft.height()-0.5*tft.height(), "scaled", 20, 20};
  
   drawButton(but1.x, but1.y, but1.w, but1.h, but1.t, but1.ox, but1.oy); 
