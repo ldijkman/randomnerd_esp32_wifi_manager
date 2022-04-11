@@ -1,5 +1,6 @@
 
 
+
 // Electra Touch == with tft touch screen designed for 320x240 - 480x320 pixels
 // https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-TFT_eSPI
 /*
@@ -519,10 +520,10 @@ void setup() {
   tft.drawRoundRect(1, 1, 319, 239, 2, 0x5AEB); // screen size outline
   tft.drawRoundRect(1, 1, 479, 319, 2, TFT_GREEN); // screen size outline
   tft.setTextColor(BLUE , TFT_BLACK); 
- tft.setCursor(235, 220); 
+ tft.setCursor(tft.width()-75, tft.height()-20); 
   tft.println("== Help! ==");
   tft.setTextColor(YELLOW, TFT_BLACK); 
-   tft.setCursor(235, 230); 
+   tft.setCursor(tft.width()-75, tft.height()-10); 
   tft.println("= Ukraine =");
   
   tft.setCursor(20, 0); 
@@ -538,6 +539,8 @@ void setup() {
   tft.setTextColor(TFT_GREEN, TFT_BLACK);
   tft.println("Touch Electra, Electra Touch");
 
+tft.setCursor(10, tft.height()-20); 
+tft.print(tft.width());tft.print("x");tft.println(tft.height());
 
   // Load values saved in LittleFS
   ssid = readFile(MYFS, ssidPath);
@@ -881,6 +884,13 @@ void loop() {
     tft.print("X="); tft.print(x); tft.print(" ");
     tft.setCursor(180, 220);
     tft.print("Y="); tft.print(y); tft.print(" ");
+    
+    tft.setCursor(10 , 200);
+    // i have 320x240 and 480x320 screens, would like to have a gui that scales itself 
+    // me no programmer, just puzzleing
+    tft.print("X/SW "); tft.print(float(x)/tft.width()); tft.print(" "); // maybe a position for scaling small bigger screen, will be 0 to 1 on width and height
+    tft.setCursor(180, 200);                                             // result SW x scaling = position for small and bigger screens
+    tft.print("Y/SH "); tft.print(float(y)/tft.height()); tft.print(" ");// maybe a position for scaling small bigger screen
     //tft.drawPixel(x, y, TFT_GREEN);         // draw touch position pixel
   }
 
