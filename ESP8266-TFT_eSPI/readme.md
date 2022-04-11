@@ -109,6 +109,8 @@ the scaled button is from center screen to rightbottom quarter center
 
 on a smaller resolutoino pixels screen that scaled button will be the same possition from center screen to rightbottom quarter center
 
+topleft will then be on the center off gray rectangle wich is the smaller screen resolution 320x240 this is 320x480
+
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220411_193140.jpg">
 
 ---
