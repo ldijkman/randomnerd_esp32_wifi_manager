@@ -105,6 +105,10 @@ see if i can make a scaled gui that will look more or less the same on 320x240 a
 
 sw x 0 to 1, SH x 0 to 1, got it from touch x/SW, y/SH
 
+the scaled button is from center screen to rightbottom quarter center
+
+on a smaller resolutoino pixels screen that scaled button will be the same possition from center screen to rightbottom quarter center
+
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220411_193140.jpg">
 
 ---
