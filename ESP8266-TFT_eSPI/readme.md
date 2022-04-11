@@ -101,6 +101,12 @@ ESP8266 Wemos D1 R2 12F arduino uno sized
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220410_133314.jpg">
 
+see if i can make a scaled gui that will look more or less the same on 320x240 and 480x320
+
+sw x 0 to 1, SH x 0 to 1, got it from touch x/SW, y/SH
+
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220411_193140.jpg">
+
 ---
 
 # EasyEDA Design a PCB inbrowser and order it inbrowser Cheap at JLCPCB
