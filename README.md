@@ -1,4 +1,4 @@
- <p><a href="https://standwithukraine.pp.ua" rel="nofollow"><img src="https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg" alt="Stand With Ukraine"></a></p>
+ <p><a href="https://stand-with-ukraine.pp.ua/#" rel="nofollow"><img src="https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg" alt="Stand With Ukraine"></a></p>
 
 <b>
 Russian?, You are not welcome here, 
