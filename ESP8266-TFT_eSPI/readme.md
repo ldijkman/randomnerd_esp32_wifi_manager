@@ -127,6 +127,8 @@ topleft will then be on the center off gray rectangle wich is the smaller screen
 ## Electra Needs a Case
 - 3D Printed ;-)
 
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220416_073834.jpg">
+
 arduino ide settings
 - "fqbn": "esp8266:esp8266:generic:xtal=160,vt=flash,exception=legacy,ssl=all,ResetMethod=nodemcu,CrystalFreq=26,FlashFreq=40,FlashMode=dout,eesz=4M2M,led=2,sdk=nonosdk_190703,ip=lm2f,dbg=Disabled,lvl=None____,wipe=all,baud=115200",
   
