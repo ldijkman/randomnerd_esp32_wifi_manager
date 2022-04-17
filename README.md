@@ -17,9 +17,8 @@ Russian?, You are not welcome here,
 -  https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/index.html
 -  ### Touch Electra, TFT_eSPI Touch,  install from browser on ESP8266 12E / 12F
 - - - https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-TFT_eSPI
-- ### maybe Electra SPI TFT Touch can show some in future https://github.com/ldijkman/OpenWeather
-
-<img src="https://camo.githubusercontent.com/b65a710352ad254a1a461ac23ec579477042cc0d1ab174ce1ae900cdbc0aa6a0/68747470733a2f2f692e696d6775722e636f6d2f4f526f76774e592e706e67">
+- - - maybe Electra SPI TFT Touch can show some in future https://github.com/ldijkman/OpenWeather
+- <img src="https://camo.githubusercontent.com/b65a710352ad254a1a461ac23ec579477042cc0d1ab174ce1ae900cdbc0aa6a0/68747470733a2f2f692e696d6775722e636f6d2f4f526f76774e592e706e67">
 
 ------
 
