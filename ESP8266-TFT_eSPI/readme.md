@@ -113,6 +113,12 @@ topleft will then be on the center off gray rectangle wich is the smaller screen
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220411_193140.jpg">
 
+
+Bodmer openweather test
+
+Electra touch should have this ;-)
+
+<img src="https://user-images.githubusercontent.com/45427770/163704146-f62e8802-f3ac-44c4-85fa-6cd028bad5b5.jpg">
 ---
 
 # EasyEDA Design a PCB inbrowser and order it inbrowser Cheap at JLCPCB
