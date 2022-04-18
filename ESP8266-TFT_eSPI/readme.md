@@ -121,7 +121,7 @@ Electra touch should have this ;-)
 config is now in ino code wivh is not handy
 - - would like to include this with Electra so it can be installed from Brower
 - - - not the arduino loads off library nerdy stuff, make it easy for normal people 
-- openweather api key
+- openweather api key https://openweathermap.org/
 - timezone
 - locaction Latitude and Longitude Finder https://www.latlong.net/
 
