@@ -3,7 +3,7 @@
 <b>
 Russian?, You are not welcome here, 
 - https://youtu.be/1cCoRdJHscQ
-- go away and protest against your maniac insane leader
+- go away and protest against your maniac insane liar leader
 - https://en.m.wikipedia.org/wiki/2022_Russian_invasion_of_Ukraine
 
 - https://en.m.wikipedia.org/wiki/War_crimes_in_the_2022_Russian_invasion_of_Ukraine
