@@ -118,6 +118,16 @@ Bodmer openweather test
 
 Electra touch should have this ;-)
 
+config is now in ino code wivh is not handy
+- - would like to include this with Electra so it can be installed from Brower
+- - - not the arduino loads off library nerdy stuff, make it easy for normal people 
+- openweather api key
+- timezone
+- locaction longtotude latitude
+
+could make a config.txt in litlefs
+- and edit the config.txt file with inbrowser ace js cloud-web editor  
+
 <img src="https://user-images.githubusercontent.com/45427770/163704146-f62e8802-f3ac-44c4-85fa-6cd028bad5b5.jpg">
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220417_101552.jpg">
