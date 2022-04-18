@@ -123,7 +123,7 @@ config is now in ino code wivh is not handy
 - - - not the arduino loads off library nerdy stuff, make it easy for normal people 
 - openweather api key
 - timezone
-- locaction longtotude latitude
+- locaction Latitude and Longitude Finder https://www.latlong.net/
 
 could make a config.txt in litlefs
 - and edit the config.txt file with inbrowser ace js cloud-web editor  
