@@ -114,7 +114,7 @@ topleft will then be on the center off gray rectangle wich is the smaller screen
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220411_193140.jpg">
 
 
-Bodmer openweather test
+Bodmer openweather test hmmm https://blog.squix.org/2017/07/new-weatherstation-color-version-published.html
 
 Electra touch should have this ;-)
 
