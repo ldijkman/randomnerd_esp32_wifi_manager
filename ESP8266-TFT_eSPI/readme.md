@@ -128,7 +128,11 @@ config is now in ino code wivh is not handy
 could make a config.txt in litlefs
 - and edit the config.txt file with inbrowser ace js cloud-web editor  
 
+https://github.com/ldijkman/OpenWeather
+
 <img src="https://user-images.githubusercontent.com/45427770/163704146-f62e8802-f3ac-44c4-85fa-6cd028bad5b5.jpg">
+
+https://github.com/ldijkman/OpenWeather
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220417_101552.jpg">
 
