@@ -9,7 +9,12 @@ Russian?, You are not welcome here,
 - https://en.m.wikipedia.org/wiki/War_crimes_in_the_2022_Russian_invasion_of_Ukraine
 </b>
 
+### https://russiaforsale.org/
+
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/img_1_1649085291012.jpg">
+
+### https://russiaforsale.org/
+
 ------
 
 ## New, program ESP8266 InBrowser, NO tools needed
