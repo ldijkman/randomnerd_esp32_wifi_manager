@@ -1,0 +1,20 @@
+xxxxxxxxxxopenweather api key herexxxxxxxxxxxx
+52.735434
+5.179017
+
+
+
+
+
+
+
+
+line 1 apikey
+
+              // Sign up for a key and read API configuration info here:
+              // https://openweathermap.org/, change x's to your API key
+
+
+             // Set the forecast longitude and latitude to at least 4 decimal places
+line 2 latitude 52.735434  // 90.0000 to -90.0000 negative for Southern hemisphere
+line 3 longitude 5.179017  // 180.000 to -180.000 negative for West
