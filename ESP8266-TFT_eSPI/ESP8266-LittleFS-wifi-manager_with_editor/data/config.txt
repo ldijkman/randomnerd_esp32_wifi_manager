@@ -10,11 +10,20 @@ xxxxxxxxxxopenweather api key herexxxxxxxxxxxx
 
 
 line 1 apikey
+    https://openweathermap.org/
+        Sign up for a key and read API configuration info here:
+         https://openweathermap.org/, change line1 to your API key
 
-              // Sign up for a key and read API configuration info here:
-              // https://openweathermap.org/, change x's to your API key
 
-
-             // Set the forecast longitude and latitude to at least 4 decimal places
+     Set the forecast longitude and latitude to at least 4 decimal places
 line 2 latitude 52.735434  // 90.0000 to -90.0000 negative for Southern hemisphere
 line 3 longitude 5.179017  // 180.000 to -180.000 negative for West
+
+
+https://www.latlong.net
+Latitude and Longitude Finder on Map Get Coordinates
+Latlong.net is an online geographic tool that can be used to lookup latitude and longitude of a place,
+https://www.latlong.net/
+
+google to find a lat,long location
+https://www.google.com/search?q=52.735434,5.179017
