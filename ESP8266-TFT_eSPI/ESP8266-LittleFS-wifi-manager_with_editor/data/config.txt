@@ -1,4 +1,4 @@
-xxxxxxxxxxopenweather api key herexxxxxxxxxxxx
+-your-openweathermap-api-key-here-
 52.735434
 5.179017
 
