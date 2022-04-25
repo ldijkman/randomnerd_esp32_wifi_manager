@@ -30,5 +30,5 @@ Latitude and Longitude Finder on Map Get Coordinates
 Latlong.net is an online geographic tool that can be used to lookup latitude and longitude of a place,
 https://www.latlong.net/
 
-google to find a lat,long location
+google to find a lat,long location ( my location ;-)
 https://www.google.com/search?q=52.735434,5.179017
