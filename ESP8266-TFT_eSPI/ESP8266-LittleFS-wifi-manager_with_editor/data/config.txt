@@ -6,6 +6,9 @@
 
 
 
+Trying to get this working with Electra
+https://github.com/ldijkman/OpenWeather
+
 
 Fist 3 lines are read by the program for openweathermap configuration
 you can edit this file with ace js cloudeditor
