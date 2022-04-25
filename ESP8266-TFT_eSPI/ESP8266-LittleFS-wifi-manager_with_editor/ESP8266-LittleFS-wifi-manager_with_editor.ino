@@ -177,9 +177,16 @@ unsigned BME280status;
 // download zip and install lib from zip => sketch => include library => add zip library
 // https://github.com/Bodmer/TFT_eSPI/archive/refs/heads/master.zip
 
+// Additional functions
+#include "GfxUi.h"          // Attached to this sketch
+
 TFT_eSPI tft = TFT_eSPI();       // Invoke custom library
 
+
+
 #define CALIBRATION_FILE "/Touch_Calibrate.txt"
+
+GfxUi ui = GfxUi(&tft); // Jpeg and bmpDraw functions TODO: pull outside of a class
 
 // Set REPEAT_CAL to true instead of false or 1 or 0 to run calibration
 byte REPEAT_CAL = 0;     // repeat call flag for calibration
@@ -303,6 +310,20 @@ int ledPin = 5;    // wemos uno sized esp32 board
 // Stores LED state
 
 String ledState = "OFF";
+
+
+bool tft_output(int16_t x, int16_t y, uint16_t w, uint16_t h, uint16_t* bitmap)
+{
+  // Stop further decoding as image is running off bottom of screen
+  if ( y >= tft.height() ) return 0;
+
+  // This function will clip the image block rendering automatically at the TFT boundaries
+  tft.pushImage(x, y, w, h, bitmap);
+
+  // Return 1 to decode next block
+  return 1;
+}
+
 
 
 // Initialize LittleFS
@@ -503,6 +524,19 @@ void setup() {
 
   tft.fillScreen(TFT_BLACK);
 
+
+  TJpgDec.setJpgScale(1);
+  TJpgDec.setCallback(tft_output);
+  TJpgDec.setSwapBytes(true); // May need to swap the jpg colour bytes (endianess)
+
+  // Draw splash screen
+  // if (LittleFS.exists("/splash/OpenWeather.jpg")   == true) {
+  TJpgDec.drawFsJpg(0, 0, "/electra_ohm_law.jpg", MYFS);
+  // }
+
+  delay(2500);
+  tft.fillScreen(TFT_BLACK);
+
   //draw gridlines 20x20pixels
   for (int i = 0; i <= 480; i = i + 20) {
     tft.drawRect(i, 1, 1, 320, 0x2104); // https://chrishewett.com/blog/true-rgb565-colour-picker/
@@ -517,18 +551,18 @@ void setup() {
 
   tft.drawRoundRect(1, 1, 319, 239, 2, 0x5AEB); // screen size outline
   tft.drawRoundRect(1, 1, 479, 319, 2, TFT_GREEN); // screen size outline
-  tft.setTextColor(BLUE , TFT_BLACK); 
- tft.setCursor(tft.width()-75, tft.height()-20); 
+  tft.setTextColor(BLUE , TFT_BLACK);
+  tft.setCursor(tft.width() - 75, tft.height() - 20);
   tft.println("== Help! ==");
-  tft.setTextColor(YELLOW, TFT_BLACK); 
-   tft.setCursor(tft.width()-75, tft.height()-10); 
+  tft.setTextColor(YELLOW, TFT_BLACK);
+  tft.setCursor(tft.width() - 75, tft.height() - 10);
   tft.println("= Ukraine =");
-  
-  tft.setCursor(20, 0); 
-  
+
+  tft.setCursor(20, 0);
+
   //for (int i = 0; i <= 255; i++) {
   //  tft.print(char(i));
- // }
+  // }
   //delay(20000);
   tft.setTextFont(2);
   tft.setTextSize(1);
@@ -537,8 +571,8 @@ void setup() {
   tft.setTextColor(TFT_GREEN, TFT_BLACK);
   tft.println("Touch Electra, Electra Touch");
 
-tft.setCursor(10, tft.height()-20); 
-tft.print(tft.width());tft.print("x");tft.println(tft.height());
+  tft.setCursor(10, tft.height() - 20);
+  tft.print(tft.width()); tft.print("x"); tft.println(tft.height());
 
   // Load values saved in LittleFS
   ssid = readFile(MYFS, ssidPath);
@@ -882,31 +916,39 @@ void loop() {
     tft.print("X="); tft.print(x); tft.print(" ");
     tft.setCursor(180, 220);
     tft.print("Y="); tft.print(y); tft.print(" ");
-    
+
     tft.setCursor(10 , 200);
-    // i have 320x240 and 480x320 screens, would like to have a gui that scales itself 
+    // i have 320x240 and 480x320 screens, would like to have a gui that scales itself
     // me no programmer, just puzzleing
-    tft.print("X/SW "); tft.print(float(x)/tft.width()); tft.print(" "); // maybe a position for scaling small bigger screen, will be 0 to 1 on width and height
+    tft.print("X/SW "); tft.print(float(x) / tft.width()); tft.print(" "); // maybe a position for scaling small bigger screen, will be 0 to 1 on width and height
     tft.setCursor(180, 200);                                             // result SW x scaling = position for small and bigger screens
-    tft.print("Y/SH "); tft.print(float(y)/tft.height()); tft.print(" ");// maybe a position for scaling small bigger screen
+    tft.print("Y/SH "); tft.print(float(y) / tft.height()); tft.print(" "); // maybe a position for scaling small bigger screen
     //tft.drawPixel(x, y, TFT_GREEN);         // draw touch position pixel
   }
 
-// think this does not make it any easier ;-) but draw and touch can use same parameters
-// well i am no programmer, just playing
-struct button{int x; int y; int w; int h; String t; int ox; int oy;};  // mixed types array
+  // think this does not make it any easier ;-) but draw and touch can use same parameters
+  // well i am no programmer, just playing
+  struct button {
+    int x;
+    int y;
+    int w;
+    int h;
+    String t;
+    int ox;
+    int oy;
+  };  // mixed types array
 
-button but1={200, 100, 60, 30, "BUTTON", 7, 7};            // topleft x, y, width, height(down from y), buttontext textoffset x, y
-button but2={50, 120, 100, 60, "BUTTON2", 20, 20};         // topleft x, y, width, height(down from y), buttontext textoffset x, y
-//button same on different screen siizes test
-int sw=tft.width();
-int sh=tft.height();
-button but3={0.5*sw, 0.5*sh, 0.75*sw-0.5*sw, 0.75*sh-0.5*sh, "scaled", 20, 20};
- 
-  drawButton(but1.x, but1.y, but1.w, but1.h, but1.t, but1.ox, but1.oy); 
-  drawButton(but2.x, but2.y, but2.w, but2.h, but2.t, but2.ox, but2.oy); 
-  drawButton(but3.x, but3.y, but3.w, but3.h, but3.t, but3.ox, but3.oy); 
-  
+  button but1 = {200, 100, 60, 30, "BUTTON", 7, 7};          // topleft x, y, width, height(down from y), buttontext textoffset x, y
+  button but2 = {50, 120, 100, 60, "BUTTON2", 20, 20};       // topleft x, y, width, height(down from y), buttontext textoffset x, y
+  //button same on different screen siizes test
+  int sw = tft.width();
+  int sh = tft.height();
+  button but3 = {0.5 * sw, 0.5 * sh, 0.75 * sw - 0.5 * sw, 0.75 * sh - 0.5 * sh, "scaled", 20, 20};
+
+  drawButton(but1.x, but1.y, but1.w, but1.h, but1.t, but1.ox, but1.oy);
+  drawButton(but2.x, but2.y, but2.w, but2.h, but2.t, but2.ox, but2.oy);
+  drawButton(but3.x, but3.y, but3.w, but3.h, but3.t, but3.ox, but3.oy);
+
   if (TouchButton(but1.x, but1.y, but1.w, but1.h)) {
     if (ledState == "OFF") {
       Relays_ON();
@@ -920,7 +962,7 @@ button but3={0.5*sw, 0.5*sh, 0.75*sw-0.5*sw, 0.75*sh-0.5*sh, "scaled", 20, 20};
     }
   }
 
-    if (TouchButton(but2.x, but2.y, but2.w, but2.h)) {
+  if (TouchButton(but2.x, but2.y, but2.w, but2.h)) {
     if (ledState == "OFF") {
       Relays_ON();
       delay(250);
@@ -933,7 +975,7 @@ button but3={0.5*sw, 0.5*sh, 0.75*sw-0.5*sw, 0.75*sh-0.5*sh, "scaled", 20, 20};
     }
   }
 
-      if (TouchButton(but3.x, but3.y, but3.w, but3.h)) {
+  if (TouchButton(but3.x, but3.y, but3.w, but3.h)) {
     if (ledState == "OFF") {
       Relays_ON();
       delay(250);
