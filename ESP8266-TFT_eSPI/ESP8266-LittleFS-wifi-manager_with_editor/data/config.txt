@@ -13,6 +13,7 @@ line 1 apikey
     https://openweathermap.org/
         Sign up for a key and read API configuration info here:
          https://openweathermap.org/, change line1 to your API key
+         Enable the API key?
 
 
      Set the forecast longitude and latitude to at least 4 decimal places
