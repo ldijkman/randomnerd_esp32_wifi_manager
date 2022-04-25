@@ -6,7 +6,7 @@
 
 
 
-Trying to get this working with Electra
+Trying to get this working with Electra Touch
 https://github.com/ldijkman/OpenWeather
 
 
