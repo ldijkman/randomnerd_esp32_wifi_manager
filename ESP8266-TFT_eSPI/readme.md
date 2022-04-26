@@ -36,7 +36,8 @@ https://youtu.be/jgfdkedoNfE
 
 ---
 
-ESP8266 NodeMCU 12E to 14pins SPI touch TFT connections
+### ESP8266 NodeMCU 12E 12F to 14pins SPI touch TFT connections
+
 - VCC == +5vdc in
 - GND == gnd
 - CS == D8
