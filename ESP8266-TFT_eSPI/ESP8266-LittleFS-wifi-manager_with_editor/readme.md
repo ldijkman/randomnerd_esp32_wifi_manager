@@ -8,9 +8,9 @@ make sure u use LittleFS data upload, NOT SPIFFS
 
 ---
 
-ESP8266 to 14pins SPI touch TFT connections
+### ESP8266 to 14pins SPI touch TFT connections
 
-ESP8266 NodeMCU 12E TFT connections
+ESP8266 NodeMCU 12E 12F TFT connections
 - VCC == +5vdc in
 - GND == gnd
 - CS == D8
