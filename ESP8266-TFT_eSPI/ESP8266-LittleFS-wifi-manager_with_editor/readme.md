@@ -8,6 +8,42 @@ make sure u use LittleFS data upload, NOT SPIFFS
 
 ---
 
+ESP8266 to 14pins SPI touch TFT connections
+
+ESP8266 NodeMCU 12E TFT connections
+- VCC == +5vdc in
+- GND == gnd
+- CS == D8
+- RESET == RST
+- DC/RS == D3
+- SDI(MOSI) == D7
+- SCK == D5
+- LED == +3.3vdc  (could make it PWM to set backlight brightness)
+- SDO(MISO) == (not used/needed and Do not share / connect on ILI9488, if shared with T_DO touch will not work on ILI9488)
+-
+- touch is tested tftespi touch_calibrate example with ili9341 ili9488
+- TIRQ == not used
+- T_DO == D6
+- T_DIN == shared with SDI(MOSI) == D7
+- T_CS == D4    
+- T_CLK == shared with SCK == D5
+-
+- as defined in tft_espi user_setup.h /home/pi/Arduino/libraries/TFT_eSPI/user_setup.h
+- #define TFT_MISO     PIN_D6
+- #define TFT_MOSI     PIN_D7
+- #define TFT_SCLK     PIN_D5
+- #define TFT_CS       PIN_D8      // Chip select control pin
+- #define TFT_DC       PIN_D3      // Data Command control pin
+-                                  // Reset pin (could connect to RST pin)
+- #define TFT_RST      -1          // Set TFT_RST to -1 if display RESET is connected to ESP board RST
+-
+- #define TOUCH_CS     PIN_D4      // Chip select pin (T_CS) of touch screen
+-
+- - D1, D2 free for i2c BME280?! And/Or i2c i/o extender more inputs/outputs and/or whatever i2c device
+- - D0 == GPIO16 for Relais (but is high at boot, wich is no problem for me)
+
+---
+
 the LAN mDNS scan linked list could be better if it asks the status of the other devices
 
 and show a yellow or gray link button depnding on status
