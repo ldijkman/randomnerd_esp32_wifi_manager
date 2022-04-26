@@ -235,8 +235,8 @@ AsyncWebServer server(80);
 AsyncWebSocket ws("/ws");
 AsyncEventSource events("/events");
 
-const char* http_username = "admin";
-const char* http_password = "admin";
+const char* http_username = "";
+const char* http_password = "";  // login for ace js cloudeditor   at /edit was admin / admin
 
 
 
@@ -275,6 +275,13 @@ const char* offdelayPath = "/offdelay.txt";
 
 int postsuccesfull = 0;
 int notify = 0;
+
+
+// next used in /config.txt
+String  api_key;
+// Set the forecast longitude and latitude to at least 4 decimal places
+String latitude;// =  "52.735434"; // 90.0000 to -90.0000 negative for Southern hemisphere
+String longitude;// = "5.179017"; // 180.000 to -180.000 negative for West
 
 
 
@@ -613,6 +620,26 @@ void setup() {
 
   offdelayint = offdelay.toInt();
   Serial.println(offdelay);
+
+
+ if (MYFS.exists("/config.txt")   == true) {          // config.txt holds openweathermap api key en lat long location
+    File file = MYFS.open("/config.txt", "r");
+    delay(100);
+    api_key = file.readStringUntil('\n');
+    latitude = file.readStringUntil('\n');
+    longitude = file.readStringUntil('\n');
+
+
+  Serial.print("config.txt api key "); Serial.println(api_key);
+  Serial.print("Lat = "); Serial.println(latitude);
+  Serial.print("Lon = "); Serial.println(longitude);
+  Serial.println("");
+  Serial.println("location lat lon from littlefs config.txt");
+  Serial.print("https://www.google.com/search?q="); Serial.print(latitude); Serial.print(",");Serial.println(longitude);
+  }
+
+
+
 
   // Set GPIO ledPin as an OUTPUT
   pinMode(ledPin, OUTPUT);
