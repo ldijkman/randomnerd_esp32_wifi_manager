@@ -1,16 +1,10 @@
 
 
 
-
-
 // openweathermap copy paste mesh
 // playing with a 4inch ST7796_DRIVER 320x480 screen
 // having some problems rebooting every time
-// think espasyncwebserver does not like the delay with the NTP time hangling of the openweather ntp time h
-// see while yield in ntp i do not know
-
-
-
+// think espasyncwebserver does not like the delay with the NTP time handling of the openweather ntp time h
 
 
 
@@ -146,10 +140,24 @@
 
 #include <Arduino.h>
 
+#include <time.h>
+
+// Time zone correction library:
+// https://github.com/JChristensen/Timezone
+#include <Timezone.h>
+
+TimeChangeRule CEST = {"CEST", Last, Sun, Mar, 2, 120};     //Central European Summer Time
+TimeChangeRule  CET = {"CET ", Last, Sun, Oct, 3, 60};      //Central European Standard Time
+Timezone euCET(CEST, CET);
+#define TIMEZONE euCET // See NTP_Time.h tab for other "Zone references", UK, usMT etc
+TimeChangeRule *tz1_Code;   // Pointer to the time change rule, use to get the TZ abbrev, e.g. "GMT"
+
+time_t utc = 0;
+
 #include "Hash.h"         // otherwise error sha1???? websockets
 //#include <WiFi.h>
 
-
+///#define SERIAL_MESSAGES // For serial output weather reports    espSYNCWESERVER DOESNT LIKE IT TO BE LEFT FROM LOOP TO LONG?????????????
 
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
@@ -186,11 +194,11 @@ unsigned BME280status;
 
 
 #include <ArduinoJson.h>
-//#include <time.h>
 
 
-//#include <NTPClient.h>
-//#include <WiFiUdp.h>
+
+#include <NTPClient.h>
+#include <WiFiUdp.h>
 
 
 
@@ -204,15 +212,15 @@ unsigned BME280status;
 
 TFT_eSPI tft = TFT_eSPI();       // Invoke custom library
 // Additional functions
-#include "GfxUi.h"    
+#include "GfxUi.h"
 // check All_Settings.h for adapting to your needs
 #include "All_Settings.h"  // part of config is in config.txt
-      // Attached to this sketch
+// Attached to this sketch
 #include <JSON_Decoder.h> // https://github.com/Bodmer/JSON_Decoder
 
 #include <OpenWeather.h>  // Latest here: https://github.com/Bodmer/OpenWeather
 
-#include "NTP_Time.h"     // Attached to this sketch, see that tab for library needs
+//#include "NTP_Time.h"     // Attached to this sketch, see that tab for library needs
 
 #define AA_FONT_SMALL "fonts/NSBold15" // 15 point Noto sans serif bold
 #define AA_FONT_LARGE "fonts/NSBold36" // 36 point Noto sans serif bold
@@ -287,8 +295,8 @@ byte REPEAT_CAL = 0;     // repeat call flag for calibration
 
 uint16_t x, y; //touch x y
 
-//WiFiUDP ntpUDP;
-//NTPClient timeClient(udp, "time.google.com");   // do not know how to make this variable yet
+WiFiUDP ntpUDP;
+NTPClient timeClient(ntpUDP, "time.google.com");   // do not know how to make this variable yet
 
 //Week Days
 String weekDays[7] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
@@ -350,8 +358,8 @@ String  api_key;
 String latitude;// =  "52.735434"; // 90.0000 to -90.0000 negative for Southern hemisphere
 String longitude;// = "5.179017"; // 180.000 to -180.000 negative for West
 
-
-
+uint8_t lastMinute = 0;
+bool rebooted = 1;
 String formattedTime;
 
 //next should become an input field for mdns dot local name in wifimanager
@@ -611,7 +619,7 @@ void setup() {
   delay(2500);
   tft.fillScreen(TFT_BLACK);
 
-    tft.setTextFont(2);
+  tft.setTextFont(2);
   tft.setTextSize(1);
 
 
@@ -698,7 +706,7 @@ void setup() {
   Serial.println(offdelay);
 
 
- if (MYFS.exists("/config.txt")   == true) {          // config.txt holds openweathermap api key en lat long location
+  if (MYFS.exists("/config.txt")   == true) {          // config.txt holds openweathermap api key en lat long location
     File file = MYFS.open("/config.txt", "r");
     delay(100);
     api_key = file.readStringUntil('\n');
@@ -706,12 +714,12 @@ void setup() {
     longitude = file.readStringUntil('\n');
 
 
-  Serial.print("config.txt api key "); Serial.println(api_key);
-  Serial.print("Lat = "); Serial.println(latitude);
-  Serial.print("Lon = "); Serial.println(longitude);
-  Serial.println("");
-  Serial.println("location lat lon from littlefs config.txt");
-  Serial.print("https://www.google.com/search?q="); Serial.print(latitude); Serial.print(",");Serial.println(longitude);
+    Serial.print("config.txt api key "); Serial.println(api_key);
+    Serial.print("Lat = "); Serial.println(latitude);
+    Serial.print("Lon = "); Serial.println(longitude);
+    Serial.println("");
+    Serial.println("location lat lon from littlefs config.txt");
+    Serial.print("https://www.google.com/search?q="); Serial.print(latitude); Serial.print(","); Serial.println(longitude);
   }
 
 
@@ -973,19 +981,19 @@ void setup() {
     server.begin();
   }
 
-  
 
 
-  
+
+
   int offset = (ntptimeoffset.toInt() * 3600);
- // timeClient.setTimeOffset(offset);
+  timeClient.setTimeOffset(offset);
   Serial.print("ntptimeoffset sec "); Serial.println(offset);
 
-  //NTPClient timeClient(udp, ntpserver.c_str());   // do not know how to make this variable yet
+  NTPClient timeClient(ntpUDP, ntpserver.c_str());   // do not know how to make this variable yet
   Serial.println(ntpserver.c_str());
 
 
- // timeClient.begin();
+  timeClient.begin();
 
 
 }
@@ -1007,11 +1015,12 @@ float T = 0.0, H = 0.0, P = 0.0;
 
 // loop // // loop // // loop // // loop // // loop // // loop // // loop // // loop // // loop //
 void loop() {
- // timeClient.update();
+  timeClient.update();
   ws.cleanupClients();
 
 
-//openweathermaploop
+
+//openweather
   // Check if we should update weather information
   if (booted || (millis() - lastDownloadUpdate > 1000UL * UPDATE_INTERVAL_SECS))
   {
@@ -1020,22 +1029,17 @@ void loop() {
   }
 
   // If minute has changed then request new time from NTP server
-  if (booted || minute() != lastMinute)
+  if (booted || timeClient.getMinutes() != lastMinute)
   {
     // Update displayed time first as we may have to wait for a response
     drawTime();
-    lastMinute = minute();
+    lastMinute = timeClient.getMinutes();
 
     // Request and synchronise the local clock
-    syncTime();
-
+    //syncTime();
+     booted = false;
   }
-
-  booted = false;
-//openweathermaploop
-
-
-
+//openweather
 
 
 
@@ -1180,6 +1184,8 @@ void loop() {
 
   if (millis() - startmillis >= 10000) {    // non blocking delay 10 seconds
     startmillis = millis();                 // scan for mdns devices urls every ??? seconds
+
+    
     browseService("http", "tcp");
 
 
@@ -1188,47 +1194,47 @@ void loop() {
     Serial.print("ntptimeoffset sec "); Serial.println((ntptimeoffset.toInt() * 3600));
 
     // https://randomnerdtutorials.com/esp8266-nodemcu-date-time-ntp-client-server-arduino/
-  //  unsigned long epochTime = timeClient.getEpochTime();
+    //  unsigned long epochTime = timeClient.getEpochTime();
     // Serial.print("Epoch Time: ");
     // Serial.println(epochTime);    // Epoch Time: 1644662416
 
 
-  //  formattedTime = timeClient.getFormattedTime();
+    formattedTime = timeClient.getFormattedTime();
     //Serial.print("Formatted Time: ");
     //Serial.println(formattedTime);  // Formatted Time: 10:40:16
 
-  //  int currentHour = timeClient.getHours();
+    int currentHour = timeClient.getHours();
     //   Serial.print("Hour: ");
     //   Serial.println(currentHour);
 
-  //  int currentMinute = timeClient.getMinutes();
+    int currentMinute = timeClient.getMinutes();
     //   Serial.print("Minutes: ");
     //   Serial.println(currentMinute);
 
- //   int currentSecond = timeClient.getSeconds();
+    int currentSecond = timeClient.getSeconds();
     //    Serial.print("Seconds: ");
     //    Serial.println(currentSecond);
 
-  //  String weekDay = weekDays[timeClient.getDay()];
+    //  String weekDay = weekDays[timeClient.getDay()];
     //    Serial.print("Week Day: ");
     //    Serial.println(weekDay);
 
     //Get a time structure
-   // struct tm *ptm = gmtime ((time_t *)&epochTime);
+    // struct tm *ptm = gmtime ((time_t *)&epochTime);
 
- //   int monthDay = ptm->tm_mday;
+    //   int monthDay = ptm->tm_mday;
     //    Serial.print("Month day: ");
     //    Serial.println(monthDay);
 
-  //  int currentMonth = ptm->tm_mon + 1;
+    //  int currentMonth = ptm->tm_mon + 1;
     //    Serial.print("Month: ");
     //    Serial.println(currentMonth);
 
-//    String currentMonthName = months[currentMonth - 1];
+    //    String currentMonthName = months[currentMonth - 1];
     //    Serial.print("Month name: ");
     //    Serial.println(currentMonthName);
 
- //   int currentYear = ptm->tm_year + 1900;
+    //   int currentYear = ptm->tm_year + 1900;
     //    Serial.print("Year: ");
     //    Serial.println(currentYear);
 
@@ -1477,10 +1483,10 @@ void browseService(const char * service, const char * proto) {
 
     }
   }
-  Serial.print(scanstr);
-  Serial.println("");
+//  Serial.print(scanstr);
+//  Serial.println("");
   Serial.println("Soon Electra will Power a Gazillion Devices");
-  Serial.println("");
+//  Serial.println("");
 
   Serial.print("WiFi.status == ");
   Serial.print(WiFi.status());
@@ -1544,11 +1550,11 @@ void notifyClients() {
 
 
 
-  char buffer[1024];   //i do not know
-  serializeJson(json, Serial);
-  size_t len = serializeJson(json, buffer); //print to serial monitor
-  ws.textAll(buffer, len);
-  Serial.println(buffer);
+ // char buffer[1024];   //i do not know
+ // serializeJson(json, Serial);
+//  size_t len = serializeJson(json, buffer); //print to serial monitor
+ // ws.textAll(buffer, len);
+ // Serial.println(buffer);
 }
 /*
   void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
@@ -1825,17 +1831,17 @@ void updateData() {
   Serial.print(", Lon = "); Serial.println(longitude);
   Serial.println("");
   Serial.println("location lat lon from littlefs config.txt");
-  Serial.print("https://www.google.com/search?q="); Serial.print(latitude); Serial.print(",");Serial.println(longitude);
+  Serial.print("https://www.google.com/search?q="); Serial.print(latitude); Serial.print(","); Serial.println(longitude);
   Serial.println("");
-  
+
   bool parsed = ow.getForecast(current, hourly, daily, api_key, latitude, longitude, units, language, true);
 
   if (parsed) Serial.println("Data points received");
   else Serial.println("Failed to get data points");
 
-  //Serial.print("Free heap = "); Serial.println(ESP.getFreeHeap(), DEC);
+ Serial.print("Free heap = "); Serial.println(ESP.getFreeHeap(), DEC);
 
-  printWeather(); // For debug, turn on output with #define SERIAL_MESSAGES
+  //printWeather(); // For debug, turn on output with #define SERIAL_MESSAGES
 
   if (booted)
   {
@@ -1936,7 +1942,7 @@ void drawCurrentWeather() {
 
   tft.setTextDatum(BC_DATUM);
   tft.setTextColor(TFT_ORANGE, TFT_BLACK);
-  tft.setTextPadding(tft.textWidth(" Updated: Mmm 44 44:44 "));  // String width + margin
+  //tft.setTextPadding(tft.textWidth(" Updated: Mmm 44 44:44 "));  // String width + margin
   tft.drawString(date, 120, 16);
 
   String weatherIcon = "";
@@ -2012,7 +2018,7 @@ void drawCurrentWeather() {
   tft.drawString(wind[windAngle], 150, 70); //luberth draw wind direction in text == arrow confuse me == going or comming
   //ui.drawBmp("/wind/" + wind[windAngle] + ".bmp", 101, 86);
   TJpgDec.drawFsJpg(  101, 86, "/wind/" + wind[windAngle] + ".jpg", LittleFS);
-  
+
   drawSeparator(153);
 
   tft.setTextDatum(TL_DATUM); // Reset datum to normal
@@ -2041,7 +2047,7 @@ void drawForecastDetail(uint16_t x, uint16_t y, uint8_t dayIndex) {
 
   if (dayIndex >= MAX_DAYS) return;
 
-  String day  = shortDOW[weekday(TIMEZONE.toLocal(daily->dt[dayIndex], &tz1_Code))];
+  String day = shortDOW[weekday(TIMEZONE.toLocal(daily->dt[dayIndex], &tz1_Code))];
   day.toUpperCase();
 
   tft.setTextDatum(BC_DATUM);
@@ -2060,7 +2066,7 @@ void drawForecastDetail(uint16_t x, uint16_t y, uint8_t dayIndex) {
 
   //ui.drawBmp("/icon50/" + weatherIcon + ".bmp", x, y + 18);
   TJpgDec.drawFsJpg( x, y + 18, "/icon50/" + weatherIcon + ".jpg", LittleFS);
-  
+
   tft.setTextPadding(0); // Reset padding width to none
 }
 
@@ -2073,6 +2079,7 @@ void drawAstronomy() {
   tft.setTextColor(TFT_WHITE, TFT_BLACK);
   tft.setTextPadding(tft.textWidth(" Last qtr "));
 
+
   time_t local_time = TIMEZONE.toLocal(current->dt, &tz1_Code);
   uint16_t y = year(local_time);
   uint8_t  m = month(local_time);
@@ -2080,7 +2087,7 @@ void drawAstronomy() {
   uint8_t  h = hour(local_time);
   int      ip;
   uint8_t icon = moon_phase(y, m, d, h, &ip);
-
+  
   tft.drawString(moonPhase[ip], 120, 319);
   //ui.drawBmp("/moon/moonphase_L" + String(icon) + ".bmp", 120 - 30, 318 - 16 - 60);
   TJpgDec.drawFsJpg( 120 - 30, 318 - 16 - 60, "/moon/moonphase_L" + String(icon) + ".jpg", LittleFS);
@@ -2246,32 +2253,33 @@ void fillSegment(int x, int y, int start_angle, int sub_angle, int r, unsigned i
 ***************************************************************************************/
 void printWeather(void)
 {
+  
 #ifdef SERIAL_MESSAGES
   Serial.println("Weather from OpenWeather\n");
 
-  Serial.println("############### Current weather ###############\n");
-  Serial.print("dt (time)          : "); Serial.println(strDate(current->dt));
-  Serial.print("sunrise            : "); Serial.println(strDate(current->sunrise));
-  Serial.print("sunset             : "); Serial.println(strDate(current->sunset));
-  Serial.print("main               : "); Serial.println(current->main);
-  Serial.print("temp               : "); Serial.println(current->temp);
-  Serial.print("humidity           : "); Serial.println(current->humidity);
-  Serial.print("pressure           : "); Serial.println(current->pressure);
-  Serial.print("wind_speed         : "); Serial.println(current->wind_speed);
-  Serial.print("wind_deg           : "); Serial.println(current->wind_deg);
-  Serial.print("clouds             : "); Serial.println(current->clouds);
-  Serial.print("id                 : "); Serial.println(current->id);
+  Serial.println("Current weather\n");
+  Serial.print("dt (time)  : "); Serial.println(strDate(current->dt));
+  Serial.print("sunrise    : "); Serial.println(strDate(current->sunrise));
+  Serial.print("sunset     : "); Serial.println(strDate(current->sunset));
+  Serial.print("main       : "); Serial.println(current->main);
+  Serial.print("temp       : "); Serial.println(current->temp);
+  Serial.print("humidity   : "); Serial.println(current->humidity);
+  Serial.print("pressure   : "); Serial.println(current->pressure);
+  Serial.print("wind_speed : "); Serial.println(current->wind_speed);
+  Serial.print("wind_deg   : "); Serial.println(current->wind_deg);
+  Serial.print("clouds     : "); Serial.println(current->clouds);
+  Serial.print("id         : "); Serial.println(current->id);
   Serial.println();
 
-  Serial.println("###############  Daily weather  ###############\n");
+  Serial.println("Daily weather\n");
   Serial.println();
 
   for (int i = 0; i < 5; i++)
   {
-    Serial.print("dt (time)          : "); Serial.println(strDate(daily->dt[i]));
-    Serial.print("id                 : "); Serial.println(daily->id[i]);
-    Serial.print("temp_max           : "); Serial.println(daily->temp_max[i]);
-    Serial.print("temp_min           : "); Serial.println(daily->temp_min[i]);
+    Serial.print("dt (time) : "); Serial.println(strDate(daily->dt[i]));
+    Serial.print("id        : "); Serial.println(daily->id[i]);
+    Serial.print("temp_max  : "); Serial.println(daily->temp_max[i]);
+    Serial.print("temp_min  : "); Serial.println(daily->temp_min[i]);
     Serial.println();
   }
 
@@ -2282,19 +2290,43 @@ void printWeather(void)
 ***************************************************************************************/
 String strTime(time_t unixTime)
 {
-  time_t local_time = TIMEZONE.toLocal(unixTime, &tz1_Code);
+  // time_t local_time = TIMEZONE.toLocal(unixTime, &tz1_Code);
 
   String localTime = "";
 
-  if (hour(local_time) < 10) localTime += "0";
-  localTime += hour(local_time);
+  if (timeClient.getHours()   < 10) localTime += "0";
+  localTime += timeClient.getHours();
   localTime += ":";
-  if (minute(local_time) < 10) localTime += "0";
-  localTime += minute(local_time);
+  if (timeClient.getMinutes() < 10) localTime += "0";
+  localTime += timeClient.getMinutes();
 
   return localTime;
 }
 
+
+
+/***************************************************************************************
+**  Convert Unix time to a local date + time string "Oct 16 17:18", ends with newline
+***************************************************************************************/
+/*String strDate(time_t unixTime)
+{
+  //time_t local_time = TIMEZONE.toLocal(unixTime, &tz1_Code);
+  //Get a time structure
+  unsigned long epochTime = timeClient.getEpochTime();
+    struct tm *ptm = gmtime ((time_t *)&epochTime);
+
+  
+
+  String localDate = "";
+
+   localDate += ptm->tm_mon + 1;
+   localDate += " ";
+   localDate += ptm->tm_mday;
+   localDate += " " + strTime(unixTime);
+
+  return localDate;
+}
+*/
 /***************************************************************************************
 **  Convert Unix time to a local date + time string "Oct 16 17:18", ends with newline
 ***************************************************************************************/
