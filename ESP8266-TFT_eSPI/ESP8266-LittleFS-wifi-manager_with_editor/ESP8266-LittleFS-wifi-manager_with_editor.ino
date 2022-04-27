@@ -1,6 +1,18 @@
 
 
-//openweathermap copy paste mesh
+
+
+
+// openweathermap copy paste mesh
+// playing with a 4inch ST7796_DRIVER 320x480 screen
+// having some problems rebooting every time
+// think espasyncwebserver does not like the delay with the NTP time hangling of the openweather ntp time h
+// see while yield in ntp i do not know
+
+
+
+
+
 
 
 // Electra Touch == with tft touch screen designed for 320x240 - 480x320 pixels
