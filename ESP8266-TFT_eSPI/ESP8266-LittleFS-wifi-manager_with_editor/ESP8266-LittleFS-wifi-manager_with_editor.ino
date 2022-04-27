@@ -1020,7 +1020,7 @@ void loop() {
 
 
 
-//openweather
+  //openweather
   // Check if we should update weather information
   if (booted || (millis() - lastDownloadUpdate > 1000UL * UPDATE_INTERVAL_SECS))
   {
@@ -1037,9 +1037,9 @@ void loop() {
 
     // Request and synchronise the local clock
     //syncTime();
-     booted = false;
+    booted = false;
   }
-//openweather
+  //openweather
 
 
 
@@ -1185,7 +1185,7 @@ void loop() {
   if (millis() - startmillis >= 10000) {    // non blocking delay 10 seconds
     startmillis = millis();                 // scan for mdns devices urls every ??? seconds
 
-    
+
     browseService("http", "tcp");
 
 
@@ -1483,10 +1483,10 @@ void browseService(const char * service, const char * proto) {
 
     }
   }
-//  Serial.print(scanstr);
-//  Serial.println("");
+  //  Serial.print(scanstr);
+  //  Serial.println("");
   Serial.println("Soon Electra will Power a Gazillion Devices");
-//  Serial.println("");
+  //  Serial.println("");
 
   Serial.print("WiFi.status == ");
   Serial.print(WiFi.status());
@@ -1550,11 +1550,11 @@ void notifyClients() {
 
 
 
- // char buffer[1024];   //i do not know
- // serializeJson(json, Serial);
-//  size_t len = serializeJson(json, buffer); //print to serial monitor
- // ws.textAll(buffer, len);
- // Serial.println(buffer);
+  // char buffer[1024];   //i do not know
+  // serializeJson(json, Serial);
+  //  size_t len = serializeJson(json, buffer); //print to serial monitor
+  // ws.textAll(buffer, len);
+  // Serial.println(buffer);
 }
 /*
   void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
@@ -1827,20 +1827,25 @@ void updateData() {
   hourly =  new OW_hourly;
 
 
-  Serial.print("Lat = "); Serial.print(latitude);
-  Serial.print(", Lon = "); Serial.println(longitude);
-  Serial.println("");
-  Serial.println("location lat lon from littlefs config.txt");
+  // Serial.print("Lat = "); Serial.print(latitude);
+  // Serial.print(", Lon = "); Serial.println(longitude);
+  // Serial.println("");
+  // Serial.println("location lat lon from littlefs config.txt");
   Serial.print("https://www.google.com/search?q="); Serial.print(latitude); Serial.print(","); Serial.println(longitude);
-  Serial.println("");
+  //Serial.println("");
 
   bool parsed = ow.getForecast(current, hourly, daily, api_key, latitude, longitude, units, language, true);
 
-  if (parsed) Serial.println("Data points received");
-  else Serial.println("Failed to get data points");
+  if (parsed) Serial.println("OW received");
+  else Serial.println("OW Failed");
 
- Serial.print("Free heap = "); Serial.println(ESP.getFreeHeap(), DEC);
+ // Serial.print("Free heap = "); Serial.println(ESP.getFreeHeap(), DEC);
 
+  Serial.print("sunrise    : "); Serial.println(strTime(current->sunrise));
+  Serial.print("sunset     : "); Serial.println(strTime(current->sunset));
+  Serial.print("sunrise    : "); Serial.println(current->sunrise);
+  Serial.print("sunset     : "); Serial.println(current->sunset);
+ 
   //printWeather(); // For debug, turn on output with #define SERIAL_MESSAGES
 
   if (booted)
@@ -2087,7 +2092,7 @@ void drawAstronomy() {
   uint8_t  h = hour(local_time);
   int      ip;
   uint8_t icon = moon_phase(y, m, d, h, &ip);
-  
+
   tft.drawString(moonPhase[ip], 120, 319);
   //ui.drawBmp("/moon/moonphase_L" + String(icon) + ".bmp", 120 - 30, 318 - 16 - 60);
   TJpgDec.drawFsJpg( 120 - 30, 318 - 16 - 60, "/moon/moonphase_L" + String(icon) + ".jpg", LittleFS);
@@ -2253,7 +2258,7 @@ void fillSegment(int x, int y, int start_angle, int sub_angle, int r, unsigned i
 ***************************************************************************************/
 void printWeather(void)
 {
-  
+
 #ifdef SERIAL_MESSAGES
   Serial.println("Weather from OpenWeather\n");
 
@@ -2290,15 +2295,15 @@ void printWeather(void)
 ***************************************************************************************/
 String strTime(time_t unixTime)
 {
-  // time_t local_time = TIMEZONE.toLocal(unixTime, &tz1_Code);
+  time_t local_time = TIMEZONE.toLocal(unixTime, &tz1_Code);
 
   String localTime = "";
 
-  if (timeClient.getHours()   < 10) localTime += "0";
-  localTime += timeClient.getHours();
+  if (hour(local_time) < 10) localTime += "0";
+  localTime += hour(local_time);
   localTime += ":";
-  if (timeClient.getMinutes() < 10) localTime += "0";
-  localTime += timeClient.getMinutes();
+  if (minute(local_time) < 10) localTime += "0";
+  localTime += minute(local_time);
 
   return localTime;
 }
@@ -2309,13 +2314,13 @@ String strTime(time_t unixTime)
 **  Convert Unix time to a local date + time string "Oct 16 17:18", ends with newline
 ***************************************************************************************/
 /*String strDate(time_t unixTime)
-{
+  {
   //time_t local_time = TIMEZONE.toLocal(unixTime, &tz1_Code);
   //Get a time structure
   unsigned long epochTime = timeClient.getEpochTime();
     struct tm *ptm = gmtime ((time_t *)&epochTime);
 
-  
+
 
   String localDate = "";
 
@@ -2325,7 +2330,7 @@ String strTime(time_t unixTime)
    localDate += " " + strTime(unixTime);
 
   return localDate;
-}
+  }
 */
 /***************************************************************************************
 **  Convert Unix time to a local date + time string "Oct 16 17:18", ends with newline
