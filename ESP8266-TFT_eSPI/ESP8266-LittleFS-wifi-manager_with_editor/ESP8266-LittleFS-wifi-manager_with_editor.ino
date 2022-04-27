@@ -795,8 +795,8 @@ void setup() {
 
     //  /resetwifitoap
     server.on("/resetwifitoap", HTTP_GET, [](AsyncWebServerRequest * request) {
-      LittleFS.remove("/ssid.txt");
-      LittleFS.remove("/pass.txt");
+      MYFS.remove("/ssid.txt");
+      MYFS.remove("/pass.txt");
       request->send(200, "text/html", "<h1>deleted wifi credentials ssid.txt and pass.txt<br>Done.<br>ESP restart,<br>connect to AP access point ESP WIFI MANAGER <br>to configure wifi settings again<br><a href=\"http://192.168.4.1\">http://192.168.4.1</a></h1>");
       delay(5000);
       ESP.restart();
@@ -1172,7 +1172,7 @@ if (timeClient.getSeconds() != lastSecond){
 
   if (notify == 1) {        // switch from url /on / off notifyClients
     notify = 0;
-    delay(250);
+    delay(100);
     notifyClients();
   }
 
@@ -1549,11 +1549,11 @@ void notifyClients() {
 
 
 
-  // char buffer[1024];   //i do not know
-  // serializeJson(json, Serial);
-  //  size_t len = serializeJson(json, buffer); //print to serial monitor
-  // ws.textAll(buffer, len);
-  // Serial.println(buffer);
+   char buffer[1024];   //i do not know
+   serializeJson(json, Serial);
+    size_t len = serializeJson(json, buffer); //print to serial monitor
+   ws.textAll(buffer, len);
+   Serial.println(buffer);
 }
 /*
   void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
@@ -1815,10 +1815,10 @@ void updateData() {
   // booted = false; // Test only
 
   if (booted) drawProgress(20, "Updating time...");
-  else fillSegment(22, 22, 0, (int) (20 * 3.6), 16, TFT_NAVY);
+  else fillSegment(22, 22, 0, (int) (20 * 3.6), 16, YELLOW);
 
   if (booted) drawProgress(50, "Updating conditions...");
-  else fillSegment(22, 22, 0, (int) (50 * 3.6), 16, TFT_NAVY);
+  else fillSegment(22, 22, 0, (int) (50 * 3.6), 16, YELLOW);
 
   // Create the structures that hold the retrieved weather
   current = new OW_current;
@@ -1861,7 +1861,7 @@ void updateData() {
 
   if (parsed)
   {
-    tft.loadFont(AA_FONT_SMALL, LittleFS);
+    tft.loadFont(AA_FONT_SMALL, MYFS);
     drawCurrentWeather();
     drawForecast();
     drawAstronomy();
@@ -1869,7 +1869,7 @@ void updateData() {
 
     // Update the temperature here so we don't need to keep
     // loading and unloading font which takes time
-    tft.loadFont(AA_FONT_LARGE, LittleFS);
+    tft.loadFont(AA_FONT_LARGE, MYFS);
     tft.setTextDatum(TR_DATUM);
     tft.setTextColor(TFT_YELLOW, TFT_BLACK);
 
@@ -1896,7 +1896,7 @@ void updateData() {
 **                          Update progress bar
 ***************************************************************************************/
 void drawProgress(uint8_t percentage, String text) {
-  tft.loadFont(AA_FONT_SMALL, LittleFS);
+  tft.loadFont(AA_FONT_SMALL, MYFS);
   tft.setTextDatum(BC_DATUM);
   tft.setTextColor(TFT_ORANGE, TFT_BLACK);
   tft.setTextPadding(240);
@@ -1912,7 +1912,7 @@ void drawProgress(uint8_t percentage, String text) {
 **                          Draw the clock digits
 ***************************************************************************************/
 void drawTime() {
-  tft.loadFont(AA_FONT_LARGE, LittleFS);
+  tft.loadFont(AA_FONT_LARGE, MYFS);
 
   // Convert UTC to local time, returns zone code in tz1_Code, e.g "GMT"
   //time_t local_time = TIMEZONE.toLocal(now(), &tz1_Code);                // changed timesource
@@ -1958,7 +1958,7 @@ void drawCurrentWeather() {
 
   //uint32_t dt = millis();
   //ui.drawBmp("/icon/" + weatherIcon + ".bmp", 0, 53);
-  TJpgDec.drawFsJpg( 0, 53, "/icon/" + weatherIcon + ".jpg", LittleFS);
+  TJpgDec.drawFsJpg( 0, 53, "/icon/" + weatherIcon + ".jpg", MYFS);
 
 
   //Serial.print("Icon draw time = "); Serial.println(millis()-dt);
@@ -2021,7 +2021,7 @@ void drawCurrentWeather() {
   String wind[] = {"N", "NE", "E", "SE", "S", "SW", "W", "NW" };
   tft.drawString(wind[windAngle], 150, 70); //luberth draw wind direction in text == arrow confuse me == going or comming
   //ui.drawBmp("/wind/" + wind[windAngle] + ".bmp", 101, 86);
-  TJpgDec.drawFsJpg(  101, 86, "/wind/" + wind[windAngle] + ".jpg", LittleFS);
+  TJpgDec.drawFsJpg(  101, 86, "/wind/" + wind[windAngle] + ".jpg", MYFS);
 
   drawSeparator(153);
 
@@ -2069,7 +2069,7 @@ void drawForecastDetail(uint16_t x, uint16_t y, uint8_t dayIndex) {
   String weatherIcon = getMeteoconIcon(daily->id[dayIndex], false);
 
   //ui.drawBmp("/icon50/" + weatherIcon + ".bmp", x, y + 18);
-  TJpgDec.drawFsJpg( x, y + 18, "/icon50/" + weatherIcon + ".jpg", LittleFS);
+  TJpgDec.drawFsJpg( x, y + 18, "/icon50/" + weatherIcon + ".jpg", MYFS);
 
   tft.setTextPadding(0); // Reset padding width to none
 }
@@ -2094,7 +2094,7 @@ void drawAstronomy() {
 
   tft.drawString(moonPhase[ip], 120, 319);
   //ui.drawBmp("/moon/moonphase_L" + String(icon) + ".bmp", 120 - 30, 318 - 16 - 60);
-  TJpgDec.drawFsJpg( 120 - 30, 318 - 16 - 60, "/moon/moonphase_L" + String(icon) + ".jpg", LittleFS);
+  TJpgDec.drawFsJpg( 120 - 30, 318 - 16 - 60, "/moon/moonphase_L" + String(icon) + ".jpg", MYFS);
 
   tft.setTextDatum(BC_DATUM);
   tft.setTextColor(TFT_ORANGE, TFT_BLACK);
