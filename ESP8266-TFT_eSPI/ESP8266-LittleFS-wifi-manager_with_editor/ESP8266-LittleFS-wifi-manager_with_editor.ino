@@ -1841,10 +1841,10 @@ void updateData() {
 
  // Serial.print("Free heap = "); Serial.println(ESP.getFreeHeap(), DEC);
 
-  Serial.print("sunrise    : "); Serial.println(strTime(current->sunrise));
-  Serial.print("sunset     : "); Serial.println(strTime(current->sunset));
-  Serial.print("sunrise    : "); Serial.println(current->sunrise);
-  Serial.print("sunset     : "); Serial.println(current->sunset);
+  //Serial.print("sunrise    : "); Serial.println(strTime(current->sunrise));
+  //Serial.print("sunset     : "); Serial.println(strTime(current->sunset));
+  //Serial.print("sunrise    : "); Serial.println(current->sunrise);
+  //Serial.print("sunset     : "); Serial.println(current->sunset);
  
   //printWeather(); // For debug, turn on output with #define SERIAL_MESSAGES
 
@@ -1916,15 +1916,15 @@ void drawTime() {
   tft.loadFont(AA_FONT_LARGE, LittleFS);
 
   // Convert UTC to local time, returns zone code in tz1_Code, e.g "GMT"
-  time_t local_time = TIMEZONE.toLocal(now(), &tz1_Code);
+  //time_t local_time = TIMEZONE.toLocal(now(), &tz1_Code);                // changed timesource
 
   String timeNow = "";
 
-  if (hour(local_time) < 10) timeNow += "0";
-  timeNow += hour(local_time);
+  if (timeClient.getHours() < 10) timeNow += "0";     // changed timesource
+  timeNow += timeClient.getHours();
   timeNow += ":";
-  if (minute(local_time) < 10) timeNow += "0";
-  timeNow += minute(local_time);
+  if (timeClient.getMinutes() < 10) timeNow += "0";   // changed timesource
+  timeNow += timeClient.getMinutes();
 
   tft.setTextDatum(BC_DATUM);
   tft.setTextColor(TFT_YELLOW, TFT_BLACK);
