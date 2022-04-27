@@ -140,7 +140,7 @@
 
 #include <Arduino.h>
 
-#include <time.h>
+//#include <time.h>
 
 // Time zone correction library:
 // https://github.com/JChristensen/Timezone
@@ -1008,7 +1008,7 @@ unsigned long lampontime; //inching
 unsigned long OFFcountdown;
 int flag;
 float T = 0.0, H = 0.0, P = 0.0;
-
+int lastSecond=0;
 
 
 
@@ -1041,9 +1041,12 @@ void loop() {
   }
   //openweather
 
-
-
-
+if (timeClient.getSeconds() != lastSecond){
+ lastSecond = timeClient.getSeconds();
+  tft.setCursor(225, 0);
+  tft.print(timeClient.getFormattedTime());
+ 
+}
 
 
 
@@ -1175,11 +1178,7 @@ void loop() {
 
   MDNS.update();   // looks like this is needed only for esp8266 otherwise i dont see mdns url in bonjourbrowser not needed for esp32
 
-  tft.setCursor(225, 0);
-  //tft.setTextFont(2);
-  //tft.setTextSize(1);
-  //tft.setTextColor(TFT_GREEN, TFT_BLACK);
-  tft.println(formattedTime);
+
 
 
   if (millis() - startmillis >= 10000) {    // non blocking delay 10 seconds
