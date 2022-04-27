@@ -141,6 +141,9 @@ https://github.com/ldijkman/OpenWeather
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220417_101552.jpg">
 
+Mixed copy paste mesh
+
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220427_054226.jpg">
 
 ---
 
