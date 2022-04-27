@@ -143,6 +143,8 @@ https://github.com/ldijkman/OpenWeather
 
 Mixed copy paste mesh
 
+Electra's OpenWeatherMap browser installed on ESP
+
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220427_054226.jpg">
 
 ---
