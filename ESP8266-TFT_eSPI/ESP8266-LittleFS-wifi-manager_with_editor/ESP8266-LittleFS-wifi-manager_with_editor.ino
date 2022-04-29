@@ -892,7 +892,8 @@ void setup() {
 
 
     server.on("/calibrate", HTTP_GET, [](AsyncWebServerRequest * request) {
-      touch_calibrate();
+      REPEAT_CAL=1;
+      touch_calibrate();           // calibrate tft touch screen start from html url
       request->send(MYFS, "/index.html", "text/html", false, processor);
     });
 
@@ -2510,9 +2511,10 @@ String strDate(time_t unixTime)
 
 
 
-/*
-   luberth => turned off  part from fs browser example
 
+   //luberth => turned off  part from fs browser example
+   
+/*
   //////////////////////////////////////////////////////////////
   void onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient * client, AwsEventType type, void * arg, uint8_t *data, size_t len) {
   if (type == WS_EVT_CONNECT) {
