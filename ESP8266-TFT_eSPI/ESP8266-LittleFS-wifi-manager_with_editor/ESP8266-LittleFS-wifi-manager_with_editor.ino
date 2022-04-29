@@ -157,7 +157,7 @@ time_t utc = 0;
 #include "Hash.h"         // otherwise error sha1???? websockets
 //#include <WiFi.h>
 
-///#define SERIAL_MESSAGES // For serial output weather reports    espSYNCWESERVER DOESNT LIKE IT TO BE LEFT FROM LOOP TO LONG?????????????
+///#define SERIAL_MESSAGES // For serial output weather reports    maybe espSYNCWESERVER DOESNT LIKE IT TO BE LEFT FROM LOOP TO LONG?????????????
 
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
@@ -242,7 +242,8 @@ boolean booted = true;
 
 GfxUi ui = GfxUi(&tft); // Jpeg and bmpDraw functions TODO: pull outside of a class
 
-long lastDownloadUpdate = millis();
+unsigned long lastDownloadUpdate = millis();
+
 /***************************************************************************************
 **                          Declare prototypes
 ***************************************************************************************/
@@ -313,7 +314,28 @@ AsyncEventSource events("/events");
 const char* http_username = "";
 const char* http_password = "";  // login for ace js cloudeditor   at /edit was admin / admin
 
-
+unsigned long startmillis = 0;
+unsigned long lamponstart;
+unsigned long lampontime; //inching
+unsigned long OFFcountdown;
+int flag;
+float T = 0.0, H = 0.0, P = 0.0;
+int lastSecond = 0;
+int t ;
+int h ;
+int p ;
+int currentHour ;
+int currentMinute ;
+int currentSecond ;
+struct button {
+  int x;
+  int y;
+  int w;
+  int h;
+  String t;
+  int ox;
+  int oy;
+};  // mixed types array
 
 const uint8_t DEBOUNCE_DELAY = 10; // in milliseconds
 
@@ -442,6 +464,7 @@ String readFile(fs::FS &fs, const char * path) {
     fileContent = file.readStringUntil('\n');
     break;
   }
+  file.close();
   return fileContent;
 }
 
@@ -462,6 +485,7 @@ void writeFile(fs::FS &fs, const char * path, const char * message) {
     //https://github.com/ldijkman/ESPAsyncWebServer
     Serial.println("- frite failed");
   }
+  file.close();
 }
 
 
@@ -602,7 +626,7 @@ void setup() {
   tft.init();
   tft.setRotation(1);
 
-  touch_calibrate();
+  touch_calibrate();  // changed it to start calibrate from homepage  http://ip/calibrate so that it does not block the boot if no screen is present
 
   tft.fillScreen(TFT_BLACK);
 
@@ -712,6 +736,7 @@ void setup() {
     api_key = file.readStringUntil('\n');
     latitude = file.readStringUntil('\n');
     longitude = file.readStringUntil('\n');
+    file.close();
 
 
     Serial.print("config.txt api key "); Serial.println(api_key);
@@ -866,6 +891,12 @@ void setup() {
     });
 
 
+    server.on("/calibrate", HTTP_GET, [](AsyncWebServerRequest * request) {
+      touch_calibrate();
+      request->send(MYFS, "/index.html", "text/html", false, processor);
+    });
+
+
 
 
     server.onNotFound([](AsyncWebServerRequest * request) {
@@ -1002,51 +1033,160 @@ void setup() {
 
 
 
-unsigned long startmillis = 0;
-unsigned long lamponstart;
-unsigned long lampontime; //inching
-unsigned long OFFcountdown;
-int flag;
-float T = 0.0, H = 0.0, P = 0.0;
-int lastSecond=0;
 
 
+unsigned long last = 0;
+unsigned long epochTime, unixTime;
+struct tm *ptm;
+String weekDay;
+int monthDay ;
+int currentMonth ;
+String currentMonthName;
+int currentYear;
+String currentDate;
 
 
 // loop // // loop // // loop // // loop // // loop // // loop // // loop // // loop // // loop //
 void loop() {
-  timeClient.update();
-  ws.cleanupClients();
 
-
-
-  //openweather
-  // Check if we should update weather information
-  if (booted || (millis() - lastDownloadUpdate > 1000UL * UPDATE_INTERVAL_SECS))
+  if (millis() - last > 500UL)
   {
-    updateData();
-    lastDownloadUpdate = millis();
+    timeClient.update();
+
+    ws.cleanupClients();
+
+    MDNS.update();   // looks like this is needed only for esp8266 otherwise i dont see mdns url in bonjourbrowser not needed for esp32
+
+    last = millis();
   }
 
-  // If minute has changed then request new time from NTP server
-  if (booted || timeClient.getMinutes() != lastMinute)
-  {
-    // Update displayed time first as we may have to wait for a response
-    drawTime();
-    lastMinute = timeClient.getMinutes();
 
-    // Request and synchronise the local clock
-    //syncTime();
-    booted = false;
+
+  if (WiFi.status() == 6) {
+    tft.setCursor(20 , 20);
+    tft.println(F("connect wifi direct"));
+    tft.println(String("ESP-WIFI-MANAGER-") + ESP.getChipId());
+    tft.println(F("and browse to 192.168.4.1"));
   }
-  //openweather
 
-if (timeClient.getSeconds() != lastSecond){
- lastSecond = timeClient.getSeconds();
-  tft.setCursor(225, 0);
-  tft.print(timeClient.getFormattedTime());
- 
-}
+
+
+
+
+
+
+
+
+
+
+  //is second changed????
+
+  if (timeClient.getSeconds() != lastSecond) {
+    lastSecond = timeClient.getSeconds();
+
+    tft.setCursor(225, 0);
+    tft.print(timeClient.getFormattedTime());
+
+
+
+
+    // https://randomnerdtutorials.com/esp8266-nodemcu-date-time-ntp-client-server-arduino/
+
+    epochTime = timeClient.getEpochTime();
+    unixTime = epochTime;
+    //Get a time structure
+    tm *ptm = gmtime ((time_t *)&epochTime);
+    formattedTime = timeClient.getFormattedTime();
+    currentHour = timeClient.getHours();
+    currentMinute = timeClient.getMinutes();
+    currentSecond = timeClient.getSeconds();
+    weekDay = weekDays[timeClient.getDay()];
+    monthDay = ptm->tm_mday;
+    currentMonth = ptm->tm_mon + 1;
+    currentMonthName = months[currentMonth - 1];
+    currentYear = ptm->tm_year + 1900;
+    currentDate = String(currentYear) + "-" + String(currentMonth) + "-" + String(monthDay);
+/*
+    Serial.print("Epoch Time: "); Serial.println(epochTime);           // Epoch Time: 164466241
+    Serial.print("Formatted Time: "); Serial.println(formattedTime);  // Formatted Time: 10:40:16
+    Serial.print("Hour: "); Serial.println(currentHour);
+    Serial.print("Minutes: "); Serial.println(currentMinute);
+    Serial.print("Seconds: "); Serial.println(currentSecond);
+    Serial.print("Week Day: "); Serial.println(weekDay);
+    Serial.print("Month day: "); Serial.println(monthDay);
+    Serial.print("Month: "); Serial.println(currentMonth);
+    Serial.print("Month name: "); Serial.println(currentMonthName);
+    Serial.print("Year: "); Serial.println(currentYear);
+    Serial.print("Current date: "); Serial.println(currentDate);
+    
+      Epoch Time: 1651252703
+      Formatted Time: 17:18:23
+      Hour: 17
+      Minutes: 18
+      Seconds: 23
+      Week Day: Friday
+      Month day: 29
+      Month: 4
+      Month name: April
+      Year: 2022
+      Current date: 2022-4-29
+    */
+
+    // https://randomnerdtutorials.com/esp8266-nodemcu-date-time-ntp-client-server-arduino/
+
+
+
+
+    //Serial.print("Temperature = ");
+    //Serial.print(bme.readTemperature());
+    // Serial.println(" *C");
+
+    // Serial.print("Pressure = ");
+
+    // Serial.print(bme.readPressure() / 100.0F);
+    //  Serial.println(" hPa");
+
+    // Serial.print("Approx. Altitude = ");
+    // Serial.print(bme.readAltitude(SEALEVELPRESSURE_HPA));
+    // Serial.println(" m");
+
+    // Serial.print("Humidity = ");
+    // Serial.print(bme.readHumidity());
+    // Serial.println(" %");
+
+    tft.fillRoundRect(135, 110, 50, 10, 0, BLACK);  // erase old text
+    tft.setCursor(155, 107);
+    if (OFFcountdown < 100)tft.print(" ");  // keep print to the right side
+    if (OFFcountdown < 10)tft.print(" ");  // keep print to the right side
+    tft.println(OFFcountdown);
+
+    //openweather
+    // Check if we should update weather information
+    if (booted)
+    {
+      updateData();
+
+    }
+
+    if (millis() - lastDownloadUpdate > 1000UL * UPDATE_INTERVAL_SECS)
+    {
+      updateData();
+      lastDownloadUpdate = millis();
+    }
+
+    // If minute has changed then request new time from NTP server
+    if (booted || timeClient.getMinutes() != lastMinute)
+    {
+      // Update displayed time first as we may have to wait for a response
+      drawTime();
+      lastMinute = timeClient.getMinutes();
+
+      // Request and synchronise the local clock
+      //syncTime();
+      booted = false;
+    }
+    //openweather
+  }
 
 
 
@@ -1074,15 +1214,15 @@ if (timeClient.getSeconds() != lastSecond){
 
   // think this does not make it any easier ;-) but draw and touch can use same parameters
   // well i am no programmer, just playing
-  struct button {
-    int x;
-    int y;
-    int w;
-    int h;
-    String t;
-    int ox;
-    int oy;
-  };  // mixed types array
+  // struct button {
+  //   int x;
+  //   int y;
+  //   int w;
+  //   int h;
+  //   String t;
+  //   int ox;
+  //   int oy;
+  // };  // mixed types array
 
   button but1 = {200, 100, 60, 30, "BUTTON", 7, 7};          // topleft x, y, width, height(down from y), buttontext textoffset x, y
   button but2 = {50, 120, 100, 60, "BUTTON2", 20, 20};       // topleft x, y, width, height(down from y), buttontext textoffset x, y
@@ -1134,6 +1274,9 @@ if (timeClient.getSeconds() != lastSecond){
     }
   }
 
+
+
+
   lampontime = offdelay.toInt() * 1000UL;
   if ((millis() - lamponstart)  > lampontime ) { // turn lamp off 2 minutes after start from webbutton     compare stored TempLong to current millis() counter  screen timeout
     Relays_OFF(); // Turn relaispin OFF
@@ -1157,11 +1300,10 @@ if (timeClient.getSeconds() != lastSecond){
   // toggle state
   // notifyClients();
   // }
-  tft.fillRoundRect(135, 110, 50, 10, 0, BLACK);  // erase old text
-  tft.setCursor(155, 107);
-  if (OFFcountdown < 100)tft.print(" ");  // keep print to the right side
-  if (OFFcountdown < 10)tft.print(" ");  // keep print to the right side
-  tft.println(OFFcountdown);
+
+
+
+
 
   if (postsuccesfull == 1) {
     postsuccesfull = 0;
@@ -1176,7 +1318,7 @@ if (timeClient.getSeconds() != lastSecond){
     notifyClients();
   }
 
-  MDNS.update();   // looks like this is needed only for esp8266 otherwise i dont see mdns url in bonjourbrowser not needed for esp32
+
 
 
 
@@ -1185,90 +1327,24 @@ if (timeClient.getSeconds() != lastSecond){
     startmillis = millis();                 // scan for mdns devices urls every ??? seconds
 
 
-    browseService("http", "tcp");
+    browseService("http", "tcp");           // scan for other mdns devices urls in local network
 
 
 
-    Serial.print("ntpserver "); Serial.println(ntpserver.c_str());
-    Serial.print("ntptimeoffset sec "); Serial.println((ntptimeoffset.toInt() * 3600));
-
-    // https://randomnerdtutorials.com/esp8266-nodemcu-date-time-ntp-client-server-arduino/
-    //  unsigned long epochTime = timeClient.getEpochTime();
-    // Serial.print("Epoch Time: ");
-    // Serial.println(epochTime);    // Epoch Time: 1644662416
+    //Serial.print(F("ntpserver ")); Serial.println(ntpserver.c_str());
+    //Serial.print(F("ntptimeoffset sec ")); Serial.println((ntptimeoffset.toInt() * 3600));
 
 
-    formattedTime = timeClient.getFormattedTime();
-    //Serial.print("Formatted Time: ");
-    //Serial.println(formattedTime);  // Formatted Time: 10:40:16
 
-    int currentHour = timeClient.getHours();
-    //   Serial.print("Hour: ");
-    //   Serial.println(currentHour);
-
-    int currentMinute = timeClient.getMinutes();
-    //   Serial.print("Minutes: ");
-    //   Serial.println(currentMinute);
-
-    int currentSecond = timeClient.getSeconds();
-    //    Serial.print("Seconds: ");
-    //    Serial.println(currentSecond);
-
-    //  String weekDay = weekDays[timeClient.getDay()];
-    //    Serial.print("Week Day: ");
-    //    Serial.println(weekDay);
-
-    //Get a time structure
-    // struct tm *ptm = gmtime ((time_t *)&epochTime);
-
-    //   int monthDay = ptm->tm_mday;
-    //    Serial.print("Month day: ");
-    //    Serial.println(monthDay);
-
-    //  int currentMonth = ptm->tm_mon + 1;
-    //    Serial.print("Month: ");
-    //    Serial.println(currentMonth);
-
-    //    String currentMonthName = months[currentMonth - 1];
-    //    Serial.print("Month name: ");
-    //    Serial.println(currentMonthName);
-
-    //   int currentYear = ptm->tm_year + 1900;
-    //    Serial.print("Year: ");
-    //    Serial.println(currentYear);
-
-    //Print complete date:
-    //    String currentDate = String(currentYear) + "-" + String(currentMonth) + "-" + String(monthDay);
-    //    Serial.print("Current date: ");
-    //    Serial.println(currentDate);
-
-    //    Serial.println("");
-    // https://randomnerdtutorials.com/esp8266-nodemcu-date-time-ntp-client-server-arduino/
-
-    //Serial.print("Temperature = ");
-    //Serial.print(bme.readTemperature());
-    // Serial.println(" *C");
-
-    // Serial.print("Pressure = ");
-
-    // Serial.print(bme.readPressure() / 100.0F);
-    //  Serial.println(" hPa");
-
-    // Serial.print("Approx. Altitude = ");
-    // Serial.print(bme.readAltitude(SEALEVELPRESSURE_HPA));
-    // Serial.println(" m");
-
-    // Serial.print("Humidity = ");
-    // Serial.print(bme.readHumidity());
-    // Serial.println(" %");
     if (BME280status) {
-      int t = (bme.readTemperature() * 10);
-      int h = (bme.readHumidity() * 10);
-      int p = bme.readPressure() / 100.0F;
+      t = (bme.readTemperature() * 10);
+      h = (bme.readHumidity() * 10);
+      p = bme.readPressure() / 100.0F;
       T = (t / 10); // to get 1 decimal place
       H = (h / 10);
       P = p;
     }
+
   }
 
 
@@ -1300,6 +1376,25 @@ if (timeClient.getSeconds() != lastSecond){
     }
   */
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -1482,36 +1577,36 @@ void browseService(const char * service, const char * proto) {
 
     }
   }
-  //  Serial.print(scanstr);
-  //  Serial.println("");
-  Serial.println("Soon Electra will Power a Gazillion Devices");
+  Serial.print(scanstr);
+  Serial.println("");
+  Serial.println(F("Soon Electra will Power a Gazillion Devices"));
   //  Serial.println("");
 
-  Serial.print("WiFi.status == ");
+  Serial.print(F("WiFi.status == "));
   Serial.print(WiFi.status());
   Serial.print(": ");
 
   switch (WiFi.status()) {
     case 0:
-      Serial.println("WL_IDLE_STATUS");
+      Serial.println(F("WL_IDLE_STATUS"));
       break;
     case 1:
-      Serial.println("WL_NO_SSID_AVAIL");
+      Serial.println(F("WL_NO_SSID_AVAIL"));
       break;
     case 2:
-      Serial.println("WL_SCAN_COMPLETED");
+      Serial.println(F("WL_SCAN_COMPLETED"));
       break;
     case 3:
-      Serial.println("WL_CONNECTED");
+      Serial.println(F("WL_CONNECTED"));
       break;
     case 4:
-      Serial.println("WL_CONNECT_FAILED");
+      Serial.println(F("WL_CONNECT_FAILED"));
       break;
     case 5:
-      Serial.println("WL_CONNECTION_LOST");
+      Serial.println(F("WL_CONNECTION_LOST"));
       break;
     case 6:
-      Serial.println("WL_DISCONNECTED");
+      Serial.println(F("WL_DISCONNECTED"));
       break;
     default:
       // if nothing else matches, do the default
@@ -1548,12 +1643,13 @@ void notifyClients() {
 
 
 
-
-   char buffer[1024];   //i do not know
-   serializeJson(json, Serial);
-    size_t len = serializeJson(json, buffer); //print to serial monitor
-   ws.textAll(buffer, len);
-   Serial.println(buffer);
+  freeheap();
+  char buffer[1024];   //i do not know
+  //serializeJson(json, Serial); // print json does this cause the reboot????
+  size_t len = serializeJson(json, buffer); //print to serial monitor
+  ws.textAll(buffer, len);
+  // Serial.println(buffer);  // print json does this cause the reboot????
+  freeheap();
 }
 /*
   void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
@@ -1779,7 +1875,10 @@ void drawButton(int x, int y, int w, int h, String buttontext, int xoffset, int 
 
 
 
-
+void freeheap()
+{
+  // Serial.print(F("Free heap = ")); Serial.println(ESP.getFreeHeap(), DEC);
+}
 
 
 byte TouchButton(int xx, int yy, int ww, int hh)
@@ -1822,29 +1921,31 @@ void updateData() {
 
   // Create the structures that hold the retrieved weather
   current = new OW_current;
-  daily =   new OW_daily;
-  hourly =  new OW_hourly;
+  daily =  new  OW_daily;
+  //hourly =  new OW_hourly;
 
 
   // Serial.print("Lat = "); Serial.print(latitude);
   // Serial.print(", Lon = "); Serial.println(longitude);
   // Serial.println("");
   // Serial.println("location lat lon from littlefs config.txt");
-  Serial.print("https://www.google.com/search?q="); Serial.print(latitude); Serial.print(","); Serial.println(longitude);
+  Serial.print(F("https://www.google.com/search?q=")); Serial.print(latitude); Serial.print(","); Serial.println(longitude);
   //Serial.println("");
 
-  bool parsed = ow.getForecast(current, hourly, daily, api_key, latitude, longitude, units, language, true);
+  // ESP8266 4MByte 12E 12F
+  //bool parsed = ow.getForecast(current, hourly, daily, api_key, latitude, longitude, units, language, true); // looks like this causes reboots with Electra/Bodmer OW combined code
+  bool parsed = ow.getForecast(current, hourly, daily, api_key, latitude, longitude, units, language, false); // last parameter == secure was true == looks like no reboots
 
-  if (parsed) Serial.println("OW received");
-  else Serial.println("OW Failed");
 
- // Serial.print("Free heap = "); Serial.println(ESP.getFreeHeap(), DEC);
+
+
+  freeheap();
 
   //Serial.print("sunrise    : "); Serial.println(strTime(current->sunrise));
   //Serial.print("sunset     : "); Serial.println(strTime(current->sunset));
   //Serial.print("sunrise    : "); Serial.println(current->sunrise);
   //Serial.print("sunset     : "); Serial.println(current->sunset);
- 
+
   //printWeather(); // For debug, turn on output with #define SERIAL_MESSAGES
 
   if (booted)
@@ -1861,6 +1962,7 @@ void updateData() {
 
   if (parsed)
   {
+    Serial.println(F("Weather received"));
     tft.loadFont(AA_FONT_SMALL, MYFS);
     drawCurrentWeather();
     drawForecast();
@@ -1883,13 +1985,14 @@ void updateData() {
   }
   else
   {
-    Serial.println("Failed to get weather");
+    Serial.println(F("Failed to get weather"));
   }
 
   // Delete to free up space
   delete current;
-  delete hourly;
+  //delete hourly;
   delete daily;
+  freeheap();
 }
 
 /***************************************************************************************
@@ -2089,6 +2192,8 @@ void drawAstronomy() {
   uint8_t  m = month(local_time);
   uint8_t  d = day(local_time);
   uint8_t  h = hour(local_time);
+
+
   int      ip;
   uint8_t icon = moon_phase(y, m, d, h, &ip);
 
