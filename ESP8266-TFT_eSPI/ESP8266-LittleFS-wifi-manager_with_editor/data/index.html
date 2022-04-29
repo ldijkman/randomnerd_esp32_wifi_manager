@@ -242,10 +242,11 @@ setInterval(mylFunction, 1000);
     <a href="/on">/on for external programs</a><br>
     <a href="/off">/off for external programs</a><br>
     <a href="/timer=3600">/timer=3600 turn off after 3600 seconds </a><br>
-      <br>
-    should make an safety enable checkbox<br>
-    <input type="button" onclick="window.location.href='/calibrate';" value="Warning Start Calibrate Touch Screen Warning" width="200px">
-    should make an safety enable checkbox<br>
+    <br>
+    <br>
+    <input type="checkbox" id="calibratecheck" onclick='document.getElementById("calibrate").disabled=!document.getElementById("calibratecheck").checked;' onUnSelect='document.getElementById("calibrate").disabled=!document.getElementById("check").checked;'>Enable
+      <input type="button" id="calibrate" onclick="window.location.href='/calibrate';" value="Start Calibrate Touch Screen" width="200px" disabled><br>
+    <br>
     <br>
     <input type="button" onclick="window.location.href='/list';" value="List Files" width="200px">
     <br>
