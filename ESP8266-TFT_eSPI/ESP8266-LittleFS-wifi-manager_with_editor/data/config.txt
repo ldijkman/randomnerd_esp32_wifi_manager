@@ -37,3 +37,7 @@ https://www.latlong.net/
 
 google to find a lat,long location ( my location ;-)
 https://www.google.com/search?q=52.735434,5.179017
+https://www.latlong.net/c/?lat=52.735424&long=5.179010
+
+
+
