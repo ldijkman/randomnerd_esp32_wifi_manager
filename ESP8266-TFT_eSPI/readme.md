@@ -10,7 +10,7 @@ ESP Web installer https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch
 - - ESP Web installer https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_Electra-Electra_Touch/
 -
 - if you delete the file touch_calibrate.txt on the ESP with webeditor ACE js CloudEditor http:// IP or mDNS /edit
-- - - editor login == admin / admin
+- - - editor login == admin / admin (removed the login)
 - - then on next reboot a touch calibrate again
 - D0==GPIO16 free for relais
 - D1, D2 for i2c BME280 temperature / humidity / millibar pressure
