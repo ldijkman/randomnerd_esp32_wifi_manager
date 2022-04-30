@@ -147,6 +147,8 @@ Electra's OpenWeatherMap browser installed on ESP
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220427_054226.jpg">
 
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220430_140351.jpg">
+
 ---
 
 # EasyEDA Design a PCB inbrowser and order it inbrowser Cheap at JLCPCB
