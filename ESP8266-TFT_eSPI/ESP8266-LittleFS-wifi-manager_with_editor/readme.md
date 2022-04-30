@@ -44,6 +44,9 @@ ESP8266 NodeMCU 12E 12F TFT connections
 
 ---
 
+
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220430_140351.jpg">
+
 the LAN mDNS scan linked list could be better if it asks the status of the other devices
 
 and show a yellow or gray link button depnding on status
