@@ -18,9 +18,10 @@ ace js editor login admin / admin
 
 
 line 1 apikey
-    https://openweathermap.org/
+    https://openweathermap.org/home/sign_up
         Sign up for a key and read API configuration info here:
-         https://openweathermap.org/, change line1 to your API key
+         https://openweathermap.org/home/sign_up
+         change line1 to your API key
          Enable the API key?
 
 
