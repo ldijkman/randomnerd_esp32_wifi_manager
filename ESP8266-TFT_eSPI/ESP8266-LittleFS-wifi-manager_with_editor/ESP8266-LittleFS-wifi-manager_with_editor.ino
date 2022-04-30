@@ -7,7 +7,7 @@
 // think espasyncwebserver does not like delay to be used
 // bodmer says heap and stack collision, hmmm, maybe i need to do a cleanup on vaiables defined how and where
 // i do not understand this all
-// https://learn.adafruit.com/memories-of-an-arduino/optimizing-sram 
+// https://learn.adafruit.com/memories-of-an-arduino/optimizing-sram
 
 
 
@@ -227,9 +227,7 @@ TFT_eSPI tft = TFT_eSPI();       // Invoke custom library
 
 
 
-#define RTC_MARKER 0x1234 //reboot counter?
-unsigned int marker = 0;//reboot counter?
-unsigned int reboots = 0;//reboot counter?
+String reboots;// = 0;//reboot counter?
 
 
 OW_Weather ow;      // Weather forecast library instance
@@ -621,20 +619,7 @@ void setup() {
   // Serial port for debugging purposes
   Serial.begin(115200);
 
-//reboot counter
-ESP.rtcUserMemoryRead(0, &marker, sizeof(marker));
-  if (marker != RTC_MARKER) {
-    // first reboot
-    marker = RTC_MARKER;
-    reboots = 0;
-    ESP.rtcUserMemoryWrite(0, &marker,sizeof(marker));
-  } else {
-    // read count of reboots
-    ESP.rtcUserMemoryRead(sizeof(marker), &reboots, sizeof(reboots));
-  }
-  reboots++;
-  ESP.rtcUserMemoryWrite(sizeof(marker), &reboots, sizeof(reboots));
-//reboot counter
+
 
 
   initLittleFS();
@@ -756,7 +741,6 @@ ESP.rtcUserMemoryRead(0, &marker, sizeof(marker));
     longitude = file.readStringUntil('\n');
     file.close();
 
-
     Serial.print(F("config.txt api key ")); Serial.println(api_key);
     Serial.print(F("Lat = ")); Serial.println(latitude);
     Serial.print(F("Lon = ")); Serial.println(longitude);
@@ -765,7 +749,11 @@ ESP.rtcUserMemoryRead(0, &marker, sizeof(marker));
     Serial.print(F("https://www.google.com/search?q=")); Serial.print(latitude); Serial.print(","); Serial.println(longitude);
   }
 
-
+// reboot counter file
+  reboots = readFile(MYFS, "/reboots.txt");
+  reboots=(reboots.toInt())+1;                      // strings and chars i do not get it, drives me nuts
+  writeFile(MYFS, "/reboots.txt", reboots.c_str());
+// reboot counter file
 
 
   // Set GPIO ledPin as an OUTPUT
@@ -911,7 +899,7 @@ ESP.rtcUserMemoryRead(0, &marker, sizeof(marker));
 
 
     server.on("/calibrate", HTTP_GET, [](AsyncWebServerRequest * request) {
-      REPEAT_CAL=1;
+      REPEAT_CAL = 1;
       touch_calibrate();           // calibrate tft touch screen start from html url
       request->send(MYFS, "/index.html", "text/html", false, processor);
     });
@@ -1106,8 +1094,8 @@ void loop() {
 
     tft.setCursor(300, 0);
     tft.print(timeClient.getFormattedTime());
-    tft.setCursor(300, 15);
-    tft.print(F("Reboots "));tft.print(reboots);
+    tft.setCursor(400, 0);
+    tft.print(F("Reboots ")); tft.print(reboots);
 
 
 
@@ -1127,30 +1115,30 @@ void loop() {
     currentMonthName = months[currentMonth - 1];
     currentYear = ptm->tm_year + 1900;
     currentDate = String(currentYear) + "-" + String(currentMonth) + "-" + String(monthDay);
-/*
-    Serial.print("Epoch Time: "); Serial.println(epochTime);           // Epoch Time: 164466241
-    Serial.print("Formatted Time: "); Serial.println(formattedTime);  // Formatted Time: 10:40:16
-    Serial.print("Hour: "); Serial.println(currentHour);
-    Serial.print("Minutes: "); Serial.println(currentMinute);
-    Serial.print("Seconds: "); Serial.println(currentSecond);
-    Serial.print("Week Day: "); Serial.println(weekDay);
-    Serial.print("Month day: "); Serial.println(monthDay);
-    Serial.print("Month: "); Serial.println(currentMonth);
-    Serial.print("Month name: "); Serial.println(currentMonthName);
-    Serial.print("Year: "); Serial.println(currentYear);
-    Serial.print("Current date: "); Serial.println(currentDate);
-    
-      Epoch Time: 1651252703
-      Formatted Time: 17:18:23
-      Hour: 17
-      Minutes: 18
-      Seconds: 23
-      Week Day: Friday
-      Month day: 29
-      Month: 4
-      Month name: April
-      Year: 2022
-      Current date: 2022-4-29
+    /*
+        Serial.print("Epoch Time: "); Serial.println(epochTime);           // Epoch Time: 164466241
+        Serial.print("Formatted Time: "); Serial.println(formattedTime);  // Formatted Time: 10:40:16
+        Serial.print("Hour: "); Serial.println(currentHour);
+        Serial.print("Minutes: "); Serial.println(currentMinute);
+        Serial.print("Seconds: "); Serial.println(currentSecond);
+        Serial.print("Week Day: "); Serial.println(weekDay);
+        Serial.print("Month day: "); Serial.println(monthDay);
+        Serial.print("Month: "); Serial.println(currentMonth);
+        Serial.print("Month name: "); Serial.println(currentMonthName);
+        Serial.print("Year: "); Serial.println(currentYear);
+        Serial.print("Current date: "); Serial.println(currentDate);
+
+          Epoch Time: 1651252703
+          Formatted Time: 17:18:23
+          Hour: 17
+          Minutes: 18
+          Seconds: 23
+          Week Day: Friday
+          Month day: 29
+          Month: 4
+          Month name: April
+          Year: 2022
+          Current date: 2022-4-29
     */
 
     // https://randomnerdtutorials.com/esp8266-nodemcu-date-time-ntp-client-server-arduino/
@@ -1899,8 +1887,8 @@ void drawButton(int x, int y, int w, int h, String buttontext, int xoffset, int 
 void freeheap()
 {
   Serial.print(F("Free heap = ")); Serial.println(ESP.getFreeHeap(), DEC);
-  Serial.println(ESP.getMaxFreeBlockSize(),DEC); 
-  Serial.println(ESP.getHeapFragmentation(),DEC); 
+  Serial.println(ESP.getMaxFreeBlockSize(), DEC);
+  Serial.println(ESP.getHeapFragmentation(), DEC);
 }
 
 
@@ -1958,9 +1946,9 @@ void updateData() {
   // ESP8266 4MByte 12E 12F
   //bool parsed = ow.getForecast(current, hourly, daily, api_key, latitude, longitude, units, language, true); // looks like this causes reboots with Electra/Bodmer OW combined code
   bool parsed = ow.getForecast(current, hourly, daily, api_key, latitude, longitude, units, language, false); // last parameter == secure was true == looks like no reboots
-// bodmer says heap and stack collision, hmmm, maybe i need to do a cleanup on vaiables defined how and where
-// i do not understand this all
-// https://learn.adafruit.com/memories-of-an-arduino/optimizing-sram
+  // bodmer says heap and stack collision, hmmm, maybe i need to do a cleanup on vaiables defined how and where
+  // i do not understand this all
+  // https://learn.adafruit.com/memories-of-an-arduino/optimizing-sram
 
 
 
@@ -2536,8 +2524,8 @@ String strDate(time_t unixTime)
 
 
 
-   //luberth => turned off  part from fs browser example
-   
+//luberth => turned off  part from fs browser example
+
 /*
   //////////////////////////////////////////////////////////////
   void onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient * client, AwsEventType type, void * arg, uint8_t *data, size_t len) {
