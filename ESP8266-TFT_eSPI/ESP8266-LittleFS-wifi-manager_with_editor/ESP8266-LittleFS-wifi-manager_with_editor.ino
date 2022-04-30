@@ -1107,7 +1107,7 @@ void loop() {
     tft.setCursor(300, 0);
     tft.print(timeClient.getFormattedTime());
     tft.setCursor(300, 15);
-    tft.print(F"Reboots "));tft.print(reboots);
+    tft.print(F("Reboots "));tft.print(reboots);
 
 
 
