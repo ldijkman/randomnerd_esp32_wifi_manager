@@ -1088,6 +1088,7 @@ void loop() {
     gocalibrate = 0;
     REPEAT_CAL = 1;
     touch_calibrate();           // calibrate tft touch screen start from html url
+    goreboot=1;
   }
 
 
