@@ -4,8 +4,10 @@
 // openweathermap copy paste mesh
 // playing with a 4inch ST7796_DRIVER 320x480 screen
 // having some problems rebooting every time
-// think espasyncwebserver does not like the delay with the NTP time handling of the openweather ntp time h
-
+// think espasyncwebserver does not like delay to be used
+// bodmer says heap and stack collision, hmmm, maybe i need to do a cleanup on vaiables defined how and where
+// i do not understand this all
+// https://learn.adafruit.com/memories-of-an-arduino/optimizing-sram 
 
 
 
@@ -154,8 +156,8 @@ TimeChangeRule *tz1_Code;   // Pointer to the time change rule, use to get the T
 
 time_t utc = 0;
 
-#include "Hash.h"         // otherwise error sha1???? websockets
-//#include <WiFi.h>
+//#include "Hash.h"         // otherwise error sha1???? websockets
+
 
 ///#define SERIAL_MESSAGES // For serial output weather reports    maybe espSYNCWESERVER DOESNT LIKE IT TO BE LEFT FROM LOOP TO LONG?????????????
 
@@ -220,8 +222,6 @@ TFT_eSPI tft = TFT_eSPI();       // Invoke custom library
 
 #include <OpenWeather.h>  // Latest here: https://github.com/Bodmer/OpenWeather
 
-//#include "NTP_Time.h"     // Attached to this sketch, see that tab for library needs
-
 #define AA_FONT_SMALL "fonts/NSBold15" // 15 point Noto sans serif bold
 #define AA_FONT_LARGE "fonts/NSBold36" // 36 point Noto sans serif bold
 
@@ -271,27 +271,27 @@ byte REPEAT_CAL = 0;     // repeat call flag for calibration
 // Color definitions
 #define BLACK       0x0000
 #define BLUE        0x001F
-#define RED         0xF800
+//#define RED         0xF800
 #define GREEN       0x07E0
-#define CYAN        0x07FF
-#define MAGENTA     0xF81F
+//#define CYAN        0x07FF
+//#define MAGENTA     0xF81F
 #define YELLOW      0xFFE0
 #define WHITE       0xFFFF
-#define NAVY        0x000F
-#define DARKGREEN   0x03E0
-#define DARKCYAN    0x03EF
-#define MAROON      0x7800
-#define PURPLE      0x780F
-#define OLIVE       0x7BE0
+//#define NAVY        0x000F
+//#define DARKGREEN   0x03E0
+//#define DARKCYAN    0x03EF
+//#define MAROON      0x7800
+//#define PURPLE      0x780F
+//#define OLIVE       0x7BE0
 #define LIGHTGREY   0xC618
 #define GRAY        0xBE18
-#define DARKGREY    0x4208
-#define ORANGE      0xFD20
-#define GREENYELLOW 0xAFE5
-#define PINK        0xF81F
+//#define DARKGREY    0x4208
+//#define ORANGE      0xFD20
+//#define GREENYELLOW 0xAFE5
+//#define PINK        0xF81F
 
-#define dutchorange 0xfbc0
-#define iceblue     0x1dfb
+//#define dutchorange 0xfbc0
+//#define iceblue     0x1dfb
 // pitty you can not enter a colorcode on next page RGB565 colours: https://chrishewett.com/blog/true-rgb565-colour-picker/
 
 uint16_t x, y; //touch x y
@@ -311,8 +311,8 @@ AsyncWebServer server(80);
 AsyncWebSocket ws("/ws");
 AsyncEventSource events("/events");
 
-const char* http_username = "";
-const char* http_password = "";  // login for ace js cloudeditor   at /edit was admin / admin
+//const char* http_username = "";
+//const char* http_password = "";  // login for ace js cloudeditor   at /edit was admin / admin
 
 unsigned long startmillis = 0;
 unsigned long lamponstart;
@@ -385,7 +385,7 @@ bool rebooted = 1;
 String formattedTime;
 
 //next should become an input field for mdns dot local name in wifimanager
-String mdnsdotlocalurl = "electra";    // becomes http://electra.local     give each device a unique name
+String mdnsdotlocalurl ;//= "electra";    // becomes http://electra.local     give each device a unique name
 // const char* mdnsdotlocalurl = "living";  // becomes http://living.local      give each device a unique name
 // const char* mdnsdotlocalurl = "kitchen"; // becomes http://kitchen.local     give each device a unique name
 // const char* mdnsdotlocalurl = "garage";  // becomes http://garage.local      give each device a unique name
@@ -410,7 +410,7 @@ String scanstr = "";  // %MDNSSCAN%
 
 
 // Set LED GPIO
-int ledPin = 5;    // wemos uno sized esp32 board
+int ledPin = 16;    // wemos uno sized esp32 board
 // Stores LED state
 
 String ledState = "OFF";
@@ -455,7 +455,7 @@ String readFile(fs::FS &fs, const char * path) {
 
   File file = fs.open(path, "r");
   if (!file || file.isDirectory()) {
-    Serial.println("- failed to open file for reading");
+    Serial.println(F("- failed to open file for reading"));
     return String();
   }
 
@@ -474,16 +474,16 @@ void writeFile(fs::FS &fs, const char * path, const char * message) {
 
   File file = fs.open(path, "w");
   if (!file) {
-    Serial.println("- failed to open file for writing");
+    Serial.println(F("- failed to open file for writing"));
     return;
   }
   if (file.print(message)) {
-    Serial.println("- file written");
+    Serial.println(F("- file written"));
   } else {//this one uses a fork from ESPASYNC library
     //https://github.com/lorol/ESPAsyncWebServer
     //or
     //https://github.com/ldijkman/ESPAsyncWebServer
-    Serial.println("- frite failed");
+    Serial.println(F("- Write failed"));
   }
   file.close();
 }
@@ -495,7 +495,7 @@ void writeFile(fs::FS &fs, const char * path, const char * message) {
 // Initialize WiFi
 bool initWiFi() {
   if (ssid == "" /*|| ip == ""*/) {  // no ip // made it DHCP
-    Serial.println("Undefined SSID wrong wifiroutername or wifirouterpassword");
+    Serial.println(F("Undefined SSID wrong wifiroutername or wifirouterpassword"));
     return false;
   }
 
@@ -511,20 +511,20 @@ bool initWiFi() {
     subnetMask.fromString(subnet.c_str());
 
     if (!WiFi.config(localIP, gatewayIP, subnetMask)) {
-      Serial.println("STA Failed to configure");
+      Serial.println(F("STA Failed to configure"));
       return false;
     }
   }
 
   WiFi.begin(ssid.c_str(), pass.c_str());
-  Serial.println("Connecting to WiFi...");
-  tft.println("Connecting to WiFi. ");
+  Serial.println(F("Connecting to WiFi..."));
+  tft.println(F("Connecting to WiFi. "));
 
   int i = 0;
   while (WiFi.status() != WL_CONNECTED) {
     if (i >= 20) {
-      Serial.println("Failed to connect. in 20sec");
-      tft.println("Connect fail 20sec");
+      Serial.println(F("Failed to connect. in 20sec"));
+      tft.println(F("Connect fail 20sec"));
       return false;
     }
     delay(1000);
@@ -538,7 +538,7 @@ bool initWiFi() {
 
 
   if (!MDNS.begin(mdnsdotlocalurl.c_str())) {
-    Serial.println("Error setting up MDNS responder!");
+    Serial.println(F("Error setting up MDNS responder!"));
     while (1) {
       delay(1000);
     }
@@ -547,14 +547,14 @@ bool initWiFi() {
 
   MDNS.addService("http", "tcp", 80);
 
-  Serial.print("http://");
+  Serial.print(F("http://"));
   Serial.print(mdnsdotlocalurl);
-  Serial.println(".local");
+  Serial.println(F(".local"));
 
-  tft.println(" Connected");
+  tft.println(F(" Connected"));
   tft.println(WiFi.localIP());
   tft.print(mdnsdotlocalurl);
-  tft.println(".local");
+  tft.println(F(".local"));
   return true;
 }
 
@@ -648,9 +648,9 @@ void setup() {
 
 
   tft.setTextColor(TFT_GREEN, TFT_BLACK);
-  tft.println("edit the file config.txt");
-  tft.println("openweathermap api key and location");
-  tft.println("with online ace js cloudeditor http://ip or mdns/edit");
+  tft.println(F("edit the file config.txt"));
+  tft.println(F("openweathermap api key and location"));
+  tft.println(F("with online ace js cloudeditor http://ip or mdns/edit"));
 
   //draw gridlines 20x20pixels
   for (int i = 0; i <= 480; i = i + 20) {
@@ -684,7 +684,7 @@ void setup() {
 
 
   tft.setTextColor(TFT_GREEN, TFT_BLACK);
-  tft.println("Touch Electra, Electra Touch");
+  tft.println(F("Touch Electra, Electra Touch"));
 
   tft.setCursor(10, tft.height() - 20);
   tft.print(tft.width()); tft.print("x"); tft.println(tft.height());
@@ -739,12 +739,12 @@ void setup() {
     file.close();
 
 
-    Serial.print("config.txt api key "); Serial.println(api_key);
-    Serial.print("Lat = "); Serial.println(latitude);
-    Serial.print("Lon = "); Serial.println(longitude);
+    Serial.print(F("config.txt api key ")); Serial.println(api_key);
+    Serial.print(F("Lat = ")); Serial.println(latitude);
+    Serial.print(F("Lon = ")); Serial.println(longitude);
     Serial.println("");
-    Serial.println("location lat lon from littlefs config.txt");
-    Serial.print("https://www.google.com/search?q="); Serial.print(latitude); Serial.print(","); Serial.println(longitude);
+    Serial.println(F("location lat lon from littlefs config.txt"));
+    Serial.print(F("https://www.google.com/search?q=")); Serial.print(latitude); Serial.print(","); Serial.println(longitude);
   }
 
 
@@ -764,8 +764,8 @@ void setup() {
   }
   BME280status = bme.begin(0x76);   // The device's I2C address is either 0x76 or 0x77.
   if (!BME280status) {
-    Serial.println("Could not find a valid BME280 sensor, check wiring, address, sensor ID!");
-    Serial.print("SensorID was: 0x"); Serial.println(bme.sensorID(), 16);
+    Serial.println(F("Could not find a valid BME280 sensor, check wiring, address, sensor ID!"));
+    Serial.print(F("SensorID was: 0x")); Serial.println(bme.sensorID(), 16);
     // while (1)
     //delay(5000);
   }
@@ -782,7 +782,8 @@ void setup() {
     });
     server.addHandler(&events);
 
-    server.addHandler(new SPIFFSEditor(http_username, http_password, MYFS));
+    //server.addHandler(new SPIFFSEditor(http_username, http_password, MYFS));
+    server.addHandler(new SPIFFSEditor("", "", MYFS));
 
     // Route for root / web page
     server.on("/", HTTP_GET, [](AsyncWebServerRequest * request) {
@@ -858,7 +859,7 @@ void setup() {
 
     server.on("/list", HTTP_GET, [](AsyncWebServerRequest * request) {    // /list files in LittleFS on webpage
       if (!MYFS.begin()) {
-        Serial.println("An Error has occurred while mounting LittleFS");
+        Serial.println(F("Error mount LittleFS"));
         return;
       }
 
@@ -990,9 +991,9 @@ void setup() {
     //String broadcastintheair = String("ESP-WIFI-MANAGER-") + WiFi.macAddress().c_str();  // esp32   want a unique broadcast id for each device
     String broadcastintheair = String("ESP-WIFI-MANAGER-") + ESP.getChipId();              // esp8266 want a unique broadcast id for each device
 
-    tft.println("connect wifi direct");
+    tft.println(F("connect wifi direct"));
     tft.println(String("ESP-WIFI-MANAGER-") + ESP.getChipId());
-    tft.println("and browse to 192.168.4.1");
+    tft.println(F("and browse to 192.168.4.1"));
 
     WiFi.softAP(broadcastintheair.c_str(), NULL);                                        // i do not know, strings and chars thing drive me nuts
     // i have seen all errors possible, getting this working ;-)
@@ -1019,7 +1020,7 @@ void setup() {
 
   int offset = (ntptimeoffset.toInt() * 3600);
   timeClient.setTimeOffset(offset);
-  Serial.print("ntptimeoffset sec "); Serial.println(offset);
+  Serial.print(F("ntptimeoffset sec ")); Serial.println(offset);
 
   NTPClient timeClient(ntpUDP, ntpserver.c_str());   // do not know how to make this variable yet
   Serial.println(ntpserver.c_str());
@@ -1411,7 +1412,7 @@ void checkpost() {
         const char* PARAM_INPUT_1 = "ssid";                  // Search for parameter in HTTP POST request
         if (p->name() == PARAM_INPUT_1) {
           ssid = p->value().c_str();
-          Serial.print("SSID set to: ");
+          Serial.print(F("SSID set to: "));
           Serial.println(ssid);
           // Write file to save value
           writeFile(MYFS, ssidPath, ssid.c_str());
@@ -1420,7 +1421,7 @@ void checkpost() {
         const char* PARAM_INPUT_2 = "pass";                 // Search for parameter in HTTP POST request
         if (p->name() == PARAM_INPUT_2) {
           pass = p->value().c_str();
-          Serial.print("Password set to: ");
+          Serial.print(F("Password set to: "));
           Serial.println(pass);
           // Write file to save value
           writeFile(MYFS, passPath, pass.c_str());
@@ -1431,7 +1432,7 @@ void checkpost() {
           dhcpcheck = "off";
           writeFile(MYFS, dhcpcheckPath, "off");          //dhcp unchecked . if we recieve post with ip set dhcpcheck.txt file to off
           ip = p->value().c_str();
-          Serial.print("IP Address set to: ");
+          Serial.print(F("IP Address set to: "));
           Serial.println(ip);
           writeFile(MYFS, ipPath, ip.c_str());            // Write file to save value
         }
@@ -1439,7 +1440,7 @@ void checkpost() {
         const char* PARAM_INPUT_4 = "gateway";              // Search for parameter in HTTP POST request
         if (p->name() == PARAM_INPUT_4) {
           gateway = p->value().c_str();
-          Serial.print("gateway Address set to: ");
+          Serial.print(F("gateway Address set to: "));
           Serial.println(gateway);
           writeFile(MYFS, gatewayPath, gateway.c_str());          // Write file to save value
         }
@@ -1448,7 +1449,7 @@ void checkpost() {
         const char* PARAM_INPUT_5 = "subnet";               // Search for parameter in HTTP POST request
         if (p->name() == PARAM_INPUT_5) {
           subnet = p->value().c_str();
-          Serial.print("subnet Address set to: ");
+          Serial.print(F("subnet Address set to: "));
           Serial.println(subnet);
           writeFile(MYFS, subnetPath, subnet.c_str());            // Write file to save value
         }
@@ -1456,7 +1457,7 @@ void checkpost() {
         const char* PARAM_INPUT_6 = "mdns";                 // Search for parameter in HTTP POST request
         if (p->name() == PARAM_INPUT_6) {
           mdnsdotlocalurl = p->value().c_str();
-          Serial.print("mdnsdotlocalurl Address set to: ");
+          Serial.print(F("mdnsdotlocalurl Address set to: "));
           Serial.println(mdnsdotlocalurl);
           writeFile(MYFS, mdnsPath, mdnsdotlocalurl.c_str());            // Write file to save value
         }
@@ -1464,7 +1465,7 @@ void checkpost() {
         const char* PARAM_INPUT_7 = "dhcp";                // Search for parameter in HTTP POST request
         if (p->name() == PARAM_INPUT_7) {
           dhcpcheck = p->value().c_str();
-          Serial.print("dhcpcheck set to: ");
+          Serial.print(F("dhcpcheck set to: "));
           Serial.println(dhcpcheck);
           writeFile(MYFS, dhcpcheckPath, dhcpcheck.c_str());            // Write file to save value
         }
@@ -1472,7 +1473,7 @@ void checkpost() {
         const char* PARAM_INPUT_8 = "relaispin";                // Search for parameter in HTTP POST request
         if (p->name() == PARAM_INPUT_8) {
           relaispin = p->value().c_str();
-          Serial.print("relaispin set to: ");
+          Serial.print(F("relaispin set to: "));
           Serial.println(relaispin);
           writeFile(MYFS, relaispinPath, relaispin.c_str());            // Write file to save value
         }
@@ -1480,7 +1481,7 @@ void checkpost() {
         const char* PARAM_INPUT_9 = "statusledpin";                // Search for parameter in HTTP POST request
         if (p->name() == PARAM_INPUT_9) {
           statusledpin = p->value().c_str();
-          Serial.print("statusledpin set to: ");
+          Serial.print(F("statusledpin set to: "));
           Serial.println(statusledpin);
           writeFile(MYFS, statusledpinPath, statusledpin.c_str());            // Write file to save value
         }
@@ -1488,7 +1489,7 @@ void checkpost() {
         const char* PARAM_INPUT_10 = "buttonpin";                // Search for parameter in HTTP POST request
         if (p->name() == PARAM_INPUT_10) {
           buttonpin = p->value().c_str();
-          Serial.print("buttonpin set to: ");
+          Serial.print(F("buttonpin set to: "));
           Serial.println(buttonpin);
           writeFile(MYFS, buttonpinPath, buttonpin.c_str());            // Write file to save value
         }
@@ -1496,7 +1497,7 @@ void checkpost() {
         const char* PARAM_INPUT_11 = "ntpserver";                // Search for parameter in HTTP POST request
         if (p->name() == PARAM_INPUT_11) {
           ntpserver = p->value().c_str();
-          Serial.print("ntpserver set to: ");
+          Serial.print(F("ntpserver set to: "));
           Serial.println(ntpserver);
           writeFile(MYFS, ntpserverPath, ntpserver.c_str());            // Write file to save value
         }
@@ -1504,7 +1505,7 @@ void checkpost() {
         const char* PARAM_INPUT_12 = "ntptimeoffset";                // Search for parameter in HTTP POST request
         if (p->name() == PARAM_INPUT_12) {
           ntptimeoffset = p->value().c_str();
-          Serial.print("ntptimeoffset set to: ");
+          Serial.print(F("ntptimeoffset set to: "));
           Serial.println(ntptimeoffset);
           writeFile(MYFS, ntptimeoffsetPath, ntptimeoffset.c_str());            // Write file to save value
         }
@@ -1733,12 +1734,12 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
       notifyClients();
     }
 
-    Serial.print("off_delay="); Serial.println(off_delay);
-    Serial.print("offdelay="); Serial.println(offdelay);
+    Serial.print(F("off_delay=")); Serial.println(off_delay);
+    Serial.print(F("offdelay=")); Serial.println(offdelay);
     if (json["off_delay"]) {
       offdelay  = atoi(off_delay);
-      Serial.print("off_delay="); Serial.println(off_delay);
-      Serial.print("offdelay="); Serial.println(offdelay);
+      Serial.print(F("off_delay=")); Serial.println(off_delay);
+      Serial.print(F("offdelay=")); Serial.println(offdelay);
       notifyClients();
     }
   }
@@ -1783,11 +1784,11 @@ void touch_calibrate()
 {
   uint16_t calData[5];
   uint8_t calDataOK = 0;
-  Serial.println("function calibrate");
+  Serial.println(F("function calibrate"));
 
 
   if (!MYFS.begin()) {
-    Serial.println("An Error has occurred while mounting LittleFS");
+    Serial.println(F("Error mount LittleFS"));
     return;
   }
 
@@ -1821,15 +1822,15 @@ void touch_calibrate()
     tft.setTextSize(2);
     tft.setTextColor(TFT_WHITE, TFT_BLACK);
 
-    tft.println("Touch corners as indicated");
+    tft.println(F("Touch corners as indicated"));
 
     tft.setTextFont(1);
     tft.println();
 
     if (REPEAT_CAL) {
       tft.setTextColor(TFT_RED, TFT_BLACK);
-      tft.println("Set REPEAT_CAL to false");
-      tft.println("to stop this running again!");
+      //tft.println(F("Set REPEAT_CAL to false"));
+      //tft.println(F("to stop this running again!"));
     }
 
     tft.calibrateTouch(calData, TFT_GREEN, TFT_BLACK, 25);
@@ -1838,7 +1839,7 @@ void touch_calibrate()
     tft.drawRoundRect(1, 1, 479, 319, 2, TFT_DARKGREY);
     tft.setTextColor(TFT_GREEN, TFT_BLACK);
     tft.setCursor(30, 110);
-    tft.println("Calibration complete!");
+    tft.println(F("Calibration complete!"));
     delay(4000);
     tft.fillScreen(TFT_BLACK);
 
@@ -1878,7 +1879,9 @@ void drawButton(int x, int y, int w, int h, String buttontext, int xoffset, int 
 
 void freeheap()
 {
-  // Serial.print(F("Free heap = ")); Serial.println(ESP.getFreeHeap(), DEC);
+  Serial.print(F("Free heap = ")); Serial.println(ESP.getFreeHeap(), DEC);
+  Serial.println(ESP.getMaxFreeBlockSize(),DEC); 
+  Serial.println(ESP.getHeapFragmentation(),DEC); 
 }
 
 
@@ -1936,7 +1939,9 @@ void updateData() {
   // ESP8266 4MByte 12E 12F
   //bool parsed = ow.getForecast(current, hourly, daily, api_key, latitude, longitude, units, language, true); // looks like this causes reboots with Electra/Bodmer OW combined code
   bool parsed = ow.getForecast(current, hourly, daily, api_key, latitude, longitude, units, language, false); // last parameter == secure was true == looks like no reboots
-
+// bodmer says heap and stack collision, hmmm, maybe i need to do a cleanup on vaiables defined how and where
+// i do not understand this all
+// https://learn.adafruit.com/memories-of-an-arduino/optimizing-sram
 
 
 
