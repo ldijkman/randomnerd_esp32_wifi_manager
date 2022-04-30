@@ -899,8 +899,8 @@ void setup() {
 
 
     server.on("/calibrate", HTTP_GET, [](AsyncWebServerRequest * request) {
-      request->send(MYFS, "/index.html", "text/html", false, processor);
-      gocalibrate = 1;
+       request->send(200, "text/html", "<meta http-equiv=\"refresh\" content=\"5; url=http://" + mdnsdotlocalurl + ".local\"><h1>Huh, Calibrate and then Reboot Electra, Restart ESP<br><a href=\"http://" + WiFi.localIP().toString()  + "\">http://" + WiFi.localIP().toString() + "</a></h1>");
+       gocalibrate = 1;
     });
 
 
