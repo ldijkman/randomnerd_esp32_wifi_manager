@@ -237,6 +237,8 @@ OW_hourly  *hourly;  // Not used
 OW_daily   *daily;
 
 boolean booted = true;
+boolean goreboot = 0;
+boolean gocalibrate = 0;
 
 #define CALIBRATION_FILE "/Touch_Calibrate.txt"
 
@@ -451,7 +453,7 @@ void initLittleFS() {
 String readFile(fs::FS &fs, const char * path) {
   Serial.printf("Reading file: %s\r\n", path);
   tft.setCursor(10, 15);
-  tft.print("Read: "); tft.print(path); tft.println("       ");
+  tft.print(F("Read: ")); tft.print(path); tft.println(F("       "));
 
   File file = fs.open(path, "r");
   if (!file || file.isDirectory()) {
@@ -733,8 +735,8 @@ void setup() {
   Serial.println(offdelay);
 
 
-  if (MYFS.exists("/config.txt")   == true) {          // config.txt holds openweathermap api key en lat long location
-    File file = MYFS.open("/config.txt", "r");
+  if (MYFS.exists(F("/config.txt")) == true) {          // config.txt holds openweathermap api key en lat long location
+    File file = MYFS.open(F("/config.txt"), "r");
     delay(100);
     api_key = file.readStringUntil('\n');
     latitude = file.readStringUntil('\n');
@@ -749,11 +751,11 @@ void setup() {
     Serial.print(F("https://www.google.com/search?q=")); Serial.print(latitude); Serial.print(","); Serial.println(longitude);
   }
 
-// reboot counter file
+  // reboot counter file
   reboots = readFile(MYFS, "/reboots.txt");
-  reboots=(reboots.toInt())+1;                      // strings and chars i do not get it, drives me nuts
+  reboots = (reboots.toInt()) + 1;                  // strings and chars i do not get it, drives me nuts
   writeFile(MYFS, "/reboots.txt", reboots.c_str());
-// reboot counter file
+  // reboot counter file
 
 
   // Set GPIO ledPin as an OUTPUT
@@ -830,15 +832,13 @@ void setup() {
       MYFS.remove("/ssid.txt");
       MYFS.remove("/pass.txt");
       request->send(200, "text/html", "<h1>deleted wifi credentials ssid.txt and pass.txt<br>Done.<br>ESP restart,<br>connect to AP access point ESP WIFI MANAGER <br>to configure wifi settings again<br><a href=\"http://192.168.4.1\">http://192.168.4.1</a></h1>");
-      delay(5000);
-      ESP.restart();
+      goreboot = 1;
     });
 
     //  /reboot
     server.on("/reboot", HTTP_GET, [](AsyncWebServerRequest * request) {
       request->send(200, "text/html", "<h1>Huh, Reboot Electra, Restart ESP<br><a href=\"http://" + WiFi.localIP().toString()  + "\">http://" + WiFi.localIP().toString() + "</a></h1>");
-      delay(5000);
-      ESP.restart();
+      goreboot = 1;
     });
 
     server.on("/timer", HTTP_POST, [](AsyncWebServerRequest * request) {
@@ -850,7 +850,7 @@ void setup() {
           const char* PARAM_INPUT_20 = "off";                  // Search for parameter in HTTP POST request
           if (p->name() == PARAM_INPUT_20) {
             offdelay = p->value().toInt();
-            Serial.print("offdelay set to: ");
+            Serial.print(F("offdelay set to: "));
             Serial.println(offdelay);
             // Write file to save value
             writeFile(MYFS, offdelayPath, offdelay.c_str());
@@ -899,9 +899,8 @@ void setup() {
 
 
     server.on("/calibrate", HTTP_GET, [](AsyncWebServerRequest * request) {
-      REPEAT_CAL = 1;
-      touch_calibrate();           // calibrate tft touch screen start from html url
       request->send(MYFS, "/index.html", "text/html", false, processor);
+      gocalibrate=1;
     });
 
 
@@ -1080,10 +1079,15 @@ void loop() {
 
 
 
+  if (goreboot == 1) {
+    delay(5000);
+    ESP.restart();
+  }
 
-
-
-
+  if (gocalibrate == 1) {
+      REPEAT_CAL = 1;
+      touch_calibrate();           // calibrate tft touch screen start from html url
+  }
 
 
 
@@ -1096,7 +1100,10 @@ void loop() {
     tft.print(timeClient.getFormattedTime());
     tft.setCursor(400, 0);
     tft.print(F("Reboots ")); tft.print(reboots);
-
+    tft.setCursor(300, 20);
+    tft.print("IP: "); tft.print(WiFi.localIP());
+    tft.setCursor(300, 35);
+    tft.print(F("Http://")); tft.print(mdnsdotlocalurl); tft.print(F(".local"));
 
 
     // https://randomnerdtutorials.com/esp8266-nodemcu-date-time-ntp-client-server-arduino/
@@ -1163,10 +1170,10 @@ void loop() {
     // Serial.print(bme.readHumidity());
     // Serial.println(" %");
 
-    tft.fillRoundRect(135, 110, 50, 10, 0, BLACK);  // erase old text
-    tft.setCursor(155, 107);
-    if (OFFcountdown < 100)tft.print(" ");  // keep print to the right side
-    if (OFFcountdown < 10)tft.print(" ");  // keep print to the right side
+    // tft.fillRoundRect(135, 110, 50, 10, 0, BLACK);  // erase old text
+    tft.setCursor(350, 205);
+    if (OFFcountdown < 100)tftprintspace();  // keep print to the right side
+    if (OFFcountdown < 10)tftprintspace();  // keep print to the right side
     tft.println(OFFcountdown);
 
     //openweather
@@ -1207,17 +1214,18 @@ void loop() {
     //Serial.print(",");
     //Serial.println(y);
     tft.setTextColor(GRAY, BLACK);                    // draw text to tft screen for debug
-    tft.setCursor(120 , 220);
-    tft.print("X="); tft.print(x); tft.print(" ");
-    tft.setCursor(180, 220);
-    tft.print("Y="); tft.print(y); tft.print(" ");
+    tft.setCursor(260 , 305);
+    tft.print("X="); tft.print(x); tftprintspace();
+    tft.setCursor(340, 305);
+    tft.print("Y="); tft.print(y); tftprintspace();
 
-    tft.setCursor(10 , 200);
+
     // i have 320x240 and 480x320 screens, would like to have a gui that scales itself
     // me no programmer, just puzzleing
-    tft.print("X/SW "); tft.print(float(x) / tft.width()); tft.print(" "); // maybe a position for scaling small bigger screen, will be 0 to 1 on width and height
-    tft.setCursor(180, 200);                                             // result SW x scaling = position for small and bigger screens
-    tft.print("Y/SH "); tft.print(float(y) / tft.height()); tft.print(" "); // maybe a position for scaling small bigger screen
+    tft.setCursor(260 , 285);
+    tft.print("X/SW "); tft.print(float(x) / tft.width()); tftprintspace(); // maybe a position for scaling small bigger screen, will be 0 to 1 on width and height
+    tft.setCursor(340, 285);                                             // result SW x scaling = position for small and bigger screens
+    tft.print("Y/SH "); tft.print(float(y) / tft.height()); tftprintspace(); // maybe a position for scaling small bigger screen
     //tft.drawPixel(x, y, TFT_GREEN);         // draw touch position pixel
   }
 
@@ -1235,13 +1243,13 @@ void loop() {
 
   button but1 = {200, 100, 60, 30, "BUTTON", 7, 7};          // topleft x, y, width, height(down from y), buttontext textoffset x, y
   button but2 = {50, 120, 100, 60, "BUTTON2", 20, 20};       // topleft x, y, width, height(down from y), buttontext textoffset x, y
-  //button same on different screen siizes test
+  //button same on different screen sizes test
   int sw = tft.width();
   int sh = tft.height();
-  button but3 = {0.5 * sw, 0.5 * sh, 0.75 * sw - 0.5 * sw, 0.75 * sh - 0.5 * sh, "scaled", 20, 20};
+  button but3 = {0.65 * sw, 0.5 * sh, 0.85 * sw - 0.65 * sw, 0.75 * sh - 0.5 * sh, "scaled", 20, 20};
 
-  drawButton(but1.x, but1.y, but1.w, but1.h, but1.t, but1.ox, but1.oy);
-  drawButton(but2.x, but2.y, but2.w, but2.h, but2.t, but2.ox, but2.oy);
+  // drawButton(but1.x, but1.y, but1.w, but1.h, but1.t, but1.ox, but1.oy);
+  // drawButton(but2.x, but2.y, but2.w, but2.h, but2.t, but2.ox, but2.oy);
   drawButton(but3.x, but3.y, but3.w, but3.h, but3.t, but3.ox, but3.oy);
 
   if (TouchButton(but1.x, but1.y, but1.w, but1.h)) {
@@ -1401,7 +1409,9 @@ void loop() {
 
 
 
-
+void tftprintspace() {
+  tft.print(F(" "));
+}
 
 
 
@@ -1886,9 +1896,9 @@ void drawButton(int x, int y, int w, int h, String buttontext, int xoffset, int 
 
 void freeheap()
 {
-  Serial.print(F("Free heap = ")); Serial.println(ESP.getFreeHeap(), DEC);
-  Serial.println(ESP.getMaxFreeBlockSize(), DEC);
-  Serial.println(ESP.getHeapFragmentation(), DEC);
+  Serial.print(F("FreeHeap          ")); Serial.println(ESP.getFreeHeap(), DEC);
+  Serial.print(F("MaxFreeBlockSize  ")); Serial.println(ESP.getMaxFreeBlockSize(), DEC);
+  Serial.print(F("HeapFragmentation ")); Serial.println(ESP.getHeapFragmentation(), DEC);
 }
 
 
