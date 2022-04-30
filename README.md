@@ -11,7 +11,7 @@ Russian?, You are not welcome here,
 
 ### https://russiaforsale.org/
 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/img_1_1649085291012.jpg">
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/img_1_1649085291012.jpg" width="50%">
 
 ### https://russiaforsale.org/
 
@@ -23,7 +23,7 @@ Russian?, You are not welcome here,
 -  ### Touch Electra, TFT_eSPI Touch,  install from browser on ESP8266 12E / 12F
 - - - https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-TFT_eSPI
 - - - maybe Electra SPI TFT Touch can show some weather in future
-- <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220430_140351.jpg">
+- <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220430_140351.jpg" width="50%">
 - -  https://github.com/ldijkman/OpenWeather
 
 ------
