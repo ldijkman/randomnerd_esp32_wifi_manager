@@ -900,7 +900,7 @@ void setup() {
 
     server.on("/calibrate", HTTP_GET, [](AsyncWebServerRequest * request) {
       request->send(MYFS, "/index.html", "text/html", false, processor);
-      gocalibrate=1;
+      gocalibrate = 1;
     });
 
 
@@ -1085,8 +1085,9 @@ void loop() {
   }
 
   if (gocalibrate == 1) {
-      REPEAT_CAL = 1;
-      touch_calibrate();           // calibrate tft touch screen start from html url
+    gocalibrate = 0;
+    REPEAT_CAL = 1;
+    touch_calibrate();           // calibrate tft touch screen start from html url
   }
 
 
