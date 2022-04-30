@@ -899,8 +899,8 @@ void setup() {
 
 
     server.on("/calibrate", HTTP_GET, [](AsyncWebServerRequest * request) {
-       request->send(200, "text/html", "<meta http-equiv=\"refresh\" content=\"5; url=http://" + mdnsdotlocalurl + ".local\"><h1>Huh, Calibrate and then Reboot Electra, Restart ESP<br><a href=\"http://" + WiFi.localIP().toString()  + "\">http://" + WiFi.localIP().toString() + "</a></h1>");
-       gocalibrate = 1;
+      request->send(200, "text/html", "<meta http-equiv=\"refresh\" content=\"5; url=http://" + mdnsdotlocalurl + ".local\"><h1>Huh, Calibrate and then Reboot Electra, Restart ESP<br><a href=\"http://" + WiFi.localIP().toString()  + "\">http://" + WiFi.localIP().toString() + "</a></h1>");
+      gocalibrate = 1;
     });
 
 
@@ -1080,6 +1080,10 @@ void loop() {
 
 
   if (goreboot == 1) {
+    tft.fillScreen(TFT_BLACK);
+    tft.setTextColor(YELLOW, TFT_BLACK);
+    tft.setCursor(50, 50);
+    tft.println(F("Going to Reboot!"));
     delay(5000);
     ESP.restart();
   }
@@ -1088,7 +1092,7 @@ void loop() {
     gocalibrate = 0;
     REPEAT_CAL = 1;
     touch_calibrate();           // calibrate tft touch screen start from html url
-    goreboot=1;
+    goreboot = 1;
   }
 
 
