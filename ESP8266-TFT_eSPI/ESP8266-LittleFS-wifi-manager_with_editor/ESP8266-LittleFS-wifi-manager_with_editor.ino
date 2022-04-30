@@ -227,7 +227,9 @@ TFT_eSPI tft = TFT_eSPI();       // Invoke custom library
 
 
 
-
+#define RTC_MARKER 0x1234 //reboot counter?
+unsigned int marker = 0;//reboot counter?
+unsigned int reboots = 0;//reboot counter?
 
 
 OW_Weather ow;      // Weather forecast library instance
@@ -495,7 +497,7 @@ void writeFile(fs::FS &fs, const char * path, const char * message) {
 // Initialize WiFi
 bool initWiFi() {
   if (ssid == "" /*|| ip == ""*/) {  // no ip // made it DHCP
-    Serial.println(F("Undefined SSID wrong wifiroutername or wifirouterpassword"));
+    Serial.println(F("SSID ?"));
     return false;
   }
 
@@ -511,7 +513,7 @@ bool initWiFi() {
     subnetMask.fromString(subnet.c_str());
 
     if (!WiFi.config(localIP, gatewayIP, subnetMask)) {
-      Serial.println(F("STA Failed to configure"));
+      Serial.println(F("STA Fail config"));
       return false;
     }
   }
@@ -538,7 +540,7 @@ bool initWiFi() {
 
 
   if (!MDNS.begin(mdnsdotlocalurl.c_str())) {
-    Serial.println(F("Error setting up MDNS responder!"));
+    Serial.println(F("Error set up MDNS responder!"));
     while (1) {
       delay(1000);
     }
@@ -618,6 +620,22 @@ String processor(const String& var) {
 void setup() {
   // Serial port for debugging purposes
   Serial.begin(115200);
+
+//reboot counter
+ESP.rtcUserMemoryRead(0, &marker, sizeof(marker));
+  if (marker != RTC_MARKER) {
+    // first reboot
+    marker = RTC_MARKER;
+    reboots = 0;
+    ESP.rtcUserMemoryWrite(0, &marker,sizeof(marker));
+  } else {
+    // read count of reboots
+    ESP.rtcUserMemoryRead(sizeof(marker), &reboots, sizeof(reboots));
+  }
+  reboots++;
+  ESP.rtcUserMemoryWrite(sizeof(marker), &reboots, sizeof(reboots));
+//reboot counter
+
 
   initLittleFS();
   initWebSocket();
@@ -764,7 +782,7 @@ void setup() {
   }
   BME280status = bme.begin(0x76);   // The device's I2C address is either 0x76 or 0x77.
   if (!BME280status) {
-    Serial.println(F("Could not find a valid BME280 sensor, check wiring, address, sensor ID!"));
+    Serial.println(F("No BME280 sensor, check wiring, address, sensor ID!"));
     Serial.print(F("SensorID was: 0x")); Serial.println(bme.sensorID(), 16);
     // while (1)
     //delay(5000);
@@ -830,7 +848,7 @@ void setup() {
 
     //  /reboot
     server.on("/reboot", HTTP_GET, [](AsyncWebServerRequest * request) {
-      request->send(200, "text/html", "<h1>Huh, Reboot Electra, Restart ESP32<br><a href=\"http://" + WiFi.localIP().toString()  + "\">http://" + WiFi.localIP().toString() + "</a></h1>");
+      request->send(200, "text/html", "<h1>Huh, Reboot Electra, Restart ESP<br><a href=\"http://" + WiFi.localIP().toString()  + "\">http://" + WiFi.localIP().toString() + "</a></h1>");
       delay(5000);
       ESP.restart();
     });
@@ -1086,9 +1104,10 @@ void loop() {
   if (timeClient.getSeconds() != lastSecond) {
     lastSecond = timeClient.getSeconds();
 
-    tft.setCursor(225, 0);
+    tft.setCursor(300, 0);
     tft.print(timeClient.getFormattedTime());
-
+    tft.setCursor(300, 15);
+    tft.print(F"Reboots "));tft.print(reboots);
 
 
 
