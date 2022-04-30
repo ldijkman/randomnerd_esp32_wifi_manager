@@ -1082,7 +1082,9 @@ void loop() {
   if (goreboot == 1) {
     tft.fillScreen(TFT_BLACK);
     tft.setTextColor(YELLOW, TFT_BLACK);
-    tft.setCursor(50, 50);
+    tft.setTextFont(1);
+    tft.setTextSize(3);
+    tft.setCursor(110, 90);
     tft.println(F("Going to Reboot!"));
     delay(5000);
     ESP.restart();
@@ -1558,6 +1560,7 @@ void Relays_ON() {
   ledState = "ON";
   lamponstart = millis();
   notifyClients();
+  TJpgDec.drawFsJpg(325, 70, "/ON.jpg", MYFS);
   return;
 }
 
@@ -1567,6 +1570,7 @@ void Relays_OFF() {
   ledState = "OFF";
   OFFcountdown = 0;
   notifyClients();
+  TJpgDec.drawFsJpg(325, 70, "/OFF.jpg", MYFS);
   return;
 }
 
@@ -1839,9 +1843,7 @@ void touch_calibrate()
     tft.setTouch(calData);
   } else {
     // data not valid so recalibrate
-    tft.fillScreen(TFT_BLACK);
-    tft.setCursor(20, 20);
-    tft.setTextFont(1);
+    tft.fillScreen(TFT_BLACK);    tft.setTextFont(1);
     tft.setTextSize(2);
     tft.setTextColor(TFT_WHITE, TFT_BLACK);
 
