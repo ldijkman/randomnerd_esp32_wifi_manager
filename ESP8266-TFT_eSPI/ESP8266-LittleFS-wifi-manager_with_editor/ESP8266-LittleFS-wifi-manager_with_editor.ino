@@ -182,7 +182,6 @@ unsigned BME280status;
 
 #include <LittleFS.h>
 #define MYFS LittleFS
-//#include <AsyncElegantOTA.h>   //do not like it           // https://github.com/ayushsharma82/AsyncElegantOTA
 #include <SPIFFSEditor.h>
 
 #include <ESPAsyncWebServer.h>
@@ -191,18 +190,10 @@ unsigned BME280status;
 //or
 //https://github.com/ldijkman/ESPAsyncWebServer
 
-
-
-
-
 #include <ArduinoJson.h>
-
-
 
 #include <NTPClient.h>
 #include <WiFiUdp.h>
-
-
 
 #include <SPI.h>
 #include <TFT_eSPI.h> // Hardware-specific library 
@@ -210,9 +201,14 @@ unsigned BME280status;
 // download zip and install lib from zip => sketch => include library => add zip library
 // https://github.com/Bodmer/TFT_eSPI/archive/refs/heads/master.zip
 
-
-
 TFT_eSPI tft = TFT_eSPI();       // Invoke custom library
+
+
+#define CALIBRATION_FILE "/Touch_Calibrate.txt"
+byte REPEAT_CAL = 0;     // repeat call flag for calibration
+uint16_t x, y; //touch x y
+
+
 // Additional functions
 #include "GfxUi.h"
 // check All_Settings.h for adapting to your needs
@@ -225,11 +221,6 @@ TFT_eSPI tft = TFT_eSPI();       // Invoke custom library
 #define AA_FONT_SMALL "fonts/NSBold15" // 15 point Noto sans serif bold
 #define AA_FONT_LARGE "fonts/NSBold36" // 36 point Noto sans serif bold
 
-
-
-String reboots;// = 0;//reboot counter?
-
-
 OW_Weather ow;      // Weather forecast library instance
 
 OW_current *current; // Pointers to structs that temporarily holds weather data
@@ -239,8 +230,6 @@ OW_daily   *daily;
 boolean booted = true;
 boolean goreboot = 0;
 boolean gocalibrate = 0;
-
-#define CALIBRATION_FILE "/Touch_Calibrate.txt"
 
 GfxUi ui = GfxUi(&tft); // Jpeg and bmpDraw functions TODO: pull outside of a class
 
@@ -266,8 +255,6 @@ int leftOffset(String text, String sub);
 int rightOffset(String text, String sub);
 int splitIndex(String text);
 
-// Set REPEAT_CAL to true instead of false or 1 or 0 to run calibration
-byte REPEAT_CAL = 0;     // repeat call flag for calibration
 
 
 // Color definitions
@@ -296,7 +283,7 @@ byte REPEAT_CAL = 0;     // repeat call flag for calibration
 //#define iceblue     0x1dfb
 // pitty you can not enter a colorcode on next page RGB565 colours: https://chrishewett.com/blog/true-rgb565-colour-picker/
 
-uint16_t x, y; //touch x y
+
 
 WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "time.google.com");   // do not know how to make this variable yet
@@ -307,6 +294,7 @@ String weekDays[7] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "F
 //Month names
 String months[12] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
+String reboots;         // reboot counter?  maybe char or int better?
 
 // Create AsyncWebServer object on port 80
 AsyncWebServer server(80);
@@ -386,21 +374,23 @@ uint8_t lastMinute = 0;
 bool rebooted = 1;
 String formattedTime;
 
-//next should become an input field for mdns dot local name in wifimanager
-String mdnsdotlocalurl ;//= "electra";    // becomes http://electra.local     give each device a unique name
-// const char* mdnsdotlocalurl = "living";  // becomes http://living.local      give each device a unique name
-// const char* mdnsdotlocalurl = "kitchen"; // becomes http://kitchen.local     give each device a unique name
-// const char* mdnsdotlocalurl = "garage";  // becomes http://garage.local      give each device a unique name
-// on android phone use the bonjour browser app to see the .local devices on the network
-// https://play.google.com/store/apps/details?id=de.wellenvogel.bonjourbrowser&hl=en&gl=US
-// apple does mdns?
-// my raspberry pi does mdns!
-// windows ?
 
+String mdnsdotlocalurl ;
 
 IPAddress localIP(0, 0, 0, 0);
 IPAddress gatewayIP(0, 0, 0, 0);
 IPAddress subnetMask(0, 0, 0, 0);
+
+unsigned long last = 0;
+unsigned long epochTime, unixTime;
+struct tm *ptm;
+String weekDay;
+int monthDay ;
+int currentMonth ;
+String currentMonthName;
+int currentYear;
+String currentDate;
+
 
 
 // Timer variables
@@ -412,7 +402,7 @@ String scanstr = "";  // %MDNSSCAN%
 
 
 // Set LED GPIO
-int ledPin = 16;    // wemos uno sized esp32 board
+int ledPin = 16;             // wemos uno sized esp32 board  gpio16 is D0
 // Stores LED state
 
 String ledState = "OFF";
@@ -434,11 +424,8 @@ bool tft_output(int16_t x, int16_t y, uint16_t w, uint16_t h, uint16_t* bitmap)
 
 // Initialize LittleFS
 void initLittleFS() {
+  
   // if (!LittleFS.begin()) {
-  //  Serial.println("An error has occurred while mounting LittleFS");
-  //}
-  //Serial.println("LittleFS mounted successfully");
-
   if (MYFS.begin()) {
 
     Serial.print(F("FS mounted\n"));
@@ -618,32 +605,24 @@ String processor(const String& var) {
 
 
 void setup() {
-  // Serial port for debugging purposes
-  Serial.begin(115200);
-
-
-
+  
+  Serial.begin(115200);        // Serial port for debugging purposes
 
   initLittleFS();
   initWebSocket();
 
-
   tft.init();
   tft.setRotation(1);
 
-  touch_calibrate();  // changed it to start calibrate from homepage  http://ip/calibrate so that it does not block the boot if no screen is present
+ // touch_calibrate();  // changed it to start calibrate from homepage  http://ip/calibrate so that it does not block the boot if no screen is present
 
   tft.fillScreen(TFT_BLACK);
-
 
   TJpgDec.setJpgScale(1);
   TJpgDec.setCallback(tft_output);
   TJpgDec.setSwapBytes(true); // May need to swap the jpg colour bytes (endianess)
-
-  // Draw splash screen
-  // if (LittleFS.exists("/splash/OpenWeather.jpg")   == true) {
-  TJpgDec.drawFsJpg(0, 0, "/electra_ohm_law.jpg", MYFS);
-  // }
+ 
+  TJpgDec.drawFsJpg(0, 0, "/electra_ohm_law.jpg", MYFS);  // Draw splash screen
 
   delay(2500);
   tft.fillScreen(TFT_BLACK);
@@ -672,10 +651,10 @@ void setup() {
   tft.drawRoundRect(1, 1, 319, 239, 2, 0x5AEB); // screen size outline
   tft.drawRoundRect(1, 1, 479, 319, 2, TFT_GREEN); // screen size outline
   tft.setTextColor(BLUE , TFT_BLACK);
-  tft.setCursor(tft.width() - 75, tft.height() - 20);
+  tft.setCursor(tft.width() - 75, tft.height() - 25);
   tft.println("== Help! ==");
   tft.setTextColor(YELLOW, TFT_BLACK);
-  tft.setCursor(tft.width() - 75, tft.height() - 10);
+  tft.setCursor(tft.width() - 75, tft.height() - 15);
   tft.println("= Ukraine =");
 
   tft.setCursor(20, 0);
@@ -684,6 +663,7 @@ void setup() {
   //  tft.print(char(i));
   // }
   //delay(20000);
+  
   tft.setTextFont(2);
   tft.setTextSize(1);
 
@@ -1041,16 +1021,6 @@ void setup() {
 
 
 
-
-unsigned long last = 0;
-unsigned long epochTime, unixTime;
-struct tm *ptm;
-String weekDay;
-int monthDay ;
-int currentMonth ;
-String currentMonthName;
-int currentYear;
-String currentDate;
 
 
 // loop // // loop // // loop // // loop // // loop // // loop // // loop // // loop // // loop //
@@ -1815,15 +1785,12 @@ void touch_calibrate()
   uint8_t calDataOK = 0;
   Serial.println(F("function calibrate"));
 
-
   if (!MYFS.begin()) {
     Serial.println(F("Error mount LittleFS"));
     return;
   }
 
-
-  // check if calibration file exists and size is correct
-  if (MYFS.exists(CALIBRATION_FILE)) {
+  if (MYFS.exists(CALIBRATION_FILE)) {  // check if calibration file exists and size is correct
     if (REPEAT_CAL)
     {
       // Delete if we want to re-calibrate
@@ -1845,10 +1812,11 @@ void touch_calibrate()
     tft.setTouch(calData);
   } else {
     // data not valid so recalibrate
-    tft.fillScreen(TFT_BLACK);    tft.setTextFont(1);
+    tft.fillScreen(TFT_BLACK);    
+    tft.setTextFont(1);
     tft.setTextSize(2);
     tft.setTextColor(TFT_WHITE, TFT_BLACK);
-
+    tft.setCursor(30, 30);
     tft.println(F("Touch corners as indicated"));
 
     tft.setTextFont(1);
