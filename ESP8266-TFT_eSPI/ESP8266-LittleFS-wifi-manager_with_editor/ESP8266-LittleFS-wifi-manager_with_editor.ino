@@ -614,6 +614,7 @@ void setup() {
   tft.init();
   tft.setRotation(1);
 
+ // this blocks the program if no touch is done == moved it to the webpage
  // touch_calibrate();  // changed it to start calibrate from homepage  http://ip/calibrate so that it does not block the boot if no screen is present
 
   tft.fillScreen(TFT_BLACK);
@@ -635,7 +636,10 @@ void setup() {
   tft.println(F("edit the file config.txt"));
   tft.println(F("openweathermap api key and location"));
   tft.println(F("with online ace js cloudeditor http://ip or mdns/edit"));
+  tft.println("");
+  tft.println(F("Start a Calibrate Touch from WebPage"));
 
+  
   //draw gridlines 20x20pixels
   for (int i = 0; i <= 480; i = i + 20) {
     tft.drawRect(i, 1, 1, 320, 0x2104); // https://chrishewett.com/blog/true-rgb565-colour-picker/
