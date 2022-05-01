@@ -596,7 +596,8 @@ String processor(const String& var) {
     mystring += "DNS: " + WiFi.dnsIP().toString() + "<br>";
     mystring += "MAC: " + WiFi.macAddress() + "<br>";
     mystring += "NTP Server: " + ntpserver + "<br>";
-    mystring += "NTP Offset " + ntptimeoffset + " hour <br>";
+    mystring += "NTP Offset: " + ntptimeoffset + " hour <br>";
+    mystring += "Reboots: " + reboots + "<br>";
     return mystring;
   }
 
@@ -635,20 +636,19 @@ void setup()
   TJpgDec.setSwapBytes(true); // May need to swap the jpg colour bytes (endianess)
 
   TJpgDec.drawFsJpg(0, 0, "/electra_ohm_law.jpg", MYFS);  // Draw splash screen
-
-  delay(2500);
-  tft.fillScreen(TFT_BLACK);
-
   tft.setTextFont(2);
   tft.setTextSize(1);
 
-  tft.setCursor(15, 100);
-  tft.setTextColor(TFT_GREEN, TFT_BLACK);
-  tft.println(F("edit the file config.txt"));
-  tft.println(F("openweathermap api key and location"));
-  tft.println(F("with online ace js cloudeditor http://ip or mdns/edit"));
-  tft.println("");
-  tft.println(F("Start a Calibrate Touch from WebPage"));
+  tft.setCursor(80, 260);
+  tft.setTextColor(YELLOW, TFT_BLACK);
+  tft.println(F("Hey Electra"));
+  delay(3000);
+  
+  tft.fillScreen(TFT_BLACK);
+
+ 
+
+
 
 
   //draw gridlines 20x20pixels
@@ -662,9 +662,20 @@ void setup()
     delay(100);
   }
   //draw gridlines 20x20pixels
-
+   
   tft.drawRoundRect(1, 1, 319, 239, 2, 0x5AEB); // screen size outline
   tft.drawRoundRect(1, 1, 479, 319, 2, TFT_GREEN); // screen size outline
+  
+  tft.setCursor(15, 100);
+  tft.setTextColor(TFT_GREEN, TFT_BLACK);
+  tft.println(F("edit the file config.txt"));
+  tft.println(F("openweathermap api key and location"));
+  tft.println(F("with online ace js cloudeditor http://ip or mdns/edit"));
+  tft.println("");
+  tft.println(F("Start a Calibrate Touch from WebPage"));
+
+  
+
   tft.setTextColor(BLUE , TFT_BLACK);
   tft.setCursor(tft.width() - 75, tft.height() - 25);
   tft.println("== Help! ==");
