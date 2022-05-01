@@ -289,12 +289,12 @@ WiFiUDP ntpUDP;
 NTPClient timeClient(ntpUDP, "time.google.com");   // do not know how to make this variable yet
 
 //Week Days
-String weekDays[7] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+String weekDays[7]  = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 
 //Month names
-String months[12] = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+String months[12]   = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
-String reboots;         // reboot counter?  maybe char or int better?
+String reboots;         // reboot counter?  maybe char Byte or int better?
 
 // Create AsyncWebServer object on port 80
 AsyncWebServer server(80);
@@ -346,19 +346,20 @@ String offdelay;
 int offdelayint;
 
 // File paths to save input values permanently
-const char* ssidPath = "/ssid.txt";
-const char* passPath = "/pass.txt";
-const char* ipPath = "/ip.txt";
-const char* gatewayPath = "/gateway.txt";
-const char* subnetPath = "/subnet.txt";
-const char* mdnsPath = "/mdns.txt";
-const char* dhcpcheckPath = "/dhcpcheck.txt";
-const char* relaispinPath = "/relaispin.txt";
-const char* statusledpinPath = "/statusledpin.txt";
-const char* buttonpinPath = "/buttonpin.txt";
-const char* ntpserverPath = "/ntpserver.txt";
-const char* ntptimeoffsetPath = "/ntptimeoffset.txt";
-const char* offdelayPath = "/offdelay.txt";
+// https://www.arduino.cc/reference/en/language/variables/utilities/progmem/
+const char* ssidPath  PROGMEM = "/ssid.txt";
+const char* passPath  PROGMEM = "/pass.txt";
+const char* ipPath   PROGMEM = "/ip.txt";
+const char* gatewayPath   PROGMEM = "/gateway.txt";
+const char* subnetPath   PROGMEM = "/subnet.txt";
+const char* mdnsPath   PROGMEM = "/mdns.txt";
+const char* dhcpcheckPath   PROGMEM = "/dhcpcheck.txt";
+const char* relaispinPath   PROGMEM = "/relaispin.txt";
+const char* statusledpinPath   PROGMEM = "/statusledpin.txt";
+const char* buttonpinPath   PROGMEM = "/buttonpin.txt";
+const char* ntpserverPath   PROGMEM = "/ntpserver.txt";
+const char* ntptimeoffsetPath   PROGMEM = "/ntptimeoffset.txt";
+const char* offdelayPath   PROGMEM = "/offdelay.txt";
 
 int postsuccesfull = 0;
 int notify = 0;
@@ -406,6 +407,10 @@ int ledPin = 16;             // wemos uno sized esp32 board  gpio16 is D0
 // Stores LED state
 
 String ledState = "OFF";
+
+//https://learn.adafruit.com/memories-of-an-arduino/optimizing-sram
+#define SERIAL_BUFFER_SIZE 32  // normal 64
+
 
 
 bool tft_output(int16_t x, int16_t y, uint16_t w, uint16_t h, uint16_t* bitmap)
@@ -604,7 +609,13 @@ String processor(const String& var) {
 
 
 
-void setup() {
+char *stack_start;
+
+void setup()
+{
+
+  char stack;            // init record of stack https://www.esp8266.com/viewtopic.php?f=6&t=18414
+  stack_start = &stack;
 
   Serial.begin(115200);        // Serial port for debugging purposes
 
@@ -719,8 +730,8 @@ void setup() {
   Serial.println(offdelay);
 
 
-  if (MYFS.exists(F("/config.txt")) == true) {          // config.txt holds openweathermap api key en lat long location
-    File file = MYFS.open(F("/config.txt"), "r");
+  if (MYFS.exists("/config.txt") == true) {          // config.txt holds openweathermap api key en lat long location
+    File file = MYFS.open("/config.txt", "r");
     delay(100);
     api_key = file.readStringUntil('\n');
     latitude = file.readStringUntil('\n');
@@ -815,13 +826,27 @@ void setup() {
     server.on("/resetwifitoap", HTTP_GET, [](AsyncWebServerRequest * request) {
       MYFS.remove("/ssid.txt");
       MYFS.remove("/pass.txt");
-      request->send(200, "text/html", "<h1>deleted wifi credentials ssid.txt and pass.txt<br>Done.<br>ESP restart,<br>connect to AP access point ESP WIFI MANAGER <br>to configure wifi settings again<br><a href=\"http://192.168.4.1\">http://192.168.4.1</a></h1>");
+      String str = "";
+      str += F("<h1>deleted wifi credentials ssid.txt and pass.txt<br>");
+      str += F("Done...ESP restart,<br>");
+      str += F("connect to AP access point ESP WIFI MANAGER <br>");
+      str += F("to configure wifi settings again<br>");
+      str += F("<a href=\"http://192.168.4.1\">http://192.168.4.1</a></h1>");
+      request->send(200, "text/html", str);
       goreboot = 1;
     });
 
     //  /reboot
     server.on("/reboot", HTTP_GET, [](AsyncWebServerRequest * request) {
-      request->send(200, "text/html", "<meta http-equiv=\"refresh\" content=\"5; url=http://" + WiFi.localIP().toString() + "\"><h1>Huh, Reboot Electra, Restart ESP<br><a href=\"http://" + WiFi.localIP().toString()  + "\">http://" + WiFi.localIP().toString() + "</a></h1>");
+      String str = "";
+      str += F("<meta http-equiv=\"refresh\" content=\"15; url=http://");
+      str += WiFi.localIP().toString();
+      str += F("\"><h1>Huh, Reboot Electra, Restart ESP<br><a href=\"http://");
+      str += WiFi.localIP().toString();
+      str += F("\">http://");
+      str += WiFi.localIP().toString();
+      str += F("</a></h1>");
+      request->send(200, "text/html",  str );
       goreboot = 1;
     });
 
@@ -863,16 +888,16 @@ void setup() {
         file = root.openNextFile();
       }
       str += "\r\n";
-      str += "\r\n";
-      str += "totalBytes   ";
+      //str += "\r\n";
+      //str += F("totalBytes   ");
       //str += LittleFS.totalBytes();
-      str += "\r\n";
-      str += "usedBytes    ";
+      //str += "\r\n";
+      //str += F("usedBytes    ");
       //str += LittleFS.usedBytes();
-      str += "\r\n";
-      str += "freeBytes??? ";
+      //str += "\r\n";
+      //str += F("freeBytes??? ");
       //str += LittleFS.totalBytes()-LittleFS.usedBytes();
-      str += "\r\n";
+      //str += "\r\n";
       request->send(200, "text/txt", str);
     });
 
@@ -882,8 +907,18 @@ void setup() {
     });
 
 
+
+
     server.on("/calibrate", HTTP_GET, [](AsyncWebServerRequest * request) {
-      request->send(200, "text/html", "<meta http-equiv=\"refresh\" content=\"5; url=http://" + WiFi.localIP().toString() + "\"><h1>Huh, Calibrate and then Reboot Electra, Restart ESP<br><a href=\"http://" + WiFi.localIP().toString()  + "\">http://" + WiFi.localIP().toString() + "</a></h1>");
+      String str = "";
+      str += F("<meta http-equiv=\"refresh\" content=\"15; url=http://");
+      str += WiFi.localIP().toString();
+      str += F("\"><h1>Huh, Calibrate and then Reboot Electra, Restart ESP<br><a href=\"http://");
+      str += WiFi.localIP().toString();
+      str += F("\">http://");
+      str += WiFi.localIP().toString();
+      str += F("</a></h1>");
+      request->send(200, "text/html",  str );
       gocalibrate = 1;
     });
 
@@ -1883,6 +1918,8 @@ void freeheap()
   Serial.print(F("FreeHeap          ")); Serial.println(ESP.getFreeHeap(), DEC);
   Serial.print(F("MaxFreeBlockSize  ")); Serial.println(ESP.getMaxFreeBlockSize(), DEC);
   Serial.print(F("HeapFragmentation ")); Serial.println(ESP.getHeapFragmentation(), DEC);
+  char stack;
+  Serial.print (F("stack size ")); Serial.println (stack_start - &stack);
 }
 
 
