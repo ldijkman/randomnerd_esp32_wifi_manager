@@ -651,7 +651,7 @@ void setup() {
   tft.setTextFont(2);
   tft.setTextSize(1);
 
-
+  tft.setCursor(15, 100);
   tft.setTextColor(TFT_GREEN, TFT_BLACK);
   tft.println(F("edit the file config.txt"));
   tft.println(F("openweathermap api key and location"));
@@ -1253,11 +1253,11 @@ void loop() {
   //button same on different screen sizes test
   int sw = tft.width();
   int sh = tft.height();
- 
+
   button but2 = {0.65 * sw, 0.18 * sh, 0.8 * sw - 0.65 * sw, 0.47 * sh - 0.18 * sh, "", 20, 20};       // topleft x, y, width, height(down from y), buttontext textoffset x, y
-  
+
   button but3 = {0.65 * sw, 0.5 * sh, 0.85 * sw - 0.65 * sw, 0.75 * sh - 0.5 * sh, "scaled", 20, 20};
-  
+
   // drawButton(but1.x, but1.y, but1.w, but1.h, but1.t, but1.ox, but1.oy);
   drawButton(but2.x, but2.y, but2.w, but2.h, but2.t, but2.ox, but2.oy);
   drawButton(but3.x, but3.y, but3.w, but3.h, but3.t, but3.ox, but3.oy);
