@@ -424,7 +424,7 @@ bool tft_output(int16_t x, int16_t y, uint16_t w, uint16_t h, uint16_t* bitmap)
 
 // Initialize LittleFS
 void initLittleFS() {
-  
+
   // if (!LittleFS.begin()) {
   if (MYFS.begin()) {
 
@@ -605,7 +605,7 @@ String processor(const String& var) {
 
 
 void setup() {
-  
+
   Serial.begin(115200);        // Serial port for debugging purposes
 
   initLittleFS();
@@ -614,15 +614,15 @@ void setup() {
   tft.init();
   tft.setRotation(1);
 
- // this blocks the program if no touch is done == moved it to the webpage
- // touch_calibrate();  // changed it to start calibrate from homepage  http://ip/calibrate so that it does not block the boot if no screen is present
+  // this blocks the program if no touch is done == moved it to the webpage
+  // touch_calibrate();  // changed it to start calibrate from homepage  http://ip/calibrate so that it does not block the boot if no screen is present
 
   tft.fillScreen(TFT_BLACK);
 
   TJpgDec.setJpgScale(1);
   TJpgDec.setCallback(tft_output);
   TJpgDec.setSwapBytes(true); // May need to swap the jpg colour bytes (endianess)
- 
+
   TJpgDec.drawFsJpg(0, 0, "/electra_ohm_law.jpg", MYFS);  // Draw splash screen
 
   delay(2500);
@@ -639,7 +639,7 @@ void setup() {
   tft.println("");
   tft.println(F("Start a Calibrate Touch from WebPage"));
 
-  
+
   //draw gridlines 20x20pixels
   for (int i = 0; i <= 480; i = i + 20) {
     tft.drawRect(i, 1, 1, 320, 0x2104); // https://chrishewett.com/blog/true-rgb565-colour-picker/
@@ -667,7 +667,7 @@ void setup() {
   //  tft.print(char(i));
   // }
   //delay(20000);
-  
+
   tft.setTextFont(2);
   tft.setTextSize(1);
 
@@ -1048,6 +1048,8 @@ void loop() {
     tft.println(F("connect wifi direct"));
     tft.println(String("ESP-WIFI-MANAGER-") + ESP.getChipId());
     tft.println(F("and browse to 192.168.4.1"));
+    tft.println("");
+    tft.println(F("Start a Calibrate Touch from WebPage"));
   }
 
 
@@ -1816,7 +1818,7 @@ void touch_calibrate()
     tft.setTouch(calData);
   } else {
     // data not valid so recalibrate
-    tft.fillScreen(TFT_BLACK);    
+    tft.fillScreen(TFT_BLACK);
     tft.setTextFont(1);
     tft.setTextSize(2);
     tft.setTextColor(TFT_WHITE, TFT_BLACK);
