@@ -837,7 +837,7 @@ void setup() {
 
     //  /reboot
     server.on("/reboot", HTTP_GET, [](AsyncWebServerRequest * request) {
-      request->send(200, "text/html", "<meta http-equiv=\"refresh\" content=\"5; url=http://" + mdnsdotlocalurl + ".local\"><h1>Huh, Reboot Electra, Restart ESP<br><a href=\"http://" + WiFi.localIP().toString()  + "\">http://" + WiFi.localIP().toString() + "</a></h1>");
+      request->send(200, "text/html", "<meta http-equiv=\"refresh\" content=\"5; url=http://" + WiFi.localIP().toString() + ".local\"><h1>Huh, Reboot Electra, Restart ESP<br><a href=\"http://" + WiFi.localIP().toString()  + "\">http://" + WiFi.localIP().toString() + "</a></h1>");
       goreboot = 1;
     });
 
@@ -899,7 +899,7 @@ void setup() {
 
 
     server.on("/calibrate", HTTP_GET, [](AsyncWebServerRequest * request) {
-      request->send(200, "text/html", "<meta http-equiv=\"refresh\" content=\"5; url=http://" + mdnsdotlocalurl + ".local\"><h1>Huh, Calibrate and then Reboot Electra, Restart ESP<br><a href=\"http://" + WiFi.localIP().toString()  + "\">http://" + WiFi.localIP().toString() + "</a></h1>");
+      request->send(200, "text/html", "<meta http-equiv=\"refresh\" content=\"5; url=http://" + WiFi.localIP().toString() + ".local\"><h1>Huh, Calibrate and then Reboot Electra, Restart ESP<br><a href=\"http://" + WiFi.localIP().toString()  + "\">http://" + WiFi.localIP().toString() + "</a></h1>");
       gocalibrate = 1;
     });
 
@@ -1250,14 +1250,16 @@ void loop() {
   // };  // mixed types array
 
   button but1 = {200, 100, 60, 30, "BUTTON", 7, 7};          // topleft x, y, width, height(down from y), buttontext textoffset x, y
-  button but2 = {50, 120, 100, 60, "BUTTON2", 20, 20};       // topleft x, y, width, height(down from y), buttontext textoffset x, y
   //button same on different screen sizes test
   int sw = tft.width();
   int sh = tft.height();
+ 
+  button but2 = {0.65 * sw, 0.18 * sh, 0.8 * sw - 0.65 * sw, 0.47 * sh - 0.18 * sh, "", 20, 20};       // topleft x, y, width, height(down from y), buttontext textoffset x, y
+  
   button but3 = {0.65 * sw, 0.5 * sh, 0.85 * sw - 0.65 * sw, 0.75 * sh - 0.5 * sh, "scaled", 20, 20};
-
+  
   // drawButton(but1.x, but1.y, but1.w, but1.h, but1.t, but1.ox, but1.oy);
-  // drawButton(but2.x, but2.y, but2.w, but2.h, but2.t, but2.ox, but2.oy);
+  drawButton(but2.x, but2.y, but2.w, but2.h, but2.t, but2.ox, but2.oy);
   drawButton(but3.x, but3.y, but3.w, but3.h, but3.t, but3.ox, but3.oy);
 
   if (TouchButton(but1.x, but1.y, but1.w, but1.h)) {
