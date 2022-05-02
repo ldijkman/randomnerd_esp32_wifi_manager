@@ -14,7 +14,7 @@
 // want to make a screen2.txt file for a second screen
 // with more lightbulbs locations
 // for example
-// http://garden.local/on /off /status    iconchoice maybe raindrops for garden watering
+// http://garden.local/on /off /status    iconchoice maybe raindrops images for garden watering
 // http://bedroom.local/on /off /status 
 // http://kitchen.local/on /off /status 
 //
