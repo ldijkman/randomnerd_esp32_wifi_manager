@@ -2,14 +2,25 @@
 
 
 // openweathermap copy paste mesh
-// playing with a 4inch ST7796_DRIVER 320x480 screen
-// having some problems rebooting every time
-// think espasyncwebserver does not like delay to be used
-// bodmer says heap and stack collision, hmmm, maybe i need to do a cleanup on vaiables defined how and where
+// playing with a 4inch ST7796_DRIVER 320x480 screen == sorry i go for 480x320
+// having some problems rebooting every time == looks like it is solved
+// Bodmer says heap and stack collision, hmmm, maybe i need to do a cleanup on variables defined how and where
 // i do not understand this all
 // https://learn.adafruit.com/memories-of-an-arduino/optimizing-sram
-
-
+// if you are a better programmer as me == let me know what to change???
+// to optimose memory / stack use
+//
+//***********************************************
+// want to make a text file for a second screen
+// with more lightbulbs
+// http://garden.local/on /off /status 
+// http://bedroom.local/on /off /status 
+// http://bedroom.local/on /off /status 
+//
+// so that the enduser can edit the text file with /edit
+// and so edit the lightswitch screen on tft touch 
+// so not hardcoded but enduser editable
+//******************************************************
 
 // Electra Touch == with tft touch screen designed for 320x240 - 480x320 pixels
 // https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-TFT_eSPI
@@ -383,7 +394,7 @@ IPAddress gatewayIP(0, 0, 0, 0);
 IPAddress subnetMask(0, 0, 0, 0);
 
 unsigned long last = 0;
-unsigned long epochTime, unixTime;
+//unsigned long epochTime, unixTime;
 struct tm *ptm;
 String weekDay;
 int monthDay ;
@@ -433,9 +444,9 @@ void initLittleFS() {
   // if (!LittleFS.begin()) {
   if (MYFS.begin()) {
 
-    Serial.print(F("FS mounted\n"));
+    Serial.println(F("FS mounted"));
   } else {
-    Serial.print(F("FS mount failed\n"));
+    Serial.println(F("FS mount fail"));
   }
 
 
@@ -449,7 +460,7 @@ String readFile(fs::FS &fs, const char * path) {
 
   File file = fs.open(path, "r");
   if (!file || file.isDirectory()) {
-    Serial.println(F("- failed to open file for reading"));
+    Serial.println(F("- fail 2 open file 4 reading"));
     return String();
   }
 
@@ -468,7 +479,7 @@ void writeFile(fs::FS &fs, const char * path, const char * message) {
 
   File file = fs.open(path, "w");
   if (!file) {
-    Serial.println(F("- failed to open file for writing"));
+    Serial.println(F("- fail 2 open file 4 writing"));
     return;
   }
   if (file.print(message)) {
@@ -511,13 +522,13 @@ bool initWiFi() {
   }
 
   WiFi.begin(ssid.c_str(), pass.c_str());
-  Serial.println(F("Connecting to WiFi..."));
-  tft.println(F("Connecting to WiFi. "));
+  Serial.println(F("Connect to WiFi..."));
+  tft.println(F("Connect to WiFi. "));
 
   int i = 0;
   while (WiFi.status() != WL_CONNECTED) {
     if (i >= 20) {
-      Serial.println(F("Failed to connect. in 20sec"));
+      Serial.println(F("Fail connect. in 20sec"));
       tft.println(F("Connect fail 20sec"));
       return false;
     }
@@ -532,7 +543,7 @@ bool initWiFi() {
 
 
   if (!MDNS.begin(mdnsdotlocalurl.c_str())) {
-    Serial.println(F("Error set up MDNS responder!"));
+    Serial.println(F("Error MDNS responder!"));
     while (1) {
       delay(1000);
     }
@@ -610,13 +621,10 @@ String processor(const String& var) {
 
 
 
-char *stack_start;
+
 
 void setup()
 {
-
-  char stack;            // init record of stack https://www.esp8266.com/viewtopic.php?f=6&t=18414
-  stack_start = &stack;
 
   Serial.begin(115200);        // Serial port for debugging purposes
 
@@ -678,10 +686,10 @@ void setup()
 
   tft.setTextColor(BLUE , TFT_BLACK);
   tft.setCursor(tft.width() - 75, tft.height() - 25);
-  tft.println("== Help! ==");
+  tft.println(F("== Help! =="));
   tft.setTextColor(YELLOW, TFT_BLACK);
   tft.setCursor(tft.width() - 75, tft.height() - 15);
-  tft.println("= Ukraine =");
+  tft.println(F("= Ukraine ="));
 
   tft.setCursor(20, 0);
 
@@ -1138,8 +1146,10 @@ void loop() {
 
     // https://randomnerdtutorials.com/esp8266-nodemcu-date-time-ntp-client-server-arduino/
 
-    epochTime = timeClient.getEpochTime();
-    unixTime = epochTime;
+     unsigned long epochTime = timeClient.getEpochTime();
+    
+    
+    //unixTime = epochTime;
     //Get a time structure
     tm *ptm = gmtime ((time_t *)&epochTime);
     formattedTime = timeClient.getFormattedTime();
@@ -1357,7 +1367,7 @@ void loop() {
   if (postsuccesfull == 1) {
     postsuccesfull = 0;
     delay(5000);
-    Serial.println(""); Serial.println("Restart"); Serial.println("");
+    Serial.println(F("Restart"));
     ESP.restart();
   }
 
@@ -1929,8 +1939,6 @@ void freeheap()
   Serial.print(F("FreeHeap          ")); Serial.println(ESP.getFreeHeap(), DEC);
   Serial.print(F("MaxFreeBlockSize  ")); Serial.println(ESP.getMaxFreeBlockSize(), DEC);
   Serial.print(F("HeapFragmentation ")); Serial.println(ESP.getHeapFragmentation(), DEC);
-  char stack;
-  Serial.print (F("stack size ")); Serial.println (stack_start - &stack);
 }
 
 
