@@ -12,14 +12,15 @@
 //
 //***********************************************
 // want to make a text file for a second screen
-// with more lightbulbs
+// with more lightbulbs locations
+// for example
 // http://garden.local/on /off /status 
 // http://bedroom.local/on /off /status 
-// http://bedroom.local/on /off /status 
+// http://kitchen.local/on /off /status 
 //
-// so that the enduser can edit the text file with /edit
+// so that the enduser can edit the text file with webeditor Ace js  http:// ip /edit
 // and so edit the lightswitch screen on tft touch 
-// so not hardcoded but enduser editable
+// so not hardcoded but enduser editable touch screen
 //******************************************************
 
 // Electra Touch == with tft touch screen designed for 320x240 - 480x320 pixels
