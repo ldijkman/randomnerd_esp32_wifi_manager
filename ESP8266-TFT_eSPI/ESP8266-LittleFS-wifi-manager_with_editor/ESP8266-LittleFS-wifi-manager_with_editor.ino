@@ -11,7 +11,7 @@
 // to optimose memory / stack use
 //
 //***********************************************
-// want to make a text file for a second screen
+// want to make a screen2.txt file for a second screen
 // with more lightbulbs locations
 // for example
 // http://garden.local/on /off /status 
