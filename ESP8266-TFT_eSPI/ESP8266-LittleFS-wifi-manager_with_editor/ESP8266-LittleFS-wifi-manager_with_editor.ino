@@ -1222,7 +1222,7 @@ void loop() {
     if (booted)
     {
       updateData();
-
+      TJpgDec.drawFsJpg(325, 70, "/OFF.jpg", MYFS);
     }
 
     if (millis() - lastDownloadUpdate > 1000UL * UPDATE_INTERVAL_SECS)
