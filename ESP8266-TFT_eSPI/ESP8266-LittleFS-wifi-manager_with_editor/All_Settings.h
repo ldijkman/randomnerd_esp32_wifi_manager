@@ -24,18 +24,18 @@
 
 
 
-#define WIFI_SSID      "KaRo gasten wifi"
-#define WIFI_PASSWORD  "KaRo1681"
+//#define WIFI_SSID      ""
+//#define WIFI_PASSWORD  ""
 
 #define TIMEZONE euCET // See NTP_Time.h tab for other "Zone references", UK, usMT etc
 
 // Update every 15 minutes, up to 1000 request per day are free (viz average of ~40 per hour)
-const int UPDATE_INTERVAL_SECS = 2UL * 60UL; // 15 minutes
+const int UPDATE_INTERVAL_SECS   = 2UL * 60UL; // 15 minutes
 
 // Pins for the TFT interface are defined in the User_Config.h file inside the TFT_eSPI library
 
 // For units use "metric" or "imperial"
-const String units = "metric";
+const String units  = "metric";
 
 
 
@@ -45,16 +45,16 @@ const String units = "metric";
 
 
 // For language codes see https://openweathermap.org/current#multi
-const String language = "en"; // Default language = en = English
+const String language =  "en"; // Default language = en = English
 
 // Short day of week abbreviations used in 4 day forecast (change to your language)
-const String shortDOW [8] = {"???", "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"};
+const String shortDOW [8]   = {"???", "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"};
 
 // Change the labels to your language here:
-const char sunStr[]        = "Sun";
-const char cloudStr[]      = "Cloud";
-const char humidityStr[]   = "Humidity";
-const String moonPhase [8] = {"New", "Waxing", "1st qtr", "Waxing", "Full", "Waning", "Last qtr", "Waning"};
+const char sunStr[]     PROGMEM     = "Sun";
+const char cloudStr[]    PROGMEM    = "Cloud";
+const char humidityStr[]   PROGMEM  = "Humidity";
+const String moonPhase [8]    = {"New", "Waxing", "1st qtr", "Waxing", "Full", "Waning", "Last qtr", "Waning"};
 
 // End of user settings
 //////////////////////////////
