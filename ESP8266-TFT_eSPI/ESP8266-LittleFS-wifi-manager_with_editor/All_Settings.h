@@ -51,9 +51,9 @@ const String language =  "en"; // Default language = en = English
 const String shortDOW [8]   = {"???", "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"};
 
 // Change the labels to your language here:
-const char sunStr[]     PROGMEM     = "Sun";
-const char cloudStr[]    PROGMEM    = "Cloud";
-const char humidityStr[]   PROGMEM  = "Humidity";
+const char sunStr[]          = "Sun";
+const char cloudStr[]        = "Cloud";
+const char humidityStr[]     = "Humidity";
 const String moonPhase [8]    = {"New", "Waxing", "1st qtr", "Waxing", "Full", "Waning", "Last qtr", "Waning"};
 
 // End of user settings
