@@ -3,8 +3,9 @@
 ## Easy install Electra Touch TFT on ESP8266 4MByte 12E / 12F from Browser
 
 ESP Web installer https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_Electra-Electra_Touch/
-- 3 versions to choose from
+- 3 versions to choose from  
 - - ILI9341_DRIVER for SPI TFT Touch display.
+- - ILI9486_DRIVER  for SPI TFT Touch display. with openweather -> edit config.txt -> from cloudeditor
 - - ILI9488_DRIVER  for SPI TFT Touch display. with openweather -> edit config.txt -> from cloudeditor
 - - ST7796_DRIVER for SPI TFT Touch display. with openweather -> edit config.txt -> from cloudeditor
 - - ESP Web installer https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_Electra-Electra_Touch/
@@ -20,7 +21,7 @@ want to make an ESP8266 touch display for Electra
 Easy Home Automation
 
 
- <br>
+ <br>(sorry wil be best for 480x320 displays)<br>
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/raw/main/docs/Touch_Electra-Electra_Touch/img_1_1651851213226.jpg">
 <br><br>
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/raw/main/docs/Touch_Electra-Electra_Touch/img_2_1651851229852.jpg">
