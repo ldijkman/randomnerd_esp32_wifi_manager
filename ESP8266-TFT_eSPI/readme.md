@@ -220,3 +220,7 @@ Soon Electra wil Power a Gazillion Devices!
 https://github.com/ldijkman/randomnerd_esp32_wifi_manager
 
 # All you need is Electra
+
+Easy install Electra Touch TFT on ESP8266 4MByte 12E / 12F from Browser
+
+ESP Web installer https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_Electra-Electra_Touch/
