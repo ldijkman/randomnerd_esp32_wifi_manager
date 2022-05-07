@@ -1,7 +1,7 @@
  <p><a href="https://stand-with-ukraine.pp.ua/#" rel="nofollow"><img src="banner2-direct.svg.png" width="50%" alt="Stand With Ukraine"></a></p>
 
 <b>
- Complete Cities, like Marioepoll are killked or chased away by the Russians<br>
+ Complete Cities, like Marioepoll are killed or chased away by the Russians<br>
  Make Russia Pay!<br>
  https://en.m.wikipedia.org/wiki/War_crimes_in_the_2022_Russian_invasion_of_Ukraine
 </b>
