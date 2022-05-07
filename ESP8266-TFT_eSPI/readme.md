@@ -19,6 +19,13 @@ want to make an ESP8266 touch display for Electra
 
 Easy Home Automation
 
+
+ <br>
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/raw/main/docs/Touch_Electra-Electra_Touch/img_1_1651851213226.jpg">
+<br><br>
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/raw/main/docs/Touch_Electra-Electra_Touch/img_2_1651851229852.jpg">
+<br
+    
 ---
 
 idea: do a local network scan for other mDNS "Electra" devices: 
