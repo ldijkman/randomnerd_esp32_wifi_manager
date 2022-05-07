@@ -1,4 +1,5 @@
-
+// ok
+// https://www.google.com/search?q=arduino+evil+global+variables
 
 
 // openweathermap copy paste mesh
