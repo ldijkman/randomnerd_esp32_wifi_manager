@@ -4,7 +4,7 @@ https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_Electra-Electra_T
 should become a webpage for inbrowser programming "Electra Touch" ESP8266 Touch TFT
 - https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-TFT_eSPI
 
-# Electra Touch Web Inastaller
+# Electra Touch ESP8266 Web Installer
 https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_Electra-Electra_Touch/
 
  <br>
