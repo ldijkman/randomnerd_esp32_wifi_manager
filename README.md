@@ -1,4 +1,4 @@
- <p><a href="https://stand-with-ukraine.pp.ua/#" rel="nofollow"><img src="https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg" width="50%" alt="Stand With Ukraine"></a></p>
+ <p><a href="https://stand-with-ukraine.pp.ua/#" rel="nofollow"><img src="banner2-direct.svg.png" width="50%" alt="Stand With Ukraine"></a></p>
 
 <b>
  https://en.m.wikipedia.org/wiki/War_crimes_in_the_2022_Russian_invasion_of_Ukraine
