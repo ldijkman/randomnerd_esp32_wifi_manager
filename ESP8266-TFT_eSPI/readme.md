@@ -54,6 +54,7 @@ https://youtu.be/jgfdkedoNfE
 - SDI(MOSI) == D7
 - SCK == D5
 - LED == +3.3vdc  (could make it PWM to set backlight brightness)
+- - - ord dim display or turn backliht off att certain times, on at touch    
 - SDO(MISO) == (not used/needed and Do not share / connect on ILI9488, if shared with T_DO touch will not work on ILI9488)
 -
 - touch is tested tftespi touch_calibrate example with ili9341 ili9488
