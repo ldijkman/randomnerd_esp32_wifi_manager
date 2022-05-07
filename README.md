@@ -23,7 +23,11 @@ Russian?, You are not welcome here,
 -  ### Touch Electra, TFT_eSPI Touch,  install from browser on ESP8266 12E / 12F
 - - - https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-TFT_eSPI
 - - - maybe Electra SPI TFT Touch can show some weather in future
-- <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/20220430_140351.jpg" width="50%">
+-  <br>
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/raw/main/docs/Touch_Electra-Electra_Touch/img_1_1651851213226.jpg">
+<br><br>
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/raw/main/docs/Touch_Electra-Electra_Touch/img_2_1651851229852.jpg">
+<br>
 - -  https://github.com/ldijkman/OpenWeather
 
 ------
