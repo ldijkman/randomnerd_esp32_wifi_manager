@@ -1,19 +1,12 @@
  <p><a href="https://stand-with-ukraine.pp.ua/#" rel="nofollow"><img src="https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg" width="50%" alt="Stand With Ukraine"></a></p>
 
 <b>
-Russian?, You are not welcome here, 
-- https://youtu.be/1cCoRdJHscQ
-- go away and protest against your maniac insane liar leader
-- https://en.m.wikipedia.org/wiki/2022_Russian_invasion_of_Ukraine
-
-- https://en.m.wikipedia.org/wiki/War_crimes_in_the_2022_Russian_invasion_of_Ukraine
+ https://en.m.wikipedia.org/wiki/War_crimes_in_the_2022_Russian_invasion_of_Ukraine
 </b>
 
-### https://russiaforsale.org/
+<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/img_1_1649085291012.jpg" width="30%">
 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/img_1_1649085291012.jpg" width="50%">
 
-### https://russiaforsale.org/
 
 ------
 
