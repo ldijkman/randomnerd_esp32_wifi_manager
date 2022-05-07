@@ -77,7 +77,9 @@ https://youtu.be/jgfdkedoNfE
 - - D1, D2 free for i2c BME280?! And/Or i2c i/o extender more inputs/outputs and/or whatever i2c device
 - - D0 == GPIO16 for Relais (but is high at boot, wich is no problem for me)
 
-image 14 pins SPI TFT XPT2046 Resistive Touch    
+image 14 pins SPI TFT XPT2046 Resistive Touch   
+- image from https://protosupplies.com/product/tft-lcd-3-2-240x320-rgb-spi-display-with-touchscreen/
+- But Better use a 480x320 for my code
     
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/TFT-LCD-28-240x320-RGB-ILI9341-with-Touchscreen-Connections.jpg">    
     
