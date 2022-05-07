@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 1040 200"
+   version="1.1"
+   id="svg30"
+   sodipodi:docname="banner2-direct.svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+  <metadata
+     id="metadata36">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs34" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="955"
+     id="namedview32"
+     showgrid="false"
+     inkscape:zoom="0.90020132"
+     inkscape:cx="472.41336"
+     inkscape:cy="-99.924163"
+     inkscape:window-x="0"
+     inkscape:window-y="52"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="a28" />
+  <style
+     id="style2">
+@namespace svg url(http://www.w3.org/2000/svg);
+
+svg {
+  font-family: Helvetica, Arial, sans-serif;
+  text-rendering: geometricPrecision;
+}
+svg|a:link, svg|a:visited {
+  cursor: pointer;
+}
+.flag-blue {
+  fill: #0057b7;
+}
+.flag-yellow {
+  fill: #ffd700;
+}
+.message {
+  fill: white;
+  font-size: 20px;
+}
+.call {
+  fill: black;
+  font-size: 32px;
+}
+.mobile-only {
+  display: none;
+}
+.arrow {
+  font-size: 24px;
+}
+@media (max-width: 770px) {
+  .message {
+    display: none;
+    font-size: 29px;
+  }
+  .mobile-only {
+    display: inherit;
+  }
+  .call {
+    font-size: 36px;
+  }
+}
+  </style>
+  <a
+     href="https://stand-with-ukraine.pp.ua"
+     id="a28">
+    <rect
+       x="0"
+       y="0"
+       width="100%"
+       height="100%"
+       class="flag-yellow"
+       id="rect4" />
+    <rect
+       x="0"
+       y="0"
+       width="100%"
+       height="110px"
+       class="flag-blue"
+       id="rect6" />
+    <text
+       x="10.195079"
+       y="53.282211"
+       class="message"
+       id="text14"
+       style="font-size:45.17401123px;fill:#ffffff;stroke-width:2.25870061"
+       transform="scale(0.6617372,1.5111739)">
+      <tspan
+         x="66.662582"
+         id="tspan8"
+         style="font-size:60.2320137px;stroke-width:2.25870061"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:60.2320137px;font-family:'Liberation Sans';-inkscape-font-specification:'Liberation Sans Bold';stroke-width:2.25870061"
+   id="tspan843">Russia Insane Destruction of People and Property</tspan>
+.</tspan>
+    </text>
+    <text
+       x="0"
+       y="25"
+       class="message mobile-only"
+       id="text22">
+      <tspan
+         x="25"
+         dy=".7em"
+         id="tspan16">Russia has invaded Ukraine and already killed tens of thousands of civilians,</tspan>
+      <tspan
+         x="25"
+         dy="1.2em"
+         id="tspan20">with many more raped or tortured. It's a <tspan
+   font-weight="bold"
+   id="tspan18">genocide</tspan>
+. We need your help.</tspan>
+    </text>
+    <text
+       x="582.03717"
+       y="142.08429"
+       dominant-baseline="middle"
+       class="call"
+       id="text26"
+       style="font-size:73.35127258px;dominant-baseline:middle;text-anchor:middle;fill:#000000;stroke-width:2.29222727"
+       transform="scale(0.89394551,1.1186364)">Help Ukraine, Make Russia Fail.</text>
+  </a>
+</svg>
