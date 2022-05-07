@@ -3,7 +3,7 @@
 ## Easy install Electra Touch TFT on ESP8266 4MByte 12E / 12F from Browser
 
 ESP Web installer https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_Electra-Electra_Touch/
-- 4 versions to choose from (best with a 480x320 TFT screen) 
+- 4 versions to choose from (at its best with a 480x320 TFT screen) 
 - - ILI9341_DRIVER for SPI TFT Touch display.
 - - ILI9486_DRIVER  for SPI TFT Touch display. with openweather -> edit config.txt -> from cloudeditor
 - - ILI9488_DRIVER  for SPI TFT Touch display. with openweather -> edit config.txt -> from cloudeditor
