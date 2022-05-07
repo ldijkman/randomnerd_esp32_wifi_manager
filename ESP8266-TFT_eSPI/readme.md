@@ -21,7 +21,7 @@ want to make an ESP8266 touch display for Electra
 Easy Home Automation
 
 
- <br>(sorry wil be best for 480x320 displays)<br>
+ <br>(sorry wil be best for 480x320 TFT displays 14pins SPI resistive touch IC XPT2046)<br>
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/raw/main/docs/Touch_Electra-Electra_Touch/img_1_1651851213226.jpg">
 <br><br>
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/raw/main/docs/Touch_Electra-Electra_Touch/img_2_1651851229852.jpg">
