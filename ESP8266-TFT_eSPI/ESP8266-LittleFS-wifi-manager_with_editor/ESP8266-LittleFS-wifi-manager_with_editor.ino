@@ -1,3 +1,17 @@
+
+
+
+
+// are you sure you wanna do this
+// install it the easy way
+// https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_Electra-Electra_Touch/
+
+
+
+
+
+
+
 // ok
 // https://www.google.com/search?q=arduino+evil+global+variables
 
