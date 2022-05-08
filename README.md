@@ -20,9 +20,9 @@
 - - - maybe Electra SPI TFT Touch can show some weather in future
 -  <br>
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/raw/main/docs/Touch_Electra-Electra_Touch/img_1_1651851213226.jpg" width="50%">
-<br>
+
 https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_Electra-Electra_Touch/
-<br>
+
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/raw/main/docs/Touch_Electra-Electra_Touch/img_2_1651851229852.jpg" width="50%">
 <br>
 - -  https://github.com/ldijkman/OpenWeather
