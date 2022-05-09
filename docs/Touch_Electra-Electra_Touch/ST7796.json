@@ -10,8 +10,8 @@
     {
       "chipFamily": "ESP8266",
       "parts": [
-        { "path": "ESP8266-LittleFS-wifi-manager_with_editor.mklittlefs.bin", "offset": 2097152 }
-        { "path": "Electra_toucht_tft_st7796.bin", "offset": 0 },
+        { "path": "ESP8266-LittleFS-wifi-manager_with_editor.mklittlefs.bin", "offset": 2097152 },
+        { "path": "Electra_toucht_tft_st7796.bin", "offset": 0 }
       ]
     }
   ]
