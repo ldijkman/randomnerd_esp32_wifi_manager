@@ -4,7 +4,7 @@
   "name": "Touch Electra TFT ST7796",
   "version": "April 2022",
   "new_install_prompt_erase": true,
-  "new_install_improv_wait_time":"0",
+  "new_install_improv_wait_time": 0,
   "builds": [
     {
       "chipFamily": "ESP8266",
