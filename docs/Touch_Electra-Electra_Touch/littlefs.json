@@ -1,5 +1,5 @@
 {
-  "name": "LITTLEFS at 0x2OOOOO do not Erase",
+  "name": "2MB LITTLEFS at 0x2OOOOO, do not Erase",
   "version": "April 2022",
   "new_install_prompt_erase": true,
   "new_install_improv_wait_time": 0,
