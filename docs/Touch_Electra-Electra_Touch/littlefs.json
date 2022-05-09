@@ -1,0 +1,15 @@
+{
+  "name": "Touch Electra TFT ST7796",
+  "version": "April 2022",
+  "new_install_prompt_erase": false,
+  "new_install_improv_wait_time": 0,
+  "funding_url": "https://esphome.io/guides/supporters.html",
+  "builds": [
+    {
+      "chipFamily": "ESP8266",
+      "parts": [
+        { "path": "ESP8266-LittleFS-wifi-manager_with_editor.mklittlefs.bin", "offset": 2097152 }
+      ]
+    }
+  ]
+}
