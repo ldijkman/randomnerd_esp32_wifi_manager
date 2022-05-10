@@ -1,0 +1,13 @@
+{
+  "name": "code only ST7796",
+  "version": "April 2022",
+  "new_install_prompt_erase": true,
+  "new_install_improv_wait_time": 0,
+  "funding_url": "https://esphome.io/guides/supporters.html",
+  "builds": [
+    {
+      "chipFamily": "ESP8266",
+      "parts": [
+        { "path": "Electra_toucht_tft_st7796.bin", "offset": 0 }
+      ]
+   
