@@ -5,6 +5,8 @@ lower baudrate version 57600 for wemos d1 mini esp12F wich di not install with a
 - with local esp web tools javascript edited baudrate 
 - https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_Electra-Electra_Touch/local_js.html
 
+---
+
 should become a webpage for inbrowser programming "Electra Touch" ESP8266 Touch TFT
 - https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-TFT_eSPI
 
