@@ -757,7 +757,7 @@ const e=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
         `,t),i=!0}else if("finished"===this._installState.state){t=void 0;const i=null!==this._client;e=O`
         <ewt-page-message
           .icon=${"👍 🖏"}
-          label="Installation complete!"
+          label="Installation complete!<br>Warning<br>Handle Electra with Care!"
         ></ewt-page-message>
         <ewt-button
           slot="primaryAction"
