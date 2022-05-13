@@ -757,9 +757,12 @@ const e=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
         `,t),i=!0}else if("finished"===this._installState.state){t=void 0;const i=null!==this._client;e=O`
         <ewt-page-message
           .icon=${"👍 🖏"}
-          label="Installation complete!\n\r Warning\n\r Handle Electra with Care!\n\r"
-          label+="Connect WiFI to AP ESP-WifiManager-...\n\r"
-          label+="And Browse to <a href=\"http://192.168.4.1\">http://192.168.4.1</a>\n\r"
+          label="Installation complete!"
+          <br>
+          Connect WiFI to AP ESP-WifiManager-...<br>
+          And Browse to <a href=\"http://192.168.4.1\">http://192.168.4.1</a><br>
+          <br>
+          Warning<br>Handle Electra with Care!<br>
         ></ewt-page-message>
         <ewt-button
           slot="primaryAction"
