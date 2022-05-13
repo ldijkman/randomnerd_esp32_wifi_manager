@@ -756,7 +756,7 @@ const e=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
           Keep this page visible to prevent slow down
         `,t),i=!0}else if("finished"===this._installState.state){t=void 0;const i=null!==this._client;e=O`
         <ewt-page-message
-          .icon=${"👍"}
+          .icon=${"👍 🖏"}
           label="Installation complete!"
         ></ewt-page-message>
         <ewt-button
