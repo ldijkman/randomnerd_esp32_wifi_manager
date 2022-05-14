@@ -753,7 +753,9 @@ const e=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
           <br />
           This will take
           ${"ESP8266"===this._installState.chipFamily?"a minute":"2 minutes"}.<br />
-          Keep this page visible to prevent slow down
+          Keep this page visible to prevent slow down<br>
+          Burning the Bits<br>
+          57600<br>
         `,t),i=!0}else if("finished"===this._installState.state){t=void 0;const i=null!==this._client;e=O`
         <ewt-page-message
           .icon=${"👍 🖏"}
@@ -765,7 +767,9 @@ const e=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
           <br>
           <font color=\"red\"><b>
           Warning<br>Handle Electra with Care!<br>
-          </b></font></center>
+          </b></font><br><br>
+          <img src=\"https://hitwebcounter.com/counter/counter.php?page=7986968&style=0025&nbdigits=5&type=page&initCount=0\">
+          </center>
         <ewt-button
           slot="primaryAction"
           label="Next"
