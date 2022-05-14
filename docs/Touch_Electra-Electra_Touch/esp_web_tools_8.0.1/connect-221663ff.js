@@ -755,10 +755,15 @@ const e=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
           ${"ESP8266"===this._installState.chipFamily?"a minute":"2 minutes"}.<br />
           Keep this page visible to prevent slow down
         `,t),i=!0}else if("finished"===this._installState.state){t=void 0;const i=null!==this._client;e=O`
-        <ewt-page-message
-          .icon=${"🎉"}
-          label="Installation complete!"
-        ></ewt-page-message>
+         <ewt-page-message
+          .icon=${"👍 🖏"}
+          label="Installation complete!">
+          </ewt-page-message>
+          <br>
+          Connect WiFI to AP ESP-WifiManager-...<br>
+          And Browse to <a href=\"http://192.168.4.1\" target=\"Hey_Electra\">http://192.168.4.1</a><br>
+          <br>
+          Warning<br>Handle Electra with Care!<br>
         <ewt-button
           slot="primaryAction"
           label="Next"
