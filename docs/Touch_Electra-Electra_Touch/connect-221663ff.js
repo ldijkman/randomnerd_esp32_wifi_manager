@@ -759,12 +759,13 @@ const e=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
           .icon=${"👍 🖏"}
           label="Installation complete!">
           </ewt-page-message>
-          <br>
+          <br><center>
           Connect WiFI to AP ESP-WifiManager-...<br>
           And Browse to <a href=\"http://192.168.4.1\" target=\"Hey_Electra\">http://192.168.4.1</a><br>
           <br>
+          <font color=\"red\"><b>
           Warning<br>Handle Electra with Care!<br>
-        
+          </b></font></center>
         <ewt-button
           slot="primaryAction"
           label="Next"
