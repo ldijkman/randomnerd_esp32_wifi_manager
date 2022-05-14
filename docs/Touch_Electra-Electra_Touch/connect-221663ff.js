@@ -761,7 +761,7 @@ const e=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
           </ewt-page-message>
           <br>
           Connect WiFI to AP ESP-WifiManager-...<br>
-          And Browse to <a href=\"http://192.168.4.1\">http://192.168.4.1</a><br>
+          And Browse to <a href=\"http://192.168.4.1\" target=\"Hey_Electra\">http://192.168.4.1</a><br>
           <br>
           Warning<br>Handle Electra with Care!<br>
         
