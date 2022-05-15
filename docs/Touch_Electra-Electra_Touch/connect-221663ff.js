@@ -773,8 +773,8 @@ const e=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
           <br>
           <div id=\"sfc4an6zkbm2xldyet4gkqscley12j5gqhp\"></div>
           <script type=\"text/javascript\" src=\"https://counter9.stat.ovh/private/counter.js?c=4an6zkbm2xldyet4gkqscley12j5gqhp&down=async\" async></script>
-          <noscript><a href=\"https://www.freecounterstat.com\" title=\"website counter\"><img src=\"https://counter9.stat.ovh/private/freecounterstat.php?c=4an6zkbm2xldyet4gkqscley12j5gqhp\" border=\"0\" title=\"website counter\" alt=\"website counter\"></a></noscript>
-          </center>
+          <img src=\"https://counter9.stat.ovh/private/freecounterstat.php?c=4an6zkbm2xldyet4gkqscley12j5gqhp\" border=\"0\" title=\"website counter\" alt=\"website counter\">
+           </center>
         <ewt-button
           slot="primaryAction"
           label="Next"
