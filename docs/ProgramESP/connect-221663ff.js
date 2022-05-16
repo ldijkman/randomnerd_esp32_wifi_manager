@@ -753,12 +753,32 @@ const e=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
           <br />
           This will take
           ${"ESP8266"===this._installState.chipFamily?"a minute":"2 minutes"}.<br />
-          Keep this page visible to prevent slow down
+          Keep this page visible to prevent slow down<br>
+          Burning the Bits<br>
+          Baudrate: 57600<br>
         `,t),i=!0}else if("finished"===this._installState.state){t=void 0;const i=null!==this._client;e=O`
         <ewt-page-message
-          .icon=${"🎉"}
-          label="Installation complete!"
-        ></ewt-page-message>
+          .icon=${"👍 🖏"}
+          label="Installation complete!">
+          </ewt-page-message>
+          <br><center>
+          Connect WiFI to AP ESP-WifiManager-...<br>
+          And Browse to <a href=\"http://192.168.4.1\" target=\"Hey_Electra\">http://192.168.4.1</a><br>
+          <br>
+          <font color=\"red\"><b>
+          Warning<br>Handle Electra with Care!<br>
+          </b></font><br><br>
+          <!--
+          <a href=\"https://www.hitwebcounter.com\" target=\"_blank\">
+          <img src=\"https://hitwebcounter.com/counter/counter.php?page=7986968&style=0025&nbdigits=5&type=page&initCount=0\"></a>
+          <br>
+          -->
+          <div id="sfc4an6zkbm2xldyet4gkqscley12j5gqhp"><!-- div image not working, this should be filled by next javascript --></div>
+          <script type="text/javascript" src="https://counter9.stat.ovh/private/counter.js?c=4an6zkbm2xldyet4gkqscley12j5gqhp&down=async" async></script>
+          <!-- <noscript> -->
+          <a href="https://www.freecounterstat.com/geozoom.php?c=4an6zkbm2xldyet4gkqscley12j5gqhp&base=counter9&type_clic=1" target="INSTALL_COUNTER" title="website counter"><img src="https://counter9.stat.ovh/private/freecounterstat.php?c=4an6zkbm2xldyet4gkqscley12j5gqhp" border="0" title="website counter" alt="website counter"></a>
+          <!-- </noscript> -->
+          </center>
         <ewt-button
           slot="primaryAction"
           label="Next"
@@ -864,4 +884,4 @@ const e=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
         width: calc(80vw - 48px);
         height: 80vh;
       }
-    `],Rd([ge()],Td.prototype,"_client",void 0),Rd([ge()],Td.prototype,"_state",void 0),Rd([ge()],Td.prototype,"_installErase",void 0),Rd([ge()],Td.prototype,"_installConfirmed",void 0),Rd([ge()],Td.prototype,"_installState",void 0),Rd([ge()],Td.prototype,"_provisionForce",void 0),Rd([ge()],Td.prototype,"_error",void 0),Rd([ge()],Td.prototype,"_busy",void 0),Rd([ge()],Td.prototype,"_ssids",void 0),Rd([ge()],Td.prototype,"_selectedSsid",void 0),customElements.define("ewt-install-dialog",Td);const Od=async e=>{let t;try{t=await navigator.serial.requestPort()}catch(t){return"NotFoundError"===t.name?void import("./index-d7b4b3e6.js").then((t=>t.openNoPortPickedDialog((()=>Od(e))))):void alert(`Error: ${t.message}`)}if(!t)return;try{await t.open({baudRate:115200})}catch(e){return void alert(e.message)}const i=document.createElement("ewt-install-dialog");i.port=t,i.manifestPath=e.manifest||e.getAttribute("manifest"),i.overrides=e.overrides,i.addEventListener("closed",(()=>{t.close()}),{once:!0}),document.body.appendChild(i)};var Fd=Object.freeze({__proto__:null,connect:Od});export{O as $,Fd as c,Cd as d,pe as n,J as r,he as s};
+    `],Rd([ge()],Td.prototype,"_client",void 0),Rd([ge()],Td.prototype,"_state",void 0),Rd([ge()],Td.prototype,"_installErase",void 0),Rd([ge()],Td.prototype,"_installConfirmed",void 0),Rd([ge()],Td.prototype,"_installState",void 0),Rd([ge()],Td.prototype,"_provisionForce",void 0),Rd([ge()],Td.prototype,"_error",void 0),Rd([ge()],Td.prototype,"_busy",void 0),Rd([ge()],Td.prototype,"_ssids",void 0),Rd([ge()],Td.prototype,"_selectedSsid",void 0),customElements.define("ewt-install-dialog",Td);const Od=async e=>{let t;try{t=await navigator.serial.requestPort()}catch(t){return"NotFoundError"===t.name?void import("./index-d7b4b3e6.js").then((t=>t.openNoPortPickedDialog((()=>Od(e))))):void alert(`Error: ${t.message}`)}if(!t)return;try{await t.open({baudRate:57600})}catch(e){return void alert(e.message)}const i=document.createElement("ewt-install-dialog");i.port=t,i.manifestPath=e.manifest||e.getAttribute("manifest"),i.overrides=e.overrides,i.addEventListener("closed",(()=>{t.close()}),{once:!0}),document.body.appendChild(i)};var Fd=Object.freeze({__proto__:null,connect:Od});export{O as $,Fd as c,Cd as d,pe as n,J as r,he as s};

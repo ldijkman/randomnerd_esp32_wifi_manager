@@ -1,7 +1,7 @@
 import{d as e,r as t,n as o,s as i,$ as r}from"./connect-221663ff.js";var n=function(e,t,o,i){var r,n=arguments.length,l=n<3?t:null===i?i=Object.getOwnPropertyDescriptor(t,o):i;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)l=Reflect.decorate(e,t,o,i);else for(var s=e.length-1;s>=0;s--)(r=e[s])&&(l=(n<3?r(l):n>3?r(t,o,l):r(t,o))||l);return n>3&&l&&Object.defineProperty(t,o,l),l};let l=class extends i{render(){return r`
       <ewt-dialog
         open
-        heading="No port selected"
+        heading="Electra Says select a port"
         scrimClickAction
         @closed=${this._handleClose}
       >
