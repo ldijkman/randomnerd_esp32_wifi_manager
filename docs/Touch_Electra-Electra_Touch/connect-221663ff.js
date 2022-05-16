@@ -768,13 +768,16 @@ const e=window.ShadowRoot&&(void 0===window.ShadyCSS||window.ShadyCSS.nativeShad
           <font color=\"red\"><b>
           Warning<br>Handle Electra with Care!<br>
           </b></font><br><br>
+          <!--
           <a href=\"https://www.hitwebcounter.com\" target=\"_blank\">
           <img src=\"https://hitwebcounter.com/counter/counter.php?page=7986968&style=0025&nbdigits=5&type=page&initCount=0\"></a>
           <br>
-          <div id="sfc4an6zkbm2xldyet4gkqscley12j5gqhp">div image not working</div>
+          -->
+          <div id="sfc4an6zkbm2xldyet4gkqscley12j5gqhp"><!-- div image not working, this should be filled by next javascript --></div>
           <script type="text/javascript" src="https://counter9.stat.ovh/private/counter.js?c=4an6zkbm2xldyet4gkqscley12j5gqhp&down=async" async></script>
-          <noscript></noscript>
-          <a href="https://www.freecounterstat.com" title="website counter"><img src="https://counter9.stat.ovh/private/freecounterstat.php?c=4an6zkbm2xldyet4gkqscley12j5gqhp" border="0" title="website counter" alt="website counter"></a>
+          <!-- <noscript> -->
+          <a href="https://www.freecounterstat.com/geozoom.php?c=4an6zkbm2xldyet4gkqscley12j5gqhp&base=counter9&type_clic=1" title="website counter"><img src="https://counter9.stat.ovh/private/freecounterstat.php?c=4an6zkbm2xldyet4gkqscley12j5gqhp" border="0" title="website counter" alt="website counter"></a>
+          <!-- </noscript> -->
           </center>
         <ewt-button
           slot="primaryAction"
