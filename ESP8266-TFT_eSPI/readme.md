@@ -46,14 +46,14 @@ https://youtu.be/jgfdkedoNfE
 
 ### ESP8266 NodeMCU 12E 12F to 14pins SPI touch TFT connections
 
-- VCC == +5vdc in
+- VCC == +5vdc in use onboard ESP +5v is from USB (3,3V ESP onboard regulator maybe cannot handle display poweruse)
 - GND == gnd
 - CS == D8
 - RESET == RST
 - DC/RS == D3
 - SDI(MOSI) == D7
 - SCK == D5
-- LED == +3.3vdc  (could make it PWM to set backlight brightness)
+- LED == backlight transitor switch, +3.3vdc  (could make it PWM to set backlight brightness)
 - - - ord dim display or turn backliht off att certain times, on at touch    
 - SDO(MISO) == (not used/needed and Do not share / connect on ILI9488, if shared with T_DO touch will not work on ILI9488)
 -
