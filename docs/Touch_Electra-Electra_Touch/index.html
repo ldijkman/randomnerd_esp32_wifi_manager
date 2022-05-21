@@ -346,9 +346,7 @@ document.body.addEventListener('mousemove', function(e){
 });
     
     document.body.addEventListener('touchmove', function(e){
-      touch = undefined
-  if e.originalEvent.touches
-    touch = e.originalEvent.touches[0]
+  
   var x = (centerX - touch.pageX) / centerX * 360,
       y = (centerY - touch.pageY) / centerY * 360;
   
