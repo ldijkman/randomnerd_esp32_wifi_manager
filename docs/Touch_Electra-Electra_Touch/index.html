@@ -316,8 +316,8 @@ Electra needs a Case ;-)<br>
 <div class="sh"></div>
 
   <script>
-  var centerX = window.innerWidth / 2;
-var centerY = window.innerHeight / 2;
+  var centerX = 500;//window.innerWidth / 2;
+var centerY = 400;//window.innerHeight / 2;
 var layers = document.querySelectorAll('.box > div');
 
 function rotateTo(x, y){
@@ -343,7 +343,7 @@ document.body.addEventListener('mousemove', function(e){
 var apX = 0;
 var apY = 0;
 // comment below
-setInterval(() => rotateTo(apX += 1, apY +=1), 60);
+setInterval(() => rotateTo(apX += 1, apY +=1), 100);
   </script>
   
   <!-- Global site tag (gtag.js) - Google Analytics -->
