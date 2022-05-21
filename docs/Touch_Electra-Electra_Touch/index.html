@@ -19,12 +19,12 @@ changed to local scripts
   
   <script type="module" src="install-button.js?module"></script>
   <style>
- $size:   6px; 
+$size:   6px; 
 $colors: #73c25b #fdc333 #f99427 #e7524f #a856a9 #26aee3;
 
 html, body{
-  width:    110vw;
-  height:   110vh;
+  width:    100vw;
+  height:   100vh;
   margin:   0;
   overflow: hidden;
 }
@@ -35,12 +35,12 @@ body{
 }
 
 .box {
-  position:        relative;
+  position:        middle;
   width:           $size;
-  height:          $size;
-  margin:           auto; 
+  height:          1800px;
+  margin:          $size auto; 
   transform-style: preserve-3d;
-  perspective:     1000px;
+  perspective:     10600px;
 }
 
 .box > div {
@@ -48,7 +48,7 @@ body{
   top:         0;
   left:        0;
   width:       $size;
-  height:      $size;
+  height:      800px;
   font-size:   5rem;
   font-weight: bold;
   color:       rgba(#fff, .4);
@@ -314,10 +314,13 @@ Electra needs a Case ;-)<br>
   <div class="p6"></div>
 </div>
 <div class="sh"></div>
-<!-- https://codepen.io/kaskyi/pen/XwepEJ -->
+
+  
+  
+  <!-- https://codepen.io/kaskyi/pen/XwepEJ -->
   <script>
-  var centerX = 500;//window.innerWidth / 2;
-var centerY = 400;//window.innerHeight / 2;
+ var centerX =400;
+var centerY =300;
 var layers = document.querySelectorAll('.box > div');
 
 function rotateTo(x, y){
@@ -343,9 +346,12 @@ document.body.addEventListener('mousemove', function(e){
 var apX = 0;
 var apY = 0;
 // comment below
-setInterval(() => rotateTo(apX += 1, apY +=1), 100);
+setInterval(() => rotateTo(apX += 1, apY +=1), 60);
   </script>
   <!-- https://codepen.io/kaskyi/pen/XwepEJ -->
+  
+  
+  
   <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GCDQS3927F"></script>
 <script>
