@@ -322,7 +322,9 @@ Electra needs a Case ;-)<br>
  var centerX =400;
 var centerY =300;
 var layers = document.querySelectorAll('.box > div');
-
+var apX = 0;
+var apY = 0;
+    
 function rotateTo(x, y){
   
  layers[0].style.transform = `rotateX(${y + 0}deg)   rotateY(${x + 90}deg)  rotateZ(${0}deg)`;
@@ -331,7 +333,8 @@ function rotateTo(x, y){
  layers[3].style.transform = `rotateX(${y + -90}deg) rotateY(${0}deg)       rotateZ(${x}deg)`;
  layers[4].style.transform = `rotateX(${y + 0}deg)   rotateY(${x + 0}deg)   rotateZ(${0}deg)`;
  layers[5].style.transform = `rotateX(${y + 0}deg)   rotateY(${x + 180}deg) rotateZ(${0}deg)`;
-  
+  apX = x;
+  apY = y;
 };
 
 document.body.addEventListener('mousemove', function(e){
@@ -343,8 +346,7 @@ document.body.addEventListener('mousemove', function(e){
 });
 
 // autoplay
-var apX = 0;
-var apY = 0;
+
 // comment below
 setInterval(() => rotateTo(apX += 1, apY +=1), 60);
   </script>
