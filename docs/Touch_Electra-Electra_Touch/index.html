@@ -18,6 +18,96 @@ changed to local scripts
 --> 
   
   <script type="module" src="install-button.js?module"></script>
+  <style>
+    @-webkit-keyframes spincube {
+  from,to  { }
+  16%      { -webkit-transform: rotateY(-90deg);  }
+  33%      { -webkit-transform: rotateY(-90deg) rotateZ(90deg); }
+  50%      { -webkit-transform: rotateY(-180deg) rotateZ(90deg); }
+  66%      { -webkit-transform: rotateY(90deg) rotateX(90deg);  }
+  83%      { -webkit-transform: rotateX(90deg); }
+}
+@-moz-keyframes spincube {
+  from,to  { }
+  16%      { -moz-transform: rotateY(-90deg);  }
+  33%      { -moz-transform: rotateY(-90deg) }
+  50%      { -moz-transform: rotateY(-180deg) }
+  66%      { -moz-transform: rotateY(90deg)  }
+  83%      { -moz-transform: rotateX(90deg); }
+}
+-ms-keyframes spincube {
+  from,to  { }
+  16%      { -ms-transform: rotateY(-90deg);  }
+  33%      { -ms-transform: rotateY(-90deg)  }
+  50%      { -ms-transform: rotateY(-180deg)  }
+  66%      { -ms-transform: rotateY(90deg)   }
+  83%      { -ms-transform: rotateX(90deg); }
+}
+
+.cubespinner {
+  -webkit-animation-name: spincube;
+  -webkit-animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 12s;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transform-origin: 60px 60px 0;
+  -moz-animation-name: spincube;
+  -moz-animation-timing-function: ease-in-out;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-duration: 12s;
+  -moz-transform-style: preserve-3d;
+  -moz-transform-origin: 60px 60px 0;
+  -ms-animation-name: spincube;
+  -ms-animation-timing-function: ease-in-out;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-duration: 12s;
+  -ms-transform-style: preserve-3d;
+  -ms-transform-origin: 60px 60px 0;
+}
+
+.cubespinner div {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border: 1px solid #ccc;
+  background: rgba(255,255,255,0.8);
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
+  text-align: center;
+  font-size: 100px;
+}
+
+.cubespinner .face1 {
+  -webkit-transform: translateZ(60px);
+  -moz-transform: translateZ(60px);
+  -moz-transform: translateZ(60px);
+}
+.cubespinner .face2 {
+  -webkit-transform: rotateY(90deg) translateZ(60px);
+  -moz-transform: rotateY(90deg) translateZ(60px);
+  -ms-transform: rotateY(90deg) translateZ(60px);
+}
+.cubespinner .face3 {
+  -webkit-transform: rotateY(90deg) rotateX(90deg) translateZ(60px);
+  -moz-transform: rotateY(90deg) rotateX(90deg) translateZ(60px);
+  -ms-transform: rotateY(90deg) rotateX(90deg) translateZ(60px);
+}
+.cubespinner .face4 {
+  -webkit-transform: rotateY(180deg) rotateZ(90deg) translateZ(60px);
+  -moz-transform: rotateY(180deg) rotateZ(90deg) translateZ(60px);
+  -ms-transform: rotateY(180deg) rotateZ(90deg) translateZ(60px);
+}
+.cubespinner .face5 {
+  -webkit-transform: rotateY(-90deg) rotateZ(90deg) translateZ(60px);
+  -moz-transform: rotateY(-90deg) rotateZ(90deg) translateZ(60px);
+  -ms-transform: rotateY(-90deg) rotateZ(90deg) translateZ(60px);
+}
+.cubespinner .face6 {
+  -webkit-transform: rotateX(-90deg) translateZ(60px);
+  -moz-transform: rotateX(-90deg) translateZ(60px);
+  -ms-transform: rotateX(-90deg) translateZ(60px);
+}
+
+  </style>
 </head>
 <body bgcolor="#F6F8FA">
  
@@ -241,6 +331,20 @@ Electra needs a Case ;-)<br>
   <img src="https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/docs/Touch_Electra-Electra_Touch/easyeda_wemos_2_TFT_pcb.png"><br>
    <a href="https://easyeda.com/editor#id=bfc6a1e58e1c44c694c9c839b1bd4f39" target="easyeda">EasyEDA Design a PCB for easy connecting WeMos D1 Mini, NodeMCU 12E /12F etcetera to TFT</a><br>
   &<br>
+  
+  
+  <div class="stage" style="width: 8000px; height: 0px;">
+<div class="cubespinner"> 
+<div class="face1"></div>
+<div class="face2"><img src="https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/docs/Touch_Electra-Electra_Touch/front.png"></div>
+<div class="face3"></div>
+<div class="face4"></div>
+<div class="face5"><img src="https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/docs/Touch_Electra-Electra_Touch/front.png"></div>
+<div class="face6"></div>
+</div>
+</div>
+  
+  
   
   <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GCDQS3927F"></script>
