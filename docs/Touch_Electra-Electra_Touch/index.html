@@ -344,6 +344,14 @@ document.body.addEventListener('mousemove', function(e){
   rotateTo(x, y);
   
 });
+    
+    document.body.addEventListener('ontouchmove', function(e){
+  var x = (centerX - e.clientX) / centerX * 360,
+      y = (centerY - e.clientY) / centerY * 360;
+  
+  rotateTo(x, y);
+  
+});
 
 // autoplay
 
