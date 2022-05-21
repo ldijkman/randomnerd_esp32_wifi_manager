@@ -346,8 +346,8 @@ document.body.addEventListener('mousemove', function(e){
 });
     
     document.body.addEventListener('ontouchmove', function(e){
-  var x = (centerX - e.clientX) / centerX * 360,
-      y = (centerY - e.clientY) / centerY * 360;
+  var x = (centerX - touch.pageX) / centerX * 360,
+      y = (centerY - touch.pageY) / centerY * 360;
   
   rotateTo(x, y);
   
