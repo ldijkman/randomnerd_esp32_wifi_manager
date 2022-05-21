@@ -19,92 +19,65 @@ changed to local scripts
   
   <script type="module" src="install-button.js?module"></script>
   <style>
-    @-webkit-keyframes spincube {
-  from,to  { }
-  16%      { -webkit-transform: rotateY(-90deg);  }
-  33%      { -webkit-transform: rotateY(-90deg) rotateZ(90deg); }
-  50%      { -webkit-transform: rotateY(-180deg) rotateZ(90deg); }
-  66%      { -webkit-transform: rotateY(90deg) rotateX(90deg);  }
-  83%      { -webkit-transform: rotateX(90deg); }
-}
-@-moz-keyframes spincube {
-  from,to  { }
-  16%      { -moz-transform: rotateY(-90deg);  }
-  33%      { -moz-transform: rotateY(-90deg) }
-  50%      { -moz-transform: rotateY(-180deg) }
-  66%      { -moz-transform: rotateY(90deg)  }
-  83%      { -moz-transform: rotateX(90deg); }
-}
--ms-keyframes spincube {
-  from,to  { }
-  16%      { -ms-transform: rotateY(-90deg);  }
-  33%      { -ms-transform: rotateY(-90deg)  }
-  50%      { -ms-transform: rotateY(-180deg)  }
-  66%      { -ms-transform: rotateY(90deg)   }
-  83%      { -ms-transform: rotateX(90deg); }
+ $size:   2px; 
+$colors: #73c25b #fdc333 #f99427 #e7524f #a856a9 #26aee3;
+
+html, body{
+  width:    110vw;
+  height:   110vh;
+  margin:   0;
+  overflow: hidden;
 }
 
-.cubespinner {
-  -webkit-animation-name: spincube;
-  -webkit-animation-timing-function: ease-in-out;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-duration: 12s;
-  -webkit-transform-style: preserve-3d;
-  -webkit-transform-origin: 60px 60px 0;
-  -moz-animation-name: spincube;
-  -moz-animation-timing-function: ease-in-out;
-  -moz-animation-iteration-count: infinite;
-  -moz-animation-duration: 12s;
-  -moz-transform-style: preserve-3d;
-  -moz-transform-origin: 60px 60px 0;
-  -ms-animation-name: spincube;
-  -ms-animation-timing-function: ease-in-out;
-  -ms-animation-iteration-count: infinite;
-  -ms-animation-duration: 12s;
-  -ms-transform-style: preserve-3d;
-  -ms-transform-origin: 60px 60px 0;
+body{
+  font-family: 'Open Sans', sans-serif;
+  background:  radial-gradient(rgba(#000,.3), #fff);
 }
 
-.cubespinner div {
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  border: 1px solid #ccc;
-  background: rgba(255,255,255,0.8);
-  box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
-  text-align: center;
-  font-size: 100px;
+.box {
+  position:        relative;
+  width:           $size;
+  height:          $size;
+  margin:          $size auto; 
+  transform-style: preserve-3d;
+  perspective:     600px;
 }
 
-.cubespinner .face1 {
-  -webkit-transform: translateZ(60px);
-  -moz-transform: translateZ(60px);
-  -moz-transform: translateZ(60px);
+.box > div {
+  position:    absolute;
+  top:         0;
+  left:        0;
+  width:       $size;
+  height:      $size;
+  font-size:   5rem;
+  font-weight: bold;
+  color:       rgba(#fff, .4);
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  opacity:         0.9;
+  transform-origin: 50% 50% $size / -2;
 }
-.cubespinner .face2 {
-  -webkit-transform: rotateY(90deg) translateZ(60px);
-  -moz-transform: rotateY(90deg) translateZ(60px);
-  -ms-transform: rotateY(90deg) translateZ(60px);
+
+@for $i from 1 through 6 {
+  .p#{$i} {
+    background: nth($colors, $i);
+    box-shadow: inset 0 0 25px rgba(#fff, 0.2); 
+  }
 }
-.cubespinner .face3 {
-  -webkit-transform: rotateY(90deg) rotateX(90deg) translateZ(60px);
-  -moz-transform: rotateY(90deg) rotateX(90deg) translateZ(60px);
-  -ms-transform: rotateY(90deg) rotateX(90deg) translateZ(60px);
-}
-.cubespinner .face4 {
-  -webkit-transform: rotateY(180deg) rotateZ(90deg) translateZ(60px);
-  -moz-transform: rotateY(180deg) rotateZ(90deg) translateZ(60px);
-  -ms-transform: rotateY(180deg) rotateZ(90deg) translateZ(60px);
-}
-.cubespinner .face5 {
-  -webkit-transform: rotateY(-90deg) rotateZ(90deg) translateZ(60px);
-  -moz-transform: rotateY(-90deg) rotateZ(90deg) translateZ(60px);
-  -ms-transform: rotateY(-90deg) rotateZ(90deg) translateZ(60px);
-}
-.cubespinner .face6 {
-  -webkit-transform: rotateX(-90deg) translateZ(60px);
-  -moz-transform: rotateX(-90deg) translateZ(60px);
-  -ms-transform: rotateX(-90deg) translateZ(60px);
+
+div.sh{
+  background: radial-gradient(#000, rgba(#000,0));
+  position:   absolute;
+  top:        1.3 * $size;
+  left:       0;
+  right:      0;
+  margin:     $size auto;
+  width:      $size;
+  height:     $size;
+  filter:     blur(50px);
+  z-index:    -1;
+  transform:  rotateX(50deg) scaleY(0.7);
 }
 
   </style>
@@ -332,19 +305,46 @@ Electra needs a Case ;-)<br>
    <a href="https://easyeda.com/editor#id=bfc6a1e58e1c44c694c9c839b1bd4f39" target="easyeda">EasyEDA Design a PCB for easy connecting WeMos D1 Mini, NodeMCU 12E /12F etcetera to TFT</a><br>
   &<br>
   
-  
-  <div class="stage" style="width: 8000px; height: 0px;">
-<div class="cubespinner"> 
-<div class="face1"></div>
-<div class="face2"><img src="https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/docs/Touch_Electra-Electra_Touch/front.png"></div>
-<div class="face3"></div>
-<div class="face4"></div>
-<div class="face5"><img src="https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/docs/Touch_Electra-Electra_Touch/back.png"></div>
-<div class="face6"></div>
+<div class="box">
+  <div class="p1"><img src="https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/docs/Touch_Electra-Electra_Touch/front.png"></div>
+  <div class="p2"><img src="https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/docs/Touch_Electra-Electra_Touch/back.png"></div>
+  <div class="p3"></div>
+  <div class="p4"></div>
+  <div class="p5"></div>
+  <div class="p6"></div>
 </div>
-</div>
+<div class="sh"></div>
+
+  <script>
+  var centerX = window.innerWidth / 2;
+var centerY = window.innerHeight / 2;
+var layers = document.querySelectorAll('.box > div');
+
+function rotateTo(x, y){
   
+ layers[0].style.transform = `rotateX(${y + 0}deg)   rotateY(${x + 90}deg)  rotateZ(${0}deg)`;
+ layers[1].style.transform = `rotateX(${y + 0}deg)   rotateY(${x + 270}deg) rotateZ(${0}deg)`;
+ layers[2].style.transform = `rotateX(${y + 90}deg)  rotateY(${0}deg)       rotateZ(${-x}deg)`;
+ layers[3].style.transform = `rotateX(${y + -90}deg) rotateY(${0}deg)       rotateZ(${x}deg)`;
+ layers[4].style.transform = `rotateX(${y + 0}deg)   rotateY(${x + 0}deg)   rotateZ(${0}deg)`;
+ layers[5].style.transform = `rotateX(${y + 0}deg)   rotateY(${x + 180}deg) rotateZ(${0}deg)`;
   
+};
+
+document.body.addEventListener('mousemove', function(e){
+  var x = (centerX - e.clientX) / centerX * 360,
+      y = (centerY - e.clientY) / centerY * 360;
+  
+  rotateTo(x, y);
+  
+});
+
+// autoplay
+var apX = 0;
+var apY = 0;
+// comment below
+setInterval(() => rotateTo(apX += 1, apY +=1), 60);
+  </script>
   
   <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GCDQS3927F"></script>
