@@ -29,6 +29,9 @@ https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_Electra-Electra_T
 
  <img src="https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/docs/Touch_Electra-Electra_Touch/touch_electra.gif"><br>
 
+- https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_Electra-Electra_Touch/
+
+
 ------
 
 Login for LittleFSbrowser FileManager / Ace js Editor == admin / admin
