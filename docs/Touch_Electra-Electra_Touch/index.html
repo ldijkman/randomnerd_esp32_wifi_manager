@@ -307,11 +307,11 @@ Electra needs a Case ;-)<br>
   <!-- https://codepen.io/kaskyi/pen/XwepEJ -->
   <br>
   not perfect 3d cube PCB preview, but allmost<br>https://codepen.io/kaskyi/pen/XwepEJ<br>
-<div class="box">  
-  <div class="p1"></div>
-  <div class="p2"></div>
-  <div class="p3"><img src="https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/docs/Touch_Electra-Electra_Touch/front.png"></div>
-  <div class="p4"><img src="https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/docs/Touch_Electra-Electra_Touch/back_flipx.png"></div>
+<div class="box"> 
+  <div class="p1"><img src="https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/docs/Touch_Electra-Electra_Touch/front.png"></div>
+  <div class="p2"><img src="https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/docs/Touch_Electra-Electra_Touch/back_flipx.png"></div>
+  <div class="p3"></div>
+  <div class="p4"></div>
   <div class="p5"></div>
   <div class="p6"></div>
 </div>
@@ -332,8 +332,8 @@ function rotateTo(x, y){
   
 // layers[0].style.transform = `rotateX(${y + 0}deg)   rotateY(${x + 90}deg)  rotateZ(${0}deg)`;
 // layers[1].style.transform = `rotateX(${y + 0}deg)   rotateY(${x + 270}deg) rotateZ(${0}deg)`;
- layers[2].style.transform = `rotateX(${y + 90}deg)  rotateY(${0}deg)       rotateZ(${-x}deg)`;
- layers[3].style.transform = `rotateX(${y + -90}deg) rotateY(${0}deg)       rotateZ(${x}deg)`;
+ layers[0].style.transform = `rotateX(${y + 90}deg)  rotateY(${0}deg)       rotateZ(${-x}deg)`;
+ layers[1].style.transform = `rotateX(${y + -90}deg) rotateY(${0}deg)       rotateZ(${x}deg)`;
  //layers[4].style.transform = `rotateX(${y + 0}deg)   rotateY(${x + 0}deg)   rotateZ(${0}deg)`;
  //layers[5].style.transform = `rotateX(${y + 0}deg)   rotateY(${x + 180}deg) rotateZ(${0}deg)`;
   apX = x;
@@ -348,18 +348,12 @@ document.body.addEventListener('mousemove', function(e){
   
 });
     
-  // document.body.addEventListener('onTouchMove', function(e){
-  // var x = (centerX - touch.pageX) / centerX * 360,
-  //    y = (centerY - touch.pageY) / centerY * 360;  
-  // rotateTo(x, y);
-  // });
 
 // autoplay
-
-// comment below
 setInterval(() => rotateTo(apX += 1, apY +=1), 60);
-  </script>
-  <!-- https://codepen.io/kaskyi/pen/XwepEJ -->
+
+</script>
+<!-- https://codepen.io/kaskyi/pen/XwepEJ -->
   
   
   
