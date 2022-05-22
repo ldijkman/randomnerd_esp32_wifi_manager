@@ -35,7 +35,7 @@ body{
 }
 
 .box {
-  position:        absolute;
+  position:        relative;
   width:           800px;
   height:          500px;
   margin:          auto; 
@@ -49,6 +49,67 @@ body{
   left:        50;
   width:       $size;
   height:      800px;
+  font-size:   5rem;
+  font-weight: bold;
+  color:       rgba(#fff, .4);
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  opacity:         0.9;
+  transform-origin: 50% 50% $size / -2;
+}
+
+@for $i from 1 through 6 {
+  .p#{$i} {
+    background: nth($colors, $i);
+    box-shadow: inset 0 0 25px rgba(#fff, 0.2); 
+  }
+}
+
+div.sh{
+  background: radial-gradient(#000, rgba(#000,0));
+  position:   absolute;
+  top:        1.3 * $size;
+  left:       0;
+  right:      0;
+  margin:     $size auto;
+  width:      $size;
+  height:     $size;
+  filter:     blur(50px);
+  z-index:    -1;
+  transform:  rotateX(50deg) scaleY(0.7);
+}
+    
+    $size:   150px; 
+$colors: #73c25b #fdc333 #f99427 #e7524f #a856a9 #26aee3;
+
+html, body{
+  width:    100vw;
+  height:   100vh;
+  margin:   0;
+  overflow: hidden;
+}
+
+body{
+  font-family: 'Open Sans', sans-serif;
+  background:  radial-gradient(rgba(#000,.3), #fff);
+}
+
+.box {
+  position:        relative;
+  width:           $size;
+  height:          $size;
+  margin:          $size auto; 
+  transform-style: preserve-3d;
+  perspective:     600px;
+}
+
+.box > div {
+  position:    absolute;
+  top:         0;
+  left:        0;
+  width:       $size;
+  height:      $size;
   font-size:   5rem;
   font-weight: bold;
   color:       rgba(#fff, .4);
