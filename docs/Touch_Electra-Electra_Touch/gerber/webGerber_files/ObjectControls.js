@@ -8,7 +8,7 @@ THREE.ObjectControls = function ( object, domElement ) {
     THREE.EventTarget.call( this );
     
     var _this = this,
-    STATE = { NONE : -1, ROTATE : 0, ZOOM : 1, PAN : 2 };
+    STATE = { NONE : -1, ROTATE : 0, ZOOM : .5, PAN : 2 };
     
     this.object = object;
     this.domElement = ( domElement !== undefined ) ? domElement : document;
