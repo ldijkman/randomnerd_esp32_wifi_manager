@@ -12,4 +12,8 @@ python /home/pi/.arduino15/packages/esp32/tools/esptool_py/3.0.0/esptool.py --ch
 
 32768 0x8000 /tmp/arduino_build_972339/ESP_AsyncFSBrowser.ino.partitions.bin 
 
+and
+
+"ESP_AsyncFSBrowser.littlefs.bin", "offset": 2162688 
+
 
