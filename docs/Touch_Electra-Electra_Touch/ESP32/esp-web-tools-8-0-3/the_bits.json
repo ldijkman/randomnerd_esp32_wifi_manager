@@ -7,32 +7,32 @@
     {
       "chipFamily": "ESP32",
       "parts": [
-        { "path": "ESP_AsyncFSBrowser.ino.partitions.bin", "offset": 32768 },
-        { "path": "ESP_AsyncFSBrowser.ino.bin", "offset": 57344 },
+        { "path": "ESP_AsyncFSBrowser.ino.partitions.bin", "offset": 36864 },
+        { "path": "ESP_AsyncFSBrowser.ino.bin", "offset": 65536 },
         { "path": "ESP_AsyncFSBrowser.littlefs.bin", "offset": 2162688 }
       ]
     },
     {
       "chipFamily": "ESP32-C3",
       "parts": [
-        { "path": "ESP_AsyncFSBrowser.ino.partitions.bin", "offset": 32768 },
-        { "path": "ESP_AsyncFSBrowser.ino.bin", "offset": 57344 },
+        { "path": "ESP_AsyncFSBrowser.ino.partitions.bin", "offset": 36864 },
+        { "path": "ESP_AsyncFSBrowser.ino.bin", "offset": 65536 },
         { "path": "ESP_AsyncFSBrowser.littlefs.bin", "offset": 2162688 }
       ]
     },
     {
       "chipFamily": "ESP32-S2",
       "parts": [
-        { "path": "ESP_AsyncFSBrowser.ino.partitions.bin", "offset": 32768 },
-        { "path": "ESP_AsyncFSBrowser.ino.bin", "offset": 57344 },
+        { "path": "ESP_AsyncFSBrowser.ino.partitions.bin", "offset": 36864 },
+        { "path": "ESP_AsyncFSBrowser.ino.bin", "offset": 65536 },
         { "path": "ESP_AsyncFSBrowser.littlefs.bin", "offset": 2162688 }
       ]
     },
     {
       "chipFamily": "ESP32-S3",
       "parts": [
-        { "path": "ESP_AsyncFSBrowser.ino.partitions.bin", "offset": 32768 },
-        { "path": "ESP_AsyncFSBrowser.ino.bin", "offset": 57344 },
+        { "path": "ESP_AsyncFSBrowser.ino.partitions.bin", "offset": 36864 },
+        { "path": "ESP_AsyncFSBrowser.ino.bin", "offset": 65536 },
         { "path": "ESP_AsyncFSBrowser.littlefs.bin", "offset": 2162688 }
       ]
     },
