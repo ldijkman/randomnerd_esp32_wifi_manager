@@ -17,3 +17,18 @@ and
 "ESP_AsyncFSBrowser.littlefs.bin", "offset": 2162688 
 
 
+---
+
+# Name,   Type, SubType, Offset,  Size, Flags
+
+nvs,      data, nvs,     0x9000,  0x5000,
+
+otadata,  data, ota,     0xe000,  0x2000,
+
+app0,     app,  ota_0,   0x10000, 0x200000,
+
+spiffs,   data, spiffs,  0x210000,0x1F0000,
+
+0x210000 to decimal = 2162688
+
+
