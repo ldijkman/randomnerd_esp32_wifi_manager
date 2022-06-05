@@ -19,6 +19,8 @@ and
 
 ---
 
+arduino partitions.csv
+
 # Name,   Type, SubType, Offset,  Size, Flags
 
 nvs,      data, nvs,     0x9000,  0x5000,
