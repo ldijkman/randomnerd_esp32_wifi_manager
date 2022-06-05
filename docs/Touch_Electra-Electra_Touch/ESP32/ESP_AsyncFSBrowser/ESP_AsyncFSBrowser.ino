@@ -1,8 +1,21 @@
+// https://github.com/lorol/ESPAsyncWebServer/tree/master/examples/ESP_AsyncFSBrowser
+// https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/Touch_Electra-Electra_Touch/ESP32
+
 // Defaulut is SPIFFS, FatFS: only on ESP32, also choose partition scheme w/ ffat. 
 // Comment 2 lines below or uncomment only one of them
 
-//#define USE_LittleFS
+#define USE_LittleFS
 //#define USE_FatFS // Only ESP32
+
+const char* ssid = "Bangert_30_Andijk";     // wifi routername broadcasted in the air
+const char* password = "letmein";           // wifi router password
+const char* hostName = "ESP32";             // mdns http://ESP32.local i guess 
+const char* http_username = "";             // ace js web cloud editor
+const char* http_password = "";             // ace js web cloud editor 
+
+
+
+
 
 #include <ArduinoOTA.h>
 #ifdef ESP32
@@ -115,11 +128,7 @@ void onWsEvent(AsyncWebSocket * server, AsyncWebSocketClient * client, AwsEventT
   }
 }
 
-const char* ssid = "*****";
-const char* password = "*****";
-const char* hostName = "esp-async";
-const char* http_username = "admin";
-const char* http_password = "admin";
+
 
 void setup(){
   Serial.begin(115200);
@@ -255,3 +264,6 @@ void loop(){
   ArduinoOTA.handle();
   ws.cleanupClients();
 }
+ 
+ // https://github.com/lorol/ESPAsyncWebServer/tree/master/examples/ESP_AsyncFSBrowser
+ // https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/Touch_Electra-Electra_Touch/ESP32
