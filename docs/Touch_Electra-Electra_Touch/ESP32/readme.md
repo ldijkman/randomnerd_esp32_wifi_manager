@@ -51,3 +51,7 @@ https://github.com/lorol/arduino-esp32fs-plugin/releases
 
 ![2022-06-05-083928_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/172038748-e0b39463-2238-4356-97bf-cfb8a067591a.png)
 
+![wemos_d1_r32_image_pinout](https://user-images.githubusercontent.com/45427770/172039285-1ff5e996-c0a2-4f87-b378-bc5ca26d0923.jpeg)
+
+![wemos_d1_r32_foto_pinout](https://user-images.githubusercontent.com/45427770/172039287-6a9f8483-2961-46a2-8a0f-469783f7632f.jpeg)
+
