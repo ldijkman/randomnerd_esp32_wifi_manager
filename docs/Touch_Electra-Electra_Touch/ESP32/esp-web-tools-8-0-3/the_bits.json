@@ -9,7 +9,7 @@
       "parts": [
         { "path": "ESP_AsyncFSBrowser.ino.partitions.bin", "offset": 32768 },
         { "path": "ESP_AsyncFSBrowser.ino.bin", "offset": 57344 },
-        { "path": "ESP_AsyncFSBrowser.littlefs.bin", "offset": 65536 }
+        { "path": "ESP_AsyncFSBrowser.littlefs.bin", "offset": 2162688 }
       ]
     },
     {
@@ -17,7 +17,7 @@
       "parts": [
         { "path": "ESP_AsyncFSBrowser.ino.partitions.bin", "offset": 32768 },
         { "path": "ESP_AsyncFSBrowser.ino.bin", "offset": 57344 },
-        { "path": "ESP_AsyncFSBrowser.littlefs.bin", "offset": 65536 }
+        { "path": "ESP_AsyncFSBrowser.littlefs.bin", "offset": 2162688 }
       ]
     },
     {
@@ -25,7 +25,7 @@
       "parts": [
         { "path": "ESP_AsyncFSBrowser.ino.partitions.bin", "offset": 32768 },
         { "path": "ESP_AsyncFSBrowser.ino.bin", "offset": 57344 },
-        { "path": "ESP_AsyncFSBrowser.littlefs.bin", "offset": 65536 }
+        { "path": "ESP_AsyncFSBrowser.littlefs.bin", "offset": 2162688 }
       ]
     },
     {
@@ -33,7 +33,7 @@
       "parts": [
         { "path": "ESP_AsyncFSBrowser.ino.partitions.bin", "offset": 32768 },
         { "path": "ESP_AsyncFSBrowser.ino.bin", "offset": 57344 },
-        { "path": "ESP_AsyncFSBrowser.littlefs.bin", "offset": 65536 }
+        { "path": "ESP_AsyncFSBrowser.littlefs.bin", "offset": 2162688 }
       ]
     },
     {
