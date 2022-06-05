@@ -15,5 +15,10 @@ want to make Electra ESP32
 
 ![2022-06-05-075701_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/172038279-49262ca7-314a-43ca-91b6-f6eaf3d2329a.png)
 
+http://arduino.esp8266.com/stable/package_esp8266com_index.json
+https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
 
 ![2022-06-05-075517_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/172038280-d34c74d6-156e-474f-80c4-12032fddc132.png)
+
+http://arduino.esp8266.com/stable/package_esp8266com_index.json
+https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
