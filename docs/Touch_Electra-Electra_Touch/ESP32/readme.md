@@ -12,6 +12,14 @@ files / example from https://github.com/lorol/ESPAsyncWebServer/tree/master/exam
 
 want to make Electra ESP32
 
+---
+
+install from Browser on ESP32 test
+
+Burn the Bits https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_Electra-Electra_Touch/ESP32/esp-web-tools-8-0-3/Burn_the_Bits.html
+
+---
+
 strange there is no Littlefs is partitioning scheme 4mb spiffs 2mb/2mb https://www.mischianti.org/2021/04/01/esp32-integrated-littlefs-filesystem-5/
 
 ![2022-06-05-080220_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/172038278-f4af93f2-479a-4aef-9ad8-eb1ff79e8cc5.png)
