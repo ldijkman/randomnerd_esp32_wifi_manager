@@ -6,13 +6,18 @@
 // https://github.com/lorol/ESPAsyncWebServer/tree/master/examples/ESP_AsyncFSBrowser
 // https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/Touch_Electra-Electra_Touch/ESP32
 /*
-The latest 2.0.2 code has LittleFS capabilities, however, it is critical to spell correctly as shown, LittleFS. It is not LITTLEFS (all-caps). Replaced (already performed) all references from SPIFFS and SPIFFS.h to LittleFS and LittleFS.h.
+i use older version board manager esp32 and downloaded littlefs.h https://github.com/lorol/LITTLEFS
+The latest 2.0.2 code has LittleFS capabilities, 
+however, it is critical to spell correctly as shown, LittleFS. 
+It is not LITTLEFS (all-caps). Replaced (already performed) all references from SPIFFS and SPIFFS.h to LittleFS and LittleFS.h.
 A new tool is required: Arduino ESP32 filesystem uploader, 
 
 https://github.com/lorol/arduino-esp32fs-plugin
 
 download the latest, extract and replace esp32fs.jar in the Arduino/tools folder then restart the IDE.
-Once IDE is restarted, I found I needed to erase all Flash to get things to work. It is in the dropdown shown when ESP32 Sketch Data Upload is selected, it is at the very bottom. Perform this step then select ESP32 Sketch… and use the LittleFS selection to upload the data folder.
+Once IDE is restarted, I found I needed to erase all Flash to get things to work. 
+It is in the dropdown shown when ESP32 Sketch Data Upload is selected, it is at the very bottom. 
+Perform this step then select ESP32 Sketch… and use the LittleFS selection to upload the data folder.
 */
 // Default is SPIFFS, FatFS: only on ESP32, also choose partition scheme w/ ffat. 
 // Comment 2 lines below or uncomment only one of them
