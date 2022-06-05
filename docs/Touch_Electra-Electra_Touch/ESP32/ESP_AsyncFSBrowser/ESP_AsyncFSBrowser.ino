@@ -6,6 +6,8 @@ A new tool is required: Arduino ESP32 filesystem uploader,
 
 https://github.com/lorol/arduino-esp32fs-plugin
 
+this dscription helpd me https://www.mischianti.org/2021/04/01/esp32-integrated-littlefs-filesystem-5/
+
 download the latest, extract and replace esp32fs.jar in the Arduino/tools folder then restart the IDE.
 Once IDE is restarted, I found I needed to erase all Flash to get things to work. It is in the dropdown shown when ESP32 Sketch Data Upload is selected, it is at the very bottom. Perform this step then select ESP32 Sketch… and use the LittleFS selection to upload the data folder.
 */
