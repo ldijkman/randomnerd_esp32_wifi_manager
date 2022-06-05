@@ -1,4 +1,8 @@
 
+// some screenshots off my arduino ide settings and versions
+// https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/Touch_Electra-Electra_Touch/ESP32
+
+
 // https://github.com/lorol/ESPAsyncWebServer/tree/master/examples/ESP_AsyncFSBrowser
 // https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/Touch_Electra-Electra_Touch/ESP32
 /*
