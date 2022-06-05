@@ -9,3 +9,11 @@ and played again https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_
 files / example from https://github.com/lorol/ESPAsyncWebServer/tree/master/examples/ESP_AsyncFSBrowser
 
 want to make Electra ESP32
+
+![2022-06-05-080220_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/172038278-f4af93f2-479a-4aef-9ad8-eb1ff79e8cc5.png)
+
+
+![2022-06-05-075701_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/172038279-49262ca7-314a-43ca-91b6-f6eaf3d2329a.png)
+
+
+![2022-06-05-075517_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/172038280-d34c74d6-156e-474f-80c4-12032fddc132.png)
