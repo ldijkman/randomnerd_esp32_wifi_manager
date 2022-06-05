@@ -14,6 +14,7 @@ const char* http_username = "";             // ace js web cloud editor
 const char* http_password = "";             // ace js web cloud editor 
 
 // upload data folder/directory with arduino ide to esp32 littlefs esp32 4mb 2mb code 2mb littlefs
+// https://github.com/lorol/arduino-esp32littlefs-plugin
 
 
 
