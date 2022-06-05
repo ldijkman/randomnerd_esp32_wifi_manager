@@ -4,12 +4,12 @@ ok arduino ide compiler says
 
 python /home/pi/.arduino15/packages/esp32/tools/esptool_py/3.0.0/esptool.py --chip esp32 --port /dev/ttyUSB1 --baud 921600 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 80m --flash_size detect 
 
-0xe000 /home/pi/.arduino15/packages/esp32/hardware/esp32/1.0.6/tools/partitions/boot_app0.bin 
+57344 0xe000 /home/pi/.arduino15/packages/esp32/hardware/esp32/1.0.6/tools/partitions/boot_app0.bin 
 
-0x1000 /home/pi/.arduino15/packages/esp32/hardware/esp32/1.0.6/tools/sdk/bin/bootloader_qio_80m.bin 
+4096 0x1000 /home/pi/.arduino15/packages/esp32/hardware/esp32/1.0.6/tools/sdk/bin/bootloader_qio_80m.bin 
 
-0x10000 /tmp/arduino_build_972339/ESP_AsyncFSBrowser.ino.bin 
+65536 0x10000 /tmp/arduino_build_972339/ESP_AsyncFSBrowser.ino.bin 
 
-0x8000 /tmp/arduino_build_972339/ESP_AsyncFSBrowser.ino.partitions.bin 
+32768 0x8000 /tmp/arduino_build_972339/ESP_AsyncFSBrowser.ino.partitions.bin 
 
 
