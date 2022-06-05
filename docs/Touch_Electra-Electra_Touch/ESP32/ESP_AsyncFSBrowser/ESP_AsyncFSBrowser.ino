@@ -22,7 +22,7 @@ Once IDE is restarted, I found I needed to erase all Flash to get things to work
 
 const char* ssid = "Bangert_30_Andijk";     // wifi routername broadcasted in the air
 const char* password = "ookikwilerin";           // wifi router password
-const char* hostName = "ESP32";             // mdns http://ESP32.local i guess 
+const char* hostName = "ESP32";             // WiFi AP broadcasted in the air direct connection Browse to http://AP IP/edit for ace js web cloud editor 
 const char* http_username = "";             // ace js web cloud editor
 const char* http_password = "";             // ace js web cloud editor 
 
