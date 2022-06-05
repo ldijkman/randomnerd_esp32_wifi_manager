@@ -7,7 +7,7 @@
     {
       "chipFamily": "ESP32",
       "parts": [
-       { "path": "bootloader.bin", "offset": 4096 },
+       { "path": "bootloader_qio_80m.bin", "offset": 4096 },
         { "path": "ESP_AsyncFSBrowser.ino.partitions.bin", "offset": 36864 },
         { "path": "ESP_AsyncFSBrowser.ino.bin", "offset": 65536 },
         { "path": "ESP_AsyncFSBrowser.littlefs.bin", "offset": 2162688 }
@@ -16,7 +16,7 @@
     {
       "chipFamily": "ESP32-C3",
       "parts": [
-       { "path": "bootloader.bin", "offset": 4096 },
+       { "path": "bootloader_qio_80m.bin", "offset": 4096 },
         { "path": "ESP_AsyncFSBrowser.ino.partitions.bin", "offset": 36864 },
         { "path": "ESP_AsyncFSBrowser.ino.bin", "offset": 65536 },
         { "path": "ESP_AsyncFSBrowser.littlefs.bin", "offset": 2162688 }
@@ -25,7 +25,7 @@
     {
       "chipFamily": "ESP32-S2",
       "parts": [
-       { "path": "bootloader.bin", "offset": 4096 },
+       { "path": "bootloader_qio_80m.bin", "offset": 4096 },
         { "path": "ESP_AsyncFSBrowser.ino.partitions.bin", "offset": 36864 },
         { "path": "ESP_AsyncFSBrowser.ino.bin", "offset": 65536 },
         { "path": "ESP_AsyncFSBrowser.littlefs.bin", "offset": 2162688 }
@@ -34,7 +34,7 @@
     {
       "chipFamily": "ESP32-S3",
       "parts": [
-       { "path": "bootloader.bin", "offset": 4096 },
+       { "path": "bootloader_qio_80m.bin", "offset": 4096 },
         { "path": "ESP_AsyncFSBrowser.ino.partitions.bin", "offset": 36864 },
         { "path": "ESP_AsyncFSBrowser.ino.bin", "offset": 65536 },
         { "path": "ESP_AsyncFSBrowser.littlefs.bin", "offset": 2162688 }
