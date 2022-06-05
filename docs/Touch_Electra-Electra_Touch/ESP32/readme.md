@@ -37,11 +37,17 @@ https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32
 
 ESP32 Filesystem data directoy upload tool
 
+https://github.com/lorol/arduino-esp32fs-plugin/releases
+
 ![2022-06-05-083724_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/172038675-32ecb708-f934-4e8f-85b9-7aa7d2137964.png)
 
 ESP32 Filesystem data directoy upload tool
 
+https://github.com/lorol/arduino-esp32fs-plugin/releases
+
 ![2022-06-05-083506_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/172038595-24cf0c91-b25b-49ae-9269-7f7bdd2826d8.png)
+
+https://github.com/lorol/arduino-esp32fs-plugin/releases
 
 ![2022-06-05-083928_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/172038748-e0b39463-2238-4356-97bf-cfb8a067591a.png)
 
