@@ -24,8 +24,8 @@ const char* ssid = "Bangert_30_Andijk";     // wifi routername broadcasted in th
 const char* password = "ookikwilerin";      // wifi router password
 const char* hostName = "ESP32";             // WiFi AP broadcasted in the air direct connection Browse to http://AP IP/edit for ace js web cloud editor 
                                             // Human friendly mDNS adress http://ESP32.local   for cloudeditor  http://ESP32.local/edit
-const char* http_username = "";             // ace js web cloud editor
-const char* http_password = "";             // ace js web cloud editor 
+const char* http_username = "";             // empty/no password for ace js web cloud editor
+const char* http_password = "";             // empty/no password for ace js web cloud editor 
 
 // upload data folder/directory with arduino ide to esp32 littlefs esp32 4mb 2mb code 2mb littlefs
 // https://github.com/lorol/arduino-esp32littlefs-plugin
