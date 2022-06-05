@@ -21,8 +21,9 @@ Once IDE is restarted, I found I needed to erase all Flash to get things to work
 //#define USE_FatFS // Only ESP32
 
 const char* ssid = "Bangert_30_Andijk";     // wifi routername broadcasted in the air
-const char* password = "ookikwilerin";           // wifi router password
+const char* password = "ookikwilerin";      // wifi router password
 const char* hostName = "ESP32";             // WiFi AP broadcasted in the air direct connection Browse to http://AP IP/edit for ace js web cloud editor 
+                                            // Human friendly mDNS adress http://ESP32.local   for cloudeditor  http://ESP32.local/edit
 const char* http_username = "";             // ace js web cloud editor
 const char* http_password = "";             // ace js web cloud editor 
 
