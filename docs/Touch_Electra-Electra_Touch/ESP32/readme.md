@@ -65,3 +65,4 @@ https://github.com/lorol/arduino-esp32fs-plugin/releases
 
 ![wemos_d1_r32_foto_pinout](https://user-images.githubusercontent.com/45427770/172039287-6a9f8483-2961-46a2-8a0f-469783f7632f.jpeg)
 
+![wemos_D1_mini_ESP32_pinout](https://user-images.githubusercontent.com/45427770/172116307-fb077db4-e019-4f8c-8777-7a33fa718cb3.png)
