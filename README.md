@@ -12,6 +12,12 @@
 
 ------
 
+## new ESP32 version
+
+https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_Electra-Electra_Touch/ESP32/esp-web-tools-8-0-3/Burn_the_Bits.html
+
+---
+
 ## New, program ESP8266 InBrowser, NO tools needed
 -  tested on 4mbyte ESP8266 NodeMCU, WeMos D1 R2(uno sized board ESP12F), wemos d1 mini.
 -  https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/index.html
