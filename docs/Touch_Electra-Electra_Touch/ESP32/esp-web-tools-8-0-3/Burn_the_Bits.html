@@ -47,5 +47,62 @@ Code .BIN file last updated monday 7 june 2022 17:00<br>
    But who uses the second core?<br>
    a Gazillion UnUsed Cores?</h3>
    <a href="https://randomnerdtutorials.com/esp32-dual-core-arduino-ide/" target="the_nerd">https://randomnerdtutorials.com/esp32-dual-core-arduino-ide/</a><br>                  
-  </body>
+ 
+       <script>
+function includeHTML() {
+  var z, i, elmnt, file, xhttp;
+  /*loop through a collection of all HTML elements:*/
+  z = document.getElementsByTagName("*");
+  for (i = 0; i < z.length; i++) {
+    elmnt = z[i];
+    /*search for elements with a certain atrribute:*/
+    file = elmnt.getAttribute("w3-include-html");
+    if (file) {
+      /*make an HTTP request using the attribute value as the file name:*/
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+          /*remove the attribute, and call this function once more:*/
+          elmnt.removeAttribute("w3-include-html");
+          includeHTML();
+        }
+      }      
+      xhttp.open("GET", file, true);
+      xhttp.send();
+      /*exit the function:*/
+      return;
+    }
+  }
+};
+</script>
+
+<center>
+<button style="font-size : 50px; width: 80%; height: 70px;" onclick="PatatmetFrikandel()">Show Floating Menu Again</button>
+</center>
+<div id="snackbar"><button style="font-size : 50px; width: 300px; height: 70px;"  onclick="PatatmetFrikandel()">[X] Close</button>
+<div w3-include-html="chickenmenu.html"></div> 
+</div>
+
+<script>
+  var x = document.getElementById("snackbar");
+  x.className = "show";
+function PatatmetFrikandel() {
+  var x = document.getElementById("snackbar");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+<script>
+includeHTML();
+</script>
+<div style="position: fixed;top: 5;right: 15;width: 55px;border: 0px;">
+<button style="font-size : 45px; width: 60px; height: 60px;" onclick="PatatmetFrikandel()">&#8801;<!-&#9776;-></button>
+</div>
+       </body>
   </html>
