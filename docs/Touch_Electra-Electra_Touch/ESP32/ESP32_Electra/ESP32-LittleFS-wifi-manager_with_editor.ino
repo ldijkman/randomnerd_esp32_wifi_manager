@@ -1,6 +1,6 @@
 
 esp32 
-maybe a bitch to get it compiled
+Electra maybe a bitch to get it compiled
 used esp board manager setting < 2
 modifeid tjpeg decoder h in arduino libraries so that littlefs for esp32 works example tab file
 tft espi arduino libs user setup h used as example tab file
