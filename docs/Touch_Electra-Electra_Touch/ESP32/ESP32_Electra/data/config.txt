@@ -1,0 +1,43 @@
+-your-openweathermap-api-key-here-
+52.735434
+5.179017
+
+
+
+
+
+Trying to get this working with Electra Touch
+https://github.com/ldijkman/OpenWeather
+https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-TFT_eSPI
+
+
+Fist 3 lines are read by the program for openweathermap configuration
+you can edit this file with ace js cloudeditor
+http:// mdnsname or ip /edit
+ace js editor login admin / admin, maybe there is no login anymore, i removed it
+
+
+line 1 apikey
+    https://openweathermap.org/home/sign_up
+        Sign up for a key and read API configuration info here:
+         https://openweathermap.org/home/sign_up
+         change line1 to your API key
+         Enable the API key?
+
+
+     Set the forecast longitude and latitude to at least 4 decimal places
+line 2 latitude 52.735434  // 90.0000 to -90.0000 negative for Southern hemisphere
+line 3 longitude 5.179017  // 180.000 to -180.000 negative for West
+
+
+https://www.latlong.net
+Latitude and Longitude Finder on Map Get Coordinates
+Latlong.net is an online geographic tool that can be used to lookup latitude and longitude of a place,
+https://www.latlong.net/
+
+google to find a lat,long location ( my location ;-)
+https://www.google.com/search?q=52.735434,5.179017
+https://www.latlong.net/c/?lat=52.735424&long=5.179010
+
+
+

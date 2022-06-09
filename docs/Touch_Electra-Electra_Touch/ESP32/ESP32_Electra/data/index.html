@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>%MDNSNAME%.local Hey Electra, ESP WEB SERVER </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" sizes="192x192" href="Electra_192x192.png">
+    <script src="index.js"></script>
+    <!-- Copyright 2021...2022 Dirk Luberth Dijkman -->
+<style>
+@charset "UTF-8";
+
+/**
+ * ----------------------------------------------------------------------------
+ * there may be a bit left off ESP32 Remote Control with WebSocket © 2020 Stéphane Calderoni
+ * ----------------------------------------------------------------------------
+ */
+  
+ <!-- /* better not use percent character in HTML, it will break the onupload percenttags, or use them in pairs of 2  */ --> 
+  
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: Roboto, sans-serif;
+  font-size: 12pt;
+  overflow: hidden;
+  background-color: black;
+  -webkit-text-fill-color: darkgray;
+}
+
+#element {
+    caret-color: rgba(0,0,0,0); // turn blinking cursor off on imagebutton
+}
+
+body {
+  display: grid;
+  grid-template-rows: 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+.panel {
+  display: grid;
+  grid-gap: 3em;
+  justify-items: center;
+}
+
+h1 {
+  font-size: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#led {
+  position: relative;
+  width: 5em;
+  height: 5em;
+  border: 2px solid #000;
+  border-radius: 2.5em;
+  background-image: radial-gradient(farthest-corner at 50% 20%, #b30000 0%, #330000 100%);
+  box-shadow: 0 0.5em 1em rgba(102, 0, 0, 0.3);
+}
+#led.on {
+  background-image: radial-gradient(farthest-corner at 50% 75%, red 0%, #990000 100%);
+  box-shadow: 0 1em 1.5em rgba(255, 0, 0, 0.5);
+}
+#led:after {
+  content: '';
+  position: absolute;
+  top: .3em;
+  left: 1em;
+  width: 60%;
+  height: 40%;
+  border-radius: 60%;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+}
+
+button {
+  padding: .5em .75em;
+  font-size: 1.2rem;
+  color: #fff;
+  text-shadow: 0 -1px 1px #000;
+  border: 1px solid #000;
+  border-radius: .5em;
+  background-image: linear-gradient(#2e3538, #73848c);
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.5), 0 0.2em 0.4em rgba(0, 0, 0, 0.4);
+  outline: none;
+}
+button:active {
+  transform: translateY(2px);
+}
+  
+/* card backcolor change here */
+.card { 
+  background-color: gold;                           /* ukrainian flag color card backcolor change here */
+  box-shadow: 2px 2px 12px 1px rgba(140,140,140,.5);
+}
+  
+/* input picker */
+.atp .mdl-color--primary { background-color: orange; } .atp .mdl-button--primary { color: purple; }
+
+</style>
+   
+  </head>
+  
+  <!-- /* better not use percent character in HTML, it will break the onupload percenttags, or use them in pairs of 2  */ --> 
+
+  <body bgcolor="royalblue">                  <!-- /* ukrainian flag color HTMML Page background bgcolor change here */ -->    
+    <div class="topnav">
+      <h1>http://%MDNSNAME%.local</h1>  <!-- /* between the percent is a variable processed / filled in on upload */ -->  
+    </div>
+    <div class="content">
+      <div class="card-grid">
+        <div class="card">
+          <p class="card-title">
+             <h2>%MDNSNAME%</h2>
+          NTP Time<div id="NTPTime"></div>
+          Browser <div id="date_time"></div>
+          </p>
+<script>
+<!-- maybe only get time from ESP8266 https://jsfiddle.net/yeyene/snqpkuhr/ -->
+
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    var ap = 'AM';
+    var dd = today.getDate();
+    var ddd = today.getDay();
+    var day = new Array("Sun","Mon", "Tue", "Wed", "Thu", "Fri", "Sat");
+    var mm = today.getMonth();
+    var mth = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+    var yy = today.getFullYear();
+    if (h >= 12) {
+        //h = h - 12;
+        //ap = 'PM';
+    }
+    m = checkTime(m);
+    s = checkTime(s);
+    
+    document.getElementById("date_time").innerHTML=(h + ":" + m + ":" + s + " - "+day[ddd]+" "+dd+" "+mth[mm]+" "+yy+" ");
+    
+    var t = setTimeout(function () {
+        startTime()
+    }, 500);
+}
+
+function checkTime(i) {
+    if (i < 10) {
+        i = "0" + i
+    }; // add zero in front of numbers < 10
+    return i;
+}
+
+
+ startTime();
+
+
+<!-- https://jsfiddle.net/yeyene/snqpkuhr/ -->
+</script>
+<br>
+<p>
+<button id="toggle"><img src="%STATE%.gif" id="image" width="65" height="98"></button>
+</p>
+<div id="ledstate">%STATE%</div>
+<br><br>
+      <p>LAN mDNS Scan</p>
+      <div id="mdnsscan"> %MDNSSCAN%<br></div><br>
+      OFFcountdown<div id="OFFcountdwn">%OFFCOUNTDOWN%</div>  <!-- /* div will be filled percent upload and json websocket */ --> 
+       <div id="jabadabba"></div>                             <!-- /* div will be filled by next javascript */ -->  
+<script>
+// div countdown seconds to h:mm:ss for jabadabba div
+function mylFunction() {
+const container = document.getElementById('OFFcountdwn');
+var hours=parseInt(container.textContent/3600);
+var minutes=parseInt(container.textContent/60)-(hours*60);
+var seconds=parseInt(container.textContent)-((minutes*60)+(hours*3600));
+var mm="";
+var ms="";
+if (minutes<=9)mm="0";
+if (seconds<=9)ms="0";
+document.getElementById("jabadabba").innerHTML=hours+":"+mm+minutes+":"+ms+seconds;
+console.log(hours+":"+mm+minutes+":"+ms+seconds);
+//console.log(container.innerText);
+}
+
+setInterval(mylFunction, 1000);
+
+</script>
+        
+        
+      OFF Delay<div id="OFFDelay">%OFFDELAY%</div>  
+<input type="number" id="offdelay"  value="%OFFDELAY%" min="10" size="8" style="width: 100px; padding: 10px; border: 1px solid black"><br>
+     <button id="offdelaybutton">Send json offdelay</button><br>
+     <br>
+           
+              <div style="padding: 20px">
+                touch text field to open input picker test<br>
+                 <input type="text" id="inpt" style="text-align: right; padding: 8px; font-size: px; margin-bottom: 20px;" value="00:00" />
+                 <div id="test1"></div>
+              </div> 
+           
+          
+        </div>
+      </div>
+<br><br>
+      <br> <input type="checkbox" id="managecheck" onclick='document.getElementById("manage").disabled=!document.getElementById("managecheck").checked;' onUnSelect='document.getElementById("resettoap").disabled=!document.getElementById("check").checked;'>Enable
+      <input type="button" id="manage" onclick="window.location.href='wifimanager.html';" value="WiFiManager" width="200px" disabled><br>
+      <br>
+      <input type="button" onclick="window.location.href='schedule.html';" value="Schedule Electra, Electra Schedule timed switching" width="200px"><br>
+      <br>
+<!--
+      <form action="/timer" method="POST">
+        <label for="timer">OFF Delay %OFFDELAY% Seconds</label>
+        <input type="number" id="offtimer" name="off" value="%OFFDELAY%" min="10" size="6">
+        
+<input type="submit" value="Set"><br>
+  POST is /timer?off=%OFFDELAY%<br>
+      </form>
+-->
+
+    </div>
+
+    Edit the Files on this ESP8266 LittleFS<br>
+   
+    <input type="button" id="Electra CopyRight_2021_2022_Luberth_Dijkman" onclick='window.open("/edit");' value="Edit Electras Skin"><br>
+  Edit config.txt openweathermap api key and location for your tft screen weather data<br>
+  <br>
+  <br>
+  <input type="button" id="Electra Skins" onclick='window.open("https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/Skins");' value="Skins for Electra, Download and Share your Skin"><br>
+    <br>
+    <br>
+    <a href="/status">/status gives text 0 or 1 status for external programs</a><br>
+    <a href="/on">/on for external programs</a><br>
+    <a href="/off">/off for external programs</a><br>
+    <a href="/timer=3600">/timer=3600 turn off after 3600 seconds </a><br>
+    <br>
+    <br>
+    <input type="checkbox" id="calibratecheck" onclick='document.getElementById("calibrate").disabled=!document.getElementById("calibratecheck").checked;' onUnSelect='document.getElementById("calibrate").disabled=!document.getElementById("check").checked;'>Enable
+      <input type="button" id="calibrate" onclick="window.location.href='/calibrate';" value="Start Calibrate Touch Screen" width="200px" disabled><br>
+    <br>
+    <br>
+    <input type="button" onclick="window.location.href='/list';" value="List Files" width="200px">
+    <br>
+    <br>
+    <input type="button" onclick="window.location.href='/reboot';" value="Reboot Restart Electra" width="200px">
+    <br>
+    <br>
+    Delete ssid.txt and pass.txt <br>
+    Restart to AP AccessPoint to reconfigure WiFi<br>
+    <input type="checkbox" id="check" onclick='document.getElementById("resettoap").disabled=!document.getElementById("check").checked;' onUnSelect='document.getElementById("resettoap").disabled=!document.getElementById("check").checked;'>Enable <input type="button" id="resettoap" onclick="window.location.href='/resetwifitoap';" value="/resetwifitoap" width="200px" disabled=true>
+    <br><br>
+    <hr>
+
+    <h3>
+      i2c BME280 Sensor D1 D2 or D5 D6<br>
+      <hr>
+    <hr>
+      Temperature <div id="T"></div>
+      Humidity <div id="H"></div>
+      Pressure <div id="P"></div>
+      <hr>
+      <hr>
+    </h3>
+
+<br>upload with <a href="/edit" target="edit">Filemanager</a><br>
+<a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/Binary_4_ESP8266_4MB/ESP8266-LittleFS-wifi-manager_with_editor.ino.bin?raw=true" target="BIN">ESP8266-LittleFS-wifi-manager_with_editor.ino.bin</a><br>
+    then<br>
+    <button onclick="window.location.href='/update';">UpDate ino Code</button><br>
+
+   
+      <br>
+      <br>
+      %NETWORKINFO%<br>
+      <br>
+      <br>
+      <a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager" target="bonjour">GitHub, Hey Electra<br>
+      <img src="/electra_ohm_law.jpg"><br>GitHub, Hey Electra
+      </a><br>
+      <br>
+      <br>
+      <a href="Http://paypal.me/LDijkman" target="bonjour">A penny for sharing my thoughts</a><br><br>
+      Electra, A &copy;&Ograve;&Oacute;&THORN;&egrave;&reg; Test.<br>
+      <input type="button" id="CopyRight_2021_2022_Luberth_Dijkman" onclick='window.open("https://m.facebook.com/luberth.dijkman");';><br><br>
+      Soon Electra will Power a Gazillion Devices<br>
+      <br>
+      Hey Google, Who is the Smartest of them All?!<br>
+  <br>
+  <a href="https://www.youtube.com/user/LuberthDijkman/videos" target="mytube">youtube.com LuberthDijkman/videos</a><br>
+  <br>
+
+
+      <script>
+        const d = new Date();
+        let year = d.getFullYear();
+        document.getElementById("CopyRight_2021_2022_Luberth_Dijkman").value = "Copyright 2021..." + year + " Dirk Luberth Dijkman";
+
+      </script>
+      <!-- Copyright 2021...2022 Dirk Luberth Dijkman -->
+
+<!-- ;-) Do people actually shit their pants when they are scared?  ;-) -->
+<iframe src="https://www.trekcore.com/audio/computer/voice/pleasespecifyhowyouwouldliketoproceed_ep.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
+<audio id="player" autoplay>
+    <source src="pleasespecifyhowyouwouldliketoproceed_ep.mp3
+" type="audio/mp3">
+</audio>
+<!-- ;-) Do people actually shit their pants when they are scared?  ;-) -->
+                  
+
+<script src="analogue-time-picker.js"></script>
+     <script>
+        (function (test1) {
+
+            timePickerInput({
+                inputElement: document.getElementById("inpt"),
+                mode: 24,
+                time: {hour: 00, minute: 15},
+                width: "400px"
+            });
+
+            var i = 0;
+            x.onTimeChanged((h, m) => document.getElementById("time").innerHTML = `${++i}: ${`0${h}`.slice(-2)}:${`0${m}`.slice(-2)}`);
+
+          
+        }(document.getElementById("test1")));
+    </script>
+      
+  </body>
+
+</html>
+
+
+
+
