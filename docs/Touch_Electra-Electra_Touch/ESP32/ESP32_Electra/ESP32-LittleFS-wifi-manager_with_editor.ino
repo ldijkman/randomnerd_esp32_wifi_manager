@@ -12,6 +12,8 @@ https://ldijkman.github.io/Electra/
  it is a mesh
 
  help me make it better / clean it up?
+ at the moment i am directeur hoofd programming, hardware design, website designer ugh, publisher, video editor, photoshopper, head promotion / advertising, catering 
+ etcetera etcetera
 
 
 // openweathermap copy paste mesh
