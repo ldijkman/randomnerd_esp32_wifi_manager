@@ -19,6 +19,9 @@ Maybe better name button.html
 Food for script people?
 
 not optimal but this works switch the esp32.local bulb from another switch web page in my case http://garden.local
+
+SO HANDY, the ACE js web cloud editor, for editing the html webserver HTML files on the ESP devices
+
 ```
 <iframe id="inlineFrameExample"
     title="Inline Frame Example"
