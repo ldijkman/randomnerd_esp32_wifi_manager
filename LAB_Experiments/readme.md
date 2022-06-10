@@ -18,6 +18,17 @@ Maybe better name button.html
 
 Food for script people?
 
+not optimal but this works switch the bulb rom another switch web page
+```
+<iframe id="inlineFrameExample"
+    title="Inline Frame Example"
+    width="120"
+    height="150"
+    src="http://esp32.local/button.html">
+</iframe>
+
+```
+
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/LAB_Experiments/ezgif-5-3d39d5ded4.gif">
 
 
