@@ -16,6 +16,8 @@ mini.html code should do processing replace %variable% on upload %MDNSNANE% %STA
 
 Maybe better name button.html
 
+Food for script people?
+
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/LAB_Experiments/ezgif-5-3d39d5ded4.gif">
 
 
