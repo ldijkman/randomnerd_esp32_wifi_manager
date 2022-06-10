@@ -1,6 +1,6 @@
 Imagene imageButton
 
-upload mini.html to littlefs with ac js web cloud editor
+upload mini.html to ESPx littlefs with ace js web cloud editor
 
 or create new file and copy paste
 
