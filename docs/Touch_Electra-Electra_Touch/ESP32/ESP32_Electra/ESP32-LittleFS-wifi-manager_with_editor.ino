@@ -1,4 +1,4 @@
-
+/*
 esp32 
 Electra maybe a bitch to get it compiled
 used esp board manager setting < 2
@@ -14,7 +14,7 @@ https://ldijkman.github.io/Electra/
  help me make it better / clean it up?
  at the moment i am directeur hoofd programming, hardware design, website designer ugh, publisher, video editor, photoshopper, head promotion / advertising, catering 
  research, development, test and debug, etcetera etcetera
-
+*/
 
 // openweathermap copy paste mesh
 // playing with a 4inch ST7796_DRIVER 320x480 screen == sorry i go for 480x320
@@ -43,14 +43,10 @@ https://ldijkman.github.io/Electra/
 /*
   ##################################################################################################
   ###### DON'T FORGET TO UPDATE THE User_Setup.h FILE IN THE Arduino TFT_eSPI LIBRARY directory ######
-
   raspberry pi /home/pi/Arduino/libraries/TFT_eSPI/User_Setup.h
   windows your arduino location
-
   my settings https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/ESP8266-TFT_eSPI/user_setup.h
-
   https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/ESP8266-TFT_eSPI
-
   ##################################################################################################
 */
 // Got it working???
@@ -840,6 +836,12 @@ void setup()
       notify = 1;
     });
 
+        // Route for button.html web page
+    server.on("/button.html", HTTP_GET, [](AsyncWebServerRequest * request) {
+      request->send(MYFS, "/button.html", "text/html", false, processor);
+      notify = 1;
+    });
+
     //server.serveStatic("/", LittleFS, "/");
     server.serveStatic("/", MYFS, "/").setDefaultFile("/index.htm");
 
@@ -1227,31 +1229,23 @@ void loop() {
   // https://randomnerdtutorials.com/esp8266-nodemcu-date-time-ntp-client-server-arduino/
 
   /*
-
-
       //Serial.print("Temperature = ");
       //Serial.print(bme.readTemperature());
       // Serial.println(" *C");
-
       // Serial.print("Pressure = ");
-
       // Serial.print(bme.readPressure() / 100.0F);
       //  Serial.println(" hPa");
-
       // Serial.print("Approx. Altitude = ");
       // Serial.print(bme.readAltitude(SEALEVELPRESSURE_HPA));
       // Serial.println(" m");
-
       // Serial.print("Humidity = ");
       // Serial.print(bme.readHumidity());
       // Serial.println(" %");
-
       // tft.fillRoundRect(135, 110, 50, 10, 0, BLACK);  // erase old text
       tft.setCursor(350, 205);
       if (OFFcountdown < 100)tftprintspace();  // keep print to the right side
       if (OFFcountdown < 10)tftprintspace();  // keep print to the right side
       tft.println(OFFcountdown);
-
       //openweather
       // Check if we should update weather information
       if (booted)
@@ -1259,35 +1253,24 @@ void loop() {
        // updateData();
        TJpgDec.drawFsJpg(325, 70, "/OFF.jpg", MYFS);
       }
-
       if (millis() - lastDownloadUpdate > 1000UL * UPDATE_INTERVAL_SECS)
       {
        // updateData();
         lastDownloadUpdate = millis();
       }
-
       // If minute has changed then request new time from NTP server
       if (booted || timeClient.getMinutes() != lastMinute)
       {
         // Update displayed time first as we may have to wait for a response
         drawTime();
         lastMinute = timeClient.getMinutes();
-
         // Request and synchronise the local clock
         //syncTime();
         booted = false;
-
-
       }
       //openweather
     }
-
-
-
-
-
     if (tft.getTouch(&x, &y)) {           //  gets x, y and only print to serial monitor i there is a touch
-
       //Serial.print(x);                    //  print touch xy position to serial monitor for debug
       //Serial.print(",");
       //Serial.println(y);
@@ -1296,8 +1279,6 @@ void loop() {
       tft.print("X="); tft.print(x); tftprintspace();
       tft.setCursor(340, 305);
       tft.print("Y="); tft.print(y); tftprintspace();
-
-
       // i have 320x240 and 480x320 screens, would like to have a gui that scales itself
       // me no programmer, just puzzleing
       tft.setCursor(260 , 285);
@@ -1306,7 +1287,6 @@ void loop() {
       tft.print("Y/SH "); tft.print(float(y) / tft.height()); tftprintspace(); // maybe a position for scaling small bigger screen
       //tft.drawPixel(x, y, TFT_GREEN);         // draw touch position pixel
     }
-
     // think this does not make it any easier ;-) but draw and touch can use same parameters
     // well i am no programmer, just playing
     // struct button {
@@ -1318,20 +1298,15 @@ void loop() {
     //   int ox;
     //   int oy;
     // };  // mixed types array
-
     button but1 = {200, 100, 60, 30, "BUTTON", 7, 7};          // topleft x, y, width, height(down from y), buttontext textoffset x, y
     //button same on different screen sizes test
     int sw = tft.width();
     int sh = tft.height();
-
     button but2 = {200, 100, 60, 30, "BUTTON", 7, 7};//{0.65 * sw, 0.18 * sh, 0.8 * sw - 0.65 * sw, 0.47 * sh - 0.18 * sh, "", 20, 20};       // topleft x, y, width, height(down from y), buttontext textoffset x, y
-
     button but3 = {200, 100, 60, 30, "BUTTON", 7, 7};//{0.65 * sw, 0.5 * sh, 0.85 * sw - 0.65 * sw, 0.75 * sh - 0.5 * sh, "scaled", 20, 20};
-
     // drawButton(but1.x, but1.y, but1.w, but1.h, but1.t, but1.ox, but1.oy);
     drawButton(but2.x, but2.y, but2.w, but2.h, but2.t, but2.ox, but2.oy);
     drawButton(but3.x, but3.y, but3.w, but3.h, but3.t, but3.ox, but3.oy);
-
     if (TouchButton(but1.x, but1.y, but1.w, but1.h)) {
       if (ledState == "OFF") {
         Relays_ON();
@@ -1344,7 +1319,6 @@ void loop() {
         return;
       }
     }
-
     if (TouchButton(but2.x, but2.y, but2.w, but2.h)) {
       if (ledState == "OFF") {
         Relays_ON();
@@ -1357,7 +1331,6 @@ void loop() {
         return;
       }
     }
-
     if (TouchButton(but3.x, but3.y, but3.w, but3.h)) {
       if (ledState == "OFF") {
         Relays_ON();
@@ -1370,8 +1343,6 @@ void loop() {
         return;
       }
     }
-
-
   */
 
   lampontime = offdelay.toInt() * 1000;
@@ -1699,7 +1670,6 @@ void browseService(const char * service, const char * proto) {
     Serial.print(F("WiFi.status == "));
     Serial.print(WiFi.status());
     Serial.print(": ");
-
     switch (WiFi.status()) {
       case 0:
         Serial.println(F("WL_IDLE_STATUS"));
@@ -2491,16 +2461,11 @@ String strTime(time_t unixTime)
   //Get a time structure
   unsigned long epochTime = timeClient.getEpochTime();
     struct tm *ptm = gmtime ((time_t *)&epochTime);
-
-
-
   String localDate = "";
-
    localDate += ptm->tm_mon + 1;
    localDate += " ";
    localDate += ptm->tm_mday;
    localDate += " " + strTime(unixTime);
-
   return localDate;
   }
 */
@@ -2595,7 +2560,6 @@ String strDate(time_t unixTime)
   } else if (type == WS_EVT_PONG) {
     Serial.printf("ws[%s][%u] pong[%u]: %s\n", server->url(), client->id(), len, (len) ? (char*)data : "");
   } else if (type == WS_EVT_DATA) {
-
     AwsFrameInfo * info = (AwsFrameInfo*)arg;
     /////////////////////////////////////////////////////////////////////////////////////////////////
     //handleWebSocketMessage(arg, data, len); //////////////////////// it is i, luberth old line insert
@@ -2604,7 +2568,6 @@ String strDate(time_t unixTime)
     if (info->final && info->index == 0 && info->len == len) {
       //the whole message is in a single frame and we got all of it's data
       Serial.printf("ws[%s][%u] %s-message[%llu]: ", server->url(), client->id(), (info->opcode == WS_TEXT) ? "text" : "binary", info->len);
-
       if (info->opcode == WS_TEXT) {
         for (size_t i = 0; i < info->len; i++) {
           msg += (char) data[i];
@@ -2619,8 +2582,6 @@ String strDate(time_t unixTime)
       }
       Serial.printf("%s\n", msg.c_str());
       Serial.print(msg);
-
-
       if (info->opcode == WS_TEXT)
         client->text("I got your text message");
       else
@@ -2632,9 +2593,7 @@ String strDate(time_t unixTime)
           Serial.printf("ws[%s][%u] %s-message start\n", server->url(), client->id(), (info->message_opcode == WS_TEXT) ? "text" : "binary");
         Serial.printf("ws[%s][%u] frame[%u] start[%llu]\n", server->url(), client->id(), info->num, info->len);
       }
-
       Serial.printf("ws[%s][%u] frame[%u] %s[%llu - %llu]: ", server->url(), client->id(), info->num, (info->message_opcode == WS_TEXT) ? "text" : "binary", info->index, info->index + len);
-
       if (info->opcode == WS_TEXT) {
         for (size_t i = 0; i < len; i++) {
           msg += (char) data[i];
@@ -2647,7 +2606,6 @@ String strDate(time_t unixTime)
         }
       }
       Serial.printf("%s\n", msg.c_str());
-
       if ((info->index + len) == info->len) {
         Serial.printf("ws[%s][%u] frame[%u] end[%llu]\n", server->url(), client->id(), info->num, info->len);
         if (info->final) {
@@ -2659,14 +2617,12 @@ String strDate(time_t unixTime)
         }
       }
     }
-
     /////////////////////////////////////////////////////////////////////////////////////////////////
     //handleWebSocketMessage(arg, data, len); //////////////////////// it is i, luberth old line insert
     ///////////////////////////////////////////////////////////////////////////////
   }
   }
   ////////////////////////////////////////////////////
-
 */
 
 // Got it working???
