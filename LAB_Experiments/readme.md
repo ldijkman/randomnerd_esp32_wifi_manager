@@ -4,6 +4,8 @@ or create new file and copy paste
 
 brainstorm about it iframed or javascript external html load display
 
+like chicken menu is external html load display html file https://ldijkman.github.io/Electra/
+
 maybe show the imagebutton on lan mdnsscan links to other devices in the network
 
 mini.html code should do processing replace %variable% on upload %MDNSNANE% %STATE%
