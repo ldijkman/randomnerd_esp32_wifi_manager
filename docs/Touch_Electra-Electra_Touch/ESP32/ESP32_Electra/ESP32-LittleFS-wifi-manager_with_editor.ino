@@ -13,7 +13,7 @@ https://ldijkman.github.io/Electra/
 
  help me make it better / clean it up?
  at the moment i am directeur hoofd programming, hardware design, website designer ugh, publisher, video editor, photoshopper, head promotion / advertising, catering 
- etcetera etcetera
+ research, development, test and debug, etcetera etcetera
 
 
 // openweathermap copy paste mesh
