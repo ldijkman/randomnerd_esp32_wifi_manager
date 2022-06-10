@@ -18,7 +18,7 @@ Maybe better name button.html
 
 Food for script people?
 
-not optimal but this works switch the bulb rom another switch web page
+not optimal but this works switch the bulb from another switch web page
 ```
 <iframe id="inlineFrameExample"
     title="Inline Frame Example"
@@ -26,6 +26,8 @@ not optimal but this works switch the bulb rom another switch web page
     height="150"
     src="http://esp32.local/button.html">
 </iframe>
+
+could place a bulb on each discovered mdn url / each switch device
 
 ```
 
