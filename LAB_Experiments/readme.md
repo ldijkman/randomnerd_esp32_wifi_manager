@@ -1,4 +1,4 @@
-Imagene imageButton => button.html
+Imagene imageButton => http:// mdns_name or IP /button.html
 
 https://youtube.com/shorts/WvGHbuReKzs?feature=share
 
