@@ -2,7 +2,7 @@ Imagene imageButton => http:// mdns_name or IP /button.html     (processor %???%
 
 https://youtube.com/shorts/WvGHbuReKzs?feature=share
 
-upload mini.html to ESPx littlefs with ace js web cloud editor
+upload button.html to ESPx littlefs with ace js web cloud editor (now included in esp32 version)
 
 or create new file and copy paste
 
