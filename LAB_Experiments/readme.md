@@ -32,6 +32,19 @@ SO HANDY, the ACE js web cloud editor, for editing the html webserver HTML files
 
 could place a bulb on each auto scanned discovered mdns url / each switch device in local neetwork
 
+Maybe place the text div over the image
+
+
+Here is an inline version of the same answer that I was working on.
+
+<div class="parent" style="position: relative;">
+  <img src="http://placekitten.com/700/500?image=13">
+  <div style="position: absolute; top: 250px; left: 170px;color: red;font-size: 100px;">My Div</div>
+</div>
+
+
+
+
 ```
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/LAB_Experiments/ezgif-5-3d39d5ded4.gif">
