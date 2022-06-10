@@ -27,7 +27,7 @@ not optimal but this works switch the bulb from another switch web page
     src="http://esp32.local/button.html">
 </iframe>
 
-could place a bulb on each discovered mdn url / each switch device
+could place a bulb on each auto scanned discovered mdns url / each switch device in local neetwork
 
 ```
 
