@@ -8,11 +8,19 @@
     <script src="index.js"></script>
     <!-- Copyright 2021...2022 Dirk Luberth Dijkman -->
   </head>
-<body bgcolor="">     
-<button id="toggle"><img src="%STATE%.gif" id="image" width="65" height="98"></button>
-<div id="ledstate">%STATE%</div>
-maybbe possible to load in other webpages<br>
-like chicken menu on github website<br>
-overview pages and control
+<body bgcolor="">
+
+<div class="parent" style="position: relative;">     
+    <button id="toggle"><img src="%STATE%.gif" id="image" width="65" height="98"></button>  
+        
+  
+    <div style="position: absolute; top: 11px; left: 11px;color: red;font-size: 10px;">
+       <div id="mdnsname"> %MDNSNAME%<br></div>
+       <div id="ledstate">%STATE%<br></div>
+       <div id="OFFcountdwn">%OFFCOUNTDOWN%</div>
+    </div>
+
+</div>
+
 </body>
 </html>
