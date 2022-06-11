@@ -1,6 +1,6 @@
 ---
 
-with a little HTML knowledge or Guts you can change the looks of Electra's Switch webpages
+With a little HTML knowledge or Guts, you can change the looks of Electra's Switch webpages
 
 ---
 
