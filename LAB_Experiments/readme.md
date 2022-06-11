@@ -27,12 +27,13 @@ not optimal but this works switch the esp32.local bulb from another switch web p
 
 # IFRAME code to use on other pages
 ```
-<iframe id="inlineFrameExample"
+</script>
+        <iframe id="inlineFrameExample"
     title="Inline Frame Example"
     width="120"
     height="150"
-    src="http://esp32.local/button.html"
-    style="border:none;">
+    src="http://garage.local/button.html"
+    style="border:none; -ms-transform: scale(0.5, 0.5); transform: scale(0.5, 0.5)">
 </iframe>
 
 could place a bulb on each auto scanned discovered mdns url / each switch device in local network
