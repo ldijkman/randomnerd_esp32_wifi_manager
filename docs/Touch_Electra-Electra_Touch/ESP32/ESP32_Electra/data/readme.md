@@ -1,4 +1,4 @@
-upload this to the esp8266 littlefs
+upload this to the esp8266 eh esp32 littlefs
 
 exclude.files should have a leading . dot like .exclude.files
 
