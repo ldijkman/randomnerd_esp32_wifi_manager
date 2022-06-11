@@ -42,6 +42,10 @@ could place a bulb on each auto scanned discovered mdns url / each switch device
 ```
 view and control other switches
 
+## Google Please make mDNS work on Android?
+
+use ip numbers button html links for adroid?
+
 WebPage garden.local shows iframed  garage.local/button.html
 
 ![garde, local_shows_iframed_garage local_button html](https://user-images.githubusercontent.com/45427770/173171481-dcfd6e5f-a470-46ca-8705-434798ad6856.png)
