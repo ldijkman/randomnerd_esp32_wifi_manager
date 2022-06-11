@@ -39,8 +39,8 @@ not optimal but this works switch the esp32.local bulb from another switch web p
 
 # IFRAME code to use on other pages
 ```
-</script>
-        <iframe id="inlineFrameExample"
+
+<iframe id="inlineFrameExample"
     title="Inline Frame Example"
     width="120"
     height="150"
@@ -48,10 +48,10 @@ not optimal but this works switch the esp32.local bulb from another switch web p
     style="border:none; -ms-transform: scale(0.5, 0.5); transform: scale(0.5, 0.5)">
 </iframe>
 
-could place a bulb on each auto scanned discovered mdns url / each switch device in local network
-
 
 ```
+could place a bulb on each auto scanned discovered mdns url / each switch device in local network
+
 view and control other switches
 
 ## Google Please make mDNS work on Android?
