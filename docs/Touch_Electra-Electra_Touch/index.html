@@ -62,8 +62,15 @@ body{
 }
 
 </style>
+  
+   <link rel="stylesheet" type="text/css" href="stl.css">
+<style type="text/css">.c6{display:none;}.c2{display:none;}.c7{display:none;}.c9{display:inline;}.c5{display:inline;}.c3{display:inline;}.c1{display:inline;}.c4{display:none;}.c8{display:none;}.c0{display:inline;}</style>
+
 </head>
 <body bgcolor="#F6F8FA">
+    <div style="position: fixed;top: 5;right: 15;width: 55px;border: 0px;">
+<button style="font-size : 45px; width: 60px; height: 60px;" onclick="PatatmetFrikandel()">&#8801;<!-&#9776;-></button>
+</div>
  <H1><a href="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_Electra-Electra_Touch/ESP32/esp-web-tools-8-0-3/Burn_the_Bits.html">NEW Now an ESP32 Version, Burn the Bits</a><br><br></H1>
   <h1>ESP web install baudrate changed from 115200 to 57600</h1>
   <center>
@@ -425,5 +432,76 @@ Removed the freecounterstat.com webpage counter<br>
 sorry, freecounterstat page counter javascript popups virus alike popup pages on my a href links on this page<br>  
 <!-- CopyRight Dirk Luberth Dijkman Bangert 30 Anijk The Netherlands -->  
                             
-  </body>
-  </html>
+   <script>
+function includeHTML() {
+  var z, i, elmnt, file, xhttp;
+  /*loop through a collection of all HTML elements:*/
+  z = document.getElementsByTagName("*");
+  for (i = 0; i < z.length; i++) {
+    elmnt = z[i];
+    /*search for elements with a certain atrribute:*/
+    file = elmnt.getAttribute("w3-include-html");
+    if (file) {
+      /*make an HTTP request using the attribute value as the file name:*/
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+          /*remove the attribute, and call this function once more:*/
+          elmnt.removeAttribute("w3-include-html");
+          includeHTML();
+        }
+      }      
+      xhttp.open("GET", file, true);
+      xhttp.send();
+      /*exit the function:*/
+      return;
+    }
+  }
+};
+</script>
+
+<center>
+<button style="font-size : 25px; width: 80%; height: 40px;" onclick="PatatmetFrikandel()">Show Menu Again</button>
+</center>
+<div id="snackbar"><button style="font-size : 25px; width: 300px; height: 40px;"  onclick="PatatmetFrikandel()">[X] Close</button>
+<div w3-include-html="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_Electra-Electra_Touch/ESP32/esp-web-tools-8-0-3/chickenmenu.html"></div> 
+</div>
+
+<script>
+  var x = document.getElementById("snackbar");
+  x.className = "show";
+function PatatmetFrikandel() {
+  var x = document.getElementById("snackbar");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+<script>
+includeHTML();
+</script>
+
+<br>
+<br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+        <!-- CopyRight Dirk Luberth Dijkman Bangert 30 Anijk The Netherlands -->  
+       </body>
+</html>
