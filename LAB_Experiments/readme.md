@@ -4,6 +4,36 @@ With a little HTML knowledge or Guts, you can change the looks of Electra's Swit
 - Easy, each device has its own web/cloud editor
 
 ---
+Ok de image button works 
+- https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/LAB_Experiments#imagene-imagebutton
+
+Now i want the mdnsscan json to be an array
+- Not like it is now,  but
+- mdns ip array
+- mdns human friendly name array
+
+So on the page displayed
+- Mdns result for user 
+- Iframe imagebutton http ip[i] /button
+- a href ip[i] > human friendlyname[i]
+
+For i = 0 to arraylength
+
+Are u still with me ;-)
+
+Want to help?
+
+
+-----
+-----
+-----
+
+
+
+
+
+
+
 
 
 
