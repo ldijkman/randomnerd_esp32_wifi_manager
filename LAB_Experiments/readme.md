@@ -38,7 +38,7 @@ not optimal but this works switch the esp32.local bulb from another switch web p
 ### for editing the html webserver HTML files on the ESP devices
 
 # IFRAME code to use on other pages
-- change the src="http://???" url link to yours / for android better use IP number links
+- change the src="http:// ??? /button.html" url link to yours / for android better use IP number links
 ```
 
 <iframe id="inlineFrameExample"
