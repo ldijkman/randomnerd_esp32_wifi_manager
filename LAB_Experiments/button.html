@@ -7,9 +7,49 @@
     <link rel="icon" sizes="192x192" href="Electra_192x192.png">
     <script src="index.js"></script>
     <!-- Copyright 2021...2022 Dirk Luberth Dijkman -->
+    <style>
+      .text-selection-none{
+   user-select: none; /* supported by Chrome and Opera */
+   -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+   -moz-user-select: none; /* Firefox */
+   -ms-user-select: none;
+}
+.text-selection-text{
+   user-select: text; /* supported by Chrome and Opera */
+   -webkit-user-select: text; /* Safari */
+   -khtml-user-select: text; /* Konqueror HTML */
+   -moz-user-select: text; /* Firefox */
+   -ms-user-select: text;
+}
+.text-selection-all{
+   user-select: all; /* supported by Chrome and Opera */
+   -webkit-user-select: all; /* Safari */
+   -khtml-user-select: all; /* Konqueror HTML */
+   -moz-user-select: all; /* Firefox */
+   -ms-user-select: all;
+}
+.text-selection-auto{
+   user-select: auto; /* supported by Chrome and Opera */
+   -webkit-user-select: auto; /* Safari */
+   -khtml-user-select: auto; /* Konqueror HTML */
+   -moz-user-select: auto; /* Firefox */
+   -ms-user-select: auto;
+}
+.text-selection-contain{
+   user-select: contain; /* supported by Chrome and Opera */
+   -webkit-user-select: contain; /* Safari */
+   -khtml-user-select: contain; /* Konqueror HTML */
+   -moz-user-select: contain; /* Firefox */
+   -ms-user-select: element;
+}
+div.before::after {
+  content: "hi";
+}
+    </style>
   </head>
 <body bgcolor="">
-
+<div class="text-selection-none">
 <div class="parent" style="position: relative;">     
     <button id="toggle" style="background-color:rgba(100, 100, 100, 0.5);"><img src="%STATE%.gif" id="image" width="65" height="98"></button>  
         
@@ -25,6 +65,6 @@
 <div id="NTPTime" hidden></div>
 <div id="OFFDelay" hidden></div>
 </div>
-
+  </div>
 </body>
 </html>
