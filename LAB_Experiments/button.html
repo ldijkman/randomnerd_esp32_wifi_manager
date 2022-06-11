@@ -18,7 +18,7 @@ maybe better for editing / undestanding
  * ----------------------------------------------------------------------------
  * ESP32 Remote Control with WebSocket
  * ----------------------------------------------------------------------------
- * © 2020 Stéphane Calderoni
+ * © 2020 Stéphane Calderoni  maybe https://m1cr0lab-esp32.github.io/remote-control-with-websocket/
  * ----------------------------------------------------------------------------
  */
 
@@ -65,7 +65,7 @@ function onMessage(event) {
     document.getElementById('NTPTime').innerHTML = data.time;
     document.getElementById('OFFDelay').innerHTML = data.offdelay;
     document.getElementById('OFFcountdwn').innerHTML = data.offcnt;
-   document.getElementById('T').innerHTML = data.T;
+    document.getElementById('T').innerHTML = data.T;
     document.getElementById('H').innerHTML = data.H;
     document.getElementById('P').innerHTML = data.P;
 }
@@ -84,7 +84,7 @@ function onToggle(event) {
 }
 
 function onOffdelay(event) {
-     var temp=document.getElementById('offdelay').value;
+    var temp=document.getElementById('offdelay').value;
     websocket.send(JSON.stringify({'off_delay':temp}));
 }
 </script>
