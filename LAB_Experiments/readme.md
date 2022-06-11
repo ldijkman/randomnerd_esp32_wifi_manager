@@ -29,7 +29,8 @@ SO HANDY, the ACE js web cloud editor, for editing the html webserver HTML files
     title="Inline Frame Example"
     width="120"
     height="150"
-    src="http://esp32.local/button.html">
+    src="http://esp32.local/button.html"
+    style="border:none;">
 </iframe>
 
 could place a bulb on each auto scanned discovered mdns url / each switch device in local network
