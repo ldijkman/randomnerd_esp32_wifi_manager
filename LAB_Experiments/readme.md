@@ -60,11 +60,13 @@ view and control other switches
 use ip numbers button html links for adroid?
 
 WebPage garden.local shows iframed  garage.local/button.html
+- with offcount
 
-![garde, local_shows_iframed_garage local_button html](https://user-images.githubusercontent.com/45427770/173171481-dcfd6e5f-a470-46ca-8705-434798ad6856.png)
+![gardengarageofcount](https://user-images.githubusercontent.com/45427770/173191132-4e1b9e95-3e7f-4f09-8a1f-92ee9828baff.png)
 
 WebPage garden.local shows iframed  garage.local/button.html
-
+- with offcount
+- 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/LAB_Experiments/ezgif-5-3d39d5ded4.gif">
 
 
