@@ -46,6 +46,13 @@ Here is an inline version of the same answer that I was working on.
 
 
 ```
+view and control other switches
+
+garden.local_shows_iframed_garage.local/button html
+
+![garde, local_shows_iframed_garage local_button html](https://user-images.githubusercontent.com/45427770/173171481-dcfd6e5f-a470-46ca-8705-434798ad6856.png)
+
+garden.local_shows_iframed_garage.local/button html
 
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/LAB_Experiments/ezgif-5-3d39d5ded4.gif">
 
