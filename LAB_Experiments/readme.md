@@ -1,6 +1,7 @@
 ---
 
 With a little HTML knowledge or Guts, you can change the looks of Electra's Switch webpages
+- Easy, each device has its own web/cloud editor
 
 ---
 
