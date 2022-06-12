@@ -1,5 +1,9 @@
-Brainstorm 
+Brainstorm subjects
 - https://web.dev/drag-and-drop/
+- https://m1cr0lab-esp32.github.io/remote-control-with-websocket/platformio-ide/
+- - not using platformio yet, but gitpod is interesting
+- - - https://docs.platformio.org/en/stable//core/installation/methods/installer-script.html
+
 
 ---
 
