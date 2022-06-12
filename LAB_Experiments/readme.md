@@ -90,6 +90,8 @@ could place a bulb on each auto scanned discovered mdns url / each switch device
 view and control other switches
 
 ## Google Please make mDNS work on Android?
+- looks like Google obays to Electra's pleas
+- https://www.androidpolice.com/android-mdns-local-hostname/
 
 use ip numbers button html links for adroid?
 
