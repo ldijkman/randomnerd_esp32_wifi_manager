@@ -1,4 +1,5 @@
 Brainstorm subjects
+- imagebutton button.html works  https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/LAB_Experiments#imagene-imagebutton
 - https://web.dev/drag-and-drop/
 - https://m1cr0lab-esp32.github.io/remote-control-with-websocket/platformio-ide/
 - - not using platformio yet, but gitpod is interesting
@@ -11,8 +12,6 @@ With a little HTML knowledge or Guts, you can change the looks of Electra's Swit
 - Easy, each device has its own web/cloud editor
 
 ---
-Ok de image button works 
-- https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/LAB_Experiments#imagene-imagebutton
 
 Now i want the mdnsscan json to be an array
 - Not like it is now,  but
