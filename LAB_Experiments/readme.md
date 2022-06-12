@@ -3,8 +3,7 @@ Brainstorm subjects
 - https://web.dev/drag-and-drop/ == nah does not work on phone
 - https://m1cr0lab-esp32.github.io/remote-control-with-websocket/platformio-ide/
 - - not using platformio yet, but gitpod is interesting
-- - - https://docs.platformio.org/en/stable//core/installation/methods/installer-script.html
-
+- - - https://youtu.be/0poh_2rBq7E
 
 ---
 
