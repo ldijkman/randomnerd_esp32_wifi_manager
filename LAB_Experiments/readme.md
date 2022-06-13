@@ -2,8 +2,9 @@ Brainstorm subjects
 - imagebutton button.html works  https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/LAB_Experiments#imagene-imagebutton
 - https://web.dev/drag-and-drop/ == nah does not work on phone
 - https://m1cr0lab-esp32.github.io/remote-control-with-websocket/platformio-ide/
-- - not using platformio yet, but gitpod is interesting
-- - - must see video https://youtu.be/0poh_2rBq7E
+- - x
+- - trying platformio https://github.com/ldijkman/Electra_ESP32 
+
 
 ---
 
