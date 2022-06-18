@@ -95,6 +95,8 @@ could place a bulb on each auto scanned discovered mdns url / each switch device
 
 view and control other switches
 
+<img src="https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/LAB_Experiments/Screenshot_20220618-121223_Chrome.jpg">
+
 ## Google Please make mDNS work on Android?
 - looks like Google obays to Electra's pleas ;-)
 - https://www.androidpolice.com/android-mdns-local-hostname/
