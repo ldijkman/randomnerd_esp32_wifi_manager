@@ -60,7 +60,19 @@ function onClose(event) {
 }
 
 function onMessage(event) {
-    let data = JSON.parse(event.data);
+    let data = JSON.parse(event.data); 
+    
+    if (data.ip){  // websocket with ip and url
+    var ipArr = (data.ip).split(',');
+    var urlArr = (data.url).split(',');
+    document.getElementById('ip').innerHTML="";
+      for (let i = 0; i < ipArr.length; i++){ 
+        document.getElementById('ip').innerHTML += ipArr[i]+urlArr[i]+"<br>";
+      }
+    }
+  
+    
+    if (data.status){
     document.getElementById('ledstate').innerHTML = data.status;
     document.getElementById('image').src = data.status+".gif";
     document.getElementById('mdnsscan').innerHTML = data.scan;
@@ -70,6 +82,8 @@ function onMessage(event) {
     document.getElementById('T').innerHTML = data.T;
     document.getElementById('H').innerHTML = data.H;
     document.getElementById('P').innerHTML = data.P;
+    }
+
 }
 
 // ----------------------------------------------------------------------------
@@ -110,6 +124,9 @@ function onOffdelay(event) {
 <div id="mdnsscan" hidden></div>
 <div id="NTPTime" hidden></div>
 <div id="OFFDelay" hidden></div>
+
+<div id="ip"></div>
+<div id="url"></div>
 </div>
 
 </body>
