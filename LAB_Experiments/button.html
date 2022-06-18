@@ -22,6 +22,17 @@ maybe better for editing / undestanding
  *   https://m1cr0lab-esp32.github.io/remote-control-with-websocket/
  *   https://github.com/m1cr0lab-esp32/remote-control-with-websocket
  * ----------------------------------------------------------------------------
+ * 
+ * 
+ * 
+ *websockts json send
+ * next is new ip url
+TXT:{"ip":"10.10.100.101:80,10.10.100.105:80,10.10.100.102:80,","url":"Living,Garden,kitchen,"}
+
+wil remove the scan link ip and url
+TXT:{"status":"ON","time":"15:25:37","offdelay":"360","offcnt":340,"T":0,"H":0,"P":0,"scan":"<p><a href=\"http://10.10.100.101:80\">Living.local</a><p><p><a href=\"http://10.10.100.105:80\">Garden.local</a><p><p><a href=\"http://10.10.100.102:80\">kitchen.local</a><p>"}
+
+
  */
 
 var gateway = `ws://${window.location.hostname}/ws`;
@@ -77,11 +88,11 @@ for ( var i = 0; i < ipArr.length-1; i++ ) {           // -1 last field is empty
     document.getElementById('ip').innerHTML="";
       for (let i = 0; i < result.length; i++){ 
        // document.getElementById('ip').innerHTML += ipArr[i]+urlArr[i]+"<br>";
-       if (i==0)document.getElementById("0").src = "http://"+result[i][1]+"/button.html";
-       if (i==1)document.getElementById("1").src = "http://"+result[i][1]+"/button.html";
-       if (i==2)document.getElementById("2").src = "http://"+result[i][1]+"/button.html";
-       if (i==3)document.getElementById("3").src = "http://"+result[i][1]+"/button.html";
-       if (i==4)document.getElementById("4").src = "http://"+result[i][1]+"/button.html";
+       if (i==0){document.getElementById("0").src = "http://"+result[i][1]+"/button.html";document.getElementById("murl0").innerHTML = result[i][0];}       
+       if (i==1){document.getElementById("1").src = "http://"+result[i][1]+"/button.html";document.getElementById("murl1").innerHTML = result[i][0];} 
+       if (i==2){document.getElementById("2").src = "http://"+result[i][1]+"/button.html";document.getElementById("murl2").innerHTML = result[i][0];} 
+       if (i==3){document.getElementById("3").src = "http://"+result[i][1]+"/button.html";document.getElementById("murl3").innerHTML = result[i][0];}
+       if (i==4){document.getElementById("4").src = "http://"+result[i][1]+"/button.html";document.getElementById("murl4").innerHTML = result[i][0];} 
       }
     }
   
@@ -142,12 +153,18 @@ function onOffdelay(event) {
 <div id="NTPTime" hidden></div>
 <div id="OFFDelay" hidden></div>
 <br>
-<iframe id="0"  width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
-<iframe id="1"  width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
-<iframe id="2"  width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
-<iframe id="3"  width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
-<iframe id="4"  width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
-       
+<div align="top"></div>
+<div><iframe id="0" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+<div id ="murl0"></div></div>
+<div><iframe id="1" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+<div id ="murl1"></div></div>
+<div><iframe id="2" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+<div id ="murl2"></div></div>
+<div><iframe id="3" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+<div id ="murl3"></div></div>
+<div><iframe id="4" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+<div id ="murl4"></div></div>   
+
 <div id="ip"></div>
 <div id="url"></div>
 </div>
