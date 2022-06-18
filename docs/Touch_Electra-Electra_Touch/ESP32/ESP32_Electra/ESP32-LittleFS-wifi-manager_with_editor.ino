@@ -1,3 +1,4 @@
+
 /*
 esp32 
 Electra maybe a bitch to get it compiled
@@ -490,6 +491,7 @@ String readFile(fs::FS &fs, const char * path) {
     break;
   }
   file.close();
+  delay(250);
   return fileContent;
 }
 
@@ -542,6 +544,8 @@ bool initWiFi() {
   }
 
   WiFi.begin(ssid.c_str(), pass.c_str());
+  WiFi.setTxPower(WIFI_POWER_19_5dBm);   //max wifi power
+  
   Serial.println(F("Connect to WiFi..."));
   tft.println(F("Connect to WiFi. "));
 
@@ -650,7 +654,8 @@ void setup()
 
   initLittleFS();
   initWebSocket();
-
+//tft.reset();
+tft.begin();
   tft.init();
   tft.setRotation(1);
 
@@ -802,8 +807,11 @@ void setup()
 
   Serial.println(F("BME280 test"));
   if (ledPin == 4 || ledPin == 5) {   // 4 5 normal i2c pins but used on some boards for relais
-    Wire.begin(14, 12);               // use 14 and 12 for i2c on d5 d6
+    //Wire.begin(14, 12);               // use 14 and 12 for i2c on d5 d6
   }
+  
+  Wire.begin(32, 33);               // use 14 and 12 for i2c on d5 d6
+  
   BME280status = bme.begin(0x76);   // The device's I2C address is either 0x76 or 0x77.
   if (!BME280status) {
     Serial.println(F("No BME280 sensor, check wiring, address, sensor ID!"));
@@ -1161,15 +1169,16 @@ void loop() {
 
   if (timeClient.getSeconds() != lastSecond) {
     lastSecond = timeClient.getSeconds();
+Serial.print("tft ");
 
     tft.setCursor(300, 0);
     tft.print(timeClient.getFormattedTime());
     tft.setCursor(400, 0);
     tft.print(F("Reboots ")); tft.print(reboots);
     tft.setCursor(300, 20);
-    // tft.print("IP: "); tft.print(WiFi.localIP());
+     tft.print("IP: "); tft.print(WiFi.localIP());
     tft.setCursor(300, 35);
-    // tft.print(F("Http://")); tft.print(mdnsdotlocalurl); tft.print(F(".local"));
+     tft.print(F("Http://")); tft.print(mdnsdotlocalurl); tft.print(F(".local"));
 
 
     // https://randomnerdtutorials.com/esp8266-nodemcu-date-time-ntp-client-server-arduino/
@@ -1242,6 +1251,8 @@ void loop() {
       // Serial.print(bme.readHumidity());
       // Serial.println(" %");
       // tft.fillRoundRect(135, 110, 50, 10, 0, BLACK);  // erase old text
+
+      */
       tft.setCursor(350, 205);
       if (OFFcountdown < 100)tftprintspace();  // keep print to the right side
       if (OFFcountdown < 10)tftprintspace();  // keep print to the right side
@@ -1250,12 +1261,12 @@ void loop() {
       // Check if we should update weather information
       if (booted)
       {
-       // updateData();
+        updateData();
        TJpgDec.drawFsJpg(325, 70, "/OFF.jpg", MYFS);
       }
       if (millis() - lastDownloadUpdate > 1000UL * UPDATE_INTERVAL_SECS)
       {
-       // updateData();
+        updateData();
         lastDownloadUpdate = millis();
       }
       // If minute has changed then request new time from NTP server
@@ -1269,8 +1280,10 @@ void loop() {
         booted = false;
       }
       //openweather
-    }
+    //}
     if (tft.getTouch(&x, &y)) {           //  gets x, y and only print to serial monitor i there is a touch
+y=320-y; // do not know why y is not the same as on esp82
+      
       //Serial.print(x);                    //  print touch xy position to serial monitor for debug
       //Serial.print(",");
       //Serial.println(y);
@@ -1289,21 +1302,21 @@ void loop() {
     }
     // think this does not make it any easier ;-) but draw and touch can use same parameters
     // well i am no programmer, just playing
-    // struct button {
-    //   int x;
-    //   int y;
-    //   int w;
-    //   int h;
-    //   String t;
-    //   int ox;
-    //   int oy;
-    // };  // mixed types array
-    button but1 = {200, 100, 60, 30, "BUTTON", 7, 7};          // topleft x, y, width, height(down from y), buttontext textoffset x, y
+    struct button {
+       int x;
+       int y;
+       int w;
+       int h;
+       String t;
+       int ox;
+      int oy;
+     };  // mixed types array
+    button but1 = {320, 280, 60, 30, "BUTTON", 7, 7};          // topleft x, y, width, height(down from y), buttontext textoffset x, y
     //button same on different screen sizes test
     int sw = tft.width();
     int sh = tft.height();
-    button but2 = {200, 100, 60, 30, "BUTTON", 7, 7};//{0.65 * sw, 0.18 * sh, 0.8 * sw - 0.65 * sw, 0.47 * sh - 0.18 * sh, "", 20, 20};       // topleft x, y, width, height(down from y), buttontext textoffset x, y
-    button but3 = {200, 100, 60, 30, "BUTTON", 7, 7};//{0.65 * sw, 0.5 * sh, 0.85 * sw - 0.65 * sw, 0.75 * sh - 0.5 * sh, "scaled", 20, 20};
+    button but2 = {320, 60, 60, 80, "BUTTON", 7, 0};;       // topleft x, y, width, height(down from y), buttontext textoffset x, y
+    button but3 = {320, 160, 60, 30, "BUTTON", 7, 7};//{0.65 * sw, 0.5 * sh, 0.85 * sw - 0.65 * sw, 0.75 * sh - 0.5 * sh, "scaled", 20, 20};
     // drawButton(but1.x, but1.y, but1.w, but1.h, but1.t, but1.ox, but1.oy);
     drawButton(but2.x, but2.y, but2.w, but2.h, but2.t, but2.ox, but2.oy);
     drawButton(but3.x, but3.y, but3.w, but3.h, but3.t, but3.ox, but3.oy);
@@ -1343,7 +1356,7 @@ void loop() {
         return;
       }
     }
-  */
+  
 
   lampontime = offdelay.toInt() * 1000;
   if ((millis() - lamponstart)  > lampontime ) { // turn lamp off 2 minutes after start from webbutton     compare stored TempLong to current millis() counter  screen timeout
