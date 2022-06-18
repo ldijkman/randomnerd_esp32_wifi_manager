@@ -63,11 +63,25 @@ function onMessage(event) {
     let data = JSON.parse(event.data); 
     
     if (data.ip){  // websocket with ip and url
+   
     var ipArr = (data.ip).split(',');
-    var urlArr = (data.url).split(',');
+    var urlArr = (data.url).split(','); 
+    var result = [];
+    
+for ( var i = 0; i < ipArr.length-1; i++ ) {           // -1 last field is empty
+  result.push( [ urlArr[i], ipArr[i] ] );              // to double array ip url
+}
+    
+    result.sort((a, b) => a[1].localeCompare(b[1]));  // sort alfabet mddns url
+    
     document.getElementById('ip').innerHTML="";
-      for (let i = 0; i < ipArr.length; i++){ 
-        document.getElementById('ip').innerHTML += ipArr[i]+urlArr[i]+"<br>";
+      for (let i = 0; i < result.length; i++){ 
+       // document.getElementById('ip').innerHTML += ipArr[i]+urlArr[i]+"<br>";
+       if (i==0)document.getElementById("0").src = "http://"+result[i][1]+"/button.html";
+       if (i==1)document.getElementById("1").src = "http://"+result[i][1]+"/button.html";
+       if (i==2)document.getElementById("2").src = "http://"+result[i][1]+"/button.html";
+       if (i==3)document.getElementById("3").src = "http://"+result[i][1]+"/button.html";
+       if (i==4)document.getElementById("4").src = "http://"+result[i][1]+"/button.html";
       }
     }
   
@@ -103,6 +117,9 @@ function onOffdelay(event) {
     var temp=document.getElementById('offdelay').value;
     websocket.send(JSON.stringify({'off_delay':temp}));
 }
+
+
+
 </script>
     
   </head>
@@ -124,7 +141,13 @@ function onOffdelay(event) {
 <div id="mdnsscan" hidden></div>
 <div id="NTPTime" hidden></div>
 <div id="OFFDelay" hidden></div>
-
+<br>
+<iframe id="0"  width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+<iframe id="1"  width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+<iframe id="2"  width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+<iframe id="3"  width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+<iframe id="4"  width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+       
 <div id="ip"></div>
 <div id="url"></div>
 </div>
