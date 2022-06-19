@@ -85,7 +85,8 @@ function onMessage(event) {
     result=result.sort((a, b) => a[0].localeCompare(b[0]));  // sort alfabet mddns url
     
     document.getElementById('ip').innerHTML=result;
-     
+
+/* turned off for button.html wormole     
       for (let i = 0; i < result.length; i++){ 
 
         
@@ -98,7 +99,8 @@ function onMessage(event) {
           // mdns text link to ip
            document.getElementById("murl"+i).innerHTML = "<a href=\"http://"+result[i][1]+"\" target=\""+result[i][0]+"\">"+result[i][0]+"</a>";   //show mdns text name
        
-      } 
+    } 
+*/    
     }
   
     
