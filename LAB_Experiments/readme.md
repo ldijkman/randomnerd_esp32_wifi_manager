@@ -29,6 +29,8 @@ Are u still with me ;-)
 
 Want to help?
 
+---
+
 garage.local/button.html 
 - shows automatic mdns scan 
 - - iframed other swithes in the local network 
