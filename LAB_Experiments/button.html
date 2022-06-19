@@ -74,26 +74,70 @@ function onMessage(event) {
     let data = JSON.parse(event.data); 
     
     if (data.ip){  // websocket with ip and url
-   
+    // we have a webstocket with ip like
+    // TXT:{"ip":"10.10.100.101:80,10.10.100.105:80,10.10.100.102:80,","url":"Living,Garden,kitchen,"}
+
     var ipArr = (data.ip).split(',');
     var urlArr = (data.url).split(','); 
     var result = [];
     
-for ( var i = 0; i < ipArr.length-1; i++ ) {           // -1 last field is empty
-  result.push( [ urlArr[i], ipArr[i] ] );              // to double array ip url
-}
+    for ( var i = 0; i < ipArr.length-1; i++ ) {           // -1 last field is empty
+        result.push( [ urlArr[i], ipArr[i] ] );              // to double array ip url for alafabet sort
+    }
     
     result.sort((a, b) => a[1].localeCompare(b[1]));  // sort alfabet mddns url
     
     document.getElementById('ip').innerHTML="";
+     
       for (let i = 0; i < result.length; i++){ 
-       // document.getElementById('ip').innerHTML += ipArr[i]+urlArr[i]+"<br>";
-       if (i==0){document.getElementById("0").src = "http://"+result[i][1]+"/button.html";document.getElementById("murl0").innerHTML = result[i][0];}       
-       if (i==1){document.getElementById("1").src = "http://"+result[i][1]+"/button.html";document.getElementById("murl1").innerHTML = result[i][0];} 
-       if (i==2){document.getElementById("2").src = "http://"+result[i][1]+"/button.html";document.getElementById("murl2").innerHTML = result[i][0];} 
-       if (i==3){document.getElementById("3").src = "http://"+result[i][1]+"/button.html";document.getElementById("murl3").innerHTML = result[i][0];}
-       if (i==4){document.getElementById("4").src = "http://"+result[i][1]+"/button.html";document.getElementById("murl4").innerHTML = result[i][0];} 
-      }
+
+        if (i==0){
+           let url = "http://"+result[i][1]+"/button.html";
+           let src = document.getElementById("0").src;
+           url=url.replace(":80", "");                      // read iframe src does not return port
+          if( src != url){                                  // only reload change iframe src if url is changed
+              document.getElementById("0").src = url;
+          }
+           document.getElementById("murl0").innerHTML = result[i][0];   //show mdns text name
+        } 
+        if (i==1){
+           let url = "http://"+result[i][1]+"/button.html";
+           let src = document.getElementById("1").src;
+           url=url.replace(":80", "");                      // read iframe src does not return port
+          if( src != url){                                  // only reload change iframe src if url is changed
+              document.getElementById("1").src = url;
+          }
+           document.getElementById("murl1").innerHTML = result[i][0];   //show mdns text name
+        } 
+       if (i==2){
+           let url = "http://"+result[i][1]+"/button.html";
+           let src = document.getElementById("2").src;
+           url=url.replace(":80", "");                      // read iframe src does not return port
+          if( src != url){                                  // only reload change iframe src if url is changed
+              document.getElementById("2").src = url;
+          }
+           document.getElementById("murl2").innerHTML = result[i][0];   //show mdns text name
+        } 
+
+       if (i==3){
+           let url = "http://"+result[i][1]+"/button.html";
+           let src = document.getElementById("3").src;
+           url=url.replace(":80", "");                      // read iframe src does not return port
+          if( src != url){                                  // only reload change iframe src if url is changed
+              document.getElementById("3").src = url;
+          }
+           document.getElementById("murl3").innerHTML = result[i][0];   //show mdns text name
+        } 
+        if (i==4){
+           let url = "http://"+result[i][1]+"/button.html";
+           let src = document.getElementById("4").src;
+           url=url.replace(":80", "");                      // read iframe src does not return port
+          if( src != url){                                  // only reload change iframe src if url is changed
+              document.getElementById("4").src = url;
+          }
+           document.getElementById("murl4").innerHTML = result[i][0];   //show mdns text name
+      }  
+      } 
     }
   
     
@@ -135,7 +179,7 @@ function onOffdelay(event) {
     
   </head>
 <body bgcolor="">
-
+<div>
 <div class="parent" style="position: relative;">     
     <button id="toggle" style="background-color:rgba(100, 100, 100, 0.5);"><img src="%STATE%.gif" id="image" width="65" height="98"> 
        <div style="position: absolute; top: 11px; left: 17px;color: red;font-size: 14px;">
@@ -152,22 +196,42 @@ function onOffdelay(event) {
 <div id="mdnsscan" hidden></div>
 <div id="NTPTime" hidden></div>
 <div id="OFFDelay" hidden></div>
-<br>
-<div align="top"></div>
-<div><iframe id="0" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
-<div id ="murl0"></div></div>
-<div><iframe id="1" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
-<div id ="murl1"></div></div>
-<div><iframe id="2" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
-<div id ="murl2"></div></div>
-<div><iframe id="3" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
-<div id ="murl3"></div></div>
-<div><iframe id="4" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
-<div id ="murl4"></div></div>   
-
 <div id="ip"></div>
 <div id="url"></div>
+
 </div>
+
+<div class="divTable" style="width: 100%; position: relative; top: 11px; left: 17px;color: red;font-size: 14px;">
+<div class="divTableBody">
+<div class="divTableRow">
+<div class="divTableCell">0<iframe id="0" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+</div>
+<div class="divTableCell">1<iframe id="1" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+</div>
+<div class="divTableCell">2<iframe id="2" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+</div>
+<div class="divTableCell">3<iframe id="3" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell" id ="murl0">0&nbsp;</div>
+<div class="divTableCell" id ="murl1">1&nbsp;</div>
+<div class="divTableCell" id ="murl2">2&nbsp;</div>
+<div class="divTableCell" id ="murl3">3&nbsp;</div>
+</div>
+</div>
+</div>
+<!-- DivTable.com -->
+
+</div>
+
+
+
+
+
+
+
+
 
 </body>
 </html>
