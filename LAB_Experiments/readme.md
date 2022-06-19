@@ -29,6 +29,7 @@ Are u still with me ;-)
 
 Want to help?
 
+https://www.youtube.com/shorts/rXHRWjgCcls
 ---
 
 garage.local/button.html 
@@ -38,6 +39,8 @@ garage.local/button.html
 - - and text link to the switchpages
 - future will be on main page of each switch page automatic mdnsscan to show,control,link other swithes in network in an iframe
 - - all html / script so end user can play with it with ace js cloud editor (not like an app with no edit)
+
+https://www.youtube.com/shorts/rXHRWjgCcls
 
 ![2022-06-19-083050_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/174468844-1980ec65-92b2-4e38-9028-4abc4ca9b102.png)
 
@@ -110,6 +113,8 @@ view and control other switches
 ## haha this is causing reboots, think each iframe loading on each iframe another websocket
 ### a bit of a mirror in mirror wormhole, DOS/Windows create dir cd
 - should not show other iframes on button.html
+
+https://www.youtube.com/shorts/rXHRWjgCcls
 
 <img src="https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/LAB_Experiments/Screenshot_20220618-121223_Chrome.jpg">
 
