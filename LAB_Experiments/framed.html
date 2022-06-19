@@ -28,11 +28,8 @@ maybe better for editing / undestanding
  *websockts json send
  * next is new ip url
 TXT:{"ip":"10.10.100.101:80,10.10.100.105:80,10.10.100.102:80,","url":"Living,Garden,kitchen,"}
-
 wil remove the scan link ip and url
 TXT:{"status":"ON","time":"15:25:37","offdelay":"360","offcnt":340,"T":0,"H":0,"P":0,"scan":"<p><a href=\"http://10.10.100.101:80\">Living.local</a><p><p><a href=\"http://10.10.100.105:80\">Garden.local</a><p><p><a href=\"http://10.10.100.102:80\">kitchen.local</a><p>"}
-
-
  */
 
 var gateway = `ws://${window.location.hostname}/ws`;
@@ -89,7 +86,7 @@ function onMessage(event) {
     
     document.getElementById('ip').innerHTML=result;
 
-/* turned off causing reboots made framed.html  */   
+/* turned off mirror in mirror wormhole in button.html  */   
       for (let i = 0; i < result.length; i++){ 
 
         
@@ -102,23 +99,23 @@ function onMessage(event) {
           // mdns text link to ip
            document.getElementById("murl"+i).innerHTML = "<a href=\"http://"+result[i][1]+"\" target=\""+result[i][0]+"\">"+result[i][0]+"</a>";   //show mdns text name
        
-      }
-      
+      } 
+
     }
   
     
     if (data.status){
     // we have an websocket json like TXT:{"status":"ON","time":"15:25:37","offdelay":"360","offcnt":340,"T":0,"H":0,"P":0,"scan":"<p><a href=\"http://10.10.100.101:80\">Living.local</a><p><p><a href=\"http://10.10.100.105:80\">Garden.local</a><p><p><a href=\"http://10.10.100.102:80\">kitchen.local</a><p>"}
     
-    document.getElementById('ledstate').innerHTML = data.status;
-    document.getElementById('image').src = data.status+".gif";
-    document.getElementById('mdnsscan').innerHTML = data.scan;
-    document.getElementById('NTPTime').innerHTML = data.time;
-    document.getElementById('OFFDelay').innerHTML = data.offdelay;
-    document.getElementById('OFFcountdwn').innerHTML = data.offcnt;
-    document.getElementById('T').innerHTML = data.T;
-    document.getElementById('H').innerHTML = data.H;
-    document.getElementById('P').innerHTML = data.P;
+    //document.getElementById('ledstate').innerHTML = data.status;
+    //document.getElementById('image').src = data.status+".gif";
+    //document.getElementById('mdnsscan').innerHTML = data.scan;
+    //document.getElementById('NTPTime').innerHTML = data.time;
+    //document.getElementById('OFFDelay').innerHTML = data.offdelay;
+   // document.getElementById('OFFcountdwn').innerHTML = data.offcnt;
+    //document.getElementById('T').innerHTML = data.T;
+   // document.getElementById('H').innerHTML = data.H;
+   // document.getElementById('P').innerHTML = data.P;
     }
 
 }
@@ -144,9 +141,43 @@ function onOffdelay(event) {
 
 
 </script>
+<style>
+  
+  /* DivTable.com */
+.divTable{
+	display: table;
+	width: %;
+}
+.divTableRow {
+	display: table-row;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+}
+.divTableCell, .divTableHead {
+	border: 0px solid #999999;
+	display: table-cell;
+	padding: 1px 1px;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
+}
+</style>
     
   </head>
 <body bgcolor="">
+<!--
 <div>
 <div class="parent" style="position: relative;">     
     <button id="toggle" style="background-color:rgba(100, 100, 100, 0.5);"><img src="%STATE%.gif" id="image" width="65" height="98"> 
@@ -160,7 +191,7 @@ function onOffdelay(event) {
        next is needed otherwise offcountdown on image is not shown 
        maybe another script, in your <head> <script src="index.js"></script>
        the script handle the json websocket events, thats what i make of it
-    -->
+    --><!--
 <div id="mdnsscan" hidden></div>
 <div id="NTPTime" hidden></div>
 <div id="OFFDelay" hidden></div>
@@ -169,31 +200,29 @@ function onOffdelay(event) {
 
 </div>
 <br><br><br><br>
-<div class="divTable" style="width: 100%; position: relative; top: 11px; left: 17px;color: red;font-size: 14px;">
+-->
+<div class="divTable">
 <div class="divTableBody">
 <div class="divTableRow">
-<div class="divTableCell">0<iframe id="0" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+<div class="divTableCell"><iframe id="0" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
 </div>
-<div class="divTableCell">1<iframe id="1" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+<div class="divTableCell"><iframe id="1" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
 </div>
-<div class="divTableCell">2<iframe id="2" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+<div class="divTableCell"><iframe id="2" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
 </div>
-<div class="divTableCell">3<iframe id="3" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+<div class="divTableCell"><iframe id="3" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
 </div>
 </div>
 <div class="divTableRow">
-<div class="divTableCell" id ="murl0">0&nbsp;</div>
-<div class="divTableCell" id ="murl1">1&nbsp;</div>
-<div class="divTableCell" id ="murl2">2&nbsp;</div>
-<div class="divTableCell" id ="murl3">3&nbsp;</div>
+<div class="divTableCell" id ="murl0"></div>
+<div class="divTableCell" id ="murl1"></div>
+<div class="divTableCell" id ="murl2"></div>
+<div class="divTableCell" id ="murl3"></div>
 </div>
 </div>
 </div>
 <!-- DivTable.com -->
 
-</div>
-
-<br><br><br><br><br><br><br>
 
 
 
