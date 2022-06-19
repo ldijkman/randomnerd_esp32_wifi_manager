@@ -92,8 +92,8 @@ function onMessage(event) {
       for (let i = 0; i < result.length; i++){ 
 
         
-           let url = "http://"+result[i][1]+"/button.html";
-           let src = document.getElementById(i).src;
+           let url = "http://"+result[i][1]+"/button.html";    // source to set for iframe
+           let src = document.getElementById(i).src;          // read the source from iframe for compare
            url=url.replace(":80", "");                      // read iframe src does not return port
           if( src != url){                                  // only reload change iframe src if url is changed
               document.getElementById(i).src = url;
@@ -106,6 +106,8 @@ function onMessage(event) {
   
     
     if (data.status){
+    // we have an websocket json like TXT:{"status":"ON","time":"15:25:37","offdelay":"360","offcnt":340,"T":0,"H":0,"P":0,"scan":"<p><a href=\"http://10.10.100.101:80\">Living.local</a><p><p><a href=\"http://10.10.100.105:80\">Garden.local</a><p><p><a href=\"http://10.10.100.102:80\">kitchen.local</a><p>"}
+    
     document.getElementById('ledstate').innerHTML = data.status;
     document.getElementById('image').src = data.status+".gif";
     document.getElementById('mdnsscan').innerHTML = data.scan;
