@@ -87,7 +87,7 @@ function onMessage(event) {
     
     result.sort((a, b) => a[1].localeCompare(b[1]));  // sort alfabet mddns url
     
-    document.getElementById('ip').innerHTML="";
+    document.getElementById('ip').innerHTML=result;
      
       for (let i = 0; i < result.length; i++){ 
 
@@ -160,11 +160,11 @@ function onOffdelay(event) {
 <div id="mdnsscan" hidden></div>
 <div id="NTPTime" hidden></div>
 <div id="OFFDelay" hidden></div>
-<div id="ip"></div>
+
 <div id="url"></div>
 
 </div>
-
+<br><br><br><br>
 <div class="divTable" style="width: 100%; position: relative; top: 11px; left: 17px;color: red;font-size: 14px;">
 <div class="divTableBody">
 <div class="divTableRow">
@@ -189,11 +189,11 @@ function onOffdelay(event) {
 
 </div>
 
+<br><br><br><br><br><br><br>
 
 
 
-
-
+<div id="ip"></div>
 
 
 
