@@ -91,52 +91,15 @@ function onMessage(event) {
      
       for (let i = 0; i < result.length; i++){ 
 
-        if (i==0){
+        
            let url = "http://"+result[i][1]+"/button.html";
-           let src = document.getElementById("0").src;
+           let src = document.getElementById(i).src;
            url=url.replace(":80", "");                      // read iframe src does not return port
           if( src != url){                                  // only reload change iframe src if url is changed
-              document.getElementById("0").src = url;
+              document.getElementById(i).src = url;
           }
-           document.getElementById("murl0").innerHTML = result[i][0];   //show mdns text name
-        } 
-        if (i==1){
-           let url = "http://"+result[i][1]+"/button.html";
-           let src = document.getElementById("1").src;
-           url=url.replace(":80", "");                      // read iframe src does not return port
-          if( src != url){                                  // only reload change iframe src if url is changed
-              document.getElementById("1").src = url;
-          }
-           document.getElementById("murl1").innerHTML = result[i][0];   //show mdns text name
-        } 
-       if (i==2){
-           let url = "http://"+result[i][1]+"/button.html";
-           let src = document.getElementById("2").src;
-           url=url.replace(":80", "");                      // read iframe src does not return port
-          if( src != url){                                  // only reload change iframe src if url is changed
-              document.getElementById("2").src = url;
-          }
-           document.getElementById("murl2").innerHTML = result[i][0];   //show mdns text name
-        } 
-
-       if (i==3){
-           let url = "http://"+result[i][1]+"/button.html";
-           let src = document.getElementById("3").src;
-           url=url.replace(":80", "");                      // read iframe src does not return port
-          if( src != url){                                  // only reload change iframe src if url is changed
-              document.getElementById("3").src = url;
-          }
-           document.getElementById("murl3").innerHTML = result[i][0];   //show mdns text name
-        } 
-        if (i==4){
-           let url = "http://"+result[i][1]+"/button.html";
-           let src = document.getElementById("4").src;
-           url=url.replace(":80", "");                      // read iframe src does not return port
-          if( src != url){                                  // only reload change iframe src if url is changed
-              document.getElementById("4").src = url;
-          }
-           document.getElementById("murl4").innerHTML = result[i][0];   //show mdns text name
-      }  
+           document.getElementById("murl"+i).innerHTML = result[i][0];   //show mdns text name
+       
       } 
     }
   
