@@ -85,7 +85,7 @@ function onMessage(event) {
         result.push( [ urlArr[i], ipArr[i] ] );              // to double array ip url for alafabet sort
     }
     
-    result.sort((a, b) => a[1].localeCompare(b[1]));  // sort alfabet mddns url
+    result=result.sort((a, b) => a[0].localeCompare(b[0]));  // sort alfabet mddns url
     
     document.getElementById('ip').innerHTML=result;
      
