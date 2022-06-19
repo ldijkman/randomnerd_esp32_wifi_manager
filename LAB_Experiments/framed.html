@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
-
-  <head>
+<!--In your--><head>
     <title>%MDNSNAME%.local Hey Electra, ESP WEB SERVER </title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="icon" sizes="192x192" href="Electra_192x192.png">
@@ -107,15 +106,15 @@ function onMessage(event) {
     if (data.status){
     // we have an websocket json like TXT:{"status":"ON","time":"15:25:37","offdelay":"360","offcnt":340,"T":0,"H":0,"P":0,"scan":"<p><a href=\"http://10.10.100.101:80\">Living.local</a><p><p><a href=\"http://10.10.100.105:80\">Garden.local</a><p><p><a href=\"http://10.10.100.102:80\">kitchen.local</a><p>"}
     
-    //document.getElementById('ledstate').innerHTML = data.status;
-    //document.getElementById('image').src = data.status+".gif";
-    //document.getElementById('mdnsscan').innerHTML = data.scan;
-    //document.getElementById('NTPTime').innerHTML = data.time;
-    //document.getElementById('OFFDelay').innerHTML = data.offdelay;
-   // document.getElementById('OFFcountdwn').innerHTML = data.offcnt;
-    //document.getElementById('T').innerHTML = data.T;
-   // document.getElementById('H').innerHTML = data.H;
-   // document.getElementById('P').innerHTML = data.P;
+      //document.getElementById('ledstate').innerHTML = data.status;
+      //document.getElementById('image').src = data.status+".gif";
+      //document.getElementById('mdnsscan').innerHTML = data.scan;
+      //document.getElementById('NTPTime').innerHTML = data.time;
+      //document.getElementById('OFFDelay').innerHTML = data.offdelay;
+      // document.getElementById('OFFcountdwn').innerHTML = data.offcnt;
+      //document.getElementById('T').innerHTML = data.T;
+      // document.getElementById('H').innerHTML = data.H;
+      // document.getElementById('P').innerHTML = data.P;
     }
 
 }
@@ -176,7 +175,7 @@ function onOffdelay(event) {
 </style>
     
   </head>
-<body bgcolor="">
+<!--In your--><body bgcolor="">
 <!--
 <div>
 <div class="parent" style="position: relative;">     
