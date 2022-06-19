@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>%MDNSNAME%.local Hey Electra, ESP WEB SERVER </title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" sizes="192x192" href="Electra_192x192.png">
+    
+    <!-- Copyright 2021...2022 Dirk Luberth Dijkman -->
+
+<!-- 
+turned off now inline / inpage script   
+   <script src="index.js"></script>  
+maybe better for editing / undestanding
+-->
+<script>
+/**
+ * ----------------------------------------------------------------------------
+ *   ESP32 Remote Control with WebSocket
+ * 
+ *   © 2020 Stéphane Calderoni  
+ *   https://m1cr0lab-esp32.github.io/remote-control-with-websocket/
+ *   https://github.com/m1cr0lab-esp32/remote-control-with-websocket
+ * ----------------------------------------------------------------------------
+ * 
+ * 
+ * 
+ *websockts json send
+ * next is new ip url
+TXT:{"ip":"10.10.100.101:80,10.10.100.105:80,10.10.100.102:80,","url":"Living,Garden,kitchen,"}
+
+wil remove the scan link ip and url
+TXT:{"status":"ON","time":"15:25:37","offdelay":"360","offcnt":340,"T":0,"H":0,"P":0,"scan":"<p><a href=\"http://10.10.100.101:80\">Living.local</a><p><p><a href=\"http://10.10.100.105:80\">Garden.local</a><p><p><a href=\"http://10.10.100.102:80\">kitchen.local</a><p>"}
+
+
+ */
+
+var gateway = `ws://${window.location.hostname}/ws`;
+var websocket;
+
+// ----------------------------------------------------------------------------
+// Initialization
+// ----------------------------------------------------------------------------
+
+window.addEventListener('load', onLoad);
+
+function onLoad(event) {
+    initWebSocket();
+    initButton();
+}
+
+// ----------------------------------------------------------------------------
+// WebSocket handling
+// ----------------------------------------------------------------------------
+
+function initWebSocket() {
+    console.log('Trying to open a WebSocket connection...');
+    websocket = new WebSocket(gateway);
+    websocket.onopen    = onOpen;
+    websocket.onclose   = onClose;
+    websocket.onmessage = onMessage;
+}
+
+function onOpen(event) {
+    console.log('Connection opened');
+}
+
+function onClose(event) {
+    console.log('Connection closed');
+    setTimeout(initWebSocket, 2000);
+}
+
+function onMessage(event) {
+    let data = JSON.parse(event.data); 
+    
+    if (data.ip){  // websocket with ip and url
+    // we have a webstocket with ip like
+    // TXT:{"ip":"10.10.100.101:80,10.10.100.105:80,10.10.100.102:80,","url":"Living,Garden,kitchen,"}
+
+    var ipArr = (data.ip).split(',');
+    var urlArr = (data.url).split(','); 
+    var result = [];
+    
+    for ( var i = 0; i < ipArr.length-1; i++ ) {           // -1 last field is empty
+        result.push( [ urlArr[i], ipArr[i] ] );              // to double array ip url for alafabet sort
+    }
+    
+    result=result.sort((a, b) => a[0].localeCompare(b[0]));  // sort alfabet mddns url
+    
+    document.getElementById('ip').innerHTML=result;
+
+/* turned off causing reboots made framed.html  */   
+      for (let i = 0; i < result.length; i++){ 
+
+        
+           let url = "http://"+result[i][1]+"/button.html";    // source to set for iframe
+           let src = document.getElementById(i).src;          // read the source from iframe for compare
+           url=url.replace(":80", "");                      // read iframe src does not return port
+          if( src != url){                                  // only reload change iframe src if url is changed
+              document.getElementById(i).src = url;
+          }
+          // mdns text link to ip
+           document.getElementById("murl"+i).innerHTML = "<a href=\"http://"+result[i][1]+"\" target=\""+result[i][0]+"\">"+result[i][0]+"</a>";   //show mdns text name
+       
+      }
+      
+    }
+  
+    
+    if (data.status){
+    // we have an websocket json like TXT:{"status":"ON","time":"15:25:37","offdelay":"360","offcnt":340,"T":0,"H":0,"P":0,"scan":"<p><a href=\"http://10.10.100.101:80\">Living.local</a><p><p><a href=\"http://10.10.100.105:80\">Garden.local</a><p><p><a href=\"http://10.10.100.102:80\">kitchen.local</a><p>"}
+    
+    document.getElementById('ledstate').innerHTML = data.status;
+    document.getElementById('image').src = data.status+".gif";
+    document.getElementById('mdnsscan').innerHTML = data.scan;
+    document.getElementById('NTPTime').innerHTML = data.time;
+    document.getElementById('OFFDelay').innerHTML = data.offdelay;
+    document.getElementById('OFFcountdwn').innerHTML = data.offcnt;
+    document.getElementById('T').innerHTML = data.T;
+    document.getElementById('H').innerHTML = data.H;
+    document.getElementById('P').innerHTML = data.P;
+    }
+
+}
+
+// ----------------------------------------------------------------------------
+// Button handling
+// ----------------------------------------------------------------------------
+
+function initButton() {
+    document.getElementById('toggle').addEventListener('click', onToggle);
+    document.getElementById('offdelaybutton').addEventListener('click', onOffdelay);
+}
+
+function onToggle(event) {
+    websocket.send(JSON.stringify({'action':'toggle'}));
+}
+
+function onOffdelay(event) {
+    var temp=document.getElementById('offdelay').value;
+    websocket.send(JSON.stringify({'off_delay':temp}));
+}
+
+
+
+</script>
+    
+  </head>
+<body bgcolor="">
+<div>
+<div class="parent" style="position: relative;">     
+    <button id="toggle" style="background-color:rgba(100, 100, 100, 0.5);"><img src="%STATE%.gif" id="image" width="65" height="98"> 
+       <div style="position: absolute; top: 11px; left: 17px;color: red;font-size: 14px;">
+          <div id="mdnsname"> %MDNSNAME%<br></div>
+          <div id="ledstate">%STATE%<br></div>
+          <div id="OFFcountdwn">%OFFCOUNTDOWN%</div>
+       </div>
+    </button> 
+    <!-- 
+       next is needed otherwise offcountdown on image is not shown 
+       maybe another script, in your <head> <script src="index.js"></script>
+       the script handle the json websocket events, thats what i make of it
+    -->
+<div id="mdnsscan" hidden></div>
+<div id="NTPTime" hidden></div>
+<div id="OFFDelay" hidden></div>
+
+<div id="url"></div>
+
+</div>
+<br><br><br><br>
+<div class="divTable" style="width: 100%; position: relative; top: 11px; left: 17px;color: red;font-size: 14px;">
+<div class="divTableBody">
+<div class="divTableRow">
+<div class="divTableCell">0<iframe id="0" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+</div>
+<div class="divTableCell">1<iframe id="1" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+</div>
+<div class="divTableCell">2<iframe id="2" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+</div>
+<div class="divTableCell">3<iframe id="3" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+</div>
+</div>
+<div class="divTableRow">
+<div class="divTableCell" id ="murl0">0&nbsp;</div>
+<div class="divTableCell" id ="murl1">1&nbsp;</div>
+<div class="divTableCell" id ="murl2">2&nbsp;</div>
+<div class="divTableCell" id ="murl3">3&nbsp;</div>
+</div>
+</div>
+</div>
+<!-- DivTable.com -->
+
+</div>
+
+<br><br><br><br><br><br><br>
+
+
+
+<div id="ip"></div>
+
+
+
+</body>
+</html>
