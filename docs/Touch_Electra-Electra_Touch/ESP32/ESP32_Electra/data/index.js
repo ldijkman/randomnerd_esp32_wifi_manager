@@ -42,16 +42,18 @@ function onClose(event) {
 }
 
 function onMessage(event) {
-    let data = JSON.parse(event.data);
+   let data = JSON.parse(event.data);
+   if (data.status){  // websocket with status
     document.getElementById('ledstate').innerHTML = data.status;
     document.getElementById('image').src = data.status+".gif";
     document.getElementById('mdnsscan').innerHTML = data.scan;
     document.getElementById('NTPTime').innerHTML = data.time;
     document.getElementById('OFFDelay').innerHTML = data.offdelay;
     document.getElementById('OFFcountdwn').innerHTML = data.offcnt;
-   document.getElementById('T').innerHTML = data.T;
+    document.getElementById('T').innerHTML = data.T;
     document.getElementById('H').innerHTML = data.H;
     document.getElementById('P').innerHTML = data.P;
+   }
 }
 
 // ----------------------------------------------------------------------------
