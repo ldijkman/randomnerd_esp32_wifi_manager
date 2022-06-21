@@ -1,20 +1,19 @@
-
 /*
-esp32 
-Electra maybe a bitch to get it compiled
-used esp board manager setting < 2
-modifeid tjpeg decoder h in arduino libraries so that littlefs for esp32 works example tab file
-tft espi arduino libs user setup h used as example tab file
+  esp32
+  Electra maybe a bitch to get it compiled
+  used esp board manager setting < 2
+  modifeid tjpeg decoder h in arduino libraries so that littlefs for esp32 works example tab file
+  tft espi arduino libs user setup h used as example tab file
 
-install binaries from browser 
-https://ldijkman.github.io/Electra/
+  install binaries from browser
+  https://ldijkman.github.io/Electra/
 
- not all working
- it is a mesh
+  not all working
+  it is a mesh
 
- help me make it better / clean it up?
- at the moment i am directeur hoofd programming, hardware design, website designer ugh, publisher, video editor, photoshopper, head promotion / advertising, catering 
- research, development, test and debug, etcetera etcetera
+  help me make it better / clean it up?
+  at the moment i am directeur hoofd programming, hardware design, website designer ugh, publisher, video editor, photoshopper, head promotion / advertising, catering
+  research, development, test and debug, etcetera etcetera
 */
 
 // openweathermap copy paste mesh
@@ -545,7 +544,7 @@ bool initWiFi() {
 
   WiFi.begin(ssid.c_str(), pass.c_str());
   WiFi.setTxPower(WIFI_POWER_19_5dBm);   //max wifi power
-  
+
   Serial.println(F("Connect to WiFi..."));
   tft.println(F("Connect to WiFi. "));
 
@@ -654,8 +653,8 @@ void setup()
 
   initLittleFS();
   initWebSocket();
-//tft.reset();
-tft.begin();
+  //tft.reset();
+  tft.begin();
   tft.init();
   tft.setRotation(1);
 
@@ -809,9 +808,9 @@ tft.begin();
   if (ledPin == 4 || ledPin == 5) {   // 4 5 normal i2c pins but used on some boards for relais
     //Wire.begin(14, 12);               // use 14 and 12 for i2c on d5 d6
   }
-  
+
   Wire.begin(32, 33);               // use 14 and 12 for i2c on d5 d6
-  
+
   BME280status = bme.begin(0x76);   // The device's I2C address is either 0x76 or 0x77.
   if (!BME280status) {
     Serial.println(F("No BME280 sensor, check wiring, address, sensor ID!"));
@@ -844,9 +843,15 @@ tft.begin();
       notify = 1;
     });
 
-        // Route for button.html web page
+    // Route for button.html web page
     server.on("/button.html", HTTP_GET, [](AsyncWebServerRequest * request) {
       request->send(MYFS, "/button.html", "text/html", false, processor);
+      notify = 1;
+    });
+
+        // Route for button.html web page
+    server.on("/framed.html", HTTP_GET, [](AsyncWebServerRequest * request) {
+      request->send(MYFS, "/framed.html", "text/html", false, processor);
       notify = 1;
     });
 
@@ -1121,7 +1126,9 @@ tft.begin();
 
 // loop // // loop // // loop // // loop // // loop // // loop // // loop // // loop // // loop //
 void loop() {
-
+  
+Serial.print("L");
+  
   if (millis() - last > 500UL)
   {
     timeClient.update();
@@ -1169,16 +1176,16 @@ void loop() {
 
   if (timeClient.getSeconds() != lastSecond) {
     lastSecond = timeClient.getSeconds();
-Serial.print("tft ");
+    Serial.print("tft ");
 
     tft.setCursor(300, 0);
     tft.print(timeClient.getFormattedTime());
     tft.setCursor(400, 0);
     tft.print(F("Reboots ")); tft.print(reboots);
     tft.setCursor(300, 20);
-     tft.print("IP: "); tft.print(WiFi.localIP());
+    tft.print("IP: "); tft.print(WiFi.localIP());
     tft.setCursor(300, 35);
-     tft.print(F("Http://")); tft.print(mdnsdotlocalurl); tft.print(F(".local"));
+    tft.print(F("Http://")); tft.print(mdnsdotlocalurl); tft.print(F(".local"));
 
 
     // https://randomnerdtutorials.com/esp8266-nodemcu-date-time-ntp-client-server-arduino/
@@ -1252,111 +1259,111 @@ Serial.print("tft ");
       // Serial.println(" %");
       // tft.fillRoundRect(135, 110, 50, 10, 0, BLACK);  // erase old text
 
-      */
-      tft.setCursor(350, 205);
-      if (OFFcountdown < 100)tftprintspace();  // keep print to the right side
-      if (OFFcountdown < 10)tftprintspace();  // keep print to the right side
-      tft.println(OFFcountdown);
-      //openweather
-      // Check if we should update weather information
-      if (booted)
-      {
-        updateData();
-       TJpgDec.drawFsJpg(325, 70, "/OFF.jpg", MYFS);
-      }
-      if (millis() - lastDownloadUpdate > 1000UL * UPDATE_INTERVAL_SECS)
-      {
-        updateData();
-        lastDownloadUpdate = millis();
-      }
-      // If minute has changed then request new time from NTP server
-      if (booted || timeClient.getMinutes() != lastMinute)
-      {
-        // Update displayed time first as we may have to wait for a response
-        drawTime();
-        lastMinute = timeClient.getMinutes();
-        // Request and synchronise the local clock
-        //syncTime();
-        booted = false;
-      }
-      //openweather
-    //}
-    if (tft.getTouch(&x, &y)) {           //  gets x, y and only print to serial monitor i there is a touch
-y=320-y; // do not know why y is not the same as on esp82
-      
-      //Serial.print(x);                    //  print touch xy position to serial monitor for debug
-      //Serial.print(",");
-      //Serial.println(y);
-      tft.setTextColor(GRAY, BLACK);                    // draw text to tft screen for debug
-      tft.setCursor(260 , 305);
-      tft.print("X="); tft.print(x); tftprintspace();
-      tft.setCursor(340, 305);
-      tft.print("Y="); tft.print(y); tftprintspace();
-      // i have 320x240 and 480x320 screens, would like to have a gui that scales itself
-      // me no programmer, just puzzleing
-      tft.setCursor(260 , 285);
-      tft.print("X/SW "); tft.print(float(x) / tft.width()); tftprintspace(); // maybe a position for scaling small bigger screen, will be 0 to 1 on width and height
-      tft.setCursor(340, 285);                                             // result SW x scaling = position for small and bigger screens
-      tft.print("Y/SH "); tft.print(float(y) / tft.height()); tftprintspace(); // maybe a position for scaling small bigger screen
-      //tft.drawPixel(x, y, TFT_GREEN);         // draw touch position pixel
+  */
+  tft.setCursor(350, 205);
+  if (OFFcountdown < 100)tftprintspace();  // keep print to the right side
+  if (OFFcountdown < 10)tftprintspace();  // keep print to the right side
+  tft.println(OFFcountdown);
+  //openweather
+  // Check if we should update weather information
+  if (booted)
+  {
+    updateData();
+    TJpgDec.drawFsJpg(325, 70, "/OFF.jpg", MYFS);
+  }
+  if (millis() - lastDownloadUpdate > 1000UL * UPDATE_INTERVAL_SECS)
+  {
+    updateData();
+    lastDownloadUpdate = millis();
+  }
+  // If minute has changed then request new time from NTP server
+  if (booted || timeClient.getMinutes() != lastMinute)
+  {
+    // Update displayed time first as we may have to wait for a response
+    drawTime();
+    lastMinute = timeClient.getMinutes();
+    // Request and synchronise the local clock
+    //syncTime();
+    booted = false;
+  }
+  //openweather
+  //}
+  if (tft.getTouch(&x, &y)) {           //  gets x, y and only print to serial monitor i there is a touch
+    y = 320 - y; // do not know why y is not the same as on esp82
+
+    //Serial.print(x);                    //  print touch xy position to serial monitor for debug
+    //Serial.print(",");
+    //Serial.println(y);
+    tft.setTextColor(GRAY, BLACK);                    // draw text to tft screen for debug
+    tft.setCursor(260 , 305);
+    tft.print("X="); tft.print(x); tftprintspace();
+    tft.setCursor(340, 305);
+    tft.print("Y="); tft.print(y); tftprintspace();
+    // i have 320x240 and 480x320 screens, would like to have a gui that scales itself
+    // me no programmer, just puzzleing
+    tft.setCursor(260 , 285);
+    tft.print("X/SW "); tft.print(float(x) / tft.width()); tftprintspace(); // maybe a position for scaling small bigger screen, will be 0 to 1 on width and height
+    tft.setCursor(340, 285);                                             // result SW x scaling = position for small and bigger screens
+    tft.print("Y/SH "); tft.print(float(y) / tft.height()); tftprintspace(); // maybe a position for scaling small bigger screen
+    //tft.drawPixel(x, y, TFT_GREEN);         // draw touch position pixel
+  }
+  // think this does not make it any easier ;-) but draw and touch can use same parameters
+  // well i am no programmer, just playing
+  struct button {
+    int x;
+    int y;
+    int w;
+    int h;
+    String t;
+    int ox;
+    int oy;
+  };  // mixed types array
+  button but1 = {320, 280, 60, 30, "BUTTON", 7, 7};          // topleft x, y, width, height(down from y), buttontext textoffset x, y
+  //button same on different screen sizes test
+  int sw = tft.width();
+  int sh = tft.height();
+  button but2 = {320, 60, 60, 80, "BUTTON", 7, 0};;       // topleft x, y, width, height(down from y), buttontext textoffset x, y
+  button but3 = {320, 160, 60, 30, "BUTTON", 7, 7};//{0.65 * sw, 0.5 * sh, 0.85 * sw - 0.65 * sw, 0.75 * sh - 0.5 * sh, "scaled", 20, 20};
+  // drawButton(but1.x, but1.y, but1.w, but1.h, but1.t, but1.ox, but1.oy);
+  drawButton(but2.x, but2.y, but2.w, but2.h, but2.t, but2.ox, but2.oy);
+  drawButton(but3.x, but3.y, but3.w, but3.h, but3.t, but3.ox, but3.oy);
+  if (TouchButton(but1.x, but1.y, but1.w, but1.h)) {
+    if (ledState == "OFF") {
+      Relays_ON();
+      delay(250);
+      return;
     }
-    // think this does not make it any easier ;-) but draw and touch can use same parameters
-    // well i am no programmer, just playing
-    struct button {
-       int x;
-       int y;
-       int w;
-       int h;
-       String t;
-       int ox;
-      int oy;
-     };  // mixed types array
-    button but1 = {320, 280, 60, 30, "BUTTON", 7, 7};          // topleft x, y, width, height(down from y), buttontext textoffset x, y
-    //button same on different screen sizes test
-    int sw = tft.width();
-    int sh = tft.height();
-    button but2 = {320, 60, 60, 80, "BUTTON", 7, 0};;       // topleft x, y, width, height(down from y), buttontext textoffset x, y
-    button but3 = {320, 160, 60, 30, "BUTTON", 7, 7};//{0.65 * sw, 0.5 * sh, 0.85 * sw - 0.65 * sw, 0.75 * sh - 0.5 * sh, "scaled", 20, 20};
-    // drawButton(but1.x, but1.y, but1.w, but1.h, but1.t, but1.ox, but1.oy);
-    drawButton(but2.x, but2.y, but2.w, but2.h, but2.t, but2.ox, but2.oy);
-    drawButton(but3.x, but3.y, but3.w, but3.h, but3.t, but3.ox, but3.oy);
-    if (TouchButton(but1.x, but1.y, but1.w, but1.h)) {
-      if (ledState == "OFF") {
-        Relays_ON();
-        delay(250);
-        return;
-      }
-      if (ledState == "ON") {
-        Relays_OFF();
-        delay(250);
-        return;
-      }
+    if (ledState == "ON") {
+      Relays_OFF();
+      delay(250);
+      return;
     }
-    if (TouchButton(but2.x, but2.y, but2.w, but2.h)) {
-      if (ledState == "OFF") {
-        Relays_ON();
-        delay(250);
-        return;
-      }
-      if (ledState == "ON") {
-        Relays_OFF();
-        delay(250);
-        return;
-      }
+  }
+  if (TouchButton(but2.x, but2.y, but2.w, but2.h)) {
+    if (ledState == "OFF") {
+      Relays_ON();
+      delay(250);
+      return;
     }
-    if (TouchButton(but3.x, but3.y, but3.w, but3.h)) {
-      if (ledState == "OFF") {
-        Relays_ON();
-        delay(250);
-        return;
-      }
-      if (ledState == "ON") {
-        Relays_OFF();
-        delay(250);
-        return;
-      }
+    if (ledState == "ON") {
+      Relays_OFF();
+      delay(250);
+      return;
     }
-  
+  }
+  if (TouchButton(but3.x, but3.y, but3.w, but3.h)) {
+    if (ledState == "OFF") {
+      Relays_ON();
+      delay(250);
+      return;
+    }
+    if (ledState == "ON") {
+      Relays_OFF();
+      delay(250);
+      return;
+    }
+  }
+
 
   lampontime = offdelay.toInt() * 1000;
   if ((millis() - lamponstart)  > lampontime ) { // turn lamp off 2 minutes after start from webbutton     compare stored TempLong to current millis() counter  screen timeout
@@ -1655,6 +1662,10 @@ void Relays_OFF() {
 void browseService(const char * service, const char * proto) {
   //scanstr += ("Browsing for service _%s._%s.local. ... ", service, proto);
   int n = MDNS.queryService(service, proto);
+  const unsigned int size = JSON_OBJECT_SIZE(8);//i do not know
+  StaticJsonDocument<size> json;
+  String scanip = "";
+  String scanurl = "";
   scanstr = "";
   if (n == 0) {
     scanstr += "<font color=\"red\"><b>No other Devices found in local network<br>\n\r Program more devices with this software<br>\n\r  And See / Release the power off Electra ;-)<br></b></font>\n\r";
@@ -1673,11 +1684,26 @@ void browseService(const char * service, const char * proto) {
       scanstr += MDNS.hostname(i);
       scanstr += ".local</a><p>";        // esp32 does it different without.local???
       //scanstr += "</a></p>";           // esp8266 does it different with .local???
+
+      scanip += MDNS.IP(i).toString() + ":" + MDNS.port(i) + ",";
+      scanurl += MDNS.hostname(i) + ",";
+
     }
   }
   Serial.print(scanstr);
   Serial.println("");
   Serial.println(F("Soon Electra will Power a Gazillion Devices"));
+
+  json["ip"] = scanip.c_str();
+  json["url"] = scanurl.c_str();
+  
+  // an array of scanned ips and urls in json,    i dont know  for links on webpage and imagebuttons for  view and control
+  // http:// ip or mdns /errorpage  ==  websockettester page
+  // result is TXT:{"ip":"10.10.100.106:80, 10.10.100.101:80, 10.10.100.102:80, ","url":"bedroom, Living, kitchen, "}
+  
+  char buffer[1000];   //i do not know
+  size_t len = serializeJson(json, buffer); //print to serial monitor
+  ws.textAll(buffer, len);
   //  Serial.println("");
   /*
     Serial.print(F("WiFi.status == "));
@@ -1736,6 +1762,7 @@ void notifyClients() {
   json["P"] = P;
   json["scan"] = scanstr.c_str();   // mdnsscan
 
+ws.cleanupClients();  // maybe solves some rebooting
 
   char buffer[1000];   //i do not know
   size_t len = serializeJson(json, buffer); //print to serial monitor
@@ -1764,7 +1791,7 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
     const char * off_delay = json["off_delay"];
 
 
-    Serial.print("action="); Serial.println(action);
+    //Serial.print("action="); Serial.println(action);
     if (json["action"] == "toggle") {
       //ledPin = !ledPin;
       //if (digitalRead(ledPin) == 0) {
@@ -1777,16 +1804,16 @@ void handleWebSocketMessage(void *arg, uint8_t *data, size_t len) {
         //digitalWrite(ledPin, LOW);
         //ledState = "OFF";
       }
-      Serial.println(ledState);
+      //Serial.println(ledState);
       notifyClients();
     }
 
-    Serial.print(F("off_delay=")); Serial.println(off_delay);
-    Serial.print(F("offdelay=")); Serial.println(offdelay);
+    //Serial.print(F("off_delay=")); Serial.println(off_delay);
+    //Serial.print(F("offdelay=")); Serial.println(offdelay);
     if (json["off_delay"]) {
       offdelay  = atoi(off_delay);
-      Serial.print(F("off_delay=")); Serial.println(off_delay);
-      Serial.print(F("offdelay=")); Serial.println(offdelay);
+     // Serial.print(F("off_delay=")); Serial.println(off_delay);
+     // Serial.print(F("offdelay=")); Serial.println(offdelay);
       notifyClients();
     }
   }
