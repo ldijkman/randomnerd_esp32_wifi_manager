@@ -36,10 +36,13 @@
 Code .BIN file last updated Sunday 19 june 2022 12:00hour<br>
     littlefs bin updated changed index.js mistake in websocket result undefined monday 20 juni 17:15hour<br>
     <br>
+    <hr>
     works a bit, but some problems<br>
     looses ip, maybe https://randomnerdtutorials.com/solved-reconnect-esp32-to-wifi/<br>
     rebooting = watchdog not feeded in time eap async tcp runs on other core, maybe ws.cleanupClients(); to long not called<br>
-    <br>
+    looks like the programs sometimes get in a state, that it runs,sendss pages etcetera, but not in the loop(){<br>
+    things in loop are not performed
+    <hr>
   added /framed.html code for /button.html processor %???% and littlefs button.html and added a better json websocket mdnsscan</h3><br>
   <font color="red"><b>
     <esp-web-install-button manifest="the_bits.json">
