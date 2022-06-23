@@ -1,7 +1,7 @@
 ## Brainstorm subjects
 
 ## drag drop HTML elements even touch on phone 
-## http://sortablejs.github.io/Sortable/
+## next is nice
 ## http://sortablejs.github.io/Sortable/#grid
 ## maybe nice for ordering div iframes
 
