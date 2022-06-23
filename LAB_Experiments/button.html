@@ -1,3 +1,16 @@
+<!-- HTML Javascript button.html -->
+<!-- each wifi relais switch has a button.html -->
+<!-- for showing wifi relais status and control it by image button -->
+
+<!-- u can load it in an iframe on other webpage in the local netwok like used in framed.html -->
+
+<!-- %MDNSNAME% is processed on webserver upload ad filled in with a variable -->
+<!-- always use the %percent sign in pairs, like i have to put another not to break the processor / html code % -->
+<!-- thats tricky when % is used in style or other elements % -->
+<!-- Copyright 2021...2022 Dirk Luberth Dijkman -->
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -28,11 +41,8 @@ maybe better for editing / undestanding
  *websockts json send
  * next is new ip url
 TXT:{"ip":"10.10.100.101:80,10.10.100.105:80,10.10.100.102:80,","url":"Living,Garden,kitchen,"}
-
 wil remove the scan link ip and url
 TXT:{"status":"ON","time":"15:25:37","offdelay":"360","offcnt":340,"T":0,"H":0,"P":0,"scan":"<p><a href=\"http://10.10.100.101:80\">Living.local</a><p><p><a href=\"http://10.10.100.105:80\">Garden.local</a><p><p><a href=\"http://10.10.100.102:80\">kitchen.local</a><p>"}
-
-
  */
 
 var gateway = `ws://${window.location.hostname}/ws`;
@@ -89,7 +99,7 @@ function onMessage(event) {
     
     document.getElementById('ip').innerHTML=result;
 
-/* turned off causing reboots made framed.html     
+/* turned off mirror in mirror wormhole in button.html     
       for (let i = 0; i < result.length; i++){ 
 
         
@@ -102,8 +112,8 @@ function onMessage(event) {
           // mdns text link to ip
            document.getElementById("murl"+i).innerHTML = "<a href=\"http://"+result[i][1]+"\" target=\""+result[i][0]+"\">"+result[i][0]+"</a>";   //show mdns text name
        
-      }
-*/      
+      } 
+*/
     }
   
     
