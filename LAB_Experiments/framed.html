@@ -94,7 +94,8 @@ function onMessage(event) {
            let src = document.getElementById(i).src;          // read the source from iframe for compare
            url=url.replace(":80", "");                      // read iframe src does not return port
           if( src != url ){            // only reload change iframe src if url is changed
-              document.getElementById(i).src = url;
+		document.getElementById(i).hidden = 0;     // only show iframe i it is availeble
+                document.getElementById(i).src = url;
           }
           // mdns text link to ip
            document.getElementById("murl"+i).innerHTML = "<a href=\"http://"+result[i][1]+"\" target=\""+result[i][0]+"\">"+result[i][0]+"</a>";   //show mdns text name
@@ -203,13 +204,14 @@ function onOffdelay(event) {
 <div class="divTable">
 <div class="divTableBody">
 <div class="divTableRow">
-<div class="divTableCell"><iframe id="0" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+<div class="divTableCell"><iframe id="0" hidden align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
 </div>
-<div class="divTableCell"><iframe id="1" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+<div class="divTableCell"><iframe id="1" hidden align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
 </div>
-<div class="divTableCell"><iframe id="2" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+<div class="divTableCell"><iframe id="2" hidden align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
 </div>
-<div class="divTableCell"><iframe id="3" align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+<div class="divTableCell"><iframe id="3" hidden  align="left" width="100" height="120"  style="border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)" scrolling="no"></iframe>
+<!-- needs more, maximum? -->
 </div>
 </div>
 <div class="divTableRow">
@@ -217,6 +219,7 @@ function onOffdelay(event) {
 <div class="divTableCell" id ="murl1" style="text-align: center;"></div>
 <div class="divTableCell" id ="murl2" style="text-align: center;"></div>
 <div class="divTableCell" id ="murl3" style="text-align: center;"></div>
+<!-- needs more, maximum? -->
 </div>
 </div>
 </div>
