@@ -1,8 +1,11 @@
 Brainstorm subjects
 - imagebutton button.html works  https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/LAB_Experiments#imagene-imagebutton
-- https://web.dev/drag-and-drop/ == nah does not work on phone
+- 
 - - github repository listing cutomize your pins drag is nice on phone
---- ## http://sortablejs.github.io/Sortable/
+## drag drop HTML elements even touch on phone 
+## http://sortablejs.github.io/Sortable/
+## maybe nice for ordering div iframes
+
 
 - https://m1cr0lab-esp32.github.io/remote-control-with-websocket/platformio-ide/
 - - x
