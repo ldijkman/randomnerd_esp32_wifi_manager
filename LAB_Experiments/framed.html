@@ -78,7 +78,7 @@ function onMessage(event) {
     var urlArr = (data.url).split(','); 
     var result = [];
     
-    for ( var i = 0; i < ipArr.length-1; i++ ) {           // -1 last field is empty
+    for ( var i = 0; i < ipArr.length-1; i++ ) {             // -1 last field is empty
         result.push( [ urlArr[i], ipArr[i] ] );              // to double array ip url for alafabet sort
     }
     
@@ -92,7 +92,7 @@ function onMessage(event) {
         
            let url = "http://"+result[i][1]+"/button.html";     // source to set for iframe
            let src = document.getElementById(i).src;            // read the source from iframe for compare
-           url=url.replace(":80", "");                          // read iframe src does not return port
+           url=url.replace(":80", "");                          // read iframe src does not return port, for compare strip it from url
           if( src != url ){                                     // only reload change iframe src if url is changed
 		document.getElementById(i).hidden = 0;          // only show iframe if source is availeble
                 document.getElementById(i).src = url;           // set iframe source
