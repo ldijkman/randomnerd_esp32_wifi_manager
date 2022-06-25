@@ -140,4 +140,5 @@ server.on("/scan", HTTP_GET, [](AsyncWebServerRequest *request){
   json = String();
 });
 ```
+![2022-06-25-051605_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/175756151-f91e6607-4a5a-4d05-a1de-a271ec58efe6.png)
 
