@@ -17,12 +17,6 @@ With a little HTML knowledge or Guts, you can change the looks of Electra's Swit
 ---
 
 
-
-https://www.youtube.com/shorts/rXHRWjgCcls
----
-
-![2022-06-19-151725_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/174482999-ad6c4155-c257-4a1a-8ee5-c9b1d8df7b5b.png)
-
 garage.local/button.html 
 - shows automatic mdns scan 
 - - iframed other swithes in the local network 
