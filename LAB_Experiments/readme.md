@@ -169,5 +169,15 @@ makes socket json send on, off, on, off, on, off,  and  time in minutes
 
 {"monday":"0,600,660,780,1147,1396"}
 
+next gets wich slider  from wicch.id
+
+websocket.send(JSON.stringify({times :wich.id+","+ convertH2M(fruits[0])+","+convertH2M(fruits[1])+","+convertH2M(fruits[2])+","+convertH2M(fruits[3])+","+convertH2M(fruits[4])+","+convertH2M(fruits[5])}));
+
+- {"times":"monday,214,470,609,780,1140,1380"}
+- {"times":"tuesday,60,646,1080,1140,1260,1410"}
+- {"times":"wednesday,8,360,960,1080,1200,1365"}	
+- etcetera
+   
+
 ![2022-06-25-095506_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/175764265-b939e2b0-32d3-4fbe-aca7-adb82b225254.png)
 
