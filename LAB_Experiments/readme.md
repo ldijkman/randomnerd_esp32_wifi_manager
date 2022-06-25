@@ -95,6 +95,8 @@ view and control other switches
 
 use ip numbers button html links for adroid?
 
+---
+
 # framed.html
 https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/LAB_Experiments/framed.html
 
