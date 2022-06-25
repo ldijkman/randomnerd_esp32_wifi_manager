@@ -127,7 +127,7 @@ server.on("/scan", HTTP_GET, [](AsyncWebServerRequest *request){
       json += ",\"bssid\":\""+WiFi.BSSIDstr(i)+"\"";
       json += ",\"channel\":"+String(WiFi.channel(i));
       json += ",\"secure\":"+String(WiFi.encryptionType(i));
-      json += ",\"hidden\":"+String(WiFi.isHidden(i)?"true":"false");
+      //////json += ",\"hidden\":"+String(WiFi.isHidden(i)?"true":"false");
       json += "}";
     }
     WiFi.scanDelete();
