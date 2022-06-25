@@ -183,6 +183,5 @@ websocket.send(JSON.stringify({times :wich.id+","+ convertH2M(fruits[0])+","+con
 - {"times":"weekends,202,360,960,1080,1200,1365"}	
 - {"times":"userdefined,208,360,960,1080,1200,1365"}
    
-
-![2022-06-25-095506_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/175764265-b939e2b0-32d3-4fbe-aca7-adb82b225254.png)
+![2022-06-25-111126_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/175766689-68990cc0-fc7a-4ffc-9742-3fc6f0f1914c.png)
 
