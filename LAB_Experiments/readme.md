@@ -106,3 +106,38 @@ https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/LAB_Experime
 
 ![2022-06-25-044038_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/175755209-c7d0e8be-5806-4181-b6da-373441c6f31b.png)
 
+
+---
+
+Scanning for available WiFi Networks
+```
+//First request will return 0 results unless you start scan from somewhere else (loop/setup)
+//Do not request more often than 3-5 seconds
+server.on("/scan", HTTP_GET, [](AsyncWebServerRequest *request){
+  String json = "[";
+  int n = WiFi.scanComplete();
+  if(n == -2){
+    WiFi.scanNetworks(true);
+  } else if(n){
+    for (int i = 0; i < n; ++i){
+      if(i) json += ",";
+      json += "{";
+      json += "\"rssi\":"+String(WiFi.RSSI(i));
+      json += ",\"ssid\":\""+WiFi.SSID(i)+"\"";
+      json += ",\"bssid\":\""+WiFi.BSSIDstr(i)+"\"";
+      json += ",\"channel\":"+String(WiFi.channel(i));
+      json += ",\"secure\":"+String(WiFi.encryptionType(i));
+      json += ",\"hidden\":"+String(WiFi.isHidden(i)?"true":"false");
+      json += "}";
+    }
+    WiFi.scanDelete();
+    if(WiFi.scanComplete() == -2){
+      WiFi.scanNetworks(true);
+    }
+  }
+  json += "]";
+  request->send(200, "application/json", json);
+  json = String();
+});
+```
+
