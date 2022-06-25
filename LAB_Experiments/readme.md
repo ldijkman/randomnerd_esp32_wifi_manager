@@ -35,30 +35,15 @@ garage.local/button.html
 
 https://www.youtube.com/shorts/rXHRWjgCcls
 
-![2022-06-19-083050_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/174468844-1980ec65-92b2-4e38-9028-4abc4ca9b102.png)
-
-
------
------
------
-
-
-
-
-
-
-
-
-
-
-## Imagene imageButton 
-- => http:// mdns_name or IP /button.html     (processor %???% code for/and button.html added to the ESP32 Version)
-
 https://youtube.com/shorts/WvGHbuReKzs?feature=share
 
 https://youtube.com/shorts/alNpCHc8wV4?feature=share
 
 https://youtube.com/shorts/IJEgNqhAxaU?feature=share
+
+
+## Imagene imageButton 
+- => http:// mdns_name or IP /button.html     (processor %???% code for/and button.html added to the ESP32 Version)
 
 # button.html
 https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/LAB_Experiments/button.html
