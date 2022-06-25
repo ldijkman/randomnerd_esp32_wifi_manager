@@ -53,7 +53,8 @@ Login for LittleFSbrowser FileManager / Ace js Editor == admin / admin
 -
 - Got it Working => show me a video ;-) 
 
-# the ESP8266 version is better / leading / further
+# the ESP8266 Hmm the ESP32 version is now better / leading / further
+# https://ldijkman.github.io/Electra
 
 ESP8266-LittleFS-wifi-manager.ino 
 - moved the ESP8266 .INO file inside the folder => /ESP8266-LittleFS-wifi-manager/ESP8266-LittleFS-wifi-manager.ino
