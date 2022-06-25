@@ -60,25 +60,22 @@ https://youtube.com/shorts/alNpCHc8wV4?feature=share
 
 https://youtube.com/shorts/IJEgNqhAxaU?feature=share
 
+```
+<!-- HTML Javascript button.html -->
+<!-- each wifi relais switch has a button.html -->
+<!-- for showing wifi relais status and control it by image button -->
+
+<!-- u can load it in an iframe on other webpage in the local netwok like used in framed.html -->
+
+<!-- %MDNSNAME% is processed on webserver upload ad filled in with a variable -->
+<!-- always use the %percent sign in pairs, like i have to put another not to break the processor / html code % -->
+<!-- thats tricky when % is used in style or other elements % -->
+```
+
+![2022-06-25-043356_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/175755061-8548368c-9d7e-4f13-9516-50c0f48be436.png)
+
 ---
 
-upload button.html to ESPx littlefs with ace js web cloud editor (now included in esp32 version)
-
-or create new file and copy paste
-
-brainstorm about it iframed or javascript external html load display
-
-like chicken menu is external html load display html file https://ldijkman.github.io/Electra/
-
-maybe show the imagebutton on lan mdnsscan links to other devices in the network
-
-mini.html code should do processing replace %variable% on upload %MDNSNANE% %STATE%
-
-Maybe better name button.html
-
-Food for script people?
-
-not optimal but this works switch the esp32.local bulb from another switch web page in my case http://garden.local
 
 ### SO HANDY, the ACE js web cloud editor, 
 ### for editing the html webserver HTML files on the ESP devices
@@ -103,13 +100,6 @@ could place a bulb on each auto scanned discovered mdns url / each switch device
 
 view and control other switches
 
-## haha this is causing reboots, think each iframe loading on each iframe another websocket
-### a bit of a mirror in mirror wormhole, DOS/Windows create dir cd
-- should not show other iframes on button.html
-
-https://www.youtube.com/shorts/rXHRWjgCcls
-
-<img src="https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/LAB_Experiments/Screenshot_20220618-121223_Chrome.jpg">
 
 ## Google Please make mDNS work on Android?
 - looks like Google obays to Electra's pleas ;-)
@@ -117,17 +107,3 @@ https://www.youtube.com/shorts/rXHRWjgCcls
 
 use ip numbers button html links for adroid?
 
-WebPage garden.local shows iframed  garage.local/button.html
-- with offcount
-
-![gardengarageofcount](https://user-images.githubusercontent.com/45427770/173191132-4e1b9e95-3e7f-4f09-8a1f-92ee9828baff.png)
-
-WebPage garden.local shows iframed  garage.local/button.html
-- with offcount
-- 
-<img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/LAB_Experiments/ezgif-5-3d39d5ded4.gif">
-
-
-mini.html now renamed to button.html
-
-![2022-06-10-055434_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/172987181-66d4457b-6e56-4e80-920a-842d08b8682b.png)
