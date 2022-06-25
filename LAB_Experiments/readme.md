@@ -155,3 +155,8 @@ server.on("/scan", HTTP_GET, [](AsyncWebServerRequest *request){
 ## Each wifi relais its own schedule
 # Easy to Set / Overview switch times
 ### https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_Electra-Electra_Touch/ESP32/esp-web-tools-8-0-3/schedule.html
+
+![2022-06-25-073621_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/175759905-9d23a332-9426-4aaa-b31b-28b407465df0.png)
+
+### https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_Electra-Electra_Touch/ESP32/esp-web-tools-8-0-3/schedule.html
+
