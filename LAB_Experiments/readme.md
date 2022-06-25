@@ -1,13 +1,11 @@
 ## Brainstorm subjects
 
 ## drag drop HTML elements even touch on phone 
-## next is nice
-## http://sortablejs.github.io/Sortable/#grid
-## maybe nice for ordering div iframes
+- next is nice http://sortablejs.github.io/Sortable/#grid
+- maybe nice for ordering div iframes
 
 Platformio visual studio
 - https://m1cr0lab-esp32.github.io/remote-control-with-websocket/platformio-ide/
-- - x
 - - trying platformio https://github.com/ldijkman/Electra_ESP32 
 
 
