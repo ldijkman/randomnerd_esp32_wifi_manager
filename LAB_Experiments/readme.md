@@ -1,4 +1,4 @@
-## Brainstorm subjects
+## BrainStorm
 
 ## drag drop HTML elements even touch on phone 
 - next is nice http://sortablejs.github.io/Sortable/#grid
