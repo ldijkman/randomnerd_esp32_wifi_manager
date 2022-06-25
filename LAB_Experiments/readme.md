@@ -160,3 +160,14 @@ server.on("/scan", HTTP_GET, [](AsyncWebServerRequest *request){
 
 ## https://ldijkman.github.io/Electra/schedule.html
 
+
+# yes got a monday time in minutes websocket
+
+websocket.send(JSON.stringify({'monday': convertH2M(fruits[0])+","+convertH2M(fruits[1])+","+convertH2M(fruits[2])+","+convertH2M(fruits[3])+","+convertH2M(fruits[4])+","+convertH2M(fruits[5])}));
+
+makes socket json send
+
+{"monday":"0,600,660,780,1147,1396"}
+
+![2022-06-25-095506_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/175764265-b939e2b0-32d3-4fbe-aca7-adb82b225254.png)
+
