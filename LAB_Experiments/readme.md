@@ -165,7 +165,7 @@ server.on("/scan", HTTP_GET, [](AsyncWebServerRequest *request){
 
 websocket.send(JSON.stringify({'monday': convertH2M(fruits[0])+","+convertH2M(fruits[1])+","+convertH2M(fruits[2])+","+convertH2M(fruits[3])+","+convertH2M(fruits[4])+","+convertH2M(fruits[5])}));
 
-makes socket json send
+makes socket json send on, off, on, off, on, off,  and  time in minutes  
 
 {"monday":"0,600,660,780,1147,1396"}
 
