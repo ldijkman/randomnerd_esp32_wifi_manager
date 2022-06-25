@@ -104,6 +104,8 @@ https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/LAB_Experime
 
 ![2022-06-25-071533_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/175759539-f0389bb0-c6b2-462f-b958-6936870b601b.png)
 
+## add mDNS wifi relais devices and they automaticly appear in the scanned mDNS list 
+
 
 ![2022-06-25-071909_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/175759503-5dff943a-b0aa-46cb-b581-cc5c48b2bd54.png)
 
