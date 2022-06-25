@@ -183,7 +183,7 @@ websocket.send(JSON.stringify({times :wich.id+","+ convertH2M(fruits[0])+","+con
 - {"times":"weekends,202,360,960,1080,1200,1365"}	
 - {"times":"userdefined,208,360,960,1080,1200,1365"}
 
-esp32 handlewebsocketmessage 
+esp32 void handleWebSocketMessage( 
 - Serial.print(serializeJsonPretty(json, Serial));
 - result in serial monitor
 ```
