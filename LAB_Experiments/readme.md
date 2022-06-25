@@ -61,6 +61,7 @@ https://youtube.com/shorts/alNpCHc8wV4?feature=share
 https://youtube.com/shorts/IJEgNqhAxaU?feature=share
 
 # button.html
+https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/LAB_Experiments/button.html
 
 ```
 <!-- HTML Javascript button.html -->
@@ -110,6 +111,7 @@ view and control other switches
 use ip numbers button html links for adroid?
 
 # framed.html
+https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/LAB_Experiments/framed.html
 
 ```
  <!-- HTML Javascript listens for a json wesocket ip's and url name -->
