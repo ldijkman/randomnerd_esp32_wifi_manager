@@ -182,7 +182,15 @@ websocket.send(JSON.stringify({times :wich.id+","+ convertH2M(fruits[0])+","+con
 - {"times":"weekdays,211,360,960,1080,1200,1365"}
 - {"times":"weekends,202,360,960,1080,1200,1365"}	
 - {"times":"userdefined,208,360,960,1080,1200,1365"}
-   
+
+esp32 handlewebsocketmessage 
+- Serial.print(serializeJsonPretty(json, Serial));
+- result in serial monitor
+```
+{
+ "times": "wednesday,300,504,960,1080,1200,1365"
+}
+```   
 ![2022-06-25-111126_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/175766689-68990cc0-fc7a-4ffc-9742-3fc6f0f1914c.png)
 
 # All You Need is Electra!
