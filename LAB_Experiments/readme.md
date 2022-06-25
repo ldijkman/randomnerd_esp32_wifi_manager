@@ -151,6 +151,7 @@ server.on("/scan", HTTP_GET, [](AsyncWebServerRequest *request){
 
 ---
 
-# timed switching
-## each wifi relais its own schedule
+# Timed switching
+## Each wifi relais its own schedule
+# Easy to Set / Overview switch times
 ### https://ldijkman.github.io/randomnerd_esp32_wifi_manager/Touch_Electra-Electra_Touch/ESP32/esp-web-tools-8-0-3/schedule.html
