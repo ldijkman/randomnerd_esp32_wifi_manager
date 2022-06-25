@@ -153,7 +153,7 @@ server.on("/scan", HTTP_GET, [](AsyncWebServerRequest *request){
 
 # Timed switching
 ### Each wifi relais its own schedule webpage
-# Easy to Set / Overview switch times
+# Easy to Set & Overview switch times
 ### https://ldijkman.github.io/Electra/schedule.html
 ### https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/LAB_Experiments/schedule.html
 
