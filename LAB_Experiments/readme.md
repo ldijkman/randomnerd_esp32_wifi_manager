@@ -178,6 +178,10 @@ websocket.send(JSON.stringify({times :wich.id+","+ convertH2M(fruits[0])+","+con
 - {"times":"tuesday,60,646,1080,1140,1260,1410"}
 - {"times":"wednesday,8,360,960,1080,1200,1365"}	
 - etcetera
+- {"times":"everyday,157,360,960,1080,1200,1365"}	
+- {"times":"weekdays,211,360,960,1080,1200,1365"}
+- {"times":"weekends,202,360,960,1080,1200,1365"}	
+- {"times":"userdefined,208,360,960,1080,1200,1365"}
    
 
 ![2022-06-25-095506_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/175764265-b939e2b0-32d3-4fbe-aca7-adb82b225254.png)
