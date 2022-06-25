@@ -60,6 +60,8 @@ https://youtube.com/shorts/alNpCHc8wV4?feature=share
 
 https://youtube.com/shorts/IJEgNqhAxaU?feature=share
 
+# button.html
+
 ```
 <!-- HTML Javascript button.html -->
 <!-- each wifi relais switch has a button.html -->
@@ -106,4 +108,20 @@ view and control other switches
 - https://www.androidpolice.com/android-mdns-local-hostname/
 
 use ip numbers button html links for adroid?
+
+# framed.html
+
+```
+ <!-- HTML Javascript listens for a json wesocket ip's and url name -->
+ <!-- and shows a iframe of a remote image button.html -->
+ <!-- for showing other wifi relais status and control it  -->
+
+ <!-- %MDNSNAME% is processed on webserver upload ad filled in with a variable -->
+ <!-- always use the %percent sign in pairs, like i have to put another not to break the processor / html code % -->
+ <!-- thats tricky when % is used in style or other elements % -->
+```
+
+![2022-06-25-043928_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/175755165-e94fc976-60f5-47b8-81c9-27dbadb69004.png)
+
+![2022-06-25-044038_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/175755209-c7d0e8be-5806-4181-b6da-373441c6f31b.png)
 
