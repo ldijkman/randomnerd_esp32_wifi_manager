@@ -2,12 +2,13 @@
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>Sonoff a Switch multi range slider timeline ESP8266 ESP8285 WiFi relays timed switch</title>
+  <title>Sonoff a Switch multi range slider timeline ESP32 ESP8266 ESP8285 mDNS WiFi relays timed switch</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="robots" content="noindex, nofollow">
   <meta name="googlebot" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  
+<!-- Copyright 2022 Dirk Luberth Dijkman Bangert Andijk The Netherlands -->
 
   <script
     type="text/javascript"
@@ -214,7 +215,7 @@ ON <input type ="time" id="mt5" oninput="timeset('mt5')"> OFF <input type ="time
 </form>
 <hr>
 <hr>
-<input type="checkbox" id ="checktuesday" name="checktuesday" onchange="boxes() writetoconsole(tuesday);" checked><b>Tuesday</b>
+<input type="checkbox" id ="checktuesday" name="checktuesday" onchange="boxes(); writetoconsole(tuesday);" checked><b>Tuesday</b>
 <br><br><br>
 <div id="tuesday"></div>
 <br><br><br><br>
@@ -229,7 +230,7 @@ ON <input type ="time" id="tut5" oninput="timeset('tut5')"> OFF <input type ="ti
 <hr>
 <center></center>
 <hr>
-<input type="checkbox" id ="checkwednesday" name="checkwednesday" onchange="boxes() writetoconsole(wednesday);" checked><b>Wednesday</b>
+<input type="checkbox" id ="checkwednesday" name="checkwednesday" onchange="boxes(); writetoconsole(wednesday);" checked><b>Wednesday</b>
 <br><br><br>
 <div id="wednesday"></div>
 <br><br><br><br>
@@ -244,7 +245,7 @@ ON <input type ="time" id="wt5" oninput="timeset('wt5')"> OFF <input type ="time
 <hr>
 <center></center>
 <hr>
-<input type="checkbox" id ="checkthursday" name="checkthursday" onchange="boxes() writetoconsole(thursday);" checked><b>Thursday</b><br>
+<input type="checkbox" id ="checkthursday" name="checkthursday" onchange="boxes(); writetoconsole(thursday);" checked><b>Thursday</b><br>
 <br><div id="thursday">
 </div>
 <br><br><br><br>
@@ -259,7 +260,7 @@ ON <input type ="time" id="tht5" oninput="timeset('tht5')"> OFF <input type ="ti
 <hr>
 <center></center>
 <hr>
-<input type="checkbox" id ="checkfriday" name="checkfriday" onchange="boxes() writetoconsole(friday);" checked><b>Friday</b><br>
+<input type="checkbox" id ="checkfriday" name="checkfriday" onchange="boxes(); writetoconsole(friday);" checked><b>Friday</b><br>
 <br><div id="friday">
 </div>
 <br><br><br><br>
@@ -346,7 +347,7 @@ ON <input type ="time" id="wendt5" oninput="timeset('wendt5')"> OFF <input type 
 		<tr>
 			<td> mon </td>
 			<td> tue </td>
-			<td >wed </td>
+			<td> wed </td>
 			<td> thu </td>
 			<td> fri </td>
 			<td> sat </td>
@@ -461,20 +462,20 @@ marker sunrise, sunset on bar<br>
 join / merge overlapping tooltips<br>
 enable disable a day / slider with checkbox or disable/hide a set on/off handles<br>
 <br><br>
-<a href="http://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/tree/main/test/art_test_1/Remote_WiFi_Sense_Switch" target="hey_Electra_open_a_new_window">
-http://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/tree/main/test/art_test_1/Remote_WiFi_Sense_Switch</a><br><br><b><br>
+<a href="https://ldijkman.github.io/Electra" target="Electra_go4it">https://ldijkman.github.io/Electra</a><br>
+<br><b><br>
 Hey Electra?!, Please let me Sleep!<br>
 <br>
 <br>
 <br>
 <hr>
 <h1>Electra, Could use some Help?!</h1><h4>
-putting this timerset webpage inside next ESP8266 ESP8285 relais webserver code
-</h4><a href="https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/art_test_1/Remote_WiFi_Sense_Switch/ESP8266_MDNS_Hostname_relais_switch_list_other_on_webpage.ino.ino" target="Electra_go4it">https://github.com/ldijkman/ART-ESP32-Touch-TFT-Thermostat/blob/main/test/art_test_1/Remote_WiFi_Sense_Switch/ESP8266_MDNS_Hostname_relais_switch_list_other_on_webpage.ino.ino</a>
+putting this timerset webpage inside next ESP32 ESP8266 ESP8285 relais webserver code
+</h4><a href="https://ldijkman.github.io/Electra" target="Electra_go4it">https://ldijkman.github.io/Electra</a>
 <br>
 <hr>
 <br><br><br>
- <a href="https://m.facebook.com/groups/esp32smartthermostat/" target="Hey Electra open it in a new browser tab">https://m.facebook.com/groups/esp32smartthermostat</a><br>
+ <a href="https://m.facebook.com/luberth.dijkman" target="faceboekie">https://m.facebook.com/luberth.dijkman</a><br>
 <center><img src="data:image/jpeg;base64,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">
 <br>
 Done with it, within a week, Saying Hi Google<br>
@@ -483,10 +484,12 @@ Who wants to say, Hi Bixby, Siri, Cortana<br>
 <br>
 Hey Electra, You make Sense!<br>
 <br>
-<a href="https://github.com/ldijkman/Hey_Electra" target="Hey_Electra">https://github.com/ldijkman/Hey_Electra</a>
+<a href="https://ldijkman.github.io/Electra" target="Hey_Electra">https://ldijkman.github.io/Electra</a>
 <br><br>A &copy;&Ograve;&Oacute;&THORN;&egrave;&reg; Test. 2021<br><br>
 <a href="https://www.youtube.com/watch?v=XzO9jGPtrhc" target="The_King_had_a_girlfriend_named_Electra">https://www.youtube.com/watch?v=XzO9jGPtrhc</a>
 </center>
+
+<!-- Copyright 2022 Dirk Luberth Dijkman Bangert Andijk The Netherlands -->
 
     <script type="text/javascript">//<![CDATA[
 
@@ -950,6 +953,12 @@ function boxes() {
     tuesday.removeAttribute('disabled');
   } else {
     tuesday.setAttribute('disabled', true);
+  }
+  
+    if (checkwednesday.checked) {
+    wednesday.removeAttribute('disabled');
+  } else {
+    wednesday.setAttribute('disabled', true);
   }
 
 
@@ -1488,8 +1497,9 @@ function writetoconsole(wich) { // wich holds wich day slider
   console.log("arraylength " + xxx);
   console.log(wich.id + " ON OFF times in minutes ");
   console.log("hours x 60 + minutes = timeinminutes");
+  let boxstate=document.getElementById("check"+wich.id).checked;
   
-   websocket.send(JSON.stringify({times : wich.id +","+ convertH2M(fruits[0])+","+convertH2M(fruits[1])+","+convertH2M(fruits[2])+","+convertH2M(fruits[3])+","+convertH2M(fruits[4])+","+convertH2M(fruits[5])}));
+   websocket.send(JSON.stringify({times : wich.id +","+ boxstate+","+ convertH2M(fruits[0])+","+convertH2M(fruits[1])+","+convertH2M(fruits[2])+","+convertH2M(fruits[3])+","+convertH2M(fruits[4])+","+convertH2M(fruits[5])}));
    
   if (xxx == 2 || xxx == 4 || xxx == 6) {
     console.log("ON  " + convertH2M(fruits[0])); // time in minutes
@@ -1526,5 +1536,10 @@ function writetoconsole(wich) { // wich holds wich day slider
     <a href="Http://paypal.me/LDijkman">A penny for sharing my thoughts</a><br><br>
     Electra, A &copy;&Ograve;&Oacute;&THORN;&egrave;&reg; Test.<br>
     &copy;opy&reg;ight 2021...2022 Dirk Luberth Dijkman<br><br>
+    All You Need is Electra!<br>
+https://ldijkman.github.io/Electra<br>
+
+<!-- Copyright 2022 Dirk Luberth Dijkman Bangert Andijk The Netherlands -->
+
 </body>
 </html>
