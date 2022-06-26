@@ -198,7 +198,7 @@ esp32 void handleWebSocketMessage(
 
 ![2022-06-26-071316_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/175800392-bdb07501-bb47-4670-9c36-451e2f3d5b24.png)
 
-
+# want red marker on each time slider showing actual NTP time from ESP wifi relais switch
 
 # All You Need is Electra!
 
