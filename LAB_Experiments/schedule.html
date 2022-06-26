@@ -101,7 +101,6 @@ function onMessage(event) {
     if (data.ip){  // websocket with ip and url
     // we have a webstocket with ip like
     // TXT:{"ip":"10.10.100.101:80,10.10.100.105:80,10.10.100.102:80,","url":"Living,Garden,kitchen,"}
-
     var ipArr = (data.ip).split(',');
     var urlArr = (data.url).split(','); 
     var result = [];
@@ -113,10 +112,8 @@ function onMessage(event) {
     result=result.sort((a, b) => a[0].localeCompare(b[0]));  // sort alfabet mddns url
     
     document.getElementById('ip').innerHTML=result;
-
  
       for (let i = 0; i < result.length; i++){ 
-
         
            let url = "http://"+result[i][1]+"/button.html";    // source to set for iframe
            let src = document.getElementById(i).src;          // read the source from iframe for compare
@@ -128,7 +125,6 @@ function onMessage(event) {
            document.getElementById("murl"+i).innerHTML = "<a href=\"http://"+result[i][1]+"\" target=\""+result[i][0]+"\">"+result[i][0]+"</a>";   //show mdns text name
        
       } 
-
     }
   
     
@@ -204,7 +200,7 @@ open console with keyboard shortcut Ctrl Shift J (on Windows & raspberry pi)<br>
 Later for JSon data pass??? from browser to ESP8266 ESP8285<br>
 <br>
 <hr>
-<input type="checkbox" id ="checkmonday" name="checkmonday" onchange="boxes()" checked><b>Monday</b> 
+<input type="checkbox" id ="checkmonday" name="checkmonday" onchange="boxes(); writetoconsole(monday);" checked><b>Monday</b> 
 <br><br><br>
 <div id="monday"></div>
 <br><br><br><br>
@@ -969,7 +965,6 @@ function turnoff() {
   } else {
     monday.setAttribute('disabled', true);
   }
-
  
   if (checktuesday.checked) {
     tuesday.removeAttribute('disabled');
@@ -1494,7 +1489,7 @@ function writetoconsole(wich) { // wich holds wich day slider
   console.log(wich.id + " ON OFF times in minutes ");
   console.log("hours x 60 + minutes = timeinminutes");
   
-   websocket.send(JSON.stringify({times :wich.id+","+ convertH2M(fruits[0])+","+convertH2M(fruits[1])+","+convertH2M(fruits[2])+","+convertH2M(fruits[3])+","+convertH2M(fruits[4])+","+convertH2M(fruits[5])}));
+   websocket.send(JSON.stringify({times : wich.id +","+ convertH2M(fruits[0])+","+convertH2M(fruits[1])+","+convertH2M(fruits[2])+","+convertH2M(fruits[3])+","+convertH2M(fruits[4])+","+convertH2M(fruits[5])}));
    
   if (xxx == 2 || xxx == 4 || xxx == 6) {
     console.log("ON  " + convertH2M(fruits[0])); // time in minutes
