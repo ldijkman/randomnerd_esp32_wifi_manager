@@ -193,7 +193,7 @@ esp32 void handleWebSocketMessage(
 ```   
 ![2022-06-25-111126_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/175766689-68990cc0-fc7a-4ffc-9742-3fc6f0f1914c.png)
 
-
+## Chromium inspect Network WS (websocket) (show only send)
 ## json websockets send wich day and day checkbox enabled or not
 
 ![2022-06-26-071316_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/175800392-bdb07501-bb47-4670-9c36-451e2f3d5b24.png)
