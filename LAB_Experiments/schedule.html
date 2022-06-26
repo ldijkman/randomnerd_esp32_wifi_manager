@@ -1498,6 +1498,7 @@ function writetoconsole(wich) { // wich holds wich day slider
   console.log(wich.id + " ON OFF times in minutes ");
   console.log("hours x 60 + minutes = timeinminutes");
   let boxstate=document.getElementById("check"+wich.id).checked;
+  if(boxstate){ boxstate=1;} else {boxstate=0;}                         // make true, false into 1, 0
   
    websocket.send(JSON.stringify({times : wich.id +","+ boxstate+","+ convertH2M(fruits[0])+","+convertH2M(fruits[1])+","+convertH2M(fruits[2])+","+convertH2M(fruits[3])+","+convertH2M(fruits[4])+","+convertH2M(fruits[5])}));
    
