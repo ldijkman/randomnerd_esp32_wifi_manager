@@ -271,7 +271,7 @@ ON <input type ="time" id="frt5" oninput="timeset('frt5')"> OFF <input type ="ti
 <hr>
 <center></center>
 <hr>
-<input type="checkbox"><b>Saturday</b><br>
+<input type="checkbox" id ="checksaturday" name="checksaturday" onchange="boxes(); writetoconsole(saturday);" checked><b>Saturday</b><br>
 <br><div id="saturday">
 </div>
 <br><br><br><br>
@@ -286,7 +286,7 @@ ON <input type ="time" id="sat5" oninput="timeset('sat5')"> OFF <input type ="ti
 <hr>
 <center></center>
 <hr>
-<input type="checkbox"><b>Sunday</b><br>
+<input type="checkbox" id ="checksunday" name="checksunday" onchange="boxes(); writetoconsole(sunday);" checked><b>Sunday</b><br>
 <br><div id="sunday">
 </div>
 <br><br><br><br>
@@ -953,6 +953,29 @@ function boxes() {
     wednesday.setAttribute('disabled', true);
   }
 
+  if (checkthursday.checked) {
+    thursday.removeAttribute('disabled');
+  } else {
+    thursday.setAttribute('disabled', true);
+  }
+  
+  if (checkfriday.checked) {
+    friday.removeAttribute('disabled');
+  } else {
+    friday.setAttribute('disabled', true);
+  }
+  
+  if (checksaturday.checked) {
+    saturday.removeAttribute('disabled');
+  } else {
+    saturday.setAttribute('disabled', true);
+  }
+  
+  if (checksunday.checked) {
+    sunday.removeAttribute('disabled');
+  } else {
+    sunday.setAttribute('disabled', true);
+  }
 
 }
 
