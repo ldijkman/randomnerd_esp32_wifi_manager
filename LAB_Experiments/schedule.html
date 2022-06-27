@@ -1649,7 +1649,7 @@ https://ldijkman.github.io/Electra<br>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 
-setTimeout(myGreeting, 1000);
+setInterval(myGreeting, 1000);
   
 }, false);
 
@@ -1660,7 +1660,7 @@ function myGreeting() {
   document.getElementsByClassName('actualtime')[0].style.left = current+"%";
   document.getElementsByClassName('actualtime')[1].style.left = current+"%";
   
-
+ document.getElementsByClassName('actualtime')[1].textContent = "Actual time  "+now.getHours()+":"+now.getMinutes()+":"+now.getSeconds();
   //document.getElementById('actualtime').style.left = current+"%";
 }
 </script>
