@@ -3,8 +3,8 @@
 <head>
   
   
-<!-- https://ldijkman.github.io/Electra/schedule.html -->
-	
+<!-- https://ldijkman.github.io/Electra/schedule.html -->	
+
 <!-- https://ldijkman.github.io/Electra -->
 	 
 	 
@@ -95,6 +95,7 @@
 // 50% is 12 o clock
 document.addEventListener('DOMContentLoaded', function() {
   var l = document.createElement('div');
+  l.setAttribute("id", "actualtime");
   var bookStyles = {
     position: "absolute",
    color: "red",
@@ -110,8 +111,15 @@ document.addEventListener('DOMContentLoaded', function() {
   l.innerHTML = "Actual time marker";
 
   document.getElementsByClassName('noUi-base')[0].appendChild(l.cloneNode(true));
+  document.getElementsByClassName('noUi-base')[1].appendChild(l.cloneNode(true));
+
+  document.getElementById('actualtime').style.left = "75%";
   
 }, false);
+
+
+
+
 
 /**
  * ----------------------------------------------------------------------------
