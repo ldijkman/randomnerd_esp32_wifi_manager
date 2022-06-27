@@ -11,7 +11,7 @@
 <!-- Copyright 2022 Dirk Luberth Dijkman Bangert Andijk The Netherlands -->
 
  
-<link rel="stylesheet" type="text/css" href="/css/result-light.css">
+<link rel="stylesheet" type="text/css" href="/_bestaatniet_/css/result-light.css">
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.css">
@@ -33,7 +33,49 @@
 }
 
 </style>
+    <style>
+       /*
+        .noUi-base{
+            border-left: 2px solid red;
+            height: 20px;
+            position:absolute;
+            left: 76%;
+        z-index: auto;
+          
+        }
+        */
+        
+   main {
+    margin-bottom: 1%;
+  }
+  
+.floating-menu {
+    font-family: sans-serif;
+    background: navy;
+    padding: 5px;;
+    width: 100%;
+    z-index: 100;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+  }
 
+  .floating-menu a, 
+  .floating-menu h3 {
+    font-size: 0.9em;
+    /*display: block;*/
+    margin: 0 0.5em;
+    color: white;
+  }
+    </style>
+
+<main>
+  <!--https://www.quackit.com/html/html_editors/scratchpad/?example=/css/codes/css_floating_menu_positioned-->
+  <nav class="floating-menu">
+    <!-- next some should be filled in by %% processor or ntp time json websocket-->
+    <a href="/">mDNS .local</a><a href="http://10.0.100.104">10.10.100.104</a><a href="/">NTP TIME</a><a href="/edit">WebEditor</a>
+  </nav>
+</main>
 
 <script>
 /**
@@ -1557,6 +1599,10 @@ https://ldijkman.github.io/Electra<br>
 
 <!-- Copyright 2022 Dirk Luberth Dijkman Bangert Andijk The Netherlands -->
 </center>
+
+<br><br><br>
+<br><br><br>
+
 </body>
 </html>
 
