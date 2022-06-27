@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+  
+  
 <!-- https://ldijkman.github.io/Electra/schedule.html -->	
-	
+	 
+	 
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Sonoff a Switch multi range slider timeline ESP32 ESP8266 ESP8285 mDNS WiFi relays timed switch</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -81,6 +83,33 @@
 </main>
 
 <script>
+
+
+
+
+// <!-- tryng to mak a marker for current actual time -->
+// my slider is 1440 minutes long wich is a day
+// so actual (hours x 60 + minutes)/1440 x 100% is actual percentage on slider
+// 50% is 12 o clock
+document.addEventListener('DOMContentLoaded', function() {
+  var l = document.createElement('div');
+  var bookStyles = {
+    position: "absolute",
+   color: "red",
+   backgroundColor: "blue",
+   height: "30px",
+   width: "6px",
+   left: "50%"
+};
+  for (let style in bookStyles) {
+ l.style[style] = bookStyles[style];
+}
+  //l.innerHTML = "Hello World";
+
+  document.getElementsByClassName('noUi-base')[0].appendChild(l.cloneNode(true));
+  
+}, false);
+
 /**
  * ----------------------------------------------------------------------------
  *   ESP32 Remote Control with WebSocket
