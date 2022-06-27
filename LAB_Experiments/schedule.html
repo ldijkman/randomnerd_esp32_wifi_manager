@@ -1645,7 +1645,15 @@ https://ldijkman.github.io/Electra<br>
 
 <br><br><br>
 <br><br><br>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
 
+const now = new Date();
+const current = (((now.getHours() * 60) + now.getMinutes())/1440)*100;
+  document.getElementById('actualtime').style.left = current+"%";
+  
+}, false);
+</script>
 </body>
 </html>
 
