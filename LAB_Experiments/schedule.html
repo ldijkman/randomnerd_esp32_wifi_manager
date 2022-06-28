@@ -101,10 +101,10 @@ document.addEventListener('DOMContentLoaded', function() {
     position: "absolute",
    color: "red",
    backgroundColor: "blue",
-   height: "-30px",
+   height: "60px",
    width: "1px",
    left: "50%",
-   top: "-20px"
+   top: "-1px"
 };
   for (let style in bookStyles) {
  l.style[style] = bookStyles[style];
@@ -113,7 +113,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.getElementsByClassName('noUi-base')[0].appendChild(l.cloneNode(true));
   document.getElementsByClassName('noUi-base')[1].appendChild(l.cloneNode(true));
-
+  document.getElementsByClassName('noUi-base')[2].appendChild(l.cloneNode(true));
+  document.getElementsByClassName('noUi-base')[3].appendChild(l.cloneNode(true));
+  
   document.getElementById('actualtime').style.left = "75%";
   
 }, false);
@@ -1656,11 +1658,21 @@ setInterval(myGreeting, 1000);
 function myGreeting() {
   const now = new Date();
   const current = (((now.getHours() * 60) + now.getMinutes())/1440)*100;
+  var sec;
+  var min;
+  if(now.getMinutes()<=9)min="0"+now.getMinutes(); else min=now.getMinutes();
+  if(now.getSeconds()<=9)sec="0"+now.getSeconds(); else sec=now.getSeconds();
    
   document.getElementsByClassName('actualtime')[0].style.left = current+"%";
   document.getElementsByClassName('actualtime')[1].style.left = current+"%";
+  document.getElementsByClassName('actualtime')[2].style.left = current+"%";
+  document.getElementsByClassName('actualtime')[3].style.left = current+"%";
   
- document.getElementsByClassName('actualtime')[1].textContent = "Actual time  \r\n\r\n<br><br>"+now.getHours()+":"+now.getMinutes()+":"+now.getSeconds();
+ document.getElementsByClassName('actualtime')[0].textContent = ". . . "+now.getHours()+":"+min+":"+sec;
+ document.getElementsByClassName('actualtime')[1].textContent = ". . . "+now.getHours()+":"+min+":"+sec;
+ document.getElementsByClassName('actualtime')[2].textContent = ". . . "+now.getHours()+":"+min+":"+sec;
+ document.getElementsByClassName('actualtime')[3].textContent = ". . . "+now.getHours()+":"+min+":"+sec;
+ 
   //document.getElementById('actualtime').style.left = current+"%";
 }
 </script>
