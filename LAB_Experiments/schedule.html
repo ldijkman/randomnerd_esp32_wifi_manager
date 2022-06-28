@@ -110,13 +110,11 @@ document.addEventListener('DOMContentLoaded', function() {
  l.style[style] = bookStyles[style];
 }
   l.innerHTML = "Actual time marker";
+ for (let i = 0; i < 11; i++) {  
+  document.getElementsByClassName('noUi-base')[i].appendChild(l.cloneNode(true));   // create a div class actualtime on div nouibase
+ }
 
-  document.getElementsByClassName('noUi-base')[0].appendChild(l.cloneNode(true));
-  document.getElementsByClassName('noUi-base')[1].appendChild(l.cloneNode(true));
-  document.getElementsByClassName('noUi-base')[2].appendChild(l.cloneNode(true));
-  document.getElementsByClassName('noUi-base')[3].appendChild(l.cloneNode(true));
-  
-  document.getElementById('actualtime').style.left = "75%";
+  document.getElementById('actualtime').style.left = "75%"; // id is not good each element should have a unique id
   
 }, false);
 
@@ -1661,18 +1659,17 @@ function myGreeting() {
   const current = (((now.getHours() * 60) + now.getMinutes())/1440)*100;
   var sec;
   var min;
-  if(now.getMinutes()<=9)min="0"+now.getMinutes(); else min=now.getMinutes();
-  if(now.getSeconds()<=9)sec="0"+now.getSeconds(); else sec=now.getSeconds();
+  if(now.getMinutes()<=9)min="0"+now.getMinutes(); else min=now.getMinutes();  // a leading zer0 if 0 to 9
+  if(now.getSeconds()<=9)sec="0"+now.getSeconds(); else sec=now.getSeconds();  // a leading zer0 if 0 to 9
+
+ for (let i = 0; i < 11; i++) {  
    
-  document.getElementsByClassName('actualtime')[0].style.left = current+"%";
-  document.getElementsByClassName('actualtime')[1].style.left = current+"%";
-  document.getElementsByClassName('actualtime')[2].style.left = current+"%";
-  document.getElementsByClassName('actualtime')[3].style.left = current+"%";
+   document.getElementsByClassName('actualtime')[i].style.left = current+"%";   // time to percentage 0 to 100%
   
- document.getElementsByClassName('actualtime')[0].textContent = ". . . "+now.getHours()+":"+min+":"+sec;
- document.getElementsByClassName('actualtime')[1].textContent = ". . . "+now.getHours()+":"+min+":"+sec;
- document.getElementsByClassName('actualtime')[2].textContent = ". . . "+now.getHours()+":"+min+":"+sec;
- document.getElementsByClassName('actualtime')[3].textContent = ". . . "+now.getHours()+":"+min+":"+sec;
+   document.getElementsByClassName('actualtime')[i].textContent = ". . . "+now.getHours()+":"+min+":"+sec; 
+ 
+   
+ }// end for
  
   //document.getElementById('actualtime').style.left = current+"%";
 }
