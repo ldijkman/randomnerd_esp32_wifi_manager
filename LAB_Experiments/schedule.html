@@ -6,9 +6,8 @@
 <!-- https://ldijkman.github.io/Electra/schedule.html -->	
 
 <!-- https://ldijkman.github.io/Electra -->
-	
-
-  <meta name="mobile-web-app-capable" content="yes"> 
+	 
+	 
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Sonoff a Switch multi range slider timeline ESP32 ESP8266 ESP8285 mDNS WiFi relays timed switch</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -86,7 +85,7 @@
   <!--https://www.quackit.com/html/html_editors/scratchpad/?example=/css/codes/css_floating_menu_positioned-->
   <nav class="floating-menu">
     <!-- next some should be filled in by %% processor or ntp time json websocket-->
-    <a href="/">mDNS .local</a><a href="http://10.0.100.104">10.10.100.104</a><a href="/">NTP TIME</a><a href="/edit">WebEditor</a><a href="https://ldijkman.github.io/Electra/">Electra</a>
+    <a href="/">mDNS.local</a><a href="http://10.10.100.104">10.10.100.104</a><a href="/">NTP TIME</a><a href="/edit">WebEditor</a><a href="https://ldijkman.github.io/Electra/">Electra</a>
   </nav>
 </main>
 
@@ -257,6 +256,7 @@ function onOffdelay(event) {
 <br>Sonoff a Switch !<br>
 <h2>Each WiFi relais its own timed switching schedule webbpage</h2>
 Big Better Landscape!<br><br>
+<h2>Rotate your screen to landscape<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#checkmonday">Go to Monday</a><br></h2>
 <br>
 EWelink only 4 on/off schedule timers? (and 4 me hard to understand the working)<br>
 Are you done with the EWElink advertisements in the app<br>
@@ -270,22 +270,25 @@ each device automaticly shows a scanned linked list of other devices in the loca
 if a new device is added and configured via accesspoint wifi manager it automaticly appears in linked list on all other devices webpages <br>
 and it scanned / linked lists all other http://***.local devices on its own webpage<br>no wifisettings no mdns http://***.local and relais i/o settings hardcoded, all settings user defineble<br>so every device can be programmed with the same code<br><br>
 on Android you can use <a href ="https://play.google.com/store/apps/details?id=de.wellenvogel.bonjourbrowser&hl=en&gl=US" target="hi Electra">Bonjour browser app </a>to see and navigate all devices on the local network<br>or with apple saphari just go to for example http://living.local and from that webpage you can click links to all other devices on the local network<br><br>
-Test to Easy set/overview/timeline auto switch times for ESP8266 ESP8285  WiFi Relais WebServerPage<br><br><br>
+Test to Easy set/overview/timeline auto switch times for ESP32 ESP8266 ESP8285  WiFi Relais WebServerPage<br><br><br>
 esp8266 comes with different memory sizes?<br>
 my wemos d1 r1 mini with relais shield has a 32mbit chip = 4MB<br>
 <br>
 <a href="http://www.google.com/search?q=nouislider" target="Hey Electra open it in a new browser tab">http://www.google.com/search?q=nouislider</a><br>
 used external nouislider 15.5.0 js en css<br>
-https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.js<br>
-https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.css<br>
+https://cdnjs.cloudflare.com/ajax/libs<br>
+/noUiSlider/15.5.0/nouislider.js<br>
+https://cdnjs.cloudflare.com/ajax/libs<br>
+/noUiSlider/15.5.0/nouislider.css<br>
 https://cdnjs.com/libraries/noUiSlider<br>
 
 <br><b>writes time data to browser developer console on slider change</b><br>
 open console with keyboard shortcut Ctrl Shift J (on Windows & raspberry pi)<br>	
-Later for JSon data pass??? from browser to ESP8266 ESP8285<br>
+Later for JSon data pass??? from browser to ESP32 ESP8266 ESP8285<br>
 <br>
 if the page is served from ESP32, chromium inspect network ws send <br>
 now shows the json websocket send<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#checkmonday">go to monday</a><br>
 <br>
 <hr>
 <input type="checkbox" id ="checkmonday" name="checkmonday" onchange="boxes(); writetoconsole(monday);" checked><b>Monday</b> 
@@ -362,7 +365,7 @@ ON <input type ="time" id="frt1" oninput="timeset('frt1')"> OFF <input type ="ti
 ON <input type ="time" id="frt3" oninput="timeset('frt3')"> OFF <input type ="time" id="frt4" oninput="timeset('tht4')"><br>
 <input type="checkbox" id ="ct3fr" onchange="turnoff()" checked>
 ON <input type ="time" id="frt5" oninput="timeset('frt5')"> OFF <input type ="time" id="frt6" oninput="timeset('frt6')">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#checkfriday">PREVIOUS</a>&nbsp;&nbsp;<a href="#checksaturday">NEXT<br></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#checkthursday">PREVIOUS</a>&nbsp;&nbsp;<a href="#checksaturday">NEXT<br></a><br>
 </form>
 <hr>
 <center></center>
@@ -394,7 +397,7 @@ ON <input type ="time" id="sut1" oninput="timeset('sut1')"> OFF <input type ="ti
 ON <input type ="time" id="sut3" oninput="timeset('sut3')"> OFF <input type ="time" id="sut4" oninput="timeset('sut4')"><br>
 <input type="checkbox" id ="ct3su" onchange="turnoff()" checked>
 ON <input type ="time" id="sut5" oninput="timeset('sut5')"> OFF <input type ="time" id="sut6" oninput="timeset('sut6')">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#checksaturday">PREVIOUS</a>&nbsp;&nbsp;<a href="#checeveryday">NEXT<br></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#checksaturday">PREVIOUS</a>&nbsp;&nbsp;<a href="#checkeveryday">NEXT<br></a><br>
 </form>
 <hr>
 <center></center>
@@ -409,9 +412,12 @@ ON <input type ="time" id="edt1" oninput="timeset('edt1')"> OFF <input type ="ti
 <input type="checkbox" id ="ct2ed" onchange="turnoff()" checked>
 ON <input type ="time" id="edt3" oninput="timeset('edt3')"> OFF <input type ="time" id="edt4" oninput="timeset('edt4')"><br>
 <input type="checkbox" id ="ct3ed" onchange="turnoff()" checked>
-ON <input type ="time" id="edt5" oninput="timeset('edt5')"> OFF <input type ="time" id="edt6" oninput="timeset('edt6')"><br>
+ON <input type ="time" id="edt5" oninput="timeset('edt5')"> OFF <input type ="time" id="edt6" oninput="timeset('edt6')">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#checksunday">PREVIOUS</a>&nbsp;&nbsp;<a href="#checkweekdays">NEXT<br></a><br>
 </form>
-<hr><input type="checkbox"><b>Weekdays Monday ... Friday</b><br>
+<hr>
+<center></center>
+<input type="checkbox" id ="checkweekdays" name="checkweekdays"><b>Weekdays Monday ... Friday</b><br>
 <br><div id="weekdays">
 </div>
 <br><br><br><br>
@@ -421,9 +427,12 @@ ON <input type ="time" id="wdt1" oninput="timeset('wdt1')"> OFF <input type ="ti
 <input type="checkbox" id ="ct2wd" onchange="turnoff()" checked>
 ON <input type ="time" id="wdt3" oninput="timeset('wdt3')"> OFF <input type ="time" id="wdt4" oninput="timeset('wdt4')"><br>
 <input type="checkbox" id ="ct3wd" onchange="turnoff()" checked>
-ON <input type ="time" id="wdt5" oninput="timeset('wdt5')"> OFF <input type ="time" id="wdt6" oninput="timeset('wdt6')"><br>
+ON <input type ="time" id="wdt5" oninput="timeset('wdt5')"> OFF <input type ="time" id="wdt6" oninput="timeset('wdt6')">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#checkeveryday">PREVIOUS</a>&nbsp;&nbsp;<a href="#checkweekends">NEXT<br></a><br>
 </form>
-<hr><input type="checkbox"><b>Weekends Saturday Sunday</b> <br>
+<hr>
+<center></center>
+<input type="checkbox" id ="checkweekends" name="checkweekends"><b>Weekends Saturday Sunday</b> <br>
 <br><div id="weekends">
 </div>
 <br><br><br><br>
@@ -433,7 +442,8 @@ ON <input type ="time" id="wendt1" oninput="timeset('wendt1')"> OFF <input type 
 <input type="checkbox" id ="ct2wend" onchange="turnoff()" checked>
 ON <input type ="time" id="wendt3" oninput="timeset('wendt3')"> OFF <input type ="time" id="wendt4" oninput="timeset('wendt4')"><br>
 <input type="checkbox" id ="ct3wend" onchange="turnoff()" checked>
-ON <input type ="time" id="wendt5" oninput="timeset('wendt5')"> OFF <input type ="time" id="wendt6" oninput="timeset('wendt6')"><br>
+ON <input type ="time" id="wendt5" oninput="timeset('wendt5')"> OFF <input type ="time" id="wendt6" oninput="timeset('wendt6')">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#checkweekdays">PREVIOUS</a>&nbsp;&nbsp;<a href="#checkudd">NEXT<br></a><br>
 </form>
 <hr><input type="checkbox"><b>User Defined Days</b><br>
 <table style="border-collapse: collapse;" border = "1">
@@ -468,7 +478,8 @@ ON <input type ="time" id="udt1" oninput="timeset('udt1')"> OFF <input type ="ti
 <input type="checkbox" id ="ct2ud" onchange="turnoff()" checked>
 ON <input type ="time" id="udt3" oninput="timeset('udt3')"> OFF <input type ="time" id="udt4" oninput="timeset('udt4')"><br>
 <input type="checkbox" id ="ct3ud" onchange="turnoff()" checked>
-ON <input type ="time" id="udt5" oninput="timeset('udt5')"> OFF <input type ="time" id="udt6" oninput="timeset('udt6')"><br>
+ON <input type ="time" id="udt5" oninput="timeset('udt5')"> OFF <input type ="time" id="udt6" oninput="timeset('udt6')">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#checkmonday">go to monday</a>&nbsp;&nbsp;<a href="#checkmonday">monday<br></a><br>
 </form>
 <hr><hr><br>
 <input type="checkbox"><b>User Defined Days on even and/or odd weeknumbers </b><br>
