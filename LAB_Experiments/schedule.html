@@ -94,7 +94,7 @@
 // so actual (hours x 60 + minutes)/1440 x 100% is actual percentage on slider
 // 50% is 12 o clock
 document.addEventListener('DOMContentLoaded', function() {
-  var l = document.createElement('div');
+  var l = document.createElement('div');                                        // create a div class actualtime on div nouibase 
   l.setAttribute("id", "actualtime");
   l.setAttribute("class", "actualtime");
   var bookStyles = {
@@ -114,8 +114,6 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementsByClassName('noUi-base')[i].appendChild(l.cloneNode(true));   // create a div class actualtime on div nouibase
  }
 
-  document.getElementById('actualtime').style.left = "75%"; // id is not good each element should have a unique id
-  
 }, false);
 
 
@@ -1647,16 +1645,21 @@ https://ldijkman.github.io/Electra<br>
 
 <br><br><br>
 <br><br><br>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
 
-setInterval(myGreeting, 1000);
+
+
+
+
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+
+       setInterval(myGreeting, 1000);        // interval 1 sec for time on div class actualtime
   
-}, false);
+   }, false);
 
 function myGreeting() {
   const now = new Date();
-  const current = (((now.getHours() * 60) + now.getMinutes())/1440)*100;
+  const current = (((now.getHours() * 60) + now.getMinutes())/1440)*100;       // time to percentage 0 to 100% set div position
   var sec;
   var min;
   if(now.getMinutes()<=9)min="0"+now.getMinutes(); else min=now.getMinutes();  // a leading zer0 if 0 to 9
@@ -1664,15 +1667,16 @@ function myGreeting() {
 
  for (let i = 0; i < 11; i++) {  
    
-   document.getElementsByClassName('actualtime')[i].style.left = current+"%";   // time to percentage 0 to 100%
+   document.getElementsByClassName('actualtime')[i].style.left = current+"%";   // time to percentage 0 to 100% set div position
   
-   document.getElementsByClassName('actualtime')[i].textContent = ". . . "+now.getHours()+":"+min+":"+sec; 
+   document.getElementsByClassName('actualtime')[i].textContent = ". . . "+now.getHours()+":"+min+":"+sec; // set time text on div class actualtime
  
    
  }// end for
  
-  //document.getElementById('actualtime').style.left = current+"%";
 }
+
+
 </script>
 </body>
 </html>
