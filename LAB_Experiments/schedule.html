@@ -1752,7 +1752,10 @@ function myGreeting() {
  
  
  
-    // monday.getElementsByClassName('noUi-connect')[2].style.background = "yellow";   // change color
+
+   
+ }// end for
+     // monday.getElementsByClassName('noUi-connect')[2].style.background = "yellow";   // change color
     // tuesday.getElementsByClassName('noUi-connect')[0].style.background = "yellow";   // change color
  
  // i dont Know wich give error object div
@@ -1773,7 +1776,7 @@ function myGreeting() {
    //websocket.send(JSON.stringify({times : wich.id +","+ boxstate+","+ convertH2M(fruits[0])+","+convertH2M(fruits[1])+","+convertH2M(fruits[2])+","+convertH2M(fruits[3])+","+convertH2M(fruits[4])+","+convertH2M(fruits[5])}));
    var timeinmin= (now.getHours() * 60) + now.getMinutes();
    
-   
+if(document.getElementById("checkmonday").checked){   
   if (timeinmin >= convertH2M(fruits[0]) && timeinmin <= convertH2M(fruits[1])) {
    monday.getElementsByClassName('noUi-connect')[0].style.background = "yellow";   // change color
   }else{
@@ -1791,10 +1794,13 @@ function myGreeting() {
   }else{
      monday.getElementsByClassName('noUi-connect')[2].style.background = "green";   // change color
   }
+}else{
+  monday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // change color
+  monday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // change color
+  monday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // change color
+}
+
   
-   
- }// end for
- 
 
  
 }
