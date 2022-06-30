@@ -7,6 +7,7 @@
 
 <!-- https://ldijkman.github.io/Electra -->
 	 
+	 <meta name="mobile-web-app-capable" content="yes"> 
 	 
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Sonoff a Switch multi range slider timeline ESP32 ESP8266 ESP8285 mDNS WiFi relays timed switch</title>
@@ -252,7 +253,23 @@ function onOffdelay(event) {
 
 </head>
 <body>
-    <a href="https://jsfiddle.net/luberth/ow3zceyn/show/" target="mine">version 13 https://jsfiddle.net/luberth/ow3zceyn/show/</a>
+
+
+  
+<script>
+function scrollToAnchor(selectedAnchor) {                     // anchor scroll without browse history back 
+    document.querySelector(selectedAnchor).scrollIntoView({
+        behavior: 'smooth'
+    });
+}
+</script>
+
+<a onclick="scrollToAnchor('#MyAnchor');">Go to MyAnchorText monday</a><br>
+
+
+
+
+<a href="https://jsfiddle.net/luberth/ow3zceyn/show/" target="mine">version 13 https://jsfiddle.net/luberth/ow3zceyn/show/</a>
 <br>Sonoff a Switch !<br>
 <h2>Each WiFi relais its own timed switching schedule webbpage</h2>
 Big Better Landscape!<br><br>
@@ -288,6 +305,7 @@ Later for JSon data pass??? from browser to ESP32 ESP8266 ESP8285<br>
 <br>
 if the page is served from ESP32, chromium inspect network ws send <br>
 now shows the json websocket send<br> 
+<p id="MyAnchor" class="boldtitle">MyAnchorText</p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#checkmonday">go to monday</a><br>
 <br>
 <hr>
