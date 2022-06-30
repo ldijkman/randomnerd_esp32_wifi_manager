@@ -202,9 +202,13 @@ esp32 void handleWebSocketMessage(
 
 would be nice if slide time is in ON change color to yellow
 - maybe class noui connect[0 1 2] background o each slider
--  next image is changed from inspect tool
 
-![2022-06-30-200014_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/176746349-35732f0b-37c4-43a0-931e-14968e6fbc0e.png)
+
+-     monday.getElementsByClassName('noUi-connect')[2].style.background = "yellow";   // change color
+-     tuesday.getElementsByClassName('noUi-connect')[0].style.background = "yellow";   // change color
+ 
+
+![2022-06-30-210158_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/176757495-d4040446-3cfa-45fd-87e6-21eca1211341.png)
 
 
 # All You Need is Electra!
