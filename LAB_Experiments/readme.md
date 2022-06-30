@@ -201,6 +201,7 @@ esp32 void handleWebSocketMessage(
 # want red marker on each time slider showing actual NTP time from ESP wifi relais switch
 
 would be nice if slide time is in ON change color to yellow
+- maybe class noui connect[0 1 2] background 
 
 ![2022-06-30-200014_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/176746349-35732f0b-37c4-43a0-931e-14968e6fbc0e.png)
 
