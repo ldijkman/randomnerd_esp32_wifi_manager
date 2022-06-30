@@ -1079,7 +1079,6 @@ noUiSlider.create(userdefined, {
 
 
 
-
 boxes() // check the checkboxes
 
 
@@ -1686,7 +1685,11 @@ function writetoconsole(wich) { // wich holds wich day slider
 
 
 
-  //]]></script>
+  //]]>
+
+    
+  
+  </script>
 
   <script>
     // tell the embed parent frame the height of the content
@@ -1699,6 +1702,10 @@ function writetoconsole(wich) { // wich holds wich day slider
 
     // always overwrite window.name, in case users try to set it manually
     window.name = "result"
+    
+    
+    
+
   </script>
 <center>
  <br>
@@ -1739,8 +1746,56 @@ function myGreeting() {
   
    document.getElementsByClassName('actualtime')[i].textContent = ". . . "+now.getHours()+":"+min+":"+sec; // set time text on div class actualtime
  
+ 
+ 
+ 
+ 
+ 
+ 
+    // monday.getElementsByClassName('noUi-connect')[2].style.background = "yellow";   // change color
+    // tuesday.getElementsByClassName('noUi-connect')[0].style.background = "yellow";   // change color
+ 
+ // i dont Know wich give error object div
+  // wich.id looks like its the div
+  // why can i just not pass a string writetoconsole("tuesday") 
+  // i am a colliflowerfarmerprogrammer
+  // it works like this but not correct i think
+  //console.log(wich.id + " " + wich.noUiSlider.get()); // print wichday slider time array to console
+  const fruits = monday.noUiSlider.get();
+  //let xxx = fruits.length; // see how many elements in array
+  //var xx=convertH2M);
+ // console.log("arraylength " + xxx);
+  //console.log(wich.id + " ON OFF times in minutes ");
+ // console.log("hours x 60 + minutes = timeinminutes");
+  //let boxstate=document.getElementById("checkmonday").checked;
+  //if(boxstate){ boxstate=1;} else {boxstate=0;}                         // make true, false into 1, 0
+  
+   //websocket.send(JSON.stringify({times : wich.id +","+ boxstate+","+ convertH2M(fruits[0])+","+convertH2M(fruits[1])+","+convertH2M(fruits[2])+","+convertH2M(fruits[3])+","+convertH2M(fruits[4])+","+convertH2M(fruits[5])}));
+   var timeinmin= (now.getHours() * 60) + now.getMinutes();
+   
+   
+  if (timeinmin >= convertH2M(fruits[0]) && timeinmin <= convertH2M(fruits[1])) {
+   monday.getElementsByClassName('noUi-connect')[0].style.background = "yellow";   // change color
+  }else{
+     monday.getElementsByClassName('noUi-connect')[0].style.background = "green";   // change color
+  }
+  
+    if (timeinmin >= convertH2M(fruits[2]) && timeinmin <= convertH2M(fruits[3])) {
+   monday.getElementsByClassName('noUi-connect')[1].style.background = "yellow";   // change color
+  }else{
+     monday.getElementsByClassName('noUi-connect')[1].style.background = "green";   // change color
+  }
+  
+    if (timeinmin >= convertH2M(fruits[4]) && timeinmin <= convertH2M(fruits[5])) {
+   monday.getElementsByClassName('noUi-connect')[2].style.background = "yellow";   // change color
+  }else{
+     monday.getElementsByClassName('noUi-connect')[2].style.background = "green";   // change color
+  }
+  
    
  }// end for
+ 
+
  
 }
 
