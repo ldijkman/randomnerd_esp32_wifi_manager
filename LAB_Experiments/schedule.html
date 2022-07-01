@@ -267,7 +267,7 @@ function onOffdelay(event) {
 
 <a href="https://jsfiddle.net/luberth/ow3zceyn/show/" target="mine">version 13 https://jsfiddle.net/luberth/ow3zceyn/show/</a>
 <br>Sonoff a Switch !<br>
-<h2>Each WiFi relais its own timed switching schedule webbpage</h2>
+<h2>Each WiFi relais its own timed switching schedule webpage</h2>
 Big Better Landscape!<br><br>
 <h2>Rotate your screen to landscape<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#checkmonday">Go to Monday</a><br></h2>
 <br>
@@ -1799,13 +1799,24 @@ if(document.getElementById("checkmonday").checked){
   monday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // change color
   monday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // change color
 }
-
   
 
- 
+
+
+
+if(!document.getElementById("ct1tu").checked){    //not checked
+  tuesday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct2tu").checked){    //not checked
+  tuesday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct3tu").checked){     //not checked
+  tuesday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // grey out dissable
 }
 
 
+
+}
 </script>
 
 <script>
