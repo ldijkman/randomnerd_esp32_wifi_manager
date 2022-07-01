@@ -1764,7 +1764,7 @@ function myGreeting() {
   // i am a colliflowerfarmerprogrammer
   // it works like this but not correct i think
   //console.log(wich.id + " " + wich.noUiSlider.get()); // print wichday slider time array to console
-  const fruits = monday.noUiSlider.get();
+  
   //let xxx = fruits.length; // see how many elements in array
   //var xx=convertH2M);
  // console.log("arraylength " + xxx);
@@ -1775,21 +1775,22 @@ function myGreeting() {
   
    //websocket.send(JSON.stringify({times : wich.id +","+ boxstate+","+ convertH2M(fruits[0])+","+convertH2M(fruits[1])+","+convertH2M(fruits[2])+","+convertH2M(fruits[3])+","+convertH2M(fruits[4])+","+convertH2M(fruits[5])}));
    var timeinmin= (now.getHours() * 60) + now.getMinutes();
+   var fruits = monday.noUiSlider.get();
    
 if(document.getElementById("checkmonday").checked){   
-  if (timeinmin >= convertH2M(fruits[0]) && timeinmin <= convertH2M(fruits[1])) {
+  if (timeinmin >= convertH2M(fruits[0]) && timeinmin < convertH2M(fruits[1])) {
    monday.getElementsByClassName('noUi-connect')[0].style.background = "#ffdd22";   // change color
   }else{
      monday.getElementsByClassName('noUi-connect')[0].style.background = "green";   // change color
   }
   
-    if (timeinmin >= convertH2M(fruits[2]) && timeinmin <= convertH2M(fruits[3])) {
+    if (timeinmin >= convertH2M(fruits[2]) && timeinmin < convertH2M(fruits[3])) {
    monday.getElementsByClassName('noUi-connect')[1].style.background = "#ffdd22";   // change color
   }else{
      monday.getElementsByClassName('noUi-connect')[1].style.background = "green";   // change color
   }
   
-    if (timeinmin >= convertH2M(fruits[4]) && timeinmin <= convertH2M(fruits[5])) {
+    if (timeinmin >= convertH2M(fruits[4]) && timeinmin < convertH2M(fruits[5])) {
    monday.getElementsByClassName('noUi-connect')[2].style.background = "#ffdd22";   // change color
   }else{
      monday.getElementsByClassName('noUi-connect')[2].style.background = "green";   // change color
@@ -1800,6 +1801,61 @@ if(document.getElementById("checkmonday").checked){
   monday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // change color
 }
   
+ var fruits = tuesday.noUiSlider.get();
+ 
+if(document.getElementById("checktuesday").checked){   
+  if (timeinmin >= convertH2M(fruits[0]) && timeinmin < convertH2M(fruits[1])) {
+   tuesday.getElementsByClassName('noUi-connect')[0].style.background = "#ffdd22";   // change color
+  }else{
+     tuesday.getElementsByClassName('noUi-connect')[0].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(fruits[2]) && timeinmin < convertH2M(fruits[3])) {
+   tuesday.getElementsByClassName('noUi-connect')[1].style.background = "#ffdd22";   // change color
+  }else{
+     tuesday.getElementsByClassName('noUi-connect')[1].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(fruits[4]) && timeinmin < convertH2M(fruits[5])) {
+   tuesday.getElementsByClassName('noUi-connect')[2].style.background = "#ffdd22";   // change color
+  }else{
+     tuesday.getElementsByClassName('noUi-connect')[2].style.background = "green";   // change color
+  }
+}else{
+  tuesday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // change color
+  tuesday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // change color
+  tuesday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // change color
+}  
+
+
+var fruits = wednesday.noUiSlider.get();
+ 
+if(document.getElementById("checkwednesday").checked){   
+  if (timeinmin >= convertH2M(fruits[0]) && timeinmin < convertH2M(fruits[1])) {
+   wednesday.getElementsByClassName('noUi-connect')[0].style.background = "#ffdd22";   // change color
+  }else{
+     wednesday.getElementsByClassName('noUi-connect')[0].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(fruits[2]) && timeinmin < convertH2M(fruits[3])) {
+   wednesday.getElementsByClassName('noUi-connect')[1].style.background = "#ffdd22";   // change color
+  }else{
+     wednesday.getElementsByClassName('noUi-connect')[1].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(fruits[4]) && timeinmin < convertH2M(fruits[5])) {
+   wednesday.getElementsByClassName('noUi-connect')[2].style.background = "#ffdd22";   // change color
+  }else{
+     wednesday.getElementsByClassName('noUi-connect')[2].style.background = "green";   // change color
+  }
+}else{
+  wednesday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // change color
+  wednesday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // change color
+  wednesday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // change color
+}  
+
+
+
 
 
 
