@@ -1157,25 +1157,25 @@ var checkbox2 = document.getElementById('ct1m'),
   origins = monday.getElementsByClassName('noUi-origin');
 
 ct1m.addEventListener('click', function() {
- monday.noUiSlider.set([ 0]);
-  monday.noUiSlider.set([null, 0]);
-  toggle.call(this, origins[0]);
-  toggle.call(this, origins[1]);
+  //monday.noUiSlider.set([ 0]);
+  //monday.noUiSlider.set([null, 0]);
+  //toggle.call(this, origins[0]);
+  //toggle.call(this, origins[1]);
 });
 
 
 ct2m.addEventListener('click', function() {
- monday.noUiSlider.set([ null,null,0]);
-  monday.noUiSlider.set([null,null,null, 0]);
-  toggle.call(this, origins[2]);
-  toggle.call(this, origins[3]);
+ //monday.noUiSlider.set([ null,null,0]);
+  //monday.noUiSlider.set([null,null,null, 0]);
+  //toggle.call(this, origins[2]);
+  //toggle.call(this, origins[3]);
 });
 
 ct3m.addEventListener('click', function() {
- monday.noUiSlider.set([ null,null,null,null,1440]);
-  monday.noUiSlider.set([null,null,null,null,null, 1440]);
-  toggle.call(this, origins[4]);
-  toggle.call(this, origins[5]);
+ //monday.noUiSlider.set([ null,null,null,null,1440]);
+  //monday.noUiSlider.set([null,null,null,null,null, 1440]);
+  //toggle.call(this, origins[4]);
+  //toggle.call(this, origins[5]);
 });
 
 
@@ -1858,6 +1858,17 @@ if(document.getElementById("checkwednesday").checked){
 
 
 
+if(!document.getElementById("ct1m").checked){    //not checked
+  monday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct2m").checked){    //not checked
+  monday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct3m").checked){     //not checked
+  monday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // grey out dissable
+}
+
+
 
 
 if(!document.getElementById("ct1tu").checked){    //not checked
@@ -1870,6 +1881,17 @@ if(!document.getElementById("ct3tu").checked){     //not checked
   tuesday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // grey out dissable
 }
 
+
+
+if(!document.getElementById("ct1w").checked){    //not checked
+  wednesday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct2w").checked){    //not checked
+  wednesday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct3w").checked){     //not checked
+  wednesday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // grey out dissable
+}
 
 
 }
