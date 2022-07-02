@@ -404,7 +404,7 @@ ON <input type ="time" id="frt5" oninput="timeset('frt5')"> OFF <input type ="ti
 <hr>
 <center></center>
 <hr>
-<div id="zaterdag">
+<div id="dag6">
 <input type="checkbox" id ="checksaturday" name="checksaturday" onchange="boxes(); writetoconsole(saturday);" checked><b>Saturday</b><br>
 <br><div id="saturday">
 </div>
@@ -425,7 +425,7 @@ ON <input type ="time" id="sat5" oninput="timeset('sat5')"> OFF <input type ="ti
 <hr>
 <center></center>
 <hr>
-<div id="zondag">
+<div id="dag0">
 <input type="checkbox" id ="checksunday" name="checksunday" onchange="boxes(); writetoconsole(sunday);" checked><b>Sunday</b><br>
 <br><div id="sunday">
 </div>
@@ -1772,26 +1772,20 @@ function myGreeting() {
    
    
    
-   var timeinmin= (now.getHours() * 60) + now.getMinutes();
-   var day = now.getDay()                                       // 0 to 6 // 0 is sunday // 6 is saturday 
+   var timeinmin= (now.getHours() * 60) + now.getMinutes();                                   
    var fruits = monday.noUiSlider.get();
    
    
-   if(now.getDay()==0){                                                     
-      document.getElementById("zondag").style.background = "lightyellow"; // highlight active day backgound
-   }else{
-      document.getElementById("zondag").style.background = ""; 
-   }
+         // 0 to 6 // 0 is sunday // 6 is saturday 
+         
+      document.getElementById("dag"+now.getDay()).style.background = "lightyellow"; // highlight active day backgound
+  
+  //    document.getElementById("dag"+now.getDay()).style.background = ""; 
+  
    
    
-   // 1 to 5 more days
    
    
-   if(now.getDay()==6){                                                     
-      document.getElementById("zaterdag").style.background = "lightyellow"; // highlight active day backgound
-   }else{
-      document.getElementById("zaterdag").style.background = ""; 
-   }
    
    
    
