@@ -311,6 +311,7 @@ now shows the json websocket send<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#checkmonday">go to monday</a><br>
 <br>
 <hr>
+<div id="dag1">
 <input type="checkbox" id ="checkmonday" name="checkmonday" onchange="boxes(); writetoconsole(monday);" checked><b>Monday</b> 
 <br><br><br>
 <div id="monday"></div>
@@ -327,8 +328,12 @@ ON <input type ="time" id="mt5" oninput="timeset('mt5')"> OFF <input type ="time
 </div>
 <br>
 </form>
+</div>
 <hr>
+
+
 <hr>
+<div id="dag2">
 <input type="checkbox" id ="checktuesday" name="checktuesday" onchange="boxes(); writetoconsole(tuesday);" checked><b>Tuesday</b>
 <br><br><br>
 <div id="tuesday"></div>
@@ -345,9 +350,12 @@ ON <input type ="time" id="tut5" oninput="timeset('tut5')"> OFF <input type ="ti
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkwednesday');">
 </div><br>
 </form>
+</div>
 <hr>
-<center></center>
+
+
 <hr>
+<div id="dag3">
 <input type="checkbox" id ="checkwednesday" name="checkwednesday" onchange="boxes(); writetoconsole(wednesday);" checked><b>Wednesday</b>
 <br><br><br>
 <div id="wednesday"></div>
@@ -364,9 +372,13 @@ ON <input type ="time" id="wt5" oninput="timeset('wt5')"> OFF <input type ="time
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkthursday');">
 </div><br>
 </form>
+</div>
 <hr>
-<center></center>
+
+
+
 <hr>
+<div id="dag4">
 <div id="donderdag">
 <input type="checkbox" id ="checkthursday" name="checkthursday" onchange="boxes(); writetoconsole(thursday);" checked><b>Thursday</b><br>
 <br><div id="thursday"></div>
@@ -385,8 +397,12 @@ ON <input type ="time" id="tht5" oninput="timeset('tht5')"> OFF <input type ="ti
 </form>
 </div>
 <hr>
-<center></center>
+
+
+
+
 <hr>
+<div id="dag5">
 <input type="checkbox" id ="checkfriday" name="checkfriday" onchange="boxes(); writetoconsole(friday);" checked><b>Friday</b><br>
 <br><div id="friday">
 </div>
@@ -403,8 +419,12 @@ ON <input type ="time" id="frt5" oninput="timeset('frt5')"> OFF <input type ="ti
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checksaturday');">
 </div><br>
 </form>
+</div>
 <hr>
-<center></center>
+
+
+
+
 <hr>
 <div id="dag6">
 <input type="checkbox" id ="checksaturday" name="checksaturday" onchange="boxes(); writetoconsole(saturday);" checked><b>Saturday</b><br>
@@ -425,7 +445,9 @@ ON <input type ="time" id="sat5" oninput="timeset('sat5')"> OFF <input type ="ti
 </form>
 </div>
 <hr>
-<center></center>
+
+
+
 <hr>
 <div id="dag0">
 <input type="checkbox" id ="checksunday" name="checksunday" onchange="boxes(); writetoconsole(sunday);" checked><b>Sunday</b><br>
@@ -446,7 +468,9 @@ ON <input type ="time" id="sut5" oninput="timeset('sut5')"> OFF <input type ="ti
 </form>
 </div>
 <hr>
-<center></center>
+
+
+
 <hr>
 <input type="checkbox" id ="checkeveryday" name="checkeveryday"><b>Every Day of the Week</b><br>
 <br><div id="everyday">
@@ -465,7 +489,9 @@ ON <input type ="time" id="edt5" oninput="timeset('edt5')"> OFF <input type ="ti
 </div><br>
 </form>
 <hr>
-<center></center>
+
+
+
 <input type="checkbox" id ="checkweekdays" name="checkweekdays"><b>Weekdays Monday ... Friday</b><br>
 <br><div id="weekdays">
 </div>
@@ -483,7 +509,9 @@ ON <input type ="time" id="wdt5" oninput="timeset('wdt5')"> OFF <input type ="ti
 </div><br>
 </form>
 <hr>
-<center></center>
+
+
+<hr>
 <input type="checkbox" id ="checkweekends" name="checkweekends"><b>Weekends Saturday Sunday</b> <br>
 <br><div id="weekends">
 </div>
@@ -538,7 +566,10 @@ ON <input type ="time" id="udt5" oninput="timeset('udt5')"> OFF <input type ="ti
 <input type="button" value="Go to Monday" onclick="scrollToAnchor('#checkmonday');">
 </div>
 </form>
-<hr><hr><br>
+<hr>
+
+
+<hr><br>
 <input type="checkbox"><b>User Defined Days on even and/or odd weeknumbers </b><br>
 <table style="border-collapse: collapse;" border = "1">
 	<tbody>
@@ -574,7 +605,10 @@ ON <input type ="time" id="udt5" oninput="timeset('udt5')"> OFF <input type ="ti
 		</tr>
 	</tbody>
 </table>
-<hr><hr><br>
+<hr>
+
+
+<hr><br>
 <input type="checkbox"><b>User Defined Days on even and/or odd weeknumbers </b><br>
 <table style="border-collapse: collapse;" border = "1">
 	<tbody>
