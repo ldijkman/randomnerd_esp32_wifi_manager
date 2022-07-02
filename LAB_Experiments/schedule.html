@@ -267,8 +267,9 @@ function onOffdelay(event) {
 
 <a href="https://jsfiddle.net/luberth/ow3zceyn/show/" target="mine">version 13 https://jsfiddle.net/luberth/ow3zceyn/show/</a>
 <br>Sonoff a Switch !<br>
-<h2>Each WiFi relais its own timed switching schedule webpage</h2>
-Big Better Landscape!<br><br>
+<h2>Each WiFi relais its own timed switching schedule webpage<br>
+Easy Set && Overview SwitchTimes<br><br>
+Big is Better, better Landscape view!<br><br></h2>
 <h2>Rotate your screen to landscape<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#checkmonday">Go to Monday</a><br></h2>
 <br>
 EWelink only 4 on/off schedule timers? (and 4 me hard to understand the working)<br>
@@ -316,8 +317,9 @@ ON <input type ="time" id="mt1" oninput="timeset('mt1')"> OFF <input type ="time
 ON <input type ="time" id="mt3" oninput="timeset('mt3')"> OFF <input type ="time" id="mt4" oninput="timeset('mt4')"><br>
 <input type="checkbox" id ="ct3m" name="cmonday[]" onchange="turnoff()" checked>
 ON <input type ="time" id="mt5" oninput="timeset('mt5')"> OFF <input type ="time" id="mt6" oninput="timeset('mt6')">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div style="float: right;">
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checktuesday');">
+</div>
 <br>
 </form>
 <hr>
@@ -333,10 +335,10 @@ ON <input type ="time" id="tut1" oninput="timeset('tut1')"> OFF <input type ="ti
 ON <input type ="time" id="tut3" oninput="timeset('tut3')"> OFF <input type ="time" id="tut4" oninput="timeset('tut4')"><br>
 <input type="checkbox" id ="ct3tu" onchange="turnoff()" checked>
 ON <input type ="time" id="tut5" oninput="timeset('tut5')"> OFF <input type ="time" id="tut6" oninput="timeset('tut6')">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkmonday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkwednesday');">
-<br>
+</div><br>
 </form>
 <hr>
 <center></center>
@@ -352,10 +354,10 @@ ON <input type ="time" id="wt1" oninput="timeset('wt1')"> OFF <input type ="time
 ON <input type ="time" id="wt3" oninput="timeset('wt3')"> OFF <input type ="time" id="wt4" oninput="timeset('wt4')"><br>
 <input type="checkbox" id ="ct3w" onchange="turnoff()" checked>
 ON <input type ="time" id="wt5" oninput="timeset('wt5')"> OFF <input type ="time" id="wt6" oninput="timeset('wt6')">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checktuesday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkthursday');">
-<br>
+</div><br>
 </form>
 <hr>
 <center></center>
@@ -371,10 +373,10 @@ ON <input type ="time" id="tht1" oninput="timeset('tht1')"> OFF <input type ="ti
 ON <input type ="time" id="tht3" oninput="timeset('tht3')"> OFF <input type ="time" id="tht4" oninput="timeset('tht4')"><br>
 <input type="checkbox" id ="ct3th" onchange="turnoff()" checked>
 ON <input type ="time" id="tht5" oninput="timeset('tht5')"> OFF <input type ="time" id="tht6" oninput="timeset('tht6')">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkwednesday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkfriday');">
-<br>
+</div><br>
 </form>
 <hr>
 <center></center>
@@ -390,10 +392,10 @@ ON <input type ="time" id="frt1" oninput="timeset('frt1')"> OFF <input type ="ti
 ON <input type ="time" id="frt3" oninput="timeset('frt3')"> OFF <input type ="time" id="frt4" oninput="timeset('tht4')"><br>
 <input type="checkbox" id ="ct3fr" onchange="turnoff()" checked>
 ON <input type ="time" id="frt5" oninput="timeset('frt5')"> OFF <input type ="time" id="frt6" oninput="timeset('frt6')">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkthursday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checksaturday');">
-<br>
+</div><br>
 </form>
 <hr>
 <center></center>
@@ -409,10 +411,10 @@ ON <input type ="time" id="sat1" oninput="timeset('sat1')"> OFF <input type ="ti
 ON <input type ="time" id="sat3" oninput="timeset('sat3')"> OFF <input type ="time" id="sat4" oninput="timeset('sat4')"><br>
 <input type="checkbox" id ="ct3sa" onchange="turnoff()" checked>
 ON <input type ="time" id="sat5" oninput="timeset('sat5')"> OFF <input type ="time" id="sat6" oninput="timeset('sat6')">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkfriday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checksunday');">
-<br>
+</div><br>
 </form>
 <hr>
 <center></center>
@@ -428,10 +430,10 @@ ON <input type ="time" id="sut1" oninput="timeset('sut1')"> OFF <input type ="ti
 ON <input type ="time" id="sut3" oninput="timeset('sut3')"> OFF <input type ="time" id="sut4" oninput="timeset('sut4')"><br>
 <input type="checkbox" id ="ct3su" onchange="turnoff()" checked>
 ON <input type ="time" id="sut5" oninput="timeset('sut5')"> OFF <input type ="time" id="sut6" oninput="timeset('sut6')">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checksaturday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkeveryday');">
-<br>
+</div><br>
 </form>
 <hr>
 <center></center>
@@ -447,10 +449,10 @@ ON <input type ="time" id="edt1" oninput="timeset('edt1')"> OFF <input type ="ti
 ON <input type ="time" id="edt3" oninput="timeset('edt3')"> OFF <input type ="time" id="edt4" oninput="timeset('edt4')"><br>
 <input type="checkbox" id ="ct3ed" onchange="turnoff()" checked>
 ON <input type ="time" id="edt5" oninput="timeset('edt5')"> OFF <input type ="time" id="edt6" oninput="timeset('edt6')">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checksunday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkweekdays');">
-<br>
+</div><br>
 </form>
 <hr>
 <center></center>
@@ -465,10 +467,10 @@ ON <input type ="time" id="wdt1" oninput="timeset('wdt1')"> OFF <input type ="ti
 ON <input type ="time" id="wdt3" oninput="timeset('wdt3')"> OFF <input type ="time" id="wdt4" oninput="timeset('wdt4')"><br>
 <input type="checkbox" id ="ct3wd" onchange="turnoff()" checked>
 ON <input type ="time" id="wdt5" oninput="timeset('wdt5')"> OFF <input type ="time" id="wdt6" oninput="timeset('wdt6')">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkeveryday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkweekends');">
-<br>
+</div><br>
 </form>
 <hr>
 <center></center>
@@ -483,10 +485,10 @@ ON <input type ="time" id="wendt1" oninput="timeset('wendt1')"> OFF <input type 
 ON <input type ="time" id="wendt3" oninput="timeset('wendt3')"> OFF <input type ="time" id="wendt4" oninput="timeset('wendt4')"><br>
 <input type="checkbox" id ="ct3wend" onchange="turnoff()" checked>
 ON <input type ="time" id="wendt5" oninput="timeset('wendt5')"> OFF <input type ="time" id="wendt6" oninput="timeset('wendt6')">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkweekdays');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkudd');">
-<br>
+</div><br>
 </form>
 <hr><input type="checkbox" id ="checkudd" name="checkudd"><b>User Defined Days</b><br>
 <table style="border-collapse: collapse;" border = "1">
@@ -522,8 +524,9 @@ ON <input type ="time" id="udt1" oninput="timeset('udt1')"> OFF <input type ="ti
 ON <input type ="time" id="udt3" oninput="timeset('udt3')"> OFF <input type ="time" id="udt4" oninput="timeset('udt4')"><br>
 <input type="checkbox" id ="ct3ud" onchange="turnoff()" checked>
 ON <input type ="time" id="udt5" oninput="timeset('udt5')"> OFF <input type ="time" id="udt6" oninput="timeset('udt6')">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div style="float: right;">
 <input type="button" value="Go to Monday" onclick="scrollToAnchor('#checkmonday');">
+</div>
 </form>
 <hr><hr><br>
 <input type="checkbox"><b>User Defined Days on even and/or odd weeknumbers </b><br>
@@ -687,14 +690,14 @@ var mon_2 = 9 * 60; // off hours in minutes
 var mon_3 = 11 * 60; // on hours in minutes
 var mon_4 = 13 * 60; // off hours in minute
 var mon_5 = 19 * 60; // on hours in minutes
-var mon_6 = 23 * 60; // off hours in minutes
+var mon_6 = 22 * 60; // off hours in minutes
 
-var tue_1 = 1 * 60; // on hours in minutes
-var tue_2 = 7 * 60; // off hours in minutes
-var tue_3 = 18 * 60; // on hours in minutes
+var tue_1 = 0; // on hours in minutes
+var tue_2 = 6 * 60+15; // off hours in minutes
+var tue_3 = 9 * 60; // on hours in minutes
 var tue_4 = 19 * 60; // off hours in minutes
-var tue_5 = 21 * 60; // on hours in minutes
-var tue_6 = 23 * 60 + 30; // off hours in minutes
+var tue_5 = 22 * 60; // on hours in minutes
+var tue_6 = 23 * 60 + 59; // off hours in minutes
 
 var wed_1 = 5 * 60; // on hours in minutes
 var wed_2 = 6 * 60; // off hours in minutes
@@ -1755,29 +1758,17 @@ function myGreeting() {
 
    
  }// end for
-     // monday.getElementsByClassName('noUi-connect')[2].style.background = "yellow";   // change color
-    // tuesday.getElementsByClassName('noUi-connect')[0].style.background = "yellow";   // change color
- 
- // i dont Know wich give error object div
-  // wich.id looks like its the div
-  // why can i just not pass a string writetoconsole("tuesday") 
-  // i am a colliflowerfarmerprogrammer
-  // it works like this but not correct i think
-  //console.log(wich.id + " " + wich.noUiSlider.get()); // print wichday slider time array to console
-  
-  //let xxx = fruits.length; // see how many elements in array
-  //var xx=convertH2M);
- // console.log("arraylength " + xxx);
-  //console.log(wich.id + " ON OFF times in minutes ");
- // console.log("hours x 60 + minutes = timeinminutes");
-  //let boxstate=document.getElementById("checkmonday").checked;
-  //if(boxstate){ boxstate=1;} else {boxstate=0;}                         // make true, false into 1, 0
-  
-   //websocket.send(JSON.stringify({times : wich.id +","+ boxstate+","+ convertH2M(fruits[0])+","+convertH2M(fruits[1])+","+convertH2M(fruits[2])+","+convertH2M(fruits[3])+","+convertH2M(fruits[4])+","+convertH2M(fruits[5])}));
+   
+   
+   
+   
+   
+   
    var timeinmin= (now.getHours() * 60) + now.getMinutes();
+   var day = now.getDay()                                       // 0 to 6 // 0 is sunday // 6 is saturday 
    var fruits = monday.noUiSlider.get();
    
-if(document.getElementById("checkmonday").checked){   
+if(document.getElementById("checkmonday").checked){                                // && now.getDay() == 1
   if (timeinmin >= convertH2M(fruits[0]) && timeinmin < convertH2M(fruits[1])) {
    monday.getElementsByClassName('noUi-connect')[0].style.background = "#ffdd22";   // change color
   }else{
