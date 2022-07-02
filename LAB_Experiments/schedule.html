@@ -323,6 +323,7 @@ ON <input type ="time" id="mt1" oninput="timeset('mt1')"> OFF <input type ="time
 ON <input type ="time" id="mt3" oninput="timeset('mt3')"> OFF <input type ="time" id="mt4" oninput="timeset('mt4')"><br>
 <input type="checkbox" id ="ct3m" name="cmonday[]" onchange="turnoff()" checked>
 ON <input type ="time" id="mt5" oninput="timeset('mt5')"> OFF <input type ="time" id="mt6" oninput="timeset('mt6')">
+<br>
 <div style="float: right;">
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checktuesday');">
 </div>
@@ -345,6 +346,7 @@ ON <input type ="time" id="tut1" oninput="timeset('tut1')"> OFF <input type ="ti
 ON <input type ="time" id="tut3" oninput="timeset('tut3')"> OFF <input type ="time" id="tut4" oninput="timeset('tut4')"><br>
 <input type="checkbox" id ="ct3tu" onchange="turnoff()" checked>
 ON <input type ="time" id="tut5" oninput="timeset('tut5')"> OFF <input type ="time" id="tut6" oninput="timeset('tut6')">
+<br>
 <div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkmonday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkwednesday');">
@@ -367,6 +369,7 @@ ON <input type ="time" id="wt1" oninput="timeset('wt1')"> OFF <input type ="time
 ON <input type ="time" id="wt3" oninput="timeset('wt3')"> OFF <input type ="time" id="wt4" oninput="timeset('wt4')"><br>
 <input type="checkbox" id ="ct3w" onchange="turnoff()" checked>
 ON <input type ="time" id="wt5" oninput="timeset('wt5')"> OFF <input type ="time" id="wt6" oninput="timeset('wt6')">
+<br>
 <div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checktuesday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkthursday');">
@@ -392,6 +395,7 @@ ON <input type ="time" id="tht1" oninput="timeset('tht1')"> OFF <input type ="ti
 ON <input type ="time" id="tht3" oninput="timeset('tht3')"> OFF <input type ="time" id="tht4" oninput="timeset('tht4')"><br>
 <input type="checkbox" id ="ct3th" onchange="turnoff()" checked>
 ON <input type ="time" id="tht5" oninput="timeset('tht5')"> OFF <input type ="time" id="tht6" oninput="timeset('tht6')">
+<br>
 <div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkwednesday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkfriday');">
@@ -417,6 +421,7 @@ ON <input type ="time" id="frt1" oninput="timeset('frt1')"> OFF <input type ="ti
 ON <input type ="time" id="frt3" oninput="timeset('frt3')"> OFF <input type ="time" id="frt4" oninput="timeset('tht4')"><br>
 <input type="checkbox" id ="ct3fr" onchange="turnoff()" checked>
 ON <input type ="time" id="frt5" oninput="timeset('frt5')"> OFF <input type ="time" id="frt6" oninput="timeset('frt6')">
+<br>
 <div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkthursday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checksaturday');">
@@ -429,7 +434,7 @@ ON <input type ="time" id="frt5" oninput="timeset('frt5')"> OFF <input type ="ti
 
 
 <hr>
-<div id="dag6">
+<div id="dag6" style="margin-bottom: 20px;margin-top: 20px;">
 <input type="checkbox" id ="checksaturday" name="checksaturday" onchange="boxes(); writetoconsole(saturday);" checked><b>Saturday</b><br>
 <br>
 <br>
@@ -442,6 +447,7 @@ ON <input type ="time" id="sat1" oninput="timeset('sat1')"> OFF <input type ="ti
 ON <input type ="time" id="sat3" oninput="timeset('sat3')"> OFF <input type ="time" id="sat4" oninput="timeset('sat4')"><br>
 <input type="checkbox" id ="ct3sa" onchange="turnoff()" checked>
 ON <input type ="time" id="sat5" oninput="timeset('sat5')"> OFF <input type ="time" id="sat6" oninput="timeset('sat6')">
+<br>
 <div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkfriday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checksunday');">
@@ -466,6 +472,7 @@ ON <input type ="time" id="sut1" oninput="timeset('sut1')"> OFF <input type ="ti
 ON <input type ="time" id="sut3" oninput="timeset('sut3')"> OFF <input type ="time" id="sut4" oninput="timeset('sut4')"><br>
 <input type="checkbox" id ="ct3su" onchange="turnoff()" checked>
 ON <input type ="time" id="sut5" oninput="timeset('sut5')"> OFF <input type ="time" id="sut6" oninput="timeset('sut6')">
+<br>
 <div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checksaturday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkeveryday');">
@@ -489,6 +496,7 @@ ON <input type ="time" id="edt1" oninput="timeset('edt1')"> OFF <input type ="ti
 ON <input type ="time" id="edt3" oninput="timeset('edt3')"> OFF <input type ="time" id="edt4" oninput="timeset('edt4')"><br>
 <input type="checkbox" id ="ct3ed" onchange="turnoff()" checked>
 ON <input type ="time" id="edt5" oninput="timeset('edt5')"> OFF <input type ="time" id="edt6" oninput="timeset('edt6')">
+<br>
 <div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checksunday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkweekdays');">
@@ -510,6 +518,7 @@ ON <input type ="time" id="wdt1" oninput="timeset('wdt1')"> OFF <input type ="ti
 ON <input type ="time" id="wdt3" oninput="timeset('wdt3')"> OFF <input type ="time" id="wdt4" oninput="timeset('wdt4')"><br>
 <input type="checkbox" id ="ct3wd" onchange="turnoff()" checked>
 ON <input type ="time" id="wdt5" oninput="timeset('wdt5')"> OFF <input type ="time" id="wdt6" oninput="timeset('wdt6')">
+<br>
 <div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkeveryday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkweekends');">
@@ -531,6 +540,7 @@ ON <input type ="time" id="wendt1" oninput="timeset('wendt1')"> OFF <input type 
 ON <input type ="time" id="wendt3" oninput="timeset('wendt3')"> OFF <input type ="time" id="wendt4" oninput="timeset('wendt4')"><br>
 <input type="checkbox" id ="ct3wend" onchange="turnoff()" checked>
 ON <input type ="time" id="wendt5" oninput="timeset('wendt5')"> OFF <input type ="time" id="wendt6" oninput="timeset('wendt6')">
+<br>
 <div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkweekdays');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkudd');">
@@ -570,6 +580,7 @@ ON <input type ="time" id="udt1" oninput="timeset('udt1')"> OFF <input type ="ti
 ON <input type ="time" id="udt3" oninput="timeset('udt3')"> OFF <input type ="time" id="udt4" oninput="timeset('udt4')"><br>
 <input type="checkbox" id ="ct3ud" onchange="turnoff()" checked>
 ON <input type ="time" id="udt5" oninput="timeset('udt5')"> OFF <input type ="time" id="udt6" oninput="timeset('udt6')">
+<br>
 <div style="float: right;">
 <input type="button" value="Go to Monday" onclick="scrollToAnchor('#checkmonday');">
 </div>
@@ -1792,6 +1803,11 @@ function myGreeting() {
   const current = (((now.getHours() * 60) + now.getMinutes())/1440)*100;       // time to percentage 0 to 100% set div position
   var sec;
   var min;
+  
+  var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+   var dayName = days[now.getDay()];
+   
+   
   if(now.getMinutes()<=9)min="0"+now.getMinutes(); else min=now.getMinutes();  // a leading zer0 if 0 to 9
   if(now.getSeconds()<=9)sec="0"+now.getSeconds(); else sec=now.getSeconds();  // a leading zer0 if 0 to 9
 
@@ -1799,7 +1815,7 @@ function myGreeting() {
    
    document.getElementsByClassName('actualtime')[i].style.left = current+"%";   // time to percentage 0 to 100% set div position
   
-   document.getElementsByClassName('actualtime')[i].textContent = ". . . "+now.getHours()+":"+min+":"+sec; // set time text on div class actualtime
+   document.getElementsByClassName('actualtime')[i].textContent = ". . . " +dayName+" "+now.getHours()+":"+min+":"+sec; // set time text on div class actualtime
  
  
  
@@ -1828,7 +1844,7 @@ function myGreeting() {
   
    
    
-   
+
    
    
    
