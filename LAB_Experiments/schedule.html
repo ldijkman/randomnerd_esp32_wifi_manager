@@ -6,9 +6,12 @@
 <!-- https://ldijkman.github.io/Electra/schedule.html -->	
 
 <!-- https://ldijkman.github.io/Electra -->
-	 
-	 <meta name="mobile-web-app-capable" content="yes"> 
-	 
+	
+	
+	 <!-- save to phone home screen and open without adress URL bar -->
+	 <meta name="mobile-web-app-capable" content="yes"> 	
+ 	 
+ 	 
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Sonoff a Switch multi range slider timeline ESP32 ESP8266 ESP8285 mDNS WiFi relays timed switch</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -362,9 +365,9 @@ ON <input type ="time" id="wt5" oninput="timeset('wt5')"> OFF <input type ="time
 <hr>
 <center></center>
 <hr>
+<div id="donderdag">
 <input type="checkbox" id ="checkthursday" name="checkthursday" onchange="boxes(); writetoconsole(thursday);" checked><b>Thursday</b><br>
-<br><div id="thursday">
-</div>
+<br><div id="thursday"></div>
 <br><br><br><br>
 <form>
 <input type="checkbox" id ="ct1th" onchange="turnoff()" checked>
@@ -378,6 +381,7 @@ ON <input type ="time" id="tht5" oninput="timeset('tht5')"> OFF <input type ="ti
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkfriday');">
 </div><br>
 </form>
+</div>
 <hr>
 <center></center>
 <hr>
@@ -400,6 +404,7 @@ ON <input type ="time" id="frt5" oninput="timeset('frt5')"> OFF <input type ="ti
 <hr>
 <center></center>
 <hr>
+<div id="zaterdag">
 <input type="checkbox" id ="checksaturday" name="checksaturday" onchange="boxes(); writetoconsole(saturday);" checked><b>Saturday</b><br>
 <br><div id="saturday">
 </div>
@@ -416,9 +421,11 @@ ON <input type ="time" id="sat5" oninput="timeset('sat5')"> OFF <input type ="ti
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checksunday');">
 </div><br>
 </form>
+</div>
 <hr>
 <center></center>
 <hr>
+<div id="zondag">
 <input type="checkbox" id ="checksunday" name="checksunday" onchange="boxes(); writetoconsole(sunday);" checked><b>Sunday</b><br>
 <br><div id="sunday">
 </div>
@@ -435,6 +442,7 @@ ON <input type ="time" id="sut5" oninput="timeset('sut5')"> OFF <input type ="ti
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkeveryday');">
 </div><br>
 </form>
+</div>
 <hr>
 <center></center>
 <hr>
@@ -1767,6 +1775,26 @@ function myGreeting() {
    var timeinmin= (now.getHours() * 60) + now.getMinutes();
    var day = now.getDay()                                       // 0 to 6 // 0 is sunday // 6 is saturday 
    var fruits = monday.noUiSlider.get();
+   
+   
+   if(now.getDay()==0){                                                     
+      document.getElementById("zondag").style.background = "lightyellow"; // highlight active day backgound
+   }else{
+      document.getElementById("zondag").style.background = ""; 
+   }
+   
+   
+   // 1 to 5 more days
+   
+   
+   if(now.getDay()==6){                                                     
+      document.getElementById("zaterdag").style.background = "lightyellow"; // highlight active day backgound
+   }else{
+      document.getElementById("zaterdag").style.background = ""; 
+   }
+   
+   
+   
    
 if(document.getElementById("checkmonday").checked){                                // && now.getDay() == 1
   if (timeinmin >= convertH2M(fruits[0]) && timeinmin < convertH2M(fruits[1])) {
