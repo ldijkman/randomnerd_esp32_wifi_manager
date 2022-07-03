@@ -2,6 +2,7 @@
 <html>
 <head>
   
+<!--  I PREFER PLAIN JAVASCRIPT -->  
   
 <!-- https://ldijkman.github.io/Electra/schedule.html -->	
 
@@ -30,6 +31,10 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.css">
 
 
+
+
+
+
 	
 <style id="compiled-css" type="text/css">
  /*
@@ -45,8 +50,7 @@
   top: -6px;  //6
 }
 
-</style>
-    <style>
+
        /*
         .noUi-base{
             border-left: 2px solid red;
@@ -83,10 +87,11 @@
   
   html {
     scroll-behavior: smooth
-    
   }
     </style>
 
+
+<!-- floating menu -->
 <main>
   <!--https://www.quackit.com/html/html_editors/scratchpad/?example=/css/codes/css_floating_menu_positioned-->
   <nav class="floating-menu">
@@ -94,6 +99,8 @@
     <a href="/">mDNS.local</a><a href="http://10.10.100.104">10.10.100.104</a><a href="/">NTP TIME</a><a href="/edit">WebEditor</a><a href="https://ldijkman.github.io/Electra/">Electra</a>
   </nav>
 </main>
+<!-- floating menu -->
+
 
 <script>
 
@@ -317,16 +324,18 @@ now shows the json websocket send<br>
 <div id="monday"></div>
 <br><br><br><br>
 <form>
-<input type="checkbox" id ="ct1m" name="cmonday[]" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct1m" name="cmonday[]" onchange="turnoff()" checked>
 ON <input type ="time" id="mt1" oninput="timeset('mt1')"> OFF <input type ="time" id="mt2" oninput="timeset('mt2')"><br>
-<input type="checkbox" id ="ct2m" name="cmonday[]" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct2m" name="cmonday[]" onchange="turnoff()" checked>
 ON <input type ="time" id="mt3" oninput="timeset('mt3')"> OFF <input type ="time" id="mt4" oninput="timeset('mt4')"><br>
-<input type="checkbox" id ="ct3m" name="cmonday[]" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct3m" name="cmonday[]" onchange="turnoff()" checked>
 ON <input type ="time" id="mt5" oninput="timeset('mt5')"> OFF <input type ="time" id="mt6" oninput="timeset('mt6')">
 <br>
 <div style="float: right;">
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checktuesday');">
 </div>
+<div class="sunset"style="float: right;"></div>
+<div class="sunrise"style="float: right;"></div>
 <br>
 </form>
 </div>
@@ -340,17 +349,20 @@ ON <input type ="time" id="mt5" oninput="timeset('mt5')"> OFF <input type ="time
 <div id="tuesday"></div>
 <br><br><br><br>
 <form>
-<input type="checkbox" id ="ct1tu" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct1tu" onchange="turnoff()" checked>
 ON <input type ="time" id="tut1" oninput="timeset('tut1')"> OFF <input type ="time" id="tut2" oninput="timeset('tut2')"><br>
-<input type="checkbox" id ="ct2tu" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct2tu" onchange="turnoff()" checked>
 ON <input type ="time" id="tut3" oninput="timeset('tut3')"> OFF <input type ="time" id="tut4" oninput="timeset('tut4')"><br>
-<input type="checkbox" id ="ct3tu" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct3tu" onchange="turnoff()" checked>
 ON <input type ="time" id="tut5" oninput="timeset('tut5')"> OFF <input type ="time" id="tut6" oninput="timeset('tut6')">
 <br>
 <div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkmonday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkwednesday');">
-</div><br>
+</div>
+<div class="sunset"style="float: right;"></div>
+<div class="sunrise"style="float: right;"></div>
+<br>
 </form>
 </div>
 <hr>
@@ -363,11 +375,11 @@ ON <input type ="time" id="tut5" oninput="timeset('tut5')"> OFF <input type ="ti
 <div id="wednesday"></div>
 <br><br><br><br>
 <form>
-<input type="checkbox" id ="ct1w" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct1w" onchange="turnoff()" checked>
 ON <input type ="time" id="wt1" oninput="timeset('wt1')"> OFF <input type ="time" id="wt2" oninput="timeset('wt2')"><br>
-<input type="checkbox" id ="ct2w" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct2w" onchange="turnoff()" checked>
 ON <input type ="time" id="wt3" oninput="timeset('wt3')"> OFF <input type ="time" id="wt4" oninput="timeset('wt4')"><br>
-<input type="checkbox" id ="ct3w" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct3w" onchange="turnoff()" checked>
 ON <input type ="time" id="wt5" oninput="timeset('wt5')"> OFF <input type ="time" id="wt6" oninput="timeset('wt6')">
 <br>
 <div style="float: right;">
@@ -389,11 +401,11 @@ ON <input type ="time" id="wt5" oninput="timeset('wt5')"> OFF <input type ="time
 <div id="thursday"></div>
 <br><br><br><br>
 <form>
-<input type="checkbox" id ="ct1th" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct1th" onchange="turnoff()" checked>
 ON <input type ="time" id="tht1" oninput="timeset('tht1')"> OFF <input type ="time" id="tht2" oninput="timeset('tht2')"><br>
-<input type="checkbox" id ="ct2th" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct2th" onchange="turnoff()" checked>
 ON <input type ="time" id="tht3" oninput="timeset('tht3')"> OFF <input type ="time" id="tht4" oninput="timeset('tht4')"><br>
-<input type="checkbox" id ="ct3th" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct3th" onchange="turnoff()" checked>
 ON <input type ="time" id="tht5" oninput="timeset('tht5')"> OFF <input type ="time" id="tht6" oninput="timeset('tht6')">
 <br>
 <div style="float: right;">
@@ -415,11 +427,11 @@ ON <input type ="time" id="tht5" oninput="timeset('tht5')"> OFF <input type ="ti
 <div id="friday"></div>
 <br><br><br><br>
 <form>
-<input type="checkbox" id ="ct1fr" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct1fr" onchange="turnoff()" checked>
 ON <input type ="time" id="frt1" oninput="timeset('frt1')"> OFF <input type ="time" id="frt2" oninput="timeset('frt2')"><br>
-<input type="checkbox" id ="ct2fr" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct2fr" onchange="turnoff()" checked>
 ON <input type ="time" id="frt3" oninput="timeset('frt3')"> OFF <input type ="time" id="frt4" oninput="timeset('tht4')"><br>
-<input type="checkbox" id ="ct3fr" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct3fr" onchange="turnoff()" checked>
 ON <input type ="time" id="frt5" oninput="timeset('frt5')"> OFF <input type ="time" id="frt6" oninput="timeset('frt6')">
 <br>
 <div style="float: right;">
@@ -441,11 +453,11 @@ ON <input type ="time" id="frt5" oninput="timeset('frt5')"> OFF <input type ="ti
 <div id="saturday"></div>
 <br><br><br><br>
 <form>
-<input type="checkbox" id ="ct1sa" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct1sa" onchange="turnoff()" checked>
 ON <input type ="time" id="sat1" oninput="timeset('sat1')"> OFF <input type ="time" id="sat2" oninput="timeset('sat2')"><br>
-<input type="checkbox" id ="ct2sa" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct2sa" onchange="turnoff()" checked>
 ON <input type ="time" id="sat3" oninput="timeset('sat3')"> OFF <input type ="time" id="sat4" oninput="timeset('sat4')"><br>
-<input type="checkbox" id ="ct3sa" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct3sa" onchange="turnoff()" checked>
 ON <input type ="time" id="sat5" oninput="timeset('sat5')"> OFF <input type ="time" id="sat6" oninput="timeset('sat6')">
 <br>
 <div style="float: right;">
@@ -466,11 +478,11 @@ ON <input type ="time" id="sat5" oninput="timeset('sat5')"> OFF <input type ="ti
 <div id="sunday"></div>
 <br><br><br><br>
 <form>
-<input type="checkbox" id ="ct1su" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct1su" onchange="turnoff()" checked>
 ON <input type ="time" id="sut1" oninput="timeset('sut1')"> OFF <input type ="time" id="sut2" oninput="timeset('sut2')"><br>
-<input type="checkbox" id ="ct2su" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct2su" onchange="turnoff()" checked>
 ON <input type ="time" id="sut3" oninput="timeset('sut3')"> OFF <input type ="time" id="sut4" oninput="timeset('sut4')"><br>
-<input type="checkbox" id ="ct3su" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct3su" onchange="turnoff()" checked>
 ON <input type ="time" id="sut5" oninput="timeset('sut5')"> OFF <input type ="time" id="sut6" oninput="timeset('sut6')">
 <br>
 <div style="float: right;">
@@ -490,11 +502,11 @@ ON <input type ="time" id="sut5" oninput="timeset('sut5')"> OFF <input type ="ti
 <div id="everyday"></div>
 <br><br><br><br>
 <form>
-<input type="checkbox" id ="ct1ed" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct1ed" onchange="turnoff()" checked>
 ON <input type ="time" id="edt1" oninput="timeset('edt1')"> OFF <input type ="time" id="edt2" oninput="timeset('edt2')"><br>
-<input type="checkbox" id ="ct2ed" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct2ed" onchange="turnoff()" checked>
 ON <input type ="time" id="edt3" oninput="timeset('edt3')"> OFF <input type ="time" id="edt4" oninput="timeset('edt4')"><br>
-<input type="checkbox" id ="ct3ed" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct3ed" onchange="turnoff()" checked>
 ON <input type ="time" id="edt5" oninput="timeset('edt5')"> OFF <input type ="time" id="edt6" oninput="timeset('edt6')">
 <br>
 <div style="float: right;">
@@ -512,11 +524,11 @@ ON <input type ="time" id="edt5" oninput="timeset('edt5')"> OFF <input type ="ti
 <div id="weekdays"></div>
 <br><br><br><br>
 <form>
-<input type="checkbox" id ="ct1wd" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct1wd" onchange="turnoff()" checked>
 ON <input type ="time" id="wdt1" oninput="timeset('wdt1')"> OFF <input type ="time" id="wdt2" oninput="timeset('wdt2')"><br>
-<input type="checkbox" id ="ct2wd" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct2wd" onchange="turnoff()" checked>
 ON <input type ="time" id="wdt3" oninput="timeset('wdt3')"> OFF <input type ="time" id="wdt4" oninput="timeset('wdt4')"><br>
-<input type="checkbox" id ="ct3wd" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct3wd" onchange="turnoff()" checked>
 ON <input type ="time" id="wdt5" oninput="timeset('wdt5')"> OFF <input type ="time" id="wdt6" oninput="timeset('wdt6')">
 <br>
 <div style="float: right;">
@@ -534,11 +546,11 @@ ON <input type ="time" id="wdt5" oninput="timeset('wdt5')"> OFF <input type ="ti
 <div id="weekends"></div>
 <br><br><br><br>
 <form>
-<input type="checkbox" id ="ct1wend" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct1wend" onchange="turnoff()" checked>
 ON <input type ="time" id="wendt1" oninput="timeset('wendt1')"> OFF <input type ="time" id="wendt2" oninput="timeset('wendt2')"><br>
-<input type="checkbox" id ="ct2wend" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct2wend" onchange="turnoff()" checked>
 ON <input type ="time" id="wendt3" oninput="timeset('wendt3')"> OFF <input type ="time" id="wendt4" oninput="timeset('wendt4')"><br>
-<input type="checkbox" id ="ct3wend" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct3wend" onchange="turnoff()" checked>
 ON <input type ="time" id="wendt5" oninput="timeset('wendt5')"> OFF <input type ="time" id="wendt6" oninput="timeset('wendt6')">
 <br>
 <div style="float: right;">
@@ -574,12 +586,12 @@ ON <input type ="time" id="wendt5" oninput="timeset('wendt5')"> OFF <input type 
 </div>
 <br><br><br><br>
 <form>
-<input type="checkbox" id ="ct1ud" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct1ud" onchange="turnoff()" checked>
 ON <input type ="time" id="udt1" oninput="timeset('udt1')"> OFF <input type ="time" id="udt2" oninput="timeset('udt2')"><br>
-<input type="checkbox" id ="ct2ud" onchange="turnoff()" checked>
+<input type="checkbox" class="check" id ="ct2ud" onchange="turnoff()" checked>
 ON <input type ="time" id="udt3" oninput="timeset('udt3')"> OFF <input type ="time" id="udt4" oninput="timeset('udt4')"><br>
 <input type="checkbox" id ="ct3ud" onchange="turnoff()" checked>
-ON <input type ="time" id="udt5" oninput="timeset('udt5')"> OFF <input type ="time" id="udt6" oninput="timeset('udt6')">
+ON <input type ="time" class="check" id="udt5" oninput="timeset('udt5')"> OFF <input type ="time" id="udt6" oninput="timeset('udt6')">
 <br>
 <div style="float: right;">
 <input type="button" value="Go to Monday" onclick="scrollToAnchor('#checkmonday');">
@@ -664,18 +676,15 @@ ON <input type ="time" id="udt5" oninput="timeset('udt5')"> OFF <input type ="ti
 	</tbody>
 </table>
 <hr><hr><br>
-changed to behaviour drag<br>
-drag by handles only<br>
-to prevent accidental touch change<br>
-<br>
-hmmmm???? why is drag connected handles still working<br>
+
 <br>
 how do i make the timescale better <br>
-red line marker actual time on bar<br>
-marker sunrise, sunset on bar<br>
 <br>
-join / merge overlapping tooltips<br>
-enable disable a day / slider with checkbox or disable/hide a set on/off handles<br>
+marker sunrise, sunset on slidebar == suncalc javascript<br>
+checkbox sunrise sunset near timeset textfields<br>
+----- https://github.com/mourner/suncalc<br>
+<br>
+
 <br><br>
 <center>
 
@@ -744,86 +753,86 @@ var numberToTime3 = function(n) {
 
 
 
-//next variables should be set by ESP8266 ESP8285 before/on pageload replaced with values actual values know by esp
+// next variables should be set by ESP8266 ESP8285 before/on pageload replaced with values actual values know by esp
+// maybe save to file and include it
+// or prcessor %% on upload
 
+var mon_1 = 6 * 60;         // on ours in minutes
+var mon_2 = 9 * 60;         // off hours in minutes
+var mon_3 = 11 * 60;        // on hours in minutes
+var mon_4 = 13 * 60;        // off hours in minute
+var mon_5 = 19 * 60;        // on hours in minutes
+var mon_6 = 22 * 60;        // off hoursh in minutes
 
+var tue_1 = 0;              // on hours in minutes
+var tue_2 = 6 * 60+15;      // off hours in minutes
+var tue_3 = 9 * 60;         // on hours in minutes
+var tue_4 = 19 * 60;        // off hours in minutes
+var tue_5 = 22 * 60;        // on hours in minutes
+var tue_6 = 23 * 60 + 59;   // off hours in minutes
 
-var mon_1 = 6 * 60; // on hours in minutes
-var mon_2 = 9 * 60; // off hours in minutes
-var mon_3 = 11 * 60; // on hours in minutes
-var mon_4 = 13 * 60; // off hours in minute
-var mon_5 = 19 * 60; // on hours in minutes
-var mon_6 = 22 * 60; // off hours in minutes
+var wed_1 = 5 * 60;         // on hours in minutes
+var wed_2 = 6 * 60;         // off hours in minutes
+var wed_3 = 16 * 60;        // on hours in minutes
+var wed_4 = 18 * 60;        // off hours in minutes
+var wed_5 = 20 * 60;        // on hours in minutes
+var wed_6 = 22 * 60 + 45;   // off hours in minutes
 
-var tue_1 = 0; // on hours in minutes
-var tue_2 = 6 * 60+15; // off hours in minutes
-var tue_3 = 9 * 60; // on hours in minutes
-var tue_4 = 19 * 60; // off hours in minutes
-var tue_5 = 22 * 60; // on hours in minutes
-var tue_6 = 23 * 60 + 59; // off hours in minutes
+var thu_1 = 5 * 60;         // on hours in minutes
+var thu_2 = 6 * 60;         // off hours in minutes
+var thu_3 = 16 * 60;        // on hours in minutes
+var thu_4 = 18 * 60;        // off hours in minutes
+var thu_5 = 20 * 60;        // on hours in minutes
+var thu_6 = 22 * 60 + 45;   // off hours in minutes
 
-var wed_1 = 5 * 60; // on hours in minutes
-var wed_2 = 6 * 60; // off hours in minutes
-var wed_3 = 16 * 60; // on hours in minutes
-var wed_4 = 18 * 60; // off hours in minutes
-var wed_5 = 20 * 60; // on hours in minutes
-var wed_6 = 22 * 60 + 45; // off hours in minutes
+var fri_1 = 5 * 60;         // on hours in minutes
+var fri_2 = 6 * 60;         // off hours in minutes
+var fri_3 = 16 * 60;        // on hours in minutes
+var fri_4 = 18 * 60;        // off hours in minutes
+var fri_5 = 20 * 60;        // on hours in minutes
+var fri_6 = 22 * 60 + 45;   // off hours in minutes
 
-var thu_1 = 5 * 60; // on hours in minutes
-var thu_2 = 6 * 60; // off hours in minutes
-var thu_3 = 16 * 60; // on hours in minutes
-var thu_4 = 18 * 60; // off hours in minutes
-var thu_5 = 20 * 60; // on hours in minutes
-var thu_6 = 22 * 60 + 45; // off hours in minutes
+var sat_1 = 5 * 60;         // on hours in minutes
+var sat_2 = 6 * 60;         // off hours in minutes
+var sat_3 = 16 * 60;        // on hours in minutes
+var sat_4 = 18 * 60;        // off hours in minutes
+var sat_5 = 20 * 60;        // on hours in minutes
+var sat_6 = 22 * 60 + 45;   // off hours in minutes
 
-var fri_1 = 5 * 60; // on hours in minutes
-var fri_2 = 6 * 60; // off hours in minutes
-var fri_3 = 16 * 60; // on hours in minutes
-var fri_4 = 18 * 60; // off hours in minutes
-var fri_5 = 20 * 60; // on hours in minutes
-var fri_6 = 22 * 60 + 45; // off hours in minutes
+var sun_1 = 5 * 60;         // on hours in minutes
+var sun_2 = 6 * 60;         // off hours in minutes
+var sun_3 = 16 * 60;        // on hours in minutes
+var sun_4 = 18 * 60;        // off hours in minutes
+var sun_5 = 20 * 60;        // on hours in minutes
+var sun_6 = 22 * 60 + 45;   // off hours in minutes
 
-var sat_1 = 5 * 60; // on hours in minutes
-var sat_2 = 6 * 60; // off hours in minutes
-var sat_3 = 16 * 60; // on hours in minutes
-var sat_4 = 18 * 60; // off hours in minutes
-var sat_5 = 20 * 60; // on hours in minutes
-var sat_6 = 22 * 60 + 45; // off hours in minutes
+var everyday_1 = 5 * 60;        // on hours in minutes
+var everyday_2 = 6 * 60;        // off hours in minutes
+var everyday_3 = 16 * 60;       // on hours in minutes
+var everyday_4 = 18 * 60;       // off hours in minutes
+var everyday_5 = 20 * 60;       // on hours in minutes
+var everyday_6 = 22 * 60 + 45;  // off hours in minutes
 
-var sun_1 = 5 * 60; // on hours in minutes
-var sun_2 = 6 * 60; // off hours in minutes
-var sun_3 = 16 * 60; // on hours in minutes
-var sun_4 = 18 * 60; // off hours in minutes
-var sun_5 = 20 * 60; // on hours in minutes
-var sun_6 = 22 * 60 + 45; // off hours in minutes
+var weekdays_1 = 5 * 60;            // on hours in minutes
+var weekdays_2 = 6 * 60;            // off hours in minutes
+var weekdays_3 = 16 * 60;           // on hours in minutes
+var weekdays_4 = 18 * 60;           // off hours in minutes
+var weekdays_5 = 20 * 60;           // on hours in minutes
+var weekdays_6 = 22 * 60 + 45;      // off hours in minutes
 
-var everyday_1 = 5 * 60; // on hours in minutes
-var everyday_2 = 6 * 60; // off hours in minutes
-var everyday_3 = 16 * 60; // on hours in minutes
-var everyday_4 = 18 * 60; // off hours in minutes
-var everyday_5 = 20 * 60; // on hours in minutes
-var everyday_6 = 22 * 60 + 45; // off hours in minutes
+var weekends_1 = 5 * 60;            // on hours in minutes
+var weekends_2 = 6 * 60;            // off hours in minutes
+var weekends_3 = 16 * 60;           // on hours in minutes
+var weekends_4 = 18 * 60;           // off hours in minutes
+var weekends_5 = 20 * 60;           // on hours in minutes
+var weekends_6 = 22 * 60 + 45;      // off hours in minutes
 
-var weekdays_1 = 5 * 60; // on hours in minutes
-var weekdays_2 = 6 * 60; // off hours in minutes
-var weekdays_3 = 16 * 60; // on hours in minutes
-var weekdays_4 = 18 * 60; // off hours in minutes
-var weekdays_5 = 20 * 60; // on hours in minutes
-var weekdays_6 = 22 * 60 + 45; // off hours in minutes
-
-var weekends_1 = 5 * 60; // on hours in minutes
-var weekends_2 = 6 * 60; // off hours in minutes
-var weekends_3 = 16 * 60; // on hours in minutes
-var weekends_4 = 18 * 60; // off hours in minutes
-var weekends_5 = 20 * 60; // on hours in minutes
-var weekends_6 = 22 * 60 + 45; // off hours in minutes
-
-var userdefined_1 = 5 * 60; // on hours in minutes
-var userdefined_2 = 6 * 60; // off hours in minutes
-var userdefined_3 = 16 * 60; // on hours in minutes
-var userdefined_4 = 18 * 60; // off hours in minutes
-var userdefined_5 = 20 * 60; // on hours in minutes
-var userdefined_6 = 22 * 60 + 45; // off hours in minutes
+var userdefined_1 = 5 * 60;         // on hours in minutes
+var userdefined_2 = 6 * 60;         // off hours in minutes
+var userdefined_3 = 16 * 60;        // on hours in minutes
+var userdefined_4 = 18 * 60;        // off hours in minutes
+var userdefined_5 = 20 * 60;        // on hours in minutes
+var userdefined_6 = 22 * 60 + 45;   // off hours in minutes
 
 
 
@@ -1243,7 +1252,7 @@ function mergeTooltips(slider, threshold, separator) {
             }
         });
     });
-}
+} // end merge tooltips if close to each other
 
 
 
@@ -1254,6 +1263,7 @@ boxes() // check the checkboxes
 
 function boxes() {
   //https://refreshless.com/nouislider/more/#section-disable
+  // dissable grey out a slider
   if (checkmonday.checked) {
     monday.removeAttribute('disabled');
   } else {
@@ -1609,7 +1619,7 @@ function timeset(wich) {
 
 
 
-// event triggered when slider is changed cq set
+// event triggered when slider is changed cq set, write to console and websocket
 monday.noUiSlider.on('set', function() {
   writetoconsole(monday); // pass parameter monday
 });
@@ -1813,7 +1823,8 @@ userdefined.noUiSlider.on('update', function(values, handle, unEncodedValues) {
 
 
 
-function convertH2M(timeInHour) { // convert hh:mm to time in minutes
+// convert hh:mm to time in minutes
+function convertH2M(timeInHour) { 
   var timeParts = timeInHour.split(':');
   return Number(timeParts[0]) * 60 + Number(timeParts[1]);
 }
@@ -1901,6 +1912,43 @@ https://ldijkman.github.io/Electra<br>
    }, false);
 
 function myGreeting() {
+  
+  
+  
+// https://github.com/mourner/suncalc
+// https://www.latlong.net/
+
+// get today's sunlight times for                          // https://www.latlong.net/
+var times = SunCalc.getTimes(new Date(), 52.7354, 5.1790); // https://www.google.com/search?q=map+52.7354%2C+5.1790
+
+// format sunrise time from the Date object
+var sunrisemin =times.sunrise.getMinutes();
+if(sunrisemin<=9)sunrisemin="0"+sunrisemin;                     // 0-9 add a zero
+var sunriseStr = times.sunrise.getHours() + ':' + sunrisemin;
+
+var sunsetmin =times.sunset.getMinutes();
+if(sunsetmin<=9)sunsetmin="0"+sunsetmin;                        // 0-9 add a zero
+var sunsetStr = times.sunset.getHours() + ':' + sunsetmin;
+
+// get position of the sun (azimuth and altitude) at today's sunrise
+var sunrisePos = SunCalc.getPosition(times.sunrise, 52.7354, 5.1790);
+
+// get sunrise azimuth in degrees
+var sunriseAzimuth = sunrisePos.azimuth * 180 / Math.PI;
+
+// https://github.com/mourner/suncalc
+//console.log(times);
+console.log("sunrise "+sunriseStr);
+console.log("sunset "+sunsetStr);
+//console.log(sunrisePos);
+//console.log(sunriseAzimuth);
+document.getElementsByClassName('sunrise')[0].innerHTML =("<a href='http://www.google.com?q=52.7354, 5.1790'>52.7354, 5.1790 </a> sunrise "+sunriseStr)+" ";
+document.getElementsByClassName('sunset')[0].textContent =(" sunset "+sunsetStr)+" ";
+document.getElementsByClassName('sunrise')[1].innerHTML =("<a href='http://www.google.com?q=52.7354, 5.1790'>52.7354, 5.1790 </a> sunrise "+sunriseStr+" ");
+document.getElementsByClassName('sunset')[1].textContent =(" sunset "+sunsetStr)+" ";  
+  
+  
+  
   const now = new Date();
   const current = (((now.getHours() * 60) + now.getMinutes())/1440)*100;       // time to percentage 0 to 100% set div position
   var sec;
@@ -1919,14 +1967,6 @@ function myGreeting() {
   
    document.getElementsByClassName('actualtime')[i].textContent = ". . . " +dayName+" "+now.getHours()+":"+min+":"+sec; // set time text on div class actualtime
  
- 
- 
- 
- 
- 
- 
-
-   
  }// end for
    
    
@@ -1948,8 +1988,14 @@ function myGreeting() {
    
 
    
-   
-   
+  /*
+    monday.getElementsByClassName('noUi-tooltip')[0].style.color = "green";
+    monday.getElementsByClassName('noUi-tooltip')[1].style.color = "red";
+    monday.getElementsByClassName('noUi-tooltip')[2].style.color = "green";
+    monday.getElementsByClassName('noUi-tooltip')[3].style.color = "red";
+    monday.getElementsByClassName('noUi-tooltip')[4].style.color = "green";
+    monday.getElementsByClassName('noUi-tooltip')[5].style.color = "red";
+   */
    
    
 if(document.getElementById("checkmonday").checked){                                // && now.getDay() == 1
@@ -2032,7 +2078,7 @@ if(document.getElementById("checkwednesday").checked){
 
 
 
-
+// grey out dissable slider part if checkbox not checked
 if(!document.getElementById("ct1m").checked){    //not checked
   monday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // grey out dissable
 }
@@ -2044,8 +2090,7 @@ if(!document.getElementById("ct3m").checked){     //not checked
 }
 
 
-
-
+// grey out dissable slider part if checkbox not checked
 if(!document.getElementById("ct1tu").checked){    //not checked
   tuesday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // grey out dissable
 }
@@ -2057,7 +2102,7 @@ if(!document.getElementById("ct3tu").checked){     //not checked
 }
 
 
-
+// grey out dissable slider part if checkbox not checked
 if(!document.getElementById("ct1w").checked){    //not checked
   wednesday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // grey out dissable
 }
@@ -2069,15 +2114,376 @@ if(!document.getElementById("ct3w").checked){     //not checked
 }
 
 
+
+
+
+
+
+
+
+/*
+// get some checkboxes id by class test
+const allcheckByClass = document.getElementsByClassName('check');
+//let result = "document.getElementsByClassName('check')";
+for (let i=0; i < allcheckByClass.length; i++) {
+  
+  console.log(allcheckByClass[i].id);
+    console.log(document.getElementById(allcheckByClass[i].id).className);
+}
+
+
+console.log(document.getElementsByClassName('check'));
+
+
+*/
+
+
 }
 </script>
 
-<script>
-function scrollToAnchor(selectedAnchor) {                     // anchor scroll without browse history back 
+<script> 
+// anchor scroll without browser history back problem with normal HTML anchhor
+function scrollToAnchor(selectedAnchor) {                    
     document.querySelector(selectedAnchor).scrollIntoView({
         behavior: 'smooth'
     });
 }
+</script>
+
+
+
+
+
+
+
+
+
+
+<script>
+/*
+ (c) 2011-2015, Vladimir Agafonkin
+ SunCalc is a JavaScript library for calculating sun/moon position and light phases.
+ https://github.com/mourner/suncalc
+*/
+
+(function () { 'use strict';
+
+// shortcuts for easier to read formulas
+
+var PI   = Math.PI,
+    sin  = Math.sin,
+    cos  = Math.cos,
+    tan  = Math.tan,
+    asin = Math.asin,
+    atan = Math.atan2,
+    acos = Math.acos,
+    rad  = PI / 180;
+
+// sun calculations are based on http://aa.quae.nl/en/reken/zonpositie.html formulas
+
+
+// date/time constants and conversions
+
+var dayMs = 1000 * 60 * 60 * 24,
+    J1970 = 2440588,
+    J2000 = 2451545;
+
+function toJulian(date) { return date.valueOf() / dayMs - 0.5 + J1970; }
+function fromJulian(j)  { return new Date((j + 0.5 - J1970) * dayMs); }
+function toDays(date)   { return toJulian(date) - J2000; }
+
+
+// general calculations for position
+
+var e = rad * 23.4397; // obliquity of the Earth
+
+function rightAscension(l, b) { return atan(sin(l) * cos(e) - tan(b) * sin(e), cos(l)); }
+function declination(l, b)    { return asin(sin(b) * cos(e) + cos(b) * sin(e) * sin(l)); }
+
+function azimuth(H, phi, dec)  { return atan(sin(H), cos(H) * sin(phi) - tan(dec) * cos(phi)); }
+function altitude(H, phi, dec) { return asin(sin(phi) * sin(dec) + cos(phi) * cos(dec) * cos(H)); }
+
+function siderealTime(d, lw) { return rad * (280.16 + 360.9856235 * d) - lw; }
+
+function astroRefraction(h) {
+    if (h < 0) // the following formula works for positive altitudes only.
+        h = 0; // if h = -0.08901179 a div/0 would occur.
+
+    // formula 16.4 of "Astronomical Algorithms" 2nd edition by Jean Meeus (Willmann-Bell, Richmond) 1998.
+    // 1.02 / tan(h + 10.26 / (h + 5.10)) h in degrees, result in arc minutes -> converted to rad:
+    return 0.0002967 / Math.tan(h + 0.00312536 / (h + 0.08901179));
+}
+
+// general sun calculations
+
+function solarMeanAnomaly(d) { return rad * (357.5291 + 0.98560028 * d); }
+
+function eclipticLongitude(M) {
+
+    var C = rad * (1.9148 * sin(M) + 0.02 * sin(2 * M) + 0.0003 * sin(3 * M)), // equation of center
+        P = rad * 102.9372; // perihelion of the Earth
+
+    return M + C + P + PI;
+}
+
+function sunCoords(d) {
+
+    var M = solarMeanAnomaly(d),
+        L = eclipticLongitude(M);
+
+    return {
+        dec: declination(L, 0),
+        ra: rightAscension(L, 0)
+    };
+}
+
+
+var SunCalc = {};
+
+
+// calculates sun position for a given date and latitude/longitude
+
+SunCalc.getPosition = function (date, lat, lng) {
+
+    var lw  = rad * -lng,
+        phi = rad * lat,
+        d   = toDays(date),
+
+        c  = sunCoords(d),
+        H  = siderealTime(d, lw) - c.ra;
+
+    return {
+        azimuth: azimuth(H, phi, c.dec),
+        altitude: altitude(H, phi, c.dec)
+    };
+};
+
+
+// sun times configuration (angle, morning name, evening name)
+
+var times = SunCalc.times = [
+    [-0.833, 'sunrise',       'sunset'      ],
+    [  -0.3, 'sunriseEnd',    'sunsetStart' ],
+    [    -6, 'dawn',          'dusk'        ],
+    [   -12, 'nauticalDawn',  'nauticalDusk'],
+    [   -18, 'nightEnd',      'night'       ],
+    [     6, 'goldenHourEnd', 'goldenHour'  ]
+];
+
+// adds a custom time to the times config
+
+SunCalc.addTime = function (angle, riseName, setName) {
+    times.push([angle, riseName, setName]);
+};
+
+
+// calculations for sun times
+
+var J0 = 0.0009;
+
+function julianCycle(d, lw) { return Math.round(d - J0 - lw / (2 * PI)); }
+
+function approxTransit(Ht, lw, n) { return J0 + (Ht + lw) / (2 * PI) + n; }
+function solarTransitJ(ds, M, L)  { return J2000 + ds + 0.0053 * sin(M) - 0.0069 * sin(2 * L); }
+
+function hourAngle(h, phi, d) { return acos((sin(h) - sin(phi) * sin(d)) / (cos(phi) * cos(d))); }
+function observerAngle(height) { return -2.076 * Math.sqrt(height) / 60; }
+
+// returns set time for the given sun altitude
+function getSetJ(h, lw, phi, dec, n, M, L) {
+
+    var w = hourAngle(h, phi, dec),
+        a = approxTransit(w, lw, n);
+    return solarTransitJ(a, M, L);
+}
+
+
+// calculates sun times for a given date, latitude/longitude, and, optionally,
+// the observer height (in meters) relative to the horizon
+
+SunCalc.getTimes = function (date, lat, lng, height) {
+
+    height = height || 0;
+
+    var lw = rad * -lng,
+        phi = rad * lat,
+
+        dh = observerAngle(height),
+
+        d = toDays(date),
+        n = julianCycle(d, lw),
+        ds = approxTransit(0, lw, n),
+
+        M = solarMeanAnomaly(ds),
+        L = eclipticLongitude(M),
+        dec = declination(L, 0),
+
+        Jnoon = solarTransitJ(ds, M, L),
+
+        i, len, time, h0, Jset, Jrise;
+
+
+    var result = {
+        solarNoon: fromJulian(Jnoon),
+        nadir: fromJulian(Jnoon - 0.5)
+    };
+
+    for (i = 0, len = times.length; i < len; i += 1) {
+        time = times[i];
+        h0 = (time[0] + dh) * rad;
+
+        Jset = getSetJ(h0, lw, phi, dec, n, M, L);
+        Jrise = Jnoon - (Jset - Jnoon);
+
+        result[time[1]] = fromJulian(Jrise);
+        result[time[2]] = fromJulian(Jset);
+    }
+
+    return result;
+};
+
+
+// moon calculations, based on http://aa.quae.nl/en/reken/hemelpositie.html formulas
+
+function moonCoords(d) { // geocentric ecliptic coordinates of the moon
+
+    var L = rad * (218.316 + 13.176396 * d), // ecliptic longitude
+        M = rad * (134.963 + 13.064993 * d), // mean anomaly
+        F = rad * (93.272 + 13.229350 * d),  // mean distance
+
+        l  = L + rad * 6.289 * sin(M), // longitude
+        b  = rad * 5.128 * sin(F),     // latitude
+        dt = 385001 - 20905 * cos(M);  // distance to the moon in km
+
+    return {
+        ra: rightAscension(l, b),
+        dec: declination(l, b),
+        dist: dt
+    };
+}
+
+SunCalc.getMoonPosition = function (date, lat, lng) {
+
+    var lw  = rad * -lng,
+        phi = rad * lat,
+        d   = toDays(date),
+
+        c = moonCoords(d),
+        H = siderealTime(d, lw) - c.ra,
+        h = altitude(H, phi, c.dec),
+        // formula 14.1 of "Astronomical Algorithms" 2nd edition by Jean Meeus (Willmann-Bell, Richmond) 1998.
+        pa = atan(sin(H), tan(phi) * cos(c.dec) - sin(c.dec) * cos(H));
+
+    h = h + astroRefraction(h); // altitude correction for refraction
+
+    return {
+        azimuth: azimuth(H, phi, c.dec),
+        altitude: h,
+        distance: c.dist,
+        parallacticAngle: pa
+    };
+};
+
+
+// calculations for illumination parameters of the moon,
+// based on http://idlastro.gsfc.nasa.gov/ftp/pro/astro/mphase.pro formulas and
+// Chapter 48 of "Astronomical Algorithms" 2nd edition by Jean Meeus (Willmann-Bell, Richmond) 1998.
+
+SunCalc.getMoonIllumination = function (date) {
+
+    var d = toDays(date || new Date()),
+        s = sunCoords(d),
+        m = moonCoords(d),
+
+        sdist = 149598000, // distance from Earth to Sun in km
+
+        phi = acos(sin(s.dec) * sin(m.dec) + cos(s.dec) * cos(m.dec) * cos(s.ra - m.ra)),
+        inc = atan(sdist * sin(phi), m.dist - sdist * cos(phi)),
+        angle = atan(cos(s.dec) * sin(s.ra - m.ra), sin(s.dec) * cos(m.dec) -
+                cos(s.dec) * sin(m.dec) * cos(s.ra - m.ra));
+
+    return {
+        fraction: (1 + cos(inc)) / 2,
+        phase: 0.5 + 0.5 * inc * (angle < 0 ? -1 : 1) / Math.PI,
+        angle: angle
+    };
+};
+
+
+function hoursLater(date, h) {
+    return new Date(date.valueOf() + h * dayMs / 24);
+}
+
+// calculations for moon rise/set times are based on http://www.stargazing.net/kepler/moonrise.html article
+
+SunCalc.getMoonTimes = function (date, lat, lng, inUTC) {
+    var t = new Date(date);
+    if (inUTC) t.setUTCHours(0, 0, 0, 0);
+    else t.setHours(0, 0, 0, 0);
+
+    var hc = 0.133 * rad,
+        h0 = SunCalc.getMoonPosition(t, lat, lng).altitude - hc,
+        h1, h2, rise, set, a, b, xe, ye, d, roots, x1, x2, dx;
+
+    // go in 2-hour chunks, each time seeing if a 3-point quadratic curve crosses zero (which means rise or set)
+    for (var i = 1; i <= 24; i += 2) {
+        h1 = SunCalc.getMoonPosition(hoursLater(t, i), lat, lng).altitude - hc;
+        h2 = SunCalc.getMoonPosition(hoursLater(t, i + 1), lat, lng).altitude - hc;
+
+        a = (h0 + h2) / 2 - h1;
+        b = (h2 - h0) / 2;
+        xe = -b / (2 * a);
+        ye = (a * xe + b) * xe + h1;
+        d = b * b - 4 * a * h1;
+        roots = 0;
+
+        if (d >= 0) {
+            dx = Math.sqrt(d) / (Math.abs(a) * 2);
+            x1 = xe - dx;
+            x2 = xe + dx;
+            if (Math.abs(x1) <= 1) roots++;
+            if (Math.abs(x2) <= 1) roots++;
+            if (x1 < -1) x1 = x2;
+        }
+
+        if (roots === 1) {
+            if (h0 < 0) rise = i + x1;
+            else set = i + x1;
+
+        } else if (roots === 2) {
+            rise = i + (ye < 0 ? x2 : x1);
+            set = i + (ye < 0 ? x1 : x2);
+        }
+
+        if (rise && set) break;
+
+        h0 = h2;
+    }
+
+    var result = {};
+
+    if (rise) result.rise = hoursLater(t, rise);
+    if (set) result.set = hoursLater(t, set);
+
+    if (!rise && !set) result[ye > 0 ? 'alwaysUp' : 'alwaysDown'] = true;
+
+    return result;
+};
+
+
+// export as Node module / AMD module / browser variable
+if (typeof exports === 'object' && typeof module !== 'undefined') module.exports = SunCalc;
+else if (typeof define === 'function' && define.amd) define(SunCalc);
+else window.SunCalc = SunCalc;
+
+}());
+
+/*
+ (c) 2011-2015, Vladimir Agafonkin
+ SunCalc is a JavaScript library for calculating sun/moon position and light phases.
+ https://github.com/mourner/suncalc
+*/
+
 </script>
 </body>
 </html>
