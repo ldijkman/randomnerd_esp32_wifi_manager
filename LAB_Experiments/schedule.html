@@ -1965,7 +1965,7 @@ document.getElementsByClassName('sunset')[1].textContent =(" sunset "+sunsetStr)
    
    document.getElementsByClassName('actualtime')[i].style.left = current+"%";   // time to percentage 0 to 100% set div position
   
-   document.getElementsByClassName('actualtime')[i].textContent = ". . . " +dayName+" "+now.getHours()+":"+min+":"+sec; // set time text on div class actualtime
+   document.getElementsByClassName('actualtime')[i].innerHTML = "<br><br><br>" +dayName+" "+now.getHours()+":"+min+":"+sec; // set time text on div class actualtime
  
  }// end for
    
