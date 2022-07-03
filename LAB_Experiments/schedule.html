@@ -314,6 +314,61 @@ Later for JSon data pass??? from browser to ESP32 ESP8266 ESP8285<br>
 <br>
 if the page is served from ESP32, chromium inspect network ws send <br>
 now shows the json websocket send<br> 
+<br>
+<hr>
+<h1>Browser geolocation must be https://</h1>
+<p id="demo"></p>
+<p id="demo2"></p>
+<hr>
+<script>
+var x = document.getElementById("demo");
+var xx = document.getElementById("demo2");
+
+x.innerHTML = "geolocation";
+xx.innerHTML = "geolocation";
+  
+   navigator.geolocation.getCurrentPosition(onSuccess, onError);
+
+
+
+ 
+ function onSuccess(geolocationData) {
+  x.innerHTML = 'Success!';
+  
+  // GeolocationData can't be serialized to JSON,
+  // so copy out all the properties manually
+  let preview = {
+    coords: {
+      accuracy: geolocationData.coords.accuracy,
+      altitude: geolocationData.coords.altitude,
+      altitudeAccuracy: geolocationData.coords.altitudeAccuracy,
+      heading: geolocationData.coords.heading,
+      latitude: geolocationData.coords.latitude,
+      longitude: geolocationData.coords.longitude,
+      speed: geolocationData.coords.speed,
+    },
+    timestamp: geolocationData.timestamp
+  };
+  
+  x.innerHTML = JSON.stringify(preview, null, 2);  
+  
+  xx.innerHTML = "Latitude: " + geolocationData.coords.latitude + "<br>Longitude: " + geolocationData.coords.longitude;
+}
+
+function onError(error) {
+  x.innerHTML = 'Error';
+  x.innerHTML = error.message;
+}
+
+
+
+
+
+</script>
+
+
+
+
 <p id="MyAnchor" class="boldtitle">MyAnchorText</p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#checkmonday">go to monday</a><br>
 <br>
@@ -360,8 +415,8 @@ ON <input type ="time" id="tut5" oninput="timeset('tut5')"> OFF <input type ="ti
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkmonday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkwednesday');">
 </div>
-<div class="sunset"style="float: right;"></div>
-<div class="sunrise"style="float: right;"></div>
+<div class="sunset" style="float: right;"></div>
+<div class="sunrise" style="float: right;"></div>
 <br>
 </form>
 </div>
@@ -385,7 +440,10 @@ ON <input type ="time" id="wt5" oninput="timeset('wt5')"> OFF <input type ="time
 <div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checktuesday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkthursday');">
-</div><br>
+</div>
+<div class="sunset" style="float: right;"></div>
+<div class="sunrise" style="float: right;"></div>
+<br>
 </form>
 </div>
 <hr>
@@ -411,7 +469,10 @@ ON <input type ="time" id="tht5" oninput="timeset('tht5')"> OFF <input type ="ti
 <div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkwednesday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkfriday');">
-</div><br>
+</div>
+<div class="sunset" style="float: right;"></div>
+<div class="sunrise" style="float: right;"></div>
+<br>
 </form>
 </div>
 <hr>
@@ -437,7 +498,10 @@ ON <input type ="time" id="frt5" oninput="timeset('frt5')"> OFF <input type ="ti
 <div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkthursday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checksaturday');">
-</div><br>
+</div>
+<div class="sunset" style="float: right;"></div>
+<div class="sunrise" style="float: right;"></div>
+<br>
 </form>
 </div>
 <hr>
@@ -463,7 +527,10 @@ ON <input type ="time" id="sat5" oninput="timeset('sat5')"> OFF <input type ="ti
 <div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkfriday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checksunday');">
-</div><br>
+</div>
+<div class="sunset" style="float: right;"></div>
+<div class="sunrise" style="float: right;"></div>
+<br>
 </form>
 </div>
 <hr>
@@ -488,7 +555,10 @@ ON <input type ="time" id="sut5" oninput="timeset('sut5')"> OFF <input type ="ti
 <div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checksaturday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkeveryday');">
-</div><br>
+</div>
+<div class="sunset" style="float: right;"></div>
+<div class="sunrise" style="float: right;"></div>
+<br>
 </form>
 </div>
 <hr>
@@ -512,7 +582,10 @@ ON <input type ="time" id="edt5" oninput="timeset('edt5')"> OFF <input type ="ti
 <div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checksunday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkweekdays');">
-</div><br>
+</div>
+<div class="sunset" style="float: right;"></div>
+<div class="sunrise" style="float: right;"></div>
+<br>
 </form>
 <hr>
 
@@ -534,7 +607,10 @@ ON <input type ="time" id="wdt5" oninput="timeset('wdt5')"> OFF <input type ="ti
 <div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkeveryday');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkweekends');">
-</div><br>
+</div>
+<div class="sunset" style="float: right;"></div>
+<div class="sunrise" style="float: right;"></div>
+<br>
 </form>
 <hr>
 
@@ -556,7 +632,10 @@ ON <input type ="time" id="wendt5" oninput="timeset('wendt5')"> OFF <input type 
 <div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkweekdays');">&nbsp;&nbsp;
 <input type="button" value="NEXT" onclick="scrollToAnchor('#checkudd');">
-</div><br>
+</div>
+<div class="sunset" style="float: right;"></div>
+<div class="sunrise" style="float: right;"></div>
+<br>
 </form>
 <hr><input type="checkbox" id ="checkudd" name="checkudd"><b>User Defined Days</b><br>
 <table style="border-collapse: collapse;" border = "1">
@@ -595,7 +674,11 @@ ON <input type ="time" class="check" id="udt5" oninput="timeset('udt5')"> OFF <i
 <br>
 <div style="float: right;">
 <input type="button" value="Go to Monday" onclick="scrollToAnchor('#checkmonday');">
+<br>
 </div>
+<div class="sunset" style="float: right;"></div>
+<div class="sunrise" style="float: right;"></div>
+<br>
 </form>
 <hr>
 
@@ -1227,6 +1310,7 @@ function mergeTooltips(slider, threshold, separator) {
             var handlesInPool = pool.length;
 
             for (var j = 0; j < handlesInPool; j++) {
+              
                 var handleNumber = pool[j];
 
                 if (j === handlesInPool - 1) {
@@ -1242,6 +1326,7 @@ function mergeTooltips(slider, threshold, separator) {
                     offset = (textIsRtl && !isVertical ? 100 : 0) + (offset / handlesInPool) - lastOffset;
 
                     // Center this tooltip over the affected handles
+                    if (j==2){separator="|";}else{separator="-";}
                     tooltips[handleNumber].innerHTML = poolValues[poolIndex].join(separator);
                     tooltips[handleNumber].style.display = 'block';
                     tooltips[handleNumber].style[direction] = offset + '%';
@@ -1931,22 +2016,35 @@ if(sunsetmin<=9)sunsetmin="0"+sunsetmin;                        // 0-9 add a zer
 var sunsetStr = times.sunset.getHours() + ':' + sunsetmin;
 
 // get position of the sun (azimuth and altitude) at today's sunrise
-var sunrisePos = SunCalc.getPosition(times.sunrise, 52.7354, 5.1790);
+/////var sunrisePos = SunCalc.getPosition(times.sunrise, 52.7354, 5.1790);
 
 // get sunrise azimuth in degrees
-var sunriseAzimuth = sunrisePos.azimuth * 180 / Math.PI;
+/////var sunriseAzimuth = sunrisePos.azimuth * 180 / Math.PI;
 
 // https://github.com/mourner/suncalc
 //console.log(times);
-console.log("sunrise "+sunriseStr);
-console.log("sunset "+sunsetStr);
+
+/////console.log("sunrise "+sunriseStr);
+/////console.log("sunset "+sunsetStr);
+
 //console.log(sunrisePos);
 //console.log(sunriseAzimuth);
-document.getElementsByClassName('sunrise')[0].innerHTML =("<a href='http://www.google.com/search?q=52.7354, 5.1790'>52.7354, 5.1790 </a> sunrise "+sunriseStr)+" ";
-document.getElementsByClassName('sunset')[0].textContent =(" sunset "+sunsetStr)+" ";
-document.getElementsByClassName('sunrise')[1].innerHTML =("<a href='http://www.google.com/search??q=52.7354, 5.1790'>52.7354, 5.1790 </a> sunrise "+sunriseStr+" ");
-document.getElementsByClassName('sunset')[1].textContent =(" sunset "+sunsetStr)+" ";  
+//document.getElementsByClassName('sunrise')[0].innerHTML =("<a href='http://www.google.com/search?q=52.7354,5.1790'>52.7354, 5.1790 </a> sunrise "+sunriseStr)+" ";
+//document.getElementsByClassName('sunset')[0].textContent =(" sunset "+sunsetStr)+" ";
+//document.getElementsByClassName('sunrise')[1].innerHTML =("<a href='http://www.google.com/search?q=52.7354,5.1790'>52.7354, 5.1790 </a> sunrise "+sunriseStr+" ");
+//document.getElementsByClassName('sunset')[1].textContent =(" sunset "+sunsetStr)+" ";  
   
+const sunrise = document.querySelectorAll('.sunrise');
+sunrise.forEach(sunrise => {
+  //box.style.backgroundColor = 'purple'; box.style.width = '300px';
+  sunrise.innerHTML =("<a href='http://www.google.com/search?q=52.7354,5.1790'>SunRise&nbsp;"+sunriseStr)+"&nbsp;</a>";
+});
+
+const sunset = document.querySelectorAll('.sunset');
+sunset.forEach(sunset => {
+  //box.style.backgroundColor = 'purple'; box.style.width = '300px';
+  sunset.innerHTML =("<a href='http://www.google.com/search?q=52.7354,5.1790'>SunSet&nbsp;"+sunsetStr)+"&nbsp;</a>"; 
+});
   
   
   const now = new Date();
@@ -1965,7 +2063,7 @@ document.getElementsByClassName('sunset')[1].textContent =(" sunset "+sunsetStr)
    
    document.getElementsByClassName('actualtime')[i].style.left = current+"%";   // time to percentage 0 to 100% set div position
   
-   document.getElementsByClassName('actualtime')[i].innerHTML = "<br><br><br>" +dayName+" "+now.getHours()+":"+min+":"+sec; // set time text on div class actualtime
+   document.getElementsByClassName('actualtime')[i].innerHTML = "<div><br><br><br>" +dayName+" "+now.getHours()+":"+min+":"+sec+"</div>"; // set time text on div class actualtime
  
  }// end for
    
