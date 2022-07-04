@@ -124,14 +124,73 @@ document.addEventListener('DOMContentLoaded', function() {
    left: "50%",
    top: "-1px"
 };
-  for (let style in bookStyles) {
+  
+for (let style in bookStyles) {
  l.style[style] = bookStyles[style];
 }
-  l.innerHTML = "Actual time marker";
+
+  l.innerHTML = "<br><br><br>Actual time marker";
+
  for (let i = 0; i < 11; i++) {  
   document.getElementsByClassName('noUi-base')[i].appendChild(l.cloneNode(true));   // create a div class actualtime on div nouibase
  }
+ 
+ 
+ 
+ 
+ 
+   var ll = document.createElement('div');                                        // create a div class actualtime on div nouibase 
+  ll.setAttribute("id", "sunrisel");
+  ll.setAttribute("class", "sunrisel");
+  var bookStyles = {
+    position: "absolute",
+   color: "grey",
+   backgroundColor: "blue",
+   height: "60px",
+   width: "1px",
+   left: "0%",
+   top: "-1px"
+};
 
+ll.innerHTML = "<br><br><br>sunrise";
+ 
+ for (let style in bookStyles) {
+ ll.style[style] = bookStyles[style];
+}
+ 
+  for (let i = 0; i < 11; i++) {  
+  document.getElementsByClassName('noUi-base')[i].appendChild(ll.cloneNode(true));   // create a div class actualtime on div nouibase
+ }
+  
+ 
+ 
+ 
+ 
+   var lll = document.createElement('div');                                        // create a div class actualtime on div nouibase 
+  lll.setAttribute("id", "sunsetl");
+  lll.setAttribute("class", "sunsetl");
+  var bookStyles = {
+    position: "absolute",
+   color: "grey",
+   backgroundColor: "blue",
+   height: "60px",
+   width: "1px",
+   left: "100%",
+   top: "-1px"
+};
+
+lll.innerHTML = "<br><br><br>sunset";
+ 
+ for (let style in bookStyles) {
+ lll.style[style] = bookStyles[style];
+}
+ 
+  for (let i = 0; i < 11; i++) {  
+  document.getElementsByClassName('noUi-base')[i].appendChild(lll.cloneNode(true));   // create a div class actualtime on div nouibase
+ }
+ 
+ 
+ 
 }, false);
 
 
@@ -321,46 +380,6 @@ now shows the json websocket send<br>
 <p id="demo2"></p>
 <hr>
 <script>
-var x = document.getElementById("demo");
-var xx = document.getElementById("demo2");
-
-x.innerHTML = "geolocation";
-xx.innerHTML = "geolocation";
-  
-   navigator.geolocation.getCurrentPosition(onSuccess, onError);
-
-
-
- 
- function onSuccess(geolocationData) {
-  x.innerHTML = 'Success!';
-  
-  // GeolocationData can't be serialized to JSON,
-  // so copy out all the properties manually
-  let preview = {
-    coords: {
-      accuracy: geolocationData.coords.accuracy,
-      altitude: geolocationData.coords.altitude,
-      altitudeAccuracy: geolocationData.coords.altitudeAccuracy,
-      heading: geolocationData.coords.heading,
-      latitude: geolocationData.coords.latitude,
-      longitude: geolocationData.coords.longitude,
-      speed: geolocationData.coords.speed,
-    },
-    timestamp: geolocationData.timestamp
-  };
-  
-  x.innerHTML = JSON.stringify(preview, null, 2);  
-  
-  xx.innerHTML = "Latitude: " + geolocationData.coords.latitude + "<br>Longitude: " + geolocationData.coords.longitude;
-}
-
-function onError(error) {
-  x.innerHTML = 'Error';
-  x.innerHTML = error.message;
-}
-
-
 
 
 
@@ -395,7 +414,7 @@ ON <input type ="time" id="mt5" oninput="timeset('mt5')"> OFF <input type ="time
 </form>
 </div>
 <hr>
-
+<br><br>
 
 <hr>
 <div id="dag2">
@@ -421,7 +440,7 @@ ON <input type ="time" id="tut5" oninput="timeset('tut5')"> OFF <input type ="ti
 </form>
 </div>
 <hr>
-
+<br><br>
 
 <hr>
 <div id="dag3">
@@ -447,7 +466,7 @@ ON <input type ="time" id="wt5" oninput="timeset('wt5')"> OFF <input type ="time
 </form>
 </div>
 <hr>
-
+<br><br>
 
 
 <hr>
@@ -476,7 +495,7 @@ ON <input type ="time" id="tht5" oninput="timeset('tht5')"> OFF <input type ="ti
 </form>
 </div>
 <hr>
-
+<br><br>
 
 
 
@@ -505,8 +524,7 @@ ON <input type ="time" id="frt5" oninput="timeset('frt5')"> OFF <input type ="ti
 </form>
 </div>
 <hr>
-
-
+<br><br>
 
 
 <hr>
@@ -534,7 +552,7 @@ ON <input type ="time" id="sat5" oninput="timeset('sat5')"> OFF <input type ="ti
 </form>
 </div>
 <hr>
-
+<br><br>
 
 
 <hr>
@@ -562,7 +580,7 @@ ON <input type ="time" id="sut5" oninput="timeset('sut5')"> OFF <input type ="ti
 </form>
 </div>
 <hr>
-
+<br><br>
 
 
 <hr>
@@ -588,7 +606,7 @@ ON <input type ="time" id="edt5" oninput="timeset('edt5')"> OFF <input type ="ti
 <br>
 </form>
 <hr>
-
+<br><br>
 
 
 <input type="checkbox" id ="checkweekdays" name="checkweekdays"><b>Weekdays Monday ... Friday</b><br>
@@ -613,7 +631,7 @@ ON <input type ="time" id="wdt5" oninput="timeset('wdt5')"> OFF <input type ="ti
 <br>
 </form>
 <hr>
-
+<br><br>
 
 <hr>
 <input type="checkbox" id ="checkweekends" name="checkweekends"><b>Weekends Saturday Sunday</b> <br>
@@ -681,7 +699,7 @@ ON <input type ="time" class="check" id="udt5" oninput="timeset('udt5')"> OFF <i
 <br>
 </form>
 <hr>
-
+<br><br>
 
 <hr><br>
 <input type="checkbox"><b>User Defined Days on even and/or odd weeknumbers </b><br>
@@ -720,7 +738,7 @@ ON <input type ="time" class="check" id="udt5" oninput="timeset('udt5')"> OFF <i
 	</tbody>
 </table>
 <hr>
-
+<br><br>
 
 <hr><br>
 <input type="checkbox"><b>User Defined Days on even and/or odd weeknumbers </b><br>
@@ -1990,6 +2008,57 @@ https://ldijkman.github.io/Electra<br>
 
 
 <script>
+
+var x = document.getElementById("demo");
+var xx = document.getElementById("demo2");
+
+x.innerHTML = "geolocation";
+xx.innerHTML = "geolocation";
+  
+   navigator.geolocation.getCurrentPosition(onSuccess, onError);
+
+
+var lat;
+var lon;
+var succes=0;
+ 
+ function onSuccess(geolocationData) {
+  x.innerHTML = 'Success!';
+  
+  // GeolocationData can't be serialized to JSON,
+  // so copy out all the properties manually
+  let preview = {
+    coords: {
+      accuracy: geolocationData.coords.accuracy,
+      altitude: geolocationData.coords.altitude,
+      altitudeAccuracy: geolocationData.coords.altitudeAccuracy,
+      heading: geolocationData.coords.heading,
+      latitude: geolocationData.coords.latitude,
+      longitude: geolocationData.coords.longitude,
+      speed: geolocationData.coords.speed,
+    },
+    timestamp: geolocationData.timestamp
+  };
+  
+  x.innerHTML = JSON.stringify(preview, null, 2); 
+  
+    lat=geolocationData.coords.latitude; 
+    lon=geolocationData.coords.longitude;
+  xx.innerHTML = "Latitude: " + lat+ "<br>Longitude: " + lon;
+  succes=1;
+}
+
+
+  
+function onError(error) {
+  x.innerHTML = 'Error';
+  x.innerHTML = error.message;
+}
+
+
+
+
+
    document.addEventListener('DOMContentLoaded', function() {
 
        setInterval(myGreeting, 1000);        // interval 1 sec for time on div class actualtime
@@ -2004,7 +2073,13 @@ function myGreeting() {
 // https://www.latlong.net/
 
 // get today's sunlight times for                          // https://www.latlong.net/
-var times = SunCalc.getTimes(new Date(), 52.7354, 5.1790); // https://www.google.com/search?q=map+52.7354%2C+5.1790
+if(succes){
+var times = SunCalc.getTimes(new Date(), lat, lon); // https://www.google.com/search?q=map+52.7354%2C+5.1790
+}else{
+  lat=52.7354;
+  lon=5.1790;
+var times = SunCalc.getTimes(new Date(),lat,lon);
+}
 
 // format sunrise time from the Date object
 var sunrisemin =times.sunrise.getMinutes();
@@ -2014,6 +2089,20 @@ var sunriseStr = times.sunrise.getHours() + ':' + sunrisemin;
 var sunsetmin =times.sunset.getMinutes();
 if(sunsetmin<=9)sunsetmin="0"+sunsetmin;                        // 0-9 add a zero
 var sunsetStr = times.sunset.getHours() + ':' + sunsetmin;
+
+var currents=((times.sunrise.getHours()*60+times.sunrise.getMinutes())/1440)*100; ;
+  for (let i = 0; i < 11; i++) {  
+   document.getElementsByClassName('sunrisel')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
+  
+   document.getElementsByClassName('sunrisel')[i].innerHTML = "<br><br><br>sunrise "+times.sunrise.getHours()+":"+sunrisemin; // set time text on div class actualtime
+  }
+  
+var currents=((times.sunset.getHours()*60+times.sunset.getMinutes())/1440)*100; ;
+  for (let i = 0; i < 11; i++) {  
+   document.getElementsByClassName('sunsetl')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
+  
+   document.getElementsByClassName('sunsetl')[i].innerHTML = "<br><br><br>sunset "+times.sunset.getHours()+":"+sunsetmin; // set time text on div class actualtime
+  }  
 
 // get position of the sun (azimuth and altitude) at today's sunrise
 /////var sunrisePos = SunCalc.getPosition(times.sunrise, 52.7354, 5.1790);
@@ -2037,13 +2126,13 @@ var sunsetStr = times.sunset.getHours() + ':' + sunsetmin;
 const sunrise = document.querySelectorAll('.sunrise');
 sunrise.forEach(sunrise => {
   //box.style.backgroundColor = 'purple'; box.style.width = '300px';
-  sunrise.innerHTML =("<a href='http://www.google.com/search?q=52.7354,5.1790'>SunRise&nbsp;"+sunriseStr)+"&nbsp;</a>";
+  sunrise.innerHTML =(lat+","+lon+"&nbsp;<a href='http://www.google.com/search?q="+lat+","+lon+"'>SunRise&nbsp;"+sunriseStr)+"&nbsp;</a>";
 });
 
 const sunset = document.querySelectorAll('.sunset');
 sunset.forEach(sunset => {
   //box.style.backgroundColor = 'purple'; box.style.width = '300px';
-  sunset.innerHTML =("<a href='http://www.google.com/search?q=52.7354,5.1790'>SunSet&nbsp;"+sunsetStr)+"&nbsp;</a>"; 
+  sunset.innerHTML =("<a href='http://www.google.com/search?q="+lat+","+lon+"'>SunSet&nbsp;"+sunsetStr)+"</a>&nbsp;&nbsp;&nbsp;"; 
 });
   
   
@@ -2212,11 +2301,52 @@ if(!document.getElementById("ct3w").checked){     //not checked
 }
 
 
+// grey out dissable slider part if checkbox not checked
+if(!document.getElementById("ct1th").checked){    //not checked
+  thursday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct2th").checked){    //not checked
+  thursday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct3th").checked){     //not checked
+  thursday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // grey out dissable
+}
 
 
+// grey out dissable slider part if checkbox not checked
+if(!document.getElementById("ct1fr").checked){    //not checked
+  friday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct2fr").checked){    //not checked
+  friday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct3fr").checked){     //not checked
+  friday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // grey out dissable
+}
 
 
+// grey out dissable slider part if checkbox not checked
+if(!document.getElementById("ct1sa").checked){    //not checked
+  saturday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct2sa").checked){    //not checked
+  saturday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct3sa").checked){     //not checked
+  saturday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // grey out dissable
+}
 
+
+// grey out dissable slider part if checkbox not checked
+if(!document.getElementById("ct1su").checked){    //not checked
+  sunday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct2su").checked){    //not checked
+  sunday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct3su").checked){     //not checked
+  sunday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // grey out dissable
+}
 
 
 /*
