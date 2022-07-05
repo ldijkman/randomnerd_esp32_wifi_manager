@@ -2166,9 +2166,10 @@ sunset.forEach(sunset => {
    
    
          // 0 to 6 // 0 is sunday // 6 is saturday 
-         
+       for (let i = 0; i < 6; i++) {     
+           document.getElementById("dag"+i).style.background = "";                  // set all days backkground to ""
+       }
       document.getElementById("dag"+now.getDay()).style.background = "lightyellow"; // highlight active day backgound
-  
   //    document.getElementById("dag"+now.getDay()).style.background = ""; 
   
    
@@ -2274,8 +2275,66 @@ if(document.getElementById("checkwednesday").checked){
 
 
 
+var slider_times = thursday.noUiSlider.get();
+ 
+if(document.getElementById("checkthursday").checked){   
+    var oncolor;
+  if(now.getDay()==4){oncolor="#ffdd22";}else{ oncolor="lightgreen";} 
+  
+  if (timeinmin >= convertH2M(slider_times[0]) && timeinmin < convertH2M(slider_times[1])) {
+   thursday.getElementsByClassName('noUi-connect')[0].style.background = oncolor;   // sunfloweryellow
+  }else{
+     thursday.getElementsByClassName('noUi-connect')[0].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[2]) && timeinmin < convertH2M(slider_times[3])) {
+   thursday.getElementsByClassName('noUi-connect')[1].style.background = oncolor;   // change color
+  }else{
+     thursday.getElementsByClassName('noUi-connect')[1].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[4]) && timeinmin < convertH2M(slider_times[5])) {
+   thursday.getElementsByClassName('noUi-connect')[2].style.background = oncolor;   // change color
+  }else{
+     thursday.getElementsByClassName('noUi-connect')[2].style.background = "green";   // change color
+  }
+}else{
+  thursday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // change color
+  thursday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // change color
+  thursday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // change color
+}
 
 
+
+
+var slider_times = friday.noUiSlider.get();
+ 
+if(document.getElementById("checkfriday").checked){   
+    var oncolor;
+  if(now.getDay()==5){oncolor="#ffdd22";}else{ oncolor="lightgreen";} 
+  
+  if (timeinmin >= convertH2M(slider_times[0]) && timeinmin < convertH2M(slider_times[1])) {
+   friday.getElementsByClassName('noUi-connect')[0].style.background = oncolor;   // sunfloweryellow
+  }else{
+     friday.getElementsByClassName('noUi-connect')[0].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[2]) && timeinmin < convertH2M(slider_times[3])) {
+   friday.getElementsByClassName('noUi-connect')[1].style.background = oncolor;   // change color
+  }else{
+     friday.getElementsByClassName('noUi-connect')[1].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[4]) && timeinmin < convertH2M(slider_times[5])) {
+   friday.getElementsByClassName('noUi-connect')[2].style.background = oncolor;   // change color
+  }else{
+     friday.getElementsByClassName('noUi-connect')[2].style.background = "green";   // change color
+  }
+}else{
+  friday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // change color
+  friday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // change color
+  friday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // change color
+}
 
 
 
@@ -2316,6 +2375,7 @@ if(!document.getElementById("ct2w").checked){    //not checked
 if(!document.getElementById("ct3w").checked){     //not checked
   wednesday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // grey out dissable
 }
+
 
 
 // grey out dissable slider part if checkbox not checked
