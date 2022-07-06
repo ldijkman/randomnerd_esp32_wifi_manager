@@ -584,7 +584,7 @@ ON <input type ="time" id="sut5" oninput="timeset('sut5')"> OFF <input type ="ti
 
 
 <hr>
-<input type="checkbox" id ="checkeveryday" name="checkeveryday"><b>Every Day of the Week</b><br>
+<input type="checkbox" id ="checkeveryday" name="checkeveryday" checked><b>Every Day of the Week</b><br>
 <br>
 <br>
 <div id="everyday"></div>
@@ -2404,6 +2404,35 @@ if(document.getElementById("checksunday").checked){
 
 
 
+var slider_times = everyday.noUiSlider.get();
+ 
+if(document.getElementById("checkeveryday").checked){   
+    var oncolor;
+  if(now.getDay()<=6){oncolor="#ffdd22";}else{ oncolor="lightgreen";} 
+  
+  if (timeinmin >= convertH2M(slider_times[0]) && timeinmin < convertH2M(slider_times[1])) {
+   everyday.getElementsByClassName('noUi-connect')[0].style.background = oncolor;   // sunfloweryellow
+  }else{
+     everyday.getElementsByClassName('noUi-connect')[0].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[2]) && timeinmin < convertH2M(slider_times[3])) {
+   everyday.getElementsByClassName('noUi-connect')[1].style.background = oncolor;   // change color
+  }else{
+     everyday.getElementsByClassName('noUi-connect')[1].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[4]) && timeinmin < convertH2M(slider_times[5])) {
+   everyday.getElementsByClassName('noUi-connect')[2].style.background = oncolor;   // change color
+  }else{
+     everyday.getElementsByClassName('noUi-connect')[2].style.background = "green";   // change color
+  }
+}else{
+  everyday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // change color
+  everyday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // change color
+  everyday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // change color
+}
+
 
 
 
@@ -2494,6 +2523,19 @@ if(!document.getElementById("ct2su").checked){    //not checked
 }
 if(!document.getElementById("ct3su").checked){     //not checked
   sunday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // grey out dissable
+}
+
+
+
+// grey out dissable slider part if checkbox not checked
+if(!document.getElementById("ct1ed").checked){    //not checked
+  everyday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct2ed").checked){    //not checked
+  everyday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct3ed").checked){     //not checked
+  everyday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // grey out dissable
 }
 
 
