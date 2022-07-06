@@ -2339,6 +2339,77 @@ if(document.getElementById("checkfriday").checked){
 
 
 
+var slider_times = saturday.noUiSlider.get();
+ 
+if(document.getElementById("checksaturday").checked){   
+    var oncolor;
+  if(now.getDay()==6){oncolor="#ffdd22";}else{ oncolor="lightgreen";} 
+  
+  if (timeinmin >= convertH2M(slider_times[0]) && timeinmin < convertH2M(slider_times[1])) {
+   saturday.getElementsByClassName('noUi-connect')[0].style.background = oncolor;   // sunfloweryellow
+  }else{
+     saturday.getElementsByClassName('noUi-connect')[0].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[2]) && timeinmin < convertH2M(slider_times[3])) {
+   saturday.getElementsByClassName('noUi-connect')[1].style.background = oncolor;   // change color
+  }else{
+     saturday.getElementsByClassName('noUi-connect')[1].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[4]) && timeinmin < convertH2M(slider_times[5])) {
+   saturday.getElementsByClassName('noUi-connect')[2].style.background = oncolor;   // change color
+  }else{
+     saturday.getElementsByClassName('noUi-connect')[2].style.background = "green";   // change color
+  }
+}else{
+  saturday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // change color
+  saturday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // change color
+  saturday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // change color
+}
+
+
+
+
+var slider_times = sunday.noUiSlider.get();
+ 
+if(document.getElementById("checksunday").checked){   
+    var oncolor;
+  if(now.getDay()==0){oncolor="#ffdd22";}else{ oncolor="lightgreen";} 
+  
+  if (timeinmin >= convertH2M(slider_times[0]) && timeinmin < convertH2M(slider_times[1])) {
+   sunday.getElementsByClassName('noUi-connect')[0].style.background = oncolor;   // sunfloweryellow
+  }else{
+     sunday.getElementsByClassName('noUi-connect')[0].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[2]) && timeinmin < convertH2M(slider_times[3])) {
+   sunday.getElementsByClassName('noUi-connect')[1].style.background = oncolor;   // change color
+  }else{
+     sunday.getElementsByClassName('noUi-connect')[1].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[4]) && timeinmin < convertH2M(slider_times[5])) {
+   sunday.getElementsByClassName('noUi-connect')[2].style.background = oncolor;   // change color
+  }else{
+     sunday.getElementsByClassName('noUi-connect')[2].style.background = "green";   // change color
+  }
+}else{
+  sunday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // change color
+  sunday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // change color
+  sunday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // change color
+}
+
+
+
+
+
+
+
+
+
+
+
 
 // grey out dissable slider part if checkbox not checked
 // maybe addeventlistnener
