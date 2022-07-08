@@ -499,8 +499,9 @@ ON <input type ="time" id="tht5" oninput="timeset('tht5')"> OFF <input type ="ti
 </div>
 
 
-<hr>
+
 <div id="dag5">
+<hr>
 <input type="checkbox" id ="checkfriday" name="checkfriday" onchange="boxes(); writetoconsole(friday);" checked><b>Friday</b><br>
 <br>
 <br>
@@ -522,8 +523,9 @@ ON <input type ="time" id="frt5" oninput="timeset('frt5')"> OFF <input type ="ti
 <div class="sunrise" style="float: right;"></div>
 <br>
 </form>
-</div>
 <hr>
+</div>
+
 <br><br>
 
 
@@ -583,6 +585,7 @@ ON <input type ="time" id="sut5" oninput="timeset('sut5')"> OFF <input type ="ti
 <br><br>
 
 
+<div id="iederedag">
 <hr>
 <input type="checkbox" id ="checkeveryday" name="checkeveryday" checked><b>Every Day of the Week</b><br>
 <br>
@@ -606,9 +609,15 @@ ON <input type ="time" id="edt5" oninput="timeset('edt5')"> OFF <input type ="ti
 <br>
 </form>
 <hr>
+</div>
+
+
 <br><br>
 
 
+
+<div id="weekdagen">
+<hr>  
 <input type="checkbox" id ="checkweekdays" name="checkweekdays" checked><b>Weekdays Monday ... Friday</b><br>
 <br>
 <br>
@@ -631,6 +640,7 @@ ON <input type ="time" id="wdt5" oninput="timeset('wdt5')"> OFF <input type ="ti
 <br>
 </form>
 <hr>
+</div>
 <br><br>
 
 <hr>
@@ -2434,6 +2444,15 @@ if(document.getElementById("checkeveryday").checked){
 }
 
 
+   
+         // 0 to 6 // 0 is sunday // 6 is saturday 
+    //   for (let i = 0; i < 6; i++) {     
+    //       document.getElementById("dag"+i).style.background = "";                  // set all days backkground to ""
+    //   }
+      document.getElementById("iederedag").style.background = "lightyellow"; // highlight active day backgound
+  //    document.getElementById("dag"+now.getDay()).style.background = ""; 
+  
+
 
 
 var slider_times = weekdays.noUiSlider.get();
@@ -2466,6 +2485,13 @@ if(document.getElementById("checkweekdays").checked){
 }
 
 
+                   // set all backkground to ""
+     
+if(now.getDay()>=1 && now.getDay()<=5){
+   document.getElementById("weekdagen").style.background = "lightyellow"; // highlight active day backgound
+  }else{
+   document.getElementById("weekdagen").style.background = "";   
+}
 
 
 
@@ -2499,7 +2525,14 @@ if(document.getElementById("checkweekends").checked){
 }
 
 
-
+   
+         // 0 to 6 // 0 is sunday // 6 is saturday 
+       for (let i = 0; i < 6; i++) {     
+           document.getElementById("dag"+i).style.background = "";                  // set all days backkground to ""
+       }
+      document.getElementById("dag"+now.getDay()).style.background = "lightyellow"; // highlight active day backgound
+  //    document.getElementById("dag"+now.getDay()).style.background = ""; 
+  
 
 
 
