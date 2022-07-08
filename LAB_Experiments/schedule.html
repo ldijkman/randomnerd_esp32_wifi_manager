@@ -669,13 +669,13 @@ ON <input type ="time" id="wendt5" oninput="timeset('wendt5')"> OFF <input type 
 <table style="border-collapse: collapse;" border = "1">
 	<tbody>
 		<tr>
-			<td> mon </td>
-			<td> tue </td>
-			<td> wed </td>
-			<td> thu </td>
-			<td> fri </td>
-			<td> sat </td>
-			<td> sun </td>
+			<td class="d1"> mon </td>
+			<td class="d2"> tue </td>
+			<td class="d3"> wed </td>
+			<td class="d4"> thu </td>
+			<td class="d5"> fri </td>
+			<td class="d6"> sat </td>
+			<td class="d0"> sun </td>
 		</tr>
 		<tr>
 			<td><input type="checkbox"> </td>
@@ -2725,57 +2725,71 @@ if(ISO8601_week_no(dt) % 2 == 0) {
 if(now.getDay()==0){
    document.getElementsByClassName('d0')[0].style.background = "#cffab9"; 
    document.getElementsByClassName('d0')[1].style.background = "#cffab9"; 
+   document.getElementsByClassName('d0')[2].style.background = "#cffab9"; 
   }else{
    document.getElementsByClassName('d0')[0].style.background = ""; 
    document.getElementsByClassName('d0')[1].style.background = "";  
+   document.getElementsByClassName('d0')[2].style.background = ""; 
 }
 
 if(now.getDay()==1){
    document.getElementsByClassName('d1')[0].style.background = "#cffab9"; 
-   document.getElementsByClassName('d1')[1].style.background = "#cffab9"; 
+   document.getElementsByClassName('d1')[1].style.background = "#cffab9";
+   document.getElementsByClassName('d1')[2].style.background = "#cffab9"; 
   }else{
    document.getElementsByClassName('d1')[0].style.background = ""; 
    document.getElementsByClassName('d1')[1].style.background = "";  
-}
+   document.getElementsByClassName('d1')[2].style.background = ""; 
+  }
 
 if(now.getDay()==2){
    document.getElementsByClassName('d2')[0].style.background = "#cffab9"; 
    document.getElementsByClassName('d2')[1].style.background = "#cffab9"; 
+   document.getElementsByClassName('d2')[2].style.background = "#cffab9"; 
   }else{
    document.getElementsByClassName('d2')[0].style.background = ""; 
-   document.getElementsByClassName('d2')[1].style.background = "";  
+   document.getElementsByClassName('d2')[1].style.background = ""; 
+   document.getElementsByClassName('d2')[2].style.background = ""; 
 }
 
 if(now.getDay()==3){
    document.getElementsByClassName('d3')[0].style.background = "#cffab9"; 
    document.getElementsByClassName('d3')[1].style.background = "#cffab9"; 
+   document.getElementsByClassName('d3')[2].style.background = "#cffab9"; 
   }else{
    document.getElementsByClassName('d3')[0].style.background = ""; 
    document.getElementsByClassName('d3')[1].style.background = "";  
+   document.getElementsByClassName('d3')[2].style.background = "";
 }
 
 if(now.getDay()==4){
    document.getElementsByClassName('d4')[0].style.background = "#cffab9"; 
    document.getElementsByClassName('d4')[1].style.background = "#cffab9"; 
+   document.getElementsByClassName('d4')[2].style.background = "#cffab9"; 
   }else{
    document.getElementsByClassName('d4')[0].style.background = ""; 
    document.getElementsByClassName('d4')[1].style.background = "";  
+   document.getElementsByClassName('d4')[2].style.background = ""; 
 }
 
 if(now.getDay()==5){
    document.getElementsByClassName('d5')[0].style.background = "#cffab9"; 
    document.getElementsByClassName('d5')[1].style.background = "#cffab9"; 
+   document.getElementsByClassName('d5')[2].style.background = "#cffab9"; 
   }else{
    document.getElementsByClassName('d5')[0].style.background = ""; 
    document.getElementsByClassName('d5')[1].style.background = "";  
+   document.getElementsByClassName('d5')[2].style.background = ""; 
 }
 
 if(now.getDay()==6){
    document.getElementsByClassName('d6')[0].style.background = "#cffab9"; 
    document.getElementsByClassName('d6')[1].style.background = "#cffab9"; 
+   document.getElementsByClassName('d6')[2].style.background = "#cffab9"; 
   }else{
    document.getElementsByClassName('d6')[0].style.background = ""; 
    document.getElementsByClassName('d6')[1].style.background = "";  
+   document.getElementsByClassName('d6')[2].style.background = ""; 
 }
 
 </script>
