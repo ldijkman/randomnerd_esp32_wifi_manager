@@ -2703,9 +2703,13 @@ function ISO8601_week_no(dt)
 
 dt = new Date();
 //console.log(ISO8601_week_no(dt));
- document.getElementById('wn1').innerHTML = "Week?: "+ISO8601_week_no(dt); 
- document.getElementById('wn2').innerHTML = "Week?: "+ISO8601_week_no(dt); 
-
+if(ISO8601_week_no(dt) % 2 == 0) {
+ document.getElementById('wn1').innerHTML = "Even Week NR?: "+ISO8601_week_no(dt); 
+ document.getElementById('wn2').innerHTML = "Even Week NR?: "+ISO8601_week_no(dt); 
+}else{
+ document.getElementById('wn1').innerHTML = "Odd Week NR? : "+ISO8601_week_no(dt); 
+ document.getElementById('wn2').innerHTML = "Odd Week NR?: "+ISO8601_week_no(dt); 
+}
 
 </script>
 
