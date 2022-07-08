@@ -717,13 +717,13 @@ ON <input type ="time" class="check" id="udt5" oninput="timeset('udt5')"> OFF <i
 <table style="border-collapse: collapse;" border = "1">
 	<tbody>
 		<tr>
-			<td> mon </td>
-			<td> tue </td>
-			<td >wed </td>
-			<td> thu </td>
-			<td> fri </td>
-			<td> sat </td>
-			<td> sun </td>
+			<td class="d1"> mon </td>
+			<td class="d2"> tue </td>
+			<td class="d3"> wed </td>
+			<td class="d4"> thu </td>
+			<td class="d5"> fri </td>
+			<td class="d6"> sat </td>
+			<td class="d0"> sun </td>
 		</tr>
 		<tr>
 			<td><input type="checkbox"> </td>
@@ -738,13 +738,13 @@ ON <input type ="time" class="check" id="udt5" oninput="timeset('udt5')"> OFF <i
 </table>
 <table style="border-collapse: collapse;" border = "1">
 <tbody>
-		<tr>
-			<td> even weeknumber </td>
-			<td> odd weeknumber </td>
+	<tr>
+			<td class="even"> even weeknumber </td>
+			<td class="odd"> odd weeknumber </td>
 		</tr>
 		<tr>
 			<td><center><input type="checkbox"></center> </td>
-			<td><center><input type="checkbox"></center> </td>
+			<td><center><input type="checkbox"></center></td>
 		</tr>
 	</tbody>
 </table>
@@ -757,13 +757,13 @@ ON <input type ="time" class="check" id="udt5" oninput="timeset('udt5')"> OFF <i
 <table style="border-collapse: collapse;" border = "1">
 	<tbody>
 		<tr>
-			<td> mon </td>
-			<td> tue </td>
-			<td >wed </td>
-			<td> thu </td>
-			<td> fri </td>
-			<td> sat </td>
-			<td> sun </td>
+			<td class="d1"> mon </td>
+			<td class="d2"> tue </td>
+			<td class="d3"> wed </td>
+			<td class="d4"> thu </td>
+			<td class="d5"> fri </td>
+			<td class="d6"> sat </td>
+			<td class="d0"> sun </td>
 		</tr>
 		<tr>
 			<td><input type="checkbox"> </td>
@@ -779,8 +779,8 @@ ON <input type ="time" class="check" id="udt5" oninput="timeset('udt5')"> OFF <i
 <table style="border-collapse: collapse;" border = "1">
 <tbody>
 		<tr>
-			<td> even weeknumber </td>
-			<td> odd weeknumber </td>
+			<td class="even"> even weeknumber </td>
+			<td class="odd"> odd weeknumber </td>
 		</tr>
 		<tr>
 			<td><center><input type="checkbox"></center> </td>
@@ -2154,7 +2154,7 @@ sunset.forEach(sunset => {
   var min;
   
   var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-   var dayName = days[now.getDay()];
+  var dayName = days[now.getDay()];
    
    
   if(now.getMinutes()<=9)min="0"+now.getMinutes(); else min=now.getMinutes();  // a leading zer0 if 0 to 9
@@ -2703,12 +2703,79 @@ function ISO8601_week_no(dt)
 
 dt = new Date();
 //console.log(ISO8601_week_no(dt));
+
 if(ISO8601_week_no(dt) % 2 == 0) {
  document.getElementById('wn1').innerHTML = "Even Week NR?: "+ISO8601_week_no(dt); 
  document.getElementById('wn2').innerHTML = "Even Week NR?: "+ISO8601_week_no(dt); 
+ document.getElementsByClassName('even')[0].style.background = "#cffab9";  
+ document.getElementsByClassName('even')[1].style.background = "#cffab9";   
+ document.getElementsByClassName('odd')[0].style.background = "";   
+ document.getElementsByClassName('odd')[1].style.background = "";   
 }else{
  document.getElementById('wn1').innerHTML = "Odd Week NR? : "+ISO8601_week_no(dt); 
  document.getElementById('wn2').innerHTML = "Odd Week NR?: "+ISO8601_week_no(dt); 
+ document.getElementsByClassName('even')[0].style.background = "";  
+ document.getElementsByClassName('even')[1].style.background = "";   
+ document.getElementsByClassName('odd')[0].style.background = "#cffab9";   
+ document.getElementsByClassName('odd')[1].style.background = "#cffab9";  
+}
+
+ const now = new Date();
+    
+if(now.getDay()==0){
+   document.getElementsByClassName('d0')[0].style.background = "#cffab9"; 
+   document.getElementsByClassName('d0')[1].style.background = "#cffab9"; 
+  }else{
+   document.getElementsByClassName('d0')[0].style.background = ""; 
+   document.getElementsByClassName('d0')[1].style.background = "";  
+}
+
+if(now.getDay()==1){
+   document.getElementsByClassName('d1')[0].style.background = "#cffab9"; 
+   document.getElementsByClassName('d1')[1].style.background = "#cffab9"; 
+  }else{
+   document.getElementsByClassName('d1')[0].style.background = ""; 
+   document.getElementsByClassName('d1')[1].style.background = "";  
+}
+
+if(now.getDay()==2){
+   document.getElementsByClassName('d2')[0].style.background = "#cffab9"; 
+   document.getElementsByClassName('d2')[1].style.background = "#cffab9"; 
+  }else{
+   document.getElementsByClassName('d2')[0].style.background = ""; 
+   document.getElementsByClassName('d2')[1].style.background = "";  
+}
+
+if(now.getDay()==3){
+   document.getElementsByClassName('d3')[0].style.background = "#cffab9"; 
+   document.getElementsByClassName('d3')[1].style.background = "#cffab9"; 
+  }else{
+   document.getElementsByClassName('d3')[0].style.background = ""; 
+   document.getElementsByClassName('d3')[1].style.background = "";  
+}
+
+if(now.getDay()==4){
+   document.getElementsByClassName('d4')[0].style.background = "#cffab9"; 
+   document.getElementsByClassName('d4')[1].style.background = "#cffab9"; 
+  }else{
+   document.getElementsByClassName('d4')[0].style.background = ""; 
+   document.getElementsByClassName('d4')[1].style.background = "";  
+}
+
+if(now.getDay()==5){
+   document.getElementsByClassName('d5')[0].style.background = "#cffab9"; 
+   document.getElementsByClassName('d5')[1].style.background = "#cffab9"; 
+  }else{
+   document.getElementsByClassName('d5')[0].style.background = ""; 
+   document.getElementsByClassName('d5')[1].style.background = "";  
+}
+
+if(now.getDay()==6){
+   document.getElementsByClassName('d6')[0].style.background = "#cffab9"; 
+   document.getElementsByClassName('d6')[1].style.background = "#cffab9"; 
+  }else{
+   document.getElementsByClassName('d6')[0].style.background = ""; 
+   document.getElementsByClassName('d6')[1].style.background = "";  
 }
 
 </script>
