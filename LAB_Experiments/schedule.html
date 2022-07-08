@@ -713,6 +713,7 @@ ON <input type ="time" class="check" id="udt5" oninput="timeset('udt5')"> OFF <i
 
 <hr><br>
 <input type="checkbox"><b>User Defined Days on even and/or odd weeknumbers </b><br>
+<div id="wn1"></div>
 <table style="border-collapse: collapse;" border = "1">
 	<tbody>
 		<tr>
@@ -752,6 +753,7 @@ ON <input type ="time" class="check" id="udt5" oninput="timeset('udt5')"> OFF <i
 
 <hr><br>
 <input type="checkbox"><b>User Defined Days on even and/or odd weeknumbers </b><br>
+<div id="wn2"></div>
 <table style="border-collapse: collapse;" border = "1">
 	<tbody>
 		<tr>
@@ -2682,7 +2684,29 @@ console.log(document.getElementsByClassName('check'));
 */
 
 
+
 }
+
+function ISO8601_week_no(dt) 
+  {
+     var tdt = new Date(dt.valueOf());
+     var dayn = (dt.getDay() + 6) % 7;
+     tdt.setDate(tdt.getDate() - dayn + 3);
+     var firstThursday = tdt.valueOf();
+     tdt.setMonth(0, 1);
+     if (tdt.getDay() !== 4) 
+       {
+      tdt.setMonth(0, 1 + ((4 - tdt.getDay()) + 7) % 7);
+        }
+     return 1 + Math.ceil((firstThursday - tdt) / 604800000);
+        }
+
+dt = new Date();
+//console.log(ISO8601_week_no(dt));
+ document.getElementById('wn1').innerHTML = "Week?: "+ISO8601_week_no(dt); 
+ document.getElementById('wn2').innerHTML = "Week?: "+ISO8601_week_no(dt); 
+
+
 </script>
 
 <script> 
