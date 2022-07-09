@@ -9,6 +9,8 @@
 <!-- https://ldijkman.github.io/Electra -->
 
 <!-- https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/LAB_Experiments -->
+
+<!-- https://codepen.io/ldijkman/pen/qBodbgO -->
 	
 	
 	 <!-- save to phone home screen and open without adress URL bar -->
@@ -2214,12 +2216,13 @@ for (let i = 0; i <= 6; i++) {
 
 
 // set weekends sat sun background
- if (now.getDay()==0 || now.getDay()==6){
-      document.getElementById("week_end").style.background = "lightyellow"; 
-    }else{
+if(document.getElementById("checkweekends").checked){ 
+ if (now.getDay()==0 || now.getDay()==6){                          // ||  or
+      document.getElementById("week_end").style.background = "lightyellow";
+ }
+}else{
       document.getElementById("week_end").style.background = ""; 
-  }
-   
+}  
 
    
   /*
