@@ -643,6 +643,8 @@ ON <input type ="time" id="wdt5" oninput="timeset('wdt5')"> OFF <input type ="ti
 </div>
 <br><br>
 
+
+<div id="week_end">
 <hr>
 <input type="checkbox" id ="checkweekends" name="checkweekends" checked><b>Weekends Saturday Sunday</b> <br>
 <br>
@@ -666,8 +668,12 @@ ON <input type ="time" id="wendt5" oninput="timeset('wendt5')"> OFF <input type 
 <br>
 </form>
 <hr>
+</div>
+
+<br><br>
 
 <div id="udd+days">
+<hr>
 <input type="checkbox" id ="checkudd" name="checkudd"><b>User Defined Days</b><br>
 <table style="border-collapse: collapse;" border = "1">
 	<tbody>
@@ -2204,6 +2210,15 @@ for (let i = 0; i <= 6; i++) {
       document.getElementById("udd+days").style.background = ""; 
   }
 }  
+
+
+
+// set weekends sat sun background
+ if (now.getDay()==0 || now.getDay()==6){
+      document.getElementById("week_end").style.background = "lightyellow"; 
+    }else{
+      document.getElementById("week_end").style.background = ""; 
+  }
    
 
    
