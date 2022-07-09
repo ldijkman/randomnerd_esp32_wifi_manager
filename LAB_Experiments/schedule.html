@@ -665,7 +665,10 @@ ON <input type ="time" id="wendt5" oninput="timeset('wendt5')"> OFF <input type 
 <div class="sunrise" style="float: right;"></div>
 <br>
 </form>
-<hr><input type="checkbox" id ="checkudd" name="checkudd"><b>User Defined Days</b><br>
+<hr>
+
+<div id="udd+days">
+<input type="checkbox" id ="checkudd" name="checkudd"><b>User Defined Days</b><br>
 <table style="border-collapse: collapse;" border = "1">
 	<tbody>
 		<tr>
@@ -678,13 +681,13 @@ ON <input type ="time" id="wendt5" oninput="timeset('wendt5')"> OFF <input type 
 			<td class="d0"> sun </td>
 		</tr>
 		<tr>
-			<td><input type="checkbox"> </td>
-			<td><input type="checkbox"> </td>
-			<td><input type="checkbox"> </td>
-			<td><input type="checkbox"> </td>
-			<td><input type="checkbox"> </td>
-			<td><input type="checkbox"> </td>
-			<td><input type="checkbox"> </td>
+			<td id="cb_udd_1"><input type="checkbox" id="cb_udd1"> </td>
+			<td id="cb_udd_2"><input type="checkbox" id="cb_udd2"> </td>
+			<td id="cb_udd_3"><input type="checkbox" id="cb_udd3"> </td>
+			<td id="cb_udd_4"><input type="checkbox" id="cb_udd4"> </td>
+			<td id="cb_udd_5"><input type="checkbox" id="cb_udd5"> </td>
+			<td id="cb_udd_6"><input type="checkbox" id="cb_udd6"> </td>
+			<td id="cb_udd_0"><input type="checkbox" id="cb_udd0"> </td>
 		</tr>
 	</tbody>
 </table>
@@ -709,6 +712,9 @@ ON <input type ="time" class="check" id="udt5" oninput="timeset('udt5')"> OFF <i
 <br>
 </form>
 <hr>
+</div>
+
+
 <br><br>
 
 <hr><br>
@@ -2184,7 +2190,20 @@ sunset.forEach(sunset => {
       document.getElementById("dag"+now.getDay()).style.background = "lightyellow"; // highlight active day backgound
   //    document.getElementById("dag"+now.getDay()).style.background = ""; 
   
-   
+
+
+// user defined days higliht checkbox background lime green if active day is checked
+for (let i = 0; i <= 6; i++) { 
+  if(document.getElementById("cb_udd"+i).checked){ 
+    if (now.getDay()==i){
+      document.getElementById("cb_udd_"+i).style.background = "lime";
+      document.getElementById("udd+days").style.background = "lightyellow"; 
+    }
+    }else{
+      document.getElementById("cb_udd_"+i).style.background = "";
+      document.getElementById("udd+days").style.background = ""; 
+  }
+}  
    
 
    
