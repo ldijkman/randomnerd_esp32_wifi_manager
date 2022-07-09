@@ -211,6 +211,15 @@ would be nice if slide time is in ON change color to yellow
 ![2022-06-30-210158_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/176757495-d4040446-3cfa-45fd-87e6-21eca1211341.png)
 
 
+---
+
+# ACE JS WYSIWYG whatyouseeiswhatyouget
+
+want this tryit fiddle codepen alike https://github.com/geard-dev/web-based-live-code-editor
+
+![2022-07-09-114956_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/178100884-f634b469-45ef-42e0-b960-d57f31cf4adb.png)
+
+
 # All You Need is Electra!
 
 https://ldijkman.github.io/Electra
