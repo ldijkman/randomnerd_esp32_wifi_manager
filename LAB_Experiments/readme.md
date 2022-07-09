@@ -215,7 +215,7 @@ would be nice if slide time is in ON change color to yellow
 
 # ACE JS WYSIWYG whatyouseeiswhatyouget
 
-want this direct HTML result live preview on ace js web editor
+want this direct HTML/css/js code to result live preview on ace js web editor
 - tryit fiddle codepen alike live preview https://github.com/geard-dev/web-based-live-code-editor
 
 ![2022-07-09-114956_1920x1080_scrot](https://user-images.githubusercontent.com/45427770/178100884-f634b469-45ef-42e0-b960-d57f31cf4adb.png)
