@@ -2529,8 +2529,9 @@ if(document.getElementById("checkweekends").checked){
 
    
          // 0 to 6 // 0 is sunday // 6 is saturday 
-       for (let i = 0; i < 6; i++) {     
+       for (let i = 0; i <= 6; i++) {     
            document.getElementById("dag"+i).style.background = "";                  // set all days backkground to ""
+          // console.log("erase background "+i);
        }
       document.getElementById("dag"+now.getDay()).style.background = "lightyellow"; // highlight active day backgound
   //    document.getElementById("dag"+now.getDay()).style.background = ""; 
@@ -2687,6 +2688,13 @@ console.log(document.getElementsByClassName('check'));
 
 }
 
+
+
+
+// JavaScript function to get ISO-8601 week number of year, 
+// Weeks starting on Monday
+// https://codepen.io/ldijkman/pen/LYdNJvM
+
 function ISO8601_week_no(dt) 
   {
      var tdt = new Date(dt.valueOf());
@@ -2702,7 +2710,13 @@ function ISO8601_week_no(dt)
         }
 
 dt = new Date();
-//console.log(ISO8601_week_no(dt));
+// console.log(ISO8601_week_no(dt));
+
+
+
+// set background color 
+// of checboxes 
+// active even or odd week number
 
 if(ISO8601_week_no(dt) % 2 == 0) {
  document.getElementById('wn1').innerHTML = "Even Week NR?: "+ISO8601_week_no(dt); 
@@ -2720,82 +2734,47 @@ if(ISO8601_week_no(dt) % 2 == 0) {
  document.getElementsByClassName('odd')[1].style.background = "#cffab9";  
 }
 
- const now = new Date();
-    
-if(now.getDay()==0){
-   document.getElementsByClassName('d0')[0].style.background = "#cffab9"; 
-   document.getElementsByClassName('d0')[1].style.background = "#cffab9"; 
-   document.getElementsByClassName('d0')[2].style.background = "#cffab9"; 
-  }else{
-   document.getElementsByClassName('d0')[0].style.background = ""; 
-   document.getElementsByClassName('d0')[1].style.background = "";  
-   document.getElementsByClassName('d0')[2].style.background = ""; 
-}
 
-if(now.getDay()==1){
-   document.getElementsByClassName('d1')[0].style.background = "#cffab9"; 
-   document.getElementsByClassName('d1')[1].style.background = "#cffab9";
-   document.getElementsByClassName('d1')[2].style.background = "#cffab9"; 
+
+
+
+// set background color 
+// of checboxes 
+// active day 
+
+ var now = new Date();
+
+// i element class d0 to d6 for days 
+// j 0, 1, 2    3 times the classname used in page
+
+for (let i = 0; i <= 6; i++) { 
+  if(now.getDay()==i){
+    for (let j = 0; j <= 2; j++) { 
+      document.getElementsByClassName('d'+i)[j].style.background = "#cffab9";
+      console.log("active "+i, j);
+    } 
   }else{
-   document.getElementsByClassName('d1')[0].style.background = ""; 
-   document.getElementsByClassName('d1')[1].style.background = "";  
-   document.getElementsByClassName('d1')[2].style.background = ""; 
+    for (let j = 0; j <= 2; j++) { 
+      document.getElementsByClassName('d'+i)[j].style.background = "";
+      console.log(i, j);
+    } 
   }
-
-if(now.getDay()==2){
-   document.getElementsByClassName('d2')[0].style.background = "#cffab9"; 
-   document.getElementsByClassName('d2')[1].style.background = "#cffab9"; 
-   document.getElementsByClassName('d2')[2].style.background = "#cffab9"; 
-  }else{
-   document.getElementsByClassName('d2')[0].style.background = ""; 
-   document.getElementsByClassName('d2')[1].style.background = ""; 
-   document.getElementsByClassName('d2')[2].style.background = ""; 
 }
 
-if(now.getDay()==3){
-   document.getElementsByClassName('d3')[0].style.background = "#cffab9"; 
-   document.getElementsByClassName('d3')[1].style.background = "#cffab9"; 
-   document.getElementsByClassName('d3')[2].style.background = "#cffab9"; 
-  }else{
-   document.getElementsByClassName('d3')[0].style.background = ""; 
-   document.getElementsByClassName('d3')[1].style.background = "";  
-   document.getElementsByClassName('d3')[2].style.background = "";
-}
-
-if(now.getDay()==4){
-   document.getElementsByClassName('d4')[0].style.background = "#cffab9"; 
-   document.getElementsByClassName('d4')[1].style.background = "#cffab9"; 
-   document.getElementsByClassName('d4')[2].style.background = "#cffab9"; 
-  }else{
-   document.getElementsByClassName('d4')[0].style.background = ""; 
-   document.getElementsByClassName('d4')[1].style.background = "";  
-   document.getElementsByClassName('d4')[2].style.background = ""; 
-}
-
-if(now.getDay()==5){
-   document.getElementsByClassName('d5')[0].style.background = "#cffab9"; 
-   document.getElementsByClassName('d5')[1].style.background = "#cffab9"; 
-   document.getElementsByClassName('d5')[2].style.background = "#cffab9"; 
-  }else{
-   document.getElementsByClassName('d5')[0].style.background = ""; 
-   document.getElementsByClassName('d5')[1].style.background = "";  
-   document.getElementsByClassName('d5')[2].style.background = ""; 
-}
-
-if(now.getDay()==6){
-   document.getElementsByClassName('d6')[0].style.background = "#cffab9"; 
-   document.getElementsByClassName('d6')[1].style.background = "#cffab9"; 
-   document.getElementsByClassName('d6')[2].style.background = "#cffab9"; 
-  }else{
-   document.getElementsByClassName('d6')[0].style.background = ""; 
-   document.getElementsByClassName('d6')[1].style.background = "";  
-   document.getElementsByClassName('d6')[2].style.background = ""; 
-}
 
 </script>
 
+
+
+
+
+
+
+
 <script> 
-// anchor scroll without browser history back problem with normal HTML anchhor
+// anchor scroll 
+// without browser history back problem with normal HTML anchhors 
+//(slide from day to day with button links)
 function scrollToAnchor(selectedAnchor) {                    
     document.querySelector(selectedAnchor).scrollIntoView({
         behavior: 'smooth'
