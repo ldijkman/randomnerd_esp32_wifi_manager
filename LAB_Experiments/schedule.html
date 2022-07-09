@@ -11,6 +11,10 @@
 <!-- https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/LAB_Experiments -->
 
 <!-- https://codepen.io/ldijkman/pen/qBodbgO -->
+
+<!-- https://jsfiddle.net/luberth/61fj05g7/ -->
+
+<!-- https://liveweave.com/rrn1Qs -->
 	
 	
 	 <!-- save to phone home screen and open without adress URL bar -->
@@ -635,7 +639,7 @@ ON <input type ="time" id="wdt5" oninput="timeset('wdt5')"> OFF <input type ="ti
 <br>
 <div style="float: right;">
 <input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkeveryday');">&nbsp;&nbsp;
-<input type="button" value="NEXT" onclick="scrollToAnchor('#checkweekends');">
+<input type="button" value="NEXT" onclick="scrollToAnchor('#week_end');">
 </div>
 <div class="sunset" style="float: right;"></div>
 <div class="sunrise" style="float: right;"></div>
@@ -646,7 +650,8 @@ ON <input type ="time" id="wdt5" oninput="timeset('wdt5')"> OFF <input type ="ti
 <br><br>
 
 
-<div id="week_end">
+<div id="week_end" style="background: lightyellow;margin-right: 0px;margin-left: 0px;padding-left: 20px;padding-right: 20px;">
+<br>  
 <hr>
 <input type="checkbox" id ="checkweekends" name="checkweekends" checked><b>Weekends Saturday Sunday</b> <br>
 <br>
@@ -670,6 +675,7 @@ ON <input type ="time" id="wendt5" oninput="timeset('wendt5')"> OFF <input type 
 <br>
 </form>
 <hr>
+<br>
 </div>
 
 <br><br>
@@ -2152,7 +2158,7 @@ var currents=((times.sunset.getHours()*60+times.sunset.getMinutes())/1440)*100; 
 const sunrise = document.querySelectorAll('.sunrise');
 sunrise.forEach(sunrise => {
   //box.style.backgroundColor = 'purple'; box.style.width = '300px';
-  sunrise.innerHTML =(lat+","+lon+"&nbsp;<a href='http://www.google.com/search?q="+lat+","+lon+"'>SunRise&nbsp;"+sunriseStr)+"&nbsp;</a>";
+  sunrise.innerHTML =("<!--"+lat+","+lon+"-->&nbsp;<a href='http://www.google.com/search?q="+lat+","+lon+"'>SunRise&nbsp;"+sunriseStr)+"&nbsp;</a>";
 });
 
 const sunset = document.querySelectorAll('.sunset');
