@@ -2,7 +2,6 @@
 function update on editor textcontent change 
 shows only changes after save button is pressed
 reload on every key stroke
-
 iframe shows html result
 i am not handy with divs
 -->
@@ -225,7 +224,17 @@ i am not handy with divs
       position: relative;
     }
 
-    #iframe {
+
+
+    #iframediv {
+      float: right;
+      top: 28px;
+      height: 100%; 
+      width: 100%;
+
+    }
+    
+#iframe {
       float: right;
       top: 28px;
       height: 100%; 
@@ -235,7 +244,6 @@ i am not handy with divs
       outline-color: black;
       
     }
-
     .ace_editor .ace_marker-layer .ace_bracket {
       display: none
     }
@@ -653,6 +661,6 @@ https://github.com/ajaxorg/ace/discussions/4725
   <div id="uploader"></div>
   <div id="tree"></div>
  
-  <div id="editor"></div>   <iframe id="iframe" frameborder="0"></iframe>
+  <div id="editor"></div> <div id="iframediv"><iframe id="iframe" frameborder="0"></iframe></div>
   <div id="preview" style="display:none"></div><iframe id="download-frame" style="display:none"></iframe>
-
+  </div>
