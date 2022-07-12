@@ -207,11 +207,11 @@ i am not handy with divs
       padding: 0;
       height: 100%;
       width: 100%;
-      overflow: hidden;
+      ooverflow: hidden;
     }
 
     #editor {
-      height: 100%;
+      height: 95%;
       width: 50%;
       display: inline-block;
     }
@@ -220,7 +220,7 @@ i am not handy with divs
       height: 100%;
       width: auto;
       white-space: nowrap;
-      overflow: hidden;
+      ooverflow: hidden;
       position: relative;
     }
 
@@ -535,7 +535,7 @@ https://github.com/ajaxorg/ace/discussions/4725
       ge("editor").style.display = "block", 
       200 == e ? s.setValue(t) : s.setValue(""), s.clearSelection()
     }
-    void 0 === t && (t = "/my_edit.html"), 
+    void 0 === t && (t = "/schedule.html"), 
     void 0 === n && (n = o(t)), 
     void 0 === a && (a = "monokai"), 
     void 0 === i && (i = "text/" + n, "c_cpp" === n && (i = "text/plain"));
@@ -601,7 +601,7 @@ https://github.com/ajaxorg/ace/discussions/4725
         e[n] = a
       })), createEditor("editor", e.file, e.lang, e.theme)),
       n = createTree("tree", t);
-    window.define = ace.define, window.require = ace.require, ace.config.set("basePath", "/"), ace.config.set("workerPath", "/"), createFileUploader("uploader", n, t), void 0 === e.file && (e.file = "/my_edit.html"), t.loadUrl(e.file)
+    window.define = ace.define, window.require = ace.require, ace.config.set("basePath", "/"), ace.config.set("workerPath", "/"), createFileUploader("uploader", n, t), void 0 === e.file && (e.file = "/schedule.html"), t.loadUrl(e.file)
   }
   "undefined" == typeof XMLHttpRequest && (XMLHttpRequest = function() {
     try {
