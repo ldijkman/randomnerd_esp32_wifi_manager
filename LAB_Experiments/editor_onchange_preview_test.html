@@ -4,10 +4,8 @@ shows only changes after save button is pressed
 reload on every key stroke
 iframe shows html result
 i am not handy with divs
-
 would be nice if the source and preview divs are resizable by mouse drag
 maybe a checkbox for preview panel on / off
-
 would like to have the colorpicker addon in the code editor
 https://codepen.io/ldijkman/pen/LYdZpYp
 -->
@@ -238,7 +236,7 @@ https://codepen.io/ldijkman/pen/LYdZpYp
       margin-top: 28px;
       height: 100%; 
       width: 40%;
-       display: inline-block;
+      display: inline-block;
 
     }
     
@@ -270,7 +268,7 @@ https://github.com/ajaxorg/ace/discussions/4725
 
   
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ace-colorpicker@0.0.12/addon/ace-colorpicker.css" />
-<script type="text/javascript" src="/ace-colorpicker.min.js" ></script> 
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ace-colorpicker@0.0.12/addon/ace-colorpicker.min.js" ></script> 
 
 <script>
 
@@ -354,6 +352,8 @@ https://github.com/ajaxorg/ace/discussions/4725
         void 0 !== typeof a && (t = a), d.value = "/" + t + "." + n
       }
     }
+    
+     
   }
 
   function createTree(e, t) {
@@ -531,7 +531,7 @@ https://github.com/ajaxorg/ace/discussions/4725
     }
 
 //editor.session.setMode("ace/mode/html", () => {
-//  AceColorPicker.load(ace, editor);  
+//  AceColorPicker.load(ace.edit, editor);  
 //});
 
     function d(e, t) {
@@ -545,7 +545,9 @@ https://github.com/ajaxorg/ace/discussions/4725
     void 0 === i && (i = "text/" + n, "c_cpp" === n && (i = "text/plain"));
     var s = ace.edit(e);
     return "plain" !== n && 
-    s.session.setMode("ace/mode/html"),
+    //s.session.setMode("ace/mode/"+n, () => { AceColorPicker.load(ace.edit, editor))}),
+s.session.setMode("ace/mode/"+n),
+
     s.setTheme("ace/theme/" + a), 
     s.$blockScrolling = 1 / 0, 
     s.getSession().setUseSoftTabs(!0), 
@@ -661,8 +663,9 @@ https://github.com/ajaxorg/ace/discussions/4725
 </script>
 
 <body onload="onBodyLoad()">
+  <script type="text/javascript" src="https://jscolor.com/release/2.4/jscolor-2.4.8/jscolor.js" ></script> 
  <div id="container">  <div id="loader" class="loader"></div>
-  <div id="uploader"></div>
+  <div id="uploader">Color: <input value="#3399FF80" data-jscolor="{}"></div>
   <div id="tree"></div>
  
   <div id="editor"></div> <div id="iframediv"><iframe id="iframe" frameborder="0"></iframe></div>
