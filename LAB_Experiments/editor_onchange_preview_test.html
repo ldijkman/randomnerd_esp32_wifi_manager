@@ -274,15 +274,12 @@ https://github.com/ajaxorg/ace/discussions/4725
 
 <script>
 
-   function update() {
-      //var idoc = document.getElementById('iframe').contentWindow.document;
-     // idoc.open();
-     // idoc.write(editor.getValue());
-     // idoc.close();
-     document.getElementById('iframe').src=".."+document.getElementById("editor-filename").value;
-     console.log("function update");
-     console.log(document.getElementById("editor-filename").text);
-     console.log(document.getElementById("editor-filename").value);
+   function update() {  
+      var idoc = document.getElementById('iframe').contentWindow.document;
+      idoc.open();
+      idoc.write(ace.edit("editor").getValue()); 
+      //console.log(ace.edit("editor").getValue());
+      idoc.close();
     }
     
   function ge(e) {
