@@ -1,5 +1,5 @@
 <!-- 
-save upload or cop ythis file (as *watheveryouwanttonameit .html)
+save upload or create/copy this file (as *watheveryouwanttonameit* .html)
 to your ESP8266 ESP32 espasync webserver
 
 will give you an ace js web/cloud editor with live HTML preview
@@ -304,6 +304,7 @@ https://github.com/ajaxorg/ace/discussions/4725
         idoc.write(ace.edit("editor").getValue()); 
         //console.log(ace.edit("editor").getValue());
         idoc.close();
+         document.getElementById("save").setAttribute("title", "Save file to ESP LittleFS"); 
     }
     
   function ge(e) {
@@ -341,11 +342,11 @@ https://github.com/ajaxorg/ace/discussions/4725
     var l = ce("input");
     l.id = "editor-filename", l.type = "text", l.disabled = !0, l.size = 20, ge(e).appendChild(l);
     var u = ce("input");
-    u.id = "ipad-fix", u.name = "ipad-fix", u.type = "checkbox", u.checked = !!a;
+    u.id = "ipad-fix", u.title="i have no idea what this checkbox does", u.name = "ipad-fix", u.type = "checkbox", u.checked = !!a;
     var p = ce("label");
     p.for = u.id, p.innerHTML = " Alt.";
     var m = ce("button");
-    m.innerHTML = " Save ", ge(e).appendChild(m), ge(e).appendChild(p), ge(e).appendChild(u), r.onclick = function(e) {
+    m.innerHTML = " Save ",m.id = "save",m.title="Save file to ESP LittleFS", ge(e).appendChild(m), ge(e).appendChild(p), ge(e).appendChild(u), r.onclick = function(e) {
       (function(e) {
         var t = new FormData;
         t.append("path", e), requests.add("PUT", "/edit", t, i)
@@ -711,6 +712,8 @@ document.querySelector("#copy-button").addEventListener('click', function() {
 	
 });
 </script>
+
+
 
 
 <div id="container">
