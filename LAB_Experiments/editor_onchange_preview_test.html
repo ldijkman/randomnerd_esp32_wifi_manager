@@ -723,9 +723,7 @@ https://codepen.io/ldijkman/pen/LYdZpYp
 
 <script>
 
-
-
-
+///////////////// checkbox editor 505 100% toggle /////////////////////////////////////////////////
 checkbox = document.getElementById('fulledit');
 
 checkbox.addEventListener('change', e => {
@@ -738,6 +736,11 @@ checkbox.addEventListener('change', e => {
     }
 
 });
+
+
+
+
+/////////////// copy color hex value to clipboard shoud work on http:// connection /////////////////////////////
 // https://codepen.io/fabean/pen/GprQJa
 let button = document.getElementById('copy-button');
 
@@ -745,4 +748,5 @@ button.addEventListener('click', function(e) {
   e.preventDefault();
   document.execCommand('copy', false, document.getElementById('to-select-text').select());
 });
+
 </script>
