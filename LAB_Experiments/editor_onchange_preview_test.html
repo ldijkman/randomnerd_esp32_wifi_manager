@@ -134,7 +134,7 @@ https://codepen.io/ldijkman/pen/LYdZpYp
     top: 28px;
     bottom: 0;
     left: 0;
-    width: 160px;
+    width: 100px;
     padding: 8px
   }
 
@@ -219,6 +219,7 @@ https://codepen.io/ldijkman/pen/LYdZpYp
       height: 95%;
       width: 50%;
       display: inline-block;
+      border:1px solid black;
     }
 
     #container {
@@ -235,8 +236,9 @@ https://codepen.io/ldijkman/pen/LYdZpYp
       float: right;
       margin-top: 28px;
       height: 100%; 
-      width: 40%;
+      width: 38%;
       display: inline-block;
+      border:1px solid black;
 
     }
     
@@ -684,12 +686,7 @@ active on edited text
 but i do not know how to implement it in this html/script code
 https://codepen.io/ldijkman/pen/LYdZpYp
 -->
-  <script type="text/javascript" src="https://jscolor.com/release/2.4/jscolor-2.4.8/jscolor.js" ></script> 
- <div id="container">  <div id="loader" class="loader"></div>
-  <div id="uploader"><div style="float:right;">
-    <input type="checkbox" class="Preview" id ="Preview" name="Preview" checked>
-   <input type="button" value="Preview" onClick="updatefrombutton();"></label>&nbsp;&nbsp;&nbsp;Color: <input id="to-select-text" onClick="this.select();" value="#3399FF80" data-jscolor="{}">
-   <button id="copy-button">Copy</button></div></div>
+  <script type="text/javascript" src="https://jscolor.com/release/2.4/jscolor-2.4.8/jscolor.js" ></script>   
   <script>
 
 document.querySelector("#copy-button").addEventListener('click', function() {
@@ -707,9 +704,26 @@ document.querySelector("#copy-button").addEventListener('click', function() {
 	
 });
 </script>
-  <div id="tree"></div>
+
+
+<div id="container">
+   <div id="loader" class="loader"></div>
+    <div id="uploader">
+        <div style="float:right;">
+             <input type="checkbox" class="Preview" id ="Preview" name="Preview" title="reload preview on every keystroke on/off" checked>
+             <input type="button" value="Preview" onClick="updatefrombutton();" title="reload by button if checkbox is off" ></label>&nbsp;&nbsp;&nbsp;
+             Color: <input id="to-select-text" onClick="this.select();" value="#3399FF80" data-jscolor="{}" title="colorpicker" >
+             <button id="copy-button" title="does not work" >Copy</button>
+        </div>
+    </div>
+
+    <div id="tree"></div>
  
-  <div id="editor"></div> <div id="iframediv"><iframe id="iframe" frameborder="0"></iframe></div>
-  <div id="preview" style="display:none"></div><iframe id="download-frame" style="display:none"></iframe>
-  </div>
-Footer
+    <div id="editor"></div> 
+    <div id="iframediv"><iframe id="iframe" frameborder="0"></iframe></div>
+  
+    <div id="preview" style="display:none"></div>
+    
+    <iframe id="download-frame" style="display:none"></iframe>
+</div>
+
