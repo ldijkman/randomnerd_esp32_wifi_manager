@@ -259,7 +259,7 @@ https://codepen.io/ldijkman/pen/LYdZpYp
       
     }
     .ace_editor .ace_marker-layer .ace_bracket {
-      display: none
+      ddddisplay: none
     }
      .color {
         color: orange;   
@@ -703,6 +703,7 @@ https://codepen.io/ldijkman/pen/LYdZpYp
    <div id="loader" class="loader"></div>
     <div id="uploader">
         <div style="float:right;">
+             <input type="checkbox" class="fulledit" id ="fulledit" name="fulledit" title="full edit screen" checked>
              <input type="checkbox" class="Preview" id ="Preview" name="Preview" title="reload preview on every keystroke on/off" checked>
              <input type="button" value="Preview" onClick="updatefrombutton();" title="reload by button if checkbox is off" ></label>&nbsp;&nbsp;&nbsp;
              Color: <input id="to-select-text" onClick="this.select();" value="#3399FF80" data-jscolor="{}" title="colorpicker" >
@@ -721,6 +722,22 @@ https://codepen.io/ldijkman/pen/LYdZpYp
 </div>
 
 <script>
+
+
+
+
+checkbox = document.getElementById('fulledit');
+
+checkbox.addEventListener('change', e => {
+
+    if(e.target.checked){
+        document.getElementById('editor').style.width = '50%';
+    }
+    if(!e.target.checked){
+         document.getElementById('editor').style.width = '100%';
+    }
+
+});
 // https://codepen.io/fabean/pen/GprQJa
 let button = document.getElementById('copy-button');
 
