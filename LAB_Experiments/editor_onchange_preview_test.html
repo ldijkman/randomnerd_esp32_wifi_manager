@@ -266,11 +266,18 @@ easylogic started this conversation in Ideas
 https://github.com/ajaxorg/ace/discussions/4725
 -->
 
-  
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ace-colorpicker@0.0.12/addon/ace-colorpicker.css" />
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ace-colorpicker@0.0.12/addon/ace-colorpicker.min.js" ></script> 
 
 <script>
+
+
+   function loadpick() {  
+       // does not work
+      console.log("load colorpicker function loadpick");
+    AceColorPicker.load(ace.edit,editor);  
+    }
+
 
    function update() {  
      if(document.getElementById("Preview").checked){
@@ -540,9 +547,7 @@ https://github.com/ajaxorg/ace/discussions/4725
       200 != e && alert("ERROR[" + e + "]: " + t)
     }
 
-//editor.session.setMode("ace/mode/html", () => {
-//  AceColorPicker.load(ace.edit, editor);  
-//});
+
 
     function d(e, t) {
       ge("preview").style.display = "none", 
@@ -556,7 +561,7 @@ https://github.com/ajaxorg/ace/discussions/4725
     var s = ace.edit(e);
     return "plain" !== n && 
     //s.session.setMode("ace/mode/"+n, () => { AceColorPicker.load(ace.edit, editor))}),
-s.session.setMode("ace/mode/"+n),
+s.session.setMode("ace/mode/"+n, function() {loadpick()}),
 
     s.setTheme("ace/theme/" + a), 
     s.$blockScrolling = 1 / 0, 
@@ -664,7 +669,7 @@ s.session.setMode("ace/mode/"+n),
   };
   var requests = new QueuedRequester
 </script>
-<script id="ace" src="/acefull.js" charset="utf-8"></script>
+ <script type="text/javascript" src="https://ajaxorg.github.io/ace-builds/src/ace.js"></script> 
 <script>
   if (void 0 === ace.edit) {
     var script = document.createElement("script");
@@ -683,9 +688,28 @@ https://codepen.io/ldijkman/pen/LYdZpYp
  <div id="container">  <div id="loader" class="loader"></div>
   <div id="uploader"><div style="float:right;">
     <input type="checkbox" class="Preview" id ="Preview" name="Preview" checked>
-   <input type="button" value="Preview" onClick="updatefrombutton();"></label>&nbsp;&nbsp;&nbsp;Color: <input value="#3399FF80" data-jscolor="{}"></div></div>
+   <input type="button" value="Preview" onClick="updatefrombutton();"></label>&nbsp;&nbsp;&nbsp;Color: <input id="to-select-text" onClick="this.select();" value="#3399FF80" data-jscolor="{}">
+   <button id="copy-button">Copy</button></div></div>
+  <script>
+
+document.querySelector("#copy-button").addEventListener('click', function() {
+	
+  var colorval=document.getElementById("to-select-text").value;
+  console.log(colorval);
+	document.getSelection().colorval;
+
+	var success = document.execCommand('copy');
+	if(success)
+		console.log('Successfully copied to clipboard');
+	else
+		console.log('Unable to copy to clipboard');
+
+	
+});
+</script>
   <div id="tree"></div>
  
   <div id="editor"></div> <div id="iframediv"><iframe id="iframe" frameborder="0"></iframe></div>
   <div id="preview" style="display:none"></div><iframe id="download-frame" style="display:none"></iframe>
   </div>
+Footer
