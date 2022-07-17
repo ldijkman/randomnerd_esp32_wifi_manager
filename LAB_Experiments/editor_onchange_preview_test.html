@@ -695,23 +695,6 @@ but i do not know how to implement it in this html/script code
 https://codepen.io/ldijkman/pen/LYdZpYp
 -->
   <script type="text/javascript" src="https://jscolor.com/release/2.4/jscolor-2.4.8/jscolor.js" ></script>   
-  <script>
-
-document.querySelector("#copy-button").addEventListener('click', function() {
-	
-  var colorval=document.getElementById("to-select-text").value;
-  console.log(colorval);
-	document.getSelection().colorval;
-
-	var success = document.execCommand('copy');
-	if(success)
-		console.log('Successfully copied to clipboard');
-	else
-		console.log('Unable to copy to clipboard');
-
-	
-});
-</script>
 
 
 
@@ -723,7 +706,7 @@ document.querySelector("#copy-button").addEventListener('click', function() {
              <input type="checkbox" class="Preview" id ="Preview" name="Preview" title="reload preview on every keystroke on/off" checked>
              <input type="button" value="Preview" onClick="updatefrombutton();" title="reload by button if checkbox is off" ></label>&nbsp;&nbsp;&nbsp;
              Color: <input id="to-select-text" onClick="this.select();" value="#3399FF80" data-jscolor="{}" title="colorpicker" >
-             <button id="copy-button" title="does not work" >Copy</button>
+             <button id="copy-button" title="maybe copy works" >Copy</button>
         </div>
     </div>
 
@@ -737,3 +720,11 @@ document.querySelector("#copy-button").addEventListener('click', function() {
     <iframe id="download-frame" style="display:none"></iframe>
 </div>
 
+<script>
+let button = document.getElementById('copy-button');
+
+button.addEventListener('click', function(e) {
+  e.preventDefault();
+  document.execCommand('copy', false, document.getElementById('to-select-text').select());
+});
+</script>
