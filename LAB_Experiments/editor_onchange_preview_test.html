@@ -703,6 +703,8 @@ https://codepen.io/ldijkman/pen/LYdZpYp
    <div id="loader" class="loader"></div>
     <div id="uploader">
         <div style="float:right;">
+         
+             <button id="webbutton" >www</button>
              <input type="checkbox" class="fulledit" id ="fulledit" name="fulledit" title="full edit screen" checked>
              <input type="checkbox" class="Preview" id ="Preview" name="Preview" title="reload preview on every keystroke on/off" checked>
              <input type="button" value="Preview" onClick="updatefrombutton();" title="reload by button if checkbox is off" ></label>&nbsp;&nbsp;&nbsp;
@@ -722,6 +724,20 @@ https://codepen.io/ldijkman/pen/LYdZpYp
 </div>
 
 <script>
+
+////////////// open filename in a new browser windoww /////////////////////////////////////////////
+www = document.getElementById('webbutton');
+
+www.addEventListener('click', function(e) {
+  e.preventDefault();
+  //window.open( document.getElementById('editor-filename').value;, '_blank')"
+  
+  window.open("."+document.getElementById('editor-filename').value+"");
+  //alert(document.getElementById('editor-filename').value);
+});
+
+
+
 
 ///////////////// checkbox editor 505 100% toggle /////////////////////////////////////////////////
 checkbox = document.getElementById('fulledit');
