@@ -813,7 +813,9 @@ https://codepen.io/ldijkman/pen/LYdZpYp
     <div id="uploader">
         <div style="float:right;">
              <br>
-        
+             <!--  https://codepen.io/jackliangtw/pen/yLVPQNB   -->
+             <button onclick="toggleFullScreen()">FullScreen</button>&nbsp;&nbsp;&nbsp;&nbsp;
+             
              <input type="button" value="Undo" onClick='ace.edit("editor").execCommand("undo");' title="undo">
              <input type="button" value="Redo" onClick='ace.edit("editor").execCommand("redo");' title="redo">
              
@@ -892,6 +894,30 @@ button.addEventListener('click', function(e) {
   e.preventDefault();
   document.execCommand('copy', false, document.getElementById('to-select-text').select());
 });
+
+
+
+/*
+Code Source來源:
+https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API
+https://codepen.io/jackliangtw/pen/yLVPQNB
+*/
+
+document.addEventListener("keypress", function(e) {
+  if (e.keyCode === 13) {
+    toggleFullScreen();
+  }
+}, false);
+
+function toggleFullScreen() {
+  if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  }
+}
 
 // https://ldijkman.github.io/Electra/  
   
