@@ -21,6 +21,9 @@ Bespin Becomes Mozilla Skywriter and Moves to GitHub and now it is Ace
 # ACE Electrified
 
 <img src="https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/LAB_Experiments/ace-logo-Electra.png">
+
+<img src="https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/LAB_Experiments/2022-07-18-184503_1920x1080_scrot.png">
+
 ---
 
 
