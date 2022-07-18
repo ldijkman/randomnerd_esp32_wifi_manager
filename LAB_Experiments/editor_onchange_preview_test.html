@@ -815,7 +815,8 @@ https://codepen.io/ldijkman/pen/LYdZpYp
     <div id="uploader">
         <div style="float:right;">
              <br>
-             <button onclick='ace.edit("editor").setFontSize("20px");' title="zoom +">++</button>&nbsp;&nbsp;&nbsp;&nbsp;
+              <button onclick='ace.edit("editor").setFontSize(ace.edit("editor").getFontSize()-1);' title="zoom -">--</button>&nbsp;&nbsp;
+             <button onclick='ace.edit("editor").setFontSize(ace.edit("editor").getFontSize()+1);' title="zoom +">++</button>&nbsp;&nbsp;&nbsp;&nbsp;
              
              <!--  https://codepen.io/jackliangtw/pen/yLVPQNB   -->
              <button onclick="toggleFullScreen()" title="Toggle FullScreen">FullScreen</button>&nbsp;&nbsp;&nbsp;&nbsp;
