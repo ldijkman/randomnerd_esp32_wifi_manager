@@ -18,7 +18,8 @@ Cloud9? Ace js bespin skywriter
 
 Bespin Becomes Mozilla Skywriter and Moves to GitHub and now it is Ace
 
-ACE Electra
+ACE Electrified
+
 <img src="https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/LAB_Experiments/ace-logo-Electra.png">
 ---
 
