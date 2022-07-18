@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/ace.js"></script>
+
+<!--
+AceEditor ColorPicker AddOn
+https://codepen.io/easylogic/pen/RwVOGed
+I made a colorpicker for ace editor. #4725
+easylogic started this conversation in Ideas
+https://github.com/ajaxorg/ace/discussions/4725
+-->
+
+
+ 
+  
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: whitesmoke;
+    }
+
+    .p1,
+    .header {
+      font-size: 32px;
+      text-align: center;
+    }
+
+    .button {
+      text-align: center;
+      font-size: 16px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .p2 {
+      text-align: left;
+      font-size: 24px;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    #editor {
+      height: 100%;
+      width: 50%;
+      display: inline-block;
+    }
+
+    #container {
+      height: 100%;
+      width: auto;
+      white-space: nowrap;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #iframe {
+      height: 100%;
+      display: inline-block;
+      outline: auto;
+      outline-color: black;
+      width: 50%;
+    }
+
+    .ace_editor .ace_marker-layer .ace_bracket {
+      display: none
+    }
+     .color {
+        color: orange;   
+      }
+    
+  </style>
+  
+<!--
+AceEditor ColorPicker AddOn
+https://codepen.io/easylogic/pen/RwVOGed
+I made a colorpicker for ace editor. #4725
+easylogic started this conversation in Ideas
+https://github.com/ajaxorg/ace/discussions/4725
+-->
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ace-colorpicker@0.0.12/addon/ace-colorpicker.css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ace-colorpicker@0.0.12/addon/ace-colorpicker.min.js" ></script> 
+</head>
+
+<body onload="ready()">
+
+  <div>
+    <h3>
+      <center>
+        <a href="https://ldijkman.github.io/Electra/" target="Electra">would like to use it for https://ldijkman.github.io/Electra/</a>
+      </center>
+    </h3>
+  </div>
+  <header>
+    <center>
+      Color: <input value="#3399FF80" data-jscolor="{}">
+      Web Based Live HTML Editor by
+      <a href="https://github.com/geard-dev/">geard-dev</a>
+      <a href="https://github.com/geard-dev/web-based-live-code-editor" class="button">[View Source Code on GitHub]</a>
+    </center>
+  </header>
+  <div id="container">
+    <div id="editor"></div>
+    <iframe id="iframe" frameborder="0"></iframe>
+    
+  </body>
+</html>
+  
+  
+  <script>
+    function update() {
+      var idoc = document.getElementById('iframe').contentWindow.document;
+      idoc.open();
+      idoc.write(editor.getValue());
+      idoc.close();
+    }
+
+    
+   
+    
+    function setupEditor() {
+      
+     window.editor = ace.edit("editor");
+  editor.setTheme("ace/theme/monokai");  
+editor.session.setMode("ace/mode/html", () => {
+  AceColorPicker.load(ace, editor);  
+});
+    
+      editor.setValue(`<!DOCTYPE html>
+<html>
+  <head>
+ <style>
+ .color_1 {
+    color: yellow;   
+ }
+ 
+  .color_2 {
+    color: orange;  
+    color: cyan; 
+    color: pink;
+    color: purple; 
+    color: violet; 
+  }  
+  </style>
+  </head>
+ <body style="background-color:rgb(117,108,194);">
+    <div>
+    red purple blue yellow green white black grey gray lime aqua violet
+    orange cyan transparent  rgb(134,225,18) 
+    pink brown  
+    <h3><b><font style="color:rgb(221,77,21);">Hello World!</font><b>
+    <br>
+      <center>
+        <a href="https://ldijkman.github.io/Electra/" target="Electra">
+        Would like to use it for Electra</a>
+      </center>
+      <br>
+    ace js web / cloud editor with live html preview <br>
+    but i do not know how to implement it in the ESP32 espasyncwebserver editor code<br>
+   <a href="https://github.com/ajaxorg/ace/discussions/4836" target="Helpme">https://github.com/ajaxorg/ace/discussions/4836</a><br>
+   maybe a bit working <a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/LAB_Experiments/editor_onchange_preview_test.html" target="abit">https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/LAB_Experiments/editor_onchange_preview_test.html</a><br>
+    </h3>
+  </div>
+  <br>
+  and i like the AceEditor ColorPicker AddOn but i cannot get it going<br>
+  <a href="https://codepen.io/easylogic/pen/RwVOGed" target="picker">https://codepen.io/easylogic/pen/RwVOGed</a><br>
+  pitty colorpicker only works in your head style<br>
+  not in your body<br><a href="https://youtu.be/9XaS93WMRQQ" target="inyourhead">in your head, RammStein should do this</a><br>
+ <br>
+  
+<!-- 
+show off 
+the ESP32 wifi relais switch WebServer 
+schedule page i am working on 
+-->
+    <iframe  id="myframe"  style="background-color:rgb(248,248,251);"  src="https://ldijkman.github.io/Electra/schedule.html#dag1" width="100%" height="600"></iframe>
+ 
+
+
+  </body>
+</html>`, 1); //1 = moves cursor to end
+      
+      editor.getSession().on('change', function() {
+        update();
+      });
+      editor.focus();
+      editor.setOptions({
+        fontSize: "16pt",
+        showLineNumbers: false,
+        showGutter: false,
+        vScrollBarAlwaysVisible: true,
+        enableBasicAutocompletion: false,
+        enableLiveAutocompletion: false,
+      });
+      editor.setShowPrintMargin(false);
+      editor.setBehavioursEnabled(false);
+    }
+    
+    setupEditor();
+    update();
+  </script>
+  
+   
+</body>
+
+</html>
