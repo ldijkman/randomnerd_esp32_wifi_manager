@@ -718,12 +718,13 @@ https://codepen.io/ldijkman/pen/LYdZpYp
     <div id="uploader">
         <div style="float:right;">
          
-             <button id="webbutton" >www</button>
+             <button id="webbutton" title="view in browser window (note: you have to save to see changes)">www</button>
              <input type="checkbox" class="fulledit" id ="fulledit" name="fulledit" title="full edit screen" checked>
              <input type="checkbox" class="Preview" id ="Preview" name="Preview" title="reload preview on every keystroke on/off" checked>
              <input type="button" value="Preview" onClick="updatefrombutton();" title="reload by button if checkbox is off" ></label>&nbsp;&nbsp;&nbsp;
-             Color: <input id="to-select-text" onClick="this.select();" value="#3399FF80" data-jscolor="{}" title="colorpicker" >
+             Color: <input id="to-select-text" style="width:60px;" onClick="this.select();" value="#3399FF80" data-jscolor="{}" title="colorpicker" >
              <button id="copy-button" title="maybe copy works" >Copy</button>
+              <button id="infobutton" title="info"><b>?</b></button>&nbsp;
         </div>
     </div>
 
@@ -762,6 +763,7 @@ checkbox.addEventListener('change', e => {
         document.getElementById('editor').style.width = '50%';
     }
     if(!e.target.checked){
+         document.getElementById("Preview").checked=false;
          document.getElementById('editor').style.width = '100%';
     }
 
