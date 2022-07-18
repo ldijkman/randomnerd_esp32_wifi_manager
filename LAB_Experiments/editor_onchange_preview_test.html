@@ -359,7 +359,7 @@ https://github.com/ajaxorg/ace/discussions/4725
    function loadpick() {  
        // does not work
       console.log("load colorpicker function loadpick");
-    AceColorPicker.load(ace.edit,editor);  
+    //AceColorPicker.load(ace.edit,editor);  
     }
 
 
@@ -754,7 +754,7 @@ s.session.setMode("ace/mode/"+n, function() {loadpick()}),
   };
   var requests = new QueuedRequester
 </script>
- <script type="text/javascript" src="https://ajaxorg.github.io/ace-builds/src/ace.js"></script> 
+ <script type="text/javascript" src="/acefull.js"></script> 
 <script>
   if (void 0 === ace.edit) {
     var script = document.createElement("script");
@@ -785,14 +785,16 @@ https://codepen.io/ldijkman/pen/LYdZpYp
                   <div class="content" style="text-align: left;">
                     <small>Ace SkyWriter BeSpin!</small><br>
                     Hellup<br>
+                    <br>
                     ctrl+f = find<br>
-                    ctrrl + s = save <br>
+                    ctrl + s = save <br>
+                    ctrl + h = search & replace<br>
                     <br>
+                    ctrl + z = undo<br>
+                    ctrl + y = redo<br>
                     <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+                    Find next	Ctrl-K<br>
+                    Find previous	Ctrl-Shift-K<br>
                     <br><br>
                     <br>
                     <br>
@@ -809,6 +811,13 @@ https://codepen.io/ldijkman/pen/LYdZpYp
     <div id="uploader">
         <div style="float:right;">
              <br>
+        
+             <input type="button" value="Undo" onClick='ace.edit("editor").execCommand("undo");' title="undo">
+             <input type="button" value="Redo" onClick='ace.edit("editor").execCommand("redo");' title="redo">
+             
+             <input type="button" value="Search" onClick='ace.edit("editor").execCommand("find");' title="search">
+             <input type="button" value="Replace" onClick='ace.edit("editor").execCommand("replace");' title="search and replace">
+             
              <button id="webbutton" title="view in browser window (note: you have to save to see changes)">www</button>
              <input type="checkbox" class="fulledit" id ="fulledit" name="fulledit" title="full edit screen" checked>
              <input type="checkbox" class="Preview" id ="Preview" name="Preview" title="reload preview on every keystroke on/off" checked>
