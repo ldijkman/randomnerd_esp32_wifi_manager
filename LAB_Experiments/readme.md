@@ -17,6 +17,9 @@ With a little HTML knowledge or Guts, you can change the looks of Electra's Swit
 Cloud9? Ace js bespin skywriter
 
 Bespin Becomes Mozilla Skywriter and Moves to GitHub and now it is Ace
+
+ACE Electra
+<img src="https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/LAB_Experiments/ace-logo-Electra.png">
 ---
 
 
