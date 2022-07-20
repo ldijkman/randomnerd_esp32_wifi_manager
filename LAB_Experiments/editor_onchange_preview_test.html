@@ -3,9 +3,10 @@
 autocompletion suggestions needs ./ext-language_tools.js on littlefs 
      https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/LAB_Experiments/ext-language_tools.js
 screeenshot autocompletion suggestions
-     https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/LAB_Experiments/2022-07-20-205657_1920x1080_scrot.png
-
-
+    https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/LAB_Experiments/2022-07-20-205657_1920x1080_scrot.png
+   suggestions on / off buttons
+     https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/LAB_Experiments/2022-07-20-210618_1920x1080_scrot.png
+     
 Ace 
 Ajax.org Cloud9 Editor
 Formerly known as Mozilla SkyWriter and forformerly codenamed as BeSpin
@@ -828,7 +829,12 @@ https://codepen.io/ldijkman/pen/LYdZpYp
    <div id="loader" class="loader"></div>
     <div id="uploader">
         <div style="float:right;">
-             <br>
+          
+             <br> 
+             <button onclick='ace.edit("editor").setOptions({enableLiveAutocompletion: false});' title="suggest off">suggest on</button>&nbsp;&nbsp;
+            <button onclick='ace.edit("editor").setOptions({enableLiveAutocompletion: true});' title="suggest on">suggest on</button>&nbsp;&nbsp;
+           
+           
               <button onclick='ace.edit("editor").setFontSize(ace.edit("editor").getFontSize()-1);' title="zoom -">--</button>&nbsp;&nbsp;
              <button onclick='ace.edit("editor").setFontSize(ace.edit("editor").getFontSize()+1);' title="zoom +">++</button>&nbsp;&nbsp;&nbsp;&nbsp;
              
