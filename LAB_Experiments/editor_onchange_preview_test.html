@@ -1,4 +1,8 @@
 <!-- 
+
+autocompletion suggestions needs ./ext-language_tools.js on littlefs
+
+
 Ace 
 Ajax.org Cloud9 Editor
 Formerly known as Mozilla SkyWriter and forformerly codenamed as BeSpin
@@ -657,6 +661,11 @@ s.session.setMode("ace/mode/"+n, function() {loadpick()}),
     s.setHighlightActiveLine(!0), 
     s.setShowPrintMargin(!1), 
     s.getSession().on('change', function() {update()}),
+     s.setOptions({
+        enableBasicAutocompletion: true,
+        enableSnippets: true,
+        enableLiveAutocompletion: true
+    }),
     s.commands.addCommand({
       name: "saveCommand",
       bindKey: {
@@ -709,6 +718,8 @@ s.session.setMode("ace/mode/"+n, function() {loadpick()}),
       })), createEditor("editor", e.file, e.lang, e.theme)),
       n = createTree("tree", t);
     window.define = ace.define, window.require = ace.require, ace.config.set("basePath", "/"), ace.config.set("workerPath", "/"), createFileUploader("uploader", n, t), void 0 === e.file && (e.file = "/schedule.html"), t.loadUrl(e.file)
+  
+    ace.require("ace/ext/language_tools");
   }
   "undefined" == typeof XMLHttpRequest && (XMLHttpRequest = function() {
     try {
@@ -755,7 +766,7 @@ s.session.setMode("ace/mode/"+n, function() {loadpick()}),
   };
   var requests = new QueuedRequester
 </script>
- <script type="text/javascript" src="/acefull.js"></script> 
+ <script type="text/javascript" src="./acefull.js"></script> 
 <script>
   if (void 0 === ace.edit) {
     var script = document.createElement("script");
@@ -772,7 +783,7 @@ https://codepen.io/ldijkman/pen/LYdZpYp
 -->
   <script type="text/javascript" src="https://jscolor.com/release/2.4/jscolor-2.4.8/jscolor.js" ></script>   
 
-
+<script src="./ext-language_tools.js"></script>
  
 
 <div id="container">
