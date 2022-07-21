@@ -6,6 +6,9 @@ screeenshot autocompletion suggestions
     https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/LAB_Experiments/2022-07-20-205657_1920x1080_scrot.png
    suggestions on / off buttons
      https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/LAB_Experiments/2022-07-20-210618_1920x1080_scrot.png
+
+maybe ctrl+space to activate https://ace.c9.io/demo/autocompletion.html
+     
      
 Ace 
 Ajax.org Cloud9 Editor
@@ -770,7 +773,9 @@ s.session.setMode("ace/mode/"+n, function() {loadpick()}),
   };
   var requests = new QueuedRequester
 </script>
- <script type="text/javascript" src="./acefull.js"></script> 
+<!--   <script type="text/javascript" src="./acefull.js"></script> -->
+<!--  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>--> 
+<script src="http://ajaxorg.github.io/ace/build/src-noconflict/ace.js"></script>
 <script>
   if (void 0 === ace.edit) {
     var script = document.createElement("script");
@@ -830,7 +835,38 @@ https://codepen.io/ldijkman/pen/LYdZpYp
     <div id="uploader">
         <div style="float:right;">
           
-             <br> 
+             <br>
+             <!-- https://codepen.io/ldijkman/pen/xxWdBdp -->
+             <label>Theme:
+<select id="ace-theme" size="1">
+  <optgroup label="bright">
+    <option value="textmate">textmate</option>
+     <option value="chrome">chrome</option>
+     <option value="solarized_light">solarized_light</option>
+  </optgroup>
+  <optgroup label="dark">
+    <option value="monokai" selected >monokai</option>
+    <option value="twilight">twilight</option>
+    <option value="cobalt">cobalt</option>
+    <option value="vibrant_ink">vibrant_ink</option>
+  </optgroup>
+</select>
+</label>  
+
+<label>Mode:  
+<select id="ace-mode">
+  <option value="CSS">CSS</option>
+  <option value="HTML" selected>HTML</option>
+  <option value="JavaScript">JavaScript</option>
+  <option value="JSON">JSON</option>
+  <option value="Plain Text">Plain Text</option>
+</select>
+</label> 
+
+
+
+   
+             
              <button onclick='ace.edit("editor").setOptions({enableLiveAutocompletion: false});' title="suggest off">suggest off</button>&nbsp;&nbsp;
             <button onclick='ace.edit("editor").setOptions({enableLiveAutocompletion: true});' title="suggest on">suggest on</button>&nbsp;&nbsp;
            
@@ -877,6 +913,25 @@ https://codepen.io/ldijkman/pen/LYdZpYp
 
 
 <script>
+
+
+am = document.getElementById('ace-mode');
+am.addEventListener('change', function(e) {
+  console.log((document.getElementById('ace-mode').value).toLowerCase());
+  e.preventDefault();
+ ace.edit("editor").getSession().setMode('ace/mode/' + (document.getElementById('ace-mode').value).toLowerCase());
+});
+
+at = document.getElementById('ace-theme');
+at.addEventListener('change', function(e) {
+  console.log((document.getElementById('ace-theme').value).toLowerCase());
+  e.preventDefault();
+ ace.edit("editor").setTheme('ace/theme/' + (document.getElementById('ace-theme').value).toLowerCase());
+});
+
+
+
+
 
 ////////////// open filename in a new browser windoww /////////////////////////////////////////////
 www = document.getElementById('webbutton');
