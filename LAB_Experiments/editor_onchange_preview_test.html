@@ -784,11 +784,16 @@ s.session.setMode("ace/mode/"+n, function() {loadpick()}),
 <!--  https://cdnjs.com/libraries/ace/1.2.0 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.7.0/ace.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.7.0/ext-searchbox.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.7.0/ext-language_tools.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.7.0/mode-html.min.js"></script>
 <!-- i do not know is it possible to get external suggestions popup for javascript html css -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.7.0/mode-javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.7.0/snippets/javascript.min.js"></script>
 
+<!--<script src="./ext-language_tools.js"></script>-->
+<!--<script src="https://ace.c9.io/build/src-noconflict/ext-language_tools.js"></script>-->
 
 <script>
   if (void 0 === ace.edit) {
@@ -806,8 +811,7 @@ https://codepen.io/ldijkman/pen/LYdZpYp
 -->
   <script type="text/javascript" src="https://jscolor.com/release/2.4/jscolor-2.4.8/jscolor.js" ></script>   
 
-<!--<script src="./ext-language_tools.js"></script>-->
-<script src="https://ace.c9.io/build/src-noconflict/ext-language_tools.js"></script>
+
 
 <div id="container">
             
@@ -877,12 +881,48 @@ https://codepen.io/ldijkman/pen/LYdZpYp
 </select>
 </label> 
 
-<button onclick='ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "<!DOCTYPE html>\n<html>\n<head>\n<title>  </title>\n</head>\n<body style=\"background-color: orange; \">\n<center>\n<h1>Hello</h1>\n</center>\n\n</body\n></html>")' title="create html page">html</pre></button>&nbsp;&nbsp;
-    
 
-    <button onclick='ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "<!--     -->")' title="insert html comment">&lt;!-- --&gt;</pre></button>&nbsp;&nbsp;
-             
-             <button onclick='ace.edit("editor").setOptions({enableLiveAutocompletion: false});' title="suggest off">suggest off</button>&nbsp;&nbsp;
+&nbsp;
+
+
+<script>  
+function paste() {  
+var myval = document.getElementById("myList").value;  
+//console.log(myval);
+if(myval==1){
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "<!--     -->");
+}
+if(myval==2){
+ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "<!DOCTYPE html>\n<html>\n<head>\n<title>  </title>\n</head>\n<body style=\"background-color: orange;\">\n<center>\n<h1>Hello</h1>\n</center>\n\n</body>\n</html>");
+}
+if(myval==3){
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "<img src=\"\"><br>");
+}
+if(myval==4){
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "<a href=\"http://\" target=\"_blank\">linktext</a><br>");
+}
+document.getElementById("myList").options[0].selected = true
+}
+
+</script>  
+  
+
+
+<select id = "myList" onchange = "paste()" > 
+<option value="0">paste</option> 
+<option value="1"> &lt;!-- --&gt; </option>  
+<option value="2"> html page </option>  
+<option value="3"> img src </option>  
+<option value="4"> a href </option>  
+<option value="5">  </option>  
+</select>  
+
+&nbsp;
+
+
+
+
+            <button onclick='ace.edit("editor").setOptions({enableLiveAutocompletion: false});' title="suggest off">suggest off</button>&nbsp;&nbsp;
             <button onclick='ace.edit("editor").setOptions({enableLiveAutocompletion: true});' title="suggest on">suggest on</button>&nbsp;&nbsp;
            
            
