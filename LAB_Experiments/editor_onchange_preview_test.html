@@ -901,7 +901,12 @@ if(myval==3){
 if(myval==4){
   ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "<a href=\"http://\" target=\"_blank\">linktext</a><br>");
 }
-document.getElementById("myList").options[0].selected = true
+if(myval==5){
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "<script type=\"text/javascript\" src=\"\"></script\>");
+}
+
+
+document.getElementById("myList").options[0].selected = true;
 }
 
 </script>  
@@ -914,7 +919,7 @@ document.getElementById("myList").options[0].selected = true
 <option value="2"> html page </option>  
 <option value="3"> img src </option>  
 <option value="4"> a href </option>  
-<option value="5">  </option>  
+<option value="5"> script src= </option>  
 </select>  
 
 &nbsp;
