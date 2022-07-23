@@ -1,7 +1,7 @@
 <!-- 
 
-autocompletion suggestions needs ./ext-language_tools.js on littlefs 
-     https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/LAB_Experiments/ext-language_tools.js
+autocompletion suggestions  
+    
 screeenshot autocompletion suggestions
     https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/LAB_Experiments/2022-07-20-205657_1920x1080_scrot.png
    suggestions on / off buttons
@@ -856,7 +856,7 @@ https://codepen.io/ldijkman/pen/LYdZpYp
              <br>
              <!-- https://codepen.io/ldijkman/pen/xxWdBdp -->
              <label>Theme:
-<select id="ace-theme" size="1">
+<select id="ace-theme" size="1" style="width: 55px;">
   <optgroup label="bright">
     <option value="textmate">textmate</option>
      <option value="chrome">chrome</option>
@@ -872,7 +872,7 @@ https://codepen.io/ldijkman/pen/LYdZpYp
 </label>  
 
 <label>Mode:  
-<select id="ace-mode">
+<select id="ace-mode" style="width: 55px;">
   <option value="CSS">CSS</option>
   <option value="HTML" selected>HTML</option>
   <option value="JavaScript">JavaScript</option>
@@ -893,16 +893,22 @@ if(myval==1){
   ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "<!--     -->");
 }
 if(myval==2){
-ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "<!DOCTYPE html>\n<html>\n<head>\n<title>  </title>\n</head>\n<body style=\"background-color: orange;\">\n<center>\n<h1>Hello</h1>\n</center>\n\n</body>\n</html>");
+ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "<!DOCTYPE html>\n<html>\n<head>\n<title>  </title>\n</head>\n<body style=\"background-color: orange; color: yellow;\">\n<center>\n<h1>Hello</h1>\n</center>\n\n</body>\n</html>");
 }
 if(myval==3){
   ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "<img src=\"\"><br>");
 }
 if(myval==4){
-  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "<a href=\"http://\" target=\"_blank\">linktext</a><br>");
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "<a href=\"http://ldijkman.github.io/Electra\" target=\"_blank\">Electra</a><br>");
 }
 if(myval==5){
   ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "<script type=\"text/javascript\" src=\"\"></script\>");
+}
+if(myval==6){
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "&nbsp;");
+}
+if(myval==7){
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "&emsp;");
 }
 
 
@@ -913,13 +919,15 @@ document.getElementById("myList").options[0].selected = true;
   
 
 
-<select id = "myList" onchange = "paste()" style="width: 55px;"> 
+<select id = "myList" onchange = "paste()" style="width: 55px;" title="paste at cusor position"> 
 <option value="0">paste</option> 
 <option value="1"> &lt;!-- --&gt; </option>  
 <option value="2"> html page </option>  
 <option value="3"> img src </option>  
 <option value="4"> a href </option>  
 <option value="5"> script src= </option>  
+<option value="6"> \&\nbsp; </option> 
+<option value="7"> \&\emsp; </option> 
 </select>  
 
 &nbsp;
@@ -931,8 +939,8 @@ document.getElementById("myList").options[0].selected = true;
             <button onclick='ace.edit("editor").setOptions({enableLiveAutocompletion: true});' title="suggest on">suggest on</button>&nbsp;&nbsp;
            
            
-              <button onclick='ace.edit("editor").setFontSize(ace.edit("editor").getFontSize()-1);' title="zoom -">--</button>&nbsp;&nbsp;
-             <button onclick='ace.edit("editor").setFontSize(ace.edit("editor").getFontSize()+1);' title="zoom +">++</button>&nbsp;&nbsp;&nbsp;&nbsp;
+              <button onclick='ace.edit("editor").setFontSize(ace.edit("editor").getFontSize()-1);' title="zoom -">-</button>&nbsp;&nbsp;
+             <button onclick='ace.edit("editor").setFontSize(ace.edit("editor").getFontSize()+1);' title="zoom +">+</button>&nbsp;&nbsp;&nbsp;&nbsp;
              
              <!--  https://codepen.io/jackliangtw/pen/yLVPQNB   -->
              <button onclick="toggleFullScreen()" title="Toggle FullScreen">FullScreen</button>&nbsp;&nbsp;&nbsp;&nbsp;
