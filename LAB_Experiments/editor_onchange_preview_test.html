@@ -1081,6 +1081,29 @@ function suggestonoff(){  // toggle autocomplete suggest button
   }
   console.log(ace.edit("editor").getOption("enableLiveAutocompletion"));
 }
+
+
+
+  if(ace.edit("editor").getOption("enableLiveAutocompletion")==true){
+    ace.edit("editor").setOptions({enableLiveAutocompletion: false});
+    document.getElementById("butsuggest").style="background-color:#FFDACAFF;"  //redisch
+  }else{
+    ace.edit("editor").setOptions({enableLiveAutocompletion: true});
+    document.getElementById("butsuggest").style="background-color:#CAFFC8FF;"   //greenisch
+  }
+  
+  
+  
+  
+  document.onreadystatechange = function() {
+        if (document.readyState !== "complete") {
+              if(ace.edit("editor").getOption("enableLiveAutocompletion")==false){
+                document.getElementById("butsuggest").style="background-color:#FFDACAFF;"  //redisch
+              }else{
+                document.getElementById("butsuggest").style="background-color:#CAFFC8FF;"   //greenisch
+              }
+        } 
+    };
   
 </script>
   
