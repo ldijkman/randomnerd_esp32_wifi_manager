@@ -935,8 +935,8 @@ document.getElementById("myList").options[0].selected = true;
 
 
 
-            <button onclick='ace.edit("editor").setOptions({enableLiveAutocompletion: false});' title="suggest off">suggest off</button>&nbsp;&nbsp;
-            <button onclick='ace.edit("editor").setOptions({enableLiveAutocompletion: true});' title="suggest on">suggest on</button>&nbsp;&nbsp;
+            <button onclick='suggestonoff()' id="butsuggest" title="suggest on / off">suggest</button>&nbsp;&nbsp;
+          
            
            
               <button onclick='ace.edit("editor").setFontSize(ace.edit("editor").getFontSize()-1);' title="zoom -">-</button>&nbsp;&nbsp;
@@ -1066,9 +1066,21 @@ function toggleFullScreen() {
       document.exitFullscreen();
     }
   }
+  
 }
 
 // https://ldijkman.github.io/Electra/  
+
+function suggestonoff(){  // toggle autocomplete suggest button
+  if(ace.edit("editor").getOption("enableLiveAutocompletion")==true){
+    ace.edit("editor").setOptions({enableLiveAutocompletion: false});
+    document.getElementById("butsuggest").style="background-color:#FFDACAFF;"  //redisch
+  }else{
+    ace.edit("editor").setOptions({enableLiveAutocompletion: true});
+    document.getElementById("butsuggest").style="background-color:#CAFFC8FF;"   //greenisch
+  }
+  console.log(ace.edit("editor").getOption("enableLiveAutocompletion"));
+}
   
 </script>
   
