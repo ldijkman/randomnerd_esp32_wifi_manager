@@ -389,7 +389,7 @@ https://github.com/ajaxorg/ace/discussions/4725
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
   See readme.md for more information.
 */
-
+// https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266WebServer/examples/FSBrowser
 
    function loadpick() {  
        // does not work
@@ -957,6 +957,12 @@ if(myval==8){
   htmltext="<p align=\"right\">Right align content</p>";
   ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
 }
+if(myval==9){
+  htmltext="<iframe id=\"\" align=\"left\" width=\"500\" height=\"320\" src=\"https://www.youtube.com/embed/5uapPPC8eQY?autoplay=1\" style=\"border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)\" scrolling=\"no\"></iframe>";
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
+}
+
+
 
 document.getElementById("myList").options[0].selected = true;
 }
@@ -975,6 +981,7 @@ document.getElementById("myList").options[0].selected = true;
 <option value="6"> \&\nbsp; </option> 
 <option value="7"> \&\emsp; </option> 
 <option value="8"> p align right </option> 
+<option value="9"> iframe </option> 
 </select>  
 
 &nbsp;
