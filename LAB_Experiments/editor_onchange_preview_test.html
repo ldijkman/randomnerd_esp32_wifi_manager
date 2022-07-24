@@ -838,7 +838,7 @@ https://codepen.io/ldijkman/pen/LYdZpYp
                     Change to lower case	Ctrl-Shift-U<br>
                     Change to upper case	Ctrl-U<br>
                     <br>
-                    <br>
+                    https://divtable.com/generator/<br>
                     <center>
                     <h1>Electra</h1>
                     <a href="https://ldijkman.github.io/Electra/" target="Hey_Electra">https://ldijkman.github.io/Electra/ </a><br>
@@ -888,29 +888,41 @@ https://codepen.io/ldijkman/pen/LYdZpYp
 <script>  
 function paste() {  
 var myval = document.getElementById("myList").value;  
+var htmltext;
 //console.log(myval);
 if(myval==1){
-  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "<!--     -->");
+  htmltext="<!--     -->";
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
 }
 if(myval==2){
-ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "<!DOCTYPE html>\n<html>\n<head>\n<title>  </title>\n</head>\n<body style=\"background-color: orange; color: yellow;\">\n<center>\n<h1>Hello</h1>\n</center>\n\n</body>\n</html>");
+  htmltext="<!DOCTYPE html>\n<html>\n<head>\n<title>  </title>\n</head>\n<body style=\"background-color: orange; color: yellow;\">\n<center>\n<h1>Hello</h1>\n</center>\n\n</body>\n</html>";
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
 }
 if(myval==3){
-  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "<img src=\"\"><br>");
+  htmltext="<img src=\"\"><br>";
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
 }
 if(myval==4){
-  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "<a href=\"http://ldijkman.github.io/Electra\" target=\"_blank\">Electra</a><br>");
+  htmltext="<a href=\"http://ldijkman.github.io/Electra\" target=\"_blank\">Electra</a><br>";
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
 }
 if(myval==5){
-  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "<script type=\"text/javascript\" src=\"\"></script\>");
+  htmltext="<script type=\"text/javascript\" src=\"\"></script\>";
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
 }
 if(myval==6){
-  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "&nbsp;");
+  htmltext="&nbsp;";
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
 }
 if(myval==7){
-  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), "&emsp;");
+  htmltext="&emsp;";
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
 }
 
+if(myval==8){
+  htmltext="<p align=\"right\">Right align content</p>";
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
+}
 
 document.getElementById("myList").options[0].selected = true;
 }
@@ -919,7 +931,7 @@ document.getElementById("myList").options[0].selected = true;
   
 
 
-<select id = "myList" onchange = "paste()" style="width: 55px;" title="paste at cusor position"> 
+<select id = "myList" onchange = "paste()" style="width: 55px;" title="paste at cursor position"> 
 <option value="0">paste</option> 
 <option value="1"> &lt;!-- --&gt; </option>  
 <option value="2"> html page </option>  
@@ -928,6 +940,7 @@ document.getElementById("myList").options[0].selected = true;
 <option value="5"> script src= </option>  
 <option value="6"> \&\nbsp; </option> 
 <option value="7"> \&\emsp; </option> 
+<option value="8"> p align right </option> 
 </select>  
 
 &nbsp;
