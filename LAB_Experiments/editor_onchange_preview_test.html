@@ -294,12 +294,14 @@ https://codepen.io/ldijkman/pen/LYdZpYp
         hard to see the selected in standard setting
     */
     .ace-monokai .ace_marker-layer .ace_selection {
-    background: #cbc161;
-    border: 1px solid #13FF10C1
+    background: #3399FF4B;
+    border: 1px solid #3399FF4B;
+    /*padding-left: 0px;padding-right: 0px;padding-top: 1px;padding-bottom: 1px;*/
 }
     .ace_editor .ace_marker-layer .ace_bracket {
-      background: #cbc161;
-    border: 1px solid #13FF10C1
+      background: #3399FF4B;
+    border: 1px solid #3399FF4B;
+    /*padding-left: 0px;padding-right: 0px;padding-top: 1px;padding-bottom: 1px;*/
     }
      .color {
         color: orange;   
@@ -409,7 +411,7 @@ https://github.com/lorol/ESPAsyncWebServer/blob/master/examples/ESP_AsyncFSBrows
    function loadpick() {  
        // does not work
       console.log("load colorpicker function loadpick");
-    //AceColorPicker.load(ace.edit,editor);  
+      // AceColorPicker.load(ace.edit("editor"),ace.edit("editor"));  
     }
 
 
@@ -695,7 +697,8 @@ https://github.com/lorol/ESPAsyncWebServer/blob/master/examples/ESP_AsyncFSBrows
     void 0 === i && (i = "text/" + n, "c_cpp" === n && (i = "text/plain"));
     var s = ace.edit(e);
     return "plain" !== n && 
-    //s.session.setMode("ace/mode/"+n, () => { AceColorPicker.load(ace.edit, editor))}),
+  //s.session.setMode("ace/mode/"+n, () => { AceColorPicker.load(ace.edit("editor"),ace.edit)}),
+ 
 s.session.setMode("ace/mode/"+n, function() {loadpick()}),
 
     s.setTheme("ace/theme/" + a), 
@@ -852,7 +855,7 @@ but i do not know how to implement it in this html/script code
 https://codepen.io/ldijkman/pen/LYdZpYp
 -->
   <script type="text/javascript" src="https://jscolor.com/release/2.4/jscolor-2.4.8/jscolor.js" ></script>   
-
+  <script type="text/javascript" src="./ace-colorpicker.min.js" ></script>  
 
 
 <div id="container">
