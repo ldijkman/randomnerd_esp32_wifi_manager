@@ -941,7 +941,6 @@ if(myval==1){
   console.log(ace.edit("editor").selection.getCursor().column-6);
   //move cursor rom end of line  inside the comment part of paste
   ace.edit('editor').gotoLine(ace.edit("editor").selection.getCursor().row+1,ace.edit("editor").selection.getCursor().column-6);
-  ace.edit("editor").focus();
 }
 if(myval==2){
   htmltext="<!DOCTYPE html>\n<html>\n<head>\n<title>  </title>\n</head>\n<body style=\"background-color: orange; color: yellow;\">\n<center>\n<h1>Hello</h1>\n</center>\n\n</body>\n</html>";
@@ -976,9 +975,15 @@ if(myval==9){
   htmltext="<iframe id=\"\" align=\"left\" width=\"500\" height=\"320\" src=\"https://www.youtube.com/embed/5uapPPC8eQY?autoplay=1\" style=\"border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)\" scrolling=\"no\"></iframe>";
   ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
 }
+if(myval==10){
+  htmltext="<meta http-equiv=\"Refresh\" content=\"10\">\n";
+  htmltext+="<!-- does not work nice in preview editor, reloads the page in 10 seconds -->";
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
+}
 
 
 
+ace.edit("editor").focus();
 document.getElementById("myList").options[0].selected = true;
 }
 
@@ -997,6 +1002,7 @@ document.getElementById("myList").options[0].selected = true;
 <option value="7"> \&\emsp; </option> 
 <option value="8"> p align right </option> 
 <option value="9"> iframe </option> 
+<option value="10"> meta refresh 10sec</option> 
 </select>  
 
 &nbsp;
@@ -1183,4 +1189,4 @@ function suggestonoff(){  // toggle autocomplete suggest button
   
 <!-- https://ldijkman.github.io/Electra/ -->
 
- 
+
