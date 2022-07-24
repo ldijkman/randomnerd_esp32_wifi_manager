@@ -2,7 +2,6 @@
 ACE for ESP8266 ESP32 espasyncwebserver littlefs modifeid LOROL version of FSBrowser https://github.com/lorol/ESPAsyncWebServer
 https://www.google.com/search?q=ESP8266+ESP32
 
-
 button pretty beautify prettyprint format code
 autocompletion suggestions  
     
@@ -901,6 +900,13 @@ var htmltext;
 if(myval==1){
   htmltext="<!--     -->";
   ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
+  console.log(ace.edit("editor").getCursorPosition());
+  console.log(ace.edit("editor").selection.getCursor().column);
+  console.log(ace.edit("editor").selection.getCursor().row);
+  console.log(ace.edit("editor").selection.getCursor().column-6);
+  //move cursor rom end of line  inside the comment part of paste
+  ace.edit('editor').gotoLine(ace.edit("editor").selection.getCursor().row+1,ace.edit("editor").selection.getCursor().column-6);
+  ace.edit("editor").focus();
 }
 if(myval==2){
   htmltext="<!DOCTYPE html>\n<html>\n<head>\n<title>  </title>\n</head>\n<body style=\"background-color: orange; color: yellow;\">\n<center>\n<h1>Hello</h1>\n</center>\n\n</body>\n</html>";
