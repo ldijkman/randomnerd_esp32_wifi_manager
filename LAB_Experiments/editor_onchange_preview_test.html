@@ -1,1059 +1,2046 @@
-<!-- 
-ACE for ESP8266 ESP32 espasyncwebserver littlefs modifeid LOROL version of FSBrowser https://github.com/lorol/ESPAsyncWebServer
-https://www.google.com/search?q=ESP8266+ESP32
-
-button pretty beautify prettyprint format code
-autocompletion suggestions  
-    
-screeenshot autocompletion suggestions
-    https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/LAB_Experiments/2022-07-20-205657_1920x1080_scrot.png
-   suggestions on / off buttons
-     https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/LAB_Experiments/2022-07-20-210618_1920x1080_scrot.png
-
-maybe ctrl+space to activate https://ace.c9.io/demo/autocompletion.html
-     
-     
-Ace 
-Ajax.org Cloud9 Editor
-Formerly known as Mozilla SkyWriter and forformerly codenamed as BeSpin
-
-for ESP8266 ESP32 espasyncwebserver littlefs modifeid LOROL version of FSBrowser https://github.com/lorol/ESPAsyncWebServer
-
-screenshot image 
-https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/LAB_Experiments/2022-07-18-184503_1920x1080_scrot.png
-
-https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/LAB_Experiments/editor_onchange_preview_test.html
-
-https://ldijkman.github.io/Electra/
-
-save upload or create/copy this file (as *watheveryouwanttonameit* .html)
-to your ESP8266 ESP32 espasync webserver LittleFS
-will give you an ace js web/cloud editor with live HTML preview
-not perfect but it works a bit
-added button for opening in new tab
-checbox for 50% edit and html peview or 100% edit
-checkbox for reload preview on every keystroke or not
-button for preview udate if checkbox keystroke is off
-colorpicker with button to copy hexvalue
-function update on editor textcontent change 
-shows only changes after save button is pressed
-reload on every key stroke
-iframe shows html result
-i am not handy with divs
-would be nice if the source and preview divs are resizable by mouse drag
-maybe a checkbox for preview panel on / off // checkbox for fulscreen eit and  50% edit-preview
-
-would like to have another colorpicker addon in the code editor
-https://codepen.io/ldijkman/pen/LYdZpYp
--->
-
-
 <!DOCTYPE html>
-<html lang="en">
-<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<title>Electra's ESP Editor</title>
-<link rel="apple-touch-icon" href="/ace.ico" type="image/x-icon">
-<link rel="shortcut icon" href="/ace.ico" type="image/x-icon">
-<link rel="icon" href="/ace.ico" type="image/x-icon">
-<style type="text/css" media="screen">
-  label {
-    font-size: 12px;
-    font-family: sans-serif
-  }
-
-  .cm {
-    z-index: 300;
-    position: absolute;
-    left: 5px;
-    border: 1px solid #444;
-    background-color: #f5f5f5;
-    display: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .4);
-    font-size: 12px;
-    font-family: sans-serif;
-    font-weight: 700
-  }
-
-  .cm ul {
-    list-style: none;
-    top: 0;
-    left: 0;
-    margin: 0;
-    padding: 0
-  }
-
-  .cm li {
-    position: relative;
-    min-width: 60px;
-    cursor: pointer
-  }
-
-  .cm span {
-    color: #444;
-    display: inline-block;
-    padding: 6px
-  }
-
-  .cm li:hover {
-    background: #444
-  }
-
-  .cm li:hover span {
-    color: #eee
-  }
-
-  .tvu li,
-  .tvu ul {
-    padding: 0;
-    margin: 0;
-    list-style: none
-  }
-
-  .tvu input {
-    position: absolute;
-    opacity: 0
-  }
-
-  .tvu {
-    font: 400 12px Verdana, Arial, Sans-serif;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-    color: #444;
-    line-height: 16px
-  }
-
-  .tvu span {
-    margin-bottom: 5px;
-    padding: 0 0 0 18px;
-    cursor: pointer;
-    display: inline-block;
-    height: 16px;
-    vertical-align: middle;
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADoSURBVBgZBcExblNBGAbA2ceegTRBuIKOgiihSZNTcC5LUHAihNJR0kGKCDcYJY6D3/77MdOinTvzAgCw8ysThIvn/VojIyMjIyPP+bS1sUQIV2s95pBDDvmbP/mdkft83tpYguZq5Jh/OeaYh+yzy8hTHvNlaxNNczm+la9OTlar1UdA/+C2A4trRCnD3jS8BB1obq2Gk6GU6QbQAS4BUaYSQAf4bhhKKTFdAzrAOwAxEUAH+KEM01SY3gM6wBsEAQB0gJ+maZoC3gI6iPYaAIBJsiRmHU0AALOeFC3aK2cWAACUXe7+AwO0lc9eTHYTAAAAAElFTkSuQmCC) no-repeat;
-    background-position: 0 0
-  }
-
-  .tvu span:hover {
-    text-decoration: underline
-  }
-
-  @media screen and (-webkit-min-device-pixel-ratio:0) {
-    .tvu {
-      -webkit-animation: webkit-adjacent-element-selector-bugfix infinite 1s
-    }
-
-    @-webkit-keyframes webkit-adjacent-element-selector-bugfix {
-      from {
-        padding: 0
-      }
-
-      to {
-        padding: 0
-      }
-    }
-  }
-
-  #uploader {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 48px;
-    line-height: 24px;
-    padding-left: 10px;
-    background-color: #444;
-    color: #eee
-  }
-
-  #tree {
-    position: absolute;
-    top: 48px;
-    bottom: 0;
-    left: 0;
-    width: 100px;
-    padding: 8px
-  }
-
-  #editor,
-  #preview {
-    position: absolute;
-    top: 48px;
-    right: 0;
-    bottom: 0;
-    left: 120px;
-    border-left: 1px solid #eee
-  }
-
-  #preview {
-    background-color: #eee;
-    padding: 5px
-  }
-
-  #loader {
-    position: absolute;
-    top: 36%;
-    right: 40%
-  }
-
-  .loader {
-    z-index: 10000;
-    border: 8px solid #b5b5b5;
-    border-top: 8px solid #3498db;
-    border-bottom: 8px solid #3498db;
-    border-radius: 50%;
-    width: 240px;
-    height: 240px;
-    animation: spin 2s linear infinite;
-    display: none
-  }
-
-  @keyframes spin {
-    0% {
-      transform: rotate(0)
-    }
-
-    100% {
-      transform: rotate(360deg)
-    }
-  }
-</style>
-
-<style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: whitesmoke;
-    }
-
-    .p1,
-    .header {
-      font-size: 32px;
-      text-align: center;
-    }
-
-    .button {
-      text-align: center;
-      font-size: 16px;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .p2 {
-      text-align: left;
-      font-size: 24px;
-    }
-
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      width: 100%;
-      ooverflow: hidden;
-    }
-
-    #editor {
-      height: 95%;
-      width: 50%;
-      display: inline-block;
-      border:1px solid black;
-    }
-
-    #container {
-      height: 100%;
-      width: auto;
-      white-space: nowrap;
-      ooverflow: hidden;
-      position: relative;
-    }
-
-
-
-    #iframediv {
-      float: right;
-      margin-top: 48px;
-      height: 100%; 
-      width: 38%;
-      display: inline-block;
-      border:1px solid black;
-
-    }
-    
-#iframe {
- 
-      top: 48px;
-      height: 100%; 
-      width: 100%;
-      display: inline-block;
+<html>
+<head>
   
-      
-    }
-    
-    /*
-        try to change the selection or highlight searh color
-        hard to see the selected in standard setting
-    */
-    .ace-monokai .ace_marker-layer .ace_selection {
-    background: #3399FF4B;
-    border: 1px solid #3399FF4B;
-    /*padding-left: 0px;padding-right: 0px;padding-top: 1px;padding-bottom: 1px;*/
-}
-    .ace_editor .ace_marker-layer .ace_bracket {
-      background: #3399FF4B;
-    border: 1px solid #3399FF4B;
-    /*padding-left: 0px;padding-right: 0px;padding-top: 1px;padding-bottom: 1px;*/
-    }
-     .color {
-        color: orange;   
-      }
-      
-      .overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  transition: opacity 500ms;
-  visibility: hidden;
-  opacity: 0;  
-  z-index:99;
-}
-.overlay:target {
-  visibility: visible;
-  opacity: 1;
-}
+<!--  I PREFER PLAIN JAVASCRIPT -->  
+// comment //
+/* comment */
 
-.popup {
-  margin: 70px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 5px;
-  width: 30%;
-  position: relative;
-  transition: all 5s ease-in-out;
-
-}
-
-.popup h2 {
-  margin-top: 0;
-  color: #333;
-  font-family: Tahoma, Arial, sans-serif;
-}
-.popup .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  transition: all 200ms;
-  font-size: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #333;
-}
-.popup .close:hover {
-  color: #06D85F;
-}
-.popup .content {
-  max-height: 30%;
-  overflow: auto;
-}
-
-@media screen and (max-width: 700px){
-  .box{
-    width: 70%;
-  }
-  .popup{
-    width: 70%;
-  }
-}
-    
-    
-     .ace_marker-layer .ace_selected-word {
-  border: 1px solid #13FF10C1
-}
-  </style>
-
-<!--
-AceEditor ColorPicker AddOn
-https://codepen.io/easylogic/pen/RwVOGed
-I made a colorpicker for ace editor. #4725
-easylogic started this conversation in Ideas
-https://github.com/ajaxorg/ace/discussions/4725
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ace-colorpicker@0.0.12/addon/ace-colorpicker.css" />
-<script type="text/javascript" src="./ace-colorpicker.min.js" ></script> 
--->
-<script>
-////////////////////////////////////////////////////////////////////
-// luberth => i think next should be here, it is missing in the lorol fsbrowser
-https://github.com/lorol/ESPAsyncWebServer/blob/master/examples/ESP_AsyncFSBrowser/data/edit_gz
-////////////////////////////////////////////////////////////////////
 /*
-  FSBrowser - A web-based FileSystem Browser for ESP8266 filesystems
-  Copyright (c) 2015 Hristo Gochkov. All rights reserved.
-  This file is part of the ESP8266WebServer library for Arduino environment.
-  This library is free software; you can redistribute it and/or
-  modify it under the terms of the GNU Lesser General Public
-  License as published by the Free Software Foundation; either
-  version 2.1 of the License, or (at your option) any later version.
-  This library is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-  Lesser General Public License for more details.
-  You should have received a copy of the GNU Lesser General Public
-  License along with this library; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-  See readme.md for more information.
+ comment 
 */
-// https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266WebServer/examples/FSBrowser
-
-   function loadpick() {  
-       // does not work
-      console.log("load colorpicker function loadpick");
-      // AceColorPicker.load(ace.edit("editor"),ace.edit("editor"));  
-    }
 
 
-   function update() {  
-     if(document.getElementById("Preview").checked){
-        var idoc = document.getElementById('iframe').contentWindow.document;
-        idoc.open();
-        idoc.write(ace.edit("editor").getValue()); 
-        //console.log(ace.edit("editor").getValue());
-        idoc.close();
-     }
-    }
-    
-    function updatefrombutton() {  
-        var idoc = document.getElementById('iframe').contentWindow.document;
-        idoc.open();
-        idoc.write(ace.edit("editor").getValue()); 
-        //console.log(ace.edit("editor").getValue());
-        idoc.close();
-         document.getElementById("save").setAttribute("title", "Save file to ESP LittleFS"); 
-    }
-    
-  function ge(e) {
-    return document.getElementById(e)
-  }
+<!-- https://ldijkman.github.io/Electra/schedule.html -->	
 
-  function ce(e) {
-    return document.createElement(e)
-  }
+<!-- https://ldijkman.github.io/Electra -->
 
-  function sortByKey(e, t) {
-    return e.sort((function(e, n) {
-      var a = e[t],
-        i = n[t];
-      return i > a ? -1 : a > i ? 1 : 0
-    }))
-  }
+<!-- https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/LAB_Experiments -->
 
-  function createFileUploader(e, t, n) {
-    var a = /(iPhone)*(OS ([7-9]|1[0-1])_)/i.test(navigator.userAgent);
+<!-- https://codepen.io/ldijkman/pen/qBodbgO -->
 
-    function i(e, n) {
-      200 != e ? alert("ERROR[" + e + "]: " + n) : t.refreshPath(d.value)
-    }
-    var o = ce("button");
-    o.innerHTML = "Root Dir", ge(e).appendChild(o);
-    var c = ce("input");
-    c.type = "file", c.multiple = !1, c.name = "data", c.id = "upload-select", ge(e).appendChild(c);
-    var d = ce("input");
-    d.id = "upload-path", d.type = "text", d.name = "path", d.defaultValue = "/", ge(e).appendChild(d);
-    var s = ce("button");
-    s.innerHTML = "Upload", ge(e).appendChild(s);
-    var r = ce("button");
-    r.innerHTML = "Create", ge(e).appendChild(r);
-    var l = ce("input");
-    l.id = "editor-filename", l.type = "text", l.disabled = !0, l.size = 20, ge(e).appendChild(l);
-    var u = ce("input");
-    u.id = "ipad-fix", u.title="i have no idea what this checkbox does", u.name = "ipad-fix", u.type = "checkbox", u.checked = !!a;
-    var p = ce("label");
-    p.for = u.id, p.innerHTML = " Alt.";
-    var m = ce("button");
-    m.innerHTML = " Save ",m.id = "save",m.title="Save file to ESP LittleFS", ge(e).appendChild(m), ge(e).appendChild(p), ge(e).appendChild(u), r.onclick = function(e) {
-      (function(e) {
-        var t = new FormData;
-        t.append("path", e), requests.add("PUT", "/edit", t, i)
-      })(d.value), n.loadUrl(d.value), d.value = "/"
-    }, m.onclick = function(e) {
-      if (u.checked) {
-        var t = ace.edit("editor").getValue(),
-          a = new FormData;
-        a.append("rawname", l.value);
-        var o = 0;
-        const e = 4096;
-        for (var c = 0; c < t.length; c += e) {
-          var d = t.substring(c, c + e);
-          a.append("raw" + o, d), o++
-        }
-        requests.add("POST", "/edit", a, i)
-      } else n.execCommand("saveCommand")
-    }, o.onclick = function(e) {
-      t.refreshPath(d.value)
-    }, s.onclick = function(e) {
-      if (0 !== c.files.length) {
-        var t = new FormData;
-        t.append("data", c.files[0], d.value), requests.add("POST", "/edit", t, i), ge("upload-path").value = "/", ge("upload-select").value = ""
-      }
-    }, c.onchange = function(e) {
-      if (0 !== c.files.length) {
-        var t = c.files[0].name,
-          n = /(?:\.([^.]+))?$/.exec(t)[1],
-          a = /(.*)\.[^.]+$/.exec(t)[1];
-        void 0 !== typeof a && (t = a), d.value = "/" + t + "." + n
-      }
-    }
-    
-     
-  }
+<!-- https://jsfiddle.net/luberth/61fj05g7/ -->
 
-  function createTree(e, t) {
-    function n(e) {
-      ge("editor-filename").value = e, ge("editor").style.display = "none", p.style.display = "block", p.innerHTML = '<img src="/edit?edit=' + e + "&_cb=" + Date.now() + '" style="max-width:100%; max-height:100%; margin:auto; display:block;" />'
-    }
-
-    function a(e, a) {
-      var i = ce("ul");
-      e.appendChild(i);
-      var o = ce("li");
-      i.appendChild(o), s(a) ? (o.innerHTML = "<span>Preview</span>", o.onclick = function(t) {
-        n(a), document.body.getElementsByClassName("cm").length > 0 && document.body.removeChild(e)
-      }) : d(a) && (o.innerHTML = "<span>Edit</span>", o.onclick = function(n) {
-        t.loadUrl(a), document.body.getElementsByClassName("cm").length > 0 && document.body.removeChild(e)
-      });
-      var l = ce("li");
-      i.appendChild(l), d(a) || s(a) || function(e) {
-        var t = /(?:.([^.]+))?$/.exec(e)[1];
-        if (void 0 !== typeof t) switch (t) {
-          case "ico":
-          case "gz":
-          case "zip":
-          case "wav":
-          case "mp3":
-          case "pdf":
-            return !0
-        }
-        return !1
-      }(a) ? (l.innerHTML = "<span>Download</span>", l.onclick = function(t) {
-        (function(e) {
-          ge("download-frame").src = "/edit?download=" + e
-        })(a), document.body.getElementsByClassName("cm").length > 0 && document.body.removeChild(e)
-      }) : c(a) && (i.appendChild(l), l.innerHTML = "<span>ChDir</span>", l.onclick = function(t) {
-        m.removeChild(m.childNodes[0]), u(m, a), document.body.getElementsByClassName("cm").length > 0 && document.body.removeChild(e)
-      });
-      var p = ce("li");
-      i.appendChild(p), p.innerHTML = "<span>Delete</span>", p.onclick = function(t) {
-        r(a), document.body.getElementsByClassName("cm").length > 0 && document.body.removeChild(e)
-      }
-    }
-
-    function i(e, t, n) {
-      var i = ce("div"),
-        o = document.body.scrollTop ? document.body.scrollTop : document.documentElement.scrollTop,
-        c = document.body.scrollLeft ? document.body.scrollLeft : document.documentElement.scrollLeft,
-        d = e.clientX + c,
-        s = e.clientY + o;
-      i.className = "cm", i.style.display = "block", i.style.left = d + "px", i.style.top = s + "px", a(i, t), document.body.appendChild(i);
-      var r = i.offsetWidth,
-        l = i.offsetHeight;
-      i.onmouseout = function(e) {
-        (e.clientX < d || e.clientX > d + r || e.clientY < s || e.clientY > s + l) && document.body.getElementsByClassName("cm").length > 0 && document.body.removeChild(i)
-      }
-    }
-
-    function o(e, a, o) {
-      var r = ce("li");
-      r.id = a;
-      var l = ce("span");
-      return l.innerHTML = a, r.appendChild(l), r.onclick = function(e) {
-        d(r.id.toLowerCase()) ? t.loadUrl(r.id) : s(r.id.toLowerCase()) ? n(r.id) : c(r.id) && (m.removeChild(m.childNodes[0]) && u(m, r.id.toLowerCase()))
-      }, r.oncontextmenu = function(e) {
-        e.preventDefault(), e.stopPropagation(), i(e, r.id)
-      }, r
-    }
-
-    function c(e) {
-      return -1 == e.indexOf(".")
-    }
-    
- 
-
-    function d(e) {
-      var t = /(?:.([^.]+))?$/.exec(e)[1];
-      if (void 0 !== typeof t) switch (t) {
-        case "txt":
-        case "htm":
-        case "html":
-        case "js":
-        case "css":
-        case "xml":
-        case "json":
-        case "conf":
-        case "ini":
-        case "h":
-        case "c":
-        case "cpp":
-        case "php":
-        case "hex":
-        case "ino":
-        case "pde":
-          return !0
-      }
-      return !1
-    }
-
-    function s(e) {
-      var t = /(?:.([^.]+))?$/.exec(e)[1];
-      if (void 0 !== typeof t) switch (t) {
-        case "png":
-        case "jpg":
-        case "gif":
-        case "bmp":
-          return !0
-      }
-      return !1
-    }
-
-    function r(e) {
-      var t = new FormData;
-      t.append("path", e), requests.add("DELETE", "/edit", t, (function(e, t) {
-        200 != e ? alert("ERROR[" + e + "]: " + t) : (m.removeChild(m.childNodes[0]), u(m, "/"))
-      }))
-    }
-
-    function l(e, t) {
-      return function(t, n) {
-        200 == t && function(e, t, n) {
-          sortByKey(n, "name");
-          var a = ce("ul");
-          e.appendChild(a);
-          for (var i = n.length, c = 0; i > c; c++) "file" === n[c].type && a.appendChild(o(0, n[c].name, n[c].size))
-        }(e, 0, JSON.parse(n))
-      }
-    }
-
-    function u(e, t) {
-      requests.add("GET", "/edit", {
-        list: t
-      }, l(e))
-    }
-    var p = ge("preview"),
-      m = ce("div");
-    return m.className = "tvu", ge(e).appendChild(m), this.refreshPath = function(e) {
-      m.removeChild(m.childNodes[0]), u(m, "/")
-    }, u(m, "/"), this
-  }
-
-  function createEditor(e, t, n, a, i) {
-    function o(e) {
-      var t = "plain",
-        n = /(?:.([^.]+))?$/.exec(e)[1];
-      if (void 0 !== typeof n) switch (n) {
-        case "txt":
-        case "hex":
-        case "conf":
-          t = "plain";
-          break;
-        case "htm":
-          t = "html";
-          break;
-        case "js":
-          t = "javascript";
-          break;
-        case "h":
-        case "c":
-        case "cpp":
-          t = "c_cpp";
-          break;
-        case "css":
-        case "scss":
-        case "php":
-        case "html":
-        case "json":
-        case "xml":
-        case "ini":
-          t = n
-      }
-      return t
-    }
-
-    function c(e, t) {
-      200 != e && alert("ERROR[" + e + "]: " + t)
-    }
-
-
-
-    function d(e, t) {
-      ge("preview").style.display = "none", 
-      ge("editor").style.display = "block", 
-      200 == e ? s.setValue(t) : s.setValue(""), s.clearSelection()
-    }
-    void 0 === t && (t = "/schedule.html"), 
-    void 0 === n && (n = o(t)), 
-    void 0 === a && (a = "monokai"), 
-    void 0 === i && (i = "text/" + n, "c_cpp" === n && (i = "text/plain"));
-    var s = ace.edit(e);
-    return "plain" !== n && 
-  //s.session.setMode("ace/mode/"+n, () => { AceColorPicker.load(ace.edit("editor"),ace.edit)}),
- 
-s.session.setMode("ace/mode/"+n, function() {loadpick()}),
-
-    s.setTheme("ace/theme/" + a), 
-    s.$blockScrolling = 1 / 0, 
-    s.getSession().setUseSoftTabs(!0), 
-    s.getSession().setTabSize(2), 
-    s.getSession().setUseWorker(!0), 
-    s.setHighlightActiveLine(!0), 
-    s.setShowPrintMargin(!1), 
-    s.getSession().on('change', function() {update()}),
-     s.setOptions({
-        enableBasicAutocompletion: true,
-        enableSnippets: true,
-        enableLiveAutocompletion: true
-    }),
-    s.commands.addCommand({
-      name: "saveCommand",
-      bindKey: {
-        win: "Ctrl-S",
-        mac: "Command-S"
-      },
-      exec: function(e) {
-        ! function(e, t, n) {
-          var a = new FormData;
-          a.append("data", new Blob([t], {
-            type: n
-          }), e), requests.add("POST", "/edit", a, c)
-        }(t, e.getValue() + "", i)
-      },
-      readOnly: !1
-    }), s.commands.addCommand({
-      name: "undoCommand",
-      bindKey: {
-        win: "Ctrl-Z",
-        mac: "Command-Z"
-      },
-      exec: function(e) {
-        e.getSession().getUndoManager().undo(!1)
-      },
-      readOnly: !1
-    }), s.commands.addCommand({
-      name: "redoCommand",
-      bindKey: {
-        win: "Ctrl-Shift-Z",
-        mac: "Command-Shift-Z"
-      },
-      exec: function(e) {
-        e.getSession().getUndoManager().redo(!1)
-      },
-      readOnly: !1
-    }), s.loadUrl = function(e) {
-      ge("editor-filename").value = e, n = o(t = e), i = "text/" + n, "plain" !== n && s.getSession().setMode("ace/mode/" + n),
-        function(e) {
-          requests.add("GET", "/edit", {
-            edit: e
-          }, d)
-        }(t)
-    }, s
-  }
-
-  function onBodyLoad() {
-    var e = {},
-      t = (window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (function(t, n, a) {
-        e[n] = a
-      })), createEditor("editor", e.file, e.lang, e.theme)),
-      n = createTree("tree", t);
-    window.define = ace.define, window.require = ace.require, ace.config.set("basePath", "/"), ace.config.set("workerPath", "/"), createFileUploader("uploader", n, t), void 0 === e.file && (e.file = "/schedule.html"), t.loadUrl(e.file)
+<!-- https://liveweave.com/rrn1Qs -->
+	
+	
+	 <!-- save to phone home screen and open without adress URL bar -->
+	 <meta name="mobile-web-app-capable" content="yes"> 	
+ 	
+<!-- does not work nice in preview editor, reloads the page in 10 seconds -->
+ 	 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Sonoff a Switch multi range slider timeline ESP32 ESP8266 ESP8285 mDNS WiFi relays timed switch</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   
-    ace.require("ace/ext/language_tools");
+<!-- Copyright 2022 Dirk Luberth Dijkman Bangert Andijk The Netherlands -->
+
+ 
+<link rel="stylesheet" type="text/css" href="/_bestaatniet_/css/result-light.css">
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.css">
+
+
+
+
+
+	
+<style id="compiled-css" type="text/css">
+ /*
+// external css version 15.5.0
+// change the slider CSS a little bit 
+// so that handle does not block the view at guide rail
+*/
+
+.noUi-horizontal .noUi-handle {
+  width: 34px;
+  height: 6px;  //28
+  right: -17px;
+  top: -6px;  //6
+}
+
+
+       /*
+        .noUi-base{
+            border-left: 2px solid red;
+            height: 20px;
+            position:absolute;
+            left: 76%;
+        z-index: auto;
+          
+        }
+        */
+        
+   main {
+    margin-bottom: 1%;
   }
-  "undefined" == typeof XMLHttpRequest && (XMLHttpRequest = function() {
-    try {
-      return new ActiveXObject("Msxml2.XMLHTTP.6.0")
-    } catch (e) {}
-    try {
-      return new ActiveXObject("Msxml2.XMLHTTP.3.0")
-    } catch (e) {}
-    try {
-      return new ActiveXObject("Microsoft.XMLHTTP")
-    } catch (e) {}
-    throw new Error("This browser does not support XMLHttpRequest.")
-  });
-  var QueuedRequester = function() {
-    this.queue = [], this.running = !1, this.xmlhttp = null
-  };
-  QueuedRequester.prototype = {
-    _request: function(e) {
-      if (this.running = !0, !(!e instanceof Object)) {
-        var t = this;
-        ge("loader").style.display = "block";
-        var n = "";
-        if (e.params instanceof FormData) n = e.params;
-        else if (e.params instanceof Object)
-          for (var a in e.params) n += "" === n ? "GET" === e.method ? "?" : "" : "&", n += encodeURIComponent(a) + "=" + encodeURIComponent(e.params[a]);
-        this.xmlhttp = new XMLHttpRequest, this.xmlhttp.onreadystatechange = function(e, n) {
-          return function() {
-            4 == e.readyState && (ge("loader").style.display = "none", n.callback(e.status, e.responseText), 0 === t.queue.length && (t.running = !1), t.running && t._request(t.queue.shift()))
-          }
-        }(this.xmlhttp, e), "GET" === e.method ? (this.xmlhttp.open(e.method, e.url + n, !0), this.xmlhttp.send()) : (this.xmlhttp.open(e.method, e.url, !0), n instanceof String && this.xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), this.xmlhttp.send(n))
-      }
-    },
-    stop: function() {
-      this.running && (this.running = !1), this.xmlhttp && this.xmlhttp.readyState < 4 && this.xmlhttp.abort()
-    },
-    add: function(e, t, n, a) {
-      this.queue.push({
-        url: t,
-        method: e,
-        params: n,
-        callback: a
-      }), this.running || this._request(this.queue.shift())
-    }
-  };
-  var requests = new QueuedRequester
-</script>
+  
+.floating-menu {
+    font-family: sans-serif;
+    background: navy;
+    padding: 5px;;
+    width: 100%;
+    z-index: 100;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+  }
+
+  .floating-menu a, 
+  .floating-menu h3 {
+    font-size: 0.9em;
+    /*display: block;*/
+    margin: 0 0.5em;
+    color: white;
+  }
+  
+  html {
+    scroll-behavior: smooth
+  }
+    </style>
 
 
-<!--            https://cdnjs.com/libraries/ace/1.2.0              -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.7.0/ace.js"></script>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.7.0/ext-language_tools.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.7.0/mode-html.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.7.0/mode-javascript.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.7.0/snippets/html.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.7.0/snippets/javascript.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.7.0/worker-html.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.7.0/worker-javascript.min.js"></script>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.7.0/ext-searchbox.min.js"></script>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.7.0/ext-beautify.min.js"></script>
-
-
+<!-- floating menu -->
+<main>
+  <!--https://www.quackit.com/html/html_editors/scratchpad/?example=/css/codes/css_floating_menu_positioned-->
+  <nav class="floating-menu">
+    <!-- next some should be filled in by %% processor or ntp time json websocket-->
+    <a href="/">mDNS.local</a><a href="http://10.10.100.104">10.10.100.104</a><a href="/">NTP TIME</a><a href="/edit">WebEditor</a><a href="https://ldijkman.github.io/Electra/">Electra</a>
+  </nav>
+</main>
+<!-- floating menu -->
 
 <script>
-  if (void 0 === ace.edit) {
-    var script = document.createElement("script");
-    script.src = "/ace.js", script.async = !1, document.head.appendChild(script)
-  }
+
+
+
+
+// <!-- tryng to mak a marker for current actual time -->
+// my slider is 1440 minutes long wich is a day
+// so actual (hours x 60 + minutes)/1440 x 100% is actual percentage on slider
+// 50% is 12 o clock
+document.addEventListener('DOMContentLoaded', function() {
+  var l = document.createElement('div');                                        // create a div class actualtime on div nouibase 
+  l.setAttribute("id", "actualtime");
+  l.setAttribute("class", "actualtime");
+  var bookStyles = {
+    position: "absolute",
+   color: "red",
+   backgroundColor: "blue",
+   height: "60px",
+   width: "1px",
+   left: "50%",
+   top: "-1px"
+};
+  
+for (let style in bookStyles) {
+ l.style[style] = bookStyles[style];
+}
+
+  l.innerHTML = "<br><br><br>Actual time marker";
+
+ for (let i = 0; i < 11; i++) {  
+  document.getElementsByClassName('noUi-base')[i].appendChild(l.cloneNode(true));   // create a div class actualtime on div nouibase
+ }
+ 
+ 
+ 
+ 
+ 
+   var ll = document.createElement('div');                                        // create a div class actualtime on div nouibase 
+  ll.setAttribute("id", "sunrisel");
+  ll.setAttribute("class", "sunrisel");
+  var bookStyles = {
+    position: "absolute",
+   color: "grey",
+   backgroundColor: "blue",
+   height: "60px",
+   width: "1px",
+   left: "0%",
+   top: "-1px"
+};
+
+ll.innerHTML = "<br><br><br>sunrise";
+ 
+ for (let style in bookStyles) {
+ ll.style[style] = bookStyles[style];
+}
+ 
+  for (let i = 0; i < 11; i++) {  
+  document.getElementsByClassName('noUi-base')[i].appendChild(ll.cloneNode(true));   // create a div class actualtime on div nouibase
+ }
+  
+ 
+ 
+ 
+ 
+   var lll = document.createElement('div');                                        // create a div class actualtime on div nouibase 
+  lll.setAttribute("id", "sunsetl");
+  lll.setAttribute("class", "sunsetl");
+  var bookStyles = {
+    position: "absolute",
+   color: "grey",
+   backgroundColor: "blue",
+   height: "60px",
+   width: "1px",
+   left: "100%",
+   top: "-1px"
+};
+
+lll.innerHTML = "<br><br><br>sunset";
+ 
+ for (let style in bookStyles) {
+ lll.style[style] = bookStyles[style];
+}
+ 
+  for (let i = 0; i < 11; i++) {  
+  document.getElementsByClassName('noUi-base')[i].appendChild(lll.cloneNode(true));   // create a div class actualtime on div nouibase
+ }
+ 
+ 
+ 
+}, false);
+
+
+
+
+
+/**
+ * ----------------------------------------------------------------------------
+ *   ESP32 Remote Control with WebSocket
+ * 
+ *   © 2020 Stéphane Calderoni  
+ *   https://m1cr0lab-esp32.github.io/remote-control-with-websocket/
+ *   https://github.com/m1cr0lab-esp32/remote-control-with-websocket
+ * ----------------------------------------------------------------------------
+ * 
+ * 
+ * 
+ *websockts json send
+ * next is new ip url
+TXT:{"ip":"10.10.100.101:80,10.10.100.105:80,10.10.100.102:80,","url":"Living,Garden,kitchen,"}
+wil remove the scan link ip and url
+TXT:{"status":"ON","time":"15:25:37","offdelay":"360","offcnt":340,"T":0,"H":0,"P":0,"scan":"<p><a href=\"http://10.10.100.101:80\">Living.local</a><p><p><a href=\"http://10.10.100.105:80\">Garden.local</a><p><p><a href=\"http://10.10.100.102:80\">kitchen.local</a><p>"}
+ */
+
+var gateway = `ws://${window.location.hostname}/ws`;
+var websocket;
+
+// ----------------------------------------------------------------------------
+// Initialization
+// ----------------------------------------------------------------------------
+
+window.addEventListener('load', onLoad);
+
+function onLoad(event) {
+    initWebSocket();
+    initButton();
+}
+
+// ----------------------------------------------------------------------------
+// WebSocket handling
+// ----------------------------------------------------------------------------
+
+function initWebSocket() {
+    console.log('Trying to open a WebSocket connection...');
+    websocket = new WebSocket(gateway);
+    websocket.onopen    = onOpen;
+    websocket.onclose   = onClose;
+    websocket.onmessage = onMessage;
+}
+
+function onOpen(event) {
+    console.log('Connection opened');
+}
+
+function onClose(event) {
+    console.log('Connection closed');
+    setTimeout(initWebSocket, 2000);
+}
+
+function onMessage(event) {
+    let data = JSON.parse(event.data); 
+ /*   
+    if (data.ip){  // websocket with ip and url
+    // we have a webstocket with ip like
+    // TXT:{"ip":"10.10.100.101:80,10.10.100.105:80,10.10.100.102:80,","url":"Living,Garden,kitchen,"}
+    var ipArr = (data.ip).split(',');
+    var urlArr = (data.url).split(','); 
+    var result = [];
+    
+    for ( var i = 0; i < ipArr.length-1; i++ ) {           // -1 last field is empty
+        result.push( [ urlArr[i], ipArr[i] ] );              // to double array ip url for alafabet sort
+    }
+    
+    result=result.sort((a, b) => a[0].localeCompare(b[0]));  // sort alfabet mddns url
+    
+    document.getElementById('ip').innerHTML=result;
+ 
+      for (let i = 0; i < result.length; i++){ 
+        
+           let url = "http://"+result[i][1]+"/button.html";    // source to set for iframe
+           let src = document.getElementById(i).src;          // read the source from iframe for compare
+           url=url.replace(":80", "");                      // read iframe src does not return port
+          if( src != url ){            // only reload change iframe src if url is changed
+              document.getElementById(i).src = url;
+          }
+          // mdns text link to ip
+           document.getElementById("murl"+i).innerHTML = "<a href=\"http://"+result[i][1]+"\" target=\""+result[i][0]+"\">"+result[i][0]+"</a>";   //show mdns text name
+       
+      } 
+    }
+  
+    
+    if (data.status){
+    // we have an websocket json like TXT:{"status":"ON","time":"15:25:37","offdelay":"360","offcnt":340,"T":0,"H":0,"P":0,"scan":"<p><a href=\"http://10.10.100.101:80\">Living.local</a><p><p><a href=\"http://10.10.100.105:80\">Garden.local</a><p><p><a href=\"http://10.10.100.102:80\">kitchen.local</a><p>"}
+    
+    document.getElementById('ledstate').innerHTML = data.status;
+    document.getElementById('image').src = data.status+".gif";
+    document.getElementById('mdnsscan').innerHTML = data.scan;
+    document.getElementById('NTPTime').innerHTML = data.time;
+    document.getElementById('OFFDelay').innerHTML = data.offdelay;
+    document.getElementById('OFFcountdwn').innerHTML = data.offcnt;
+    document.getElementById('T').innerHTML = data.T;
+    document.getElementById('H').innerHTML = data.H;
+    document.getElementById('P').innerHTML = data.P;
+    }
+*/
+}
+
+// ----------------------------------------------------------------------------
+// Button handling
+// ----------------------------------------------------------------------------
+
+function initButton() {
+    //document.getElementById('toggle').addEventListener('click', onToggle);
+    ///document.getElementById('offdelaybutton').addEventListener('click', onOffdelay);
+}
+
+function onToggle(event) {
+   // websocket.send(JSON.stringify({'action':'toggle'}));
+}
+
+function onOffdelay(event) {
+   // var temp=document.getElementById('offdelay').value;
+   // websocket.send(JSON.stringify({'off_delay':temp}));
+}
+
+
+
 </script>
 
-<body onload="onBodyLoad()">
-<!--
-would like to use / have another the colorpicker addon in the code editor
-active on edited text
-but i do not know how to implement it in this html/script code
-https://codepen.io/ldijkman/pen/LYdZpYp
--->
-  <script type="text/javascript" src="https://jscolor.com/release/2.4/jscolor-2.4.8/jscolor.js" ></script>   
-  <script type="text/javascript" src="./ace-colorpicker.min.js" ></script>  
 
 
-<div id="container">
-            
+</head>
+<body>
 
-      
-      <div id="popup1" class="overlay">
-                <div class="popup">
-                  <!-- pure CSS popup bit from https://codepen.io/imprakash/pen/GgNMXO -->
-                  <a class="close" href="#">&times;</a>
-                  <div class="content" style="text-align: left;">
-                    <h1>Ace, SkyWriter, BeSpin!</h1>
-                    Hellup<br>
-                    <br>
-                    ctrl+f = find<br>
-                    ctrl + s = save <br>
-                    ctrl + h = search & replace<br>
-                    <br>
-                    ctrl + z = undo<br>
-                    ctrl + y = redo<br>
-                    <br>
-                    Find next	Ctrl-K<br>
-                    Find previous	Ctrl-Shift-K<br>
-                    <br>
-                    Change to lower case	Ctrl-Shift-U<br>
-                    Change to upper case	Ctrl-U<br>
-                    <br>
-                    https://divtable.com/generator/<br>
-                    <center>
-                    <h1>Electra</h1>
-                    <a href="https://ldijkman.github.io/Electra/" target="Hey_Electra">https://ldijkman.github.io/Electra/ </a><br>
-                    <br>
-                    </center>
-                  </div>
-                </div>
-              </div>
-      
-  
-   <div id="loader" class="loader"></div>
-    <div id="uploader">
-        <div style="float:right;">
-          
-             <br>
-             <!-- https://codepen.io/ldijkman/pen/xxWdBdp -->
-             <label>Theme:
-<select id="ace-theme" size="1" style="width: 55px;">
-  <optgroup label="bright">
-    <option value="textmate">textmate</option>
-     <option value="chrome">chrome</option>
-     <option value="solarized_light">solarized_light</option>
-  </optgroup>
-  <optgroup label="dark">
-    <option value="monokai" selected >monokai</option>
-    <option value="twilight">twilight</option>
-    <option value="cobalt">cobalt</option>
-    <option value="vibrant_ink">vibrant_ink</option>
-  </optgroup>
-</select>
-</label>  
-
-<label>Mode:  
-<select id="ace-mode" style="width: 55px;">
-  <option value="CSS">CSS</option>
-  <option value="HTML" selected>HTML</option>
-  <option value="JavaScript">JavaScript</option>
-  <option value="JSON">JSON</option>
-  <option value="Plain Text">Plain Text</option>
-</select>
-</label> 
-
-
-&nbsp;
-
-
-<script>  
-function paste() {  
-var myval = document.getElementById("myList").value;  
-var htmltext;
-//console.log(myval);
-if(myval==1){
-  htmltext="<!--     -->";
-  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
-  console.log(ace.edit("editor").getCursorPosition());
-  console.log(ace.edit("editor").selection.getCursor().column);
-  console.log(ace.edit("editor").selection.getCursor().row);
-  console.log(ace.edit("editor").selection.getCursor().column-6);
-  //move cursor rom end of line  inside the comment part of paste
-  ace.edit('editor').gotoLine(ace.edit("editor").selection.getCursor().row+1,ace.edit("editor").selection.getCursor().column-6);
-}
-if(myval==2){
-  htmltext="<!DOCTYPE html>\n<html>\n<head>\n<title>  </title>\n</head>\n<body style=\"background-color: orange; color: yellow;\">\n<center>\n<h1>Hello</h1>\n</center>\n\n</body>\n</html>";
-  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
-}
-if(myval==3){
-  htmltext="<img src=\"https://raw.githubusercontent.com/ldijkman/Electra/main/touch_electra.gif\"><br>";
-  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
-}
-if(myval==4){
-  htmltext="<a href=\"http://ldijkman.github.io/Electra\" target=\"_blank\">Electra</a><br>";
-  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
-}
-if(myval==5){
-  htmltext="<script type=\"text/javascript\" src=\"\"></script\>";
-  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
-}
-if(myval==6){
-  htmltext="&nbsp;";
-  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
-}
-if(myval==7){
-  htmltext="&emsp;";
-  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
-}
-
-if(myval==8){
-  htmltext="<p align=\"right\">Right align content</p>";
-  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
-}
-if(myval==9){
-  htmltext="<iframe id=\"\" align=\"left\" width=\"500\" height=\"320\" src=\"https://www.youtube.com/embed/5uapPPC8eQY?autoplay=1\" style=\"border:none; -ms-transform: scale(1, 1); transform: scale(1, 1)\" scrolling=\"no\"></iframe>";
-  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
-}
-if(myval==10){
-  htmltext="<meta http-equiv=\"Refresh\" content=\"10\">\n";
-  htmltext+="<!-- does not work nice in preview editor, reloads the page in 10 seconds -->";
-  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
-}
-
-
-
-ace.edit("editor").focus();
-document.getElementById("myList").options[0].selected = true;
-}
-
-</script>  
   
 
 
-<select id = "myList" onchange = "paste()" style="width: 55px;" title="paste at cursor position"> 
-<option value="0">paste</option> 
-<option value="1"> &lt;!-- --&gt; </option>  
-<option value="2"> html page </option>  
-<option value="3"> img src </option>  
-<option value="4"> a href </option>  
-<option value="5"> script src= </option>  
-<option value="6"> \&\nbsp; </option> 
-<option value="7"> \&\emsp; </option> 
-<option value="8"> p align right </option> 
-<option value="9"> iframe </option> 
-<option value="10"> meta refresh 10sec</option> 
-</select>  
-
-&nbsp;
+<br><br>
+<button onclick="scrollToAnchor('#checkmonday');">Go to monday</button><br><br>
 
 
-<button onclick='pretty()' id="pretty" title="beatify pretty print format ">pretty</button>&nbsp;
-          
 
-            <button onclick='suggestonoff()' id="butsuggest" title="suggest on / off">suggest</button>&nbsp;&nbsp;
-          
-           
-           
-              <button onclick='ace.edit("editor").setFontSize(ace.edit("editor").getFontSize()-1);' title="zoom -">-</button>&nbsp;&nbsp;
-             <button onclick='ace.edit("editor").setFontSize(ace.edit("editor").getFontSize()+1);' title="zoom +">+</button>&nbsp;&nbsp;&nbsp;&nbsp;
-             
-             <!--  https://codepen.io/jackliangtw/pen/yLVPQNB   -->
-             <button onclick="toggleFullScreen()" title="Toggle FullScreen">FullScreen</button>&nbsp;&nbsp;&nbsp;&nbsp;
-             
-             <input type="button" value="Undo" onClick='ace.edit("editor").execCommand("undo");' title="undo">
-             <input type="button" value="Redo" onClick='ace.edit("editor").execCommand("redo");' title="redo">&nbsp;&nbsp;&nbsp;&nbsp;
-             
-             <input type="button" value="Search" onClick='ace.edit("editor").execCommand("find");' title="search">
-             <input type="button" value="Replace" onClick='ace.edit("editor").execCommand("replace");' title="search and replace">&nbsp;&nbsp;&nbsp;&nbsp;
-             
-             <button id="webbutton" title="view in browser window (note: you have to save to see changes)">www</button>
-             <input type="checkbox" class="fulledit" id ="fulledit" name="fulledit" title="full edit screen" checked>
-             <input type="checkbox" class="Preview" id ="Preview" name="Preview" title="reload preview on every keystroke on/off" checked>
-             <input type="button" value="Preview" onClick="updatefrombutton();" title="reload by button if checkbox is off" ></label>&nbsp;&nbsp;&nbsp;
-             Color: <input id="to-select-text" style="width:60px;" onClick="this.select();" value="#3399FF80" data-jscolor="{}" title="colorpicker" >
-             <button id="copy-button" title="maybe copy works" >Copy</button>
-             <button id="info-button"  onClick="location.href='#popup1'"><b>?</b></button>&nbsp;
-        </div>
-    </div>
+<a href="https://jsfiddle.net/luberth/ow3zceyn/show/" target="mine">version 13 https://jsfiddle.net/luberth/ow3zceyn/show/</a>
+<br>Sonoff a Switch !<br>
+<h2>Each WiFi relais its own timed switching schedule webpage<br>
+Easy Set && Overview SwitchTimes<br><br>
+Big is Better, better Landscape view!<br><br></h2>
+<h2>Rotate your screen to landscape<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#checkmonday">Go to Monday</a><br></h2>
+<br>
+EWelink only 4 on/off schedule timers? (and 4 me hard to understand the working)<br>
+Are you done with the EWElink advertisements in the app<br>
+Do not want to Share your Phone/Data with Winnie-the-Pooh<br>
+Tasmota Home Assistant, Domoticz to advanced, to complex,  to Nerdy?!<br>
+<br>
+<b>Home Automation made Safe & Easy at no Charge!</b> <br>
+logical mDNS human friendly http://*.local adresses for the relais switches webpage<br>
+User defined friendly url like http://kitchen.local, http://living.local, http://hallway.local, http://cellar.local<br>
+each device automaticly shows a scanned linked list of other devices in the local network on its webpage<br>
+if a new device is added and configured via accesspoint wifi manager it automaticly appears in linked list on all other devices webpages <br>
+and it scanned / linked lists all other http://***.local devices on its own webpage<br>no wifisettings no mdns http://***.local and relais i/o settings hardcoded, all settings user defineble<br>so every device can be programmed with the same code<br><br>
+on Android you can use <a href ="https://play.google.com/store/apps/details?id=de.wellenvogel.bonjourbrowser&hl=en&gl=US" target="hi Electra">Bonjour browser app </a>to see and navigate all devices on the local network<br>or with apple saphari just go to for example http://living.local and from that webpage you can click links to all other devices on the local network<br><br>
+Test to Easy set/overview/timeline auto switch times for ESP32 ESP8266 ESP8285  WiFi Relais WebServerPage<br><br><br>
+esp8266 comes with different memory sizes?<br>
+my wemos d1 r1 mini with relais shield has a 32mbit chip = 4MB<br>
+<br>
+<a href="http://www.google.com/search?q=nouislider" target="Hey Electra open it in a new browser tab">http://www.google.com/search?q=nouislider</a><br>
+used external nouislider 15.5.0 js en css<br>
+https://cdnjs.cloudflare.com/ajax/libs<br>
+/noUiSlider/15.5.0/nouislider.js<br>
+https://cdnjs.cloudflare.com/ajax/libs<br>
+/noUiSlider/15.5.0/nouislider.css<br>
+https://cdnjs.com/libraries/noUiSlider<br>
 
-    <div id="tree"></div>
- 
-    <div id="editor"></div>
-    
-    <div id="iframediv"><iframe id="iframe" frameborder="0"></iframe></div>
-  
-    <div id="preview" style="display:none"></div>
-    
-    <iframe id="download-frame" style="display:none"></iframe>
+<br><b>writes time data to browser developer console on slider change</b><br>
+open console with keyboard shortcut Ctrl Shift J (on Windows & raspberry pi)<br>	
+Later for JSon data pass??? from browser to ESP32 ESP8266 ESP8285<br>
+<br>
+if the page is served from ESP32, chromium inspect network ws send <br>
+now shows the json websocket send<br> 
+<br>
+<hr>
+<h1>Browser geolocation must be https://</h1>
+<p id="demo"></p>
+<p id="demo2"></p>
+<hr>
+<script>
 
+
+
+</script>
+
+
+
+
+<p id="MyAnchor" class="boldtitle">MyAnchorText</p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#dag1">go to monday</a><br>
+
+<div id="dag1" style="padding-left: 10px;padding-right: 10px;">
+<br>
+<hr>
+<input type="checkbox" id ="checkmonday" name="checkmonday" onchange="boxes(); writetoconsole(monday);" checked><b>Monday</b> 
+<br><br><br>
+<div id="monday"></div>
+<br><br><br><br>
+<form>
+<input type="checkbox" class="check" id ="ct1m" name="cmonday[]" onchange="turnoff()" checked>
+ON <input type ="time" id="mt1" oninput="timeset('mt1')"> OFF <input type ="time" id="mt2" oninput="timeset('mt2')"><br>
+<input type="checkbox" class="check" id ="ct2m" name="cmonday[]" onchange="turnoff()" checked>
+ON <input type ="time" id="mt3" oninput="timeset('mt3')"> OFF <input type ="time" id="mt4" oninput="timeset('mt4')"><br>
+<input type="checkbox" class="check" id ="ct3m" name="cmonday[]" onchange="turnoff()" checked>
+ON <input type ="time" id="mt5" oninput="timeset('mt5')"> OFF <input type ="time" id="mt6" oninput="timeset('mt6')">
+<br>
+<div style="float: right;">
+<input type="button" value="NEXT" onclick="scrollToAnchor('#checktuesday');">
+</div>
+<div class="sunset"style="float: right;"></div>
+<div class="sunrise"style="float: right;"></div>
+<br>
+</form>
+<hr>
+</div>
+
+<br><br>
+
+<hr>
+<div id="dag2">
+<input type="checkbox" id ="checktuesday" name="checktuesday" onchange="boxes(); writetoconsole(tuesday);" checked><b>Tuesday</b>
+<br><br><br>
+<div id="tuesday"></div>
+<br><br><br><br>
+<form>
+<input type="checkbox" class="check" id ="ct1tu" onchange="turnoff()" checked>
+ON <input type ="time" id="tut1" oninput="timeset('tut1')"> OFF <input type ="time" id="tut2" oninput="timeset('tut2')"><br>
+<input type="checkbox" class="check" id ="ct2tu" onchange="turnoff()" checked>
+ON <input type ="time" id="tut3" oninput="timeset('tut3')"> OFF <input type ="time" id="tut4" oninput="timeset('tut4')"><br>
+<input type="checkbox" class="check" id ="ct3tu" onchange="turnoff()" checked>
+ON <input type ="time" id="tut5" oninput="timeset('tut5')"> OFF <input type ="time" id="tut6" oninput="timeset('tut6')">
+<br>
+<div style="float: right;">
+<input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkmonday');">&nbsp;&nbsp;
+<input type="button" value="NEXT" onclick="scrollToAnchor('#checkwednesday');">
+</div>
+<div class="sunset" style="float: right;"></div>
+<div class="sunrise" style="float: right;"></div>
+<br>
+</form>
+</div>
+<hr>
+<br><br>
+
+<hr>
+<div id="dag3">
+<input type="checkbox" id ="checkwednesday" name="checkwednesday" onchange="boxes(); writetoconsole(wednesday);" checked><b>Wednesday</b>
+<br><br><br>
+<div id="wednesday"></div>
+<br><br><br><br>
+<form>
+<input type="checkbox" class="check" id ="ct1w" onchange="turnoff()" checked>
+ON <input type ="time" id="wt1" oninput="timeset('wt1')"> OFF <input type ="time" id="wt2" oninput="timeset('wt2')"><br>
+<input type="checkbox" class="check" id ="ct2w" onchange="turnoff()" checked>
+ON <input type ="time" id="wt3" oninput="timeset('wt3')"> OFF <input type ="time" id="wt4" oninput="timeset('wt4')"><br>
+<input type="checkbox" class="check" id ="ct3w" onchange="turnoff()" checked>
+ON <input type ="time" id="wt5" oninput="timeset('wt5')"> OFF <input type ="time" id="wt6" oninput="timeset('wt6')">
+<br>
+<div style="float: right;">
+<input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checktuesday');">&nbsp;&nbsp;
+<input type="button" value="NEXT" onclick="scrollToAnchor('#checkthursday');">
+</div>
+<div class="sunset" style="float: right;"></div>
+<div class="sunrise" style="float: right;"></div>
+<br>
+</form>
+</div>
+<hr>
+<br><br>
+
+
+<hr>
+<div id="dag4">
+<div id="donderdag">
+<input type="checkbox" id ="checkthursday" name="checkthursday" onchange="boxes(); writetoconsole(thursday);" checked><b>Thursday</b><br>
+<br>
+<br>
+<div id="thursday"></div>
+<br><br><br><br>
+<form>
+<input type="checkbox" class="check" id ="ct1th" onchange="turnoff()" checked>
+ON <input type ="time" id="tht1" oninput="timeset('tht1')"> OFF <input type ="time" id="tht2" oninput="timeset('tht2')"><br>
+<input type="checkbox" class="check" id ="ct2th" onchange="turnoff()" checked>
+ON <input type ="time" id="tht3" oninput="timeset('tht3')"> OFF <input type ="time" id="tht4" oninput="timeset('tht4')"><br>
+<input type="checkbox" class="check" id ="ct3th" onchange="turnoff()" checked>
+ON <input type ="time" id="tht5" oninput="timeset('tht5')"> OFF <input type ="time" id="tht6" oninput="timeset('tht6')">
+<br>
+<div style="float: right;">
+<input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkwednesday');">&nbsp;&nbsp;
+<input type="button" value="NEXT" onclick="scrollToAnchor('#checkfriday');">
+</div>
+<div class="sunset" style="float: right;"></div>
+<div class="sunrise" style="float: right;"></div>
+<br>
+</form>
+</div>
+<hr>
+<br><br>
 </div>
 
 
 
+<div id="dag5">
+<hr>
+<input type="checkbox" id ="checkfriday" name="checkfriday" onchange="boxes(); writetoconsole(friday);" checked><b>Friday</b><br>
+<br>
+<br>
+<div id="friday"></div>
+<br><br><br><br>
+<form>
+<input type="checkbox" class="check" id ="ct1fr" onchange="turnoff()" checked>
+ON <input type ="time" id="frt1" oninput="timeset('frt1')"> OFF <input type ="time" id="frt2" oninput="timeset('frt2')"><br>
+<input type="checkbox" class="check" id ="ct2fr" onchange="turnoff()" checked>
+ON <input type ="time" id="frt3" oninput="timeset('frt3')"> OFF <input type ="time" id="frt4" oninput="timeset('tht4')"><br>
+<input type="checkbox" class="check" id ="ct3fr" onchange="turnoff()" checked>
+ON <input type ="time" id="frt5" oninput="timeset('frt5')"> OFF <input type ="time" id="frt6" oninput="timeset('frt6')">
+<br>
+<div style="float: right;">
+<input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkthursday');">&nbsp;&nbsp;
+<input type="button" value="NEXT" onclick="scrollToAnchor('#checksaturday');">
+</div>
+<div class="sunset" style="float: right;"></div>
+<div class="sunrise" style="float: right;"></div>
+<br>
+</form>
+<hr>
+</div>
+
+<br><br>
+
+
+<hr>
+<div id="dag6" style="margin-bottom: 20px;margin-top: 20px;">
+<input type="checkbox" id ="checksaturday" name="checksaturday" onchange="boxes(); writetoconsole(saturday);" checked><b>Saturday</b><br>
+<br>
+<br>
+<div id="saturday"></div>
+<br><br><br><br>
+<form>
+<input type="checkbox" class="check" id ="ct1sa" onchange="turnoff()" checked>
+ON <input type ="time" id="sat1" oninput="timeset('sat1')"> OFF <input type ="time" id="sat2" oninput="timeset('sat2')"><br>
+<input type="checkbox" class="check" id ="ct2sa" onchange="turnoff()" checked>
+ON <input type ="time" id="sat3" oninput="timeset('sat3')"> OFF <input type ="time" id="sat4" oninput="timeset('sat4')"><br>
+<input type="checkbox" class="check" id ="ct3sa" onchange="turnoff()" checked>
+ON <input type ="time" id="sat5" oninput="timeset('sat5')"> OFF <input type ="time" id="sat6" oninput="timeset('sat6')">
+<br>
+<div style="float: right;">
+<input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkfriday');">&nbsp;&nbsp;
+<input type="button" value="NEXT" onclick="scrollToAnchor('#checksunday');">
+</div>
+<div class="sunset" style="float: right;"></div>
+<div class="sunrise" style="float: right;"></div>
+<br>
+</form>
+</div>
+<hr>
+<br><br>
+
+
+<hr>
+<div id="dag0">
+<input type="checkbox" id ="checksunday" name="checksunday" onchange="boxes(); writetoconsole(sunday);" checked><b>Sunday</b><br>
+<br>
+<br>
+<div id="sunday"></div>
+<br><br><br><br>
+<form>
+<input type="checkbox" class="check" id ="ct1su" onchange="turnoff()" checked>
+ON <input type ="time" id="sut1" oninput="timeset('sut1')"> OFF <input type ="time" id="sut2" oninput="timeset('sut2')"><br>
+<input type="checkbox" class="check" id ="ct2su" onchange="turnoff()" checked>
+ON <input type ="time" id="sut3" oninput="timeset('sut3')"> OFF <input type ="time" id="sut4" oninput="timeset('sut4')"><br>
+<input type="checkbox" class="check" id ="ct3su" onchange="turnoff()" checked>
+ON <input type ="time" id="sut5" oninput="timeset('sut5')"> OFF <input type ="time" id="sut6" oninput="timeset('sut6')">
+<br>
+<div style="float: right;">
+<input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checksaturday');">&nbsp;&nbsp;
+<input type="button" value="NEXT" onclick="scrollToAnchor('#checkeveryday');">
+</div>
+<div class="sunset" style="float: right;"></div>
+<div class="sunrise" style="float: right;"></div>
+<br>
+</form>
+</div>
+<hr>
+<br><br>
+
+
+<div id="iederedag">
+<hr>
+<input type="checkbox" id ="checkeveryday" name="checkeveryday" checked><b>Every Day of the Week</b><br>
+<br>
+<br>
+<div id="everyday"></div>
+<br><br><br><br>
+<form>
+<input type="checkbox" class="check" id ="ct1ed" onchange="turnoff()" checked>
+ON <input type ="time" id="edt1" oninput="timeset('edt1')"> OFF <input type ="time" id="edt2" oninput="timeset('edt2')"><br>
+<input type="checkbox" class="check" id ="ct2ed" onchange="turnoff()" checked>
+ON <input type ="time" id="edt3" oninput="timeset('edt3')"> OFF <input type ="time" id="edt4" oninput="timeset('edt4')"><br>
+<input type="checkbox" class="check" id ="ct3ed" onchange="turnoff()" checked>
+ON <input type ="time" id="edt5" oninput="timeset('edt5')"> OFF <input type ="time" id="edt6" oninput="timeset('edt6')">
+<br>
+<div style="float: right;">
+<input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checksunday');">&nbsp;&nbsp;
+<input type="button" value="NEXT" onclick="scrollToAnchor('#checkweekdays');">
+</div>
+<div class="sunset" style="float: right;"></div>
+<div class="sunrise" style="float: right;"></div>
+<br>
+</form>
+<hr>
+</div>
+
+
+<br><br>
+
+
+
+<div id="weekdagen">
+<hr>  
+<input type="checkbox" id ="checkweekdays" name="checkweekdays" checked><b>Weekdays Monday ... Friday</b><br>
+<br>
+<br>
+<div id="weekdays"></div>
+<br><br><br><br>
+<form>
+<input type="checkbox" class="check" id ="ct1wd" onchange="turnoff()" checked>
+ON <input type ="time" id="wdt1" oninput="timeset('wdt1')"> OFF <input type ="time" id="wdt2" oninput="timeset('wdt2')"><br>
+<input type="checkbox" class="check" id ="ct2wd" onchange="turnoff()" checked>
+ON <input type ="time" id="wdt3" oninput="timeset('wdt3')"> OFF <input type ="time" id="wdt4" oninput="timeset('wdt4')"><br>
+<input type="checkbox" class="check" id ="ct3wd" onchange="turnoff()" checked>
+ON <input type ="time" id="wdt5" oninput="timeset('wdt5')"> OFF <input type ="time" id="wdt6" oninput="timeset('wdt6')">
+<br>
+<div style="float: right;">
+<input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkeveryday');">&nbsp;&nbsp;
+<input type="button" value="NEXT" onclick="scrollToAnchor('#week_end');">
+</div>
+<div class="sunset" style="float: right;"></div>
+<div class="sunrise" style="float: right;"></div>
+<br>
+</form>
+<hr>
+</div>
+<br><br>
+
+
+<div id="week_end" style="padding-left: 10px;padding-right: 10px;">
+<br>  
+<hr>
+<input type="checkbox" id ="checkweekends" name="checkweekends" checked><b>Weekends Saturday Sunday</b> <br>
+<br>
+<br>
+<div id="weekends"></div>
+<br><br><br><br>
+<form>
+<input type="checkbox" class="check" id ="ct1wend" onchange="turnoff()" checked>
+ON <input type ="time" id="wendt1" oninput="timeset('wendt1')"> OFF <input type ="time" id="wendt2" oninput="timeset('wendt2')"><br>
+<input type="checkbox" class="check" id ="ct2wend" onchange="turnoff()" checked>
+ON <input type ="time" id="wendt3" oninput="timeset('wendt3')"> OFF <input type ="time" id="wendt4" oninput="timeset('wendt4')"><br>
+<input type="checkbox" class="check" id ="ct3wend" onchange="turnoff()" checked>
+ON <input type ="time" id="wendt5" oninput="timeset('wendt5')"> OFF <input type ="time" id="wendt6" oninput="timeset('wendt6')">
+<br>
+<div style="float: right;">
+<input type="button" value="PREVIOUS" onclick="scrollToAnchor('#checkweekdays');">&nbsp;&nbsp;
+<input type="button" value="NEXT" onclick="scrollToAnchor('#checkudd');">
+</div>
+<div class="sunset" style="float: right;"></div>
+<div class="sunrise" style="float: right;"></div>
+<br>
+</form>
+<hr>
+<br>
+</div>
+
+<br><br>
+
+<div id="udd+days">
+<hr>
+<input type="checkbox" id ="checkudd" name="checkudd"><b>User Defined Days</b><br>
+<table style="border-collapse: collapse;" border = "1">
+	<tbody>
+		<tr>
+			<td class="d1"> mon </td>
+			<td class="d2"> tue </td>
+			<td class="d3"> wed </td>
+			<td class="d4"> thu </td>
+			<td class="d5"> fri </td>
+			<td class="d6"> sat </td>
+			<td class="d0"> sun </td>
+		</tr>
+		<tr>
+			<td id="cb_udd_1"><input type="checkbox" id="cb_udd1"> </td>
+			<td id="cb_udd_2"><input type="checkbox" id="cb_udd2"> </td>
+			<td id="cb_udd_3"><input type="checkbox" id="cb_udd3"> </td>
+			<td id="cb_udd_4"><input type="checkbox" id="cb_udd4"> </td>
+			<td id="cb_udd_5"><input type="checkbox" id="cb_udd5"> </td>
+			<td id="cb_udd_6"><input type="checkbox" id="cb_udd6"> </td>
+			<td id="cb_udd_0"><input type="checkbox" id="cb_udd0"> </td>
+		</tr>
+	</tbody>
+</table>
+<br><br><br>
+<br><div id="userdefined">
+</div>
+<br><br><br><br>
+<form>
+<input type="checkbox" class="check" id ="ct1ud" onchange="turnoff()" checked>
+ON <input type ="time" id="udt1" oninput="timeset('udt1')"> OFF <input type ="time" id="udt2" oninput="timeset('udt2')"><br>
+<input type="checkbox" class="check" id ="ct2ud" onchange="turnoff()" checked>
+ON <input type ="time" id="udt3" oninput="timeset('udt3')"> OFF <input type ="time" id="udt4" oninput="timeset('udt4')"><br>
+<input type="checkbox" id ="ct3ud" onchange="turnoff()" checked>
+ON <input type ="time" class="check" id="udt5" oninput="timeset('udt5')"> OFF <input type ="time" id="udt6" oninput="timeset('udt6')">
+<br>
+<div style="float: right;">
+<input type="button" value="Go to Monday" onclick="scrollToAnchor('#checkmonday');">
+<br>
+</div>
+<div class="sunset" style="float: right;"></div>
+<div class="sunrise" style="float: right;"></div>
+<br>
+</form>
+<hr>
+</div>
+
+
+<br><br>
+
+<hr><br>
+<input type="checkbox"><b>User Defined Days on even and/or odd weeknumbers </b><br>
+<div id="wn1"></div>
+<table style="border-collapse: collapse;" border = "1">
+	<tbody>
+		<tr>
+			<td class="d1"> mon </td>
+			<td class="d2"> tue </td>
+			<td class="d3"> wed </td>
+			<td class="d4"> thu </td>
+			<td class="d5"> fri </td>
+			<td class="d6"> sat </td>
+			<td class="d0"> sun </td>
+		</tr>
+		<tr>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+		</tr>
+	</tbody>
+</table>
+<table style="border-collapse: collapse;" border = "1">
+<tbody>
+	<tr>
+			<td class="even"> even weeknumber </td>
+			<td class="odd"> odd weeknumber </td>
+		</tr>
+		<tr>
+			<td><center><input type="checkbox"></center> </td>
+			<td><center><input type="checkbox"></center></td>
+		</tr>
+	</tbody>
+</table>
+<hr>
+<br><br>
+
+<hr><br>
+<input type="checkbox"><b>User Defined Days on even and/or odd weeknumbers </b><br>
+<div id="wn2"></div>
+<table style="border-collapse: collapse;" border = "1">
+	<tbody>
+		<tr>
+			<td class="d1"> mon </td>
+			<td class="d2"> tue </td>
+			<td class="d3"> wed </td>
+			<td class="d4"> thu </td>
+			<td class="d5"> fri </td>
+			<td class="d6"> sat </td>
+			<td class="d0"> sun </td>
+		</tr>
+		<tr>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+			<td><input type="checkbox"> </td>
+		</tr>
+	</tbody>
+</table>
+<table style="border-collapse: collapse;" border = "1">
+<tbody>
+		<tr>
+			<td class="even"> even weeknumber </td>
+			<td class="odd"> odd weeknumber </td>
+		</tr>
+		<tr>
+			<td><center><input type="checkbox"></center> </td>
+			<td><center><input type="checkbox"></center></td>
+		</tr>
+	</tbody>
+</table>
+<hr><hr><br>
+
+<br>
+how do i make the timescale better <br>
+<br>
+marker sunrise, sunset on slidebar == suncalc javascript<br>
+checkbox sunrise sunset near timeset textfields<br>
+----- https://github.com/mourner/suncalc<br>
+<br>
+
+<br><br>
+<center>
+
+<br>
+<br>
+<hr>
+<h2><a href="https://ldijkman.github.io/Electra" target="Electra_go4it">ldijkman.github.io/Electra</a></h2>
+
+<br>
+<hr>
+<br><br><br>
+ <a href="https://m.facebook.com/luberth.dijkman" target="faceboekie">https://m.facebook.com/luberth.dijkman</a><br>
+<img src="data:image/jpeg;base64,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">
+<br>
+Done with it, within a week, Saying Hi Google<br>
+Oh Alexa sounds like Calling Jeff Bezos's Bitch<br>
+Who wants to say, Hi Bixby, Siri, Cortana<br>
+<br>
+Hey Electra, You make Sense!<br>
+<br>
+<a href="https://ldijkman.github.io/Electra" target="Hey_Electra">https://ldijkman.github.io/Electra</a>
+<br><br>A &copy;&Ograve;&Oacute;&THORN;&egrave;&reg; Test. 2021<br><br>
+</center>
+
+<!-- Copyright 2022 Dirk Luberth Dijkman Bangert Andijk The Netherlands -->
+
+    <script type="text/javascript">//<![CDATA[
+
+
+// external js version 15.5.0
+
+
+var numberToTime = function(n) {
+  // 0 to 1440 minutes a day convert it to hh:mm
+  // document.getElementById("demon").innerHTML = n;
+  // n = 0 to 1440 
+  var hour = Math.floor(n / 60); // h or hh
+  var minute = Math.floor(n - hour * 60); // m or mm
+  if (minute <= 9) minute = "0" + minute; // mm
+  if (hour <= 9) hour = "0" + hour; // hh
+  return hour + ":" + minute; // hh:mm
+  // next is not working correct quite some minutes calculated wrong
+  // return `0${n / 60 ^ 0}`.slice(-2) + ':' + ('0' + n % 60).slice(-2);
+}
+
+var numberToTime2 = function(n) {
+
+  var hour = Math.floor(n / 60);
+  return hour;
+}
+
+
+// add a leasing zero for 0 to 9 0h:mm and hh:mm
+// for input type time
+var numberToTime3 = function(n) {
+  // 0 to 1440 minutes a day convert it to hh:mm
+  // document.getElementById("demon").innerHTML = n;
+  // n = 0 to 1440 
+  var hour = Math.floor(n / 60); // h or hh
+  var minute = Math.floor(n - hour * 60); // m or mm
+  if (minute <= 9) minute = "0" + minute; // mm
+  // if (hour <= 9)hour = "0"+hour;       // hh
+  return hour + ":" + minute; // hh:mm
+
+}
+
+
+
+// next variables should be set by ESP8266 ESP8285 before/on pageload replaced with values actual values know by esp
+// maybe save to file and include it
+// or prcessor %% on upload
+
+var mon_1 = 6 * 60;         // on ours in minutes
+var mon_2 = 9 * 60;         // off hours in minutes
+var mon_3 = 11 * 60;        // on hours in minutes
+var mon_4 = 13 * 60;        // off hours in minute
+var mon_5 = 19 * 60;        // on hours in minutes
+var mon_6 = 22 * 60;        // off hoursh in minutes
+
+var tue_1 = 0;              // on hours in minutes
+var tue_2 = 6 * 60+15;      // off hours in minutes
+var tue_3 = 9 * 60;         // on hours in minutes
+var tue_4 = 19 * 60;        // off hours in minutes
+var tue_5 = 22 * 60;        // on hours in minutes
+var tue_6 = 23 * 60 + 59;   // off hours in minutes
+
+var wed_1 = 5 * 60;         // on hours in minutes
+var wed_2 = 6 * 60;         // off hours in minutes
+var wed_3 = 16 * 60;        // on hours in minutes
+var wed_4 = 18 * 60;        // off hours in minutes
+var wed_5 = 20 * 60;        // on hours in minutes
+var wed_6 = 22 * 60 + 45;   // off hours in minutes
+
+var thu_1 = 5 * 60;         // on hours in minutes
+var thu_2 = 6 * 60;         // off hours in minutes
+var thu_3 = 16 * 60;        // on hours in minutes
+var thu_4 = 18 * 60;        // off hours in minutes
+var thu_5 = 20 * 60;        // on hours in minutes
+var thu_6 = 22 * 60 + 45;   // off hours in minutes
+
+var fri_1 = 5 * 60;         // on hours in minutes
+var fri_2 = 6 * 60;         // off hours in minutes
+var fri_3 = 16 * 60;        // on hours in minutes
+var fri_4 = 18 * 60;        // off hours in minutes
+var fri_5 = 20 * 60;        // on hours in minutes
+var fri_6 = 22 * 60 + 45;   // off hours in minutes
+
+var sat_1 = 5 * 60;         // on hours in minutes
+var sat_2 = 6 * 60;         // off hours in minutes
+var sat_3 = 16 * 60;        // on hours in minutes
+var sat_4 = 18 * 60;        // off hours in minutes
+var sat_5 = 20 * 60;        // on hours in minutes
+var sat_6 = 22 * 60 + 45;   // off hours in minutes
+
+var sun_1 = 5 * 60;         // on hours in minutes
+var sun_2 = 6 * 60;         // off hours in minutes
+var sun_3 = 16 * 60;        // on hours in minutes
+var sun_4 = 18 * 60;        // off hours in minutes
+var sun_5 = 20 * 60;        // on hours in minutes
+var sun_6 = 22 * 60 + 45;   // off hours in minutes
+
+var everyday_1 = 5 * 60;        // on hours in minutes
+var everyday_2 = 6 * 60;        // off hours in minutes
+var everyday_3 = 16 * 60;       // on hours in minutes
+var everyday_4 = 18 * 60;       // off hours in minutes
+var everyday_5 = 20 * 60;       // on hours in minutes
+var everyday_6 = 22 * 60 + 45;  // off hours in minutes
+
+var weekdays_1 = 5 * 60;            // on hours in minutes
+var weekdays_2 = 6 * 60;            // off hours in minutes
+var weekdays_3 = 16 * 60;           // on hours in minutes
+var weekdays_4 = 18 * 60;           // off hours in minutes
+var weekdays_5 = 20 * 60;           // on hours in minutes
+var weekdays_6 = 22 * 60 + 45;      // off hours in minutes
+
+var weekends_1 = 5 * 60;            // on hours in minutes
+var weekends_2 = 6 * 60;            // off hours in minutes
+var weekends_3 = 16 * 60;           // on hours in minutes
+var weekends_4 = 18 * 60;           // off hours in minutes
+var weekends_5 = 20 * 60;           // on hours in minutes
+var weekends_6 = 22 * 60 + 45;      // off hours in minutes
+
+var userdefined_1 = 5 * 60;         // on hours in minutes
+var userdefined_2 = 6 * 60;         // off hours in minutes
+var userdefined_3 = 16 * 60;        // on hours in minutes
+var userdefined_4 = 18 * 60;        // off hours in minutes
+var userdefined_5 = 20 * 60;        // on hours in minutes
+var userdefined_6 = 22 * 60 + 45;   // off hours in minutes
+
+
+
+
+
+
+
+
+var slider = document.getElementById("monday");
+noUiSlider.create(monday, {
+  start: [mon_1, mon_2, mon_3, mon_4, mon_5, mon_6],
+  connect: [false, true, false, true, false, true, false],
+  step: 1,
+  behaviour: "none",
+  tooltips: [true, true, true, true, true, true],
+  format: {
+    to: numberToTime, // numberToTime3 tooltip no leading 0 for hours
+    from: Number
+  },
+  range: {
+    'min': 0,
+    'max': 1440
+  },
+  pips: {
+    mode: 'count',
+    values: 25,
+    format: {
+      to: numberToTime2,
+      from: Number
+    },
+  }
+
+});
+
+mergeTooltips(monday, 6, '-');
+
+
+
+
+
+var slider = document.getElementById("tuesday");
+noUiSlider.create(tuesday, {
+  start: [tue_1, tue_2, tue_3, tue_4, tue_5, tue_6],
+  connect: [false, true, false, true, false, true, false],
+  step: 1,
+  behaviour: "none",
+  tooltips: [true, true, true, true, true, true],
+  format: {
+    to: numberToTime, // numberToTime3 no leading 0 for hours
+    from: Number
+  },
+  range: {
+    'min': 0,
+    'max': 1440
+  },
+  pips: {
+    mode: 'count',
+    values: 25,
+    format: {
+      to: numberToTime2,
+      from: Number
+    },
+  }
+});
+
+mergeTooltips(tuesday, 6, '-');
+
+
+
+
+var slider = document.getElementById("wednesday");
+noUiSlider.create(wednesday, {
+  start: [wed_1, wed_2, wed_3, wed_4, wed_5, wed_6],
+  connect: [false, true, false, true, false, true, false],
+  step: 1,
+  behaviour: "none",
+  tooltips: [true, true, true, true, true, true],
+  format: {
+    to: numberToTime, // numberToTime3 no leading 0 for hours
+    from: Number
+  },
+  range: {
+    'min': 0,
+    'max': 1440
+  },
+  pips: {
+    mode: 'count',
+    values: 25,
+    format: {
+      to: numberToTime2,
+      from: Number
+    },
+  }
+});
+
+mergeTooltips(wednesday, 6, '-');
+
+
+
+var slider = document.getElementById("thursday");
+noUiSlider.create(thursday, {
+  start: [thu_1, thu_2, thu_3, thu_4, thu_5, thu_6],
+  connect: [false, true, false, true, false, true, false],
+  step: 1,
+  behaviour: "none",
+  tooltips: [true, true, true, true, true, true],
+  format: {
+    to: numberToTime, // numberToTime3 no leading 0 for hours
+    from: Number
+  },
+  range: {
+    'min': 0,
+    'max': 1440
+  },
+  pips: {
+    mode: 'count',
+    values: 25,
+    format: {
+      to: numberToTime2,
+      from: Number
+    },
+  }
+});
+
+mergeTooltips(thursday, 6, '-');
+
+
+
+
+var slider = document.getElementById("friday");
+noUiSlider.create(friday, {
+  start: [fri_1, fri_2, fri_3, fri_4, fri_5, fri_6],
+  connect: [false, true, false, true, false, true, false],
+  step: 1,
+  behaviour: "none",
+  tooltips: [true, true, true, true, true, true],
+  format: {
+    to: numberToTime, // numberToTime3 no leading 0 for hours
+    from: Number
+  },
+  range: {
+    'min': 0,
+    'max': 1440
+  },
+  pips: {
+    mode: 'count',
+    values: 25,
+    format: {
+      to: numberToTime2,
+      from: Number
+    },
+  }
+});
+
+mergeTooltips(friday, 6, '-');
+
+
+
+
+var slider = document.getElementById("saturday");
+noUiSlider.create(saturday, {
+  start: [sat_1, sat_2, sat_3, sat_4, sat_5, sat_6],
+  connect: [false, true, false, true, false, true, false],
+  step: 1,
+  behaviour: "none",
+  tooltips: [true, true, true, true, true, true],
+  format: {
+    to: numberToTime, // numberToTime3 no leading 0 for hours
+    from: Number
+  },
+  range: {
+    'min': 0,
+    'max': 1440
+  },
+  pips: {
+    mode: 'count',
+    values: 25,
+    format: {
+      to: numberToTime2,
+      from: Number
+    },
+  }
+});
+
+mergeTooltips(saturday, 6, '-');
+
+
+
+
+var slider = document.getElementById("sunday");
+noUiSlider.create(sunday, {
+  start: [sun_1, sun_2, sun_3, sun_4, sun_5, sun_6],
+  connect: [false, true, false, true, false, true, false],
+  step: 1,
+  behaviour: "none",
+  tooltips: [true, true, true, true, true, true],
+  format: {
+    to: numberToTime, // numberToTime3 no leading 0 for hours
+    from: Number
+  },
+  range: {
+    'min': 0,
+    'max': 1440
+  },
+  pips: {
+    mode: 'count',
+    values: 25,
+    format: {
+      to: numberToTime2,
+      from: Number
+    },
+  }
+});
+
+mergeTooltips(sunday, 6, '-');
+
+
+
+var slider = document.getElementById("everyday");
+noUiSlider.create(everyday, {
+  start: [everyday_1, everyday_2, everyday_3, everyday_4, everyday_5, everyday_6],
+  connect: [false, true, false, true, false, true, false],
+  step: 1,
+  behaviour: "none",
+  tooltips: [true, true, true, true, true, true],
+  format: {
+    to: numberToTime, // numberToTime3 no leading 0 for hours
+    from: Number
+  },
+  range: {
+    'min': 0,
+    'max': 1440
+  },
+  pips: {
+    mode: 'count',
+    values: 25,
+    format: {
+      to: numberToTime2,
+      from: Number
+    },
+  }
+});
+
+mergeTooltips(everyday, 6, '-');
+
+
+
+
+var slider = document.getElementById("weekdays");
+noUiSlider.create(weekdays, {
+  start: [weekdays_1, weekdays_2, weekdays_3, weekdays_4, weekdays_5, weekdays_6],
+  connect: [false, true, false, true, false, true, false],
+  step: 1,
+  behaviour: "none",
+  tooltips: [true, true, true, true, true, true],
+  format: {
+    to: numberToTime, // numberToTime3 no leading 0 for hours
+    from: Number
+  },
+  range: {
+    'min': 0,
+    'max': 1440
+  },
+  pips: {
+    mode: 'count',
+    values: 25,
+    format: {
+      to: numberToTime2,
+      from: Number
+    },
+  }
+});
+
+mergeTooltips(weekdays, 6, '-');
+
+
+
+
+var slider = document.getElementById("weekends");
+noUiSlider.create(weekends, {
+  start: [weekends_1, weekends_2, weekends_3, weekends_4, weekends_5, weekends_6],
+  connect: [false, true, false, true, false, true, false],
+  step: 1,
+  behaviour: "none",
+  tooltips: [true, true, true, true, true, true],
+  format: {
+    to: numberToTime, // numberToTime3 no leading 0 for hours
+    from: Number
+  },
+  range: {
+    'min': 0,
+    'max': 1440
+  },
+  pips: {
+    mode: 'count',
+    values: 25,
+    format: {
+      to: numberToTime2,
+      from: Number
+    },
+  }
+});
+
+mergeTooltips(weekends, 6, '-');
+
+
+
+
+
+var slider = document.getElementById("userdefined");
+noUiSlider.create(userdefined, {
+  start: [userdefined_1, userdefined_2, userdefined_3, userdefined_4, userdefined_5, userdefined_6],
+  connect: [false, true, false, true, false, true, false],
+  step: 1,
+  behaviour: "none",
+  tooltips: [true, true, true, true, true, true],
+  format: {
+    to: numberToTime, // numberToTime3 no leading 0 for hours
+    from: Number
+  },
+  range: {
+    'min': 0,
+    'max': 1440
+  },
+  pips: {
+    mode: 'count',
+    values: 25,
+    format: {
+      to: numberToTime2,
+      from: Number
+    },
+  }
+});
+
+mergeTooltips(userdefined, 6, '-');
+
+
+
+
+
+
+/**
+ * @param slider HtmlElement with an initialized slider
+ * @param threshold Minimum proximity (in percentages) to merge tooltips
+ * @param separator String joining tooltips
+ */
+function mergeTooltips(slider, threshold, separator) {
+
+    var textIsRtl = getComputedStyle(slider).direction === 'rtl';
+    var isRtl = slider.noUiSlider.options.direction === 'rtl';
+    var isVertical = slider.noUiSlider.options.orientation === 'vertical';
+    var tooltips = slider.noUiSlider.getTooltips();
+    var origins = slider.noUiSlider.getOrigins();
+
+    // Move tooltips into the origin element. The default stylesheet handles this.
+    tooltips.forEach(function (tooltip, index) {
+        if (tooltip) {
+            origins[index].appendChild(tooltip);
+        }
+    });
+
+    slider.noUiSlider.on('update', function (values, handle, unencoded, tap, positions) {
+
+        var pools = [[]];
+        var poolPositions = [[]];
+        var poolValues = [[]];
+        var atPool = 0;
+
+        // Assign the first tooltip to the first pool, if the tooltip is configured
+        if (tooltips[0]) {
+            pools[0][0] = 0;
+            poolPositions[0][0] = positions[0];
+            poolValues[0][0] = values[0];
+        }
+
+        for (var i = 1; i < positions.length; i++) {
+            if (!tooltips[i] || (positions[i] - positions[i - 1]) > threshold) {
+                atPool++;
+                pools[atPool] = [];
+                poolValues[atPool] = [];
+                poolPositions[atPool] = [];
+            }
+
+            if (tooltips[i]) {
+                pools[atPool].push(i);
+                poolValues[atPool].push(values[i]);
+                poolPositions[atPool].push(positions[i]);
+            }
+        }
+
+        pools.forEach(function (pool, poolIndex) {
+            var handlesInPool = pool.length;
+
+            for (var j = 0; j < handlesInPool; j++) {
+              
+                var handleNumber = pool[j];
+
+                if (j === handlesInPool - 1) {
+                    var offset = 0;
+
+                    poolPositions[poolIndex].forEach(function (value) {
+                        offset += 1000 - value;
+                    });
+
+                    var direction = isVertical ? 'bottom' : 'right';
+                    var last = isRtl ? 0 : handlesInPool - 1;
+                    var lastOffset = 1000 - poolPositions[poolIndex][last];
+                    offset = (textIsRtl && !isVertical ? 100 : 0) + (offset / handlesInPool) - lastOffset;
+
+                    // Center this tooltip over the affected handles
+                    if (j==2){separator="|";}else{separator="-";}
+                    tooltips[handleNumber].innerHTML = poolValues[poolIndex].join(separator);
+                    tooltips[handleNumber].style.display = 'block';
+                    tooltips[handleNumber].style[direction] = offset + '%';
+                } else {
+                    // Hide this tooltip
+                    tooltips[handleNumber].style.display = 'none';
+                }
+            }
+        });
+    });
+} // end merge tooltips if close to each other
+
+
+
+boxes() // check the checkboxes
+
+
+
+
+function boxes() {
+  //https://refreshless.com/nouislider/more/#section-disable
+  // dissable grey out a slider
+  if (checkmonday.checked) {
+    monday.removeAttribute('disabled');
+  } else {
+    monday.setAttribute('disabled', true);
+  }
+
+
+  if (checktuesday.checked) {
+    tuesday.removeAttribute('disabled');
+  } else {
+    tuesday.setAttribute('disabled', true);
+  }
+  
+    if (checkwednesday.checked) {
+    wednesday.removeAttribute('disabled');
+  } else {
+    wednesday.setAttribute('disabled', true);
+  }
+
+  if (checkthursday.checked) {
+    thursday.removeAttribute('disabled');
+  } else {
+    thursday.setAttribute('disabled', true);
+  }
+  
+  if (checkfriday.checked) {
+    friday.removeAttribute('disabled');
+  } else {
+    friday.setAttribute('disabled', true);
+  }
+  
+  if (checksaturday.checked) {
+    saturday.removeAttribute('disabled');
+  } else {
+    saturday.setAttribute('disabled', true);
+  }
+  
+  if (checksunday.checked) {
+    sunday.removeAttribute('disabled');
+  } else {
+    sunday.setAttribute('disabled', true);
+  }
+
+}
+
+
+
+function turnoff() {
+  //https://refreshless.com/nouislider/more/#section-disable
+  /*
+  if (document.getElementsByName("cmonday[]").checked) {
+    monday.removeAttribute('disabled');
+  } else {
+    monday.setAttribute('disabled', true);
+  }
+ 
+  if (checktuesday.checked) {
+    tuesday.removeAttribute('disabled');
+  } else {
+    tuesday.setAttribute('disabled', true);
+  }
+  
+}
+*/
+}
+
+var checkbox2 = document.getElementById('ct1m'),
+  checkbox3 = document.getElementById('ct2m'),
+  origins = monday.getElementsByClassName('noUi-origin');
+
+ct1m.addEventListener('click', function() {
+  //monday.noUiSlider.set([ 0]);
+  //monday.noUiSlider.set([null, 0]);
+  //toggle.call(this, origins[0]);
+  //toggle.call(this, origins[1]);
+});
+
+
+ct2m.addEventListener('click', function() {
+ //monday.noUiSlider.set([ null,null,0]);
+  //monday.noUiSlider.set([null,null,null, 0]);
+  //toggle.call(this, origins[2]);
+  //toggle.call(this, origins[3]);
+});
+
+ct3m.addEventListener('click', function() {
+ //monday.noUiSlider.set([ null,null,null,null,1440]);
+  //monday.noUiSlider.set([null,null,null,null,null, 1440]);
+  //toggle.call(this, origins[4]);
+  //toggle.call(this, origins[5]);
+});
+
+
+function toggle(element) {
+
+  // If the checkbox is checked, disabled the slider.
+  // Otherwise, re-enable it.
+
+  if (this.checked) {
+    element.removeAttribute('disabled');
+
+  } else {
+    element.setAttribute('disabled', true);
+  }
+}
+
+
+
+
+// wich input type time field gives new data oninput(timeset(wichfield))
+function timeset(wich) {
+  //document.getElementById("checkbox").checked = true;
+  //tuesday.noUiSlider.set(getElementById("leftvalue").value);
+  //tuesday.noUiSlider.set([null, getElementById("rigthvalue").value]);
+
+  var x = document.getElementById(wich).value;
+
+  var a = x.split(':'); // split it at the colons
+
+  // Hours x 60 minutes + minutes = time in minutes.
+  var minutes = (+a[0]) * 60 + (+a[1]);
+
+  //document.getElementById("demooff").innerHTML = minutes;
+  console.log("wich " + wich.id); // maybe a bit strange
+
+
+  switch (wich) { // wich input type time field gives new data oninput
+
+    case "mt1":
+      monday.noUiSlider.set(minutes);
+      break;
+    case "mt2":
+      monday.noUiSlider.set([null, minutes]);
+      break;
+    case "mt3":
+      monday.noUiSlider.set([null, null, minutes]);
+      break;
+    case "mt4":
+      monday.noUiSlider.set([null, null, null, minutes]);
+      break;
+    case "mt5":
+      monday.noUiSlider.set([null, null, null, null, minutes]);
+      break;
+    case "mt6":
+      monday.noUiSlider.set([null, null, null, null, null, minutes]);
+      break;
+
+
+    case "tut1":
+      tuesday.noUiSlider.set(minutes);
+      break;
+    case "tut2":
+      tuesday.noUiSlider.set([null, minutes]);
+      break;
+    case "tut3":
+      tuesday.noUiSlider.set([null, null, minutes]);
+      break;
+    case "tut4":
+      tuesday.noUiSlider.set([null, null, null, minutes]);
+      break;
+    case "tut5":
+      tuesday.noUiSlider.set([null, null, null, null, minutes]);
+      break;
+    case "tut6":
+      tuesday.noUiSlider.set([null, null, null, null, null, minutes]);
+      break;
+
+
+    case "wt1":
+      wednesday.noUiSlider.set(minutes);
+      break;
+    case "wt2":
+      wednesday.noUiSlider.set([null, minutes]);
+      break;
+    case "wt3":
+      wednesday.noUiSlider.set([null, null, minutes]);
+      break;
+    case "wt4":
+      wednesday.noUiSlider.set([null, null, null, minutes]);
+      break;
+    case "wt5":
+      wednesday.noUiSlider.set([null, null, null, null, minutes]);
+      break;
+    case "wt6":
+      wednesday.noUiSlider.set([null, null, null, null, null, minutes]);
+      break;
+
+
+    case "tht1":
+      thursday.noUiSlider.set(minutes);
+      break;
+    case "tht2":
+      thursday.noUiSlider.set([null, minutes]);
+      break;
+    case "tht3":
+      thursday.noUiSlider.set([null, null, minutes]);
+      break;
+    case "tht4":
+      thursday.noUiSlider.set([null, null, null, minutes]);
+      break;
+    case "tht5":
+      thursday.noUiSlider.set([null, null, null, null, minutes]);
+      break;
+    case "tht6":
+      thursday.noUiSlider.set([null, null, null, null, null, minutes]);
+      break;
+
+
+    case "frt1":
+      friday.noUiSlider.set(minutes);
+      break;
+    case "frt2":
+      friday.noUiSlider.set([null, minutes]);
+      break;
+    case "frt3":
+      friday.noUiSlider.set([null, null, minutes]);
+      break;
+    case "frt4":
+      friday.noUiSlider.set([null, null, null, minutes]);
+      break;
+    case "frt5":
+      friday.noUiSlider.set([null, null, null, null, minutes]);
+      break;
+    case "frt6":
+      friday.noUiSlider.set([null, null, null, null, null, minutes]);
+      break;
+
+
+
+    case "sat1":
+      saturday.noUiSlider.set(minutes);
+      break;
+    case "sat2":
+      saturday.noUiSlider.set([null, minutes]);
+      break;
+    case "sat3":
+      saturday.noUiSlider.set([null, null, minutes]);
+      break;
+    case "sat4":
+      saturday.noUiSlider.set([null, null, null, minutes]);
+      break;
+    case "sat5":
+      saturday.noUiSlider.set([null, null, null, null, minutes]);
+      break;
+    case "sat6":
+      saturday.noUiSlider.set([null, null, null, null, null, minutes]);
+      break;
+
+
+    case "sut1":
+      sunday.noUiSlider.set(minutes);
+      break;
+    case "sut2":
+      sunday.noUiSlider.set([null, minutes]);
+      break;
+    case "sut3":
+      sunday.noUiSlider.set([null, null, minutes]);
+      break;
+    case "sut4":
+      sunday.noUiSlider.set([null, null, null, minutes]);
+      break;
+    case "sut5":
+      sunday.noUiSlider.set([null, null, null, null, minutes]);
+      break;
+    case "sut6":
+      sunday.noUiSlider.set([null, null, null, null, null, minutes]);
+      break;
+
+
+    case "edt1":
+      everyday.noUiSlider.set(minutes);
+      break;
+    case "edt2":
+      everyday.noUiSlider.set([null, minutes]);
+      break;
+    case "edt3":
+      everyday.noUiSlider.set([null, null, minutes]);
+      break;
+    case "edt4":
+      everyday.noUiSlider.set([null, null, null, minutes]);
+      break;
+    case "edt5":
+      everyday.noUiSlider.set([null, null, null, null, minutes]);
+      break;
+    case "edt6":
+      everyday.noUiSlider.set([null, null, null, null, null, minutes]);
+      break;
+
+
+    case "wdt1":
+      weekdays.noUiSlider.set(minutes);
+      break;
+    case "wdt2":
+      weekdays.noUiSlider.set([null, minutes]);
+      break;
+    case "wdt3":
+      weekdays.noUiSlider.set([null, null, minutes]);
+      break;
+    case "wdt4":
+      weekdays.noUiSlider.set([null, null, null, minutes]);
+      break;
+    case "wdt5":
+      weekdays.noUiSlider.set([null, null, null, null, minutes]);
+      break;
+    case "wdt6":
+      weekdays.noUiSlider.set([null, null, null, null, null, minutes]);
+      break;
+
+
+    case "wendt1":
+      weekends.noUiSlider.set(minutes);
+      break;
+    case "wendt2":
+      weekends.noUiSlider.set([null, minutes]);
+      break;
+    case "wendt3":
+      weekends.noUiSlider.set([null, null, minutes]);
+      break;
+    case "wendt4":
+      weekends.noUiSlider.set([null, null, null, minutes]);
+      break;
+    case "wendt5":
+      weekends.noUiSlider.set([null, null, null, null, minutes]);
+      break;
+    case "wendt6":
+      weekends.noUiSlider.set([null, null, null, null, null, minutes]);
+      break;
+
+
+    case "udt1":
+      userdefined.noUiSlider.set(minutes);
+      break;
+    case "udt2":
+      userdefined.noUiSlider.set([null, minutes]);
+      break;
+    case "udt3":
+      userdefined.noUiSlider.set([null, null, minutes]);
+      break;
+    case "udt4":
+      userdefined.noUiSlider.set([null, null, null, minutes]);
+      break;
+    case "udt5":
+      userdefined.noUiSlider.set([null, null, null, null, minutes]);
+      break;
+    case "udt6":
+      userdefined.noUiSlider.set([null, null, null, null, null, minutes]);
+      break;
+
+  }
+
+
+}
+
+
+
+// event triggered when slider is changed cq set, write to console and websocket
+monday.noUiSlider.on('set', function() {
+  writetoconsole(monday); // pass parameter monday
+});
+
+tuesday.noUiSlider.on('set', function() {
+  writetoconsole(tuesday); // pass parameter tuesday
+});
+
+wednesday.noUiSlider.on('set', function() {
+  writetoconsole(wednesday);
+});
+
+thursday.noUiSlider.on('set', function() {
+  writetoconsole(thursday);
+});
+
+friday.noUiSlider.on('set', function() {
+  writetoconsole(friday);
+});
+
+saturday.noUiSlider.on('set', function() {
+  writetoconsole(saturday);
+});
+
+sunday.noUiSlider.on('set', function() {
+  writetoconsole(sunday);
+});
+
+everyday.noUiSlider.on('set', function() {
+  writetoconsole(everyday);
+});
+
+weekdays.noUiSlider.on('set', function() {
+  writetoconsole(weekdays);
+});
+
+weekends.noUiSlider.on('set', function() {
+  writetoconsole(weekends);
+});
+
+userdefined.noUiSlider.on('set', function() {
+  writetoconsole(userdefined);
+});
+
+
+
+
+// set input type time fields from slider            
+monday.noUiSlider.on('update', function(values, handle, unEncodedValues) {
+
+  mt1.value = values[0];
+  mt2.value = values[1];
+  mt3.value = values[2];
+  mt4.value = values[3];
+  mt5.value = values[4];
+  mt6.value = values[5];
+
+  console.log("monday unEncodedValues " + unEncodedValues);
+});
+
+
+// set input type time fields from slider            
+tuesday.noUiSlider.on('update', function(values, handle, unEncodedValues) {
+
+  tut1.value = values[0];
+  tut2.value = values[1];
+  tut3.value = values[2];
+  tut4.value = values[3];
+  tut5.value = values[4];
+  tut6.value = values[5];
+
+  console.log("tuesday unEncodedValues " + unEncodedValues);
+});
+
+
+// set input type time fields from slider            
+wednesday.noUiSlider.on('update', function(values, handle, unEncodedValues) {
+
+  wt1.value = values[0];
+  wt2.value = values[1];
+  wt3.value = values[2];
+  wt4.value = values[3];
+  wt5.value = values[4];
+  wt6.value = values[5];
+
+  console.log("wednesday unEncodedValues " + unEncodedValues);
+});
+
+
+// set input type time fields from slider            
+thursday.noUiSlider.on('update', function(values, handle, unEncodedValues) {
+
+  tht1.value = values[0];
+  tht2.value = values[1];
+  tht3.value = values[2];
+  tht4.value = values[3];
+  tht5.value = values[4];
+  tht6.value = values[5];
+
+  console.log("thursday unEncodedValues " + unEncodedValues);
+});
+
+
+// set input type time fields from slider            
+friday.noUiSlider.on('update', function(values, handle, unEncodedValues) {
+
+  frt1.value = values[0];
+  frt2.value = values[1];
+  frt3.value = values[2];
+  frt4.value = values[3];
+  frt5.value = values[4];
+  frt6.value = values[5];
+
+  console.log("friday unEncodedValues " + unEncodedValues);
+});
+
+
+// set input type time fields from slider            
+saturday.noUiSlider.on('update', function(values, handle, unEncodedValues) {
+
+  sat1.value = values[0];
+  sat2.value = values[1];
+  sat3.value = values[2];
+  sat4.value = values[3];
+  sat5.value = values[4];
+  sat6.value = values[5];
+
+  console.log("saturday unEncodedValues " + unEncodedValues);
+});
+
+
+// set input type time fields from slider            
+sunday.noUiSlider.on('update', function(values, handle, unEncodedValues) {
+
+  sut1.value = values[0];
+  sut2.value = values[1];
+  sut3.value = values[2];
+  sut4.value = values[3];
+  sut5.value = values[4];
+  sut6.value = values[5];
+
+  console.log("sunday unEncodedValues " + unEncodedValues);
+});
+
+
+// set input type time fields from slider            
+everyday.noUiSlider.on('update', function(values, handle, unEncodedValues) {
+
+  edt1.value = values[0];
+  edt2.value = values[1];
+  edt3.value = values[2];
+  edt4.value = values[3];
+  edt5.value = values[4];
+  edt6.value = values[5];
+
+  console.log("everyday unEncodedValues " + unEncodedValues);
+});
+
+
+// set input type time fields from slider            
+weekdays.noUiSlider.on('update', function(values, handle, unEncodedValues) {
+
+  wdt1.value = values[0];
+  wdt2.value = values[1];
+  wdt3.value = values[2];
+  wdt4.value = values[3];
+  wdt5.value = values[4];
+  wdt6.value = values[5];
+
+  console.log("weekdays unEncodedValues " + unEncodedValues);
+});
+
+
+// set input type time fields from slider            
+weekends.noUiSlider.on('update', function(values, handle, unEncodedValues) {
+
+  wendt1.value = values[0];
+  wendt2.value = values[1];
+  wendt3.value = values[2];
+  wendt4.value = values[3];
+  wendt5.value = values[4];
+  wendt6.value = values[5];
+
+  console.log("weekends unEncodedValues " + unEncodedValues);
+});
+
+
+// set input type time fields from slider            
+userdefined.noUiSlider.on('update', function(values, handle, unEncodedValues) {
+
+  udt1.value = values[0];
+  udt2.value = values[1];
+  udt3.value = values[2];
+  udt4.value = values[3];
+  udt5.value = values[4];
+  udt6.value = values[5];
+
+  console.log("userdefined unEncodedValues " + unEncodedValues);
+});
+
+
+
+
+// convert hh:mm to time in minutes
+function convertH2M(timeInHour) { 
+  var timeParts = timeInHour.split(':');
+  return Number(timeParts[0]) * 60 + Number(timeParts[1]);
+}
+
+
+function writetoconsole(wich) { // wich holds wich day slider
+  // i dont Know wich give error object div
+  // wich.id looks like its the div
+  // why can i just not pass a string writetoconsole("tuesday") 
+  // i am a colliflowerfarmerprogrammer
+  // it works like this but not correct i think
+  console.log(wich.id + " " + wich.noUiSlider.get()); // print wichday slider time array to console
+  const slider_times = wich.noUiSlider.get();
+  let xxx = slider_times.length; // see how many elements in array
+  //var xx=convertH2M);
+  console.log("arraylength " + xxx);
+  console.log(wich.id + " ON OFF times in minutes ");
+  console.log("hours x 60 + minutes = timeinminutes");
+  let boxstate=document.getElementById("check"+wich.id).checked;
+  if(boxstate){ boxstate=1;} else {boxstate=0;}                         // make true, false into 1, 0
+  
+   websocket.send(JSON.stringify({times : wich.id +","+ boxstate+","+ convertH2M(slider_times[0])+","+convertH2M(slider_times[1])+","+convertH2M(slider_times[2])+","+convertH2M(slider_times[3])+","+convertH2M(slider_times[4])+","+convertH2M(slider_times[5])}));
+   
+  if (xxx == 2 || xxx == 4 || xxx == 6) {
+    console.log("ON  " + convertH2M(slider_times[0])); // time in minutes
+    console.log("OFF " + convertH2M(slider_times[1])); // time in minutes
+  }
+  if (xxx == 4 || xxx == 6) {
+    console.log("ON  " + convertH2M(slider_times[2])); // time in minutes
+    console.log("OFF " + convertH2M(slider_times[3])); // time in minutes
+  }
+  if (xxx == 6) {
+    console.log("ON  " + convertH2M(slider_times[4])); // time in minutes
+    console.log("OFF " + convertH2M(slider_times[5])); // time in minutes
+  }
+}
+
+
+
+  //]]>
+
+    
+  
+  </script>
+
+  <script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: "h2tqgecy"
+      }], "*")
+    }
+
+    // always overwrite window.name, in case users try to set it manually
+    window.name = "result"
+    
+    
+    
+
+  </script>
+<center>
+ <br>
+    <a href="Http://paypal.me/LDijkman">A penny for sharing my thoughts</a><br><br>
+    Electra, A &copy;&Ograve;&Oacute;&THORN;&egrave;&reg; Test.<br>
+    &copy;opy&reg;ight 2021...2022 Dirk Luberth Dijkman<br><br>
+    All You Need is Electra!<br>
+https://ldijkman.github.io/Electra<br>
+
+<!-- Copyright 2022 Dirk Luberth Dijkman Bangert Andijk The Netherlands -->
+</center>
+
+<br><br><br>
+<br><br><br>
 
 
 
@@ -1061,135 +2048,1125 @@ document.getElementById("myList").options[0].selected = true;
 
 <script>
 
+var x = document.getElementById("demo");
+var xx = document.getElementById("demo2");
 
-am = document.getElementById('ace-mode');
-am.addEventListener('change', function(e) {
-  console.log((document.getElementById('ace-mode').value).toLowerCase());
-  e.preventDefault();
- ace.edit("editor").getSession().setMode('ace/mode/' + (document.getElementById('ace-mode').value).toLowerCase());
-});
-
-at = document.getElementById('ace-theme');
-at.addEventListener('change', function(e) {
-  console.log((document.getElementById('ace-theme').value).toLowerCase());
-  e.preventDefault();
- ace.edit("editor").setTheme('ace/theme/' + (document.getElementById('ace-theme').value).toLowerCase());
-});
-
-
-
-
-
-////////////// open filename in a new browser windoww /////////////////////////////////////////////
-www = document.getElementById('webbutton');
-
-www.addEventListener('click', function(e) {
-  e.preventDefault();
-  //window.open( document.getElementById('editor-filename').value;, '_blank')"
+x.innerHTML = "geolocation";
+xx.innerHTML = "geolocation";
   
-  window.open("."+document.getElementById('editor-filename').value+"");
-  //alert(document.getElementById('editor-filename').value);
-  //alert(document.body.style.zoom).text;
+   navigator.geolocation.getCurrentPosition(onSuccess, onError);
+
+
+var lat;
+var lon;
+var succes=0;
+ 
+ function onSuccess(geolocationData) {
+  x.innerHTML = 'Success!';
+  
+  // GeolocationData can't be serialized to JSON,
+  // so copy out all the properties manually
+  let preview = {
+    coords: {
+      accuracy: geolocationData.coords.accuracy,
+      altitude: geolocationData.coords.altitude,
+      altitudeAccuracy: geolocationData.coords.altitudeAccuracy,
+      heading: geolocationData.coords.heading,
+      latitude: geolocationData.coords.latitude,
+      longitude: geolocationData.coords.longitude,
+      speed: geolocationData.coords.speed,
+    },
+    timestamp: geolocationData.timestamp
+  };
+  
+  x.innerHTML = JSON.stringify(preview, null, 2); 
+  
+    lat=geolocationData.coords.latitude; 
+    lon=geolocationData.coords.longitude;
+  xx.innerHTML = "Latitude: " + lat+ "<br>Longitude: " + lon;
+  succes=1;
+}
+
+
+  
+function onError(error) {
+  x.innerHTML = 'Error';
+  x.innerHTML = error.message;
+}
+
+
+
+
+
+   document.addEventListener('DOMContentLoaded', function() {
+
+       setInterval(myGreeting, 1000);        // interval 1 sec for time on div class actualtime
+  
+   }, false);
+
+function myGreeting() {
+  
+  
+  
+// https://github.com/mourner/suncalc
+// https://www.latlong.net/
+
+// get today's sunlight times for                          // https://www.latlong.net/
+if(succes){
+var times = SunCalc.getTimes(new Date(), lat, lon); // https://www.google.com/search?q=map+52.7354%2C+5.1790
+}else{
+  lat=52.7354;
+  lon=5.1790;
+var times = SunCalc.getTimes(new Date(),lat,lon);
+}
+
+// format sunrise time from the Date object
+var sunrisemin =times.sunrise.getMinutes();
+if(sunrisemin<=9)sunrisemin="0"+sunrisemin;                     // 0-9 add a zero
+var sunriseStr = times.sunrise.getHours() + ':' + sunrisemin;
+
+var sunsetmin =times.sunset.getMinutes();
+if(sunsetmin<=9)sunsetmin="0"+sunsetmin;                        // 0-9 add a zero
+var sunsetStr = times.sunset.getHours() + ':' + sunsetmin;
+
+var currents=((times.sunrise.getHours()*60+times.sunrise.getMinutes())/1440)*100; ;
+  for (let i = 0; i < 11; i++) {  
+   document.getElementsByClassName('sunrisel')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
+  
+   document.getElementsByClassName('sunrisel')[i].innerHTML = "<br><br><br>sunrise "+times.sunrise.getHours()+":"+sunrisemin; // set time text on div class actualtime
+  }
+  
+var currents=((times.sunset.getHours()*60+times.sunset.getMinutes())/1440)*100; ;
+  for (let i = 0; i < 11; i++) {  
+   document.getElementsByClassName('sunsetl')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
+  
+   document.getElementsByClassName('sunsetl')[i].innerHTML = "<br><br><br>sunset "+times.sunset.getHours()+":"+sunsetmin; // set time text on div class actualtime
+  }  
+
+// get position of the sun (azimuth and altitude) at today's sunrise
+/////var sunrisePos = SunCalc.getPosition(times.sunrise, 52.7354, 5.1790);
+
+// get sunrise azimuth in degrees
+/////var sunriseAzimuth = sunrisePos.azimuth * 180 / Math.PI;
+
+// https://github.com/mourner/suncalc
+//console.log(times);
+
+/////console.log("sunrise "+sunriseStr);
+/////console.log("sunset "+sunsetStr);
+
+//console.log(sunrisePos);
+//console.log(sunriseAzimuth);
+//document.getElementsByClassName('sunrise')[0].innerHTML =("<a href='http://www.google.com/search?q=52.7354,5.1790'>52.7354, 5.1790 </a> sunrise "+sunriseStr)+" ";
+//document.getElementsByClassName('sunset')[0].textContent =(" sunset "+sunsetStr)+" ";
+//document.getElementsByClassName('sunrise')[1].innerHTML =("<a href='http://www.google.com/search?q=52.7354,5.1790'>52.7354, 5.1790 </a> sunrise "+sunriseStr+" ");
+//document.getElementsByClassName('sunset')[1].textContent =(" sunset "+sunsetStr)+" ";  
+  
+const sunrise = document.querySelectorAll('.sunrise');
+sunrise.forEach(sunrise => {
+  //box.style.backgroundColor = 'purple'; box.style.width = '300px';
+  sunrise.innerHTML =("<!--"+lat+","+lon+"-->&nbsp;<a href='http://www.google.com/search?q="+lat+","+lon+"'>SunRise&nbsp;"+sunriseStr)+"&nbsp;</a>";
 });
 
+const sunset = document.querySelectorAll('.sunset');
+sunset.forEach(sunset => {
+  //box.style.backgroundColor = 'purple'; box.style.width = '300px';
+  sunset.innerHTML =("<a href='http://www.google.com/search?q="+lat+","+lon+"'>SunSet&nbsp;"+sunsetStr)+"</a>&nbsp;&nbsp;&nbsp;"; 
+});
+  
+  
+  const now = new Date();
+  const current = (((now.getHours() * 60) + now.getMinutes())/1440)*100;       // time to percentage 0 to 100% set div position
+  var sec;
+  var min;
+  
+  var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var dayName = days[now.getDay()];
+   
+   
+  if(now.getMinutes()<=9)min="0"+now.getMinutes(); else min=now.getMinutes();  // a leading zer0 if 0 to 9
+  if(now.getSeconds()<=9)sec="0"+now.getSeconds(); else sec=now.getSeconds();  // a leading zer0 if 0 to 9
+
+ for (let i = 0; i < 11; i++) {  
+   
+   document.getElementsByClassName('actualtime')[i].style.left = current+"%";   // time to percentage 0 to 100% set div position
+  
+   document.getElementsByClassName('actualtime')[i].innerHTML = "<div><br><br><br>" +dayName+" "+now.getHours()+":"+min+":"+sec+"</div>"; // set time text on div class actualtime
+ 
+ }// end for
+   
+   
+   
+   
+   
+   
+   var timeinmin= (now.getHours() * 60) + now.getMinutes();                                   
+   var slider_times = monday.noUiSlider.get();
+   
+   
+         // 0 to 6 // 0 is sunday // 6 is saturday 
+       for (let i = 0; i < 6; i++) {     
+           document.getElementById("dag"+i).style.background = "";                  // set all days backkground to ""
+       }
+      document.getElementById("dag"+now.getDay()).style.background = "lightyellow"; // highlight active day backgound
+  //    document.getElementById("dag"+now.getDay()).style.background = ""; 
+  
 
 
-
-///////////////// checkbox editor 505 100% toggle /////////////////////////////////////////////////
-checkbox = document.getElementById('fulledit');
-
-checkbox.addEventListener('change', e => {
-
-    if(e.target.checked){
-        document.getElementById('editor').style.width = '50%';
+// user defined days higliht checkbox background lime green if active day is checked
+for (let i = 0; i <= 6; i++) { 
+  if(document.getElementById("cb_udd"+i).checked){ 
+    if (now.getDay()==i){
+      document.getElementById("cb_udd_"+i).style.background = "lime";
+      document.getElementById("udd+days").style.background = "lightyellow"; 
     }
-    if(!e.target.checked){
-         document.getElementById("Preview").checked=false;
-         document.getElementById('editor').style.width = '100%';
-    }
-
-});
-
+    }else{
+      document.getElementById("cb_udd_"+i).style.background = "";
+      document.getElementById("udd+days").style.background = ""; 
+  }
+}  
 
 
 
-/////////////// copy color hex value to clipboard shoud work on http:// connection /////////////////////////////
-// https://codepen.io/fabean/pen/GprQJa
-// https://codepen.io/ldijkman/pen/VwXPrWo
-let button = document.getElementById('copy-button');
+// set weekends sat sun background
+if(document.getElementById("checkweekends").checked){ 
+ if (now.getDay()==0 || now.getDay()==6){                          // ||  or
+      document.getElementById("week_end").style.background = "lightyellow";
+ }
+}else{
+      document.getElementById("week_end").style.background = ""; 
+}  
 
-button.addEventListener('click', function(e) {
-  e.preventDefault();
-  document.execCommand('copy', false, document.getElementById('to-select-text').select());
-});
+   
+  /*
+    monday.getElementsByClassName('noUi-tooltip')[0].style.color = "green";
+    monday.getElementsByClassName('noUi-tooltip')[1].style.color = "red";
+    monday.getElementsByClassName('noUi-tooltip')[2].style.color = "green";
+    monday.getElementsByClassName('noUi-tooltip')[3].style.color = "red";
+    monday.getElementsByClassName('noUi-tooltip')[4].style.color = "green";
+    monday.getElementsByClassName('noUi-tooltip')[5].style.color = "red";
+   */
+   
+   
+if(document.getElementById("checkmonday").checked){                                // && now.getDay() == 1
+ var oncolor;
+  if(now.getDay()==1){oncolor="#ffdd22";}else{ oncolor="lightgreen";} 
+  
+  if (timeinmin >= convertH2M(slider_times[0]) && timeinmin < convertH2M(slider_times[1])) {
+   monday.getElementsByClassName('noUi-connect')[0].style.background = oncolor;   // sunfloweryellow or lightgreen
+  }else{
+     monday.getElementsByClassName('noUi-connect')[0].style.background = "green";   // change color
+  }
+  
+    if (timeinmin >= convertH2M(slider_times[2]) && timeinmin < convertH2M(slider_times[3])) {
+   monday.getElementsByClassName('noUi-connect')[1].style.background = oncolor;   // sunfloweryellow or lightgreen
+  }else{
+     monday.getElementsByClassName('noUi-connect')[1].style.background = "green";   // change color
+  }
+  
+    if (timeinmin >= convertH2M(slider_times[4]) && timeinmin < convertH2M(slider_times[5])) {
+   monday.getElementsByClassName('noUi-connect')[2].style.background = oncolor;   // sunfloweryellow or lightgreen
+  }else{
+     monday.getElementsByClassName('noUi-connect')[2].style.background = "green";   // change color
+  }
+}else{
+  monday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // change color
+  monday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // change color
+  monday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // change color
+}
+  
+  
+ var slider_times = tuesday.noUiSlider.get();
+ 
+if(document.getElementById("checktuesday").checked){
+  var oncolor;
+  if(now.getDay()==2){oncolor="#ffdd22";}else{ oncolor="lightgreen";} 
+  
+  if (timeinmin >= convertH2M(slider_times[0]) && timeinmin < convertH2M(slider_times[1])) {
+   tuesday.getElementsByClassName('noUi-connect')[0].style.background = oncolor;   // sunfloweryellow
+  }else{
+     tuesday.getElementsByClassName('noUi-connect')[0].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[2]) && timeinmin < convertH2M(slider_times[3])) {
+   tuesday.getElementsByClassName('noUi-connect')[1].style.background = oncolor;   // change color
+  }else{
+     tuesday.getElementsByClassName('noUi-connect')[1].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[4]) && timeinmin < convertH2M(slider_times[5])) {
+   tuesday.getElementsByClassName('noUi-connect')[2].style.background = oncolor;   // change color
+  }else{
+     tuesday.getElementsByClassName('noUi-connect')[2].style.background = "green";   // change color
+  }
+}else{
+  tuesday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // change color
+  tuesday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // change color
+  tuesday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // change color
+}  
 
+
+var slider_times = wednesday.noUiSlider.get();
+ 
+if(document.getElementById("checkwednesday").checked){   
+    var oncolor;
+  if(now.getDay()==3){oncolor="#ffdd22";}else{ oncolor="lightgreen";} 
+  
+  if (timeinmin >= convertH2M(slider_times[0]) && timeinmin < convertH2M(slider_times[1])) {
+   wednesday.getElementsByClassName('noUi-connect')[0].style.background = oncolor;   // sunfloweryellow
+  }else{
+     wednesday.getElementsByClassName('noUi-connect')[0].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[2]) && timeinmin < convertH2M(slider_times[3])) {
+   wednesday.getElementsByClassName('noUi-connect')[1].style.background = oncolor;   // change color
+  }else{
+     wednesday.getElementsByClassName('noUi-connect')[1].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[4]) && timeinmin < convertH2M(slider_times[5])) {
+   wednesday.getElementsByClassName('noUi-connect')[2].style.background = oncolor;   // change color
+  }else{
+     wednesday.getElementsByClassName('noUi-connect')[2].style.background = "green";   // change color
+  }
+}else{
+  wednesday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // change color
+  wednesday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // change color
+  wednesday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // change color
+}  
+
+
+
+var slider_times = thursday.noUiSlider.get();
+ 
+if(document.getElementById("checkthursday").checked){   
+    var oncolor;
+  if(now.getDay()==4){oncolor="#ffdd22";}else{ oncolor="lightgreen";} 
+  
+  if (timeinmin >= convertH2M(slider_times[0]) && timeinmin < convertH2M(slider_times[1])) {
+   thursday.getElementsByClassName('noUi-connect')[0].style.background = oncolor;   // sunfloweryellow
+  }else{
+     thursday.getElementsByClassName('noUi-connect')[0].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[2]) && timeinmin < convertH2M(slider_times[3])) {
+   thursday.getElementsByClassName('noUi-connect')[1].style.background = oncolor;   // change color
+  }else{
+     thursday.getElementsByClassName('noUi-connect')[1].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[4]) && timeinmin < convertH2M(slider_times[5])) {
+   thursday.getElementsByClassName('noUi-connect')[2].style.background = oncolor;   // change color
+  }else{
+     thursday.getElementsByClassName('noUi-connect')[2].style.background = "green";   // change color
+  }
+}else{
+  thursday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // change color
+  thursday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // change color
+  thursday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // change color
+}
+
+
+
+
+var slider_times = friday.noUiSlider.get();
+ 
+if(document.getElementById("checkfriday").checked){   
+    var oncolor;
+  if(now.getDay()==5){oncolor="#ffdd22";}else{ oncolor="lightgreen";} 
+  
+  if (timeinmin >= convertH2M(slider_times[0]) && timeinmin < convertH2M(slider_times[1])) {
+   friday.getElementsByClassName('noUi-connect')[0].style.background = oncolor;   // sunfloweryellow
+  }else{
+     friday.getElementsByClassName('noUi-connect')[0].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[2]) && timeinmin < convertH2M(slider_times[3])) {
+   friday.getElementsByClassName('noUi-connect')[1].style.background = oncolor;   // change color
+  }else{
+     friday.getElementsByClassName('noUi-connect')[1].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[4]) && timeinmin < convertH2M(slider_times[5])) {
+   friday.getElementsByClassName('noUi-connect')[2].style.background = oncolor;   // change color
+  }else{
+     friday.getElementsByClassName('noUi-connect')[2].style.background = "green";   // change color
+  }
+}else{
+  friday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // change color
+  friday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // change color
+  friday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // change color
+}
+
+
+
+
+var slider_times = saturday.noUiSlider.get();
+ 
+if(document.getElementById("checksaturday").checked){   
+    var oncolor;
+  if(now.getDay()==6){oncolor="#ffdd22";}else{ oncolor="lightgreen";} 
+  
+  if (timeinmin >= convertH2M(slider_times[0]) && timeinmin < convertH2M(slider_times[1])) {
+   saturday.getElementsByClassName('noUi-connect')[0].style.background = oncolor;   // sunfloweryellow
+  }else{
+     saturday.getElementsByClassName('noUi-connect')[0].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[2]) && timeinmin < convertH2M(slider_times[3])) {
+   saturday.getElementsByClassName('noUi-connect')[1].style.background = oncolor;   // change color
+  }else{
+     saturday.getElementsByClassName('noUi-connect')[1].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[4]) && timeinmin < convertH2M(slider_times[5])) {
+   saturday.getElementsByClassName('noUi-connect')[2].style.background = oncolor;   // change color
+  }else{
+     saturday.getElementsByClassName('noUi-connect')[2].style.background = "green";   // change color
+  }
+}else{
+  saturday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // change color
+  saturday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // change color
+  saturday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // change color
+}
+
+
+
+
+var slider_times = sunday.noUiSlider.get();
+ 
+if(document.getElementById("checksunday").checked){   
+    var oncolor;
+  if(now.getDay()==0){oncolor="#ffdd22";}else{ oncolor="lightgreen";} 
+  
+  if (timeinmin >= convertH2M(slider_times[0]) && timeinmin < convertH2M(slider_times[1])) {
+   sunday.getElementsByClassName('noUi-connect')[0].style.background = oncolor;   // sunfloweryellow
+  }else{
+     sunday.getElementsByClassName('noUi-connect')[0].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[2]) && timeinmin < convertH2M(slider_times[3])) {
+   sunday.getElementsByClassName('noUi-connect')[1].style.background = oncolor;   // change color
+  }else{
+     sunday.getElementsByClassName('noUi-connect')[1].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[4]) && timeinmin < convertH2M(slider_times[5])) {
+   sunday.getElementsByClassName('noUi-connect')[2].style.background = oncolor;   // change color
+  }else{
+     sunday.getElementsByClassName('noUi-connect')[2].style.background = "green";   // change color
+  }
+}else{
+  sunday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // change color
+  sunday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // change color
+  sunday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // change color
+}
+
+
+
+
+
+var slider_times = everyday.noUiSlider.get();
+ 
+if(document.getElementById("checkeveryday").checked){   
+    var oncolor;
+  if(now.getDay()<=6){oncolor="#ffdd22";}else{ oncolor="lightgreen";} 
+  
+  if (timeinmin >= convertH2M(slider_times[0]) && timeinmin < convertH2M(slider_times[1])) {
+   everyday.getElementsByClassName('noUi-connect')[0].style.background = oncolor;   // sunfloweryellow
+  }else{
+     everyday.getElementsByClassName('noUi-connect')[0].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[2]) && timeinmin < convertH2M(slider_times[3])) {
+   everyday.getElementsByClassName('noUi-connect')[1].style.background = oncolor;   // change color
+  }else{
+     everyday.getElementsByClassName('noUi-connect')[1].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[4]) && timeinmin < convertH2M(slider_times[5])) {
+   everyday.getElementsByClassName('noUi-connect')[2].style.background = oncolor;   // change color
+  }else{
+     everyday.getElementsByClassName('noUi-connect')[2].style.background = "green";   // change color
+  }
+}else{
+  everyday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // change color
+  everyday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // change color
+  everyday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // change color
+}
+
+
+   
+         // 0 to 6 // 0 is sunday // 6 is saturday 
+    //   for (let i = 0; i < 6; i++) {     
+    //       document.getElementById("dag"+i).style.background = "";                  // set all days backkground to ""
+    //   }
+      document.getElementById("iederedag").style.background = "lightyellow"; // highlight active day backgound
+  //    document.getElementById("dag"+now.getDay()).style.background = ""; 
+  
+
+
+
+var slider_times = weekdays.noUiSlider.get();
+ 
+if(document.getElementById("checkweekdays").checked){   
+    var oncolor;
+  if(now.getDay()>=1 && now.getDay()<=5){oncolor="#ffdd22";}else{ oncolor="lightgreen";} 
+  
+  if (timeinmin >= convertH2M(slider_times[0]) && timeinmin < convertH2M(slider_times[1])) {
+   weekdays.getElementsByClassName('noUi-connect')[0].style.background = oncolor;   // sunfloweryellow
+  }else{
+     weekdays.getElementsByClassName('noUi-connect')[0].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[2]) && timeinmin < convertH2M(slider_times[3])) {
+   weekdays.getElementsByClassName('noUi-connect')[1].style.background = oncolor;   // change color
+  }else{
+     weekdays.getElementsByClassName('noUi-connect')[1].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[4]) && timeinmin < convertH2M(slider_times[5])) {
+   weekdays.getElementsByClassName('noUi-connect')[2].style.background = oncolor;   // change color
+  }else{
+     weekdays.getElementsByClassName('noUi-connect')[2].style.background = "green";   // change color
+  }
+}else{
+  weekdays.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // change color
+  weekdays.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // change color
+  weekdays.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // change color
+}
+
+
+                   // set all backkground to ""
+     
+if(now.getDay()>=1 && now.getDay()<=5){
+   document.getElementById("weekdagen").style.background = "lightyellow"; // highlight active day backgound
+  }else{
+   document.getElementById("weekdagen").style.background = "";   
+}
+
+
+
+var slider_times = weekends.noUiSlider.get();
+ 
+if(document.getElementById("checkweekends").checked){   
+    var oncolor;
+  if(now.getDay()==6 || now.getDay()==0){oncolor="#ffdd22";}else{ oncolor="lightgreen";} 
+  
+  if (timeinmin >= convertH2M(slider_times[0]) && timeinmin < convertH2M(slider_times[1])) {
+   weekends.getElementsByClassName('noUi-connect')[0].style.background = oncolor;   // sunfloweryellow
+  }else{
+     weekends.getElementsByClassName('noUi-connect')[0].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[2]) && timeinmin < convertH2M(slider_times[3])) {
+   weekends.getElementsByClassName('noUi-connect')[1].style.background = oncolor;   // change color
+  }else{
+     weekends.getElementsByClassName('noUi-connect')[1].style.background = "green";   // change color
+  }
+  
+  if (timeinmin >= convertH2M(slider_times[4]) && timeinmin < convertH2M(slider_times[5])) {
+   weekends.getElementsByClassName('noUi-connect')[2].style.background = oncolor;   // change color
+  }else{
+     weekends.getElementsByClassName('noUi-connect')[2].style.background = "green";   // change color
+  }
+}else{
+  weekends.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // change color
+  weekends.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // change color
+  weekends.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // change color
+}
+
+
+   
+         // 0 to 6 // 0 is sunday // 6 is saturday 
+       for (let i = 0; i <= 6; i++) {     
+           document.getElementById("dag"+i).style.background = "";                  // set all days backkground to ""
+          // console.log("erase background "+i);
+       }
+      document.getElementById("dag"+now.getDay()).style.background = "lightyellow"; // highlight active day backgound
+  //    document.getElementById("dag"+now.getDay()).style.background = ""; 
+  
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+// grey out dissable slider part if checkbox not checked
+// maybe addeventlistnener
+if(!document.getElementById("ct1m").checked){    //not checked
+  monday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct2m").checked){    //not checked
+  monday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct3m").checked){     //not checked
+  monday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // grey out dissable
+}
+
+
+// grey out dissable slider part if checkbox not checked
+if(!document.getElementById("ct1tu").checked){    //not checked
+  tuesday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct2tu").checked){    //not checked
+  tuesday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct3tu").checked){     //not checked
+  tuesday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // grey out dissable
+}
+
+
+// grey out dissable slider part if checkbox not checked
+if(!document.getElementById("ct1w").checked){    //not checked
+  wednesday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct2w").checked){    //not checked
+  wednesday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct3w").checked){     //not checked
+  wednesday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // grey out dissable
+}
+
+
+
+// grey out dissable slider part if checkbox not checked
+if(!document.getElementById("ct1th").checked){    //not checked
+  thursday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct2th").checked){    //not checked
+  thursday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct3th").checked){     //not checked
+  thursday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // grey out dissable
+}
+
+
+// grey out dissable slider part if checkbox not checked
+if(!document.getElementById("ct1fr").checked){    //not checked
+  friday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct2fr").checked){    //not checked
+  friday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct3fr").checked){     //not checked
+  friday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // grey out dissable
+}
+
+
+// grey out dissable slider part if checkbox not checked
+if(!document.getElementById("ct1sa").checked){    //not checked
+  saturday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct2sa").checked){    //not checked
+  saturday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct3sa").checked){     //not checked
+  saturday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // grey out dissable
+}
+
+
+// grey out dissable slider part if checkbox not checked
+if(!document.getElementById("ct1su").checked){    //not checked
+  sunday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct2su").checked){    //not checked
+  sunday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct3su").checked){     //not checked
+  sunday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // grey out dissable
+}
+
+
+
+// grey out dissable slider part if checkbox not checked
+if(!document.getElementById("ct1ed").checked){    //not checked
+  everyday.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct2ed").checked){    //not checked
+  everyday.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct3ed").checked){     //not checked
+  everyday.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // grey out dissable
+}
+
+
+// grey out dissable slider part if checkbox not checked
+if(!document.getElementById("ct1wd").checked){    //not checked
+  weekdays.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct2wd").checked){    //not checked
+  weekdays.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct3wd").checked){     //not checked
+  weekdays.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // grey out dissable
+}
+
+
+
+// grey out dissable slider part if checkbox not checked
+if(!document.getElementById("ct1wend").checked){    //not checked
+  weekends.getElementsByClassName('noUi-connect')[0].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct2wend").checked){    //not checked
+  weekends.getElementsByClassName('noUi-connect')[1].style.background = "lightgray";   // grey out dissable
+}
+if(!document.getElementById("ct3wend").checked){     //not checked
+  weekends.getElementsByClassName('noUi-connect')[2].style.background = "lightgray";   // grey out dissable
+}
 
 
 /*
-Code Source來源:
-https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API
-https://codepen.io/jackliangtw/pen/yLVPQNB
+// get some checkboxes id by class test
+const allcheckByClass = document.getElementsByClassName('check');
+//let result = "document.getElementsByClassName('check')";
+for (let i=0; i < allcheckByClass.length; i++) {
+  
+  console.log(allcheckByClass[i].id);
+    console.log(document.getElementById(allcheckByClass[i].id).className);
+}
+
+
+console.log(document.getElementsByClassName('check'));
+
+
 */
 
-//document.addEventListener("keypress", function(e) {
-  //if (e.keyCode === 13) {
-  //  toggleFullScreen();
-  //}
-//}, false);
 
-function toggleFullScreen() {
-  if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen();
-  } else {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    }
-  }
-  
-}
 
-// https://ldijkman.github.io/Electra/  
-
-function suggestonoff(){  // toggle autocomplete suggest button
-  if(ace.edit("editor").getOption("enableLiveAutocompletion")==true){
-    ace.edit("editor").setOptions({enableLiveAutocompletion: false});
-    document.getElementById("butsuggest").style="background-color:#FFDACAFF;"  //redisch
-  }else{
-    ace.edit("editor").setOptions({enableLiveAutocompletion: true});
-    document.getElementById("butsuggest").style="background-color:#CAFFC8FF;"   //greenisch
-  }
-  console.log(ace.edit("editor").getOption("enableLiveAutocompletion"));
 }
 
 
 
-  if(ace.edit("editor").getOption("enableLiveAutocompletion")==true){
-    ace.edit("editor").setOptions({enableLiveAutocompletion: false});
-    document.getElementById("butsuggest").style="background-color:#FFDACAFF;"  //redisch
+
+// JavaScript function to get ISO-8601 week number of year, 
+// Weeks starting on Monday
+// https://codepen.io/ldijkman/pen/LYdNJvM
+
+function ISO8601_week_no(dt) 
+  {
+     var tdt = new Date(dt.valueOf());
+     var dayn = (dt.getDay() + 6) % 7;
+     tdt.setDate(tdt.getDate() - dayn + 3);
+     var firstThursday = tdt.valueOf();
+     tdt.setMonth(0, 1);
+     if (tdt.getDay() !== 4) 
+       {
+      tdt.setMonth(0, 1 + ((4 - tdt.getDay()) + 7) % 7);
+        }
+     return 1 + Math.ceil((firstThursday - tdt) / 604800000);
+        }
+
+dt = new Date();
+// console.log(ISO8601_week_no(dt));
+
+
+
+// set background color 
+// of checboxes 
+// active even or odd week number
+
+if(ISO8601_week_no(dt) % 2 == 0) {
+ document.getElementById('wn1').innerHTML = "Even Week NR?: "+ISO8601_week_no(dt); 
+ document.getElementById('wn2').innerHTML = "Even Week NR?: "+ISO8601_week_no(dt); 
+ document.getElementsByClassName('even')[0].style.background = "#cffab9";  
+ document.getElementsByClassName('even')[1].style.background = "#cffab9";   
+ document.getElementsByClassName('odd')[0].style.background = "";   
+ document.getElementsByClassName('odd')[1].style.background = "";   
+}else{
+ document.getElementById('wn1').innerHTML = "Odd Week NR? : "+ISO8601_week_no(dt); 
+ document.getElementById('wn2').innerHTML = "Odd Week NR?: "+ISO8601_week_no(dt); 
+ document.getElementsByClassName('even')[0].style.background = "";  
+ document.getElementsByClassName('even')[1].style.background = "";   
+ document.getElementsByClassName('odd')[0].style.background = "#cffab9";   
+ document.getElementsByClassName('odd')[1].style.background = "#cffab9";  
+}
+
+
+
+
+
+// set background color 
+// of checboxes 
+// active day 
+
+ var now = new Date();
+
+// i element class d0 to d6 for days 
+// j 0, 1, 2    3 times the classname used in page
+
+for (let i = 0; i <= 6; i++) { 
+  if(now.getDay()==i){
+    for (let j = 0; j <= 2; j++) { 
+      document.getElementsByClassName('d'+i)[j].style.background = "#cffab9";
+      console.log("active "+i, j);
+    } 
   }else{
-    ace.edit("editor").setOptions({enableLiveAutocompletion: true});
-    document.getElementById("butsuggest").style="background-color:#CAFFC8FF;"   //greenisch
+    for (let j = 0; j <= 2; j++) { 
+      document.getElementsByClassName('d'+i)[j].style.background = "";
+      console.log(i, j);
+    } 
   }
-  
-  function pretty(){
-    var beautify = ace.require("ace/ext/beautify"); // get reference to extension
-    var editor = ace.edit("editor"); // get reference to editor
-    beautify.beautify(editor.session);
-  }
-  
-  
-  document.onreadystatechange = function() {
-        if (document.readyState !== "complete") {
-              if(ace.edit("editor").getOption("enableLiveAutocompletion")==false){
-                document.getElementById("butsuggest").style="background-color:#FFDACAFF;"  //redisch
-              }else{
-                document.getElementById("butsuggest").style="background-color:#CAFFC8FF;"   //greenisch
-              }
-        } 
-    };
-  
+}
+
+
 </script>
-  
-<!-- https://ldijkman.github.io/Electra/ -->
 
+
+
+
+
+
+
+
+<script> 
+// anchor scroll 
+// without browser history back problem with normal HTML anchhors 
+//(slide from day to day with button links)
+function scrollToAnchor(selectedAnchor) {                    
+    document.querySelector(selectedAnchor).scrollIntoView({
+        behavior: 'smooth'
+    });
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+<script>
+/*
+ (c) 2011-2015, Vladimir Agafonkin
+ SunCalc is a JavaScript library for calculating sun/moon position and light phases.
+ https://github.com/mourner/suncalc
+*/
+
+(function () { 'use strict';
+
+// shortcuts for easier to read formulas
+
+var PI   = Math.PI,
+    sin  = Math.sin,
+    cos  = Math.cos,
+    tan  = Math.tan,
+    asin = Math.asin,
+    atan = Math.atan2,
+    acos = Math.acos,
+    rad  = PI / 180;
+
+// sun calculations are based on http://aa.quae.nl/en/reken/zonpositie.html formulas
+
+
+// date/time constants and conversions
+
+var dayMs = 1000 * 60 * 60 * 24,
+    J1970 = 2440588,
+    J2000 = 2451545;
+
+function toJulian(date) { return date.valueOf() / dayMs - 0.5 + J1970; }
+function fromJulian(j)  { return new Date((j + 0.5 - J1970) * dayMs); }
+function toDays(date)   { return toJulian(date) - J2000; }
+
+
+// general calculations for position
+
+var e = rad * 23.4397; // obliquity of the Earth
+
+function rightAscension(l, b) { return atan(sin(l) * cos(e) - tan(b) * sin(e), cos(l)); }
+function declination(l, b)    { return asin(sin(b) * cos(e) + cos(b) * sin(e) * sin(l)); }
+
+function azimuth(H, phi, dec)  { return atan(sin(H), cos(H) * sin(phi) - tan(dec) * cos(phi)); }
+function altitude(H, phi, dec) { return asin(sin(phi) * sin(dec) + cos(phi) * cos(dec) * cos(H)); }
+
+function siderealTime(d, lw) { return rad * (280.16 + 360.9856235 * d) - lw; }
+
+function astroRefraction(h) {
+    if (h < 0) // the following formula works for positive altitudes only.
+        h = 0; // if h = -0.08901179 a div/0 would occur.
+
+    // formula 16.4 of "Astronomical Algorithms" 2nd edition by Jean Meeus (Willmann-Bell, Richmond) 1998.
+    // 1.02 / tan(h + 10.26 / (h + 5.10)) h in degrees, result in arc minutes -> converted to rad:
+    return 0.0002967 / Math.tan(h + 0.00312536 / (h + 0.08901179));
+}
+
+// general sun calculations
+
+function solarMeanAnomaly(d) { return rad * (357.5291 + 0.98560028 * d); }
+
+function eclipticLongitude(M) {
+
+    var C = rad * (1.9148 * sin(M) + 0.02 * sin(2 * M) + 0.0003 * sin(3 * M)), // equation of center
+        P = rad * 102.9372; // perihelion of the Earth
+
+    return M + C + P + PI;
+}
+
+function sunCoords(d) {
+
+    var M = solarMeanAnomaly(d),
+        L = eclipticLongitude(M);
+
+    return {
+        dec: declination(L, 0),
+        ra: rightAscension(L, 0)
+    };
+}
+
+
+var SunCalc = {};
+
+
+// calculates sun position for a given date and latitude/longitude
+
+SunCalc.getPosition = function (date, lat, lng) {
+
+    var lw  = rad * -lng,
+        phi = rad * lat,
+        d   = toDays(date),
+
+        c  = sunCoords(d),
+        H  = siderealTime(d, lw) - c.ra;
+
+    return {
+        azimuth: azimuth(H, phi, c.dec),
+        altitude: altitude(H, phi, c.dec)
+    };
+};
+
+
+// sun times configuration (angle, morning name, evening name)
+
+var times = SunCalc.times = [
+    [-0.833, 'sunrise',       'sunset'      ],
+    [  -0.3, 'sunriseEnd',    'sunsetStart' ],
+    [    -6, 'dawn',          'dusk'        ],
+    [   -12, 'nauticalDawn',  'nauticalDusk'],
+    [   -18, 'nightEnd',      'night'       ],
+    [     6, 'goldenHourEnd', 'goldenHour'  ]
+];
+
+// adds a custom time to the times config
+
+SunCalc.addTime = function (angle, riseName, setName) {
+    times.push([angle, riseName, setName]);
+};
+
+
+// calculations for sun times
+
+var J0 = 0.0009;
+
+function julianCycle(d, lw) { return Math.round(d - J0 - lw / (2 * PI)); }
+
+function approxTransit(Ht, lw, n) { return J0 + (Ht + lw) / (2 * PI) + n; }
+function solarTransitJ(ds, M, L)  { return J2000 + ds + 0.0053 * sin(M) - 0.0069 * sin(2 * L); }
+
+function hourAngle(h, phi, d) { return acos((sin(h) - sin(phi) * sin(d)) / (cos(phi) * cos(d))); }
+function observerAngle(height) { return -2.076 * Math.sqrt(height) / 60; }
+
+// returns set time for the given sun altitude
+function getSetJ(h, lw, phi, dec, n, M, L) {
+
+    var w = hourAngle(h, phi, dec),
+        a = approxTransit(w, lw, n);
+    return solarTransitJ(a, M, L);
+}
+
+
+// calculates sun times for a given date, latitude/longitude, and, optionally,
+// the observer height (in meters) relative to the horizon
+
+SunCalc.getTimes = function (date, lat, lng, height) {
+
+    height = height || 0;
+
+    var lw = rad * -lng,
+        phi = rad * lat,
+
+        dh = observerAngle(height),
+
+        d = toDays(date),
+        n = julianCycle(d, lw),
+        ds = approxTransit(0, lw, n),
+
+        M = solarMeanAnomaly(ds),
+        L = eclipticLongitude(M),
+        dec = declination(L, 0),
+
+        Jnoon = solarTransitJ(ds, M, L),
+
+        i, len, time, h0, Jset, Jrise;
+
+
+    var result = {
+        solarNoon: fromJulian(Jnoon),
+        nadir: fromJulian(Jnoon - 0.5)
+    };
+
+    for (i = 0, len = times.length; i < len; i += 1) {
+        time = times[i];
+        h0 = (time[0] + dh) * rad;
+
+        Jset = getSetJ(h0, lw, phi, dec, n, M, L);
+        Jrise = Jnoon - (Jset - Jnoon);
+
+        result[time[1]] = fromJulian(Jrise);
+        result[time[2]] = fromJulian(Jset);
+    }
+
+    return result;
+};
+
+
+// moon calculations, based on http://aa.quae.nl/en/reken/hemelpositie.html formulas
+
+function moonCoords(d) { // geocentric ecliptic coordinates of the moon
+
+    var L = rad * (218.316 + 13.176396 * d), // ecliptic longitude
+        M = rad * (134.963 + 13.064993 * d), // mean anomaly
+        F = rad * (93.272 + 13.229350 * d),  // mean distance
+
+        l  = L + rad * 6.289 * sin(M), // longitude
+        b  = rad * 5.128 * sin(F),     // latitude
+        dt = 385001 - 20905 * cos(M);  // distance to the moon in km
+
+    return {
+        ra: rightAscension(l, b),
+        dec: declination(l, b),
+        dist: dt
+    };
+}
+
+SunCalc.getMoonPosition = function (date, lat, lng) {
+
+    var lw  = rad * -lng,
+        phi = rad * lat,
+        d   = toDays(date),
+
+        c = moonCoords(d),
+        H = siderealTime(d, lw) - c.ra,
+        h = altitude(H, phi, c.dec),
+        // formula 14.1 of "Astronomical Algorithms" 2nd edition by Jean Meeus (Willmann-Bell, Richmond) 1998.
+        pa = atan(sin(H), tan(phi) * cos(c.dec) - sin(c.dec) * cos(H));
+
+    h = h + astroRefraction(h); // altitude correction for refraction
+
+    return {
+        azimuth: azimuth(H, phi, c.dec),
+        altitude: h,
+        distance: c.dist,
+        parallacticAngle: pa
+    };
+};
+
+
+// calculations for illumination parameters of the moon,
+// based on http://idlastro.gsfc.nasa.gov/ftp/pro/astro/mphase.pro formulas and
+// Chapter 48 of "Astronomical Algorithms" 2nd edition by Jean Meeus (Willmann-Bell, Richmond) 1998.
+
+SunCalc.getMoonIllumination = function (date) {
+
+    var d = toDays(date || new Date()),
+        s = sunCoords(d),
+        m = moonCoords(d),
+
+        sdist = 149598000, // distance from Earth to Sun in km
+
+        phi = acos(sin(s.dec) * sin(m.dec) + cos(s.dec) * cos(m.dec) * cos(s.ra - m.ra)),
+        inc = atan(sdist * sin(phi), m.dist - sdist * cos(phi)),
+        angle = atan(cos(s.dec) * sin(s.ra - m.ra), sin(s.dec) * cos(m.dec) -
+                cos(s.dec) * sin(m.dec) * cos(s.ra - m.ra));
+
+    return {
+        fraction: (1 + cos(inc)) / 2,
+        phase: 0.5 + 0.5 * inc * (angle < 0 ? -1 : 1) / Math.PI,
+        angle: angle
+    };
+};
+
+
+function hoursLater(date, h) {
+    return new Date(date.valueOf() + h * dayMs / 24);
+}
+
+// calculations for moon rise/set times are based on http://www.stargazing.net/kepler/moonrise.html article
+
+SunCalc.getMoonTimes = function (date, lat, lng, inUTC) {
+    var t = new Date(date);
+    if (inUTC) t.setUTCHours(0, 0, 0, 0);
+    else t.setHours(0, 0, 0, 0);
+
+    var hc = 0.133 * rad,
+        h0 = SunCalc.getMoonPosition(t, lat, lng).altitude - hc,
+        h1, h2, rise, set, a, b, xe, ye, d, roots, x1, x2, dx;
+
+    // go in 2-hour chunks, each time seeing if a 3-point quadratic curve crosses zero (which means rise or set)
+    for (var i = 1; i <= 24; i += 2) {
+        h1 = SunCalc.getMoonPosition(hoursLater(t, i), lat, lng).altitude - hc;
+        h2 = SunCalc.getMoonPosition(hoursLater(t, i + 1), lat, lng).altitude - hc;
+
+        a = (h0 + h2) / 2 - h1;
+        b = (h2 - h0) / 2;
+        xe = -b / (2 * a);
+        ye = (a * xe + b) * xe + h1;
+        d = b * b - 4 * a * h1;
+        roots = 0;
+
+        if (d >= 0) {
+            dx = Math.sqrt(d) / (Math.abs(a) * 2);
+            x1 = xe - dx;
+            x2 = xe + dx;
+            if (Math.abs(x1) <= 1) roots++;
+            if (Math.abs(x2) <= 1) roots++;
+            if (x1 < -1) x1 = x2;
+        }
+
+        if (roots === 1) {
+            if (h0 < 0) rise = i + x1;
+            else set = i + x1;
+
+        } else if (roots === 2) {
+            rise = i + (ye < 0 ? x2 : x1);
+            set = i + (ye < 0 ? x1 : x2);
+        }
+
+        if (rise && set) break;
+
+        h0 = h2;
+    }
+
+    var result = {};
+
+    if (rise) result.rise = hoursLater(t, rise);
+    if (set) result.set = hoursLater(t, set);
+
+    if (!rise && !set) result[ye > 0 ? 'alwaysUp' : 'alwaysDown'] = true;
+
+    return result;
+};
+
+
+// export as Node module / AMD module / browser variable
+if (typeof exports === 'object' && typeof module !== 'undefined') module.exports = SunCalc;
+else if (typeof define === 'function' && define.amd) define(SunCalc);
+else window.SunCalc = SunCalc;
+
+}());
+
+/*
+ (c) 2011-2015, Vladimir Agafonkin
+ SunCalc is a JavaScript library for calculating sun/moon position and light phases.
+ https://github.com/mourner/suncalc
+*/
+
+</script>
+</body>
+</html>
 
