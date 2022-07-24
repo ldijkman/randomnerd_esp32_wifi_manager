@@ -1,6 +1,7 @@
 <!-- 
 
 autocompletion suggestions  
+button pretty beautify prettyprint format code
     
 screeenshot autocompletion suggestions
     https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/LAB_Experiments/2022-07-20-205657_1920x1080_scrot.png
@@ -792,6 +793,8 @@ s.session.setMode("ace/mode/"+n, function() {loadpick()}),
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.7.0/mode-javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.7.0/snippets/javascript.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.7.0/ext-beautify.min.js"></script>
+
 <!--<script src="./ext-language_tools.js"></script>-->
 <!--<script src="https://ace.c9.io/build/src-noconflict/ext-language_tools.js"></script>-->
 
@@ -946,7 +949,8 @@ document.getElementById("myList").options[0].selected = true;
 &nbsp;
 
 
-
+<button onclick='pretty()' id="pretty" title="beatify pretty print format ">pretty</button>&nbsp;
+          
 
             <button onclick='suggestonoff()' id="butsuggest" title="suggest on / off">suggest</button>&nbsp;&nbsp;
           
@@ -1105,7 +1109,11 @@ function suggestonoff(){  // toggle autocomplete suggest button
     document.getElementById("butsuggest").style="background-color:#CAFFC8FF;"   //greenisch
   }
   
-  
+  function pretty(){
+    var beautify = ace.require("ace/ext/beautify"); // get reference to extension
+    var editor = ace.edit("editor"); // get reference to editor
+    beautify.beautify(editor.session);
+  }
   
   
   document.onreadystatechange = function() {
