@@ -288,8 +288,18 @@ https://codepen.io/ldijkman/pen/LYdZpYp
   
       
     }
+    
+    /*
+        try to change the selection or highlight searh color
+        hard to see the selected in standard setting
+    */
+    .ace-monokai .ace_marker-layer .ace_selection {
+    background: #cbc161;
+    border: 1px solid #13FF10C1
+}
     .ace_editor .ace_marker-layer .ace_bracket {
-      ddddisplay: none
+      background: #cbc161;
+    border: 1px solid #13FF10C1
     }
      .color {
         color: orange;   
@@ -355,6 +365,10 @@ https://codepen.io/ldijkman/pen/LYdZpYp
   }
 }
     
+    
+     .ace_marker-layer .ace_selected-word {
+  border: 1px solid #13FF10C1
+}
   </style>
 
 <!--
@@ -371,6 +385,7 @@ https://github.com/ajaxorg/ace/discussions/4725
 <script>
 ////////////////////////////////////////////////////////////////////
 // luberth => i think next should be here, it is missing in the lorol fsbrowser
+https://github.com/lorol/ESPAsyncWebServer/blob/master/examples/ESP_AsyncFSBrowser/data/edit_gz
 ////////////////////////////////////////////////////////////////////
 /*
   FSBrowser - A web-based FileSystem Browser for ESP8266 filesystems
