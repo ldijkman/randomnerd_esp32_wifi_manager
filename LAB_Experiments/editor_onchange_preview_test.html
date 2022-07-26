@@ -111,7 +111,7 @@ https://codepen.io/ldijkman/pen/LYdZpYp
 
   .tvu input {
     position: absolute;
-    opacity: 0
+    opacity: 0;
   }
 
   .tvu {
@@ -124,14 +124,14 @@ https://codepen.io/ldijkman/pen/LYdZpYp
   }
 
   .tvu span {
-    margin-bottom: 5px;
-    padding: 0 0 0 18px;
-    cursor: pointer;
-    display: inline-block;
-    height: 16px;
-    vertical-align: middle;
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADoSURBVBgZBcExblNBGAbA2ceegTRBuIKOgiihSZNTcC5LUHAihNJR0kGKCDcYJY6D3/77MdOinTvzAgCw8ysThIvn/VojIyMjIyPP+bS1sUQIV2s95pBDDvmbP/mdkft83tpYguZq5Jh/OeaYh+yzy8hTHvNlaxNNczm+la9OTlar1UdA/+C2A4trRCnD3jS8BB1obq2Gk6GU6QbQAS4BUaYSQAf4bhhKKTFdAzrAOwAxEUAH+KEM01SY3gM6wBsEAQB0gJ+maZoC3gI6iPYaAIBJsiRmHU0AALOeFC3aK2cWAACUXe7+AwO0lc9eTHYTAAAAAElFTkSuQmCC) no-repeat;
-    background-position: 0 0
+                  margin-bottom: 5px;
+                  padding: 0 0 0 18px;
+                  cursor: pointer;
+                  display: inline-block;
+                  height: 16px;
+                  vertical-align: middle;
+                  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADoSURBVBgZBcExblNBGAbA2ceegTRBuIKOgiihSZNTcC5LUHAihNJR0kGKCDcYJY6D3/77MdOinTvzAgCw8ysThIvn/VojIyMjIyPP+bS1sUQIV2s95pBDDvmbP/mdkft83tpYguZq5Jh/OeaYh+yzy8hTHvNlaxNNczm+la9OTlar1UdA/+C2A4trRCnD3jS8BB1obq2Gk6GU6QbQAS4BUaYSQAf4bhhKKTFdAzrAOwAxEUAH+KEM01SY3gM6wBsEAQB0gJ+maZoC3gI6iPYaAIBJsiRmHU0AALOeFC3aK2cWAACUXe7+AwO0lc9eTHYTAAAAAElFTkSuQmCC) no-repeat;
+                  background-position: 0 0;
   }
 
   .tvu span:hover {
@@ -845,6 +845,8 @@ s.session.setMode("ace/mode/"+n, function() {loadpick()}),
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/ext-beautify.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/ext-settings_menu.min.js"></script>
+
 
 
 <script>
@@ -943,14 +945,17 @@ var myval = document.getElementById("myList").value;
 var htmltext;
 //console.log(myval);
 if(myval==1){
-  htmltext="<!--     -->";
-  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
-  console.log(ace.edit("editor").getCursorPosition());
-  console.log(ace.edit("editor").selection.getCursor().column);
-  console.log(ace.edit("editor").selection.getCursor().row);
-  console.log(ace.edit("editor").selection.getCursor().column-6);
+ //    /* */ or <!-- -->
+  ace.edit("editor").execCommand("toggleBlockComment");
+  
+  //htmltext="<!--     -->";
+  //ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
+  //console.log(ace.edit("editor").getCursorPosition());
+  //console.log(ace.edit("editor").selection.getCursor().column);
+  //console.log(ace.edit("editor").selection.getCursor().row);
+  //console.log(ace.edit("editor").selection.getCursor().column-6);
   //move cursor rom end of line  inside the comment part of paste
-  ace.edit('editor').gotoLine(ace.edit("editor").selection.getCursor().row+1,ace.edit("editor").selection.getCursor().column-6);
+  //ace.edit('editor').gotoLine(ace.edit("editor").selection.getCursor().row+1,ace.edit("editor").selection.getCursor().column-6);
 }
 if(myval==2){
   htmltext="<!DOCTYPE html>\n<html>\n<head>\n<title>  </title>\n</head>\n<body style=\"background-color: orange; color: yellow;\">\n<center>\n<h1>Hello</h1>\n</center>\n\n</body>\n</html>";
@@ -1003,7 +1008,7 @@ document.getElementById("myList").options[0].selected = true;
 
 <select id = "myList" onchange = "paste()" style="width: 55px;" title="paste at cursor position"> 
 <option value="0">paste</option> 
-<option value="1"> &lt;!-- --&gt; </option>  
+<option value="1"> comment /* */ or &lt;!-- --&gt; Ctrl+Shift+/&nbsp;</option>  
 <option value="2"> html page </option>  
 <option value="3"> img src </option>  
 <option value="4"> a href </option>  
@@ -1045,6 +1050,8 @@ document.getElementById("myList").options[0].selected = true;
              <input type="button" value="Preview" onClick="updatefrombutton();" title="reload by button if checkbox is off" ></label>&nbsp;&nbsp;&nbsp;
              Color: <input id="to-select-text" style="width:60px;" onClick="this.select();" value="#3399FF80" data-jscolor="{}" title="colorpicker" >
              <button id="copy-button" title="maybe copy works" >Copy</button>
+             
+             <input type="button" value="Set" onClick='ace.edit("editor").execCommand("showSettingsMenu");' title="show settings menu">
              <button id="info-button"  onClick="location.href='#popup1'"><b>?</b></button>&nbsp;
         </div>
     </div>
