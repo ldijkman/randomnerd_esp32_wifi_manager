@@ -295,12 +295,12 @@ https://codepen.io/ldijkman/pen/LYdZpYp
     */
     .ace-monokai .ace_marker-layer .ace_selection {
     background: #3399FF4B;
-    border: 2px solid #FFFC18FF;
+    border: 1px solid #FFFC18FF;
     /*padding-left: 0px;padding-right: 0px;padding-top: 1px;padding-bottom: 1px;*/
 }
     .ace_editor .ace_marker-layer .ace_bracket {
       background: #3399FF4B;
-    border: 2px solid #FFFC18FF;
+    border: 1px solid #FFFC18FF;
     /*padding-left: 0px;padding-right: 0px;padding-top: 1px;padding-bottom: 1px;*/
     }
      .color {
@@ -380,10 +380,10 @@ I made a colorpicker for ace editor. #4725
 easylogic started this conversation in Ideas
 https://github.com/ajaxorg/ace/discussions/4725
 
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ace-colorpicker@0.0.12/addon/ace-colorpicker.css" />
-<script type="text/javascript" src="./ace-colorpicker.min.js" ></script> 
 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ace-colorpicker@0.0.12/addon/ace-colorpicker.css" />
+
+
 <script>
 ////////////////////////////////////////////////////////////////////
 // luberth => i think next should be here, it is missing in the lorol fsbrowser
@@ -407,11 +407,11 @@ https://github.com/lorol/ESPAsyncWebServer/blob/master/examples/ESP_AsyncFSBrows
   See readme.md for more information.
 */
 // https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266WebServer/examples/FSBrowser
-
+ 
    function loadpick() {  
-       // does not work
-      console.log("load colorpicker function loadpick");
-      // AceColorPicker.load(ace.edit("editor"),ace.edit("editor"));  
+       console.log("load colorpicker now in function loadpick");
+       window.editor = ace.edit("editor");
+       AceColorPicker.load(ace,editor);
     }
 
 
@@ -423,6 +423,8 @@ https://github.com/lorol/ESPAsyncWebServer/blob/master/examples/ESP_AsyncFSBrows
         //console.log(ace.edit("editor").getValue());
         idoc.close();
      }
+    
+
     }
     
     function updatefrombutton() {  
@@ -512,7 +514,8 @@ https://github.com/lorol/ESPAsyncWebServer/blob/master/examples/ESP_AsyncFSBrows
 
   function createTree(e, t) {
     function n(e) {
-      ge("editor-filename").value = e, ge("editor").style.display = "none", p.style.display = "block", p.innerHTML = '<img src="/edit?edit=' + e + "&_cb=" + Date.now() + '" style="max-width:100%; max-height:100%; margin:auto; display:block;" />'
+      ge("editor-filename").value = e, ge("editor").style.display = "none", 
+      p.style.display = "block", p.innerHTML = '<img src="/edit?edit=' + e + "&_cb=" + Date.now() + '" style="max-width:100%; max-height:100%; margin:auto; display:block;" />'
     }
 
     function a(e, a) {
@@ -697,9 +700,9 @@ https://github.com/lorol/ESPAsyncWebServer/blob/master/examples/ESP_AsyncFSBrows
     void 0 === i && (i = "text/" + n, "c_cpp" === n && (i = "text/plain"));
     var s = ace.edit(e);
     return "plain" !== n && 
-  //s.session.setMode("ace/mode/"+n, () => { AceColorPicker.load(ace.edit("editor"),ace.edit)}),
+  
  
-s.session.setMode("ace/mode/"+n, function() {loadpick()}),
+   s.session.setMode("ace/mode/"+n, function() {loadpick()}),
 
     s.setTheme("ace/theme/" + a), 
     s.$blockScrolling = 1 / 0, 
@@ -768,6 +771,7 @@ s.session.setMode("ace/mode/"+n, function() {loadpick()}),
     window.define = ace.define, window.require = ace.require, ace.config.set("basePath", "/"), ace.config.set("workerPath", "/"), createFileUploader("uploader", n, t), void 0 === e.file && (e.file = "/schedule.html"), t.loadUrl(e.file)
   
     ace.require("ace/ext/language_tools");
+    
   }
   "undefined" == typeof XMLHttpRequest && (XMLHttpRequest = function() {
     try {
@@ -846,8 +850,9 @@ s.session.setMode("ace/mode/"+n, function() {loadpick()}),
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/ext-beautify.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/ext-settings_menu.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/ext-keybinding_menu.min.js"></script>
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/ext-spellcheck.min.js"></script>
 
 <script>
   if (void 0 === ace.edit) {
@@ -864,7 +869,7 @@ but i do not know how to implement it in this html/script code
 https://codepen.io/ldijkman/pen/LYdZpYp
 -->
   <script type="text/javascript" src="https://jscolor.com/release/2.4/jscolor-2.4.8/jscolor.js" ></script>   
-  <script type="text/javascript" src="./ace-colorpicker.min.js" ></script>  
+  
 
 
 <div id="container">
@@ -1196,6 +1201,9 @@ function suggestonoff(){  // toggle autocomplete suggest button
   
   document.onreadystatechange = function() {
         if (document.readyState !== "complete") {
+          
+         
+          
               if(ace.edit("editor").getOption("enableLiveAutocompletion")==false){
                 document.getElementById("butsuggest").style="background-color:#FFDACAFF;"  //redisch
               }else{
@@ -1205,7 +1213,7 @@ function suggestonoff(){  // toggle autocomplete suggest button
     };
   
 </script>
-  
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/ace-colorpicker@0.0.12/addon/ace-colorpicker.min.js" ></script> 
 <!-- https://ldijkman.github.io/Electra/ -->
 
 
