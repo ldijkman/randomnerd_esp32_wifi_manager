@@ -953,6 +953,7 @@ var htmltext;
 if(myval==1){
  //    /* */ or <!-- -->
   ace.edit("editor").execCommand("toggleBlockComment");
+   editor.execCommand("showKeyboardShortcuts");
   
   //htmltext="<!--     -->";
   //ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
@@ -966,6 +967,7 @@ if(myval==1){
 if(myval==2){
   htmltext="<!DOCTYPE html>\n<html>\n<head>\n<title>  </title>\n</head>\n<body style=\"background-color: orange; color: yellow;\">\n<center>\n<h1>Hello</h1>\n</center>\n\n</body>\n</html>";
   ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
+ 
 }
 if(myval==3){
   htmltext="<img src=\"https://raw.githubusercontent.com/ldijkman/Electra/main/touch_electra.gif\"><br>";
@@ -1216,6 +1218,9 @@ function suggestonoff(){  // toggle autocomplete suggest button
 </script>
  
  
-<!-- https://ldijkman.github.io/Electra/ -->
+<!-- 
+https://ldijkman.github.io/Electra/ 
+Copyright Electra 2022
+-->
 
 
