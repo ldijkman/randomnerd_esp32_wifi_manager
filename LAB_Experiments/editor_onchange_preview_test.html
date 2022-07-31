@@ -1,5 +1,10 @@
 <!-- 
-ACE for ESP8266 ESP32 espasyncwebserver littlefs modifeid LOROL version of FSBrowser https://github.com/lorol/ESPAsyncWebServer
+
+https://codepen.io/ldijkman/full/dymRoeR
+
+https://ldijkman.github.io/Electra/
+
+ACE for ESP8266 ESP32 espasyncwebserver littlefs modifeid LOROL version of FSBrowser https://ldijkman.github.io/Electra/
 https://www.google.com/search?q=ESP8266+ESP32
 
 button pretty beautify prettyprint format code
@@ -968,12 +973,12 @@ if(myval==1){
   //ace.edit('editor').gotoLine(ace.edit("editor").selection.getCursor().row+1,ace.edit("editor").selection.getCursor().column-6);
 }
 if(myval==2){
-  htmltext="<!DOCTYPE html>\n<html>\n<head>\n<title>  </title>\n</head>\n<body style=\"background-color: orange; color: yellow;\">\n<center>\n<h1>Hello</h1>\n</center>\n\n</body>\n</html>";
+  htmltext="<!DOCTYPE html>\n<html>\n<head>\n<title>  </title>\nstyle>body{background-color:orange;}</style>\n</head>\n<body style=\"background-color: orange; color: yellow;\">\n<center>\n<h1>Hello</h1>\n</center>\n\n</body>\n</html>";
   ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
  
 }
 if(myval==3){
-  htmltext="<img src=\"https://raw.githubusercontent.com/ldijkman/Electra/main/touch_electra.gif\"><br>";
+  htmltext="<img src=\"https://raw.githubusercontent.com/ldijkman/Electra/main/touch_electra.gif\"><br>\n";
   ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
 }
 if(myval==4){
@@ -981,7 +986,7 @@ if(myval==4){
   ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
 }
 if(myval==5){
-  htmltext="<script type=\"text/javascript\" src=\"\"></script\>";
+  htmltext="<script type=\"text/javascript\" src=\"\"></script\>\n";
   ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
 }
 if(myval==6){
@@ -1031,6 +1036,26 @@ if(myval==12){
   htmltext+="<hr style=\"height:10px; border-width:5; border-color:rgb(17,26,158); background-color:rgb(30,212,116); width:75%;\">\n";
   ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
 }
+
+
+if(myval==13){
+  htmltext="<h0>h0 text</h0>\n";
+  htmltext+="<h1>h1 text</h1>\n";
+  htmltext+="<h2>h2 text</h2>\n";
+  htmltext+="<h3>h3 text</h3>\n";
+  htmltext+="<h4>h4 text</h4>\n";
+  htmltext+="<h5>h5 text</h5>\n";
+  htmltext+="<h6>h6 text</h6>\n";
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
+}
+
+if(myval==14){
+
+htmltext="<p style=\"font-family:Courier; color:rgb(223,15,15); font-size: 20px;\">This text has the font Courier, is rgb(223,15,15), and 20px.</p>\n";
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
+}
+
+
 ace.edit("editor").focus();
 document.getElementById("myList").options[0].selected = true;
 }
@@ -1053,6 +1078,8 @@ document.getElementById("myList").options[0].selected = true;
 <option value="10" title="reload page in ?? sec"> meta refresh 10sec</option> 
 <option value="11" title="html table example"> html table</option> 
 <option value="12" title="horizontal line"> HR line</option> 
+<option value="13" title="header text h0 to h6"> Header text h0-h6</option> 
+<option value="14" title="font family size color"> font family size color</option> 
 </select>  
 
 &nbsp;
