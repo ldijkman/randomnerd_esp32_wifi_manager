@@ -1066,8 +1066,10 @@ if(myval==14){
 
 
 if(myval==15){
-  htmltext="<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>";
-  htmltext+="<p style=\"font-family: 'Sofia';font-size: 22px;\">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>";
+  htmltext="<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>\n";
+  htmltext+="<p style=\"font-family: 'Sofia';font-size: 22px;\">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>\n";
+  htmltext+="<!-- https://developers.google.com/fonts/docs/getting_started -->\n";
+  htmltext+="<!-- https://www.w3schools.com/css/css_font_google.asp -->";
   ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
 }
 
