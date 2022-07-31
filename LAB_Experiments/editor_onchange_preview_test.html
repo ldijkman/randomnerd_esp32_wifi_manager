@@ -952,8 +952,10 @@ var htmltext;
 //console.log(myval);
 if(myval==1){
  //    /* */ or <!-- -->
-  ace.edit("editor").execCommand("toggleBlockComment");
-   editor.execCommand("showKeyboardShortcuts");
+  
+   // test some commands
+   // ace.edit("editor").execCommand("toggleBlockComment");
+   // editor.execCommand("showKeyboardShortcuts");
   
   //htmltext="<!--     -->";
   //ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
@@ -1000,11 +1002,26 @@ if(myval==9){
 }
 if(myval==10){
   htmltext="<meta http-equiv=\"Refresh\" content=\"10\">\n";
-  htmltext+="<!-- does not work nice in preview editor, reloads the page in 10 seconds -->";
+  htmltext+="<!-- does not work nice in preview editor, reloads the page in 10 seconds -->\n";
+  htmltext+="<!-- reload to another URL -->\n";
+  htmltext+="<!-- <meta http-equiv=\"refresh\" content=\"30; URL=https://ldijkman.github.io/Electra/\"> -->\n";
   ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
 }
-
-
+if(myval==11){
+  htmltext="<table width=\"100%\" border=\"1\" cellspacing=\"5\" summary=\"bkj\">\n";
+  htmltext+="<tr>\n";
+	htmltext+="<td style=\"text-align:center;\">1</td>\n";
+	htmltext+="<td>2</td>\n";
+	htmltext+="<td>3</td>\n";
+	htmltext+="</tr>\n";
+	htmltext+="<tr>\n";
+	htmltext+="<td>4</td>\n";
+	htmltext+="<td>5</td>\n";
+	htmltext+="<td>6</td>\n";
+	htmltext+="</tr>\n";
+  htmltext+="</table>\n";
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
+}
 
 ace.edit("editor").focus();
 document.getElementById("myList").options[0].selected = true;
@@ -1016,16 +1033,17 @@ document.getElementById("myList").options[0].selected = true;
 
 <select id = "myList" onchange = "paste()" style="width: 55px;" title="paste at cursor position"> 
 <option value="0">paste</option> 
-<option value="1"> comment /* */ or &lt;!-- --&gt; Ctrl+Shift+/&nbsp;</option>  
-<option value="2"> html page </option>  
-<option value="3"> img src </option>  
-<option value="4"> a href </option>  
-<option value="5"> script src= </option>  
-<option value="6"> \&\nbsp; </option> 
-<option value="7"> \&\emsp; </option> 
-<option value="8"> p align right </option> 
-<option value="9"> iframe </option> 
-<option value="10"> meta refresh 10sec</option> 
+<option value="1" title="comment wil be for html or script"> comment /* */ or &lt;!-- --&gt; Ctrl+Shift+/&nbsp;</option>  
+<option value="2" title="paste html example page"> html page </option>  
+<option value="3" title="image example"> img src </option>  
+<option value="4" title="url text link example"> a href </option>  
+<option value="5" title="include script"> script src= </option>  
+<option value="6" title="space"> \&\nbsp; </option> 
+<option value="7" title="4 spaces"> \&\emsp; </option> 
+<option value="8" title="text align right"> p align right </option> 
+<option value="9" title="other page in this page example"> iframe </option> 
+<option value="10" title="reload page in ?? sec"> meta refresh 10sec</option> 
+<option value="11" title="html table example"> html table</option> 
 </select>  
 
 &nbsp;
