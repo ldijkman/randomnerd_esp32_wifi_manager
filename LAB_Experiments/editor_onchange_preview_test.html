@@ -973,7 +973,7 @@ if(myval==1){
   //ace.edit('editor').gotoLine(ace.edit("editor").selection.getCursor().row+1,ace.edit("editor").selection.getCursor().column-6);
 }
 if(myval==2){
-  htmltext="<!DOCTYPE html>\n<html>\n<head>\n<title>  </title>\nstyle>body{background-color:orange;}</style>\n</head>\n<body style=\"background-color: orange; color: yellow;\">\n<center>\n<h1>Hello</h1>\n</center>\n\n</body>\n</html>";
+  htmltext="<!DOCTYPE html>\n<html>\n<head>\n<title>  </title>\n<style>\nbody{\nbackground-color:orange;\n}\n</style>\n</head>\n<body style=\"background-color: orange; color: yellow;\">\n<center>\n<h1>Hello</h1>\n</center>\n\n</body>\n</html>";
   ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
  
 }
