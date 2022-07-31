@@ -1058,11 +1058,18 @@ if(myval==13){
 }
 
 if(myval==14){
-
-htmltext="<p style=\"font-family:Courier; color:rgb(223,15,15); font-size: 20px;\">This text has the font Courier, is rgb(223,15,15), and 20px.</p>\n";
+  htmltext="<p style=\"font-family:Courier; color:rgb(223,15,15); font-size: 20px;\">This text has the font Courier, is rgb(223,15,15), and 20px.</p>\n";
+  htmltext+="<!-- https://www.w3schools.com/cssref/css_websafe_fonts.asp -->";
+  htmltext+="<!--\nArial (sans-serif)\nVerdana (sans-serif)\nHelvetica (sans-serif)\nTahoma (sans-serif)\nTrebuchet MS (sans-serif)\nTimes New Roman (serif)\nGeorgia (serif)\nGaramond (serif)\nCourier New (monospace)\nBrush Script MT (cursive) \n-->\n";
   ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
 }
 
+
+if(myval==15){
+  htmltext="<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>";
+  htmltext+="<p style=\"font-family: 'Sofia';font-size: 22px;\">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>";
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
+}
 
 ace.edit("editor").focus();
 document.getElementById("myList").options[0].selected = true;
@@ -1088,6 +1095,7 @@ document.getElementById("myList").options[0].selected = true;
 <option value="12" title="horizontal line"> HR line</option> 
 <option value="13" title="header text h0 to h6"> Header text h0-h6</option> 
 <option value="14" title="font family size color"> font family size color</option> 
+<option value="15" title="use google fonts"> use google fonts</option> 
 </select>  
 
 &nbsp;
