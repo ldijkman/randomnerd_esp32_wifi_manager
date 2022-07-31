@@ -1023,6 +1023,13 @@ if(myval==11){
   ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
 }
 
+if(myval==12){
+  htmltext="<p>A normal horizontal line:</p>\n";
+  htmltext+="<hr>\n";
+  htmltext+="<p>With CSS:</p>\n";
+  htmltext+="<hr style=\"height:10px; border-width:5; color:blue; background-color:yellow; width:75%;\">\n";
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
+}
 ace.edit("editor").focus();
 document.getElementById("myList").options[0].selected = true;
 }
@@ -1044,6 +1051,7 @@ document.getElementById("myList").options[0].selected = true;
 <option value="9" title="other page in this page example"> iframe </option> 
 <option value="10" title="reload page in ?? sec"> meta refresh 10sec</option> 
 <option value="11" title="html table example"> html table</option> 
+<option value="12" title="horizontal line"> HR line</option> 
 </select>  
 
 &nbsp;
