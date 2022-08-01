@@ -395,7 +395,9 @@ https://codepen.io/ldijkman/pen/LYdZpYp
 
 button bar colorpicker
 -->
-  <script type="text/javascript" src="https://jscolor.com/release/2.4/jscolor-2.4.8/jscolor.js" ></script>  
+<!--  <script type="text/javascript" src="https://jscolor.com/release/2.4/jscolor-2.4.8/jscolor.js" ></script> --> 
+  <script type="text/javascript" src="https://ldijkman.github.io/Electra/jscolor.js" ></script>  
+
 
 <script>
 ////////////////////////////////////////////////////////////////////
@@ -960,7 +962,7 @@ if(myval==1){
  //    /* */ or <!-- -->
   
    // test some commands
-   // ace.edit("editor").execCommand("toggleBlockComment");
+    ace.edit("editor").execCommand("toggleBlockComment");
    // editor.execCommand("showKeyboardShortcuts");
   
   //htmltext="<!--     -->";
@@ -1073,6 +1075,25 @@ if(myval==15){
   ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
 }
 
+
+if(myval==16){
+  htmltext="<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Sofia&effect=fire\">\n";
+  htmltext+="<font size=\"77px\" style=\"font-family: \"Sofia\", sans-serif; font-size: 30px;\" class=\"font-effect-fire\">Sofia on Fire</font>\n";
+  htmltext+="<p style=\"font-family: \"Sofia\", sans-serif; font-size: 30px;\" class=\"font-effect-fire\">Lorem ipsum dolor sit amet.</p>\n";
+  htmltext+="<p style=\"font-family: \"Sofia\", sans-serif; font-size: 30px;\" class=\"font-effect-fire\">123456790</p>\n";
+  htmltext+="<!-- https://www.w3schools.com/css/css_font_google.asp -->\n";
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
+}
+if(myval==17){
+  htmltext="<style>\n";
+htmltext+="body{\n";
+htmltext+="background-color:rgb(13,13,12);\n";
+htmltext+="color:yellow;\n";
+htmltext+="}\n";
+htmltext+="</style>\n";
+  ace.edit("editor").session.insert(ace.edit("editor").getCursorPosition(), htmltext);
+}
+
 ace.edit("editor").focus();
 document.getElementById("myList").options[0].selected = true;
 }
@@ -1092,12 +1113,15 @@ document.getElementById("myList").options[0].selected = true;
 <option value="7" title="4 spaces"> \&\emsp; </option> 
 <option value="8" title="text align right"> p align right </option> 
 <option value="9" title="other page in this page example"> iframe </option> 
-<option value="10" title="reload page in ?? sec"> meta refresh 10sec</option> 
-<option value="11" title="html table example"> html table</option> 
-<option value="12" title="horizontal line"> HR line</option> 
-<option value="13" title="header text h0 to h6"> Header text h0-h6</option> 
-<option value="14" title="font family size color"> font family size color</option> 
-<option value="15" title="use google fonts"> use google fonts</option> 
+<option value="10" title="reload page in ?? sec"> meta refresh 10sec </option> 
+<option value="11" title="html table example"> html table </option> 
+<option value="12" title="horizontal line"> HR line </option> 
+ <optgroup label="Text & Font">
+<option value="13" title="header text h0 to h6"> Header text h0-h6 </option> 
+<option value="14" title="font family size color"> font family size color </option> 
+<option value="15" title="use google fonts"> use google fonts </option> 
+<option value="16" title="google font fire effect"> Google font fire effect </option> 
+<option value="17" title="style /stryle"> sty;e /style </option> 
 </select>  
 
 &nbsp;
