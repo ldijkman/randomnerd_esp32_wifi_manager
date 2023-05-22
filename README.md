@@ -352,8 +352,6 @@ Http://paypal.me/LDijkman
 
 .
 
-Do Not Burn and Forget
-
 
 ---
 
@@ -392,8 +390,7 @@ i must have forgot something => <b>no ads, data privacy, no payments</b>
 
 ![mosquito](https://user-images.githubusercontent.com/45427770/152668207-f400a39e-72a9-42c0-a6d2-412865e8dea2.jpeg)
 
-### Electra is like normal people not a fan of MQTT Mosquitoes
-but maybe, she has to live with them
+
 
 Help Electra? https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions !
 
@@ -404,9 +401,7 @@ All you need is Electra!
 
 impressive Espressif
 
-Electra is a Star 370.64 Light Years Far in a Expanding Universe https://www.youtube.com/watch?v=9Lgf2VU_M70
 
-Electra is Huge, Radius 4.2159 million km ;-)
 
 ---
 https://www.youtube.com/user/LuberthDijkman/videos
