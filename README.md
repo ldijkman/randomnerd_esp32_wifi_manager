@@ -180,8 +180,11 @@ i want a simple home automation switch to do timed light or waterpumps with auto
 
 see and understand
 
+looks a bit like netatmo demo scheduler https://my.netatmo.com/app/energy?demomode=true
+
 
 ![scheduler_Niels_Faber_HomeAssistant](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/3181d74e-ae01-485a-a0d3-41ac8ea25cca)
+
 
 ---
 
