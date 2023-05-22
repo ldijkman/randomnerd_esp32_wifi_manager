@@ -166,6 +166,17 @@ schedule.html https://jsfiddle.net/luberth/ow3zceyn/show
 
 ![2022-02-20-161828_1360x768_scrot](https://user-images.githubusercontent.com/45427770/154849826-e7b08c4b-a10c-4a26-a15a-ba8f3d238e4f.png)
 
+Niels Faber has created a perfect scheduler for HomeAssistant
+
+i do not understand home assistant only worked with it for 3 hours now
+
+home assistant is too complicated, cannot do anything without manuals or instruction videos
+
+i want a simple home automation switch to do timed light or waterpumps with automatic mdns scan linked list to other wifi switches 
+
+
+![scheduler_Niels_Faber_HomeAssistant](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/3181d74e-ae01-485a-a0d3-41ac8ea25cca)
+
 ---
 
 # Android phone chrome  ≣  add to home screen
