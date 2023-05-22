@@ -172,7 +172,11 @@ i do not understand home assistant only worked with it for 3 hours now
 
 home assistant is too complicated, cannot do anything without manuals or instruction videos
 
-i want a simple home automation switch to do timed light or waterpumps with automatic mdns scan linked list to other wifi switches 
+normal people wil never start with something as nerdy as HomeAssistant
+
+i want a simple home automation switch to do timed light or waterpumps with automatic mdns scan linked list to other wifi switches
+
+see and understand
 
 
 ![scheduler_Niels_Faber_HomeAssistant](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/3181d74e-ae01-485a-a0d3-41ac8ea25cca)
