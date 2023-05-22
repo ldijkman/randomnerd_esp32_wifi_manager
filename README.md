@@ -168,6 +168,8 @@ schedule.html https://jsfiddle.net/luberth/ow3zceyn/show
 
 Niels Faber has created a perfect scheduler for HomeAssistant
 
+pitty the schedule bar card width can not be wider
+
 i do not understand home assistant only worked with it for 3 hours now
 
 home assistant is too complicated, cannot do anything without manuals or instruction videos
