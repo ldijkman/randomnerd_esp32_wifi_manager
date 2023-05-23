@@ -166,6 +166,11 @@ schedule.html https://jsfiddle.net/luberth/ow3zceyn/show
 
 ![2022-02-20-161828_1360x768_scrot](https://user-images.githubusercontent.com/45427770/154849826-e7b08c4b-a10c-4a26-a15a-ba8f3d238e4f.png)
 
+---
+
+searched for hours, days, months for a better scheduler example
+
+
 Niels Faber has created an almost perfect scheduler for HomeAssistant
 
 pitty the schedule bar card width can not be wider
