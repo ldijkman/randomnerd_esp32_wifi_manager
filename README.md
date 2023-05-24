@@ -173,6 +173,10 @@ searched for hours, days, months for a better scheduler example
 
 Niels Faber has created an almost perfect scheduler for HomeAssistant
 
+on off for light does not make sense to me
+
+a bar should have an on command and an off command
+
 pitty the schedule bar card width can not be wider
 
 i do not understand home assistant only worked with it for 3 hours now
@@ -190,6 +194,18 @@ looks a bit like netatmo demo scheduler https://my.netatmo.com/app/energy?demomo
 
 ![scheduler_Niels_Faber_HomeAssistant](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/3181d74e-ae01-485a-a0d3-41ac8ea25cca)
 
+
+---
+
+ i like next slider https://plnkr.co/plunk/FUeFIbTJsgSjAwEl
+ 
+ but i do not know how to add multiple slider on one page
+ 
+ https://plnkr.co/plunk/FUeFIbTJsgSjAwEl
+ 
+ ![2023-05-24-180804_1920x1080_scrot](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/17c982f7-19d2-4a2f-9f00-b2e2050a97b5)
+
+ https://plnkr.co/plunk/FUeFIbTJsgSjAwEl
 
 ---
 
