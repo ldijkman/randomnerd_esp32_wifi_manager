@@ -115,6 +115,8 @@ index.html https://jsfiddle.net/luberth/sx61b08t/show
 
 schedule.html https://jsfiddle.net/luberth/ow3zceyn/show
 
+https://plnkr.co/plunk/9tSKRGqNFMgrgBrH
+
 
 ---
 
@@ -160,9 +162,13 @@ Each wifi relais switch its own schedule webpage
 
 schedule.html https://jsfiddle.net/luberth/ow3zceyn/show
 
+https://plnkr.co/plunk/9tSKRGqNFMgrgBrH
+
 <img src="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/images/Screenshot_20220118-182856_Chrome.jpg">
 
 schedule.html https://jsfiddle.net/luberth/ow3zceyn/show
+
+https://plnkr.co/plunk/9tSKRGqNFMgrgBrH
 
 ![2022-02-20-161828_1360x768_scrot](https://user-images.githubusercontent.com/45427770/154849826-e7b08c4b-a10c-4a26-a15a-ba8f3d238e4f.png)
 
