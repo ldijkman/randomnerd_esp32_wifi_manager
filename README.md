@@ -268,6 +268,8 @@ upload another html/css and make Electra look different?! or modify, hack or edi
 
 <b>Can you do that with your ad bloaded or paid app? ;-)</b>
 
+demo ace editor esp webserver file editor https://plnkr.co/plunk/ZEkhoGgs4ntDZzT0
+
 Try Electra now easy & simple, program your ESP8266 inbrowser https://ldijkman.github.io/randomnerd_esp32_wifi_manager/ProgramESP/index.html
 
 <img src="https://user-images.githubusercontent.com/45427770/154131558-36e44ea1-dc44-4e5d-9e36-244f83d8a7be.png">
