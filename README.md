@@ -229,7 +229,9 @@ looks a bit like netatmo demo scheduler https://my.netatmo.com/app/energy?demomo
 
  ![apple_eve_wallplug](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/be3ed9e4-564e-4851-b6c6-55cf17bba380)
 
+ some say if it is used for garden watering 
  
+ use weather service data sunhours or raindata to adjust schedule
 
 ---
 
