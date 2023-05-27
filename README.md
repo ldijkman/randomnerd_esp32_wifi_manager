@@ -205,6 +205,8 @@ looks a bit like netatmo demo scheduler https://my.netatmo.com/app/energy?demomo
 
  i like next slider https://plnkr.co/plunk/FUeFIbTJsgSjAwEl
  
+ works good on touch phone and pc, easy add and destroy time selections
+ 
  but i do not know how to add multiple slider on one page
  
  https://plnkr.co/plunk/FUeFIbTJsgSjAwEl
@@ -212,6 +214,8 @@ looks a bit like netatmo demo scheduler https://my.netatmo.com/app/energy?demomo
  ![2023-05-24-180804_1920x1080_scrot](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/17c982f7-19d2-4a2f-9f00-b2e2050a97b5)
 
  https://plnkr.co/plunk/FUeFIbTJsgSjAwEl
+ 
+ ![timeline_picker_light_scheduler_timebar](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/43d2b793-6672-461c-aecf-d14f236b135d)
  
  ---
  
