@@ -219,11 +219,12 @@ looks a bit like netatmo demo scheduler https://my.netatmo.com/app/energy?demomo
  
  for light etcetera and a watering valve for garden watering 
  
- app only for apple
+ app only for apple, think a bleutooth wall plug, not wifi
  
  ![2023-05-24-181652_1920x1080_scrot](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/5baa7b51-621f-4a14-9cba-f8d143f06910)
 
- 
+ ![apple_eve_wallplug](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/be3ed9e4-564e-4851-b6c6-55cf17bba380)
+
  
 
 ---
