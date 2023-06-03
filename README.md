@@ -225,7 +225,9 @@ looks a bit like netatmo demo scheduler https://my.netatmo.com/app/energy?demomo
  ![2023-06-03-084642_1920x1080_scrot](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/b616fbc1-54a2-4cc6-a320-f8d2dd8d0385)
 
 https://plnkr.co/edit/xrVBhUkVmncU64KZ
- 
+
+ ![2023-06-03-092529_1920x1080_scrot](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/661eca3b-c60c-4eef-b395-e1611cb0fb02)
+
  
  ---
  
