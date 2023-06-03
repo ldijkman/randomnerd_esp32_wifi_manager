@@ -220,8 +220,11 @@ looks a bit like netatmo demo scheduler https://my.netatmo.com/app/energy?demomo
  ![timeline_picker_light_scheduler_timebar](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/43d2b793-6672-461c-aecf-d14f236b135d)
  ---
  
+ https://plnkr.co/edit/xrVBhUkVmncU64KZ
+ 
  ![2023-06-03-084642_1920x1080_scrot](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/b616fbc1-54a2-4cc6-a320-f8d2dd8d0385)
 
+https://plnkr.co/edit/xrVBhUkVmncU64KZ
  
  
  ---
