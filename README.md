@@ -228,6 +228,11 @@ https://plnkr.co/edit/xrVBhUkVmncU64KZ
 
  ![2023-06-03-092529_1920x1080_scrot](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/661eca3b-c60c-4eef-b395-e1611cb0fb02)
 
+ https://plnkr.co/edit/0VOS27JydW81wwZc
+ 
+ ![2023-06-12-183857_1920x1080_scrot](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/f3dd8274-f5ce-4d75-a5e6-089efd202c91)
+
+ https://plnkr.co/edit/0VOS27JydW81wwZc
  
  ---
  
