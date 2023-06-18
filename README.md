@@ -233,7 +233,10 @@ https://plnkr.co/edit/xrVBhUkVmncU64KZ
  ![2023-06-12-183857_1920x1080_scrot](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/f3dd8274-f5ce-4d75-a5e6-089efd202c91)
 
  https://plnkr.co/edit/0VOS27JydW81wwZc
- 
+
+ ![2023-06-18-090214_1920x1080_scrot](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/4196b4a3-4fe7-470f-b38e-6a52bea56091)
+
+ https://plnkr.co/edit/0VOS27JydW81wwZc
  ---
  
  apple eve wallplugs more or less what i want to make 
