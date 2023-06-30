@@ -1,4 +1,4 @@
-a multi range slider scheduler
+a multi range slider scheduler timebar
 
 https://plnkr.co/edit/0VOS27JydW81wwZc?preview
 
