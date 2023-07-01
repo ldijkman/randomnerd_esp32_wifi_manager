@@ -46,10 +46,10 @@
     font-size: .9em;
     margin-top: 0.5em;
     margin-left: -.9em;
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
-    transform: rotate(90deg);
+    //-webkit-transform: rotate(90deg);
+    //-moz-transform: rotate(90deg);
+    //-o-transform: rotate(90deg);
+    //transform: rotate(90deg);
     padding: .2em;
     -moz-border-radius: 3px 3px 3px 3px;
     border-radius: 3px 3px 3px 3px;
@@ -93,10 +93,11 @@ i.fa-eject {
 .ui-slider-control-minus:after {
     content: "\f146";
     font-family: FontAwesome;
-    /*content: "x";
-    font-weight: bold;*/
+    font-family: "Times New Roman", times;
+    content: "X";
+    //font-weight: bold;
     font-size: 1em;
-    color: #ff8229;
+    color: red;
 }
 .ui-slider-control-minus,
 .ui-slider-control-plus,

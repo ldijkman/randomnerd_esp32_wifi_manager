@@ -1,3 +1,9 @@
+
+
+
+// https://github.com/araczkowski/MultiRangeSlider
+
+
 (function (w, $) {
     $.widget('ui.mrs', $.ui.slider, {
         _create: function () {
@@ -39,11 +45,16 @@
             handleLabelDispFormat: function (steps) {
                 var hours = Math.floor(Math.abs(steps) / 60);
                 var minutes = Math.abs(steps) % 60;
-                return ((hours < 10 && hours >= 0) ? '0' : '') + hours + ':' + ((minutes < 10 && minutes >= 0) ? '0' : '') + minutes;
+                //return ((hours < 10 && hours >= 0) ? '0' : '') + hours + ':' + ((minutes < 10 && minutes >= 0) ? '0' : '') + minutes;
+                // removed the 0 from hours
+                return ((hours < 10 && hours >= 0) ? '' : '') + hours + ':' + ((minutes < 10 && minutes >= 0) ? '0' : '') + minutes;
+      
             },
             stepLabelDispFormat: function (steps) {
                 var hours = Math.floor(Math.abs(steps) / 60);
-                return Math.abs(steps) % 60 === 0 ? ((hours < 10 && hours >= 0) ? '0' : '') + hours : '';
+                //return Math.abs(steps) % 60 === 0 ? ((hours < 10 && hours >= 0) ? '0' : '') + hours : '';
+                // removed the 0 from hours
+                return Math.abs(steps) % 60 === 0 ? ((hours < 10 && hours >= 0) ? '' : '') + hours : '';
             }
         };
         var _deletePeriodConfirm = null,
@@ -86,6 +97,7 @@
             };
 
             this.getIndexes = function () {
+                //console.log("getindexes",_indexes[0], _indexes[1]);
                 return [_indexes[0], _indexes[1]];
             };
 
@@ -98,6 +110,7 @@
             };
 
             this.getAbscissas = function () {
+                //console.log("getAbscissas",_abscissas[0], _abscissas[1]);
                 return [_abscissas[0], _abscissas[1]];
             };
 
@@ -136,6 +149,7 @@
         function _addScale() {
             $('#steps_' + elementId).remove();
             $('#' + elementId).parent().prepend('<div id="steps_' + elementId + '" class="MrsSteps"></div>');
+            
             var eSteps = $('#steps_' + elementId);
             var nSteps = (_options.max - _options.min) / _options.step;
             var stepWidth = 96 / nSteps;
@@ -188,6 +202,7 @@
 
                 for (var i = 0; i < _periods.length; i++) {
                     var e = _periods[i].getAbscissas();
+                    //console.log("var e",e);
                     if (i !== kCurr) {
                         if (uiVal === e[0] || uiVal === e[1]) {
                             return false;
@@ -445,6 +460,7 @@
             start = _sanitizeValue(start);
             length = _sanitizeValue(length);
             if (!_isValidParams(start, length)) {
+                
                 return null;
             }
             var midpoint = start + length / 2;
@@ -470,6 +486,7 @@
                 }
                 return period;
             } catch (e) {
+               
                 return null;
             }
         }
@@ -479,11 +496,15 @@
             if (index in values) {
                 if (values[index - 1] !== undefined) {
                     if (value < values[index - 1] || (_isRightHandle(index) && value === values[index - 1])) {
+                        //tempAlert("<center><h1>Sorry!<br>Failed to create </h1></center>",2500);
+
                         return false;
                     }
                 }
                 if (values[index + 1] !== undefined) {
                     if (value > values[index + 1] || (_isLeftHandle(index) && value === values[index + 1])) {
+                       //tempAlert("<center><h1>Sorry!<br>Failed to create </h1></center>",2500);
+
                         return false;
                     }
                 }
@@ -518,7 +539,7 @@
         }
 
         function _drawRange(periodId, edges) {
-            var range = $('<div class="' + SELECTORS.range['class'] + ' ' + SELECTORS.range['class'] + '-' + periodId + '"></div>');
+            var range = $('<div class="' + SELECTORS.range['class'] + ' ' + SELECTORS.range['class'] + '-' + periodId + '" style="background-color:lightgray;"></div>');
             _slider.append(range);
             _alignRange(periodId, edges);
         }
@@ -577,9 +598,19 @@
                         key = _getPeriodKey(identifier);
                         if (key !== -1) {
                             function deletePeriod() {
-                                if (_deletePeriod(identifier)) {
-                                    _rebuild();
+                                // maybe a confirm alert
+                                var myArray=handles_value_array_in_hours();  // should not be mrs.
+                                var temp=myArray[key*2]+" - "+myArray[key*2+1];
+                                 var text = /*"id="+identifier+" ,key="+key+*/'\n Are you sure?!\n Delete Period '+temp;
+                                if (confirm(text) == true) {     
+                                    // text = "You pressed OK!"; // remove the period
+                                    if (_deletePeriod(identifier)) {
+                                        _rebuild();
+                                    }  
+                                } else {
+                                        //text = "You canceled!"; // do nothing
                                 }
+                              
                             }
                             if (typeof (_deletePeriodConfirm) === 'function') {
                                 _deletePeriodConfirm(_periods[key].toPublic(), function (result) {
@@ -592,6 +623,14 @@
                             }
                         }
                     } else if ('plus' === type) {
+                        var text = '\n Are you sure?!\n to add a Period ';
+                                if (confirm(text) == true) {     
+                                    // text = "You pressed OK!"; // remove the period
+                                    
+                                } else {
+                                        //text = "You canceled!"; // do nothing
+                                        exit;
+                                }
                         var start,
                             length = _options.newlength,
                             leftEdge = _options.min,
@@ -621,6 +660,7 @@
                             if (typeof (_addPeriodConfirm) === 'function') {
                                 _addPeriodConfirm(newPeriod.toPublic(), function (result) {
                                     if (!result) {
+                                        
                                         _deletePeriod(newPeriod.getId());
                                     }
                                     _rebuild();
@@ -682,10 +722,16 @@
         function _refreshHandles() {
             var handles = _slider.find('.' + SELECTORS.handle['class']);
             var values = _slider.mrs('option', 'values');
-            for (var index in values) {
-                handles.eq(index).html('<i class="fa fa-eject fa-2x"></i><br /><span class="MrsHandleLabel">' + _options.handleLabelDispFormat(values[index]) + '</span>');
+          
 
-            }
+            for (var index in values) {  
+                //console.log("index",index%2);
+                if(index%2==0){var modcolor="green";} // on color off color for handle time labes
+                if(index%2==1){var modcolor="red";} // on color off color for handle time labes
+              
+                handles.eq(index).html('<i class="fa fa-eject fa-2x"style="color:'+modcolor+';"></i><br /><span class="MrsHandleLabel" style="color:'+modcolor+'; bottom:'+(-20+-index%2*12)+'px;">' + _options.handleLabelDispFormat(values[index]) + '</span>');
+                // style="bottom:'+(-20+-index%2*12)+'px;" make time labels timetext not overlap original 90 deg rotated
+          }
 
             _markRangeOnScale();
             _toggleHandles(values.length);
@@ -719,10 +765,90 @@
             });
 
 
-
         }
 
+function handles_value_array_in_hours() {
+    //console.log("start mrs.test()");
+    var handle=0;
+    const handles=[];
+    for (var i = 0; i < _periods.length; i++) {
+                    var e = _periods[i].getAbscissas();
+                    //console.log("periods",i," e ",e);
+                    //console.log("periods ",i," handle ",handle," ON ",_periods[i].getAbscissas()[0]);
+                    var mth = Math.floor(_periods[i].getAbscissas()[0] / 60)+":"+ (_periods[i].getAbscissas()[0] % 60).toString().padStart(2, '0');
+                    handles.push(mth);
+                    handle++;
+                    //console.log("periods ",i," handle ",handle," OFF ",_periods[i].getAbscissas()[1]);
+                    var mth = Math.floor(_periods[i].getAbscissas()[1] / 60)+":"+ (_periods[i].getAbscissas()[1] % 60).toString().padStart(2, '0');
+                    handles.push(mth);
+                    handle++;
+    }
+    //console.log("array handles ",handles);
+    //console.log("end mrs.test()");
+     return handles;
+}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+this.handles_value_array = function () {
+    //console.log("start mrs.test()");
+    var handle=0;
+    const handles=[];
+    for (var i = 0; i < _periods.length; i++) {
+                    var e = _periods[i].getAbscissas();
+                    //console.log("periods",i," e ",e);
+                    //console.log("periods ",i," handle ",handle," ON ",_periods[i].getAbscissas()[0]);
+                    handles.push(_periods[i].getAbscissas()[0]);
+                    handle++;
+                    //console.log("periods ",i," handle ",handle," OFF ",_periods[i].getAbscissas()[1]);
+                    handles.push(_periods[i].getAbscissas()[1]);
+                    handle++;
+    }
+    //console.log("array handles ",handles);
+    //console.log("end mrs.test()");
+     return handles;
+}
+
+this.handles_value_array_in_hours = function () {
+    //console.log("start mrs.test()");
+    var handle=0;
+    const handles=[];
+    for (var i = 0; i < _periods.length; i++) {
+                    var e = _periods[i].getAbscissas();
+                    //console.log("periods",i," e ",e);
+                    //console.log("periods ",i," handle ",handle," ON ",_periods[i].getAbscissas()[0]);
+                    var mth = Math.floor(_periods[i].getAbscissas()[0] / 60)+":"+ (_periods[i].getAbscissas()[0] % 60).toString().padStart(2, '0');
+                    handles.push(mth);
+                    handle++;
+                    //console.log("periods ",i," handle ",handle," OFF ",_periods[i].getAbscissas()[1]);
+                    var mth = Math.floor(_periods[i].getAbscissas()[1] / 60)+":"+ (_periods[i].getAbscissas()[1] % 60).toString().padStart(2, '0');
+                    handles.push(mth);
+                    handle++;
+    }
+    //console.log("array handles ",handles);
+    //console.log("end mrs.test()");
+     return handles;
+}
 
 
 
@@ -730,6 +856,7 @@
 
 
         this.deleteperiods = function (identifier) {
+            // maybe a confirm alert
             if (_deletePeriod(identifier)) {
                  _rebuild();
             }
@@ -740,6 +867,7 @@
 
         this.change_handle = function (index, value) {
             console.log("index value ",index, value);
+            //console.log("_periods[index].getAbscissas()[0]",_periods[index].getAbscissas());
             _updateHandles([[index, value]]); // handle 012345etc , minutevalue for that handle,
             // so handle 0 and 1 is the first period
              _onHandleMouseenter(); // i dont know this updates append clock input type text 0
@@ -818,6 +946,22 @@
         };
 
 
+        this.getPeriodsMinutesOnOff = function () {
+            var period = {};
+            var periods = [];
+            for (var i = 0; i < _periods.length; i++) {
+                period = {};
+                period.id = _periods[i].getId();
+
+  
+                period.on = _periods[i].getAbscissas()[0] ;
+                period.off = _periods[i].getAbscissas()[1] ;;
+ 
+                periods.push(period);
+            }
+            return JSON.stringify(periods,null,3);
+            //return JSON.stringify(periods);
+        }; 
 
 
 
