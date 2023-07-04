@@ -1,8 +1,4 @@
-<b>
-Russian?, You are not welcome here, 
-- https://youtu.be/1cCoRdJHscQ
-- go away and protest against your maniac insane leader
-</b>
+
 
 
 ---
