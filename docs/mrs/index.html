@@ -1,1 +1,828 @@
 
+home automation for Blondines - MultiRange Scheduler <br><a href="https://run.plnkr.co/plunks/0VOS27JydW81wwZc/" target="full">alerts are not shown in framed window Full Screen works better https://run.plnkr.co/plunks/0VOS27JydW81wwZc/</a>
+<!--
+  sorry i am no programmer / coder
+  it is a mixed mesh of 
+  jquery wich i do not understand
+  and
+  javascript wich i do not understand
+
+  mostly copy paste until it works a bit
+-->
+
+<!doctype html>
+
+<html>
+  <head>
+    
+ 
+ <script type="text/javascript" src="//code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+   
+  <!--
+   <script src="https://cdn.jsdelivr.net/npm/ismobilejs@1/dist/isMobile.min.js"></script>
+   -->
+ <script src="lib/ismobile.js"></script>
+
+    
+   <!-- next to make it work on touch screen phone / tablet 
+   
+   does not work well with mrs slider strange it does with mrdad slider from same author-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    <script>$('#widget').draggable();</script> 
+   
+    <script src="lib/MultiRangeSlider.js"></script> 
+    <script src="lib/suncalc.js"></script> 
+    <script src="lib/weeknumber.com.js"></script> 
+
+    <script src="lib/jq_confirm.js"></script>
+    <link rel="stylesheet" href="lib/jq_confirm.css">
+    <link rel="stylesheet" href="lib/style.css">
+
+    <!--
+    <script src="https://plugins.slyweb.ch/jquery-clock-timepicker/jquery-clock-timepicker.min.js?v=2.6.4"></script>
+    -->
+    <script src="lib/timepicker.js"></script>
+
+
+     <style>
+
+input[type="text"]
+{
+    font-size:16px;
+}
+
+body {
+ font-family: calibri;
+ background-color: #f2f0f0;
+}
+input[type=radio], input[type=checkbox] {
+		display:none;
+	}
+
+
+input[type=radio] + label, input[type=checkbox] + label {
+		display:inline-block;
+		margin:-2px;
+		padding: 4px 12px;
+		margin-bottom: 0;
+		font-size: 14px;
+		line-height: 20px;
+		color: #333;
+		text-align: center;
+		text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+		vertical-align: middle;
+		cursor: pointer;
+		background-color: #f5f5f5;
+		background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
+		background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
+		background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
+		background-image: -o-linear-gradient(top,#fff,#e6e6e6);
+		background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+		background-repeat: repeat-x;
+		border: 2px solid #ccc;
+		border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+		border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+		border-bottom-color: #b3b3b3;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
+		filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+		-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+		-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+		box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+	}
+
+	 input[type=radio]:checked + label, input[type=checkbox]:checked + label{
+		background-image: none;
+		outline: 0;
+		-webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+		-moz-box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+		box-shadow: inset 0 2px 4px rgba(0,0,0,0.15),0 1px 2px rgba(0,0,0,0.05);
+		background-color:navy;
+    color:white;
+	}
+
+.risenight { }
+ // gray night shade before after sunset
+.setnight { }
+
+</style>
+
+
+</head>
+ <body> 
+
+
+<script>
+  if(window.innerHeight > window.innerWidth){
+    //alert("Please rotate your device to Landscape view!");
+    $.alert({
+    title: 'Alert without URL Says!',
+    content: '<h1>Please rotate your device to Landscape view!</h1>',
+}); 
+  }
+</script>
+
+<center>
+  <br>
+       <input type="checkbox" id="chk1" name="chk" onchange="checkboxes()" >&nbsp;
+       <label for="chk1" id="lblchk1">Monday</label>
+       <input type="checkbox" id="chk2" name="chk" onchange="checkboxes()">&nbsp;
+       <label for="chk2" id="lblchk2">Tuesday</label>
+       <input type="checkbox" id="chk3" name="chk" onchange="checkboxes()">&nbsp;
+       <label for="chk3" id="lblchk3">Wednesday</label>
+       <input type="checkbox" id="chk4" name="chk" onchange="checkboxes()">&nbsp;
+       <label for="chk4" id="lblchk4">Thursday</label>&nbsp;
+       <input type="checkbox" id="chk5" name="chk" onchange="checkboxes()">&nbsp;
+       <label for="chk5" id="lblchk5">Friday</label>
+       <input type="checkbox" id="chk6" name="chk" onchange="checkboxes()" >&nbsp;
+       <label for="chk6" id="lblchk6">Saturday</label>
+       <input type="checkbox" id="chk7" name="chk" onchange="checkboxes()">&nbsp;
+       <label for="chk7" id="lblchk7">Sunday</label>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <label for="weeknr" id="weeknr">Weeknr</label>=
+       <input type="checkbox" id="oddweek" name="oddweek" onchange="checkboxes()">&nbsp;
+       <label for="oddweek" id="lblodd">OddWeek</label>
+       <input type="checkbox" id="evenweek" name="evenweek" onchange="checkboxes()" >&nbsp;
+       <label for="evenweek" id="lbleven">EvenWeek</label>
+       <br><pre class="bits"></pre>
+       <br>
+       
+       
+  
+  ON &nbsp;<input class="time ontime"  type="text" readonly style="color:green;" size="6"   oninput="calc()" id="ontime" value="18:30" onchange="console.log('Time changed to: ' + this.value)"/>
+ &nbsp;&nbsp;&nbsp;&nbsp;OFF &nbsp;<input class="time offtime" type="text" readonly style="color:red;" size="6"   oninput="calc()" id="offtime" value="23:45" onchange="console.log('Time changed to: ' + this.value)"/>
+&nbsp;&nbsp;&nbsp;
+      <input type="button" value="Create" onclick="setbuttonpressed()"><br>
+<br></center><br>
+<div id="pluginRegion" style="width:100%; >
+        <div id="parent" class="MrsContent" style="width: 100%; height: 100px;">
+            <div id="slider"></div>
+        </div>
+ </div>
+ <!--
+   delete id <input type="number" id="dit" value="5" min="-50" max="50">
+  <input type="button" value="delete id" onclick='delete_id(dit.value)'><br><br>
+ id, start in minutes, duration in minutes<br>
+
+  <input type="button" value="test on handle 0 move to 15 min" onclick="chang()"><br>
+--> 
+<div class="container" role="main">
+  <pre class="changing"></pre>
+</div>
+
+<center>
+<div id="append_div">test</div>
+
+<pre class="llll">llll</pre>
+<pre class="jsonminutesonoff"></pre>
+<br><br>
+add more tabs or pages with more sliders?<br>think its better one per page<br>
+<a href="https://www.evehome.com/en/eve-aqua"target="apple">apple elgato eve aqua bluetooth not wifi</a>has max7 times per slider, but how many sliders?<br>do you know?
+<br><br>Electra Smart WiFi Wall Plug<br>
+<a href="https://www.evehome.com/en/eve-energy"target="apple">apple eve smart wall plug bluetooth not wifi</a>
+
+<br><br><br><br>What happens at home, stays at home.<br><br><br><br><br><br><br><br><br><br><br><br><br>
+ <div id="x">x</div>
+ <div id="xx">xx</div>
+ <div id="l">l</div>
+ <div id="ll">ll</div>
+ <div id="lll">lll</div>
+
+
+<script>
+  // maybe set the lat lon %variable% on pageupload from esp8266 / esp32 webserver
+  var lat=52.7354;  // bangert andijk the netherlands
+  var lon=5.1790;  
+  // var lat=0.0;  // equator
+ // var lon=0;  
+  // map geolocation lat lon picker
+  // https://plnkr.co/edit/qGlpEL2RuJvy0qMr 
+
+  //var lat=12.139933  // hmmm location curacao does not work correct with dutch amsterdam times on phone
+  //var lon=-68.964493 // 6 hours time difference  https://www.latlong.net/
+  // map geolocation lat lon picker
+  // https://plnkr.co/edit/qGlpEL2RuJvy0qMr 
+
+   $(document).ready(function() {
+
+    // maybe easier to send a binary for checkboxstate
+    // maybe set the byte %variable% on pageupload from esp8266 / esp32 webserver
+    var chkbin = 0b111010101 ; // right=monday left=evenweek
+    if(chkbin & 1)chk1.checked=true;
+    if(chkbin & 2)chk2.checked=true;
+    if(chkbin & 4)chk3.checked=true;
+    if(chkbin & 8)chk4.checked=true;
+    if(chkbin & 16)chk5.checked=true;
+    if(chkbin & 32)chk6.checked=true;
+    if(chkbin & 64)chk7.checked=true;
+    
+    if(chkbin & 128)oddweek.checked=true;
+    if(chkbin & 256)evenweek.checked=true;
+
+// maybe set the string %variable% on pageupload from esp8266 / esp32 webserver
+   // '[{},{},{},{}]'';
+    mrs.addPeriods('[{"id":5,"start":60,"value":60},{"id":1,"start":600,"value":300},{"id":2,"start":400,"value":60}]');
+    
+
+     function onChangeInfo() {
+                console.log(mrs.getPeriodsValues());
+                //$('pre.changing').html(mrs.getPeriodsValues());
+
+
+
+                var myObjj=JSON.parse(mrs.getPeriodsHours());
+                //console.log("myObjj",myObjj);
+                //console.log(myObjj.length);
+                document.getElementById('append_div').innerHTML ="";
+                document.getElementById('append_div').innerHTML += "<br>date.getTimezoneOffset()"+new Date().getTimezoneOffset()+"<br></i><a href=\"https://www.google.com/search?q="+lat+","+lon+"\" target=\"search\">geolocation lat,lon "+lat+" , "+lon+"</a> <br>&#x21e7; sunrise "+sunriseStr+"<br>&#x21e9; sunset "+ sunsetStr+"<br>";
+                var n = 0; 
+                for (let i = 0; i < myObjj.length; i++) {
+                      //document.getElementById('append_div').innerHTML += "id "+myObjj[i].id+" ";
+                      //document.getElementById('append_div').innerHTML += "on "+myObjj[i].st+" ";
+                      //document.getElementById('append_div').innerHTML += "off "+myObjj[i].du+"<br>";
+ 
+                    
+                      // readonly keeps phone keyboard away
+                      $('#append_div').append('&nbsp;&nbsp;ON&nbsp;<input type=/"text\" readonly style=\"color:green; font-size:18px;\" size=\"5\" class=\"appended\" value=\"'+myObjj[i].st+'\"  id=\"time'+n+'\"  onchange=\"timechanged(this.id)\">');
+                      n++; // counter for handle num reference
+                      $('#append_div').append('&nbsp;&nbsp;OFF&nbsp;<input type=/"text\" readonly style=\"color:red; font-size:18px;\" size=\"5\" class=\"appended\" value=\"'+myObjj[i].du+'\" id=\"time'+n+'\" onchange=\"timechanged(this.id)\">');
+                      n++; // counter for handle num reference
+                      
+                     
+                      // $('#append_div').append(' &nbsp; &nbsp; &nbsp;<input type=\"button\" value=\"delete id '+myObjj[i].id+'\" onclick=\"delete_id('+myObjj[i].id+')\"><br><br>');
+                    $('#append_div').append(' &nbsp; &nbsp; &nbsp;<input type=\"button\" value=\"X\" onclick=\"delete_id('+myObjj[i].id+')\"><br><br>');
+                    
+                      //should change (mrs.getPeriodsValues() to return hour:minute values
+                      // added mrs.getPeriodsHours()
+              
+               
+                } 
+                $('.appended').clockTimePicker({
+                      maximum: "24:00",
+	                    precision: 1,
+                      alwaysSelectHoursFirst: true,
+                });
+
+
+
+
+      };
+    mrs.setOnChangeCallback(onChangeInfo);
+ 
+onChangeInfo();
+
+
+
+ });
+
+
+
+
+
+  $('.ontime').clockTimePicker();
+  $('.offtime').clockTimePicker();
+
+
+function tempAlert(msg,duration)  // timed autohide alert
+{
+    var el = document.createElement("div");
+    var top=parseInt((window.innerHeight - 150) / 2) + 'px';  // try to align alert popup in middle of window
+    var left=parseInt((window.innerWidth - 500) / 2) + 'px';
+    el.setAttribute("style","border-radius:15px;height:150px;width:500px;padding:20px;margin:20px;position:absolute;top:"+top+";left:"+left+";background-color:red;color:yellow;");
+    el.innerHTML = msg;
+    setTimeout(function(){el.parentNode.removeChild(el);},duration);
+    document.body.appendChild(el);
+}
+
+var startid = 100;
+
+function setbuttonpressed (){  // set button pressed
+    console.log(ontime.value);
+    console.log(offtime.value);
+    console.log(chk1.checked,chk2.checked,chk3.checked,chk4.checked,chk5.checked,chk6.checked,chk7.checked);
+
+    // ontime to minutes 12:30
+    var arr = ontime.value.split(':');
+    var hour = parseInt(arr[0]) ;
+    var min = parseInt(arr[1]) ;
+    console.log("start in minutes ",hour*60+min);
+    // offtime to minutes 16:30
+    if(offtime.value=="00:00"){offtime.value="24:00";} // cannot set 24:00 so 00:00 == 24:00
+    var arr = offtime.value.split(':');
+    var houroff = parseInt(arr[0]) ;
+    var minoff = parseInt(arr[1]) ;
+    console.log("duration in minutes",(houroff*60+minoff)-(hour*60+min));
+
+    var on=hour*60+min;
+    var dur=(houroff*60+minoff)-(hour*60+min);
+
+    mrs.addPeriods('[{"id":'+startid+',"start":'+on+',"value":'+dur+'}]');
+
+    console.log("getperiodval ",mrs.getPeriodsValues());
+    startid++;
+    console.log(mrs.getPeriodsValues());
+
+
+} 
+
+
+function chunk (arr, len) {
+
+  var chunks = [],
+      i = 0,
+      n = arr.length;
+  while (i < n) {
+    chunks.push(arr.slice(i, i += len));
+  }
+
+  return chunks;
+}
+
+
+function delete_id (ids){ 
+
+   console.log("getmrsperiodhours",mrs.getPeriodsHours());
+   var myObjj=JSON.parse(mrs.getPeriodsHours());
+
+                for (let i = 0; i < myObjj.length; i++) {
+                    console.log(ids);
+                    console.log(myObjj[i].id);
+                    console.log(myObjj[i].st);
+
+                    console.log(myObjj[i].du);
+
+                    if(myObjj[i].id==ids){
+                      var temp =myObjj[i].st+" -- "+myObjj[i].du;
+                    }    
+                }
+
+/*
+<pre>
+ _____ _   _  _____  ___   _   _  _____ 
+|_   _| \ | |/  ___|/ _ \ | \ | ||  ___|
+  | | |  \| |\ `--./ /_\ \|  \| || |__  
+  | | | . ` | `--. \  _  || . ` ||  __| 
+ _| |_| |\  |/\__/ / | | || |\  || |___ 
+ \___/\_| \_/\____/\_| |_/\_| \_/\____/ 
+                                        
+                                        
+Figlet font Doom https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/ 
+</pre>
+*/
+    // maybe a confirm alert
+    var text = '\nAre you sure?!\n Delete period '+temp;
+    if (confirm(text) == true) {     
+      // text = "You pressed OK!"; // remove the period
+      mrs.deleteperiods(parseInt(ids)); 
+      console.log("deleted", ids);
+    } else {
+      //text = "You canceled!"; // do nothing
+    }
+
+}
+
+// move handles from code
+function chang (){
+    console.log("test on handle 0 move to 15min");
+    mrs.change_handle(0, 15); //handle num time in min 
+    onChangeInfo();
+}
+
+// timepicker change on appended text time fields
+// time on inputtextfield changed
+function timechanged (wich){             // wich holds the number of timeinputtextfield / handle number
+  var hoursDotMinutes = document.getElementById(wich).value;  
+    if (wich.substr(4) > "0"){  // strip "time" of time0 time1 time3  handles / fields 
+      if(document.getElementById(wich).value=="00:00"){
+          console.log("we got 00:00 but want 24:00"); // clockpicker does not have 24:00
+          var hoursDotMinutes = "24:00";  // if handle not is 0 and time is 00:00 then 24:00
+      }
+    }
+    console.log("timepick timechanged ",wich);
+    console.log(document.getElementById(wich).value);
+    // change hh:mm to minutes
+    
+    var fieldArray = hoursDotMinutes.split(":");
+    var minutes = parseInt(fieldArray[0]) * 60+parseInt(fieldArray[1]);
+    console.log(minutes);
+    console.log(wich.substr(4)); //remove "time" from time0 to get only handle num
+    
+    
+    var handlenum=parseInt(wich.substr(4));
+    var array=mrs.handles_value_array();
+   
+var hoursarray=mrs.handles_value_array_in_hours();
+   
+
+// hmmm possible to move handle over other handles
+// this should stop moving a handle over next or previous handle
+// when set from time text field
+  console.log("array[handlenum+1]",array[handlenum+1]);
+  if(minutes >= array[handlenum+1]){
+      minutes=array[handlenum+1];
+      tempAlert("<center><h1>Sorry!<br>cannot make that move!<br>Fail at "+ hoursarray[handlenum+1]+" </h1></center>",2500);
+  }
+   console.log("array[handlenum-1]",array[handlenum-1]);
+    if(minutes <= array[handlenum-1]){
+      minutes=array[handlenum-1];
+      tempAlert("<center><h1>Sorry!<br>cannot make that move!<br>Fail at "+ hoursarray[handlenum-1]+"</h1></center>",2500);
+  }
+// hmmm possible to move handle over other handles
+
+
+    mrs.change_handle(parseInt(wich.substr(4)), minutes); //handle num time in min 
+ 
+
+//console.log("getPeriodsHours ",mrs.getPeriodsHours());
+
+console.log("getPeriodsMinutesOnOff ",mrs.getPeriodsMinutesOnOff());
+
+
+}
+
+
+
+
+// <!-- tryng to mak a marker for current actual time -->
+// my slider is 1440 minutes long wich is a day
+// so actual (hours x 60 + minutes)/1440 x 100% is actual percentage on slider
+// 50% is 12 o clock
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // why i want to di it like this just add it to the MultiRangeSlider.js
+    // because i copied from my nouislider 
+
+    // add divs for sunrise actualtime and sunset line and label
+    $('.MrsSteps').append('<div id="actualtime" class="actualtime" style="position: absolute; color: red; background-color: red; height: 30px; width: 1px; left: 50%; top:-30px;"><div id="acttimelabel" class="acttimelabel" style="position: absolute;top:-60px;left:-30px;border: 0px solid green;"></div></div>');                 
+    $('.MrsSteps').append('<div id="sunrisel" class="sunrisel" style="position: absolute; color: grey; background-color: green; height: 40px; width: 1px; left: 0%; top: -40px;"><div id="sunriselabel" class="sunriselabel" style="position: absolute;top:-20px;left:-20px;border: 0px solid green;"> sunrise</div></div>');            
+    $('.MrsSteps').append('<div id="sunsetl" class="sunsetl" style="position: absolute; color: grey; background-color: green; height: 40px; width: 1px; left: 96%; top: -40px;"><div id="sunsetlabel" class="sunsetlabel" style="position: absolute;top:-20px;left:-20px;border: 0px solid green;"> sunset</div></div>');              
+
+    // add 3 divs for night shade and dayshine
+    // sunrise width % is later set changed
+    // sunset left % and width % is later set changed
+    // dayshine left % and width % is later set changed
+    $('.MrsSteps').append('<div class="risenight" style="position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px"></div>');
+    $('.MrsSteps').append('<div class="setnight" style="position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px"></div>');
+    $('.MrsSteps').append('<div class="dayshine" style="position:absolute;height:20px;background-color:yellow;opacity:20%;top:-20px"></div>');
+
+}, false);
+
+   navigator.geolocation.getCurrentPosition(onSuccess, onError);
+
+
+//var lat;
+//var lon;
+  // map geolocation lat lon picker
+  // https://plnkr.co/edit/qGlpEL2RuJvy0qMr 
+
+var succes=0;
+ 
+ function onSuccess(geolocationData) {
+  x.innerHTML = 'Success!';
+  
+  // GeolocationData can't be serialized to JSON,
+  // so copy out all the properties manually
+  let preview = {
+    coords: {
+      accuracy: geolocationData.coords.accuracy,
+      altitude: geolocationData.coords.altitude,
+      altitudeAccuracy: geolocationData.coords.altitudeAccuracy,
+      heading: geolocationData.coords.heading,
+      latitude: geolocationData.coords.latitude,
+      longitude: geolocationData.coords.longitude,
+      speed: geolocationData.coords.speed,
+    },
+    timestamp: geolocationData.timestamp
+  };
+  
+  x.innerHTML = JSON.stringify(preview, null, 2); 
+  
+    lat=geolocationData.coords.latitude; 
+    lon=geolocationData.coords.longitude;
+  xx.innerHTML = "Latitude: " + lat+ "<br>Longitude: " + lon;
+  succes=1;
+}
+
+
+
+
+
+
+
+  
+function onError(error) {
+  x.innerHTML = 'Error';
+  x.innerHTML = error.message;
+  x.innerHTML += "<br>using geolocation provided in the pagesource, succes = false";
+}
+
+
+ 
+
+
+  
+
+  
+  
+  
+// https://github.com/mourner/suncalc
+// https://www.latlong.net/
+ 
+
+// get today's sunlight times for                          // https://www.latlong.net/
+if(succes){
+var times = SunCalc.getTimes(new Date(), lat, lon); // https://www.google.com/search?q=map+52.7354%2C+5.1790
+}else{
+ // lat=52.7354;
+ // lon=5.1790;
+var times = SunCalc.getTimes(new Date(),lat,lon);
+}
+
+// format sunrise time from the Date object
+var sunrisemin =times.sunrise.getMinutes();
+if(sunrisemin<=9)sunrisemin="0"+sunrisemin;                     // 0-9 add a zero
+var sunriseStr = times.sunrise.getHours() + ':' + sunrisemin;
+
+var sunsetmin =times.sunset.getMinutes();
+if(sunsetmin<=9)sunsetmin="0"+sunsetmin;                        // 0-9 add a zero
+var sunsetStr = times.sunset.getHours() + ':' + sunsetmin;
+
+var currents=((times.sunrise.getHours()*60+times.sunrise.getMinutes())/1440)*100; ;
+  for (let i = 0; i < 1; i++) {  
+   //document.getElementsByClassName('sunrisel')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
+  
+   //document.getElementsByClassName('sunrisel')[i].innerHTML = "<br><br><br>sunrise "+times.sunrise.getHours()+":"+sunrisemin; // set time text on div class actualtime
+  }
+  
+var currents=((times.sunset.getHours()*60+times.sunset.getMinutes())/1440)*100; ;
+  for (let i = 0; i < 1; i++) {  
+   //document.getElementsByClassName('sunsetl')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
+  
+   //document.getElementsByClassName('sunsetl')[i].innerHTML = "<br><br><br>sunset "+times.sunset.getHours()+":"+sunsetmin; // set time text on div class actualtime
+  }  
+
+// get position of the sun (azimuth and altitude) at today's sunrise
+/////var sunrisePos = SunCalc.getPosition(times.sunrise, 52.7354, 5.1790);
+
+// get sunrise azimuth in degrees
+/////var sunriseAzimuth = sunrisePos.azimuth * 180 / Math.PI;
+
+// https://github.com/mourner/suncalc
+console.log(times);
+
+console.log("sunrise "+sunriseStr);
+console.log("sunset "+sunsetStr);
+
+//console.log(sunrisePos);
+//console.log(sunriseAzimuth);
+//document.getElementsByClassName('sunrise')[0].innerHTML =("<a href='http://www.google.com/search?q=52.7354,5.1790'>52.7354, 5.1790 </a> sunrise "+sunriseStr)+" ";
+//document.getElementsByClassName('sunset')[0].textContent =(" sunset "+sunsetStr)+" ";
+//document.getElementsByClassName('sunrise')[1].innerHTML =("<a href='http://www.google.com/search?q=52.7354,5.1790'>52.7354, 5.1790 </a> sunrise "+sunriseStr+" ");
+//document.getElementsByClassName('sunset')[1].textContent =(" sunset "+sunsetStr)+" ";  
+  
+const sunrise = document.querySelectorAll('.sunrise');
+sunrise.forEach(sunrise => {
+  //box.style.backgroundColor = 'purple'; box.style.width = '300px';
+  //sunrise.innerHTML =("<!--"+lat+","+lon+"-->&nbsp;<a href='http://www.google.com/search?q="+lat+","+lon+"'>SunRise&nbsp;"+sunriseStr)+"&nbsp;</a>";
+});
+
+const sunset = document.querySelectorAll('.sunset');
+sunset.forEach(sunset => {
+  //box.style.backgroundColor = 'purple'; box.style.width = '300px';
+  //sunset.innerHTML =("<a href='http://www.google.com/search?q="+lat+","+lon+"'>SunSet&nbsp;"+sunsetStr)+"</a>&nbsp;&nbsp;&nbsp;"; 
+});
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+function doiteverysecond() {
+//console.log(isMobile);
+  //mrs.handles_value_array();
+  //console.log("mrs.handles_value_array() ",mrs.handles_value_array());
+  var handles=mrs.handles_value_array();
+
+  //problems on tablet with touch time input timepicker ismobile detected not true
+  $('pre.llll').html('mrs.handles_value_array() <br>'+handles+"<br><br>mrs.handles_value_array_in_hours()<br>"+mrs.handles_value_array_in_hours()+"<br><br>ismobile.js is it a <br>Mobile = "+isMobile.any+"<br>timepicker did not work nice on android tablet(do not check desktopsite)");
+  //if(handles[6]) {$('pre.llll').html('ok')}else{$('pre.llll').html('notok')};
+
+  const now = new Date();
+  const current = (((now.getHours() * 60) + now.getMinutes())/1440)*96;       // time to percentage 0 to 100% set div position
+  var sec;
+  var min;
+  
+  var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var dayName = days[now.getDay()];
+   
+   
+  if(now.getMinutes()<=9)min="0"+now.getMinutes(); else min=now.getMinutes();  // a leading zer0 if 0 to 9
+  if(now.getSeconds()<=9)sec="0"+now.getSeconds(); else sec=now.getSeconds();  // a leading zer0 if 0 to 9
+
+ for (let i = 0; i < 1; i++) {  
+   
+   document.getElementsByClassName('actualtime')[i].style.left = current+"%";   // time to percentage 0 to 100% set div position
+  
+   document.getElementsByClassName('actualtime')[i].innerHTML = "<div id=\"acttimelabel\" class=\"acttimelabel\" style=\"position: absolute;top:-60px;left:-30px;border: 0px solid green;\">" +dayName+" "+now.getHours()+":"+min+":"+sec+"</div>"; // set time text on div class actualtime
+ 
+ }
+
+ var currents=((times.sunrise.getHours()*60+times.sunrise.getMinutes())/1440)*96; ;
+  var sunrisecur=currents;
+  for (let i = 0; i < 1; i++) {  
+   document.getElementsByClassName('sunrisel')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
+  
+   document.getElementsByClassName('sunrisel')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunriselabel\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;\"> sunrise "+times.sunrise.getHours()+":"+sunrisemin; +"</div>";// set time text on div class actualtime
+ 
+   document.getElementsByClassName('risenight')[i].style.width= currents+"%";  // gray shade before sunrise
+ 
+  }
+  
+var currents=((times.sunset.getHours()*60+times.sunset.getMinutes())/1440)*96; ;
+  var sunsetcur=currents;
+  for (let i = 0; i < 1; i++) {  
+   document.getElementsByClassName('sunsetl')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
+  
+   document.getElementsByClassName('sunsetl')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunsetlabel\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;\"> sunset "+times.sunset.getHours()+":"+sunsetmin+"</div>"; // set time text on div class actualtime
+ 
+ document.getElementsByClassName('setnight')[i].style.width= (96-currents)+"%";  // gray shade before sunrise
+ 
+ document.getElementsByClassName('setnight')[i].style.left= currents+"%";
+
+ document.getElementsByClassName('dayshine')[i].style.left= sunrisecur+"%";
+ document.getElementsByClassName('dayshine')[i].style.width= (96-sunrisecur)+(sunsetcur-96)+"%";
+ 
+  } 
+
+
+
+// color current day checkbox border orange
+if (now.getDay()==0){  // 0=sunday
+  document.getElementById("lblchk7").style.borderColor="orange";
+}else{
+  document.getElementById("lblchk7").style.borderColor="";
+}
+if (now.getDay()==1){  // 1=monday
+  document.getElementById("lblchk1").style.borderColor="orange";
+}else{
+  document.getElementById("lblchk1").style.borderColor="";
+}
+if (now.getDay()==2){  // 0=sunday
+  document.getElementById("lblchk2").style.borderColor="orange";
+}else{
+  document.getElementById("lblchk2").style.borderColor="";
+}
+if (now.getDay()==3){  // 0=sunday
+  document.getElementById("lblchk3").style.borderColor="orange";
+}else{
+  document.getElementById("lblchk3").style.borderColor="";
+}
+if (now.getDay()==4){  // 0=sunday
+  document.getElementById("lblchk4").style.borderColor="orange";
+}else{
+  document.getElementById("lblchk4").style.borderColor="";
+}
+if (now.getDay()==5){  // 0=sunday
+  document.getElementById("lblchk5").style.borderColor="orange";
+}else{
+  document.getElementById("lblchk5").style.borderColor="";
+}
+if (now.getDay()==6){  // 0=sunday
+  document.getElementById("lblchk6").style.borderColor="orange";
+}else{
+  document.getElementById("lblchk6").style.borderColor="";
+}
+// more ?
+//switch(expression) {
+//  case x:
+    // code block
+//    break;
+//  case y:
+    // code block
+//    break;
+//  default:
+    // code block
+//}
+
+
+
+
+//console.log("now.getWeek() ",now.getWeek());
+document.getElementById("weeknr").innerHTML=" "+now.getWeek();
+if(now.getWeek() % 2 == 0) {       // check if the weeknumber is even
+    //console.log(now.getWeek(),"The weeknumber is even.");
+}
+else {                            // if the weeknumber is odd
+    //console.log(now.getWeek(),"The weeknumber is odd.");
+}
+//shorter
+var what =["even weeknumber","odd weeknumber"];
+//console.log("what[now.getWeek()%2] ",what[now.getWeek()%2]);
+
+if (now.getWeek() % 2 == 0){  // week nr even
+  document.getElementById("lbleven").style.borderColor="orange";
+  document.getElementById("lblodd").style.borderColor="";
+}else{
+  document.getElementById("lbleven").style.borderColor="";
+  document.getElementById("lblodd").style.borderColor="orange";
+}
+
+
+$('pre.jsonminutesonoff').html("mrs.getPeriodsMinutesOnOff() <br>"+mrs.getPeriodsMinutesOnOff());
+}
+
+setInterval(doiteverysecond, 1000); // Milliseconds
+
+function checkboxes (){
+  console.log("checkbox changed");
+  var checkbin=0b000000000;
+   if(chk1.checked==true){checkbin+=1};
+   if(chk2.checked==true){checkbin+=2};
+   if(chk3.checked==true){checkbin+=4};
+   if(chk4.checked==true){checkbin+=8};
+   if(chk5.checked==true){checkbin+=16};
+   if(chk6.checked==true){checkbin+=32};
+   if(chk7.checked==true){checkbin+=64};
+
+    if(oddweek.checked==true){checkbin+=128};
+    if(evenweek.checked==true){checkbin+=256};
+
+     console.log("checkbin ",checkbin);
+     console.log("checkbin.toString(2) ",checkbin.toString(2));
+
+     $('pre.bits').html("Dec."+checkbin+" Bin."+checkbin.toString(2)+" reverse Bin "+checkbin.toString(2).split("").reverse().join(""));
+
+    // days changed send json it to esp8266 esp32 mdns wifi webserver
+    // https://m1cr0lab-esp32.github.io/remote-control-with-websocket/websocket-and-json/
+ /*   
+ *   ESP32 Remote Control with WebSocket
+ * 
+ *   © 2020 Stéphane Calderoni  
+ *   https://m1cr0lab-esp32.github.io/remote-control-with-websocket/
+ *   https://github.com/m1cr0lab-esp32/remote-control-with-websocket
+ * * https://m1cr0lab-esp32.github.io/remote-control-with-websocket/websocket-and-json/
+*/
+}
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><br><br><br><br><br><br><hr>
+
+
+
+<a href="https://plugins.slyweb.ch/jquery-clock-timepicker" target="jquery-clock-timepicker">//plugins.slyweb.ch/jquery-clock-timepicker</a>
+<br><br>
+<a href="https://github.com/araczkowski/MultiRangeSlider" target="araczkowski">//github.com/araczkowski/MultiRangeSlider</a>
+<br><br>
+<a href="https://github.com/mourner/suncalc" target="suncalc">//github.com/mourner/suncalc</a>
+<br><br>
+<a href="https://github.com/kaimallea/isMobile" target="ismobile">//github.com/kaimallea/isMobile</a>
+<br><br>
+<a href="https://weeknumber.com/how-to/javascript" target="weeknumber">//weeknumber.com/how-to/javascript</a>
+<hr><br><br>
+    <a href="https://plnkr.co/edit/0VOS27JydW81wwZc" target="edit">//plnkr.co/edit/0VOS27JydW81wwZc</a><br>
+    <a href="https://run.plnkr.co/plunks/0VOS27JydW81wwZc/" target="full">full //run.plnkr.co/plunks/0VOS27JydW81wwZc/</a>
+    <h1>should become easy set / overview switch times wifi relais wall plug ESP8266 - ESP32</h1>
+   <a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main" target="electra">github.com Electra</a><br>
+   <a href="  https://facebook.com/luberth.dijkman" target="facebook">//facebook.com/luberth.dijkman</a><br>
+   
+
+   <hr><center>
+   
+   <br>
+https://junethanaon.com/project/project-datepicker.html<br><br>
+<a href="https://m1cr0lab-esp32.github.io/remote-control-with-websocket/" target="websocket">https://m1cr0lab-esp32.github.io/remote-control-with-websocket/
+</a>
+
+<br><br>
+map geolocation lat lon picker<br>
+<a href="https://plnkr.co/edit/qGlpEL2RuJvy0qMr" target="geo">https://plnkr.co/edit/qGlpEL2RuJvy0qMr</a>
+<br><br>
+googlemaps satellite lat lon picker <br><a href="https://plnkr.co/plunk/I0sSKTKdUMrOmXiT" target="gmap">https://plnkr.co/plunk/I0sSKTKdUMrOmXiT</a><br><br>
+ <br><br>
+ <img src="https://www.theben.de/ocsmedia/optimized/960x960/o11032v3%20timer%2027_en-PI.png" width="200px">
+
+ 
+  </body>
+</html>
