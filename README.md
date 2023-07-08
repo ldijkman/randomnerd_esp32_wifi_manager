@@ -1,3 +1,5 @@
+Visual MultiRange Scheduler, irrigation scheduler, light scheduler, wifi scheduler
+
 scheduler test /docs/mrs
 
 https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/
