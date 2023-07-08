@@ -4,7 +4,7 @@ a multi range slider scheduler timebar
 
 https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/
 
-https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs
+above source https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs
 
 ===
 
