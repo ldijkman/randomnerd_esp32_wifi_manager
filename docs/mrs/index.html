@@ -1,5 +1,17 @@
+<center>
+  Visual MultiRange Scheduler, irrigation scheduler, light scheduler, wifi scheduler<br> 
+</center>
+<script>
+if(self!==top){
+    document.write('<h3><a href="https://run.plnkr.co/plunks/0VOS27JydW81wwZc/" target="full">Alerts are not shown in framed window, Full Screen works better</a></h3>');
+} 
 
-home automation for Blondines - MultiRange Scheduler <br><a href="https://run.plnkr.co/plunks/0VOS27JydW81wwZc/" target="full">alerts are not shown in framed window Full Screen works better https://run.plnkr.co/plunks/0VOS27JydW81wwZc/</a>
+if(window.innerHeight > window.innerWidth){
+    //alert("Please rotate your device to Landscape view!");
+    document.write('<h3>Better Rotate your device to LandScape view?</h3>');
+}
+</script>
+
 <!--
   sorry i am no programmer / coder
   it is a mixed mesh of 
@@ -113,38 +125,30 @@ input[type=radio] + label, input[type=checkbox] + label {
 </head>
  <body> 
 
+ 
 
-<script>
-  if(window.innerHeight > window.innerWidth){
-    //alert("Please rotate your device to Landscape view!");
-    $.alert({
-    title: 'Alert without URL Says!',
-    content: '<h1>Please rotate your device to Landscape view!</h1>',
-}); 
-  }
-</script>
 
 <center>
   <br>
-       <input type="checkbox" id="chk1" name="chk" onchange="checkboxes()" >&nbsp;
+       <input type="checkbox" id="chk1" name="chk" onchange="checkboxes()">
        <label for="chk1" id="lblchk1">Monday</label>
-       <input type="checkbox" id="chk2" name="chk" onchange="checkboxes()">&nbsp;
+       <input type="checkbox" id="chk2" name="chk" onchange="checkboxes()">
        <label for="chk2" id="lblchk2">Tuesday</label>
-       <input type="checkbox" id="chk3" name="chk" onchange="checkboxes()">&nbsp;
+       <input type="checkbox" id="chk3" name="chk" onchange="checkboxes()">
        <label for="chk3" id="lblchk3">Wednesday</label>
-       <input type="checkbox" id="chk4" name="chk" onchange="checkboxes()">&nbsp;
-       <label for="chk4" id="lblchk4">Thursday</label>&nbsp;
-       <input type="checkbox" id="chk5" name="chk" onchange="checkboxes()">&nbsp;
+       <input type="checkbox" id="chk4" name="chk" onchange="checkboxes()">
+       <label for="chk4" id="lblchk4">Thursday</label>
+       <input type="checkbox" id="chk5" name="chk" onchange="checkboxes()">
        <label for="chk5" id="lblchk5">Friday</label>
-       <input type="checkbox" id="chk6" name="chk" onchange="checkboxes()" >&nbsp;
+       <input type="checkbox" id="chk6" name="chk" onchange="checkboxes()">
        <label for="chk6" id="lblchk6">Saturday</label>
-       <input type="checkbox" id="chk7" name="chk" onchange="checkboxes()">&nbsp;
+       <input type="checkbox" id="chk7" name="chk" onchange="checkboxes()">
        <label for="chk7" id="lblchk7">Sunday</label>
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
        <label for="weeknr" id="weeknr">Weeknr</label>=
-       <input type="checkbox" id="oddweek" name="oddweek" onchange="checkboxes()">&nbsp;
+       <input type="checkbox" id="oddweek" name="oddweek" onchange="checkboxes()">
        <label for="oddweek" id="lblodd">OddWeek</label>
-       <input type="checkbox" id="evenweek" name="evenweek" onchange="checkboxes()" >&nbsp;
+       <input type="checkbox" id="evenweek" name="evenweek" onchange="checkboxes()" >
        <label for="evenweek" id="lbleven">EvenWeek</label>
        <br><pre class="bits"></pre>
        <br>
@@ -176,7 +180,9 @@ input[type=radio] + label, input[type=checkbox] + label {
 <div id="append_div">test</div>
 
 <pre class="llll">llll</pre>
-<pre class="jsonminutesonoff"></pre>
+<pre class="jsonminutesonoff"></pre><br>
+lat <input   type="text" oninput="lat=this.value" value="" onchange="lat=this.value"/>
+ lon <input   type="text" oninput="lon=this.value" value="" onchange="lon=this.value"/><br>
 <br><br>
 add more tabs or pages with more sliders?<br>think its better one per page<br>
 <a href="https://www.evehome.com/en/eve-aqua"target="apple">apple elgato eve aqua bluetooth not wifi</a>has max7 times per slider, but how many sliders?<br>do you know?
@@ -288,9 +294,9 @@ onChangeInfo();
 function tempAlert(msg,duration)  // timed autohide alert
 {
     var el = document.createElement("div");
-    var top=parseInt((window.innerHeight - 150) / 2) + 'px';  // try to align alert popup in middle of window
+    var top=parseInt((window.innerHeight - 150) / 2)+$(window).scrollTop() + 'px';  // try to align alert popup in middle of window
     var left=parseInt((window.innerWidth - 500) / 2) + 'px';
-    el.setAttribute("style","border-radius:15px;height:150px;width:500px;padding:20px;margin:20px;position:absolute;top:"+top+";left:"+left+";background-color:red;color:yellow;");
+    el.setAttribute("style","border-radius:15px;height:150px;width:500px;padding:20px;margin:20px;position:absolute;top:"+top+";left:"+left+";background-color:red;color:yellow;z-index: 50;");
     el.innerHTML = msg;
     setTimeout(function(){el.parentNode.removeChild(el);},duration);
     document.body.appendChild(el);
@@ -527,7 +533,7 @@ function onError(error) {
 
   
   
-  
+
 // https://github.com/mourner/suncalc
 // https://www.latlong.net/
  
@@ -540,6 +546,7 @@ var times = SunCalc.getTimes(new Date(), lat, lon); // https://www.google.com/se
  // lon=5.1790;
 var times = SunCalc.getTimes(new Date(),lat,lon);
 }
+
 
 // format sunrise time from the Date object
 var sunrisemin =times.sunrise.getMinutes();
@@ -602,13 +609,16 @@ sunset.forEach(sunset => {
 /////////////////////////////////////////////////////////////////////////////
 
 function doiteverysecond() {
+
+
+  console.log("checkboxes() ",checkboxes());
 //console.log(isMobile);
   //mrs.handles_value_array();
   //console.log("mrs.handles_value_array() ",mrs.handles_value_array());
   var handles=mrs.handles_value_array();
 
   //problems on tablet with touch time input timepicker ismobile detected not true
-  $('pre.llll').html('mrs.handles_value_array() <br>'+handles+"<br><br>mrs.handles_value_array_in_hours()<br>"+mrs.handles_value_array_in_hours()+"<br><br>ismobile.js is it a <br>Mobile = "+isMobile.any+"<br>timepicker did not work nice on android tablet(do not check desktopsite)");
+  $('pre.llll').html('mrs.handles_value_array() <br>'+handles+"<br><br>mrs.handles_value_array_in_hours()<br>"+mrs.handles_value_array_in_hours()+"<br><br>ismobile.js is it a <br>Mobile = "+isMobile.any+"<br><small>timepicker did not work nice on android tablet, showed desktop picker<br>(also do not check desktopsite in chrome options)</small>");
   //if(handles[6]) {$('pre.llll').html('ok')}else{$('pre.llll').html('notok')};
 
   const now = new Date();
@@ -738,7 +748,7 @@ $('pre.jsonminutesonoff').html("mrs.getPeriodsMinutesOnOff() <br>"+mrs.getPeriod
 setInterval(doiteverysecond, 1000); // Milliseconds
 
 function checkboxes (){
-  console.log("checkbox changed");
+  //console.log("checkbox changed");
   var checkbin=0b000000000;
    if(chk1.checked==true){checkbin+=1};
    if(chk2.checked==true){checkbin+=2};
@@ -751,11 +761,14 @@ function checkboxes (){
     if(oddweek.checked==true){checkbin+=128};
     if(evenweek.checked==true){checkbin+=256};
 
-     console.log("checkbin ",checkbin);
-     console.log("checkbin.toString(2) ",checkbin.toString(2));
+    // console.log("checkbin ",checkbin);
+    // console.log("checkbin.toString(2) ",checkbin.toString(2));
 
      $('pre.bits').html("Dec."+checkbin+" Bin."+checkbin.toString(2)+" reverse Bin "+checkbin.toString(2).split("").reverse().join(""));
 
+
+
+return checkbin.toString(2).split("").reverse().join("");
     // days changed send json it to esp8266 esp32 mdns wifi webserver
     // https://m1cr0lab-esp32.github.io/remote-control-with-websocket/websocket-and-json/
  /*   
