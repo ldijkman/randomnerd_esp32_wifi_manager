@@ -1,3 +1,5 @@
+Visual MultiRange Scheduler, irrigation scheduler, light scheduler, wifi scheduler
+
 a multi range slider scheduler timebar
 
 https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/
