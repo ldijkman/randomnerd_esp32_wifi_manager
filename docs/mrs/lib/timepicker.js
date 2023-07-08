@@ -4,10 +4,15 @@
  * Version: 2.6.4
  * https://github.com/loebi-ch/jquery-clock-timepicker
  * 
- * luberth changed ismobile for tablet not detected use external js loaded in html
- * touch was not working nice on tablet
-   <script src="lib/ismobile.js"></script>
- 
+ luberth => changed ismobile for tablet not detected use external js loaded in html
+touch was not working nice on tablet desktop picker was shown
+<script src="lib/ismobile.js"></script> included in index.html
+
+input type time show different depent on device OS or Browser
+thats hy i use this timepicker
+that it looks on all device more or less the same
+
+
  */
  (function($) {
 

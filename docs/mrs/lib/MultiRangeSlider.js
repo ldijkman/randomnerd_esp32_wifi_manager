@@ -1,6 +1,6 @@
 
 
-
+// changed version
 // https://github.com/araczkowski/MultiRangeSlider
 
 
@@ -172,7 +172,8 @@
                 if (i === 0) {
                     mrsStepContentClass = mrsStepContentClass + 'MrsStepContentStart';
                 }
-                if (i === nSteps - 1) {
+             // something wrong here with last quarter line before 24h has 100% height
+                if (i === nSteps -1) {
                     mrsStepContentClass = mrsStepContentClass + 'MrsStepContentEnd';
                 }
 
@@ -197,7 +198,7 @@
 
                 var index = _slider.find('.' + SELECTORS.handle['class']).index(ui.handle);
 
-
+console.log("handle index ",index);
 
                 // check the minimum gap
                 var kCurr = _getPeriodKeyByIndex(index);
@@ -461,14 +462,14 @@
         }
 
         function _addPeriod(start, length, pId) {
-            start = _sanitizeValue(start);
-            length = _sanitizeValue(length);
-            if (!_isValidParams(start, length)) {
-                
+            start = start;//_sanitizeValue(start);
+            length = length;//_sanitizeValue(length);
+            if (!_isValidParams(start, length)) {   
                 return null;
             }
             var midpoint = start + length / 2;
             if (_getPeriodKeyByInnerPoint(midpoint) !== -1) {
+                tempAlert("<center><h1>Sorry!<br>Failed to create <br>"+timeConvert(start)+" - "+timeConvert(start+length)+"</h1></center>",2500);
                 return null;
             }
             if (_rangeIntersectsPeriods(start, length)) {
@@ -490,7 +491,7 @@
                 }
                 return period;
             } catch (e) {
-               
+              
                 return null;
             }
         }
@@ -746,7 +747,11 @@
         function _markRangeOnScale() {
             var steps = $('div.MrsStep');
             //reset color
-            steps.css('background-color', '#e6f7fd');
+            steps.css('background-color', '#fbe9ec'); //red
+           
+            
+            
+
 
             var period = {};
             var periods = [];
@@ -762,7 +767,8 @@
                 dataStart = this.getAttribute('data-start');
                 for (var i = 0; i < periods.length; i++) {
                     if (dataStart >= periods[i].start && dataStart < periods[i].stop) {
-                        $(this).css('background-color', '#ffd6b8');
+                        $(this).css('background-color', '#9df0b1'); //green
+                         
                     }
                 }
 
@@ -801,8 +807,16 @@ function handles_value_array_in_hours() {
 
 
 
-
-
+// from minutes of day to ??:??
+function timeConvert(n) {
+    var num = n;
+    var hours = (num / 60);
+    var rhours = Math.floor(hours);
+    var minutes = (hours - rhours) * 60;
+    var rminutes = Math.round(minutes);
+    if(rminutes<=9){rminutes="0"+rminutes;}
+    return  rhours + ":" + rminutes;
+}
 
 
 
