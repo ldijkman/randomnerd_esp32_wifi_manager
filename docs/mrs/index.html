@@ -168,16 +168,17 @@ input[type=radio] + label, input[type=checkbox] + label {
        <label for="oddweek" id="lblodd">OddWeek</label>
        <input type="checkbox" id="evenweek" name="evenweek" onchange="checkboxes()" >
        <label for="evenweek" id="lbleven">EvenWeek</label>
-       <br><pre class="bits"></pre>
-       <br>
+       <br><br>
        
        
-  
+  <div id="creatediv">
+    <pre class="bits"></pre>
   ON &nbsp;<input class="time ontime"  type="text" readonly style="color:green;" size="6"   oninput="calc()" id="ontime" value="18:30" onchange="console.log('Time changed to: ' + this.value)"/>
  &nbsp;&nbsp;&nbsp;&nbsp;OFF &nbsp;<input class="time offtime" type="text" readonly style="color:red;" size="6"   oninput="calc()" id="offtime" value="23:45" onchange="console.log('Time changed to: ' + this.value)"/>
 &nbsp;&nbsp;&nbsp;
       <input type="button" value="Create" onclick="setbuttonpressed()"><br>
 <br></center><br>
+</div>
 <div id="pluginRegion" style="width:100%; >
         <div id="parent" class="MrsContent" style="width: 100%; height: 100px;">
             <div id="slider"></div>
@@ -203,12 +204,15 @@ input[type=radio] + label, input[type=checkbox] + label {
 <script>
 function showhide() {
   var x = document.getElementById("append_div");
+  var y = document.getElementById("creatediv");
   if (x.style.display === "none") {
     x.style.display = "block";
+    y.style.display = "block";
     showhidebutton.value="Hide Edit time text fields";
       showhidebutton.style.background = "mistyrose";
   } else {
     x.style.display = "none";
+    y.style.display = "none";
     showhidebutton.value="Show Edit time text fields";
     showhidebutton.style.background = "aquamarine";
   }
