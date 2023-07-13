@@ -10,7 +10,6 @@ https://plnkr.co/edit/0VOS27JydW81wwZc
 
 
 
-
 <center>
   Visual MultiRange Scheduler, irrigation scheduler, light scheduler, wifi scheduler<br> 
 </center>
@@ -39,8 +38,7 @@ if(window.innerHeight > window.innerWidth){
 
 <html>
   <head>
-
-	   <title>Visual MultiRange Scheduler, irrigation scheduler, light scheduler, wifi scheduler</title>
+    <title>Visual MultiRange Scheduler, irrigation scheduler, light scheduler, wifi scheduler</title>
  
  <script type="text/javascript" src="//code.jquery.com/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="//code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
@@ -129,9 +127,15 @@ input[type=radio] + label, input[type=checkbox] + label {
     color:white;
 	}
 
-.risenight { }
- // gray night shade before after sunset
-.setnight { }
+.risenight {
+ position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px; 
+ width: 5%; 
+}
+.setnight { 
+  position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px; 
+  left:91%;  
+  width: 5%;   
+}
 
 </style>
 
@@ -191,7 +195,25 @@ input[type=radio] + label, input[type=checkbox] + label {
 </div>
 
 <center>
+
+<input type="button" id="showhidebutton" onclick="showhide()" value="Hide Edit time text fields">
+
 <div id="append_div">test</div>
+
+<script>
+function showhide() {
+  var x = document.getElementById("append_div");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    showhidebutton.value="Hide Edit time text fields";
+      showhidebutton.style.background = "mistyrose";
+  } else {
+    x.style.display = "none";
+    showhidebutton.value="Show Edit time text fields";
+    showhidebutton.style.background = "aquamarine";
+  }
+}
+</script>
 
 <pre class="llll">llll</pre>
 <pre class="jsonminutesonoff"></pre><br>
@@ -313,6 +335,17 @@ function tempAlert(msg,duration)  // timed autohide alert
     el.setAttribute("style","border-radius:15px;height:150px;width:500px;padding:20px;margin:20px;position:absolute;top:"+top+";left:"+left+";background-color:red;color:yellow;z-index: 50;");
     el.innerHTML = msg;
     setTimeout(function(){el.parentNode.removeChild(el);},duration);
+    document.body.appendChild(el);
+}
+
+function buttonAlert(msg,duration)  // timed autohide alert
+{
+    var el = document.createElement("div");
+    var top=parseInt((window.innerHeight - 150) / 2)+$(window).scrollTop() + 'px';  // try to align alert popup in middle of window
+    var left=parseInt((window.innerWidth - 500) / 2) + 'px';
+    el.setAttribute("style","border-radius:15px;height:150px;width:500px;padding:20px;margin:20px;position:absolute;top:"+top+";left:"+left+";background-color:red;color:yellow;z-index: 50;");
+    el.innerHTML = msg+'<br><br><br><center><input type="button" value="cancel">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="ok"></center>';
+    //setTimeout(function(){el.parentNode.removeChild(el);},duration);
     document.body.appendChild(el);
 }
 
@@ -484,7 +517,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // sunrise width % is later set changed
     // sunset left % and width % is later set changed
     // dayshine left % and width % is later set changed
-    $('.MrsSteps').append('<div class="risenight" style="position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px"></div>');
+    $('.MrsSteps').append('<div class="risenight" style="position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px;" ></div>');
     $('.MrsSteps').append('<div class="setnight" style="position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px"></div>');
     $('.MrsSteps').append('<div class="dayshine" style="position:absolute;height:20px;background-color:yellow;opacity:20%;top:-20px"></div>');
 
@@ -795,6 +828,7 @@ return checkbin.toString(2).split("").reverse().join("");
 */
 }
 
+//buttonAlert("<h1>Are you Sure!?</h1>",500);
 
 </script>
 
