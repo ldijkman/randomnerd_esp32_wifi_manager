@@ -47,14 +47,15 @@ https://plnkr.co/edit/0VOS27JydW81wwZc
      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
     <script>$('#widget').draggable();</script> 
    -->
-   
+
     <script src="lib/MultiRangeSlider.js"></script> 
     <script src="lib/suncalc.js"></script> 
     <script src="lib/weeknumber.com.js"></script> 
 
     <script src="lib/jq_confirm.js"></script>
+
     <link rel="stylesheet" href="lib/jq_confirm.css">
-    <link rel="stylesheet" href="lib/style.css">
+    <link rel="stylesheet" href="lib/MultiRangeSlider.css">
 
     <!--
     <script src="https://plugins.slyweb.ch/jquery-clock-timepicker/jquery-clock-timepicker.min.js?v=2.6.4"></script>
@@ -133,6 +134,34 @@ input[type=radio] + label, input[type=checkbox] + label {
 
 </head>
  <body> 
+
+
+
+
+<div id="aboutDIV" style=" position: fixed;width: 100%;top:20%;bottom:20%;
+  padding: 50px 0;
+  text-align: center;
+  background-color: lightgray;borderColor:black;border:5px solid;
+  margin-top: 20px;display:none;z-index:500;">
+  <h1>Hello</h1><br>
+  about!<br>
+  <br><br><br><br>
+  <button onclick="showabout()">Accept!</button></div>
+
+  <div id="about" style="position: fixed; top: 1em; right: 1em;">
+    <button onclick="showabout()" style="border-color:green; color:green;">?</button>
+  </div>
+
+<script>
+function showabout() {
+  var x = document.getElementById("aboutDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
 <center>
   Visual MultiRange Scheduler, irrigation scheduler, light scheduler, wifi scheduler, sprinkler scheduler<br> 
 </center>
