@@ -1,4 +1,4 @@
-visual day scheduler, irrigation scheduler, light scheduler, wifi switch scheduler
+visual day scheduler, irrigation scheduler, light scheduler, wifi switch scheduler, sprinkler scheduler.
 
 https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/
 
