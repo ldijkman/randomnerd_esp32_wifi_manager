@@ -10,19 +10,8 @@ https://plnkr.co/edit/0VOS27JydW81wwZc
 
 
 
-<center>
-  Visual MultiRange Scheduler, irrigation scheduler, light scheduler, wifi scheduler, sprinkler scheduler<br> 
-</center>
-<script>
-if(self!==top){
-    document.write('<h3><a href="https://run.plnkr.co/plunks/0VOS27JydW81wwZc/" target="full">Alerts are not shown in framed window, Full Screen works better</a></h3>');
-} 
 
-if(window.innerHeight > window.innerWidth){
-    //alert("Please rotate your device to Landscape view!");
-    document.write('<h3>Better Rotate your device to LandScape view?</h3>');
-}
-</script>
+
 
 <!--
   sorry i am no programmer / coder
@@ -38,7 +27,7 @@ if(window.innerHeight > window.innerWidth){
 
 <html>
   <head>
-    <title>Visual MultiRange Scheduler, irrigation scheduler, light scheduler, wifi scheduler</title>
+    <title>Visual MultiRange Scheduler, irrigation scheduler, light scheduler, sprinkler scheduler, wifi timer switch scheduler</title>
  
  <script type="text/javascript" src="//code.jquery.com/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="//code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
@@ -54,8 +43,10 @@ if(window.innerHeight > window.innerWidth){
    <!-- next to make it work on touch screen phone / tablet 
    
    does not work well with mrs slider strange it does with mrdad slider from same author-->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+   <!-- 
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
     <script>$('#widget').draggable();</script> 
+   -->
    
     <script src="lib/MultiRangeSlider.js"></script> 
     <script src="lib/suncalc.js"></script> 
@@ -142,8 +133,16 @@ input[type=radio] + label, input[type=checkbox] + label {
 
 </head>
  <body> 
+<center>
+  Visual MultiRange Scheduler, irrigation scheduler, light scheduler, wifi scheduler, sprinkler scheduler<br> 
+</center>
+ <script>
+if(self!==top){
+    document.write('<h3><a href="https://run.plnkr.co/plunks/0VOS27JydW81wwZc/" target="full">Alerts are not shown in framed window, Full Screen works better</a></h3>');
+} 
 
- 
+</script>
+<pre class="pleaserotatetolandscape" style="font-size : 17px;"></pre>
 
 
 <center>
@@ -197,28 +196,55 @@ input[type=radio] + label, input[type=checkbox] + label {
 
 <center>
 
-<input type="button" id="showhidebutton" onclick="showhide()" value="Hide Edit time text fields">
+<input type="button" id="showhidebutton" onclick="showhide()" value=" Hide Edit time text fields " style="font-size : 15px;" >
 
 <div id="append_div">test</div>
 
 <script>
 function showhide() {
-  var x = document.getElementById("append_div");
-  var y = document.getElementById("creatediv");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-    y.style.display = "block";
+  if (document.getElementById("append_div").style.display === "none") {
+    document.getElementById("append_div").style.display = "block";
+    document.getElementById("creatediv").style.display = "block";
+
+    div_show_class("ui-slider-control-minus"); //divsToHide is an array
+    div_show_class("ui-slider-control-plus"); //divsToHide is an array
+   
     showhidebutton.value="Hide Edit time text fields";
-      showhidebutton.style.background = "mistyrose";
+    showhidebutton.style.background = "mistyrose";
+    showhidebutton.style.color = "red";
   } else {
-    x.style.display = "none";
-    y.style.display = "none";
+    document.getElementById("append_div").style.display = "none";
+    document.getElementById("creatediv").style.display = "none";
+    
+    div_hide_class("ui-slider-control-minus"); //divsToHide is an array
+    div_hide_class("ui-slider-control-plus"); //divsToHide is an array
+    
     showhidebutton.value="Show Edit time text fields";
     showhidebutton.style.background = "aquamarine";
-  }
+    showhidebutton.style.color = "darkgreen";
+
+  
+  } 
+}
+
+
+function div_show_class(classname){
+  var divsToshow = document.getElementsByClassName(classname); //divsToHide is an array
+    for(var i = 0; i < divsToshow.length; i++){
+        //divsToHide[i].style.visibility = "show"; // or
+        divsToshow[i].style.display = "block"; // depending on what you're doing
+    } 
+}
+
+function div_hide_class(classname){
+  var divsToHide = document.getElementsByClassName(classname); //divsToHide is an array
+    for(var i = 0; i < divsToHide.length; i++){
+        //divsToHide[i].style.visibility = "hidden"; // or
+        divsToHide[i].style.display = "none"; // depending on what you're doing
+    }
 }
 </script>
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <pre class="llll">llll</pre>
 <pre class="jsonminutesonoff"></pre><br>
 lat <input   type="text" oninput="lat=this.value" value="" onchange="lat=this.value"/>
@@ -661,6 +687,14 @@ sunset.forEach(sunset => {
 
 function doiteverysecond() {
 
+  //$('#slider').slider({ disabled: "true" });
+
+ if(window.innerHeight > window.innerWidth){
+        $('pre.pleaserotatetolandscape').html("<h3>Better Rotate your device to LandScape view?</h3>");
+  }else{
+        //erase rotamessage if in landscape"
+        $('pre.pleaserotatetolandscape').html("");
+  }
 
   console.log("checkboxes() ",checkboxes());
 //console.log(isMobile);
