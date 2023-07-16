@@ -29,6 +29,8 @@ https://plnkr.co/edit/0VOS27JydW81wwZc
   <head>
     <title>Visual MultiRange Scheduler, irrigation scheduler, light scheduler, sprinkler scheduler, wifi timer switch scheduler</title>
  
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
  <script type="text/javascript" src="//code.jquery.com/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="//code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
     <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
@@ -143,16 +145,24 @@ input[type=radio] + label, input[type=checkbox] + label {
   top:20%;
   padding: 10px 0;
   text-align: center;
-  background-color: lightgray;borderColor:black;border:5px solid;
+  background-color: lightgray;borderColor:black;border:5px solid;border-radius:10px;
   margin-top: 10px;display:none;z-index:500;overflow-y:scroll; height:400px;">
- <h1>Visual Scheduler / Graphical Scheduler</h1>
+ 
+ <div id="closeit" style="
+ position: fixed;
+ display: absolute;
+ float:right;right: 2em;">
+    <button onclick="showabout()" style="border-color:red; color:red;">X</button>
+  </div><h1>Visual Scheduler / Graphical Scheduler</h1>
   Copyright, Dirk Luberth Dijkman 2023<br>
   <a href="https://facebook.com/luberth.dijkman" target="facebook">//facebook.com/luberth.dijkman</a><br>
   <a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs" target="mrs_github">github mrs visual scheduler</a><br>
     <a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions" target="discussions">github discussions</a><br>
     <textarea rows="9" cols="70">
       latest changes.
+
     ---
+
       changed the css a bit 
       so that accidental touch on slider has no effect 
       mouse can still move the sliderhandles 
