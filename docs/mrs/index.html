@@ -29,7 +29,7 @@ https://plnkr.co/edit/0VOS27JydW81wwZc
   <head>
     <title>Visual MultiRange Scheduler, irrigation scheduler, light scheduler, sprinkler scheduler, wifi timer switch scheduler</title>
  
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1, user-scalable=0">
 
  <script type="text/javascript" src="//code.jquery.com/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="//code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
@@ -152,7 +152,7 @@ input[type=radio] + label, input[type=checkbox] + label {
  position: fixed;
  display: absolute;
  float:right;right: 2em;">
-    <button onclick="showabout()" style="border-color:red; color:red;">X</button>
+    <button onclick="showhideabout()" style="border-color:red; color:red;"><b>X</b></button>
   </div><h1>Visual Scheduler / Graphical Scheduler</h1>
   Copyright, Dirk Luberth Dijkman 2023<br>
   <a href="https://facebook.com/luberth.dijkman" target="facebook">//facebook.com/luberth.dijkman</a><br>
@@ -160,6 +160,19 @@ input[type=radio] + label, input[type=checkbox] + label {
     <a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions" target="discussions">github discussions</a><br>
     <textarea rows="9" cols="70">
       latest changes.
+
+    possible round error with inserted + time 
+    7:41
+    9:35.5
+    10:05.5
+    12:00
+    24:00
+
+mrs.handles_value_array() 
+0,120,245,275,400,461,575.5,605.5,720,1440
+
+mrs.handles_value_array_in_hours()
+0:00,2:00,4:05,4:35,6:40,7:41,9:35.5,10:5.5,12:00,24:00
 
     ---
 
@@ -182,16 +195,16 @@ input[type=radio] + label, input[type=checkbox] + label {
   <br><br>stackoverflow.com / w3schools.com / codepen.io <br>
    <input type="color" style="height:8px;width:80%;"><br>
   <br>
-  <button onclick="showabout()" style="color:green;">Accept!</button><br>
+  <button onclick="showhideabout()" style="color:green;">Accept!</button><br>
   <br><br><br><br><br><br><br><br>
 </div>
 
   <div id="about" style="position: fixed; top: 1em; right: 1em;">
-    <button onclick="showabout()" style="border-color:green; color:green;">?</button>
+    <button onclick="showhideabout()" style="border-color:green; color:green;"><b>?</b></button>
   </div>
 
 <script>
-function showabout() {
+function showhideabout() {
   if (document.getElementById("aboutDIV").style.display === "none") {
     document.getElementById("aboutDIV").style.display = "block";
   } else {
@@ -757,7 +770,7 @@ function doiteverysecond() {
   //$('#slider').slider({ disabled: "true" });
 
  if(window.innerHeight > window.innerWidth){
-        $('pre.pleaserotatetolandscape').html("<h3>Better Rotate your device to LandScape view?</h3>");
+        $('pre.pleaserotatetolandscape').html("<h4>Better Rotate your device to LandScape view?</h4>");
   }else{
         //erase rotamessage if in landscape"
         $('pre.pleaserotatetolandscape').html("");
