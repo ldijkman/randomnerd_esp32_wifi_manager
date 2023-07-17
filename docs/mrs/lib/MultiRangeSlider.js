@@ -660,7 +660,8 @@ console.log("handle index ",index);
                             length = rightEdge - leftEdge;
                         }
                         start = leftEdge + (rightEdge - leftEdge) / 2 - length / 2;
-                        var newPeriod = _addPeriod(start, length);
+                        // var newPeriod = _addPeriod(start, length); // when + pressed float possible to add minute.5
+                        var newPeriod = _addPeriod(Math.round(start), Math.round(length));
                         if (newPeriod !== null) {
                             if (typeof (_addPeriodConfirm) === 'function') {
                                 _addPeriodConfirm(newPeriod.toPublic(), function (result) {
