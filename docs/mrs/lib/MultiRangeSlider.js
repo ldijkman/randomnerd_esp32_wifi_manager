@@ -158,6 +158,14 @@
             for (var i = 0; nSteps > i; i++) {
                 mrsStep = (i * _options.step) % 60;
 
+                // i think the pips should be draw different
+                // also the coloring of selected time should be done different less generated data
+                // look with chrome inspect at the generated page source
+                // should be done as slider is drawn between handles
+                // for pips https://rawgit.com/simeydotme/jQuery-ui-Slider-Pips/master/src/js/jquery-ui-slider-pips.js
+                // pips https://simeydotme.github.io/jQuery-ui-Slider-Pips/
+                // https://github.com/simeydotme/svelte-range-slider-pips
+                //
                 if (mrsStep === 0) {
                     mrsStepContentClass = 'MrsStepContentFullHour ';
                 } else if (mrsStep === 15) {
@@ -542,7 +550,10 @@ console.log("handle index ",index);
             }
             _build(true);
         }
-
+        
+        // this draws on the jquery ui slider the selected time between handles
+        // think it would be nice if it also draws on the scale
+        // less data generated, original uses a lot of lines data
         function _drawRange(periodId, edges) {
             var range = $('<div class="' + SELECTORS.range['class'] + ' ' + SELECTORS.range['class'] + '-' + periodId + '" style="background-image: linear-gradient(to right, green , red);opacity:50%;"></div>');
             _slider.append(range);
@@ -552,9 +563,13 @@ console.log("handle index ",index);
         function _alignRange(periodId, edges) {
             var range = _slider.find('.' + SELECTORS.range['class'] + '-' + periodId);
             range.css({
+                // this draws on the jquery ui slider the selected time between handles
+                // think it would be nice if it also draws on the scale
+                // less data generated, original uses a lot of lines data
                 left: (Utils.convertToPercent(edges[0] - _options.min)) + '%',
                 width: Utils.convertToPercent(edges[1] - edges[0]) + '%'
             });
+
         }
 
         function _destroy() {
@@ -700,6 +715,7 @@ console.log("handle index ",index);
                     left: Utils.convertToPercent(offset) + '%'
                 });
                 control.show();
+                
             };
             var prevValue = _options.min;
             var prevIdentifier = 'base';
@@ -749,6 +765,8 @@ console.log("handle index ",index);
             var steps = $('div.MrsStep');
             //reset color
             steps.css('background-color', '#fbe9ec'); //red
+            // this draws the backround
+            // do not like it to much data generated
            
             
             
@@ -769,7 +787,8 @@ console.log("handle index ",index);
                 for (var i = 0; i < periods.length; i++) {
                     if (dataStart >= periods[i].start && dataStart < periods[i].stop) {
                         $(this).css('background-color', '#9df0b1'); //green
-                         
+                         //this draws the time period
+                         // do not like it to much data generated
                     }
                 }
 
@@ -1054,7 +1073,7 @@ $(function () {
             mrs = new Mrs('slider', {
                 min: "0",
                 max: "1440",
-                step: "15",
+                step: "5",
                 gap: "30",
                 newlength: "30"
             });
