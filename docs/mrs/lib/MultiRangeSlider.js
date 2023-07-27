@@ -165,6 +165,10 @@
                 // for pips https://rawgit.com/simeydotme/jQuery-ui-Slider-Pips/master/src/js/jquery-ui-slider-pips.js
                 // pips https://simeydotme.github.io/jQuery-ui-Slider-Pips/
                 // https://github.com/simeydotme/svelte-range-slider-pips
+
+
+                //CodePen Homejquery div ruler scale pips
+                // https://codepen.io/ldijkman/pen/XWyBPpG
                 //
                 if (mrsStep === 0) {
                     mrsStepContentClass = 'MrsStepContentFullHour ';
@@ -234,6 +238,7 @@ console.log("handle index ",index);
 
 
                 function onSlide() {
+                    console.log("ui.values", ui.values[0] + " , " + ui.values[1]);
                     if (typeof (_onHandleSlide) === 'function') {
                         var key = _getPeriodKeyByIndex(index);
                         if (key !== -1) {
