@@ -71,7 +71,8 @@ i.fa-eject {
 .ui-slider-horizontal {
      pointer-events: none;                  /*prevent accidental changes by touch*/
     width: 96%;
-    height: 1px;
+    //bottom:25px;
+    height: 4px;
 }
 .ui-slider-horizontal .ui-slider-range {
     /*background-color: #ff930f;*/
