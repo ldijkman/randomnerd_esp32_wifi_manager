@@ -165,7 +165,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   padding: 10px 0;
   text-align: center;
   background-color: lightgray;borderColor:black;border:5px solid;border-radius:10px;
-  margin-top: 10px;display:none;z-index:500;overflow-y:scroll; height:400px;">
+  margin-top: 10px;display:none;z-index:500;overflow-y:scroll; height:400px;overscroll-behavior: contain;">
  
  <div id="closeit" style="
  position: fixed;
@@ -230,7 +230,7 @@ function showhideabout() {
     document.getElementById("aboutDIV").style.display = "block";
      // should be something to block scrolling of body 
      // only popup scroll
-     // https://codepen.io/fcalderan/pen/qBYyRgE?editors=0010
+     // https://codepen.io/anon/pen/oEMmrm
   } else {
     document.getElementById("aboutDIV").style.display = "none";
   }
