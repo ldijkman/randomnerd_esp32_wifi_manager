@@ -1,0 +1,1018 @@
+<!--
+  other scheduler examples i do not fully understand the code
+  and there are no to little comments
+  try to make a scheduler from scratch with some more comments and easier to understand code
+  https://codepen.io/ldijkman/pen/PoxVjXB
+  https://plnkr.co/edit/p7xyOMhDtuTc49aZ
+  https://github.com/ldijkman/randomnerd_esp32_wifi_manager/new/main/docs/mrs/create_from_scratch
+-->
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="description" content="Visual Day scheduler.">
+<meta name="author" content="Copyright Dirk Luberth Dijkman 2023">
+ 
+ 
+ <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+   
+   <!-- modifeid version analog timepcker on github https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs --> 
+   <script src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/lib/timepicker.js"></script>
+   <script src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/lib/ismobile.js"></script>
+   <script src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/lib/suncalc.js"></script> 
+    
+
+    
+
+<style>
+  #editpopup {
+  position: absolute;
+  left:40%;
+  top:30%;
+  z-index: 9;
+  background-color: #f1f1f1;
+  text-align: center;
+  border: 1px solid orange;
+  padding: 1px;
+  z-index:50;
+}
+
+#editpopupheader {
+  padding: 5px;
+  cursor: move;
+  z-index: 10;
+  background-color: #2196F3;
+  color: #fff;
+  z-index:50;
+}
+.clock-timepicker-popup{
+  opacity:80%;
+  }
+
+#outerDiv {           /* # = id */
+  position:relative;
+  width:100%;
+  height:50px;
+  border: 1px solid black;
+  background-color: lightgray;
+  cursor: pointer;
+
+}
+.outerDiv {        /* . = class */
+  width:100%;
+  height:50px;
+  border: 1px solid black;
+ 
+}
+#innerDiv {
+  position:relative;
+  //left:50px;
+  width: 0px;
+  height:50px;
+  background-color: green;
+  opacity:50%;
+  z-index:5;
+ 
+}
+.ruler-line {
+  background: #999;
+  top: -30px;
+  position: absolute;
+  left: 50%;
+}
+
+.ruler-number {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  margin-left: -.20em;
+  width: 2em;
+}
+
+
+.evening_shade {
+ position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px; 
+ width: 5%; 
+}
+.morning_shade { 
+  position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px; 
+  left:91%;  
+  width: 5%;   
+}
+</style>
+
+   
+</head>
+<body bgcolor="#f2f2ed">
+
+
+
+<div id="editpopup">
+ <div id="editpopupheader"> <div id="closeedit">Drag Me<button onclick="showhideeditpopup()" style="border-color:red; color:red;position:absolute;left:85%;"><b>X</b></button>
+ </div>
+ </div>
+  <br>
+ add / edit  a time slot<br>
+
+  &nbsp;&nbsp;<input type="text" class="ontime"  id="ontime" readonly style="color:green;" size="6"   oninput="drawtemp()"  value="07:30" onchange="drawtemp();console.log('Time changed to: ' + this.value)"/>
+<input type="text" class="offtime"  id="offtime" readonly style="color:red;" size="6"   oninput="drawtemp()"  value="16:30" onchange="drawtemp();console.log('Time changed to: ' + this.value)"/>
+&nbsp;&nbsp;<br><br>
+<input type="button" value="Cancel" onclick="cancelbutton()">    
+<input type="button" value="Save" onclick="savetimeslot()"><br><br> 
+<input type="button" value="Delete" onclick="deletebutton()"> 
+<br><br>
+<small><small>touch drag not working ;-(</small></small>
+<br>
+</div>
+</div>
+
+
+
+<script>
+
+  const timeslots=[450,990,15,135,240,285,1200,1440]; // timeslots pairs of 2 in minutes of day
+
+
+function deletebutton(){
+    console.log("deletebutton clicked");
+    console.log("timeslotpointer  ",timeslotpointer);
+    
+    if(timeslotpointer===""){return;}                                        // timeslotpointer is from function timeslotclicked(wich)
+    timeslots.splice( timeslotpointer, 2);  // remove 2 from timeslotarray
+    timeslotpointer="";  // otherwise if delete is clicked agai it will remove other
+
+    domessage();
+    showhideeditpopup();
+    drawtimeslots();
+    savefromedit=0;   // do not know, have some strange overwrite / delete
+                      // its a flag used when save button is clicked
+}
+
+
+
+
+function cancelbutton(){
+  showhideeditpopup()
+  document.getElementById('innerDiv').style.left='';   // erase edit timeslot???????
+  document.getElementById('innerDiv').style.width='';
+  document.getElementById('startlabel').innerHTML='';
+  document.getElementById('endlabel').innerHTML='';
+}
+
+  
+
+var timeslotpointer="";
+var savefromedit=0;
+
+
+function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="timeslotclicked(`+i+`)"
+    timeslotdivclick=1;  // i do not now a flag to keep outerdiv click away cq return from outerdiv click
+    console.log("timeslotclicked",wich);
+    timeslotpointer=wich;
+    showhideeditpopup();
+    // wich holds the array position of first data we need in minutes
+    document.getElementById("ontime").value=toHoursAndMinutes(timeslots[wich]);  // get minute data from timeslot array and convert to hh:mm for text input field
+    document.getElementById("offtime").value=toHoursAndMinutes(timeslots[wich+1]);
+    savefromedit=1;  // a flag for savebutton
+// if changes need to modify the timeslot array data
+ 
+}
+
+///////save button pressed, save to timeslot array////////////////////////////////
+function savetimeslot() {
+    
+    var onhhmm = document.getElementById("ontime").value;
+    var offhhmm = document.getElementById("offtime").value;
+
+    console.log("onval, offval", onhhmm, offhhmm);
+
+    showhideeditpopup();          // closepopup
+
+    var a=onhhmm.split(':');         // time is in hh:mm i want minutes
+    var b=offhhmm.split(':');
+  
+
+  if(savefromedit==1){
+  console.log("savefromedit",savefromedit);
+   // here from a save click from possible modified timeslot save
+  
+    var a=document.getElementById("ontime").value.split(':');         // time is in hh:mm i want minutes
+    var b=document.getElementById("offtime").value.split(':');
+    
+    console.log("timeslotpointer",timeslotpointer);
+    timeslots[timeslotpointer]=(+a[0]) * 60 + (+a[1]);     // change the values in the timeslot array
+    timeslots[timeslotpointer+1]= (+b[0]) * 60 + (+b[1]);
+    savefromedit=0;
+  }else{
+    // push / add values pair to timeslot array
+    timeslots.push((+a[0]) * 60 + (+a[1]),(+b[0]) * 60 + (+b[1]));
+  }
+
+
+    // sort is no good if 2 values/times are te same
+    // timeslots array length 4
+    // in minutes
+    // timeslots 450,450,990,990
+    // timeslots.sort(function(a, b){return a - b});   // sort array
+
+    // no good if start and end is sane time
+    // var timeslotsclean= Array.from(new Set(timeslots)); // remove duplicates times
+    // no good if start and end is sane time
+
+    console.log("timeslots ",timeslots);
+    
+
+    domessage();  
+    drawtimeslots();
+
+
+}
+
+
+
+
+
+
+
+
+
+function domessage(){    
+    // next muttiline because use of ` = ~ tilde key lef side number keys keyboard
+    // Alternatively known as acute, backtick, left quote, or an open quote, 
+    // the back quote or backquote is a punctuation mark (`). 
+    // It's on the same U.S. computer keyboard key as the tilde ~.
+    
+    // just for easy compare to minutes next hours array has no other use
+    const hourarray=[];
+    for (var i=0 ;  i < timeslots.length; i++) {
+          hourarray[i]=toHoursAndMinutes(timeslots[i]);
+    }   
+
+// a message writen to <pre class="message"></pre> in the html
+$('pre.message').html(`                            
+    <p style=\"color:red\">timeslots array length `
+    +timeslots.length+
+    "<br>timeslots in minutes <br>"
+    +timeslots+
+    `<br><br>in hours<br>`
+    +hourarray+
+    `<br>
+    how do i remove double/matching/overlapping pairs from timeslot array?<br>
+    and how to place sort pairs in following order?<br>
+  
+  
+    </p>`);
+
+}
+
+
+function drawtimeslots(){
+// draw timeslots array
+ 
+  document.getElementById('innerDiv').style.left='';   // erase edit timeslot???????
+  document.getElementById('innerDiv').style.width='';
+  document.getElementById('startlabel').innerHTML='';
+  document.getElementById('endlabel').innerHTML='';
+ // draw timeslots array
+  $("div.timeslot").remove(); // remove all previous generated divs with classname timeslot 
+  $("div.slabel").remove(); // remove all previous generated divs with classname timeslot 
+  $("div.elabel").remove(); // remove all previous generated divs with classname timeslot 
+  $("div.startlabel").remove(); // remove all previous generated divs with classname timeslot 
+  $("div.endlabel").remove(); // remove all previous generated divs with classname timeslot 
+  for (let i = 0; i < timeslots.length; i=i+2) {
+    console.log("timeslots[i] and [i+1]", timeslots[i]," ",timeslots[i+1]);
+   
+
+     var left=map_range(timeslots[i],  0,1440,0,100);              // scale time in range 0to1440 to 0 to 100%
+     var width=map_range(timeslots[i+1],  0,1440,0,100)-left;      // scale time in range 0to1440 to 0 to 100%
+     console.log("left width",left," ",width);
+
+     $(".outerDiv").append(
+          `<div class="timeslot" data-index=/"`
+          +i+
+          `/" onclick="timeslotclicked(`+i+`)" style="position:absolute;height:50px;background-color:navy;opacity:50%;top:0px;left:`
+          +left+
+          `%;width:`
+          +width+
+          `%;z-index:40;">
+          <div class="slabel" style="position: absolute; color: green; background-color: green; height: 20px; width: 1px; left: 0%; top: 55px;">
+          <div  class="startlabel" style="position: absolute; color: green; background-color: green; height: 0px; width: 1px; left: -20px; top: 15px;">`
+          +toHoursAndMinutes(timeslots[i])+
+          `</div></div>
+          <div class="elabel" style="position: absolute; color: red; background-color: red; height: 20px; width: 1px; left: 100%; top: 55px;">
+          <div class="endlabel" style="position: absolute; color: red; background-color: red; height: 0px; width: 1px; left: -20px; top: 30px;">`
+          +toHoursAndMinutes(timeslots[i+1])+
+          `</div>
+          </div>
+          </div>`
+     );  // should add timetextlabels
+
+  }
+
+}
+
+
+
+// Make the DIV element draggable:
+// https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable
+// touch should be added
+dragElement(document.getElementById("editpopup"));
+
+function dragElement(elmnt) {
+  var pos1 = 100, pos2 = 100, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    // if present, the header is where you move the DIV from:
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+    // otherwise, move the DIV from anywhere inside the DIV:
+    // elmnt.onmousedown = dragMouseDown;
+  } else {
+    // otherwise, move the DIV from anywhere inside the DIV:
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    // stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+
+function showhideeditpopup(showorhide) {
+  if (showorhide=="show"){document.getElementById("editpopup").style.display = "block";}else{
+  if (document.getElementById("editpopup").style.display === "none") {
+    document.getElementById("editpopup").style.display = "block";
+     // should be something to block scrolling of body 
+     // only popup scroll
+     // https://codepen.io/anon/pen/oEMmrm
+  } else {
+    document.getElementById("editpopup").style.display = "none";
+  }
+  }
+    drawtimeslots();  // if you close by x green selection may be left if not closed bij cancel or save
+}
+
+
+</script>
+
+
+
+
+
+Create a scheduler from scratch (bit like Plasma-Cloud WiFi POE Scheduler)<br>
+Visual Scheduler for irrigation, sprinklers, lights, wifi relays, wifi switches, etcetera<br>
+<br><center>
+<pre class="pleaserotatetolandscape" style="font-size : 17px;"></pre>  
+<hr width="40%">
+
+
+<a href="https://www.google.com/search?q=52.7354,5.179" target="google">GeoLocation for sunrise, sunset </a>
+<br><br>
+lat:<input type="text" id="lat" size="6" oninput="dogeoloc()" value="52.7354" onchange="dogeoloc()"/>
+lon:<input type="text" id="lon" size="6" oninput="dogeoloc()" value="5.179" onchange="dogeoloc()"/>
+<hr width="40%">
+</center><br>
+<h1> Monday</h1>
+
+<div id='outerDiv' class="outerDiv" onclick = 'changeWidth(event)'>
+  <div id='innerDiv'></div>
+</div>
+
+<br><center>
+<br><br>
+<pre class="message"></pre>
+<!--
+<hr width="50%">
+add timeslot popup after click
+<input type="text" class="ontime"  id="ontime" readonly style="color:green;" size="6"   oninput="drawtemp()"  value="07:30" onchange="drawtemp();console.log('Time changed to: ' + this.value)"/>
+<input type="text" class="offtime"  id="offtime" readonly style="color:red;" size="6"   oninput="drawtemp()"  value="16:30" onchange="drawtemp();console.log('Time changed to: ' + this.value)"/>
+<input type="button" value="cancel" onclick="alert('cancel should stop/erase this add timeslot')">    
+<input type="button" value="save" onclick="alert('save not yet, this should save to schedule timeslotarray')"> 
+<hr width="50%">
+
+<br>
+
+<hr width="50%">
+edit timeslot popup after click on tmeslot
+<hr width="50%">
+-->
+
+<br>
+
+
+<!--https://www.jqueryscript.net/other/leaflet-location-picker.html#google_vignette-->
+sunrise sunset geolocation picker map lat lon<br>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css" />
+<link rel="stylesheet" href="https://www.jqueryscript.net/demo/leaflet-location-picker/src/leaflet-locationpicker.css" />
+
+<div class="container">
+      <input id="geoloc" type="text" value="52.7354,5.179" class="form-control mb-3"  />
+      <input type="button" value="use location" onclick="useit()"  /><br><br>
+      <div id="fixedMapCont" style="border: 3px solid #222; width:275px;"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"></script>
+<script src="https://www.jqueryscript.net/demo/leaflet-location-picker/src/leaflet-locationpicker.js"></script>
+<script>
+  $('#geoloc').leafletLocationPicker({
+    alwaysOpen: true,
+    mapContainer: "#fixedMapCont"
+});
+
+function useit(){
+    var location = document.getElementById("geoloc").value.split(',');   // make an array splitted at comma                             // split hh:mm  at the colons
+    document.getElementById("lat").value=location[0];   // left of comma val 0 of array
+    document.getElementById("lon").value=location[1];   // rigth of comma val 1 of array
+    dogeoloc();
+}
+</script>
+<!--https://www.jqueryscript.net/other/leaflet-location-picker.html#google_vignette-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+ 
+
+var innerdivclick=0;
+var timeslotdivclick=0;
+$( "#innerDiv" ).on( "click", function() {
+ 
+   // $('pre.message').html("edit / remove timeslot popup");
+ console.log("innerdiv clicked");
+ innerdivclick=1;
+ 
+ // do not know open analog time picker if textlabel is clicked
+$( "#startlabel" ).on( "click", function() {
+    // $('pre.message').html("slabel click");
+    console.log("slabel clicked");
+    $("#ontime").focus();
+    
+    //return;
+ });
+  $( "#endlabel" ).on( "click", function() {
+    // $('pre.message').html("elabel click");
+    console.log("elabel clicked");
+    $("#offtime").focus();
+    //return;
+ }); 
+});
+
+$( ".timeslot" ).on( "click", function() {
+console.log("timeslot function click");
+});
+
+
+
+$( "#outerDiv" ).on( "click", function() {
+  if(innerdivclick==1){
+    showhideeditpopup("show");
+    innerdivclick=0;return;
+  }
+   if(timeslotdivclick==1){
+    
+    timeslotdivclick=0;return;
+  }
+
+
+   showhideeditpopup("show");
+   // $('pre.message').html("new add / edit / save timeslot popup");
+   console.log("outerdiv clicked");
+   let outerDiv = document.getElementById('outerDiv');
+
+
+  document.getElementById('innerDiv').style.width = event.clientX-outerDiv.offsetLeft+'px';
+  console.log(event.clientX-outerDiv.offsetLeft);
+  console.log(outerDiv.offsetWidth);
+         
+         // map_range returns a float that does not work for later convert to hh:mm 
+         // but the float is better for left% width% scaling otherwise the selections aro of target
+  var clickposinminutes=Math.round(map_range((event.clientX-outerDiv.offsetLeft),0, outerDiv.offsetWidth,0,1440));
+  console.log("clickposinminutes ",clickposinminutes);
+  var hhmm=toHoursAndMinutes(clickposinminutes);
+  var hhmmplus15=toHoursAndMinutes(clickposinminutes+15);
+  if(clickposinminutes+15>=1440)hhmmplus15="24:00";
+  console.log("hhmm ",hhmm);
+  document.getElementById("ontime").value=hhmm;
+  document.getElementById("offtime").value=hhmmplus15;
+
+  drawtemp();
+});
+
+// geolocation for sunrise sunset
+// var lat=52.7354;      // https://www.google.com/search?q=52.7354,5.179
+// var lon=5.1790;
+
+
+// https://github.com/loebi-ch/jquery-clock-timepicker
+$('#ontime').clockTimePicker({alwaysSelectHoursFirst:true});  // activate analog timepicker popup for id ontime text field
+$('#offtime').clockTimePicker({alwaysSelectHoursFirst:true}); // activate analog timepicker popup for id offtime text field
+         
+
+
+// https://stackoverflow.com/questions/60923136/how-to-get-the-width-on-where-the-mouse-clicks-a-div        
+function changeWidth(event) {
+/*  
+  let outerDiv = document.getElementById('outerDiv');
+ 
+  document.getElementById('innerDiv').style.width = event.clientX-outerDiv.offsetLeft+'px';
+  console.log(event.clientX-outerDiv.offsetLeft);
+  console.log(outerDiv.offsetWidth);
+         
+  var clickposinminutes=map_range((event.clientX-outerDiv.offsetLeft),0, outerDiv.offsetWidth,0,1440)
+  console.log("clickposinminutes ",clickposinminutes);
+  var hhmm=toHoursAndMinutes(clickposinminutes);
+  var hhmmplus15=toHoursAndMinutes(clickposinminutes+15);
+  if(clickposinminutes+15>=1440)hhmmplus15="24:00";
+  console.log("hhmm ",hhmm);
+  document.getElementById("ontime").value=hhmm;
+  document.getElementById("offtime").value=hhmmplus15;
+
+  drawtemp();
+  */
+}
+ 
+
+// arduino alike map function == Re-maps a number from one range to another. 
+// https://www.arduino.cc/reference/en/language/functions/math/map/ 
+// https://stackoverflow.com/questions/5649803/remap-or-map-function-in-javascript
+// scale range 1 into range2 bar range to 0 to 1440 minute range  
+function map_range(value, low1, high1, low2, high2) {
+    return (low2 + (high2 - low2) * (value - low1) / (high1 - low1)).toFixed(2);   // to 2 decimals, math round did not scale right
+}
+      
+     
+// 0 to 1440 minutes in a day convert timeinminutes to hh:mm  
+// https://codingbeautydev.com/blog/javascript-convert-minutes-to-hours-and-minutes/#:~:text=To%20convert%20minutes%20to%20hours%20and%20minutes%20in%20JavaScript%2C%20divide,the%20remainder%20of%20the%20division.    
+function toHoursAndMinutes(totalMinutes) {
+  if(totalMinutes>=1440)totalMinutes=1440;       // max 24:00
+  var hours = Math.floor(totalMinutes / 60);
+  var minutes = totalMinutes % 60;
+  if (minutes<=9){minutes='0'+minutes;}         // add a zero if <= 9
+
+  return (hours+":"+minutes) ;
+}
+
+
+
+// draw selection on bar from text input 
+function drawtemp (){
+  var start = document.getElementById("ontime").value;        // get time from text field
+  var end = document.getElementById("offtime").value;
+  if(end=="00:00"){end="24:00";}
+  document.getElementById("offtime").value=end;
+  var startmin = start.split(':');                            // split hh:mm  at the colons
+  var startminutes = (+startmin[0]) * 60 + (+startmin[1]);    // Hours are worth 60 minutes.
+  var endmin = end.split(':');                                // split hh:mm  at the colons
+  var endminutes = (+endmin[0]) * 60 + (+endmin[1]);          // Hours are worth 60 minutes
+  console.log("endminutes",endminutes)
+  var divwidth=outerDiv.offsetWidth;
+  //console.log("map div pos",map_range(startminutes,  0,1440,0,divwidth));
+  //console.log("map div pos",map_range(endminutes,  0,1440,0,divwidth));           
+  
+/////////////////////////////////////////////////  
+  var startpos=map_range(startminutes,  0,1440,0,(outerDiv.offsetWidth));  // scale startminutes in  range 0...1440 to div size
+  var endpos=map_range(endminutes,  0,1440,0,(outerDiv.offsetWidth));     // scale endminutes in  range 0...1440 to div size
+  document.getElementById('innerDiv').style.left=(startpos)+'px';
+  document.getElementById('innerDiv').style.width=(endpos-startpos)+'px';
+// do left and width in % not in px  
+// do it again better in % above in px did strange on screen rotate
+  var startpos=map_range(startminutes,  0,1440,0,100);  // scale startminutes in  range 0...1440 to 0 to 100%
+  var endpos=map_range(endminutes,  0,1440,0,100);      // scale endminutes in  range 0...1440 to 0 to 100%
+  document.getElementById('innerDiv').style.left=(startpos)+'%';
+  document.getElementById('innerDiv').style.width=(endpos-startpos)+'%';
+//////////////////////////////////////////////////
+
+
+  document.getElementById('startlabel').innerHTML=start;   // write hh:mm to label
+  document.getElementById('endlabel').innerHTML=end;       // write hh:mm to label
+
+// maybe save button save values to array
+// maybe cancel button erase
+
+
+
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+// create the slider numbers and scale
+
+var pips = 96; // 24hour x 4quarters
+
+for (i = 0; i <= pips; i = i + 1) {
+  var number;
+  var imod4 = i % 4; //for hour numbers
+//console.log("imod4", imod4);
+
+  if (imod4 == 0) {
+    number = i / 4;   // for hour numbers 
+  } else {
+    number = "";      // no number for 15, 30, 45, minutes
+  } 
+
+  var ruler = $(
+    '\n\n<span class="ruler-pip">\n<span class="ruler-line" style="width:2px; color:black;"></span>\n<span class="ruler-number" style="position:absolute;">' +
+      number +
+      "</span>\n"
+  );
+
+  ruler.css({ left: "" + ((100 / pips) * i).toFixed(1) + "%" });
+  ruler.css({ position: "absolute" });
+
+  ruler.css({ top: "32px" });
+
+  //console.log("left ", ((100 / pips) * i).toFixed(1), "%"); // 1 decimals
+
+  $(".outerDiv").append(ruler);
+
+
+  if (imod4 == 0) {
+    $(".ruler-line").eq(i).css("height", "35px");      // hour line
+    $(".ruler-line").eq(i).css("width", "2px");
+    $(".ruler-line").eq(i).css("background", "black");
+  }
+  if (imod4 == 1) {
+    $(".ruler-line").eq(i).css("height", "10px");     // 15 minute line
+    $(".ruler-line").eq(i).css("width", "1px");
+    $(".ruler-line").eq(i).css("background", "gray");
+  }
+  if (imod4 == 2) {
+    $(".ruler-line").eq(i).css("height", "20px");     // 30 minute line
+    $(".ruler-line").eq(i).css("width", "1px");
+    $(".ruler-line").eq(i).css("background", "gray");
+  }
+  if (imod4 == 3) {
+    $(".ruler-line").eq(i).css("height", "10px");     // 45 minute line
+    $(".ruler-line").eq(i).css("width", "1px");
+    $(".ruler-line").eq(i).css("background", "gray");
+  }
+}
+
+$(".outerDiv").append(
+  '<div class="selection" style="position:absolute;height:55px;background-color:green;opacity:50%;top:20px;left:50%;"></div>'
+);
+
+//END // create the slider numbers and scale
+//////////////////////////////////////////////////////////
+
+
+
+document.addEventListener('DOMContentLoaded', function() {      // do next when document is loaded
+
+  drawtemp();
+  domessage();
+  showhideeditpopup();
+  drawtimeslots();
+
+}, false);
+
+
+
+
+
+
+// add div for time text label below timeslot selection
+// you do not see this in the browser view page source
+// use chrome browser inspect to see this in the generated source
+$('#innerDiv').append('<div id="slabel" style="position: absolute; color: green; background-color: green; height: 20px; width: 1px; left: 0%; top: 55px;"><div  id="startlabel" style="position: absolute; color: green; background-color: green; height: 0px; width: 1px; left: -20px; top: 15px;"></div></div>');   
+// endlabel bit lower so they do not overlap when close to eachother
+$('#innerDiv').append('<div id="elabel" style="position: absolute; color: red; background-color: red; height: 20px; width: 1px; left: 100%; top: 55px;"><div id="endlabel" style="position: absolute; color: red; background-color: red; height: 0px; width: 1px; left: -20px; top: 30px;"></div></div>');              
+
+
+// add divs for sunrise actualtime and sunset line and label
+// you do not see this in the browser view page source
+// use chrome browser inspect to see this in the generated source
+$('.outerDiv').append('<div id="actualtime" class="actualtime" style="position: absolute; color: red; background-color: red; height: 30px; width: 1px; left: 50%; top:-30px;"><div id="acttimelabel" class="acttimelabel" style="position: absolute;top:-60px;left:-30px;border: 0px solid green;"></div></div>');                 
+$('.outerDiv').append('<div id="sunrisel" class="sunrisel" style="position: absolute; color: grey; background-color: green; height: 40px; width: 1px; left: 0%; top: -40px;"><div id="sunriselabel" class="sunriselabel" style="position: absolute;top:-20px;left:-20px;border: 0px solid green;"> sunrise</div></div>');            
+$('.outerDiv').append('<div id="sunsetl" class="sunsetl" style="position: absolute; color: grey; background-color: green; height: 40px; width: 1px; left: 100%; top: -40px;"><div id="sunsetlabel" class="sunsetlabel" style="position: absolute;top:-20px;left:-20px;border: 0px solid green;"> sunset</div></div>');              
+
+// add 3 divs for night shade and dayshine
+// sunrise width % is later set changed
+// sunset left % and width % is later set changed
+// dayshine left % and width % is later set changed
+// you do not see this in the browser view page source
+// use chrome browser inspect to see this in the generated source
+$('.outerDiv').append('<div class="morning_shade" style="position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px"></div>');
+$('.outerDiv').append('<div class="dayshine" style="position:absolute;height:20px;background-color:yellow;opacity:20%;top:-20px"></div>');
+$('.outerDiv').append('<div class="evening_shade" style="position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px;" ></div>');
+
+
+
+
+
+// https://github.com/mourner/suncalc
+// https://www.latlong.net/
+
+// do not know make it global 
+var times;
+var sunrisemin;
+var sunriseStr;
+var sunsetmin;
+var sunsetStr;
+
+// get today's sunlight times for                          // https://www.latlong.net/
+// geolocation for sunrise sunset
+// var lat=52.7354;
+// var lon=5.1790;
+function dogeoloc(){
+  var lat=document.getElementById('lat').value;
+  var lon=document.getElementById('lon').value;
+  console.log(lat," : ",lon);
+  times = SunCalc.getTimes(new Date(),lat,lon);
+
+
+
+// format sunrise time from the Date object
+ sunrisemin =times.sunrise.getMinutes();
+if(sunrisemin<=9)sunrisemin="0"+sunrisemin;                     // 0-9 add a zero
+var sunriseStr = times.sunrise.getHours() + ':' + sunrisemin;
+
+sunsetmin =times.sunset.getMinutes();
+if(sunsetmin<=9)sunsetmin="0"+sunsetmin;                        // 0-9 add a zero
+sunsetStr = times.sunset.getHours() + ':' + sunsetmin;
+
+var currents=((times.sunrise.getHours()*60+times.sunrise.getMinutes())/1440)*100; ;
+  for (let i = 0; i < 1; i++) {  
+   //document.getElementsByClassName('sunrisel')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
+  
+   //document.getElementsByClassName('sunrisel')[i].innerHTML = "<br><br><br>sunrise "+times.sunrise.getHours()+":"+sunrisemin; // set time text on div class actualtime
+  }
+  
+var currents=((times.sunset.getHours()*60+times.sunset.getMinutes())/1440)*100; ;
+  for (let i = 0; i < 1; i++) {  
+   //document.getElementsByClassName('sunsetl')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
+  
+   //document.getElementsByClassName('sunsetl')[i].innerHTML = "<br><br><br>sunset "+times.sunset.getHours()+":"+sunsetmin; // set time text on div class actualtime
+  }  
+
+// get position of the sun (azimuth and altitude) at today's sunrise
+/////var sunrisePos = SunCalc.getPosition(times.sunrise, 52.7354, 5.1790);
+
+// get sunrise azimuth in degrees
+/////var sunriseAzimuth = sunrisePos.azimuth * 180 / Math.PI;
+
+// https://github.com/mourner/suncalc
+console.log(times);
+
+console.log("sunrise "+sunriseStr);
+console.log("sunset "+sunsetStr);
+
+//console.log(sunrisePos);
+//console.log(sunriseAzimuth);
+//document.getElementsByClassName('sunrise')[0].innerHTML =("<a href='http://www.google.com/search?q=52.7354,5.1790'>52.7354, 5.1790 </a> sunrise "+sunriseStr)+" ";
+//document.getElementsByClassName('sunset')[0].textContent =(" sunset "+sunsetStr)+" ";
+//document.getElementsByClassName('sunrise')[1].innerHTML =("<a href='http://www.google.com/search?q=52.7354,5.1790'>52.7354, 5.1790 </a> sunrise "+sunriseStr+" ");
+//document.getElementsByClassName('sunset')[1].textContent =(" sunset "+sunsetStr)+" ";  
+  
+const sunrise = document.querySelectorAll('.sunrise');
+sunrise.forEach(sunrise => {
+  //box.style.backgroundColor = 'purple'; box.style.width = '300px';
+  //sunrise.innerHTML =("<!--"+lat+","+lon+"-->&nbsp;<a href='http://www.google.com/search?q="+lat+","+lon+"'>SunRise&nbsp;"+sunriseStr)+"&nbsp;</a>";
+});
+
+const sunset = document.querySelectorAll('.sunset');
+sunset.forEach(sunset => {
+  //box.style.backgroundColor = 'purple'; box.style.width = '300px';
+  //sunset.innerHTML =("<a href='http://www.google.com/search?q="+lat+","+lon+"'>SunSet&nbsp;"+sunsetStr)+"</a>&nbsp;&nbsp;&nbsp;"; 
+});
+
+}
+
+ 
+ dogeoloc();
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+// doiteverysecond() doiteverysecond() doiteverysecond() doiteverysecond() doiteverysecond()
+
+function doiteverysecond() {
+
+  // console.log("Using JavaScript version:", navigator.userAgent);
+
+// test  test test test test test test test   
+    // <div class="my_class" data-index=0>1</div>
+    // <div class="my_class" data-index=1>2</div>
+    // <div class="my_class" data-index=2>3</div> 
+    // <div class="my_class" data-index=3>4</div> 
+    // <div class="my_class" data-index=4>5</div>
+
+    $('#innerDiv[data-index=0]').css('background-color', 'red');
+    $("[data-index=0]").css('background-color', 'green');
+// test  test test test test test test test   
+
+ if(window.innerHeight > window.innerWidth){
+        $('pre.pleaserotatetolandscape').html("<h4>Rotate device to LandScape?</h4>");
+  }else{
+        //erase rotamessage if in landscape"
+        $('pre.pleaserotatetolandscape').html("");
+  }
+
+
+  const now = new Date();
+  const current = (((now.getHours() * 60) + now.getMinutes())/1440)*100;       // time to percentage 0 to 100% set div position
+  var sec;
+  var min;
+  
+  var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var dayName = days[now.getDay()];
+   
+   
+  if(now.getMinutes()<=9)min="0"+now.getMinutes(); else min=now.getMinutes();  // a leading zer0 if 0 to 9
+  if(now.getSeconds()<=9)sec="0"+now.getSeconds(); else sec=now.getSeconds();  // a leading zer0 if 0 to 9
+
+ for (let i = 0; i < 1; i++) {  
+   
+   document.getElementsByClassName('actualtime')[i].style.left = current+"%";   // time to percentage 0 to 100% set div position
+  
+   document.getElementsByClassName('actualtime')[i].innerHTML = "<div id=\"acttimelabel\" class=\"acttimelabel\" style=\"position: absolute;top:-60px;left:-30px;border: 0px solid green;\">" +dayName+" "+now.getHours()+":"+min+":"+sec+"</div>"; // set time text on div class actualtime
+ 
+ }
+
+ var currents=((times.sunrise.getHours()*60+times.sunrise.getMinutes())/1440)*100; ;
+  var sunrisecur=currents;
+  for (let i = 0; i < 1; i++) {  
+   document.getElementsByClassName('sunrisel')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
+  
+   document.getElementsByClassName('sunrisel')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunriselabel\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;\"> sunrise "+times.sunrise.getHours()+":"+sunrisemin; +"</div>";// set time text on div class actualtime
+ 
+   document.getElementsByClassName('evening_shade')[i].style.width= currents+"%";  // gray shade before sunrise
+ 
+  }
+  
+var currents=((times.sunset.getHours()*60+times.sunset.getMinutes())/1440)*100; ;
+  var sunsetcur=currents;
+  for (let i = 0; i < 1; i++) {  
+   document.getElementsByClassName('sunsetl')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
+  
+   document.getElementsByClassName('sunsetl')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunsetlabel\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;\"> sunset "+times.sunset.getHours()+":"+sunsetmin+"</div>"; // set time text on div class actualtime
+ 
+ document.getElementsByClassName('morning_shade')[i].style.width= (100-currents)+"%";  // gray shade before sunrise
+ 
+ document.getElementsByClassName('morning_shade')[i].style.left= currents+"%";
+
+ document.getElementsByClassName('dayshine')[i].style.left= sunrisecur+"%";
+ document.getElementsByClassName('dayshine')[i].style.width= (100-sunrisecur)+(sunsetcur-100)+"%";
+ 
+  } 
+
+
+}
+// end doiteverysecond()  end doiteverysecond()  end doiteverysecond()  end doiteverysecond() 
+setInterval(doiteverysecond, 1000); // Milliseconds
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+<br><br>
+a bar for each day<br>
+click on bar should open a popup at that clicked time<br>
+text field should open an analog timepicker dail that looks the same on all systems<br>
+<br> 
+i Think most people use a phone or tablet not pc with mouse<br>
+so should work for phone or tablet touch<br>
+drag edit popup not yet possible on touch<br>
+<br>a bit like<br><br>
+
+<a href="https://demo.console.plasma-cloud.com" target="plasma">https://demo.console.plasma-cloud.com</a>
+<br>login demo demo<br>
+go to settings scheduler<br>
+screenshots plasma-cloud schedules<br>
+<!--https://plnkr.co/edit/p7xyOMhDtuTc49aZ-->
+<a href="https://plnkr.co/edit/p7xyOMhDtuTc49aZ" target="plnkr">
+<img src="screenshots_plasma-cloud/demo.console.plasma-cloud.com.png" width="640" alt="see plnkr for screenshots">  
+<hr>
+<img src="screenshots_plasma-cloud/add_time_slot.png" width="640" alt="see plnkr for screenshots"> 
+<hr>
+<img src="screenshots_plasma-cloud/edit-time-slot.png" width="640" alt="see plnkr for screenshots"> 
+</a>
+<br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="aboutDIV" style="position: fixed;
+  width: 98%;
+  top:20%;
+  padding: 10px 0;
+  text-align: center;
+  background-color: lightgray;borderColor:black;border:5px solid;border-radius:10px;
+  margin-top: 10px;display:none;z-index:40;overflow-y:scroll; height:400px;overscroll-behavior: contain;">
+ 
+ <div id="closeit" style="
+ position: fixed;
+ display: absolute;
+ float:right;right: 2em;">
+    <button onclick="showhideabout()" style="border-color:red; color:red;"><b>X</b></button>
+  </div><h1>Visual Scheduler / Graphical Scheduler</h1>
+  <br>Visual Scheduler<br>
+  irrigation Scheduler, Sprinkler Scheduler, Light Scheduler, WiFi relays Scheduler, WiFi switches Scheduler<br> 
+  Time Activated Relays - Relay Control on a Schedule<br>
+  daily scheduler, weekly scheduler<br>
+  etcetera<br><br>
+  Youtube Video <a href="https://youtu.be/GQpa_UIErT0" target="youtube">https://youtu.be/GQpa_UIErT0</a><br>
+  Do not forget to Subsribe? ;-)<br>
+  <br>
+  Copyright, Dirk Luberth Dijkman 2023<br>
+  <a href="https://facebook.com/luberth.dijkman" target="facebook">facebook.com/luberth.dijkman</a><br>
+  <a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs" target="mrs_github">github mrs visual scheduler</a><br>
+  <a href="https://plnkr.co/edit/0VOS27JydW81wwZc?preview" target="plunker">plnkr.co/edit/0VOS27JydW81wwZc?preview</a><br>
+  <a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions" target="discussions">github discussions</a><br>
+    
+
+  <br>
+  <button onclick="showhideabout()" style="color:green;">Accept!</button><br>
+  <br><br><br><br><br><br><br><br>
+</div>
+
+  <div id="about" style="position: fixed; top: 1em; right: 1em;">
+    <button onclick="showhideabout()" style="border-color:green; color:green;"><b>?</b></button>
+  </div>
+
+<script>
+function showhideabout() {
+  if (document.getElementById("aboutDIV").style.display === "none") {
+    document.getElementById("aboutDIV").style.display = "block";
+     // should be something to block scrolling of body 
+     // only popup scroll
+     // https://codepen.io/anon/pen/oEMmrm
+  } else {
+    document.getElementById("aboutDIV").style.display = "none";
+  }
+}
+</script>
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
