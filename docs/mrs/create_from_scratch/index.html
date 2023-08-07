@@ -135,7 +135,7 @@
 <script>
 
   const timeslots=[450,990,15,135,240,285,1200,1440]; // timeslots pairs of 2 in minutes of day
-
+  //timeslots.sort(function(a, b){return a - b});   // sort array following order of values
 
 function deletebutton(){
     console.log("deletebutton clicked");
@@ -164,9 +164,14 @@ function cancelbutton(){
 }
 
   
+function onlyUnique(value, index, array) {
+  return array.indexOf(value) === index;
+}
 
 var timeslotpointer="";
 var savefromedit=0;
+var sorted;
+var timeslotsnested;
 
 
 function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="timeslotclicked(`+i+`)"
@@ -213,16 +218,84 @@ function savetimeslot() {
   }
 
 
-    // sort is no good if 2 values/times are te same
-    // timeslots array length 4
-    // in minutes
-    // timeslots 450,450,990,990
-    // timeslots.sort(function(a, b){return a - b});   // sort array
+///test nest ////////////////////////////////////////////////
+     // try overlapping when sort is on
+     // timeslots.sort(function(a, b){return a - b});   // sort array following order of values
+     // should do something to prevent overlapping the pairs mix in new pairs
+     // make an aray in array [[0,0],[0,0],[0,0]] do not know how to do that in javascript
+     // so that the pais stay pairs
+// this creates a nested array from timeslots
+// https://stackoverflow.com/questions/44937470/turning-an-array-into-a-multidimensional-array-javascript
+timeslotsnested = timeslots.reduce((a, c, i) => {
+  return i % 2 === 0 ? a.concat([timeslots.slice(i, i + 2)]) : a;
+}, []);
+console.log("timeslotsnested ",timeslotsnested);
+/*
+(5) [Array(2), Array(2), Array(2), Array(2), Array(2)]
+0: (2) [450, 990]
+1: (2) [15, 135]
+2: (2) [240, 285]
+3: (2) [1200, 1440]
+4: (2) [387, 402]
+length: 5
+*/
+//sort a nested array???
+sorted=timeslotsnested.sort((a,b) => a[0] - b[0])
+console.log("nestedsorted?",sorted);
+/*
+nestedsorted? 
+(5) [Array(2), Array(2), Array(2), Array(2), Array(2)]
+0: (2) [15, 135]
+1: (2) [240, 285]
+2: (2) [363, 1110]
+3: (2) [450, 990]
+4: (2) [1200, 1440]
+length: 5
+*/
+  ///////////////////////////////////////////////////////
+// empty timemeslots
+var nestedsorted=sorted;
+timeslots.length = 0;                  // Clear contents
+timeslots.push.apply(timeslots, nestedsorted);
 
-    // no good if start and end is sane time
-    // var timeslotsclean= Array.from(new Set(timeslots)); // remove duplicates times
-    // no good if start and end is sane time
+console.log("timeslots ",timeslots);
 
+// go from nested array to single array again
+var newArray = Array.prototype.concat.apply([], nestedsorted);
+console.log("newArray",newArray);
+timeslots.length = 0;                  // Clear contents
+timeslots.push.apply(timeslots, newArray);
+// thats silly, this is stupid 
+
+////////////////////////////////////////////
+
+
+
+////////////////////////////////
+// block a timeslot to go / past overlap next timeslot
+for (let i = 0; i < timeslots.length; i=i+2) {
+ if(timeslots[i+1] >= timeslots[i+2]){
+      timeslots[i+1]=timeslots[i+2];
+      alert(`
+      cannot create that endpoint,\n`
+      +toHoursAndMinutes(timeslots[i+3])+
+      ` not reached`
+      +document.getElementById("offtime").value+
+      `\n`
+      + toHoursAndMinutes(timeslots[i+1]) +
+      `-`
+      + toHoursAndMinutes(timeslots[i+2])  +
+      ` remove`);
+
+ }
+}  
+// delete the points that are in middle of selection timeslot overlap
+for (let i = 0; i < timeslots.length; i=i+2) {
+  if(timeslots[i+1] == timeslots[i+2]){
+      timeslots.splice( (i+1), 2); 
+  }
+}  
+//////////////////////////////////////////////
     console.log("timeslots ",timeslots);
     
 
@@ -260,10 +333,11 @@ $('pre.message').html(`
     +timeslots+
     `<br><br>in hours<br>`
     +hourarray+
-    `<br>
-    how do i remove double/matching/overlapping pairs from timeslot array?<br>
-    and how to place sort pairs in following order?<br>
-  
+    `<br><br>
+    <br>
+    <br>
+    
+   
   
     </p>`);
 
@@ -292,9 +366,9 @@ function drawtimeslots(){
      console.log("left width",left," ",width);
 
      $(".outerDiv").append(
-          `<div class="timeslot" data-index=/"`
+          `<div class="timeslot" data-index="`
           +i+
-          `/" onclick="timeslotclicked(`+i+`)" style="position:absolute;height:50px;background-color:navy;opacity:50%;top:0px;left:`
+          `" onclick="timeslotclicked(`+i+`)" style="position:absolute;height:50px;background-color:navy;opacity:50%;top:0px;left:`
           +left+
           `%;width:`
           +width+
