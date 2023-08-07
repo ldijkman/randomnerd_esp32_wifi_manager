@@ -16,8 +16,8 @@
 <meta name="author" content="Copyright Dirk Luberth Dijkman 2023">
  
  
- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
    
    <!-- modifeid version analog timepcker on github https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs --> 
@@ -494,7 +494,13 @@ function showhideeditpopup(showorhide) {
 
 Create a scheduler from scratch (bit like Plasma-Cloud WiFi POE Scheduler)<br>
 Visual Scheduler for irrigation, sprinklers, lights, wifi relays, wifi switches, etcetera<br>
-<br><center>
+<center>
+  <script>
+if(self!==top){
+    document.write('<h3><a href="https://run.plnkr.co/plunks/p7xyOMhDtuTc49aZ/" target="fullscreen">Go Full Screen,it works Better!</a></h3>');
+} 
+</script>
+
 <pre class="pleaserotatetolandscape" style="font-size : 17px;"></pre>  
 <hr width="40%">
 
@@ -583,11 +589,12 @@ function useit(){
 
 var innerdivclick=0;
 var timeslotdivclick=0;
+/////////////////////////////////
+// think next is not used anymore
 $( "#innerDiv" ).on( "click", function() {
- 
-   // $('pre.message').html("edit / remove timeslot popup");
- console.log("innerdiv clicked");
- innerdivclick=1;
+    // $('pre.message').html("edit / remove timeslot popup");
+    console.log("innerdiv clicked");
+    innerdivclick=1;
  
  // do not know open analog time picker if textlabel is clicked
 $( "#startlabel" ).on( "click", function() {
@@ -604,21 +611,27 @@ $( "#startlabel" ).on( "click", function() {
     //return;
  }); 
 });
+// think above is not used anymore
+//////////////////////////////////////
+
+
+
 
 $( ".timeslot" ).on( "click", function() {
-console.log("timeslot function click");
+    console.log("timeslot function click");
 });
 
 
 
 $( "#outerDiv" ).on( "click", function() {
-  if(innerdivclick==1){
+  if(innerdivclick==1){           // outerdiv click comes after innerdivclick
     showhideeditpopup("show");
-    innerdivclick=0;return;
+    innerdivclick=0;
+    return;                       // i want to return to the innerdiv click              
   }
-   if(timeslotdivclick==1){
-    
-    timeslotdivclick=0;return;
+   if(timeslotdivclick==1){      // outerdiv click comes after innerdivclick
+    timeslotdivclick=0;
+    return;                      // i want to return to the timeslotdivclick
   }
 
 
@@ -633,7 +646,7 @@ $( "#outerDiv" ).on( "click", function() {
   console.log(outerDiv.offsetWidth);
          
          // map_range returns a float that does not work for later convert to hh:mm 
-         // but the float is better for left% width% scaling otherwise the selections aro of target
+         // but the float is better for left% width% scaling otherwise the selections are of target
   var clickposinminutes=Math.round(map_range((event.clientX-outerDiv.offsetLeft),0, outerDiv.offsetWidth,0,1440));
   console.log("clickposinminutes ",clickposinminutes);
   var hhmm=toHoursAndMinutes(clickposinminutes);
@@ -645,6 +658,13 @@ $( "#outerDiv" ).on( "click", function() {
 
   drawtemp();
 });
+
+
+
+
+
+
+
 
 // geolocation for sunrise sunset
 // var lat=52.7354;      // https://www.google.com/search?q=52.7354,5.179
@@ -939,17 +959,7 @@ sunset.forEach(sunset => {
 function doiteverysecond() {
 
   // console.log("Using JavaScript version:", navigator.userAgent);
-
-// test  test test test test test test test   
-    // <div class="my_class" data-index=0>1</div>
-    // <div class="my_class" data-index=1>2</div>
-    // <div class="my_class" data-index=2>3</div> 
-    // <div class="my_class" data-index=3>4</div> 
-    // <div class="my_class" data-index=4>5</div>
-
-    $('#innerDiv[data-index=0]').css('background-color', 'red');
-    $("[data-index=0]").css('background-color', 'green');
-// test  test test test test test test test   
+ 
 
  if(window.innerHeight > window.innerWidth){
         $('pre.pleaserotatetolandscape').html("<h4>Rotate device to LandScape?</h4>");
