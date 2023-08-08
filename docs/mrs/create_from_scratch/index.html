@@ -229,7 +229,9 @@ function savetimeslot() {
 timeslotsnested = timeslots.reduce((a, c, i) => {
   return i % 2 === 0 ? a.concat([timeslots.slice(i, i + 2)]) : a;
 }, []);
+$('pre.message2').html("timeslotsnested"+JSON.stringify(timeslotsnested));
 console.log("timeslotsnested ",timeslotsnested);
+
 /*
 (5) [Array(2), Array(2), Array(2), Array(2), Array(2)]
 0: (2) [450, 990]
@@ -240,7 +242,8 @@ console.log("timeslotsnested ",timeslotsnested);
 length: 5
 */
 //sort a nested array???
-sorted=timeslotsnested.sort((a,b) => a[0] - b[0])
+sorted=timeslotsnested.sort((a,b) => a[0] - b[0]);
+$('pre.message3').html("nestedsorted"+JSON.stringify(sorted));
 console.log("nestedsorted?",sorted);
 /*
 nestedsorted? 
@@ -333,13 +336,7 @@ $('pre.message').html(`
     +timeslots+
     `<br><br>in hours<br>`
     +hourarray+
-    `<br><br>
-    <br>
-    <br>
-    
-   
-  
-    </p>`);
+    `</p>`);
 
 }
 
@@ -594,6 +591,8 @@ lon:<input type="text" id="lon" size="6" oninput="dogeoloc()" value="5.179" onch
 <br><center>
 <br><br>
 <pre class="message"></pre>
+<pre class="message2"></pre>
+<pre class="message3"></pre>
 <!--
 <hr width="50%">
 add timeslot popup after click
