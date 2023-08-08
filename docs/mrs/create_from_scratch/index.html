@@ -112,7 +112,7 @@
 
 
 <div id="editpopup">
- <div id="editpopupheader" class="drag-handle"> <div id="closeedit">Drag Me<button onclick="showhideeditpopup()" style="border-color:red; color:red;position:absolute;left:85%;"><b>X</b></button>
+ <div id="editpopupheader" class="drag-handle"> <div id="closeedit">Please Drag Me ?<button onclick="showhideeditpopup()" style="border-color:red; color:red;position:absolute;left:85%;"><b>X</b></button>
  </div>
  </div>
   <br>
@@ -124,8 +124,8 @@
 <input type="button" value="Cancel" onclick="cancelbutton()">    
 <input type="button" value="Save" onclick="savetimeslot()"><br><br> 
 <input type="button" value="Delete" onclick="deletebutton()"> 
-<br><br>
-<small><small>touch drag not working ;-(</small></small>
+<br><br><font color="green"">
+<small>Touch drag is Working ;-) ???</small></font>
 <br>
 </div>
 </div>
@@ -278,7 +278,7 @@ timeslots.push.apply(timeslots, newArray);
 // block a timeslot to go / past overlap next timeslot
 for (let i = 0; i < timeslots.length; i=i+2) {
  if(timeslots[i+1] >= timeslots[i+2]){
-      timeslots[i+1]=timeslots[i+2];
+      timeslots[i+1]=timeslots[i+2];          // compare off to next on
       alert(`
       cannot create that endpoint,\n`
       +toHoursAndMinutes(timeslots[i+3])+
@@ -294,8 +294,8 @@ for (let i = 0; i < timeslots.length; i=i+2) {
 }  
 // delete the points that are in middle of selection timeslot overlap
 for (let i = 0; i < timeslots.length; i=i+2) {
-  if(timeslots[i+1] == timeslots[i+2]){
-      timeslots.splice( (i+1), 2); 
+  if(timeslots[i+1] == timeslots[i+2]){          // compare off to next on
+      timeslots.splice( (i+1), 2);               // off & next on the same, delete both from array
   }
 }  
 //////////////////////////////////////////////
@@ -362,11 +362,11 @@ function drawtimeslots(){
      var width=map_range(timeslots[i+1],  0,1440,0,100)-left;      // scale time in range 0to1440 to 0 to 100%
      console.log("left width",left," ",width);
 
-     $(".outerDiv").append(
+     $(".outerDiv").append(   // draw timeslots and textlabels underneath
           `<div class="timeslot" data-index="`
           +i+
           `" onclick="timeslotclicked(`+i+`)" style="position:absolute;height:50px;background-color:navy;opacity:50%;top:0px;left:`
-          +left+
+          +left+    
           `%;width:`
           +width+
           `%;z-index:40;">
@@ -380,7 +380,7 @@ function drawtimeslots(){
           `</div>
           </div>
           </div>`
-     );  // should add timetextlabels
+     ); 
 
   }
 
@@ -497,6 +497,42 @@ dragElement(document.getElementById("editpopup"));
         */
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function dragElement(elmnt) {
+            let pos1 = 0,
+                pos2 = 0,
+                pos3 = 0,
+                pos4 = 0;
+let dragHandle = document.getElementById("editpopupheader");
+
+            if (dragHandle !== undefined) {
+                // if present, the header is where you move the DIV from:
+                dragHandle.onmousedown = dragMouseDown;
+                dragHandle.ontouchstart = dragMouseDown; //added touch event
+
+            } else {
+                // otherwise, move the DIV from anywhere inside the DIV:
+                elmnt.onmousedown = dragMouseDown;
+                elmnt.ontouchstart = dragMouseDown; //added touch event
+            }
+
+
+
+
+/*
 function dragElement(elmnt) {
   var pos1 = 100, pos2 = 100, pos3 = 0, pos4 = 0;
   if (document.getElementById(elmnt.id + "header")) {
@@ -508,7 +544,72 @@ function dragElement(elmnt) {
     // otherwise, move the DIV from anywhere inside the DIV:
     elmnt.onmousedown = dragMouseDown;
   }
+*/
 
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+               
+
+                //Get touch or click position
+                //https://stackoverflow.com/a/41993300/5078983
+                if (e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel') {
+                    let evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
+                    let touch = evt.touches[0] || evt.changedTouches[0];
+                    x = touch.pageX;
+                    y = touch.pageY;
+                } else if (e.type == 'mousedown' || e.type == 'mouseup' || e.type == 'mousemove' || e.type == 'mouseover' || e.type == 'mouseout' || e.type == 'mouseenter' || e.type == 'mouseleave') {
+                    x = e.clientX;
+                    y = e.clientY;
+                }
+
+                console.log("drag start x: "+x+" y:"+y);
+
+                // get the mouse cursor position at startup:
+                pos3 = x;
+                pos4 = y;
+                document.onmouseup = closeDragElement;
+                document.ontouchend = closeDragElement;
+                // call a function whenever the cursor moves:
+                document.onmousemove = elementDrag;
+                document.ontouchmove = elementDrag;
+            }
+             function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+
+                //Get touch or click position
+                //https://stackoverflow.com/a/41993300/5078983
+                if (e.type == 'touchstart' || e.type == 'touchmove' || e.type == 'touchend' || e.type == 'touchcancel') {
+                    let evt = (typeof e.originalEvent === 'undefined') ? e : e.originalEvent;
+                    let touch = evt.touches[0] || evt.changedTouches[0];
+                    x = touch.pageX;
+                    y = touch.pageY;
+                } else if (e.type == 'mousedown' || e.type == 'mouseup' || e.type == 'mousemove' || e.type == 'mouseover' || e.type == 'mouseout' || e.type == 'mouseenter' || e.type == 'mouseleave') {
+                    x = e.clientX;
+                    y = e.clientY;
+                }
+
+                // calculate the new cursor position:
+                pos1 = pos3 - x;
+                pos2 = pos4 - y;
+                pos3 = x;
+                pos4 = y;
+                // set the element's new position:
+                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+                     function closeDragElement() {
+                console.log("drag end x: "+pos3+" y:"+pos4);
+                // stop moving when mouse button is released:
+                document.onmouseup = null;
+                document.ontouchcancel = null; //added touch event
+                document.ontouchend = null; //added touch event
+                document.onmousemove = null;
+                document.ontouchmove = null; //added touch event
+            }
+            /*
   function dragMouseDown(e) {
     e = e || window.event;
     e.preventDefault();
@@ -538,7 +639,7 @@ function dragElement(elmnt) {
     document.onmouseup = null;
     document.onmousemove = null;
   }
-
+*/
   
 }
 
