@@ -38,7 +38,8 @@
   text-align: center;
   border: 1px solid orange;
   padding: 1px;
-  z-index:1001;  /* i do not know what the zindex of the world map picker is */
+  z-index:1001;  /* i do not know what the zindex of the world map picker is, its high like 1000*/
+  display: none;  
 }
 
 #editpopupheader {
@@ -47,10 +48,11 @@
   z-index: 10;
   background-color: #2196F3;
   color: #fff;
-  z-index:1001;  /* i do not know what the zindex of the world map picker is */
+  z-index:1001;  /* i do not know what the zindex of the world map picker is, its high like 1000 */
 }
+
 .clock-timepicker-popup{
-  opacity:80%;
+  opacity:90%;
   }
 
 #outerDiv {           /* # = id */
@@ -103,12 +105,14 @@
   left:91%;  
   width: 5%;   
 }
+
 </style>
+
 
    
 </head>
 <body bgcolor="#f2f2ed">
-
+ <div id="overlay"> 
 
 
 <div id="editpopup">
@@ -277,8 +281,8 @@ timeslots.push.apply(timeslots, newArray);
 ////////////////////////////////
 // block a timeslot to go / past overlap next timeslot
 for (let i = 0; i < timeslots.length; i=i+2) {
- if(timeslots[i+1] >= timeslots[i+2]){
-      timeslots[i+1]=timeslots[i+2];          // compare off to next on
+ if(timeslots[i+1] >= timeslots[i+2]){            // compare off to next on
+      timeslots[i+1]=timeslots[i+2];          
       alert(`
       cannot create that endpoint,\n`
       +toHoursAndMinutes(timeslots[i+3])+
@@ -507,20 +511,25 @@ function dragElement(elmnt) {
 
 
 
-
 function showhideeditpopup(showorhide) {
-  if (showorhide=="show"){document.getElementById("editpopup").style.display = "block";}else{
-  if (document.getElementById("editpopup").style.display === "none") {
+  if (showorhide == "show") {
     document.getElementById("editpopup").style.display = "block";
-     // should be something to block scrolling of body 
-     // only popup scroll
-     // https://codepen.io/anon/pen/oEMmrm
+    $("body").css("background-color", "#d4d4d4");
   } else {
-    document.getElementById("editpopup").style.display = "none";
+    if (document.getElementById("editpopup").style.display === "none") {
+      document.getElementById("editpopup").style.display = "block";
+      $("body").css("background-color", "#d4d4d4");
+      // should be something to block scrolling of body
+      // only popup scroll
+      // https://codepen.io/anon/pen/oEMmrm
+    } else {
+      document.getElementById("editpopup").style.display = "none";
+      $("body").css("background-color", "");
+    }
   }
-  }
-    drawtimeslots();  // if you close by x green selection may be left if not closed bij cancel or save
+  drawtimeslots(); // if you close by x green selection may be left if not closed bij cancel or save
 }
+
 
 
 </script>
@@ -1080,9 +1089,10 @@ text field should open an analog timepicker dail that looks the same on all syst
 <br> 
 i Think most people use a phone or tablet not pc with mouse<br>
 so should work for phone or tablet touch<br>
-drag edit popup not yet possible on touch<br>
-<br>a bit like<br><br>
-
+Touch drag edit popup should work<br>
+<br>
+a bit like<br>
+<br>
 <a href="https://demo.console.plasma-cloud.com" target="plasma">https://demo.console.plasma-cloud.com</a>
 <br>login demo demo<br>
 go to settings scheduler<br>
@@ -1095,7 +1105,8 @@ screenshots plasma-cloud schedules<br>
 <hr>
 <img src="screenshots_plasma-cloud/edit-time-slot.png" width="640" alt="see plnkr for screenshots"> 
 </a>
-<br><br>
+<br>
+<br>
 
 
 
@@ -1173,7 +1184,8 @@ function showhideabout() {
 Figlet font Big https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/ 
 </pre>
 */
-
+</div>
+<input type="color">
 </body>
 </html>
 
