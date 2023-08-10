@@ -165,6 +165,8 @@ function cancelbutton(){
   document.getElementById('innerDiv').style.width='';
   document.getElementById('startlabel').innerHTML='';
   document.getElementById('endlabel').innerHTML='';
+  
+   savefromedit=0;  
 }
 
   
@@ -180,9 +182,11 @@ var timeslotsnested;
 
 function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="timeslotclicked(`+i+`)"
     timeslotdivclick=1;  // i do not now a flag to keep outerdiv click away cq return from outerdiv click
+                         // maybe because of (i used why dont know)  different z-index for innerdiv and outerdiv
+                         // maybe an overlaying div is clicked first followed by underlaying div, i dont know
     console.log("timeslotclicked",wich);
     timeslotpointer=wich;
-    showhideeditpopup();
+    showhideeditpopup();  // show edit popup
     // wich holds the array position of first data we need in minutes
     document.getElementById("ontime").value=toHoursAndMinutes(timeslots[wich]);  // get minute data from timeslot array and convert to hh:mm for text input field
     document.getElementById("offtime").value=toHoursAndMinutes(timeslots[wich+1]);
@@ -190,6 +194,9 @@ function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="
 // if changes need to modify the timeslot array data
  
 }
+
+
+
 
 ///////save button pressed, save to timeslot array////////////////////////////////
 function savetimeslot() {
@@ -199,7 +206,7 @@ function savetimeslot() {
 
     console.log("onval, offval", onhhmm, offhhmm);
 
-    showhideeditpopup();          // closepopup
+    showhideeditpopup();          // hide edit popup
 
     var a=onhhmm.split(':');         // time is in hh:mm i want minutes
     var b=offhhmm.split(':');
@@ -514,17 +521,20 @@ function dragElement(elmnt) {
 function showhideeditpopup(showorhide) {
   if (showorhide == "show") {
     document.getElementById("editpopup").style.display = "block";
-    $("body").css("background-color", "#d4d4d4");
+    $("body").css("background-color", "#c3c3c3");
+     $("#monday").css("background-color", "#dadada");
   } else {
     if (document.getElementById("editpopup").style.display === "none") {
       document.getElementById("editpopup").style.display = "block";
-      $("body").css("background-color", "#d4d4d4");
+      $("body").css("background-color", "#c3c3c3");
+       $("#monday").css("background-color", "#dadada");
       // should be something to block scrolling of body
       // only popup scroll
       // https://codepen.io/anon/pen/oEMmrm
     } else {
       document.getElementById("editpopup").style.display = "none";
       $("body").css("background-color", "");
+      $("#monday").css("background-color", "");
     }
   }
   drawtimeslots(); // if you close by x green selection may be left if not closed bij cancel or save
@@ -555,16 +565,22 @@ if(self!==top){
 <br><br>
 lat:<input type="text" id="lat" size="6" oninput="dogeoloc()" value="52.7354" onchange="dogeoloc()"/>
 lon:<input type="text" id="lon" size="6" oninput="dogeoloc()" value="5.179" onchange="dogeoloc()"/>
+
 <hr width="40%">
 </center><br>
+<div id="monday" class="monday" style="background-color:yellow;heigth:50px;">
+
 <h1> Monday</h1>
 
 <div id='outerDiv' class="outerDiv" onclick = 'changeWidth(event)'>
   <div id='innerDiv'></div>
 </div>
-
+</div>
 <br><center>
-<br><br>
+<br>
+
+
+<br>
 <pre class="message"></pre>
 <pre class="message2"></pre>
 <pre class="message3"></pre>
@@ -902,6 +918,7 @@ $('.outerDiv').append('<div id="actualtime" class="actualtime" style="position: 
 $('.outerDiv').append('<div id="sunrisel" class="sunrisel" style="position: absolute; color: grey; background-color: green; height: 40px; width: 1px; left: 0%; top: -40px;"><div id="sunriselabel" class="sunriselabel" style="position: absolute;top:-20px;left:-20px;border: 0px solid green;"> sunrise</div></div>');            
 $('.outerDiv').append('<div id="sunsetl" class="sunsetl" style="position: absolute; color: grey; background-color: green; height: 40px; width: 1px; left: 100%; top: -40px;"><div id="sunsetlabel" class="sunsetlabel" style="position: absolute;top:-20px;left:-20px;border: 0px solid green;"> sunset</div></div>');              
 
+
 // add 3 divs for night shade and dayshine
 // sunrise width % is later set changed
 // sunset left % and width % is later set changed
@@ -912,6 +929,11 @@ $('.outerDiv').append('<div class="morning_shade" style="position:absolute;heigh
 $('.outerDiv').append('<div class="dayshine" style="position:absolute;height:20px;background-color:yellow;opacity:20%;top:-20px"></div>');
 $('.outerDiv').append('<div class="evening_shade" style="position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px;" ></div>');
 
+$(document).on('click', '.dayshine', function(event) {
+  event.stopPropagation();
+  console.clear();
+  console.log('Child Clicked');
+});
 
 
 
@@ -935,8 +957,11 @@ function dogeoloc(){
   var lon=document.getElementById('lon').value;
   console.log(lat," : ",lon);
   times = SunCalc.getTimes(new Date(),lat,lon);
+ 
 
-
+ moon = SunCalc.getMoonIllumination(new Date());
+ console.log("moon ", moon); 
+console.log("moon.phase ", moon.phase); 
 
 // format sunrise time from the Date object
  sunrisemin =times.sunrise.getMinutes();
