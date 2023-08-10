@@ -120,7 +120,7 @@
  </div>
  </div>
   <br>
- add / edit  a time slot<br>
+ <div id="addoredit">add / edit  a time slot</div><br>
 
   &nbsp;&nbsp;<input type="text" class="ontime"  id="ontime" readonly style="color:green;" size="6"   oninput="drawtemp()"  value="07:30" onchange="drawtemp();console.log('Time changed to: ' + this.value)"/>
 <input type="text" class="offtime"  id="offtime" readonly style="color:red;" size="6"   oninput="drawtemp()"  value="16:30" onchange="drawtemp();console.log('Time changed to: ' + this.value)"/>
@@ -186,6 +186,8 @@ function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="
                          // maybe an overlaying div is clicked first followed by underlaying div, i dont know
     console.log("timeslotclicked",wich);
     timeslotpointer=wich;
+
+    $('#addoredit').text("EDIT TimeSlot");
     showhideeditpopup();  // show edit popup
     // wich holds the array position of first data we need in minutes
     document.getElementById("ontime").value=toHoursAndMinutes(timeslots[wich]);  // get minute data from timeslot array and convert to hh:mm for text input field
@@ -346,7 +348,9 @@ $('pre.message').html(`
     "<br>timeslots in minutes <br>"
     +timeslots+
     `<br><br>in hours<br>`
-    +hourarray+
+    +hourarray+`
+    <br>moon.phase 0 to 1, 0,5 is full moon?<br>`
+    +moon.phase+
     `</p>`);
 
 }
@@ -698,7 +702,7 @@ $( "#outerDiv" ).on( "click", function() {
     return;                      // i want to return to the timeslotdivclick
   }
 
-
+$('#addoredit').text("Add New TimeSlot");
    showhideeditpopup("show");
    // $('pre.message').html("new add / edit / save timeslot popup");
    console.log("outerdiv clicked");
@@ -929,13 +933,25 @@ $('.outerDiv').append('<div class="morning_shade" style="position:absolute;heigh
 $('.outerDiv').append('<div class="dayshine" style="position:absolute;height:20px;background-color:yellow;opacity:20%;top:-20px"></div>');
 $('.outerDiv').append('<div class="evening_shade" style="position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px;" ></div>');
 
-$(document).on('click', '.dayshine', function(event) {
-  event.stopPropagation();
-  console.clear();
-  console.log('Child Clicked');
+// click on timescale added new slots inside timeslots
+// https://stackoverflow.com/questions/5259191/disable-clicking-of-a-divs-element
+$(".outerDiv").children().bind('click', function(){ 
+  console.log("click event is turned off for this")
+  return false; 
 });
 
-
+// next no use
+$(document).on('click', '#sunriselabel', function(event) {
+  event.stopPropagation();
+  //console.clear();
+  console.log('sunrise Child Clicked');
+});
+$(document).on('click', '#sunriselabel', function(event) {
+  event.stopPropagation();
+  //console.clear();
+  console.log('sunset Child Clicked');
+});
+// above no use
 
 
 // https://github.com/mourner/suncalc
@@ -947,6 +963,7 @@ var sunrisemin;
 var sunriseStr;
 var sunsetmin;
 var sunsetStr;
+var moon;
 
 // get today's sunlight times for                          // https://www.latlong.net/
 // geolocation for sunrise sunset
