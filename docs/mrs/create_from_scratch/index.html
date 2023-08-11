@@ -220,8 +220,8 @@ function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="
 
 
 
-
-///////save button pressed, save to timeslot array////////////////////////////////
+// call from HTML save button <input type="button" value="Save" onclick="savetimeslot()"> //////
+// save button pressed, save to timeslot array /////////////////////////////////////////////////
 function savetimeslot() {
     
     var onhhmm = document.getElementById("ontime").value;
@@ -319,10 +319,11 @@ for (let i = 0; i < timeslots.length; i=i+2) {
 
  }
 }  
+
 // delete the points that are in middle of selection timeslot overlap
 for (let i = 0; i < timeslots.length; i=i+2) {
   if(timeslots[i+1] == timeslots[i+2]){          // compare off to next on
-      timeslots.splice( (i+1), 2);               // off & next on the same, delete both from array
+      timeslots.splice( (i+1), 2);               // if off & next on the same, delete both from array
   }
 }  
 //////////////////////////////////////////////
