@@ -162,6 +162,10 @@ function deletebutton(){
 
 
 
+
+
+////////////////////////////////////////////////////////////////
+/// call from HTML cancel button <input type="button" value="Cancel" onclick="cancelbutton()"> /////////////////////////////////////////////////////////////////////////////
 function cancelbutton(){
   showhideeditpopup()
   document.getElementById('innerDiv').style.left='';   // erase edit timeslot green div drawing???????
@@ -173,10 +177,16 @@ function cancelbutton(){
    selected_highlight=-1;                              // erase edit timeslot highlight
 }
 
-  
-function onlyUnique(value, index, array) {
-  return array.indexOf(value) === index;
-}
+
+
+
+
+/// has no use
+//function onlyUnique(value, index, array) {
+//  return array.indexOf(value) === index;
+//}
+
+
 
 var timeslotpointer="";
 var savefromedit=0;
@@ -185,13 +195,13 @@ var timeslotsnested;
 
 
 function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="timeslotclicked(`+i+`)"
-    timeslotdivclick=1;           // i do not now a flag to keep outerdiv click away cq return from outerdiv click
+    timeslotdivclick = 1;           // i do not now a flag to keep outerdiv click away cq return from outerdiv click
                                   // maybe because of (i used why dont know)  different z-index for innerdiv and outerdiv
                                   // maybe an overlaying div is clicked first followed by underlaying div, i dont know
     console.log("timeslotclicked",wich);
-    timeslotpointer=wich;
+    timeslotpointer = wich;
 
-    selected_highlight=wich;                        // wich timeslot edit highlight color
+    selected_highlight = wich;                        // wich timeslot edit highlight color
   
     $('#addoredit').text("EDIT TimeSlot");
     showhideeditpopup();                            // show edit popup
