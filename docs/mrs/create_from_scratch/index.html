@@ -6,6 +6,7 @@
   https://plnkr.co/edit/p7xyOMhDtuTc49aZ
   https://github.com/ldijkman/randomnerd_esp32_wifi_manager/new/main/docs/mrs/create_from_scratch
   https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/create_from_scratch/index.html
+  https://replit.com/@LuberthDijkman/Visual-Scheduler-for-irrigation-sprinklers-lights-wifi?v=1 
 
  use google chrome browser inspect to see more, and console messages
 -->
@@ -553,20 +554,20 @@ function dragElement(elmnt) {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function showhideeditpopup(showorhide) {
   if (showorhide == "show") {
-    document.getElementById("editpopup").style.display = "block";            // show from function parameter
-    $("body").css("background-color", "#c3c3c3");
-     $("#monday").css("background-color", "#dadada");
+    document.getElementById("editpopup").style.display = "block";             // show from function parameter
+    $("body").css("background-color", "#c3c3c3");                             // make body background a little darker so that popup stands out?         
+     $("#monday").css("background-color", "#dadada");                        
   } else {
     if (document.getElementById("editpopup").style.display === "none") {      // toggle = show
       document.getElementById("editpopup").style.display = "block";
-      $("body").css("background-color", "#c3c3c3");
+      $("body").css("background-color", "#c3c3c3");                           // make body background a little darker so that popup stands out? 
        $("#monday").css("background-color", "#dadada");
       // should be something to block scrolling of body
       // only popup scroll
       // https://codepen.io/anon/pen/oEMmrm
     } else {
       document.getElementById("editpopup").style.display = "none";            // toggle = hide
-      $("body").css("background-color", "");
+      $("body").css("background-color", "");                                  // reset body background to lighter shade
       $("#monday").css("background-color", "");
     }
   }
