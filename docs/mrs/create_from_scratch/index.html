@@ -79,7 +79,7 @@
   height:50px;
   background-color: green;
   opacity:50%;
-  z-index:5;
+  z-index:500;
  
 }
 .ruler-line {
@@ -170,6 +170,7 @@ function cancelbutton(){
   document.getElementById('endlabel').innerHTML='';
   
    savefromedit=0;  
+   selected_highlight=-1;
 }
 
   
@@ -190,6 +191,8 @@ function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="
     console.log("timeslotclicked",wich);
     timeslotpointer=wich;
 
+    selected_highlight=wich;
+  
     $('#addoredit').text("EDIT TimeSlot");
     showhideeditpopup();  // show edit popup
     // wich holds the array position of first data we need in minutes
@@ -358,6 +361,7 @@ $('pre.message').html(`
 
 }
 
+var selected_highlight;
 
 function drawtimeslots(){
 // draw timeslots array
@@ -381,10 +385,17 @@ function drawtimeslots(){
      width=width.toFixed(2);   // to 2 decimals;
      console.log("left width",left," ",width);
 
+var timeslotcolor ="navy";
+if(i==selected_highlight)timeslotcolor ="#9796df"
+
+// debugger;
+
      $(".outerDiv").append(   // draw timeslots and textlabels underneath
           `<div class="timeslot" data-index="`
           +i+
-          `" onclick="timeslotclicked(`+i+`)" style="position:absolute;height:50px;background-color:navy;opacity:50%;top:0px;left:`
+          `" onclick="timeslotclicked(`+i+`)" style="position:absolute;height:50px;background-color:`
+          +timeslotcolor+
+          `;opacity:50%;top:0px;left:`
           +left+    
           `%;width:`
           +width+
@@ -520,6 +531,8 @@ function dragElement(elmnt) {
     document.ontouchend = null; //added touch event
     document.onmousemove = null;
     document.ontouchmove = null; //added touch event
+
+    selected_highlight=-1;
   }
 }
 
@@ -696,6 +709,7 @@ $( ".timeslot" ).on( "click", function() {
 
 
 $( "#outerDiv" ).on( "click", function() {
+  selected_highlight=-1;
   if(innerdivclick==1){           // outerdiv click comes after innerdivclick
     showhideeditpopup("show");
     innerdivclick=0;
@@ -792,6 +806,23 @@ function toHoursAndMinutes(totalMinutes) {
 
   return (hours+":"+minutes) ;
 }
+
+
+
+
+/// convert hh:mm to time in minutes ///////////////////////////////////
+function hhmm_to_minutes(hhmm) {
+  console.log("hhmm_to_minutes(hhmm) ",hhmm);
+
+  var hhmm_array = hhmm.split(':');                                       // split hh:mm  at the colons
+  var timeinminutes = (+hhmm_array[0]) * 60 + (+hhmm_array[1]);          // Hours are worth 60 minutes
+  
+  console.log("timeinminutes ",timeinminutes);
+
+  return (timeinminutes) ;
+}
+
+
 
 
 
@@ -1231,7 +1262,7 @@ function showhideabout() {
 Figlet font Big https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/ 
 </pre>
 */
-</div>
+</div><br>
 <input type="color">
 </body>
 </html>
