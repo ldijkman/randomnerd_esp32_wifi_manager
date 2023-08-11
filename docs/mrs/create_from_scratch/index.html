@@ -807,6 +807,8 @@ function changeWidth(event) {
 // https://www.arduino.cc/reference/en/language/functions/math/map/ 
 // https://stackoverflow.com/questions/5649803/remap-or-map-function-in-javascript
 // scale range 1 into range2 bar range to 0 to 1440 minute range  
+// or 
+// scale a minutevalue in range 0 to 1440 minutes to 0% to 100%,  used for left and width of timeslot divs
 function map_range(value, low1, high1, low2, high2) {
     return (low2 + (high2 - low2) * (value - low1) / (high1 - low1)).toFixed(3);   // to 3 decimals, Math.round did not scale right
 }
