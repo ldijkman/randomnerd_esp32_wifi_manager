@@ -139,6 +139,7 @@
 
 
 <script>
+  console.clear();
 
   const timeslots=[450,990,15,135,240,285,1200,1440]; // timeslots pairs of 2 in minutes of day
   //timeslots.sort(function(a, b){return a - b});   // sort array following order of values
@@ -377,6 +378,7 @@ function drawtimeslots(){
 
      var left=map_range(timeslots[i],  0,1440,0,100);              // scale time in range 0to1440 to 0 to 100%
      var width=map_range(timeslots[i+1],  0,1440,0,100)-left;      // scale time in range 0to1440 to 0 to 100%
+     width=width.toFixed(2);   // to 2 decimals;
      console.log("left width",left," ",width);
 
      $(".outerDiv").append(   // draw timeslots and textlabels underneath
@@ -708,6 +710,7 @@ $('#addoredit').text("Add New TimeSlot");
    showhideeditpopup("show");
    // $('pre.message').html("new add / edit / save timeslot popup");
    console.log("outerdiv clicked");
+   savefromedit=0;
    let outerDiv = document.getElementById('outerDiv');
 
 
