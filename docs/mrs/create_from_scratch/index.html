@@ -144,18 +144,23 @@
   const timeslots=[450,990,15,135,240,285,1200,1440]; // timeslots pairs of 2 in minutes of day
   // timeslots.sort(function(a, b){return a - b});    // sort array following order of values
 
+
+
+
+
+/////// call from HTML delete button   <input type="button" value="Delete" onclick="deletebutton()"> ///////////////////////////////////////////////////////
 function deletebutton(){
     console.log("deletebutton clicked");
     console.log("timeslotpointer  ",timeslotpointer);
     
     if(timeslotpointer===""){return;}                  // timeslotpointer is from function timeslotclicked(wich)
     timeslots.splice( timeslotpointer, 2);             // remove 2 from timeslotarray
-    timeslotpointer="";                                // otherwise if delete is clicked again it will remove other
+    timeslotpointer = "";                              // otherwise if delete is clicked again it will remove other
 
     domessage();
     showhideeditpopup();
     drawtimeslots();
-    savefromedit=0;                                    // do not know, have some strange overwrite / delete
+    savefromedit = 0;                                  // do not know, have some strange overwrite / delete
                                                        // its a flag used when save button is clicked
 }
 
