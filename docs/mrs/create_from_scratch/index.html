@@ -172,24 +172,24 @@ function deletebutton(){
 ////////////////////////////////////////////////////////////////
 /// call from HTML cancel button <input type="button" value="Cancel" onclick="cancelbutton()"> /////////////////////////////////////////////////////////////////////////////
 function cancelbutton(){
-  showhideeditpopup()
+  showhideeditpopup();
   document.getElementById('innerDiv').style.left='';   // erase edit timeslot green div drawing???????
   document.getElementById('innerDiv').style.width='';
   document.getElementById('startlabel').innerHTML='';
   document.getElementById('endlabel').innerHTML='';
   
-   savefromedit=0;  
-   selected_highlight=-1;                              // erase edit timeslot highlight
+   savefromedit = 0;  
+   selected_highlight = -1;                              // erase edit timeslot highlight
 }
 
 
 
 
 
-/// has no use
-//function onlyUnique(value, index, array) {
-//  return array.indexOf(value) === index;
-//}
+// has no use
+// function onlyUnique(value, index, array) {
+//    return array.indexOf(value) === index;
+// }
 
 
 
