@@ -138,6 +138,7 @@
 
 
 
+
 <script>
   console.clear();
 
@@ -549,14 +550,14 @@ function dragElement(elmnt) {
 
 
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function showhideeditpopup(showorhide) {
   if (showorhide == "show") {
-    document.getElementById("editpopup").style.display = "block";
+    document.getElementById("editpopup").style.display = "block";            // show from function parameter
     $("body").css("background-color", "#c3c3c3");
      $("#monday").css("background-color", "#dadada");
   } else {
-    if (document.getElementById("editpopup").style.display === "none") {
+    if (document.getElementById("editpopup").style.display === "none") {      // toggle = show
       document.getElementById("editpopup").style.display = "block";
       $("body").css("background-color", "#c3c3c3");
        $("#monday").css("background-color", "#dadada");
@@ -564,7 +565,7 @@ function showhideeditpopup(showorhide) {
       // only popup scroll
       // https://codepen.io/anon/pen/oEMmrm
     } else {
-      document.getElementById("editpopup").style.display = "none";
+      document.getElementById("editpopup").style.display = "none";            // toggle = hide
       $("body").css("background-color", "");
       $("#monday").css("background-color", "");
     }
@@ -616,6 +617,8 @@ lon:<input type="text" id="lon" size="6" oninput="dogeoloc()" value="5.179" onch
 <pre class="message"></pre>
 <pre class="message2"></pre>
 <pre class="message3"></pre>
+<input type="button" value="Chrome inspect clear console " onclick="console.clear()">
+<br><br>
 <!--
 <hr width="50%">
 add timeslot popup after click
@@ -891,17 +894,17 @@ function drawtemp (){
 ///////////////////////////////////////////////////////////////////////////////
 // create the slider numbers and scale
 
-var pips = 96; // 24hour x 4quarters
+var pips = 96;                                // 24hour x 4quarters
 
 for (i = 0; i <= pips; i = i + 1) {
   var number;
-  var imod4 = i % 4; //for hour numbers
-//console.log("imod4", imod4);
+  var imod4 = i % 4;                          // for hour numbers
+  // console.log("imod4", imod4);
 
   if (imod4 == 0) {
-    number = i / 4;   // for hour numbers 
+    number = i / 4;                            // for hour numbers 
   } else {
-    number = "";      // no number for 15, 30, 45, minutes
+    number = "";                               // no number for 15, 30, 45, minutes
   } 
 
   var ruler = $(
@@ -915,28 +918,28 @@ for (i = 0; i <= pips; i = i + 1) {
 
   ruler.css({ top: "32px" });
 
-  //console.log("left ", ((100 / pips) * i).toFixed(1), "%"); // 1 decimals
+  // console.log("left ", ((100 / pips) * i).toFixed(1), "%"); // 1 decimals
 
   $(".outerDiv").append(ruler);
 
 
   if (imod4 == 0) {
-    $(".ruler-line").eq(i).css("height", "35px");      // hour line
+    $(".ruler-line").eq(i).css("height", "35px");       // hour line
     $(".ruler-line").eq(i).css("width", "2px");
     $(".ruler-line").eq(i).css("background", "black");
   }
   if (imod4 == 1) {
-    $(".ruler-line").eq(i).css("height", "10px");     // 15 minute line
+    $(".ruler-line").eq(i).css("height", "10px");       // 15 minute line
     $(".ruler-line").eq(i).css("width", "1px");
     $(".ruler-line").eq(i).css("background", "gray");
   }
   if (imod4 == 2) {
-    $(".ruler-line").eq(i).css("height", "20px");     // 30 minute line
+    $(".ruler-line").eq(i).css("height", "20px");       // 30 minute line
     $(".ruler-line").eq(i).css("width", "1px");
     $(".ruler-line").eq(i).css("background", "gray");
   }
   if (imod4 == 3) {
-    $(".ruler-line").eq(i).css("height", "10px");     // 45 minute line
+    $(".ruler-line").eq(i).css("height", "10px");       // 45 minute line
     $(".ruler-line").eq(i).css("width", "1px");
     $(".ruler-line").eq(i).css("background", "gray");
   }
