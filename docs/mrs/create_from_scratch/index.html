@@ -142,21 +142,21 @@
   console.clear();
 
   const timeslots=[450,990,15,135,240,285,1200,1440]; // timeslots pairs of 2 in minutes of day
-  //timeslots.sort(function(a, b){return a - b});   // sort array following order of values
+  // timeslots.sort(function(a, b){return a - b});    // sort array following order of values
 
 function deletebutton(){
     console.log("deletebutton clicked");
     console.log("timeslotpointer  ",timeslotpointer);
     
-    if(timeslotpointer===""){return;}                                        // timeslotpointer is from function timeslotclicked(wich)
-    timeslots.splice( timeslotpointer, 2);  // remove 2 from timeslotarray
-    timeslotpointer="";  // otherwise if delete is clicked agai it will remove other
+    if(timeslotpointer===""){return;}                  // timeslotpointer is from function timeslotclicked(wich)
+    timeslots.splice( timeslotpointer, 2);             // remove 2 from timeslotarray
+    timeslotpointer="";                                // otherwise if delete is clicked again it will remove other
 
     domessage();
     showhideeditpopup();
     drawtimeslots();
-    savefromedit=0;   // do not know, have some strange overwrite / delete
-                      // its a flag used when save button is clicked
+    savefromedit=0;                                    // do not know, have some strange overwrite / delete
+                                                       // its a flag used when save button is clicked
 }
 
 
@@ -164,13 +164,13 @@ function deletebutton(){
 
 function cancelbutton(){
   showhideeditpopup()
-  document.getElementById('innerDiv').style.left='';   // erase edit timeslot???????
+  document.getElementById('innerDiv').style.left='';   // erase edit timeslot green div drawing???????
   document.getElementById('innerDiv').style.width='';
   document.getElementById('startlabel').innerHTML='';
   document.getElementById('endlabel').innerHTML='';
   
    savefromedit=0;  
-   selected_highlight=-1;
+   selected_highlight=-1;                              // erase edit timeslot highlight
 }
 
   
@@ -185,20 +185,20 @@ var timeslotsnested;
 
 
 function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="timeslotclicked(`+i+`)"
-    timeslotdivclick=1;  // i do not now a flag to keep outerdiv click away cq return from outerdiv click
-                         // maybe because of (i used why dont know)  different z-index for innerdiv and outerdiv
-                         // maybe an overlaying div is clicked first followed by underlaying div, i dont know
+    timeslotdivclick=1;           // i do not now a flag to keep outerdiv click away cq return from outerdiv click
+                                  // maybe because of (i used why dont know)  different z-index for innerdiv and outerdiv
+                                  // maybe an overlaying div is clicked first followed by underlaying div, i dont know
     console.log("timeslotclicked",wich);
     timeslotpointer=wich;
 
-    selected_highlight=wich;
+    selected_highlight=wich;                        // wich timeslot edit highlight color
   
     $('#addoredit').text("EDIT TimeSlot");
-    showhideeditpopup();  // show edit popup
+    showhideeditpopup();                            // show edit popup
     // wich holds the array position of first data we need in minutes
     document.getElementById("ontime").value=toHoursAndMinutes(timeslots[wich]);  // get minute data from timeslot array and convert to hh:mm for text input field
     document.getElementById("offtime").value=toHoursAndMinutes(timeslots[wich+1]);
-    savefromedit=1;  // a flag for savebutton
+    savefromedit=1;                                 // a flag for savebutton
 // if changes need to modify the timeslot array data
  
 }
@@ -211,29 +211,22 @@ function savetimeslot() {
     
     var onhhmm = document.getElementById("ontime").value;
     var offhhmm = document.getElementById("offtime").value;
-
     console.log("onval, offval", onhhmm, offhhmm);
 
     showhideeditpopup();          // hide edit popup
 
-    var a=onhhmm.split(':');         // time is in hh:mm i want minutes
-    var b=offhhmm.split(':');
-  
 
   if(savefromedit==1){
-  console.log("savefromedit",savefromedit);
-   // here from a save click from possible modified timeslot save
-  
-    var a=document.getElementById("ontime").value.split(':');         // time is in hh:mm i want minutes
-    var b=document.getElementById("offtime").value.split(':');
-    
-    console.log("timeslotpointer",timeslotpointer);
-    timeslots[timeslotpointer]=(+a[0]) * 60 + (+a[1]);     // change the values in the timeslot array
-    timeslots[timeslotpointer+1]= (+b[0]) * 60 + (+b[1]);
-    savefromedit=0;
+      console.log("savefromedit",savefromedit);
+      // here from a save click from possible modified timeslot save
+      // edit timeslot overwrite values in timeslot array
+        console.log("timeslotpointer",timeslotpointer);
+        timeslots[timeslotpointer] = hhmm_to_minutes(document.getElementById("ontime").value);     // change the values in the timeslot array
+        timeslots[timeslotpointer+1] = hhmm_to_minutes(document.getElementById("offtime").value);  // hh:mm to minutes
+        savefromedit=0;
   }else{
-    // push / add values pair to timeslot array
-    timeslots.push((+a[0]) * 60 + (+a[1]),(+b[0]) * 60 + (+b[1]));
+        // push / add values pair to a new timeslot array             hh:mm to minutes
+        timeslots.push(hhmm_to_minutes(document.getElementById("ontime").value) , hhmm_to_minutes(document.getElementById("offtime").value));
   }
 
 
@@ -386,7 +379,7 @@ function drawtimeslots(){
      console.log("left width",left," ",width);
 
 var timeslotcolor ="navy";
-if(i==selected_highlight)timeslotcolor ="#9796df"
+if(i==selected_highlight)timeslotcolor ="#9796df";                // highlight color edit timeslot      
 
 // debugger;
 
@@ -527,12 +520,12 @@ function dragElement(elmnt) {
     console.log("drag end x: " + pos3 + " y:" + pos4);
     // stop moving when mouse button is released:
     document.onmouseup = null;
-    document.ontouchcancel = null; //added touch event
-    document.ontouchend = null; //added touch event
+    document.ontouchcancel = null;                      // added touch event
+    document.ontouchend = null;                         // added touch event
     document.onmousemove = null;
-    document.ontouchmove = null; //added touch event
+    document.ontouchmove = null;                        // added touch event
 
-    selected_highlight=-1;
+    selected_highlight=-1;                              // erase edit timeslot highlight
   }
 }
 
@@ -635,6 +628,9 @@ sunrise sunset geolocation picker map lat lon<br>
       <input type="button" value="use location" onclick="useit()"  /><br><br>
       <div id="fixedMapCont" style="border: 3px solid #222; width:275px;"></div>
 </div>
+Think the time / timezone of your device must match geolocation<br>
+i am in europe, if i choose caribean location<br>
+time sunrise sunset is about 7 hours of target<br>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"></script>
 <script src="https://www.jqueryscript.net/demo/leaflet-location-picker/src/leaflet-locationpicker.js"></script>
 <script>
@@ -709,7 +705,7 @@ $( ".timeslot" ).on( "click", function() {
 
 
 $( "#outerDiv" ).on( "click", function() {
-  selected_highlight=-1;
+  selected_highlight = -1;        // erase edit timeslot highlight
   if(innerdivclick==1){           // outerdiv click comes after innerdivclick
     showhideeditpopup("show");
     innerdivclick=0;
@@ -720,8 +716,9 @@ $( "#outerDiv" ).on( "click", function() {
     return;                      // i want to return to the timeslotdivclick
   }
 
-$('#addoredit').text("Add New TimeSlot");
+   $('#addoredit').text("Add New TimeSlot");               // text on showhideeditpopup changes from add or edit timeslot
    showhideeditpopup("show");
+
    // $('pre.message').html("new add / edit / save timeslot popup");
    console.log("outerdiv clicked");
    savefromedit=0;
@@ -753,15 +750,14 @@ $('#addoredit').text("Add New TimeSlot");
 
 
 
-// geolocation for sunrise sunset
-// var lat=52.7354;      // https://www.google.com/search?q=52.7354,5.179
-// var lon=5.1790;
 
 
 // https://github.com/loebi-ch/jquery-clock-timepicker
 $('#ontime').clockTimePicker({alwaysSelectHoursFirst:true});  // activate analog timepicker popup for id ontime text field
 $('#offtime').clockTimePicker({alwaysSelectHoursFirst:true}); // activate analog timepicker popup for id offtime text field
          
+
+
 
 
 // https://stackoverflow.com/questions/60923136/how-to-get-the-width-on-where-the-mouse-clicks-a-div        
@@ -787,14 +783,18 @@ function changeWidth(event) {
 }
  
 
+
+
 // arduino alike map function == Re-maps a number from one range to another. 
 // https://www.arduino.cc/reference/en/language/functions/math/map/ 
 // https://stackoverflow.com/questions/5649803/remap-or-map-function-in-javascript
 // scale range 1 into range2 bar range to 0 to 1440 minute range  
 function map_range(value, low1, high1, low2, high2) {
-    return (low2 + (high2 - low2) * (value - low1) / (high1 - low1)).toFixed(2);   // to 2 decimals, math round did not scale right
+    return (low2 + (high2 - low2) * (value - low1) / (high1 - low1)).toFixed(3);   // to 3 decimals, Math.round did not scale right
 }
-      
+
+
+
      
 // 0 to 1440 minutes in a day convert timeinminutes to hh:mm  
 // https://codingbeautydev.com/blog/javascript-convert-minutes-to-hours-and-minutes/#:~:text=To%20convert%20minutes%20to%20hours%20and%20minutes%20in%20JavaScript%2C%20divide,the%20remainder%20of%20the%20division.    
@@ -825,45 +825,47 @@ function hhmm_to_minutes(hhmm) {
 
 
 
-
+///////////////////////////////////////////////////////////////////////////////////////////////
 // draw selection on bar from text input 
 function drawtemp (){
-  var start = document.getElementById("ontime").value;        // get time from text field
-  var end = document.getElementById("offtime").value;
-  if(end=="00:00"){end="24:00";}
-  document.getElementById("offtime").value=end;
-  var startmin = start.split(':');                            // split hh:mm  at the colons
-  var startminutes = (+startmin[0]) * 60 + (+startmin[1]);    // Hours are worth 60 minutes.
-  var endmin = end.split(':');                                // split hh:mm  at the colons
-  var endminutes = (+endmin[0]) * 60 + (+endmin[1]);          // Hours are worth 60 minutes
-  console.log("endminutes",endminutes)
+  // document.getElementById("ontime").value;                                     // get time from on text field
+  // document.getElementById("offtime").value;                                    // get time from off text field
+  
+  if(document.getElementById("offtime").value == "00:00"){
+        document.getElementById("offtime").value="24:00";                         // if offtime is 00:00 set it to 24:00
+  }
+  
+  var startminutes = hhmm_to_minutes(document.getElementById("ontime").value);    // convert hh:mm to minutes                       
+  var endminutes = hhmm_to_minutes(document.getElementById("offtime").value);     // convert hh:mm to minutes  
+
+  console.log("start / endminutes",startminutes," / ",endminutes)
+
   var divwidth=outerDiv.offsetWidth;
-  //console.log("map div pos",map_range(startminutes,  0,1440,0,divwidth));
-  //console.log("map div pos",map_range(endminutes,  0,1440,0,divwidth));           
+
+  // console.log("map div pos",map_range(startminutes,  0,1440,0,divwidth));
+  // console.log("map div pos",map_range(endminutes,  0,1440,0,divwidth));           
   
 /////////////////////////////////////////////////  
-  var startpos=map_range(startminutes,  0,1440,0,(outerDiv.offsetWidth));  // scale startminutes in  range 0...1440 to div size
-  var endpos=map_range(endminutes,  0,1440,0,(outerDiv.offsetWidth));     // scale endminutes in  range 0...1440 to div size
-  document.getElementById('innerDiv').style.left=(startpos)+'px';
-  document.getElementById('innerDiv').style.width=(endpos-startpos)+'px';
+      var startpos=map_range(startminutes,  0,1440,0,(outerDiv.offsetWidth));   // scale startminutes in  range 0...1440 to div size
+      var endpos=map_range(endminutes,  0,1440,0,(outerDiv.offsetWidth));       // scale endminutes in  range 0...1440 to div size
+      document.getElementById('innerDiv').style.left=(startpos)+'px';
+      document.getElementById('innerDiv').style.width=(endpos-startpos)+'px';
 // do left and width in % not in px  
 // do it again better in % above in px did strange on screen rotate
-  var startpos=map_range(startminutes,  0,1440,0,100);  // scale startminutes in  range 0...1440 to 0 to 100%
-  var endpos=map_range(endminutes,  0,1440,0,100);      // scale endminutes in  range 0...1440 to 0 to 100%
-  document.getElementById('innerDiv').style.left=(startpos)+'%';
-  document.getElementById('innerDiv').style.width=(endpos-startpos)+'%';
+      var startpos = map_range(startminutes,  0,1440,0,100);                    // scale startminutes in  range 0...1440 to 0 to 100%
+      var endpos = map_range(endminutes,  0,1440,0,100);                        // scale endminutes in  range 0...1440 to 0 to 100%
+      document.getElementById('innerDiv').style.left=(startpos)+'%';                            // set left%
+      document.getElementById('innerDiv').style.width=(endpos-startpos)+'%';                    // set width %
 //////////////////////////////////////////////////
 
-
-  document.getElementById('startlabel').innerHTML=start;   // write hh:mm to label
-  document.getElementById('endlabel').innerHTML=end;       // write hh:mm to label
-
-// maybe save button save values to array
-// maybe cancel button erase
-
-
+  document.getElementById('startlabel').innerHTML=document.getElementById("ontime").value;      // write hh:mm to label
+  document.getElementById('endlabel').innerHTML=document.getElementById("offtime").value;       // write hh:mm to label
 
 }
+
+
+
+
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -926,6 +928,9 @@ $(".outerDiv").append(
 
 //END // create the slider numbers and scale
 //////////////////////////////////////////////////////////
+
+
+
 
 
 
