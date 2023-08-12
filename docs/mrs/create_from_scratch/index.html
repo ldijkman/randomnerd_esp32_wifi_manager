@@ -212,6 +212,9 @@ function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="
 
     selected_highlight = wich;                        // wich timeslot edit highlight color
   
+ 
+
+
     $('#addoredit').text("EDIT TimeSlot");
     showhideeditpopup();                            // show edit popup
     // wich holds the array position of first data we need in minutes
@@ -398,26 +401,40 @@ function drawtimeslots(){
      width=width.toFixed(2);   // to 2 decimals;
      console.log("left width",left," ",width);
 
-var timeslotcolor ="navy";
-if(i==selected_highlight)timeslotcolor ="#9796df";                // highlight color edit timeslot      
+var timeslotcolor = "rgba(44,44, 99, 0.6)";   // use RGBA color opacity 0.6
+var label_opacity = 100;
+if(i==selected_highlight){
+  timeslotcolor = "rgba(100,200, 250, 0.6)";  // use RGBA highlight color edit timeslot
+  label_opacity = 25;                         // if edit timeslot, shade original timeslot time text labels
+}      
 
-// debugger;
+//debugger;
+
+      // problem with opacity , timetext labels
+      // The opacity of the parent's background sets the maximum perceived opacity of the child elements.
+      // child div class "slabel" opacity can never be made greater as parent "timeslot"
+      // thats why the time text labels are fade, and i can not change it
+      // workaround set background-color RGBA color with opacity value in color for <div class="timeslot" 
 
      $(".outerDiv").append(   // draw timeslots and textlabels underneath
           `<div class="timeslot" data-index="`
           +i+
           `" onclick="timeslotclicked(`+i+`)" style="position:absolute;height:50px;background-color:`
           +timeslotcolor+
-          `;opacity:50%;top:0px;left:`
+          `;top:0px;left:`
           +left+    
           `%;width:`
           +width+
           `%;z-index:40;">
-          <div class="slabel" style="position: absolute; color: green; background-color: green; height: 20px; width: 1px; left: 0%; top: 55px;">
+          <div class="slabel" style="position: absolute; color: green; background-color: green; height: 20px; width: 1px; left: 0%; top: 55px;opacity:`
+          +label_opacity+
+          `%;">
           <div  class="startlabel" style="position: absolute; color: green; background-color: green; height: 0px; width: 1px; left: -20px; top: 15px;">`
           +toHoursAndMinutes(timeslots[i])+
           `</div></div>
-          <div class="elabel" style="position: absolute; color: red; background-color: red; height: 20px; width: 1px; left: 100%; top: 55px;">
+          <div class="elabel" style="position: absolute; color: red; background-color: red; height: 20px; width: 1px; left: 100%; top: 55px;;opacity:`
+          +label_opacity+
+          `%;">
           <div class="endlabel" style="position: absolute; color: red; background-color: red; height: 0px; width: 1px; left: -20px; top: 30px;">`
           +toHoursAndMinutes(timeslots[i+1])+
           `</div>
@@ -425,7 +442,7 @@ if(i==selected_highlight)timeslotcolor ="#9796df";                // highlight c
           </div>`
      ); 
 
-  }
+  } // end for
 
 }
 
@@ -554,19 +571,20 @@ function dragElement(elmnt) {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function showhideeditpopup(showorhide) {
   if (showorhide == "show") {
-    document.getElementById("editpopup").style.display = "block";             // show from function parameter
-    $("body").css("background-color", "#c3c3c3");                             // make body background a little darker so that popup stands out?         
-     $("#monday").css("background-color", "#dadada");                        
-  } else {
-    if (document.getElementById("editpopup").style.display === "none") {      // toggle = show
+      document.getElementById("editpopup").style.display = "block";           // show from function parameter   showhideeditpopup(show);
+      $("body").css("background-color", "#c3c3c3");                           // make body background a little darker so that popup stands out?         
+      $("#monday").css("background-color", "#dadada");                        
+  } else if (showorhide == "hide") { 
+      document.getElementById("editpopup").style.display = "none";            // hide from function parameter     showhideeditpopup(hide);
+      $("body").css("background-color", "");                                  // reset body background to lighter shade
+      $("#monday").css("background-color", "");
+  }else {
+    if (document.getElementById("editpopup").style.display === "none") {      // toggle = show  showhideeditpopup();
       document.getElementById("editpopup").style.display = "block";
       $("body").css("background-color", "#c3c3c3");                           // make body background a little darker so that popup stands out? 
-       $("#monday").css("background-color", "#dadada");
-      // should be something to block scrolling of body
-      // only popup scroll
-      // https://codepen.io/anon/pen/oEMmrm
+      $("#monday").css("background-color", "#dadada");
     } else {
-      document.getElementById("editpopup").style.display = "none";            // toggle = hide
+      document.getElementById("editpopup").style.display = "none";            // toggle = hide    showhideeditpopup();
       $("body").css("background-color", "");                                  // reset body background to lighter shade
       $("#monday").css("background-color", "");
     }
@@ -618,7 +636,8 @@ lon:<input type="text" id="lon" size="6" oninput="dogeoloc()" value="5.179" onch
 <pre class="message"></pre>
 <pre class="message2"></pre>
 <pre class="message3"></pre>
-<input type="button" value="Chrome inspect clear console " onclick="console.clear()">
+<input type="button" value="Chrome inspect clear console " onclick="console.clear()"><br>
+Open Chrome Inspect = Ctrl + Shift + i<br>
 <br><br>
 <!--
 <hr width="50%">
@@ -1116,10 +1135,10 @@ function doiteverysecond() {
   // console.log("Using JavaScript version:", navigator.userAgent);
  
 
- if(window.innerHeight > window.innerWidth){
+  if(window.innerHeight > window.innerWidth){
         $('pre.pleaserotatetolandscape').html("<h4>Rotate device to LandScape?</h4>");
   }else{
-        //erase rotamessage if in landscape"
+        // erase rotatemessage if in landscape"
         $('pre.pleaserotatetolandscape').html("");
   }
 
@@ -1137,43 +1156,41 @@ function doiteverysecond() {
   if(now.getSeconds()<=9)sec="0"+now.getSeconds(); else sec=now.getSeconds();  // a leading zer0 if 0 to 9
 
  for (let i = 0; i < 1; i++) {  
-   
-   document.getElementsByClassName('actualtime')[i].style.left = current+"%";   // time to percentage 0 to 100% set div position
+      document.getElementsByClassName('actualtime')[i].style.left = current+"%";   // time to percentage 0 to 100% set div position
   
-   document.getElementsByClassName('actualtime')[i].innerHTML = "<div id=\"acttimelabel\" class=\"acttimelabel\" style=\"position: absolute;top:-60px;left:-30px;border: 0px solid green;\">" +dayName+" "+now.getHours()+":"+min+":"+sec+"</div>"; // set time text on div class actualtime
- 
+      document.getElementsByClassName('actualtime')[i].innerHTML = "<div id=\"acttimelabel\" class=\"acttimelabel\" style=\"position: absolute;top:-60px;left:-30px;border: 0px solid green;\">" +dayName+" "+now.getHours()+":"+min+":"+sec+"</div>"; // set time text on div class actualtime
  }
 
  var currents=((times.sunrise.getHours()*60+times.sunrise.getMinutes())/1440)*100; ;
   var sunrisecur=currents;
   for (let i = 0; i < 1; i++) {  
-   document.getElementsByClassName('sunrisel')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
+      document.getElementsByClassName('sunrisel')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
   
-   document.getElementsByClassName('sunrisel')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunriselabel\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;\"> sunrise "+times.sunrise.getHours()+":"+sunrisemin; +"</div>";// set time text on div class actualtime
+      document.getElementsByClassName('sunrisel')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunriselabel\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;\"> sunrise "+times.sunrise.getHours()+":"+sunrisemin; +"</div>";// set time text on div class actualtime
  
-   document.getElementsByClassName('evening_shade')[i].style.width= currents+"%";  // gray shade before sunrise
- 
+      document.getElementsByClassName('evening_shade')[i].style.width= currents+"%";  // gray shade before sunrise
   }
   
 var currents=((times.sunset.getHours()*60+times.sunset.getMinutes())/1440)*100; ;
   var sunsetcur=currents;
   for (let i = 0; i < 1; i++) {  
-   document.getElementsByClassName('sunsetl')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
+      document.getElementsByClassName('sunsetl')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
   
-   document.getElementsByClassName('sunsetl')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunsetlabel\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;\"> sunset "+times.sunset.getHours()+":"+sunsetmin+"</div>"; // set time text on div class actualtime
+      document.getElementsByClassName('sunsetl')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunsetlabel\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;\"> sunset "+times.sunset.getHours()+":"+sunsetmin+"</div>"; // set time text on div class actualtime
  
- document.getElementsByClassName('morning_shade')[i].style.width= (100-currents)+"%";  // gray shade before sunrise
+      document.getElementsByClassName('morning_shade')[i].style.width= (100-currents)+"%";  // gray shade before sunrise
  
- document.getElementsByClassName('morning_shade')[i].style.left= currents+"%";
+      document.getElementsByClassName('morning_shade')[i].style.left= currents+"%";
 
- document.getElementsByClassName('dayshine')[i].style.left= sunrisecur+"%";
- document.getElementsByClassName('dayshine')[i].style.width= (100-sunrisecur)+(sunsetcur-100)+"%";
- 
+      document.getElementsByClassName('dayshine')[i].style.left= sunrisecur+"%";
+      document.getElementsByClassName('dayshine')[i].style.width= (100-sunrisecur)+(sunsetcur-100)+"%"; 
   } 
 
 
 }
 // end doiteverysecond()  end doiteverysecond()  end doiteverysecond()  end doiteverysecond() 
+
+
 setInterval(doiteverysecond, 1000); // Milliseconds
 
 
