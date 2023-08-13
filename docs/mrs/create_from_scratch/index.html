@@ -522,9 +522,11 @@ function drawtimeslots(){
 
 var timeslotcolor = "rgba(44,44, 99, 0.6)";   // use RGBA color opacity 0.6
 var label_opacity = 100;                      // opacity for timeslot time text labels
+var timeslot_opacity = 80;
 if(i == selected_highlight){
   timeslotcolor = "rgba(100,200, 250, 0.6)";  // use RGBA highlight color edit timeslot
-  label_opacity = 20;                         // if edit timeslot, shade original timeslot time text labels
+  label_opacity = 60;                         // if edit timeslot, shade original timeslot time text labels
+  timeslot_opacity = 40;
 }      
 
 //debugger;
@@ -544,7 +546,9 @@ if(i == selected_highlight){
           +left+    
           `%;width:`
           +width+
-          `%;z-index:40;">
+          `%;z-index:40;opacity:`
+          +timeslot_opacity+
+          `%;">
           <div class="slabel" style="position: absolute; color: green; background-color: green; height: 20px; width: 1px; left: 0%; top: 55px;opacity:`
           +label_opacity+  // next child startlabel takes same opacity
           `%;">
