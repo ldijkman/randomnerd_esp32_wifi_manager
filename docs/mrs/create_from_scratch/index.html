@@ -183,7 +183,7 @@ function checkit() {
     console.log("radio_monday");
     document.getElementById("label_monday").style.color = "green";
   } else {
-    document.getElementById("label_monday").style.color = "black";
+    document.getElementById("label_monday").style.color = "gray";
   }
 
   if (document.getElementById("radio_tuesday").checked) {
@@ -194,7 +194,7 @@ function checkit() {
     console.log("radio_tuesday");
     document.getElementById("label_tuesday").style.color = "green";
   } else {
-    document.getElementById("label_tuesday").style.color = "black";
+    document.getElementById("label_tuesday").style.color = "gray";
   }
 
   if (document.getElementById("radio_wednesday").checked) {
@@ -205,7 +205,7 @@ function checkit() {
     console.log("radio_wednesday");
     document.getElementById("label_wednesday").style.color = "green";
   } else {
-    document.getElementById("label_wednesday").style.color = "";
+    document.getElementById("label_wednesday").style.color = "gray";
   }
 
   if (document.getElementById("radio_thursday").checked) {
@@ -216,7 +216,7 @@ function checkit() {
     console.log("radio_thursday");
     document.getElementById("label_thursday").style.color = "green";
   } else {
-    document.getElementById("label_thursday").style.color = "black";
+    document.getElementById("label_thursday").style.color = "gray";
   }
 
   if (document.getElementById("radio_friday").checked) {
@@ -227,7 +227,7 @@ function checkit() {
     console.log("radio_friday");
     document.getElementById("label_friday").style.color = "green";
   } else {
-    document.getElementById("label_friday").style.color = "black";
+    document.getElementById("label_friday").style.color = "gray";
   }
 
   if (document.getElementById("radio_saturday").checked) {
@@ -238,7 +238,7 @@ function checkit() {
     console.log("radio_saturday");
     document.getElementById("label_saturday").style.color = "green";
   } else {
-    document.getElementById("label_saturday").style.color = "black";
+    document.getElementById("label_saturday").style.color = "gray";
   }
 
   if (document.getElementById("radio_sunday").checked) {
@@ -249,7 +249,7 @@ function checkit() {
     console.log("radio_sunday");
     document.getElementById("label_sunday").style.color = "green";
   } else {
-    document.getElementById("label_sunday").style.color = "black";
+    document.getElementById("label_sunday").style.color = "gray";
   }
 }
 
@@ -756,33 +756,33 @@ lon:<input type="text" id="lon" size="6" oninput="dogeoloc()" value="5.179" onch
 
 
 <!-- radio button is hidden -->
-<label for="radio_monday" id="label_monday"  style="border: 1px solid black;border-radius: 13px; padding:5px;margin:3px;">
+<label for="radio_monday" id="label_monday"  style="border: 1px solid gray;border-radius: 13px; padding:5px;margin:3px;color:green;">
 Monday
-<input type="radio" name="myRadioButton" onclick="checkit()" id="radio_monday" checked hidden >
+<input type="radio" name="myRadioButton" onclick="checkit()" id="radio_monday" style="color:gray;" checked hidden >
 </label>
-<label for="radio_tuesday" id="label_tuesday" style="border: 1px solid black; border-radius: 13px;padding:5px;margin:3px;">
+<label for="radio_tuesday" id="label_tuesday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
 Tuesday
-<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_tuesday" hidden>
+<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_tuesday" style="color:gray;" hidden>
 </label>
-<label for="radio_wednesday" id="label_wednesday" style="border: 1px solid black; border-radius: 13px;padding:5px;margin:3px;">
+<label for="radio_wednesday" id="label_wednesday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
 Wednesday
-<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_wednesday" hidden>
+<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_wednesday" style="color:gray;" hidden>
 </label>
-<label for="radio_thursday" id="label_thursday" style="border: 1px solid black; border-radius: 13px;padding:5px;margin:3px;">
+<label for="radio_thursday" id="label_thursday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
 Thursday
-<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_thursday" hidden>
+<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_thursday" style="color:gray;" hidden>
 </label>
-<label for="radio_friday" id="label_friday" style="border: 1px solid black; border-radius: 13px;padding:5px;margin:3px;">
+<label for="radio_friday" id="label_friday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
 Friday
-<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_friday" hidden>
+<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_friday" style="color:gray;" hidden>
 </label>
-<label for="radio_saturday" id="label_saturday" style="border: 1px solid black; border-radius: 13px;padding:5px;margin:3px;">
+<label for="radio_saturday" id="label_saturday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
 Saturday
-<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_saturday" hidden>
+<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_saturday" style="color:gray;" hidden>
 </label>
-<label for="radio_sunday" id="label_sunday" style="border: 1px solid black; border-radius: 13px;padding:5px;margin:3px;">
+<label for="radio_sunday" id="label_sunday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
 Sunday
-<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_sunday" hidden>
+<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_sunday" style="color:gray;" hidden>
 </label>
 
 
