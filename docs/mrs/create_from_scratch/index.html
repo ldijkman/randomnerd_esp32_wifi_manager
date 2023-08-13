@@ -134,7 +134,7 @@
  <div id="addoredit">add / edit  a time slot<!--this text will be changed to add or edit--></div><br>
 
   &nbsp;&nbsp;<input type="text" class="ontime"  id="ontime" readonly style="color:green;" size="6"   oninput="drawtemp()"  value="07:30" onchange="drawtemp();console.log('Time changed to: ' + this.value)"/>
-<input type="text" class="offtime"  id="offtime" readonly style="color:red;" size="6"   oninput="drawtemp()"  value="16:30" onchange="drawtemp();console.log('Time changed to: ' + this.value)"/>
+<input type="text" class="offtime"  id="offtime" readonly style="color:red;" size="6"   oninput="offtimechange();drawtemp()"  value="16:30" change="offtimechange();" onchange="offtimechange();drawtemp();console.log('Time changed to: ' + this.value)"/>
 &nbsp;&nbsp;<br><br>
 <input type="button" value="Cancel" onclick="cancelbutton()">    
 <input type="button" value="Save" onclick="savetimeslot()">
@@ -252,7 +252,12 @@ function checkit() {
   }
 }
 
-
+function offtimechange(){
+  console.log("function offtimechange(){");
+   if(document.getElementById("offtime").value == "00:00"){
+        document.getElementById("offtime").value="24:00";                         // if offtime is 00:00 set it to 24:00
+  }
+}
 
 /////// call from HTML delete button   <input type="button" value="Delete" onclick="deletebutton()"> ///////////////////////////////////////////////////////
 function deletebutton(){
@@ -334,6 +339,11 @@ function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="
 // call from HTML save button <input type="button" value="Save" onclick="savetimeslot()"> //////
 // save button pressed, save to timeslot array /////////////////////////////////////////////////
 function savetimeslot() {
+
+     if(document.getElementById("offtime").value == "00:00"){
+        document.getElementById("offtime").value="24:00";                         // if offtime is 00:00 set it to 24:00
+         console.log("change 00:00 to 24:00");
+  }
     
     var onhhmm = document.getElementById("ontime").value;
     var offhhmm = document.getElementById("offtime").value;
@@ -367,7 +377,8 @@ function savetimeslot() {
 timeslotsnested = timeslots.reduce((a, c, i) => {
   return i % 2 === 0 ? a.concat([timeslots.slice(i, i + 2)]) : a;
 }, []);
-$('pre.message2').html("timeslotsnested"+JSON.stringify(timeslotsnested));
+//$('pre.message2').html("timeslotsnested"+JSON.stringify(timeslotsnested)); //jquery
+document.getElementById('message2').innerHTML = ("timeslotsnested"+JSON.stringify(timeslotsnested));//javascript
 console.log("timeslotsnested ",timeslotsnested);
 
 /*
@@ -381,7 +392,9 @@ length: 5
 */
 //sort a nested array???
 sorted=timeslotsnested.sort((a,b) => a[0] - b[0]);
-$('pre.message3').html("nestedsorted"+JSON.stringify(sorted));
+//$('pre.message3').html("nestedsorted"+JSON.stringify(sorted));  //jquery
+document.getElementById('message3').innerHTML = ("nestedsorted"+JSON.stringify(sorted));//javascript
+
 console.log("nestedsorted?",sorted);
 /*
 nestedsorted? 
@@ -485,9 +498,7 @@ var selected_highlight;
 
 function drawtimeslots(){
 // draw timeslots array
-  if(document.getElementById("offtime").value == "00:00"){
-        document.getElementById("offtime").value="24:00";                         // if offtime is 00:00 set it to 24:00
-  }
+ 
  
   document.getElementById('innerDiv').style.left='';   // erase edit timeslot???????
   document.getElementById('innerDiv').style.width='';
@@ -788,10 +799,10 @@ Sunday
 
 <br>
 <pre class="message"></pre>
-<pre class="message2"></pre>
-<pre class="message3"></pre>
+<pre class="message2" id="message2"></pre>
+<pre class="message3" id="message3"></pre>
 <input type="button" value="Chrome inspect clear console " onclick="console.clear()"><br>
-Open Chrome Inspect = Ctrl + Shift + i<br>
+Open Chrome Inspect Console = Ctrl + Shift + j<br>
 <br><br>
 <!--
 <hr width="50%">
@@ -1059,6 +1070,7 @@ function toHoursAndMinutes(totalMinutes) {
   if(totalMinutes>=1440)totalMinutes=1440;       // max 24:00
   var hours = Math.floor(totalMinutes / 60);
   var minutes = totalMinutes % 60;
+  if (hours<=9){hours='0'+hours;} 
   if (minutes<=9){minutes='0'+minutes;}         // add a zero if <= 9
 
   return (hours+":"+minutes) ;
@@ -1088,9 +1100,11 @@ function drawtemp (){
   // document.getElementById("ontime").value;                                     // get time from on text field
   // document.getElementById("offtime").value;                                    // get time from off text field
   
+  
   if(document.getElementById("offtime").value == "00:00"){
         document.getElementById("offtime").value="24:00";                         // if offtime is 00:00 set it to 24:00
   }
+
   
   var startminutes = hhmm_to_minutes(document.getElementById("ontime").value);    // convert hh:mm to minutes                       
   var endminutes = hhmm_to_minutes(document.getElementById("offtime").value);     // convert hh:mm to minutes  
@@ -1227,9 +1241,10 @@ $('.outerDiv').append('<div id="sunsetl" class="sunsetl" style="position: absolu
 // dayshine left % and width % is later set changed
 // you do not see this in the browser view page source
 // use chrome browser inspect to see this in the generated source
-$('.outerDiv').append('<div class="morning_shade" style="position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px;z-index:-1"></div>');
+// z-index:-1 stops parent child clicks
+$('.outerDiv').append('<div class="morning_shade" style="position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px;z-index:-1;"></div>');
 $('.outerDiv').append('<div class="dayshine" style="position:absolute;height:20px;background-color:yellow;opacity:20%;top:-20px;z-index:-1;"></div>');
-$('.outerDiv').append('<div class="evening_shade" style="position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px;z-index:-1" ></div>');
+$('.outerDiv').append('<div class="evening_shade" style="position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px;z-index:-1;" ></div>');
 
 
 
@@ -1359,7 +1374,7 @@ function doiteverysecond() {
  for (let i = 0; i < 1; i++) {  
       document.getElementsByClassName('actualtime')[i].style.left = current+"%";   // time to percentage 0 to 100% set div position
   
-      document.getElementsByClassName('actualtime')[i].innerHTML = "<div id=\"acttimelabel\" class=\"acttimelabel\" style=\"position: absolute;top:-60px;left:-30px;border: 0px solid green;\">" +dayName+" "+now.getHours()+":"+min+":"+sec+"</div>"; // set time text on div class actualtime
+      document.getElementsByClassName('actualtime')[i].innerHTML = "<div id=\"acttimelabel\" class=\"acttimelabel\" style=\"position: absolute;top:-60px;left:-30px;border: 0px solid green;z-index:-1;\">" +dayName+" "+now.getHours()+":"+min+":"+sec+"</div>"; // set time text on div class actualtime
  }
 
  var currents=((times.sunrise.getHours()*60+times.sunrise.getMinutes())/1440)*100; ;
