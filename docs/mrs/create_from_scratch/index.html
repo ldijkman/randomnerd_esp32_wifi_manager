@@ -119,11 +119,17 @@ input{
 
 label  {
   cursor:pointer;             /*mouse hand on label monday ....*/
-  caret-color: transparent;   /*no blibking cursor at some places*/
-}
+  caret-color: transparent;   /*no blinking cursor at some places*/
+  user-select: none;          /*disable mouse text drag selection on labels*/
+ }
 
 body{
   caret-color: transparent;   /*no blibking cursor at some places*/
+  user-select: none;          
+  /*
+  disable mouse text drag selection on body
+  is that what facebook uses?
+  */
 }
 
 }
