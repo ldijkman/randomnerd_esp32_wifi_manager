@@ -481,6 +481,19 @@ function domessage(){
           hourarray[i]=toHoursAndMinutes(timeslots[i]);
     }   
 
+
+// when i compare this to other sites the vissiblity calculated is not correct
+// https://hemel.waarnemen.com/applets/missiemaan.cgi
+// https://www.kalender-365.nl/maan/actuele-maanstand.html
+// they say 6% i get 15%
+var moonval;
+if(moon.phase > 0.5)moonval=1-moon.phase; // moon.phase  0.9220658851746119
+console.log("moonval",moonval);
+// moonval=0.25;                          // 0.07797258947334718; i get 16% other sites say 6%
+
+// map moonval in range 0 to 0.5 to scale 0% to 100%
+var moonvisible=Math.round(map_range(moonval,0,0.5,0,100)); 
+
 // a message writen to <pre class="message"></pre> in the html
 $('pre.message').html(`                            
     <p style=\"color:red\">timeslots array length `
@@ -490,8 +503,9 @@ $('pre.message').html(`
     `<br><br>in hours<br>`
     +hourarray+`
     <br>moon.phase 0 to 1, 0,5 is full moon?<br>`
-    +moon.phase+
-    `</p>`);
+    +moon.phase+'<br>Moon visible '
+    +moonvisible+
+    `% (maybe not correct)</p>`);
 
 }
 
