@@ -96,6 +96,7 @@
   left: 50%;
   margin-left: -.20em;
   width: 2em;
+  z-index:-1;  /*  stops it from click add timeslots*/
 }
 
 
@@ -124,8 +125,10 @@
 
 
 <div id="editpopup">
- <div id="editpopupheader" class="drag-handle"> <div id="closeedit">Please Drag Me ?<button onclick="showhideeditpopup()" style="border-color:red; color:red;position:absolute;left:85%;"><b>X</b></button>
- </div>
+ <div id="editpopupheader" class="drag-handle"> 
+    <div id="closeedit">Please Drag Me ?<button onclick="showhideeditpopup()" style="border-color:red; color:red;position:absolute;left:85%;">
+      <b>X</b></button>
+    </div>
  </div>
   <br>
  <div id="addoredit">add / edit  a time slot<!--this text will be changed to add or edit--></div><br>
@@ -134,10 +137,13 @@
 <input type="text" class="offtime"  id="offtime" readonly style="color:red;" size="6"   oninput="drawtemp()"  value="16:30" onchange="drawtemp();console.log('Time changed to: ' + this.value)"/>
 &nbsp;&nbsp;<br><br>
 <input type="button" value="Cancel" onclick="cancelbutton()">    
-<input type="button" value="Save" onclick="savetimeslot()"><br><br> 
+<input type="button" value="Save" onclick="savetimeslot()">
+<br><br> 
 <input type="button" value="Delete" onclick="deletebutton()"> 
-<br><br><font color="green"">
-<small>Touch drag is Working ;-) ???</small></font>
+<br><br>
+<font color="green"">
+<small>Touch drag is Working ;-) ???</small>
+</font>
 <br>
 </div>
 </div>
@@ -688,6 +694,12 @@ function showhideeditpopup(showorhide) {
 
 
 
+
+
+
+
+
+
 </script>
 
 
@@ -716,6 +728,7 @@ lat:<input type="text" id="lat" size="6" oninput="dogeoloc()" value="52.7354" on
 lon:<input type="text" id="lon" size="6" oninput="dogeoloc()" value="5.179" onchange="dogeoloc()"/>
 
 <hr width="40%">
+<input type="button" value="Chrome inspect clear console " onclick="console.clear()"><br>
 <br><br>
 
 
@@ -845,6 +858,7 @@ function useit(){
 
 var innerdivclick=0;
 var timeslotdivclick=0;
+var sunclicked=0;
 /////////////////////////////////
 // think next is not used anymore
 $( "#innerDiv" ).on( "click", function() {
@@ -870,16 +884,69 @@ $( "#startlabel" ).on( "click", function() {
 // think above is not used anymore
 //////////////////////////////////////
 
+// click on timescale added new slots inside timeslots
+// https://stackoverflow.com/questions/5259191/disable-clicking-of-a-divs-element
+//$(".outerDiv").children().bind('click', function(){ 
+//  console.log("click event is turned off for this")
+  //return false; 
+//});
 
+// next no use
+
+function sunriselabelclicked(){
+  // call from HTML onclick
+  sunclicked=1;                     // a flag to return from outerdiv click 
+  //showhideeditpopup("hide");
+  console.log("function sunriselabelclicked(){");
+  // maybe set ontime an hour before sunrisetime
+  // maybe set offtime to sunrisetime
+}
+
+function sunsetlabelclicked(){
+  // call from HTML onclick
+  sunclicked=1;                     // a flag to return from outerdiv click 
+  //showhideeditpopup("hide");
+  console.log("function sunsetlabelclicked(){");
+  // maybe set ontime to sunsettime
+  // maybe set offtime to hor after sunsettime
+}
+
+
+/*
+$(document).on('click', '.sunriselabel', function(event) {
+  event.stopPropagation(); 
+  event.preventDefault();
+  //sunclicked=1; 
+  //console.clear();
+  console.log('sunrise Child Clicked');
+});
+
+$(document).on('click', '.sunsetlabel', function(event) {
+  event.stopPropagation();
+  event.preventDefault();
+  //sunclicked=1; 
+  //console.clear();
+  console.log('sunset Child Clicked');
+});
+*/
 
 
 $( ".timeslot" ).on( "click", function() {
     console.log("timeslot function click");
 });
 
-
-
-$( "#outerDiv" ).on( "click", function() {
+/*
+              _               _ _                          _ _      _    
+   ___  _   _| |_ ___ _ __ __| (_)_   __   ___  _ __   ___| (_) ___| | __
+  / _ \| | | | __/ _ \ '__/ _` | \ \ / /  / _ \| '_ \ / __| | |/ __| |/ /
+ | (_) | |_| | ||  __/ | | (_| | |\ V /  | (_) | | | | (__| | | (__|   < 
+  \___/ \__,_|\__\___|_|  \__,_|_| \_/    \___/|_| |_|\___|_|_|\___|_|\_\
+                                                                         
+Figlet font Standard https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/ 
+*/
+$( "#outerDiv" ).on( "click", function(event) {
+  //event.stopPropagation(); 
+  //event.preventDefault();
   selected_highlight = -1;        // erase edit timeslot highlight
   if(innerdivclick==1){           // outerdiv click comes after innerdivclick
     showhideeditpopup("show");
@@ -888,6 +955,11 @@ $( "#outerDiv" ).on( "click", function() {
   }
    if(timeslotdivclick==1){      // outerdiv click comes after innerdivclick
     timeslotdivclick=0;
+    return;                      // i want to return to the timeslotdivclick
+  }
+
+  if(sunclicked==1){      // outerdiv click comes after innerdivclick
+    sunclicked=0;
     return;                      // i want to return to the timeslotdivclick
   }
 
@@ -917,6 +989,7 @@ $( "#outerDiv" ).on( "click", function() {
 
   drawtemp();
 });
+
 
 
 
@@ -1100,7 +1173,7 @@ for (i = 0; i <= pips; i = i + 1) {
 }
 
 $(".outerDiv").append(
-  '<div class="selection" style="position:absolute;height:55px;background-color:green;opacity:50%;top:20px;left:50%;"></div>'
+  '<div class="selection" style="position:absolute;height:55px;background-color:green;opacity:50%;top:20px;left:50%;z-index:-1;"></div>'
 );
 
 //END // create the slider numbers and scale
@@ -1137,8 +1210,8 @@ $('#innerDiv').append('<div id="elabel" style="position: absolute; color: red; b
 // you do not see this in the browser view page source
 // use chrome browser inspect to see this in the generated source
 $('.outerDiv').append('<div id="actualtime" class="actualtime" style="position: absolute; color: red; background-color: red; height: 30px; width: 1px; left: 50%; top:-30px;"><div id="acttimelabel" class="acttimelabel" style="position: absolute;top:-60px;left:-30px;border: 0px solid green;"></div></div>');                 
-$('.outerDiv').append('<div id="sunrisel" class="sunrisel" style="position: absolute; color: grey; background-color: green; height: 40px; width: 1px; left: 0%; top: -40px;"><div id="sunriselabel" class="sunriselabel" style="position: absolute;top:-20px;left:-20px;border: 0px solid green;"> sunrise</div></div>');            
-$('.outerDiv').append('<div id="sunsetl" class="sunsetl" style="position: absolute; color: grey; background-color: green; height: 40px; width: 1px; left: 100%; top: -40px;"><div id="sunsetlabel" class="sunsetlabel" style="position: absolute;top:-20px;left:-20px;border: 0px solid green;"> sunset</div></div>');              
+$('.outerDiv').append('<div id="sunrisel" class="sunrisel" style="position: absolute; color: grey; background-color: green; height: 40px; width: 1px; left: 0%; top: -40px;"><div id="sunriselabel" class="sunriselabel" onclick="sunrise_label_clicked()" style="position: absolute;top:-20px;left:-20px;border: 0px solid green;z-index:2000;"> sunrise</div></div>');            
+$('.outerDiv').append('<div id="sunsetl" class="sunsetl" style="position: absolute; color: grey; background-color: green; height: 40px; width: 1px; left: 100%; top: -40px;"><div id="sunsetlabel" class="sunsetlabel" onclick="sunset_label_clicked()" style="position: absolute;top:-20px;left:-20px;border: 0px solid green;z-index:2000;"> sunset</div></div>');              
 
 
 // add 3 divs for night shade and dayshine
@@ -1147,29 +1220,14 @@ $('.outerDiv').append('<div id="sunsetl" class="sunsetl" style="position: absolu
 // dayshine left % and width % is later set changed
 // you do not see this in the browser view page source
 // use chrome browser inspect to see this in the generated source
-$('.outerDiv').append('<div class="morning_shade" style="position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px"></div>');
-$('.outerDiv').append('<div class="dayshine" style="position:absolute;height:20px;background-color:yellow;opacity:20%;top:-20px"></div>');
-$('.outerDiv').append('<div class="evening_shade" style="position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px;" ></div>');
+$('.outerDiv').append('<div class="morning_shade" style="position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px;z-index:-1"></div>');
+$('.outerDiv').append('<div class="dayshine" style="position:absolute;height:20px;background-color:yellow;opacity:20%;top:-20px;z-index:-1;"></div>');
+$('.outerDiv').append('<div class="evening_shade" style="position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px;z-index:-1" ></div>');
 
-// click on timescale added new slots inside timeslots
-// https://stackoverflow.com/questions/5259191/disable-clicking-of-a-divs-element
-//$(".outerDiv").children().bind('click', function(){ 
-//  console.log("click event is turned off for this")
-  //return false; 
-//});
 
-// next no use
-$(document).on('click', '#sunriselabel', function(event) {
-  event.stopPropagation();
-  //console.clear();
-  console.log('sunrise Child Clicked');
-});
-$(document).on('click', '#sunriselabel', function(event) {
-  event.stopPropagation();
-  //console.clear();
-  console.log('sunset Child Clicked');
-});
-// above no use
+
+
+
 
 
 // https://github.com/mourner/suncalc
@@ -1246,6 +1304,8 @@ sunrise.forEach(sunrise => {
   //sunrise.innerHTML =("<!--"+lat+","+lon+"-->&nbsp;<a href='http://www.google.com/search?q="+lat+","+lon+"'>SunRise&nbsp;"+sunriseStr)+"&nbsp;</a>";
 });
 
+
+
 const sunset = document.querySelectorAll('.sunset');
 sunset.forEach(sunset => {
   //box.style.backgroundColor = 'purple'; box.style.width = '300px';
@@ -1300,7 +1360,7 @@ function doiteverysecond() {
   for (let i = 0; i < 1; i++) {  
       document.getElementsByClassName('sunrisel')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
   
-      document.getElementsByClassName('sunrisel')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunriselabel\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;\"> sunrise "+times.sunrise.getHours()+":"+sunrisemin; +"</div>";// set time text on div class actualtime
+      document.getElementsByClassName('sunrisel')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunriselabel\" onclick=\"sunriselabelclicked()\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;\"> sunrise "+times.sunrise.getHours()+":"+sunrisemin; +"</div>";// set time text on div class actualtime
  
       document.getElementsByClassName('evening_shade')[i].style.width= currents+"%";  // gray shade before sunrise
   }
@@ -1310,7 +1370,7 @@ var currents=((times.sunset.getHours()*60+times.sunset.getMinutes())/1440)*100; 
   for (let i = 0; i < 1; i++) {  
       document.getElementsByClassName('sunsetl')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
   
-      document.getElementsByClassName('sunsetl')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunsetlabel\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;\"> sunset "+times.sunset.getHours()+":"+sunsetmin+"</div>"; // set time text on div class actualtime
+      document.getElementsByClassName('sunsetl')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunsetlabel\" onclick=\"sunsetlabelclicked()\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;z-index:0;\"> sunset "+times.sunset.getHours()+":"+sunsetmin+"</div>"; // set time text on div class actualtime
  
       document.getElementsByClassName('morning_shade')[i].style.width= (100-currents)+"%";  // gray shade before sunrise
  
