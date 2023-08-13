@@ -113,7 +113,20 @@
 #label_monday{
   color:green;
 }
+input{
+  caret-color: red;   /*no blibking cursor at some places*/
+}
 
+label  {
+  cursor:pointer;             /*mouse hand on label monday ....*/
+  caret-color: transparent;   /*no blibking cursor at some places*/
+}
+
+body{
+  caret-color: transparent;   /*no blibking cursor at some places*/
+}
+
+}
 
 </style>
 
@@ -1485,11 +1498,11 @@ screenshots plasma-cloud schedules<br>
 
 <div id="aboutDIV" style="position: fixed;
   width: 98%;
-  top:20%;
+  top:0%;
   padding: 10px 0;
   text-align: center;
   background-color: lightgray;borderColor:black;border:5px solid;border-radius:10px;
-  margin-top: 10px;display:none;z-index:40;overflow-y:scroll; height:400px;overscroll-behavior: contain;">
+  margin-top: 10px;display:none;z-index:40;overflow-y:scroll; height:100%;overscroll-behavior: contain;">
  
  <div id="closeit" style="
  position: fixed;
