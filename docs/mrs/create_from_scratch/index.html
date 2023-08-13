@@ -481,6 +481,9 @@ var selected_highlight;
 
 function drawtimeslots(){
 // draw timeslots array
+  if(document.getElementById("offtime").value == "00:00"){
+        document.getElementById("offtime").value="24:00";                         // if offtime is 00:00 set it to 24:00
+  }
  
   document.getElementById('innerDiv').style.left='';   // erase edit timeslot???????
   document.getElementById('innerDiv').style.width='';
