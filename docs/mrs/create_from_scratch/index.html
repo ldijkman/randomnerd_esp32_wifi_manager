@@ -1305,16 +1305,42 @@ document.addEventListener('DOMContentLoaded', function() {      // do next when 
 // https://github.com/loebi-ch/jquery-clock-timepicker
 $('#ontime').clockTimePicker({alwaysSelectHoursFirst:true});  // activate analog timepicker popup for id ontime text field
 $('#offtime').clockTimePicker({alwaysSelectHoursFirst:true}); // activate analog timepicker popup for id offtime text field
-         
+        
+dragElement(document.getElementById("editpopup"));
 
+  drawtemp();
+  domessage();
+  showhideeditpopup();
+  drawtimeslots();
+
+}, false);    // end document.addEventListener('DOMContentLoaded', function() {  
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////
+function showhideabout() {
+  if (document.getElementById("aboutDIV").style.display === "none") {
+    document.getElementById("aboutDIV").style.display = "block";
+     // should be something to block scrolling of body 
+     // only popup scroll
+     // https://codepen.io/anon/pen/oEMmrm
+  } else {
+    document.getElementById("aboutDIV").style.display = "none";
+  }
+}
+
+
+
+/////////////////////////////////////////////////////////////////////
 // Make the DIV element draggable:
 // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable
 // touch should be added == think it works , touch me
 // https://stackoverflow.com/questions/56703458/how-to-make-a-draggable-elements-for-touch-and-mousedrag-events
 // https://codepen.io/ldijkman/pen/abQxbdM
-
-dragElement(document.getElementById("editpopup"));
-
+//////////////////////////////////////////////////////////////////////
 function dragElement(elmnt) {
   let pos1 = 0,
       pos2 = 0,
@@ -1424,28 +1450,6 @@ function dragElement(elmnt) {
     selected_highlight=-1;                              // erase edit timeslot highlight
   }
 }
-
-  drawtemp();
-  domessage();
-  showhideeditpopup();
-  drawtimeslots();
-
-}, false);
-
-
-///////////////////////////////////////////////////////////////
-function showhideabout() {
-  if (document.getElementById("aboutDIV").style.display === "none") {
-    document.getElementById("aboutDIV").style.display = "block";
-     // should be something to block scrolling of body 
-     // only popup scroll
-     // https://codepen.io/anon/pen/oEMmrm
-  } else {
-    document.getElementById("aboutDIV").style.display = "none";
-  }
-}
-
-
 
 </script>
 
