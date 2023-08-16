@@ -133,7 +133,7 @@ body{
   */
 }
 
-}
+
 
 </style>
 
@@ -142,31 +142,161 @@ body{
 </head>
 <body bgcolor="#f2f2ed">
  
+Easy Set and Overview Scheduled timeslots, Touch Friendly Scheduler<br>
+Create a scheduler from scratch (a bit like Plasma-Cloud WiFi POE Scheduler / Elgato Eve Schedule)<br>
+Visual Scheduler for irrigation, sprinklers, lights, wifi relays, wifi switches, etcetera<br>
+<center>
 
+<script>
+if(self!==top){     // if document is iframed show a message,   Go Full Screen,it works Better!
+    document.write('<h3><a href="https://run.plnkr.co/plunks/p7xyOMhDtuTc49aZ/" target="fullscreen">Go Full Screen,it works Better!</a></h3>');
+} 
+</script>
 
-<div id="editpopup">
- <div id="editpopupheader" class="drag-handle"> 
-    <div id="closeedit">Please Drag Me ?<button onclick="showhideeditpopup()" style="border-color:red; color:red;position:absolute;left:85%;">
-      <b>X</b></button>
-    </div>
- </div>
-  <br>
- <div id="addoredit">add / edit  a time slot<!--this text will be changed to add or edit--></div><br>
+<pre class="pleaserotatetolandscape" style="font-size : 17px;"><!-- this text will be set if device screen is in portrait,  Rotate device to LandScape? --></pre>  
+<hr width="40%">
 
-  &nbsp;&nbsp;<input type="text" class="ontime"  id="ontime" readonly style="color:green;" size="6"   oninput="drawtemp()"  value="07:30" onchange="drawtemp();console.log('Time changed to: ' + this.value)"/>
-<input type="text" class="offtime"  id="offtime" readonly style="color:red;" size="6"   oninput="offtimechange();drawtemp()"  value="16:30" change="offtimechange();" onchange="offtimechange();drawtemp();console.log('Time changed to: ' + this.value)"/>
-&nbsp;&nbsp;<br><br>
-<input type="button" value="Cancel" onclick="cancelbutton()">    
-<input type="button" value="Save" onclick="savetimeslot()">
-<br><br> 
-<input type="button" value="Delete" onclick="deletebutton()"> 
-<br><br>
-<font color="green"">
-<small>Touch drag is Working ;-) ???</small>
-</font>
+<a href="https://www.google.com/search?q=52.7354,5.179" target="google">GeoLocation for sunrise, sunset </a>
 <br>
+<br>
+lat:<input type="text" id="lat" size="6" oninput="dogeoloc()" value="52.7354" onchange="dogeoloc()"/>
+lon:<input type="text" id="lon" size="6" oninput="dogeoloc()" value="5.179" onchange="dogeoloc()"/>
+
+<hr width="40%">
+<input type="button" value="Chrome inspect clear console " onclick="console.clear()"><br>
+<br>
+<br>
+
+<!-- radio button is hidden -->
+<label for="radio_monday" id="label_monday"  style="border: 1px solid gray;border-radius: 13px; padding:5px;margin:3px;color:green;">
+Monday
+<input type="radio" name="myRadioButton" onclick="checkit()" id="radio_monday" style="color:gray;" checked hidden >
+</label>
+<label for="radio_tuesday" id="label_tuesday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
+Tuesday
+<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_tuesday" style="color:gray;" hidden>
+</label>
+<label for="radio_wednesday" id="label_wednesday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
+Wednesday
+<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_wednesday" style="color:gray;" hidden>
+</label>
+<label for="radio_thursday" id="label_thursday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
+Thursday
+<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_thursday" style="color:gray;" hidden>
+</label>
+<label for="radio_friday" id="label_friday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
+Friday
+<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_friday" style="color:gray;" hidden>
+</label>
+<label for="radio_saturday" id="label_saturday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
+Saturday
+<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_saturday" style="color:gray;" hidden>
+</label>
+<label for="radio_sunday" id="label_sunday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
+Sunday
+<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_sunday" style="color:gray;" hidden>
+</label>
+
+</center>
+<br>
+<div id="monday" class="monday" style="">
+
+    <div id="day"><h1> Monday</h1></div>
+
+    <div id='outerDiv' class="outerDiv" onclick = 'changeWidth(event)'>
+        <div id='innerDiv'></div>
+    </div>
 </div>
+<br>
+<center>
+<br>
+<br>
+
+<pre class="message"></pre>
+<pre class="message2" id="message2"></pre>
+<pre class="message3" id="message3"></pre>
+
+<input type="button" value="Chrome inspect clear console " onclick="console.clear()"><br>
+Open Chrome Inspect Console = Ctrl + Shift + j<br>
+<br>
+<br>
+<br>
+
+<!--begin https://www.jqueryscript.net/other/leaflet-location-picker.html#google_vignette-->
+sunrise sunset geolocation picker map lat lon<br>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css" />
+<link rel="stylesheet" href="https://www.jqueryscript.net/demo/leaflet-location-picker/src/leaflet-locationpicker.css" />
+
+<div class="container">
+      <input id="geoloc" type="text" value="52.7354,5.179" class="form-control mb-3"  />
+      <input type="button" value="use location" onclick="useit()"  /><br><br>
+      <div id="fixedMapCont" style="border: 3px solid #222; width:275px;"></div>
 </div>
+Think the time / timezone of your device must match geolocation<br>
+i am in europe, if i choose caribean location<br>
+time sunrise sunset is about 7 hours of target<br>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"></script>
+<script src="https://www.jqueryscript.net/demo/leaflet-location-picker/src/leaflet-locationpicker.js"></script>
+<script>
+  $('#geoloc').leafletLocationPicker({
+    alwaysOpen: true,
+    mapContainer: "#fixedMapCont"
+});
+
+function useit(){
+    var location = document.getElementById("geoloc").value.split(',');   // make an array splitted at comma                             // split hh:mm  at the colons
+    document.getElementById("lat").value=location[0];   // left of comma val 0 of array
+    document.getElementById("lon").value=location[1];   // rigth of comma val 1 of array
+    dogeoloc();
+}
+</script>
+<!-- end https://www.jqueryscript.net/other/leaflet-location-picker.html#google_vignette-->
+
+<br>
+<br>
+a bar for each day<br>
+click on bar should open a popup at that clicked time<br>
+text field should open an analog timepicker dail that looks the same on all systems<br>
+<br> 
+i Think most people use a phone or tablet not pc with mouse<br>
+so should work for phone or tablet touch<br>
+Touch drag edit popup should work<br>
+<br>
+<br>
+<br>
+/*
+<pre>
+ __      ___                 _        _____      _              _       _           
+ \ \    / (_)               | |      / ____|    | |            | |     | |          
+  \ \  / / _ ___ _   _  __ _| |_____| (___   ___| |__   ___  __| |_   _| | ___ _ __ 
+   \ \/ / | / __| | | |/ _` | |______\___ \ / __| '_ \ / _ \/ _` | | | | |/ _ \ '__|
+    \  /  | \__ \ |_| | (_| | |      ____) | (__| | | |  __/ (_| | |_| | |  __/ |   
+     \/   |_|___/\__,_|\__,_|_|     |_____/ \___|_| |_|\___|\__,_|\__,_|_|\___|_|   
+                                                                                    
+                                                                                    
+Figlet font Big https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/ 
+</pre>
+*/
+<br>
+<input type="color">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -605,123 +735,6 @@ if(i == selected_highlight){
 
 
 
-// Make the DIV element draggable:
-// https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable
-// touch should be added == think it works , touch me
-// https://stackoverflow.com/questions/56703458/how-to-make-a-draggable-elements-for-touch-and-mousedrag-events
-// https://codepen.io/ldijkman/pen/abQxbdM
-
-dragElement(document.getElementById("editpopup"));
-
-function dragElement(elmnt) {
-  let pos1 = 0,
-      pos2 = 0,
-      pos3 = 0,
-      pos4 = 0;
-
-  let dragHandle = document.getElementById("editpopupheader");
-
-  if (dragHandle !== undefined) {
-    // if present, the header is where you move the DIV from:
-    dragHandle.onmousedown = dragMouseDown;
-    dragHandle.ontouchstart = dragMouseDown; //added touch event
-  } else {
-    // otherwise, move the DIV from anywhere inside the DIV:
-    elmnt.onmousedown = dragMouseDown;
-    elmnt.ontouchstart = dragMouseDown; //added touch event
-  }
-
-  function dragMouseDown(e) {
-    e = e || window.event;
-    e.preventDefault();
-
-    //Get touch or click position
-    //https://stackoverflow.com/a/41993300/5078983
-    if (
-      e.type == "touchstart" ||
-      e.type == "touchmove" ||
-      e.type == "touchend" ||
-      e.type == "touchcancel"
-    ) {
-      let evt = typeof e.originalEvent === "undefined" ? e : e.originalEvent;
-      let touch = evt.touches[0] || evt.changedTouches[0];
-      x = touch.pageX;
-      y = touch.pageY;
-    } else if (
-      e.type == "mousedown" ||
-      e.type == "mouseup" ||
-      e.type == "mousemove" ||
-      e.type == "mouseover" ||
-      e.type == "mouseout" ||
-      e.type == "mouseenter" ||
-      e.type == "mouseleave"
-    ) {
-      x = e.clientX;
-      y = e.clientY;
-    }
-
-    console.log("drag start x: " + x + " y:" + y);
-
-    // get the mouse cursor position at startup:
-    pos3 = x;
-    pos4 = y;
-    document.onmouseup = closeDragElement;
-    document.ontouchend = closeDragElement;
-    // call a function whenever the cursor moves:
-    document.onmousemove = elementDrag;
-    document.ontouchmove = elementDrag;
-  }
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-
-    //Get touch or click position
-    //https://stackoverflow.com/a/41993300/5078983
-    if (
-      e.type == "touchstart" ||
-      e.type == "touchmove" ||
-      e.type == "touchend" ||
-      e.type == "touchcancel"
-    ) {
-      let evt = typeof e.originalEvent === "undefined" ? e : e.originalEvent;
-      let touch = evt.touches[0] || evt.changedTouches[0];
-      x = touch.pageX;
-      y = touch.pageY;
-    } else if (
-      e.type == "mousedown" ||
-      e.type == "mouseup" ||
-      e.type == "mousemove" ||
-      e.type == "mouseover" ||
-      e.type == "mouseout" ||
-      e.type == "mouseenter" ||
-      e.type == "mouseleave"
-    ) {
-      x = e.clientX;
-      y = e.clientY;
-    }
-
-    // calculate the new cursor position:
-    pos1 = pos3 - x;
-    pos2 = pos4 - y;
-    pos3 = x;
-    pos4 = y;
-    // set the element's new position:
-    elmnt.style.top = elmnt.offsetTop - pos2 + "px";
-    elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
-  }
-
-  function closeDragElement() {
-    console.log("drag end x: " + pos3 + " y:" + pos4);
-    // stop moving when mouse button is released:
-    document.onmouseup = null;
-    document.ontouchcancel = null;                      // added touch event
-    document.ontouchend = null;                         // added touch event
-    document.onmousemove = null;
-    document.ontouchmove = null;                        // added touch event
-
-    selected_highlight=-1;                              // erase edit timeslot highlight
-  }
-}
 
 
 
@@ -730,20 +743,20 @@ function showhideeditpopup(showorhide) {
   if (showorhide == "show") {
       document.getElementById("editpopup").style.display = "block";           // show from function parameter   showhideeditpopup(show);
       $("body").css("background-color", "#c3c3c3");                           // make body background a little darker so that popup stands out?         
-      $("#monday").css("background-color", "#dadada");                        
+      //$("#monday").css("background-color", "#dadada");                        
   } else if (showorhide == "hide") { 
       document.getElementById("editpopup").style.display = "none";            // hide from function parameter     showhideeditpopup(hide);
       $("body").css("background-color", "");                                  // reset body background to lighter shade
-      $("#monday").css("background-color", "");
+      //$("#monday").css("background-color", "");
   }else {
     if (document.getElementById("editpopup").style.display === "none") {      // toggle = show  showhideeditpopup();
       document.getElementById("editpopup").style.display = "block";
       $("body").css("background-color", "#c3c3c3");                           // make body background a little darker so that popup stands out? 
-      $("#monday").css("background-color", "#dadada");
+      //$("#monday").css("background-color", "#dadada");
     } else {
       document.getElementById("editpopup").style.display = "none";            // toggle = hide    showhideeditpopup();
       $("body").css("background-color", "");                                  // reset body background to lighter shade
-      $("#monday").css("background-color", "");
+      //$("#monday").css("background-color", "");
     }
   }
   drawtimeslots(); // if you close by x green selection may be left if not closed bij cancel or save
@@ -753,163 +766,6 @@ function showhideeditpopup(showorhide) {
 
 
 
-
-
-
-
-</script>
-
-
-
-
-Easy Set and Overview Scheduled timeslots, Touch Friendly Scheduler<br>
-Create a scheduler from scratch (a bit like Plasma-Cloud WiFi POE Scheduler / Elgato Eve Schedule)<br>
-Visual Scheduler for irrigation, sprinklers, lights, wifi relays, wifi switches, etcetera<br>
-<center>
-
-
-<script>
-if(self!==top){     // if document is iframed show a message,   Go Full Screen,it works Better!
-    document.write('<h3><a href="https://run.plnkr.co/plunks/p7xyOMhDtuTc49aZ/" target="fullscreen">Go Full Screen,it works Better!</a></h3>');
-} 
-</script>
-
-<pre class="pleaserotatetolandscape" style="font-size : 17px;"><!-- this text will be set if device screen is in portrait,  Rotate device to LandScape? --></pre>  
-<hr width="40%">
-
-
-
-<a href="https://www.google.com/search?q=52.7354,5.179" target="google">GeoLocation for sunrise, sunset </a>
-<br><br>
-lat:<input type="text" id="lat" size="6" oninput="dogeoloc()" value="52.7354" onchange="dogeoloc()"/>
-lon:<input type="text" id="lon" size="6" oninput="dogeoloc()" value="5.179" onchange="dogeoloc()"/>
-
-<hr width="40%">
-<input type="button" value="Chrome inspect clear console " onclick="console.clear()"><br>
-<br><br>
-
-
-<!-- radio button is hidden -->
-<label for="radio_monday" id="label_monday"  style="border: 1px solid gray;border-radius: 13px; padding:5px;margin:3px;color:green;">
-Monday
-<input type="radio" name="myRadioButton" onclick="checkit()" id="radio_monday" style="color:gray;" checked hidden >
-</label>
-<label for="radio_tuesday" id="label_tuesday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
-Tuesday
-<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_tuesday" style="color:gray;" hidden>
-</label>
-<label for="radio_wednesday" id="label_wednesday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
-Wednesday
-<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_wednesday" style="color:gray;" hidden>
-</label>
-<label for="radio_thursday" id="label_thursday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
-Thursday
-<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_thursday" style="color:gray;" hidden>
-</label>
-<label for="radio_friday" id="label_friday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
-Friday
-<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_friday" style="color:gray;" hidden>
-</label>
-<label for="radio_saturday" id="label_saturday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
-Saturday
-<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_saturday" style="color:gray;" hidden>
-</label>
-<label for="radio_sunday" id="label_sunday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
-Sunday
-<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_sunday" style="color:gray;" hidden>
-</label>
-
-
-
-</label>
-
-</center><br>
-<div id="monday" class="monday" style="background-color:yellow;heigth:50px;">
-
-    <div id="day"><h1> Monday</h1></div>
-
-    <div id='outerDiv' class="outerDiv" onclick = 'changeWidth(event)'>
-        <div id='innerDiv'></div>
-    </div>
-</div>
-<br><center>
-<br>
-
-
-<br>
-<pre class="message"></pre>
-<pre class="message2" id="message2"></pre>
-<pre class="message3" id="message3"></pre>
-<input type="button" value="Chrome inspect clear console " onclick="console.clear()"><br>
-Open Chrome Inspect Console = Ctrl + Shift + j<br>
-<br><br>
-<!--
-<hr width="50%">
-add timeslot popup after click
-<input type="text" class="ontime"  id="ontime" readonly style="color:green;" size="6"   oninput="drawtemp()"  value="07:30" onchange="drawtemp();console.log('Time changed to: ' + this.value)"/>
-<input type="text" class="offtime"  id="offtime" readonly style="color:red;" size="6"   oninput="drawtemp()"  value="16:30" onchange="drawtemp();console.log('Time changed to: ' + this.value)"/>
-<input type="button" value="cancel" onclick="alert('cancel should stop/erase this add timeslot')">    
-<input type="button" value="save" onclick="alert('save not yet, this should save to schedule timeslotarray')"> 
-<hr width="50%">
-
-<br>
-
-<hr width="50%">
-edit timeslot popup after click on tmeslot
-<hr width="50%">
--->
-
-<br>
-
-
-<!--https://www.jqueryscript.net/other/leaflet-location-picker.html#google_vignette-->
-sunrise sunset geolocation picker map lat lon<br>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css" />
-<link rel="stylesheet" href="https://www.jqueryscript.net/demo/leaflet-location-picker/src/leaflet-locationpicker.css" />
-
-<div class="container">
-      <input id="geoloc" type="text" value="52.7354,5.179" class="form-control mb-3"  />
-      <input type="button" value="use location" onclick="useit()"  /><br><br>
-      <div id="fixedMapCont" style="border: 3px solid #222; width:275px;"></div>
-</div>
-Think the time / timezone of your device must match geolocation<br>
-i am in europe, if i choose caribean location<br>
-time sunrise sunset is about 7 hours of target<br>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"></script>
-<script src="https://www.jqueryscript.net/demo/leaflet-location-picker/src/leaflet-locationpicker.js"></script>
-<script>
-  $('#geoloc').leafletLocationPicker({
-    alwaysOpen: true,
-    mapContainer: "#fixedMapCont"
-});
-
-function useit(){
-    var location = document.getElementById("geoloc").value.split(',');   // make an array splitted at comma                             // split hh:mm  at the colons
-    document.getElementById("lat").value=location[0];   // left of comma val 0 of array
-    document.getElementById("lon").value=location[1];   // rigth of comma val 1 of array
-    dogeoloc();
-}
-</script>
-<!--https://www.jqueryscript.net/other/leaflet-location-picker.html#google_vignette-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script type="text/javascript">
 
  
 
@@ -1057,10 +913,6 @@ $( "#outerDiv" ).on( "click", function(event) {
 
 
 
-// https://github.com/loebi-ch/jquery-clock-timepicker
-$('#ontime').clockTimePicker({alwaysSelectHoursFirst:true});  // activate analog timepicker popup for id ontime text field
-$('#offtime').clockTimePicker({alwaysSelectHoursFirst:true}); // activate analog timepicker popup for id offtime text field
-         
 
 
 
@@ -1244,14 +1096,7 @@ $(".outerDiv").append(
 
 
 
-document.addEventListener('DOMContentLoaded', function() {      // do next when document is loaded
 
-  drawtemp();
-  domessage();
-  showhideeditpopup();
-  drawtimeslots();
-
-}, false);
 
 
 
@@ -1453,6 +1298,155 @@ setInterval(doiteverysecond, 1000); // Milliseconds
 
 
 
+
+///////////////////////////////////////////////////////////////////
+document.addEventListener('DOMContentLoaded', function() {      // do next when document is loaded
+
+// https://github.com/loebi-ch/jquery-clock-timepicker
+$('#ontime').clockTimePicker({alwaysSelectHoursFirst:true});  // activate analog timepicker popup for id ontime text field
+$('#offtime').clockTimePicker({alwaysSelectHoursFirst:true}); // activate analog timepicker popup for id offtime text field
+         
+
+// Make the DIV element draggable:
+// https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable
+// touch should be added == think it works , touch me
+// https://stackoverflow.com/questions/56703458/how-to-make-a-draggable-elements-for-touch-and-mousedrag-events
+// https://codepen.io/ldijkman/pen/abQxbdM
+
+dragElement(document.getElementById("editpopup"));
+
+function dragElement(elmnt) {
+  let pos1 = 0,
+      pos2 = 0,
+      pos3 = 0,
+      pos4 = 0;
+
+  let dragHandle = document.getElementById("editpopupheader");
+
+  if (dragHandle !== undefined) {
+    // if present, the header is where you move the DIV from:
+    dragHandle.onmousedown = dragMouseDown;
+    dragHandle.ontouchstart = dragMouseDown; //added touch event
+  } else {
+    // otherwise, move the DIV from anywhere inside the DIV:
+    elmnt.onmousedown = dragMouseDown;
+    elmnt.ontouchstart = dragMouseDown; //added touch event
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+
+    //Get touch or click position
+    //https://stackoverflow.com/a/41993300/5078983
+    if (
+      e.type == "touchstart" ||
+      e.type == "touchmove" ||
+      e.type == "touchend" ||
+      e.type == "touchcancel"
+    ) {
+      let evt = typeof e.originalEvent === "undefined" ? e : e.originalEvent;
+      let touch = evt.touches[0] || evt.changedTouches[0];
+      x = touch.pageX;
+      y = touch.pageY;
+    } else if (
+      e.type == "mousedown" ||
+      e.type == "mouseup" ||
+      e.type == "mousemove" ||
+      e.type == "mouseover" ||
+      e.type == "mouseout" ||
+      e.type == "mouseenter" ||
+      e.type == "mouseleave"
+    ) {
+      x = e.clientX;
+      y = e.clientY;
+    }
+
+    console.log("drag start x: " + x + " y:" + y);
+
+    // get the mouse cursor position at startup:
+    pos3 = x;
+    pos4 = y;
+    document.onmouseup = closeDragElement;
+    document.ontouchend = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+    document.ontouchmove = elementDrag;
+  }
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+
+    //Get touch or click position
+    //https://stackoverflow.com/a/41993300/5078983
+    if (
+      e.type == "touchstart" ||
+      e.type == "touchmove" ||
+      e.type == "touchend" ||
+      e.type == "touchcancel"
+    ) {
+      let evt = typeof e.originalEvent === "undefined" ? e : e.originalEvent;
+      let touch = evt.touches[0] || evt.changedTouches[0];
+      x = touch.pageX;
+      y = touch.pageY;
+    } else if (
+      e.type == "mousedown" ||
+      e.type == "mouseup" ||
+      e.type == "mousemove" ||
+      e.type == "mouseover" ||
+      e.type == "mouseout" ||
+      e.type == "mouseenter" ||
+      e.type == "mouseleave"
+    ) {
+      x = e.clientX;
+      y = e.clientY;
+    }
+
+    // calculate the new cursor position:
+    pos1 = pos3 - x;
+    pos2 = pos4 - y;
+    pos3 = x;
+    pos4 = y;
+    // set the element's new position:
+    elmnt.style.top = elmnt.offsetTop - pos2 + "px";
+    elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
+  }
+
+  function closeDragElement() {
+    console.log("drag end x: " + pos3 + " y:" + pos4);
+    // stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.ontouchcancel = null;                      // added touch event
+    document.ontouchend = null;                         // added touch event
+    document.onmousemove = null;
+    document.ontouchmove = null;                        // added touch event
+
+    selected_highlight=-1;                              // erase edit timeslot highlight
+  }
+}
+
+  drawtemp();
+  domessage();
+  showhideeditpopup();
+  drawtimeslots();
+
+}, false);
+
+
+///////////////////////////////////////////////////////////////
+function showhideabout() {
+  if (document.getElementById("aboutDIV").style.display === "none") {
+    document.getElementById("aboutDIV").style.display = "block";
+     // should be something to block scrolling of body 
+     // only popup scroll
+     // https://codepen.io/anon/pen/oEMmrm
+  } else {
+    document.getElementById("aboutDIV").style.display = "none";
+  }
+}
+
+
+
 </script>
 
 
@@ -1460,50 +1454,48 @@ setInterval(doiteverysecond, 1000); // Milliseconds
 
 
 
+<!--
+  //////////////////////////////////////////////////////////////////////////////
+  ////////////////////  begin editpopup  /////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  -->
+<div id="editpopup">
+ <div id="editpopupheader" class="drag-handle"> 
+    <div id="closeedit">Please Drag Me ?<button onclick="showhideeditpopup()" style="border-color:red; color:red;position:absolute;left:85%;">
+      <b>X</b></button>
+    </div>
+ </div>
+  <br>
+ <div id="addoredit">add / edit  a time slot<!--this text will be changed to add or edit--></div><br>
 
+  &nbsp;&nbsp;<input type="text" class="ontime"  id="ontime" readonly style="color:green;" size="6"   oninput="drawtemp()"  value="07:30" onchange="drawtemp();console.log('Time changed to: ' + this.value)"/>
+<input type="text" class="offtime"  id="offtime" readonly style="color:red;" size="6"   oninput="offtimechange();drawtemp()"  value="16:30" change="offtimechange();" onchange="offtimechange();drawtemp();console.log('Time changed to: ' + this.value)"/>
+&nbsp;&nbsp;<br><br>
+<input type="button" value="Cancel" onclick="cancelbutton()">    
+<input type="button" value="Save" onclick="savetimeslot()">
+<br><br> 
+<input type="button" value="Delete" onclick="deletebutton()"> 
 <br><br>
-a bar for each day<br>
-click on bar should open a popup at that clicked time<br>
-text field should open an analog timepicker dail that looks the same on all systems<br>
-<br> 
-i Think most people use a phone or tablet not pc with mouse<br>
-so should work for phone or tablet touch<br>
-Touch drag edit popup should work<br>
+<font color="green"">
+<small>Touch drag is Working ;-) ???</small>
+</font>
 <br>
+</div>
+</div>
 <!--
-a bit like<br>
-https://www.google.com/search?q=elgato+eve+scheduler
-<br>
-<a href="https://demo.console.plasma-cloud.com" target="plasma">https://demo.console.plasma-cloud.com</a>
-<br>login demo demo<br>
-go to settings scheduler<br>
-screenshots plasma-cloud schedules<br>
-<!--https://plnkr.co/edit/p7xyOMhDtuTc49aZ-->
+  //////////////////////////////////////////////////////////////////////////////
+  ////////////////////  end editpopup  /////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  -->
+
 
 <!--
-<a href="https://plnkr.co/edit/p7xyOMhDtuTc49aZ" target="plnkr">
-<img src="screenshots_plasma-cloud/demo.console.plasma-cloud.com.png" width="640" alt="see plnkr for screenshots">  
-<hr>
-<img src="screenshots_plasma-cloud/add_time_slot.png" width="640" alt="see plnkr for screenshots"> 
-<hr>
-<img src="screenshots_plasma-cloud/edit-time-slot.png" width="640" alt="see plnkr for screenshots"> 
-</a>
--->
-<br>
-<br>
+  //////////////////////////////////////////////////////////////////////////////
+  ////////////////////  begin aboutdiv  /////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  -->
 
-
-
-
-
-
-
-
-
-
-
-
-<div id="aboutDIV" style="position: fixed;
+  <div id="aboutDIV" style="position: fixed;
   width: 98%;
   top:0%;
   padding: 10px 0;
@@ -1540,36 +1532,16 @@ screenshots plasma-cloud schedules<br>
   <div id="about" style="position: fixed; top: 1em; right: 1em;">
     <button onclick="showhideabout()" style="border-color:green; color:green;"><b>?</b></button>
   </div>
-
-<script>
-function showhideabout() {
-  if (document.getElementById("aboutDIV").style.display === "none") {
-    document.getElementById("aboutDIV").style.display = "block";
-     // should be something to block scrolling of body 
-     // only popup scroll
-     // https://codepen.io/anon/pen/oEMmrm
-  } else {
-    document.getElementById("aboutDIV").style.display = "none";
-  }
-}
-</script>
+<!--
+  //////////////////////////////////////////////////////////////////////////////
+  ////////////////////  end  aboutdiv  /////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  -->
 
 
-/*
-<pre>
- __      ___                 _        _____      _              _       _           
- \ \    / (_)               | |      / ____|    | |            | |     | |          
-  \ \  / / _ ___ _   _  __ _| |_____| (___   ___| |__   ___  __| |_   _| | ___ _ __ 
-   \ \/ / | / __| | | |/ _` | |______\___ \ / __| '_ \ / _ \/ _` | | | | |/ _ \ '__|
-    \  /  | \__ \ |_| | (_| | |      ____) | (__| | | |  __/ (_| | |_| | |  __/ |   
-     \/   |_|___/\__,_|\__,_|_|     |_____/ \___|_| |_|\___|\__,_|\__,_|_|\___|_|   
-                                                                                    
-                                                                                    
-Figlet font Big https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/ 
-</pre>
-*/
-<br>
-<input type="color">
+
+
+
 </body>
 </html>
 
