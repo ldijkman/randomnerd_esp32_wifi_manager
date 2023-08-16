@@ -265,6 +265,7 @@ Touch drag edit popup should work<br>
 <br>
 <br>
 <br>
+<div style="width:100%;font-size:7px;">
 /*
 <pre>
  __      ___                 _        _____      _              _       _           
@@ -278,6 +279,7 @@ Touch drag edit popup should work<br>
 Figlet font Big https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/ 
 </pre>
 */
+</div>
 <br>
 <input type="color">
 
@@ -448,10 +450,6 @@ function cancelbutton(){
 
 
 
-// has no use
-// function onlyUnique(value, index, array) {
-//    return array.indexOf(value) === index;
-// }
 
 
 
@@ -618,7 +616,7 @@ for (let i = 0; i < timeslots.length; i=i+2) {
 
 
 
-
+//////////////////////////////////////////////////////////////////////////////////
 function domessage(){    
     // next muttiline because use of ` = ~ tilde key lef side number keys keyboard
     // Alternatively known as acute, backtick, left quote, or an open quote, 
@@ -661,6 +659,10 @@ $('pre.message').html(`
 
 var selected_highlight;
 
+
+
+
+///////////////////////////////////////////////////////////////////
 function drawtimeslots(){
 // draw timeslots array
  
@@ -847,6 +849,9 @@ $(document).on('click', '.sunsetlabel', function(event) {
 $( ".timeslot" ).on( "click", function() {
     console.log("timeslot function click");
 });
+
+
+
 
 /*
               _               _ _                          _ _      _    
