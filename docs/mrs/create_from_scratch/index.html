@@ -167,31 +167,31 @@ lon:<input type="text" id="lon" size="6" oninput="dogeoloc()" value="5.179" onch
 <!-- radio button is hidden -->
 <label for="radio_monday" id="label_monday"  style="border: 1px solid gray;border-radius: 13px; padding:5px;margin:3px;color:green;">
 Monday
-<input type="radio" name="myRadioButton" onclick="checkit()" id="radio_monday" style="color:gray;" checked hidden >
+<input type="radio" name="myRadioButton" class="radioday" onclick="checkit()" id="radio_monday" style="color:gray;" checked hidden >
 </label>
 <label for="radio_tuesday" id="label_tuesday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
 Tuesday
-<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_tuesday" style="color:gray;" hidden>
+<input type="radio" name="myRadioButton" class="radioday"  onclick="checkit()" id="radio_tuesday" style="color:gray;" hidden>
 </label>
 <label for="radio_wednesday" id="label_wednesday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
 Wednesday
-<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_wednesday" style="color:gray;" hidden>
+<input type="radio" name="myRadioButton" class="radioday" onclick="checkit()" id="radio_wednesday" style="color:gray;" hidden>
 </label>
 <label for="radio_thursday" id="label_thursday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
 Thursday
-<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_thursday" style="color:gray;" hidden>
+<input type="radio" name="myRadioButton" class="radioday" onclick="checkit()" id="radio_thursday" style="color:gray;" hidden>
 </label>
 <label for="radio_friday" id="label_friday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
 Friday
-<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_friday" style="color:gray;" hidden>
+<input type="radio" name="myRadioButton" class="radioday" onclick="checkit()" id="radio_friday" style="color:gray;" hidden>
 </label>
 <label for="radio_saturday" id="label_saturday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
 Saturday
-<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_saturday" style="color:gray;" hidden>
+<input type="radio" name="myRadioButton" class="radioday" onclick="checkit()" id="radio_saturday" style="color:gray;" hidden>
 </label>
 <label for="radio_sunday" id="label_sunday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
 Sunday
-<input type="radio" name="myRadioButton"  onclick="checkit()" id="radio_sunday" style="color:gray;" hidden>
+<input type="radio" name="myRadioButton" class="radioday"  onclick="checkit()" id="radio_sunday" style="color:gray;" hidden>
 </label>
 
 </center>
@@ -328,7 +328,7 @@ Figlet font Big https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/
 function checkit() {
   timeslots = [];
   if (document.getElementById("radio_monday").checked) {
-    timeslots = monday_timeslots;
+    timeslots = monday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Monday</h1>";
     //document.getElementById('radio_monday').checked
@@ -339,7 +339,7 @@ function checkit() {
   }
 
   if (document.getElementById("radio_tuesday").checked) {
-    timeslots = tuesday_timeslots;
+    timeslots = tuesday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Tuesday</h1>";
     //document.getElementById('radio_tuesday').checked
@@ -350,7 +350,7 @@ function checkit() {
   }
 
   if (document.getElementById("radio_wednesday").checked) {
-    timeslots = wednesday_timeslots;
+    timeslots = wednesday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Wednesday</h1>";
     //document.getElementById('radio_wednesday').checked
@@ -361,7 +361,7 @@ function checkit() {
   }
 
   if (document.getElementById("radio_thursday").checked) {
-    timeslots = thursday_timeslots;
+    timeslots = thursday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Thursday</h1>";
     //document.getElementById('radio_thursday').checked
@@ -372,7 +372,7 @@ function checkit() {
   }
 
   if (document.getElementById("radio_friday").checked) {
-    timeslots = friday_timeslots;
+    timeslots = friday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Friday</h1>";
     //document.getElementById('radio_friday').checked
@@ -383,7 +383,7 @@ function checkit() {
   }
 
   if (document.getElementById("radio_saturday").checked) {
-    timeslots = saturday_timeslots;
+    timeslots = saturday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Saturday</h1>";
     //document.getElementById('radio_saturday').checked
@@ -394,7 +394,7 @@ function checkit() {
   }
 
   if (document.getElementById("radio_sunday").checked) {
-    timeslots = sunday_timeslots;
+    timeslots = sunday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Sunday</h1>";
     //document.getElementById('radio_saturday').checked
@@ -1265,6 +1265,8 @@ if(self!==top){     // if document is iframed show a message,   Go Full Screen,i
   
   var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   var dayName = days[now.getDay()];
+
+   
    
    
   if(now.getMinutes()<=9)min="0"+now.getMinutes(); else min=now.getMinutes();  // a leading zer0 if 0 to 9
@@ -1317,16 +1319,24 @@ setInterval(doiteverysecond, 1000); // Milliseconds
 ///////////////////////////////////////////////////////////////////
 document.addEventListener('DOMContentLoaded', function() {      // do next when document is loaded
 
-// https://github.com/loebi-ch/jquery-clock-timepicker
-$('#ontime').clockTimePicker({alwaysSelectHoursFirst:true});  // activate analog timepicker popup for id ontime text field
-$('#offtime').clockTimePicker({alwaysSelectHoursFirst:true}); // activate analog timepicker popup for id offtime text field
+    // https://github.com/loebi-ch/jquery-clock-timepicker
+    $('#ontime').clockTimePicker({alwaysSelectHoursFirst:true});  // activate analog timepicker popup for id ontime text field
+    $('#offtime').clockTimePicker({alwaysSelectHoursFirst:true}); // activate analog timepicker popup for id offtime text field
         
-dragElement(document.getElementById("editpopup"));
+    dragElement(document.getElementById("editpopup"));
 
-  drawtemp();
-  domessage();
-  showhideeditpopup();
-  drawtimeslots();
+    drawtemp();
+    domessage();
+    showhideeditpopup();
+    drawtimeslots();
+
+    // select day, set radio day to today
+    var daynr=new Date().getDay();                  // 0=sunday ..... 6=saturday
+    if (daynr==0)daynr=7;          
+    console.log("daynr ",daynr);
+    // $('.radioday')[daynr-1].checked="true";                                // jquery
+    document.getElementsByClassName('radioday')[daynr-1].checked="true";      // javascript
+    checkit();
 
 }, false);    // end document.addEventListener('DOMContentLoaded', function() {  
 
