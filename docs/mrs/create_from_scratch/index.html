@@ -147,13 +147,10 @@ Create a scheduler from scratch (a bit like Plasma-Cloud WiFi POE Scheduler / El
 Visual Scheduler for irrigation, sprinklers, lights, wifi relays, wifi switches, etcetera<br>
 <center>
 
-<script>
-if(self!==top){     // if document is iframed show a message,   Go Full Screen,it works Better!
-    document.write('<h3><a href="https://run.plnkr.co/plunks/p7xyOMhDtuTc49aZ/" target="fullscreen">Go Full Screen,it works Better!</a></h3>');
-} 
-</script>
 
+<pre class="gofullscreenmessage" style="font-size : 17px;"><!-- this text will be set if device screen framed --></pre>  
 <pre class="pleaserotatetolandscape" style="font-size : 17px;"><!-- this text will be set if device screen is in portrait,  Rotate device to LandScape? --></pre>  
+
 <hr width="40%">
 
 <a href="https://www.google.com/search?q=52.7354,5.179" target="google">GeoLocation for sunrise, sunset </a>
@@ -1208,7 +1205,8 @@ console.log("sunset "+sunsetStr);
 //document.getElementsByClassName('sunset')[0].textContent =(" sunset "+sunsetStr)+" ";
 //document.getElementsByClassName('sunrise')[1].innerHTML =("<a href='http://www.google.com/search?q=52.7354,5.1790'>52.7354, 5.1790 </a> sunrise "+sunriseStr+" ");
 //document.getElementsByClassName('sunset')[1].textContent =(" sunset "+sunsetStr)+" ";  
-  
+
+/*  
 const sunrise = document.querySelectorAll('.sunrise');
 sunrise.forEach(sunrise => {
   //box.style.backgroundColor = 'purple'; box.style.width = '300px';
@@ -1222,7 +1220,7 @@ sunset.forEach(sunset => {
   //box.style.backgroundColor = 'purple'; box.style.width = '300px';
   //sunset.innerHTML =("<a href='http://www.google.com/search?q="+lat+","+lon+"'>SunSet&nbsp;"+sunsetStr)+"</a>&nbsp;&nbsp;&nbsp;"; 
 });
-
+*/
 }
 
  
@@ -1246,6 +1244,15 @@ function doiteverysecond() {
         // erase rotatemessage if in landscape"
         $('pre.pleaserotatetolandscape').html("");
   }
+
+
+if(self!==top){     // if document is iframed show a message,   Go Full Screen,it works Better!
+    //document.write('<h3><a href="https://run.plnkr.co/plunks/p7xyOMhDtuTc49aZ/" target="fullscreen">Go Full Screen,it works Better!</a></h3>');
+        $('pre.gofullscreenmessage').html(`<h3><a href="https://run.plnkr.co/plunks/p7xyOMhDtuTc49aZ/" target="fullscreen">Go Full Screen,it works Better!</a></h3>`);
+  }else{
+        // erase
+       $('pre.gofullscreenmessage').html("");
+} 
 
 
   const now = new Date();
