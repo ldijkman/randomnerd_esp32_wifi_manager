@@ -4,9 +4,13 @@ scheduler test /docs/mrs
 
 https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/
 
+  https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs/
+
 maybe better for touch devices
 
 https://plnkr.co/edit/p7xyOMhDtuTc49aZ
+
+  https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs/create_from_scratch
 
 ---------------------------------------
 
