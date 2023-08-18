@@ -167,31 +167,31 @@ lon:<input type="text" id="lon" size="6" oninput="dogeoloc()" value="5.179" onch
 <!-- radio button is hidden -->
 <label for="radio_monday" id="label_monday"  style="border: 1px solid gray;border-radius: 13px; padding:5px;margin:3px;color:green;">
 Monday
-<input type="radio" name="myRadioButton" class="radioday" onclick="checkit()" id="radio_monday" style="color:gray;" checked hidden >
+<input type="radio" name="myRadioButton" class="radioday" onclick="checkit(this.id)" id="radio_monday" style="color:gray;" checked hidden >
 </label>
 <label for="radio_tuesday" id="label_tuesday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
 Tuesday
-<input type="radio" name="myRadioButton" class="radioday"  onclick="checkit()" id="radio_tuesday" style="color:gray;" hidden>
+<input type="radio" name="myRadioButton" class="radioday"  onclick="checkit(this.id)" id="radio_tuesday" style="color:gray;" hidden>
 </label>
 <label for="radio_wednesday" id="label_wednesday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
 Wednesday
-<input type="radio" name="myRadioButton" class="radioday" onclick="checkit()" id="radio_wednesday" style="color:gray;" hidden>
+<input type="radio" name="myRadioButton" class="radioday" onclick="checkit(this.id)" id="radio_wednesday" style="color:gray;" hidden>
 </label>
 <label for="radio_thursday" id="label_thursday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
 Thursday
-<input type="radio" name="myRadioButton" class="radioday" onclick="checkit()" id="radio_thursday" style="color:gray;" hidden>
+<input type="radio" name="myRadioButton" class="radioday" onclick="checkit(this.id)" id="radio_thursday" style="color:gray;" hidden>
 </label>
 <label for="radio_friday" id="label_friday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
 Friday
-<input type="radio" name="myRadioButton" class="radioday" onclick="checkit()" id="radio_friday" style="color:gray;" hidden>
+<input type="radio" name="myRadioButton" class="radioday" onclick="checkit(this.id)" id="radio_friday" style="color:gray;" hidden>
 </label>
 <label for="radio_saturday" id="label_saturday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
 Saturday
-<input type="radio" name="myRadioButton" class="radioday" onclick="checkit()" id="radio_saturday" style="color:gray;" hidden>
+<input type="radio" name="myRadioButton" class="radioday" onclick="checkit(this.id)" id="radio_saturday" style="color:gray;" hidden>
 </label>
 <label for="radio_sunday" id="label_sunday" style="border: 1px solid gray; border-radius: 13px;padding:5px;margin:3px;color:gray;">
 Sunday
-<input type="radio" name="myRadioButton" class="radioday"  onclick="checkit()" id="radio_sunday" style="color:gray;" hidden>
+<input type="radio" name="myRadioButton" class="radioday"  onclick="checkit(this.id)" id="radio_sunday" style="color:gray;" hidden>
 </label>
 
 </center>
@@ -325,7 +325,8 @@ Figlet font Big https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/
 
 
 
-function checkit() {
+function checkit(wich) {
+   console.log("wich ",wich);
   timeslots = [];
   if (document.getElementById("radio_monday").checked) {
     timeslots = monday_timeslots;                           // load selected day in timeslots
@@ -489,7 +490,10 @@ function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="
 
 
     $('#addoredit').text("EDIT TimeSlot");
-    showhideeditpopup();                            // show edit popup
+    document.getElementById("deletebutton").disabled = false;   // enablee the delete button
+    document.getElementById("deletebutton").hidden = false;     // not hide the delete button, show delete button
+    
+    showhideeditpopup();                                        // show edit popup
     // wich holds the array position of first data we need in minutes
     document.getElementById("ontime").value=toHoursAndMinutes(timeslots[wich]);  // get minute data from timeslot array and convert to hh:mm for text input field
     document.getElementById("offtime").value=toHoursAndMinutes(timeslots[wich+1]);
@@ -573,8 +577,9 @@ length: 5
   ///////////////////////////////////////////////////////
 // empty timemeslots
 var nestedsorted=sorted;
-timeslots.length = 0;                  // Clear contents
-timeslots.push.apply(timeslots, nestedsorted);
+timeslots.length = 0;                            // Clear contents
+// next line makes no sense?
+// timeslots.push.apply(timeslots, nestedsorted);   // push put nestedsorted in timeslots
 
 console.log("timeslots ",timeslots);
 
@@ -701,16 +706,16 @@ function drawtimeslots(){
      width=width.toFixed(2);   // to 2 decimals;
      console.log("left width",left," ",width);
 
-var timeslotcolor = "rgba(44,44, 99, 0.6)";   // use RGBA color opacity 0.6
-var label_opacity = 100;                      // opacity for timeslot time text labels
-var timeslot_opacity = 80;
-if(i == selected_highlight){
-  timeslotcolor = "rgba(100,200, 250, 0.6)";  // use RGBA highlight color edit timeslot
-  label_opacity = 60;                         // if edit timeslot, shade original timeslot time text labels
-  timeslot_opacity = 40;
-}      
+    var timeslotcolor = "rgba(44,44, 99, 0.6)";   // use RGBA color opacity 0.6
+    var label_opacity = 100;                      // opacity for timeslot time text labels
+    var timeslot_opacity = 80;
+    if(i == selected_highlight){
+        timeslotcolor = "rgba(100,200, 250, 0.6)";  // use RGBA highlight color edit timeslot
+        label_opacity = 60;                         // if edit timeslot, shade original timeslot time text labels
+        timeslot_opacity = 40;
+    }      
 
-//debugger;
+    //debugger;
 
       // problem with opacity , timetext labels
       // The opacity of the parent's background sets the maximum perceived opacity of the child elements.
@@ -795,7 +800,7 @@ $( "#innerDiv" ).on( "click", function() {
     // $('pre.message').html("edit / remove timeslot popup");
     console.log("innerdiv clicked");
     innerdivclick=1;
- 
+ });
  // do not know open analog time picker if textlabel is clicked
 $( "#startlabel" ).on( "click", function() {
     // $('pre.message').html("slabel click");
@@ -810,7 +815,7 @@ $( "#startlabel" ).on( "click", function() {
     $("#offtime").focus();
     //return;
  }); 
-});
+
 // think above is not used anymore
 //////////////////////////////////////
 
@@ -896,7 +901,9 @@ $( "#outerDiv" ).on( "click", function(event) {
     return;                      // i want to return to the timeslotdivclick
   }
 
-   $('#addoredit').text("Add New TimeSlot");               // text on showhideeditpopup changes from add or edit timeslot
+   $('#addoredit').text("Add New TimeSlot");                 // text on showhideeditpopup changes from add or edit timeslot
+   document.getElementById("deletebutton").disabled = true;  // greyout dissable the delete button
+   document.getElementById("deletebutton").hidden = true;    // hide the delete button
    showhideeditpopup("show");
 
    // $('pre.message').html("new add / edit / save timeslot popup");
@@ -1338,7 +1345,7 @@ document.addEventListener('DOMContentLoaded', function() {      // do next when 
     $('#ontime').clockTimePicker({alwaysSelectHoursFirst:true});  // activate analog timepicker popup for id ontime text field
     $('#offtime').clockTimePicker({alwaysSelectHoursFirst:true}); // activate analog timepicker popup for id offtime text field
         
-    dragElement(document.getElementById("editpopup"));
+    dragElement(document.getElementById("editpopup"));            // make editpopup draggable by mouse and touch
 
     drawtemp();
     domessage();
@@ -1489,7 +1496,7 @@ function dragElement(elmnt) {
 
     selected_highlight=-1;                              // erase edit timeslot highlight
   }
-}
+} // end function dragMouseDown(e) {
 
 </script>
 
@@ -1518,7 +1525,7 @@ function dragElement(elmnt) {
 <input type="button" value="Cancel" onclick="cancelbutton()">    
 <input type="button" value="Save" onclick="savetimeslot()">
 <br><br> 
-<input type="button" value="Delete" onclick="deletebutton()"> 
+<input type="button" id="deletebutton" value="Delete" onclick="deletebutton()"> 
 <br><br>
 <font color="green"">
 <small>Touch drag is Working ;-) ???</small>
