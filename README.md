@@ -4,6 +4,12 @@ scheduler test /docs/mrs
 
 https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/
 
+maybe better for touch devices
+
+https://plnkr.co/edit/p7xyOMhDtuTc49aZ
+
+---------------------------------------
+
 
 electra wifi relais scheduler
 ------
