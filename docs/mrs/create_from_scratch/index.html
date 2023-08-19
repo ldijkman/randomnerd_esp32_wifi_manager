@@ -203,6 +203,14 @@ function onClose(event) {
     setTimeout(initWebSocket, 2000);
 }
 
+/* later on the page next code for sending websocket
+function send_to_ESP(){                              // call by savebutton and deletebutton timeslots array change
+    timeslot_to_ESP = daytext+":"+ timeslots;        // active day timeslot
+    console.log("send_to_ESP() ? ",JSON.stringify( timeslot_to_ESP ));  // active day timeslot
+
+    websocket.send(JSON.stringify( timeslot_to_ESP ));  // send the websocket to ESP
+}
+*/
 
 /////////////////////////////////////////////
 // served from ESP32
@@ -399,18 +407,13 @@ Figlet font Big https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/
 // test add a dayname to the array
 // https://stackoverflow.com/questions/44746912/adding-array-name-to-anonymous-array-in-a-json-string
 ////////////////////////////////////////////////////////////////////////////////
-function send_to_ESP(){                              // call by save and delete
+function send_to_ESP(){                              // call by savebutton and deletebutton timeslots array change
     timeslot_to_ESP = daytext+":"+ timeslots;        // active day timeslot
     console.log("send_to_ESP() ? ",JSON.stringify( timeslot_to_ESP ));  // active day timeslot
 
-
     websocket.send(JSON.stringify( timeslot_to_ESP ));  // send the websocket to ESP
 
-
 }
-// is there an array onchange event?
-// maybe on save and on delete button send the active changed array
-
 // if changes are made send it to ESP8266 ESP32 webserver?
 // https://m1cr0lab-esp32.github.io/remote-control-with-websocket/
 
@@ -451,7 +454,7 @@ function checkit(wich) {
   }
 
   if (document.getElementById("radio_wednesday").checked) {
-    daytext="Wednesday";
+    daytext="Wed";
     timeslots = wednesday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Wednesday</h1>";
