@@ -324,6 +324,13 @@ Figlet font Big https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/
   let sunday_timeslots = [720,1440];                                  // timeslots pairs of 2 in minutes of day
 // ESP8266 ESP32 webserver should set above on pageload?
 
+// https://stackoverflow.com/questions/44746912/adding-array-name-to-anonymous-array-in-a-json-string
+
+    monday_send = { monday: monday_timeslots }; // maybe for ESP to identify each array
+    console.log(JSON.stringify( monday_send )); // maybe for ESP to identify each array
+
+// is there an array onchange event?
+
 // if changes are made send it to ESP8266 ESP32 webserver?
 // https://m1cr0lab-esp32.github.io/remote-control-with-websocket/
 
