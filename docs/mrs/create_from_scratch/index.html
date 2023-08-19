@@ -315,6 +315,7 @@ Figlet font Big https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/
   console.clear();
 
 // ESP8266 ESP32 webserver should set next on pageload?
+// with % % variable replace on load?
   let monday_timeslots = [450,990,15,135,240,285,1200,1440];          // timeslots pairs of 2 in minutes of day
   let tuesday_timeslots = [0,60,300,360,600,660,900,960,1200,1260];   // timeslots pairs of 2 in minutes of day
   let wednesday_timeslots = [0,300,360,660,900,1260];                 // timeslots pairs of 2 in minutes of day
@@ -324,19 +325,22 @@ Figlet font Big https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/
   let sunday_timeslots = [720,1440];                                  // timeslots pairs of 2 in minutes of day
 // ESP8266 ESP32 webserver should set above on pageload?
 
+  let timeslots = monday_timeslots; 
+  var daytext;
+
+// test add a dayname to the array
 // https://stackoverflow.com/questions/44746912/adding-array-name-to-anonymous-array-in-a-json-string
-
-    monday_send = { monday: monday_timeslots }; // maybe for ESP to identify each array
-    console.log(JSON.stringify( monday_send )); // maybe for ESP to identify each array
-
+function send_to_ESP(){                              // call by save and delete
+    timeslot_to_ESP = { daytext , timeslots };       // maybe for ESP to identify each array
+    console.log(JSON.stringify( timeslot_to_ESP ));  // maybe for ESP to identify each array
+}
 // is there an array onchange event?
+// maybe on save and on delete button send the active changed array
 
 // if changes are made send it to ESP8266 ESP32 webserver?
 // https://m1cr0lab-esp32.github.io/remote-control-with-websocket/
 
-  let timeslots = monday_timeslots; 
 
- 
 
 /////////////////////////////////////////////////////
 // check radio labels weekdays
@@ -345,6 +349,7 @@ function checkit(wich) {
    console.log("wich ",wich);
   timeslots = [];
   if (document.getElementById("radio_monday").checked) {
+    daytext="Monday";
     timeslots = monday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Monday</h1>";
@@ -358,6 +363,7 @@ function checkit(wich) {
   }
 
   if (document.getElementById("radio_tuesday").checked) {
+    daytext="Tuesday";
     timeslots = tuesday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Tuesday</h1>";
@@ -371,6 +377,7 @@ function checkit(wich) {
   }
 
   if (document.getElementById("radio_wednesday").checked) {
+    daytext="Wednesday";
     timeslots = wednesday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Wednesday</h1>";
@@ -384,6 +391,7 @@ function checkit(wich) {
   }
 
   if (document.getElementById("radio_thursday").checked) {
+    daytext="Thursday";
     timeslots = thursday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Thursday</h1>";
@@ -398,6 +406,7 @@ function checkit(wich) {
   }
 
   if (document.getElementById("radio_friday").checked) {
+    daytext="Friday";
     timeslots = friday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Friday</h1>";
@@ -411,6 +420,7 @@ function checkit(wich) {
   }
 
   if (document.getElementById("radio_saturday").checked) {
+    daytext="Saturday";
     timeslots = saturday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Saturday</h1>";
@@ -424,6 +434,7 @@ function checkit(wich) {
   }
 
   if (document.getElementById("radio_sunday").checked) {
+    daytext="Sunday";
     timeslots = sunday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Sunday</h1>";
@@ -466,6 +477,7 @@ function deletebutton(){
     drawtimeslots();
     savefromedit = 0;                                  // do not know, have some strange overwrite / delete
                                                        // its a flag used when save button is clicked
+    send_to_ESP();
 }
 
 
@@ -660,6 +672,7 @@ for (let i = 0; i < timeslots.length; i=i+2) {
 
     domessage();  
     drawtimeslots();
+    send_to_ESP();
 
 
 }
