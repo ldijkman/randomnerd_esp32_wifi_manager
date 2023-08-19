@@ -149,7 +149,68 @@ body{
    
 </head>
 <body bgcolor="#f2f2ed">
- 
+
+
+<script> 
+/////////////////////////////////////////////
+// served from ESP32
+// screenshots
+// https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs/create_from_scratch
+// Chrome inspect => Network => WS
+/////////////////////////////////////////////
+/**
+ * ----------------------------------------------------------------------------
+ * ESP32 Remote Control with WebSocket
+ * ----------------------------------------------------------------------------
+ * © 2020 Stéphane Calderoni
+ * ----------------------------------------------------------------------------
+ */
+
+var gateway = `ws://${window.location.hostname}/ws`;
+var websocket;
+
+// ----------------------------------------------------------------------------
+// Initialization
+// ----------------------------------------------------------------------------
+
+window.addEventListener('load', onLoad);
+
+function onLoad(event) {
+    initWebSocket();
+}
+
+// ----------------------------------------------------------------------------
+// WebSocket handling
+// ----------------------------------------------------------------------------
+
+function initWebSocket() {
+    console.log('Trying to open a WebSocket connection...');
+    websocket = new WebSocket(gateway);
+    websocket.onopen  = onOpen;
+    websocket.onclose = onClose;
+}
+
+function onOpen(event) {
+    console.log('Connection opened');
+}
+
+function onClose(event) {
+    console.log('Connection closed');
+    setTimeout(initWebSocket, 2000);
+}
+/////////////////////////////////////////////
+// served from ESP32
+// screenshots
+// https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs/create_from_scratch
+// Chrome inspect => Network => WS
+/////////////////////////////////////////////
+</script> 
+
+
+
+
+
+
 Easy Set and Overview Scheduled timeslots, Touch Friendly Scheduler<br>
 Create a scheduler from scratch (a bit like Plasma-Cloud WiFi POE Scheduler / Elgato Eve Schedule)<br>
 Visual Scheduler for irrigation, sprinklers, lights, wifi relays, wifi switches, etcetera<br>
@@ -327,12 +388,14 @@ Figlet font Big https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/
 
   let timeslots = monday_timeslots; 
   var daytext;
-
+///////////////////////////////////////////////////
+// send_to_ESP()
 // test add a dayname to the array
 // https://stackoverflow.com/questions/44746912/adding-array-name-to-anonymous-array-in-a-json-string
+////////////////////////////////////////////////////////////////////////////////
 function send_to_ESP(){                              // call by save and delete
-    timeslot_to_ESP = { daytext , timeslots };       // maybe for ESP to identify each array
-    console.log(JSON.stringify( timeslot_to_ESP ));  // maybe for ESP to identify each array
+    timeslot_to_ESP = daytext+":"+ timeslots;        // active day timeslot
+    console.log("send_to_ESP() ? ",JSON.stringify( timeslot_to_ESP ));  // active day timeslot
 }
 // is there an array onchange event?
 // maybe on save and on delete button send the active changed array
@@ -349,7 +412,7 @@ function checkit(wich) {
    console.log("wich ",wich);
   timeslots = [];
   if (document.getElementById("radio_monday").checked) {
-    daytext="Monday";
+    daytext="Mon";
     timeslots = monday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Monday</h1>";
@@ -363,7 +426,7 @@ function checkit(wich) {
   }
 
   if (document.getElementById("radio_tuesday").checked) {
-    daytext="Tuesday";
+    daytext="Tue";
     timeslots = tuesday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Tuesday</h1>";
@@ -391,7 +454,7 @@ function checkit(wich) {
   }
 
   if (document.getElementById("radio_thursday").checked) {
-    daytext="Thursday";
+    daytext="Thu";
     timeslots = thursday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Thursday</h1>";
@@ -406,7 +469,7 @@ function checkit(wich) {
   }
 
   if (document.getElementById("radio_friday").checked) {
-    daytext="Friday";
+    daytext="Fri";
     timeslots = friday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Friday</h1>";
@@ -420,7 +483,7 @@ function checkit(wich) {
   }
 
   if (document.getElementById("radio_saturday").checked) {
-    daytext="Saturday";
+    daytext="Sat";
     timeslots = saturday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Saturday</h1>";
@@ -434,7 +497,7 @@ function checkit(wich) {
   }
 
   if (document.getElementById("radio_sunday").checked) {
-    daytext="Sunday";
+    daytext="Sun";
     timeslots = sunday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Sunday</h1>";
