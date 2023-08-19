@@ -8,7 +8,7 @@ https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/create_from_scratch
 
 ---
 
-esp32 espasyncwebserver ace editor create (copy/paste from plnkr or codepen) timeslot.html
+esp32 espasyncwebserver ace editor create (copy/paste from plnkr or codepen) to timeslot.html
 
 ![2023-08-19-152535_1920x1080_scrot](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/5bd9862e-b719-47d0-8cb7-a080b1d39672)
 
