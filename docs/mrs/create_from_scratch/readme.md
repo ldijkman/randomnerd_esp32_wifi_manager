@@ -24,3 +24,12 @@ ESP32 Webserver mDNS is named http://attick.local
 and now ????
 
 ![2023-08-19-152706_1920x1080_scrot](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/d95aecb2-7b6b-47b9-8115-702e0e6bc48d)
+
+
+---
+
+looks like i have an ws upload save  or delete on tuesday change
+
+ websocket.send(JSON.stringify( timeslot_to_ESP ));
+
+![2023-08-19-160308_1920x1080_scrot](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/54e53bad-eee9-4585-a307-91d4aa13201f)
