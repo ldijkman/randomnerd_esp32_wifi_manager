@@ -33,3 +33,10 @@ looks like i have an ws upload save  or delete on tuesday change
  websocket.send(JSON.stringify( timeslot_to_ESP ));
 
 ![2023-08-19-160308_1920x1080_scrot](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/54e53bad-eee9-4585-a307-91d4aa13201f)
+
+---
+
+WS upload on wednesday change
+
+![2023-08-19-161131_1920x1080_scrot](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/3640b499-951a-4e6a-b420-60440c178ee4)
+
