@@ -202,6 +202,8 @@ function onClose(event) {
     console.log('Connection closed');
     setTimeout(initWebSocket, 2000);
 }
+
+
 /////////////////////////////////////////////
 // served from ESP32
 // screenshots
@@ -400,6 +402,11 @@ Figlet font Big https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/
 function send_to_ESP(){                              // call by save and delete
     timeslot_to_ESP = daytext+":"+ timeslots;        // active day timeslot
     console.log("send_to_ESP() ? ",JSON.stringify( timeslot_to_ESP ));  // active day timeslot
+
+
+    websocket.send(JSON.stringify( timeslot_to_ESP ));
+
+
 }
 // is there an array onchange event?
 // maybe on save and on delete button send the active changed array
