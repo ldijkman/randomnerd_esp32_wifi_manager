@@ -17,4 +17,6 @@ esp32 webserver ace editor create timeslot.html
 
 schedule timeslots.html WS Websocket inspect
 
+and now ????
+
 ![2023-08-19-152706_1920x1080_scrot](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/d95aecb2-7b6b-47b9-8115-702e0e6bc48d)
