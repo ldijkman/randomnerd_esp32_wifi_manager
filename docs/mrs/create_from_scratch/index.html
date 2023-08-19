@@ -318,7 +318,7 @@ Figlet font Big https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/
   let monday_timeslots = [450,990,15,135,240,285,1200,1440];          // timeslots pairs of 2 in minutes of day
   let tuesday_timeslots = [0,60,300,360,600,660,900,960,1200,1260];   // timeslots pairs of 2 in minutes of day
   let wednesday_timeslots = [0,300,360,660,900,1260];                 // timeslots pairs of 2 in minutes of day
-  let thursday_timeslots = [0,300,660,900,1200,1440];                      // timeslots pairs of 2 in minutes of day
+  let thursday_timeslots = [0,300,660,900,1200,1440];                 // timeslots pairs of 2 in minutes of day
   let friday_timeslots = [0,30,360,1260];                             // timeslots pairs of 2 in minutes of day
   let saturday_timeslots = [0,720];                                   // timeslots pairs of 2 in minutes of day
   let sunday_timeslots = [720,1440];                                  // timeslots pairs of 2 in minutes of day
@@ -559,12 +559,14 @@ function savetimeslot() {
   }
 
 
-///test nest ////////////////////////////////////////////////
-     // try overlapping when sort is on
-     // timeslots.sort(function(a, b){return a - b});   // sort array following order of values
-     // should do something to prevent overlapping the pairs mix in new pairs
-     // make an aray in array [[0,0],[0,0],[0,0]] do not know how to do that in javascript
-     // so that the pais stay pairs
+/////////////////////////////////////////////////////////////////
+// test nest 
+// try overlapping when sort is on
+// timeslots.sort(function(a, b){return a - b});   // sort array following order of values
+// should do something to prevent overlapping the pairs mix in new pairs
+// make an aray in array, nested array? [[0,0],[0,0],[0,0]] do not know how to do that in javascript
+// so that the paris stay pairs
+//
 // this creates a nested array from timeslots
 // https://stackoverflow.com/questions/44937470/turning-an-array-into-a-multidimensional-array-javascript
 timeslotsnested = timeslots.reduce((a, c, i) => {
@@ -583,7 +585,8 @@ console.log("timeslotsnested ",timeslotsnested);
 4: (2) [387, 402]
 length: 5
 */
-//sort a nested array???
+////////////////////////////
+// sort a nested array???
 sorted=timeslotsnested.sort((a,b) => a[0] - b[0]);
 //$('pre.message3').html("nestedsorted"+JSON.stringify(sorted));  //jquery
 document.getElementById('message3').innerHTML = ("nestedsorted"+JSON.stringify(sorted));//javascript
@@ -599,8 +602,8 @@ nestedsorted?
 4: (2) [1200, 1440]
 length: 5
 */
-  ///////////////////////////////////////////////////////
-// empty timemeslots
+////////////////////////////
+// empty timemeslots array
 var nestedsorted=sorted;
 timeslots.length = 0;                            // Clear contents
 // next line makes no sense?
@@ -614,13 +617,13 @@ console.log("newArray",newArray);
 timeslots.length = 0;                  // Clear contents
 timeslots.push.apply(timeslots, newArray);
 // thats silly, this is stupid 
-
-////////////////////////////////////////////
-
-
-
 ////////////////////////////////
-// block a timeslot to go / past overlap next timeslot
+
+
+
+/******************************************************
+* block a timeslot to go / past overlap next timeslot
+*******************************************************/
 for (let i = 0; i < timeslots.length; i=i+2) {
  if(timeslots[i+1] >= timeslots[i+2]){            // compare off to next on
       timeslots[i+1]=timeslots[i+2];          
@@ -1366,7 +1369,7 @@ var currents=((times.sunset.getHours()*60+times.sunset.getMinutes())/1440)*100; 
 // end doiteverysecond()  end doiteverysecond()  end doiteverysecond()  
 ///////////////////////////////////////////////////////////////////////
 
-setInterval(doiteverysecond, 1000); // Milliseconds
+
 
 
 
@@ -1390,15 +1393,18 @@ document.addEventListener('DOMContentLoaded', function() {      // do next when 
     showhideeditpopup();
     drawtimeslots();
 
-    // select day, set radio day to today
-    var daynr=new Date().getDay();                  // 0=sunday ..... 6=saturday
+    // select day, set radio day to today,  makes label for radiobutton green
+    var daynr=new Date().getDay();                  // 0=sunday ... 6=saturday
     if (daynr==0)daynr=7;          
     console.log("daynr ",daynr);
     // $('.radioday')[daynr-1].checked="true";                                // jquery
     document.getElementsByClassName('radioday')[daynr-1].checked="true";      // javascript
+    // 0=monday ... 6=sunday
     checkit();
 
-}, false);    // end document.addEventListener('DOMContentLoaded', function() {  
+    setInterval(doiteverysecond, 1000); // Milliseconds  call function doiteverysecond() every second
+
+}, false);     
 //////////////////////
 // END DOMContentLoaded
 /////////////////////
