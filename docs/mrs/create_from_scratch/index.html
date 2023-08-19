@@ -404,7 +404,7 @@ function send_to_ESP(){                              // call by save and delete
     console.log("send_to_ESP() ? ",JSON.stringify( timeslot_to_ESP ));  // active day timeslot
 
 
-    websocket.send(JSON.stringify( timeslot_to_ESP ));
+    websocket.send(JSON.stringify( timeslot_to_ESP ));  // send the websocket to ESP
 
 
 }
