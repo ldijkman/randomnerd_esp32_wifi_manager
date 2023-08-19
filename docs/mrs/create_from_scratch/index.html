@@ -331,8 +331,9 @@ Figlet font Big https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/
 
  
 
-
-
+/////////////////////////////////////////////////////
+// check radio labels weekdays
+/////////////////////////////////////////////////////
 function checkit(wich) {
    console.log("wich ",wich);
   timeslots = [];
@@ -429,6 +430,11 @@ function checkit(wich) {
   }
 }
 
+
+
+//////////////////////////////////////////
+// offtimechange
+/////////////////////////////////////////
 function offtimechange(){
   console.log("function offtimechange(){");
    if(document.getElementById("offtime").value == "00:00"){
@@ -436,7 +442,10 @@ function offtimechange(){
   }
 }
 
-/////// call from HTML delete button   <input type="button" value="Delete" onclick="deletebutton()"> ///////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// call from HTML delete button   <input type="button" value="Delete" onclick="deletebutton()"> 
+///////////////////////////////////////////////////////////////////////////////////////////////////
 function deletebutton(){
     console.log("deletebutton clicked");
     console.log("timeslotpointer  ",timeslotpointer);
@@ -457,8 +466,9 @@ function deletebutton(){
 
 
 
-////////////////////////////////////////////////////////////////
-/// call from HTML cancel button <input type="button" value="Cancel" onclick="cancelbutton()"> /////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+// call from HTML cancel button <input type="button" value="Cancel" onclick="cancelbutton()"> 
+//////////////////////////////////////////////////////////////////////////////////////////////
 function cancelbutton(){
   showhideeditpopup();
   document.getElementById('innerDiv').style.left='';   // erase edit timeslot green div drawing???????
@@ -484,7 +494,9 @@ var timeslotsnested;
 
 
 
-/////////////////////////////////////////////////////////////////////
+//////////////////////////////////////
+// time slot clicked edit or delete?
+/////////////////////////////////////
 function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="timeslotclicked(`+i+`)"
     timeslotdivclick = 1;         // i do not now a flag to keep outerdiv click away cq return from outerdiv click
                                   // maybe because of (i used why dont know)  different z-index for innerdiv and outerdiv
@@ -500,8 +512,8 @@ function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="
     $('#addoredit').text("EDIT TimeSlot");
     document.getElementById("deletebutton").disabled = false;   // enablee the delete button
     document.getElementById("deletebutton").hidden = false;     // not hide the delete button, show delete button
-    
     showhideeditpopup();                                        // show edit popup
+
     // wich holds the array position of first data we need in minutes
     document.getElementById("ontime").value=toHoursAndMinutes(timeslots[wich]);  // get minute data from timeslot array and convert to hh:mm for text input field
     document.getElementById("offtime").value=toHoursAndMinutes(timeslots[wich+1]);
@@ -512,8 +524,13 @@ function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="
 
 
 
-// call from HTML save button <input type="button" value="Save" onclick="savetimeslot()"> //////
-// save button pressed, save to timeslot array /////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// save time slot
+// call from HTML save button <input type="button" value="Save" onclick="savetimeslot()"> 
+// save button pressed, save to timeslot array 
+//////////////////////////////////////////////////////////////////////////////////////////
 function savetimeslot() {
 
      if(document.getElementById("offtime").value == "00:00"){
@@ -644,7 +661,9 @@ for (let i = 0; i < timeslots.length; i=i+2) {
 
 
 
-//////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
+// write messsage to html <pre id="" or class=""> will be replaced, message goes here </pre> 
+/////////////////////////////////////////////////////////////////////////////////////////////
 function domessage(){    
     // next muttiline because use of ` = ~ tilde key lef side number keys keyboard
     // Alternatively known as acute, backtick, left quote, or an open quote, 
@@ -689,8 +708,9 @@ var selected_highlight;
 
 
 
-
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////
+// drawtimeslots
+/////////////////////////////////////
 function drawtimeslots(){
 // draw timeslots array
  
@@ -766,9 +786,9 @@ function drawtimeslots(){
 
 
 
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////
+// showhideeditpopup(showorhide) 
+////////////////////////////////////////
 function showhideeditpopup(showorhide) {
   if (showorhide == "show") {
       document.getElementById("editpopup").style.display = "block";           // show from function parameter   showhideeditpopup(show);
@@ -845,6 +865,8 @@ function sunriselabelclicked(){
   // maybe set offtime to sunrisetime
 }
 
+
+
 function sunsetlabelclicked(){
   // call from HTML onclick
   sunclicked=1;                     // a flag to return from outerdiv click 
@@ -899,18 +921,18 @@ $( "#outerDiv" ).on( "click", function(event) {
     innerdivclick=0;
     return;                       // i want to return to the innerdiv click              
   }
-   if(timeslotdivclick==1){      // outerdiv click comes after innerdivclick
+   if(timeslotdivclick==1){       // outerdiv click comes after innerdivclick
     timeslotdivclick=0;
-    return;                      // i want to return to the timeslotdivclick
+    return;                       // i want to return to the timeslotdivclick
   }
 
-  if(sunclicked==1){      // outerdiv click comes after innerdivclick
+  if(sunclicked==1){              // outerdiv click comes after innerdivclick
     sunclicked=0;
-    return;                      // i want to return to the timeslotdivclick
+    return;                       // i want to return to the timeslotdivclick
   }
 
    $('#addoredit').text("Add New TimeSlot");                 // text on showhideeditpopup changes from add or edit timeslot
-   document.getElementById("deletebutton").disabled = true;  // greyout dissable the delete button
+   document.getElementById("deletebutton").disabled = true;  // greyout disable the delete button
    document.getElementById("deletebutton").hidden = true;    // hide the delete button
    showhideeditpopup("show");
 
@@ -918,22 +940,23 @@ $( "#outerDiv" ).on( "click", function(event) {
    console.log("outerdiv clicked");
    savefromedit=0;
    let outerDiv = document.getElementById('outerDiv');
-
+   
 
   document.getElementById('innerDiv').style.width = event.clientX-outerDiv.offsetLeft+'px';
-  console.log(event.clientX-outerDiv.offsetLeft);
-  console.log(outerDiv.offsetWidth);
+  console.log("mouse click x position on outerdiv ",event.clientX-outerDiv.offsetLeft);
+  console.log("outerDiv width ",outerDiv.offsetWidth);
          
          // map_range returns a float that does not work for later convert to hh:mm 
          // but the float is better for left% width% scaling otherwise the selections are of target
   var clickposinminutes=Math.round(map_range((event.clientX-outerDiv.offsetLeft),0, outerDiv.offsetWidth,0,1440));
   console.log("clickposinminutes ",clickposinminutes);
-  var hhmm=toHoursAndMinutes(clickposinminutes);
+
+  var hhmm=toHoursAndMinutes(clickposinminutes);              // add 15 minutes for timeslot
   var hhmmplus15=toHoursAndMinutes(clickposinminutes+15);
   if(clickposinminutes+15>=1440)hhmmplus15="24:00";
   console.log("hhmm ",hhmm);
-  document.getElementById("ontime").value=hhmm;
-  document.getElementById("offtime").value=hhmmplus15;
+  document.getElementById("ontime").value=hhmm;               // set on time textfield
+  document.getElementById("offtime").value=hhmmplus15;        // set off time textfield
 
   drawtemp();
 });
@@ -976,22 +999,24 @@ function changeWidth(event) {
  
 
 
-
+///////////////////////////////////////////////////////////////////////////
 // arduino alike map function == Re-maps a number from one range to another. 
 // https://www.arduino.cc/reference/en/language/functions/math/map/ 
 // https://stackoverflow.com/questions/5649803/remap-or-map-function-in-javascript
 // scale range 1 into range2 bar range to 0 to 1440 minute range  
 // or 
 // scale a minutevalue in range 0 to 1440 minutes to 0% to 100%,  used for left and width of timeslot divs
+///////////////////////////////////////////////////////////////////////////////
 function map_range(value, low1, high1, low2, high2) {
     return (low2 + (high2 - low2) * (value - low1) / (high1 - low1)).toFixed(3);   // to 3 decimals, Math.round did not scale right
 }
 
 
 
-     
+///////////////////////////////////////////////////////////////     
 // 0 to 1440 minutes in a day convert timeinminutes to hh:mm  
 // https://codingbeautydev.com/blog/javascript-convert-minutes-to-hours-and-minutes/#:~:text=To%20convert%20minutes%20to%20hours%20and%20minutes%20in%20JavaScript%2C%20divide,the%20remainder%20of%20the%20division.    
+/////////////////////////////////////////////////////////////////////////////
 function toHoursAndMinutes(totalMinutes) {
   if(totalMinutes>=1440)totalMinutes=1440;       // max 24:00
   var hours = Math.floor(totalMinutes / 60);
@@ -1004,8 +1029,9 @@ function toHoursAndMinutes(totalMinutes) {
 
 
 
-
-/// convert hh:mm to time in minutes ///////////////////////////////////
+/////////////////////////////////////
+// convert hh:mm to time in minutes 
+////////////////////////////////////
 function hhmm_to_minutes(hhmm) {
   console.log("hhmm_to_minutes(hhmm) ",hhmm);
 
@@ -1020,8 +1046,9 @@ function hhmm_to_minutes(hhmm) {
 
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////
 // draw selection on bar from text input 
+/////////////////////////////////////////
 function drawtemp (){
   // document.getElementById("ontime").value;                                     // get time from on text field
   // document.getElementById("offtime").value;                                    // get time from off text field
@@ -1042,17 +1069,17 @@ function drawtemp (){
   // console.log("map div pos",map_range(startminutes,  0,1440,0,divwidth));
   // console.log("map div pos",map_range(endminutes,  0,1440,0,divwidth));           
   
-/////////////////////////////////////////////////  
-      var startpos=map_range(startminutes,  0,1440,0,(outerDiv.offsetWidth));   // scale startminutes in  range 0...1440 to div size
-      var endpos=map_range(endminutes,  0,1440,0,(outerDiv.offsetWidth));       // scale endminutes in  range 0...1440 to div size
+// better not in pixels /////////////////////////////
+      var startpos=map_range(startminutes,  0,1440, 0,(outerDiv.offsetWidth));   // scale startminutes in  range 0...1440 to div size
+      var endpos=map_range(endminutes,  0,1440, 0,(outerDiv.offsetWidth));       // scale endminutes in  range 0...1440 to div size
       document.getElementById('innerDiv').style.left=(startpos)+'px';
       document.getElementById('innerDiv').style.width=(endpos-startpos)+'px';
 // do left and width in % not in px  
 // do it again better in % above in px did strange on screen rotate
-      var startpos = map_range(startminutes,  0,1440,0,100);                    // scale startminutes in  range 0...1440 to 0 to 100%
-      var endpos = map_range(endminutes,  0,1440,0,100);                        // scale endminutes in  range 0...1440 to 0 to 100%
-      document.getElementById('innerDiv').style.left=(startpos)+'%';                            // set left%
-      document.getElementById('innerDiv').style.width=(endpos-startpos)+'%';                    // set width %
+      var startpos = map_range(startminutes,  0,1440, 0,100);                    // scale startminutes in  range 0...1440 to 0 to 100%
+      var endpos = map_range(endminutes,  0,1440, 0,100);                        // scale endminutes in  range 0...1440 to 0 to 100%
+      document.getElementById('innerDiv').style.left=(startpos)+'%';             // set left%
+      document.getElementById('innerDiv').style.width=(endpos-startpos)+'%';     // set width %
 //////////////////////////////////////////////////
 
   document.getElementById('startlabel').innerHTML=document.getElementById("ontime").value;      // write hh:mm to label
@@ -1065,9 +1092,9 @@ function drawtemp (){
 
 
 
-///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////
 // create the slider numbers and scale
-
+///////////////////////////////////////
 var pips = 96;                                // 24hour x 4quarters
 
 for (i = 0; i <= pips; i = i + 1) {
@@ -1122,9 +1149,9 @@ for (i = 0; i <= pips; i = i + 1) {
 $(".outerDiv").append(
   '<div class="selection" style="position:absolute;height:55px;background-color:green;opacity:50%;top:20px;left:50%;z-index:-1;"></div>'
 );
-
-//END // create the slider numbers and scale
-//////////////////////////////////////////////////////////
+//////////////////////////////////////////////
+// END // create the slider numbers and scale
+//////////////////////////////////////////////
 
 
 
@@ -1263,9 +1290,9 @@ sunset.forEach(sunset => {
 
 
 
-////////////////////////////////////////////////////////////////////////////////////////////
-// doiteverysecond() doiteverysecond() doiteverysecond() doiteverysecond() doiteverysecond()
-
+///////////////////////////////////////////////////////////////////////////
+// doiteverysecond() doiteverysecond() doiteverysecond() doiteverysecond() 
+///////////////////////////////////////////////////////////////////////////
 function doiteverysecond() {
 
   // console.log("Using JavaScript version:", navigator.userAgent);
@@ -1335,8 +1362,9 @@ var currents=((times.sunset.getHours()*60+times.sunset.getMinutes())/1440)*100; 
 
 
 }
-// end doiteverysecond()  end doiteverysecond()  end doiteverysecond()  end doiteverysecond() 
-
+///////////////////////////////////////////////////////////////////////
+// end doiteverysecond()  end doiteverysecond()  end doiteverysecond()  
+///////////////////////////////////////////////////////////////////////
 
 setInterval(doiteverysecond, 1000); // Milliseconds
 
@@ -1346,7 +1374,9 @@ setInterval(doiteverysecond, 1000); // Milliseconds
 
 
 
-///////////////////////////////////////////////////////////////////
+//////////////////////
+// DOMContentLoaded
+/////////////////////
 document.addEventListener('DOMContentLoaded', function() {      // do next when document is loaded
 
     // https://github.com/loebi-ch/jquery-clock-timepicker
@@ -1369,13 +1399,15 @@ document.addEventListener('DOMContentLoaded', function() {      // do next when 
     checkit();
 
 }, false);    // end document.addEventListener('DOMContentLoaded', function() {  
+//////////////////////
+// END DOMContentLoaded
+/////////////////////
 
 
 
-
-
-
-///////////////////////////////////////////////////////////////
+/////////////////////////////
+// show or hide About popup
+////////////////////////////
 function showhideabout() {
   if (document.getElementById("aboutDIV").style.display === "none") {
     document.getElementById("aboutDIV").style.display = "block";
@@ -1390,7 +1422,7 @@ function showhideabout() {
 
 
 /////////////////////////////////////////////////////////////////////
-// Make the DIV element draggable:
+// Make the DIV add or edit popup element draggable:
 // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable
 // touch should be added == think it works , touch me
 // https://stackoverflow.com/questions/56703458/how-to-make-a-draggable-elements-for-touch-and-mousedrag-events
@@ -1514,9 +1546,9 @@ function dragElement(elmnt) {
 
 
 <!--
-  //////////////////////////////////////////////////////////////////////////////
-  ////////////////////  begin editpopup  /////////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////
+  // begin editpopup HTML 
+  //////////////////////////
   -->
 <div id="editpopup">
  <div id="editpopupheader" class="drag-handle"> 
@@ -1542,16 +1574,16 @@ function dragElement(elmnt) {
 </div>
 </div>
 <!--
-  //////////////////////////////////////////////////////////////////////////////
-  ////////////////////  end editpopup  /////////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////////////////
+  ////////////////////////
+  // end editpopup HTML
+  ///////////////////////
   -->
 
 
 <!--
-  //////////////////////////////////////////////////////////////////////////////
-  ////////////////////  begin aboutdiv  /////////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////////////////
+  ////////////////////////
+  // begin aboutdiv HTML
+  ///////////////////////
   -->
 
   <div id="aboutDIV" style="position: fixed;
@@ -1592,9 +1624,9 @@ function dragElement(elmnt) {
     <button onclick="showhideabout()" style="border-color:green; color:green;"><b>?</b></button>
   </div>
 <!--
-  //////////////////////////////////////////////////////////////////////////////
-  ////////////////////  end  aboutdiv  /////////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////////////////
+  //////////////////////
+  // end  aboutdiv HTML
+  //////////////////////
   -->
 
 
