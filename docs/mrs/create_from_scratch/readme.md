@@ -40,3 +40,10 @@ WS upload on wednesday change
 
 ![2023-08-19-161131_1920x1080_scrot](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/3640b499-951a-4e6a-b420-60440c178ee4)
 
+
+---
+
+show only outgoing websocket messages in chrome inspect
+
+![2023-08-19-162307_1920x1080_scrot](https://github.com/ldijkman/randomnerd_esp32_wifi_manager/assets/45427770/27d85aae-7609-4699-85b2-92b7d2ac1f76)
+
