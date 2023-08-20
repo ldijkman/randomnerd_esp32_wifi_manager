@@ -2,6 +2,8 @@
 
 https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/create_from_scratch/index.html
 
+video served from ESP32 ace editor websockets
+
 https://youtu.be/17K2TtYPI_A
 
 
@@ -97,3 +99,7 @@ int ts_9 = ts[9]; // 1260
 </pre>
 
 ### Does it make Sense, i do not know
+
+video served from ESP32 ace editor websockets
+
+https://youtu.be/17K2TtYPI_A
