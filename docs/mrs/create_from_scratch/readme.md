@@ -52,6 +52,7 @@ show only outgoing websocket messages in chrome inspect
 
 https://arduinojson.org/v6/assistant/#/step2
 
+websocket message when save or delete button on tuesday is clicked
 <pre>
  var dy=daytext;
  var ts=timeslots;
