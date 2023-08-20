@@ -94,4 +94,4 @@ int ts_9 = ts[9]; // 1260
  
 </pre>
 
-### does it make seense, i do not know
+### Does it make Sense, i do not know
