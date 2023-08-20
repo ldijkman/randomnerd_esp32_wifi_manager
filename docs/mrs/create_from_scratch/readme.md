@@ -49,3 +49,44 @@ show only outgoing websocket messages in chrome inspect
 
 
 ### ok now i should write some code on the arduino ESP8266 / ESP32 side
+
+<pre>
+ var dy=daytext;
+ var ts=timeslots;
+ timeslot_to_ESP = {dy,ts};
+
+* websocket message {"dy":"Tue","ts":[0,60,300,360,600,660,900,960,1200,1260]}
+* deserialize {"dy":"Tue","ts":[0,60,300,360,600,660,900,960,1200,1260]}
+ 
+ https://arduinojson.org/v6/assistant/#/step2
+ result arduino code
+
+ 
+// Stream& input; {"dy":"Tue","ts":[0,60,300,360,600,660,900,960,1200,1260]}
+
+StaticJsonDocument<256> doc;
+
+DeserializationError error = deserializeJson(doc, input);
+
+if (error) {
+  Serial.print(F("deserializeJson() failed: "));
+  Serial.println(error.f_str());
+  return;
+}
+
+const char* dy = doc["dy"]; // "Tue"
+
+JsonArray ts = doc["ts"];
+int ts_0 = ts[0]; // 0
+int ts_1 = ts[1]; // 60
+int ts_2 = ts[2]; // 300
+int ts_3 = ts[3]; // 360
+int ts_4 = ts[4]; // 600
+int ts_5 = ts[5]; // 660
+int ts_6 = ts[6]; // 900
+int ts_7 = ts[7]; // 960
+int ts_8 = ts[8]; // 1200
+int ts_9 = ts[9]; // 1260
+
+ 
+</pre>
