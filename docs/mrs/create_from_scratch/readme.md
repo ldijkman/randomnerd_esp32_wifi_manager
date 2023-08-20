@@ -50,6 +50,8 @@ show only outgoing websocket messages in chrome inspect
 
 ### ok now i should write some code on the arduino ESP8266 / ESP32 side
 
+https://arduinojson.org/v6/assistant/#/step2
+
 <pre>
  var dy=daytext;
  var ts=timeslots;
