@@ -345,7 +345,7 @@ Sunday
 <br>
 <br>
 <br>
-<label for="days">Copy this Schema To:</label>
+<label for="days">Copy <class id="copyday">Schema To:</label>
 <select id="days">
   <option value="none" style="color:gray;" selected disabled>Select Day</option>
   <option value="" disabled>------</option>
@@ -507,8 +507,8 @@ function send_to_ESP(){                              // call by save and delete
 function copy_schema(wichtimeslot){
     console.log("copy_schema to ",wichtimeslot);
     if(wichtimeslot=="monday"){
-      monday_timeslots=[]; 
-      monday_timeslots= timeslots;
+      monday_timeslots=[];                // empty timeslot
+      monday_timeslots= timeslots;        //  
     }
     if(wichtimeslot=="tuesday"){
       tuesday_timeslots=[]; 
@@ -537,7 +537,7 @@ function copy_schema(wichtimeslot){
 
 
 
-    if(wichtimeslot=="weekdays"){
+    if(wichtimeslot=="weekdays"){    // monday to friday
       monday_timeslots=[]; 
       monday_timeslots= timeslots;
     
@@ -570,6 +570,7 @@ function checkit(wich) {
     timeslots = monday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Monday</h1>";
+    document.getElementById("copyday").innerHTML = "Monday Schema to";
     //document.getElementById('radio_monday').checked
     console.log("radio_monday");
     document.getElementById("label_monday").style.color = "green";
@@ -584,6 +585,7 @@ function checkit(wich) {
     timeslots = tuesday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Tuesday</h1>";
+    document.getElementById("copyday").innerHTML = "Tuesday Schema to";
     //document.getElementById('radio_tuesday').checked
     console.log("radio_tuesday");
     document.getElementById("label_tuesday").style.color = "green";
@@ -598,6 +600,7 @@ function checkit(wich) {
     timeslots = wednesday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Wednesday</h1>";
+    document.getElementById("copyday").innerHTML = "Wednesday Schema to";
     //document.getElementById('radio_wednesday').checked
     console.log("radio_wednesday");
     document.getElementById("label_wednesday").style.color = "green";
@@ -612,6 +615,7 @@ function checkit(wich) {
     timeslots = thursday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Thursday</h1>";
+    document.getElementById("copyday").innerHTML = "Thursday Schema to";
     //document.getElementById('radio_thursday').checked
     console.log("radio_thursday");
     document.getElementById("label_thursday").style.color = "green";
@@ -627,6 +631,7 @@ function checkit(wich) {
     timeslots = friday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Friday</h1>";
+    document.getElementById("copyday").innerHTML = "Friday Schema to";
     //document.getElementById('radio_friday').checked
     console.log("radio_friday");
     document.getElementById("label_friday").style.color = "green";
@@ -641,6 +646,7 @@ function checkit(wich) {
     timeslots = saturday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Saturday</h1>";
+     document.getElementById("copyday").innerHTML = "Saturday Schema to"; 
     //document.getElementById('radio_saturday').checked
     console.log("radio_saturday");
     document.getElementById("label_saturday").style.color = "green";
@@ -655,6 +661,7 @@ function checkit(wich) {
     timeslots = sunday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
     document.getElementById("day").innerHTML = "<h1>Sunday</h1>";
+    document.getElementById("copyday").innerHTML = "Sunday Schema to"; 
     //document.getElementById('radio_saturday').checked
     console.log("radio_sunday");
     document.getElementById("label_sunday").style.color = "green";
