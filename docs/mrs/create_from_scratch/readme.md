@@ -1,6 +1,10 @@
 
+view index.html live
 
 https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/create_from_scratch/index.html
+
+---
+
 
 video served from ESP32 ace editor websockets
 
