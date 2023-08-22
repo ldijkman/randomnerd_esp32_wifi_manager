@@ -349,7 +349,7 @@ Sunday
 
 </select>
 &nbsp;&nbsp;&nbsp;&nbsp;
-<input type="button" value="OK" onclick='copy_schema(document.getElementById("days").value)'>
+<input type="button" id="copyokbutton" value="OK" onclick='copy_schema(document.getElementById("days").value)'>
 
 <br>
 
@@ -554,14 +554,17 @@ function copy_schema(wichtimeslot){
     }
     
   document.getElementById("firstoption").innerHTML = "Copy Done!";
-  setTimeout(setoption, 2500);
+  document.getElementById("copyokbutton").value = "Copy Done!";
+  
+  setTimeout(setoptiontext, 2500);
   document.getElementById("days").value="none";
 }
 
 
-function setoption() {
+function setoptiontext() {
  // reset text "copy done" to "select day" after 2.5 seconds
  document.getElementById("firstoption").innerHTML = "Select Day";
+ document.getElementById("copyokbutton").value = "OK";
 }
 
 
