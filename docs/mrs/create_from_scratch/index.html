@@ -278,6 +278,9 @@ int ts_9 = ts[9]; // 1260
 
 
 <center>
+<pre class="gofullscreenmessage" style="font-size : 17px;"><!-- this text will be set if device screen framed --></pre>  
+<pre class="pleaserotatetolandscape" style="font-size : 17px;"><!-- this text will be set if device screen is in portrait,  Rotate device to LandScape? --></pre>  
+
 <br>
 
 <!-- radio button is hidden -->
@@ -331,7 +334,7 @@ Sunday
 <br>
 <label for="days">Copy <b class id="copyday"></b> Schema to</label>
 <select id="days">
-  <option value="none" style="color:gray;" selected disabled>Select Day</option>
+  <option id="firstoption" value="none" style="color:gray;" selected disabled>Select Day</option>
   <option value="" disabled>------</option>
   <option value="monday">Monday</option>
   <option value="tuesday">Tuesday</option>
@@ -359,10 +362,6 @@ Open Chrome Inspect Console = Ctrl + Shift + j<br>
 <br>
 <br>
 
-
-<pre class="gofullscreenmessage" style="font-size : 17px;"><!-- this text will be set if device screen framed --></pre>  
-<pre class="pleaserotatetolandscape" style="font-size : 17px;"><!-- this text will be set if device screen is in portrait,  Rotate device to LandScape? --></pre>  
-
 <hr width="40%">
 
 <a href="https://www.google.com/search?q=52.7354,5.179" target="google">GeoLocation for sunrise, sunset </a>
@@ -372,7 +371,7 @@ lat:<input type="text" id="lat" size="6" oninput="dogeoloc()" value="52.7354" on
 lon:<input type="text" id="lon" size="6" oninput="dogeoloc()" value="5.179" onchange="dogeoloc()"/>
 
 <hr width="40%">
-<input type="button" value="Chrome inspect clear console " onclick="console.clear()"><br>
+
 <br>
 <br>
 
@@ -380,7 +379,7 @@ lon:<input type="text" id="lon" size="6" oninput="dogeoloc()" value="5.179" onch
 sunrise sunset geolocation picker map lat lon<br>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.css" />
-<link rel="stylesheet" href="https://www.jqueryscript.net/demo/leaflet-location-picker/src/leaflet-locationpicker.css" />
+<link rel="stylesheet" href="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/create_from_scratch/leaflet-locationpicker.css" />
 
 <div class="container">
       <input id="geoloc" type="text" value="52.7354,5.179" class="form-control mb-3"  />
@@ -391,7 +390,7 @@ Think the time / timezone of your device must match geolocation<br>
 i am in europe, if i choose caribean location<br>
 time sunrise sunset is about 7 hours of target<br>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"></script>
-<script src="https://www.jqueryscript.net/demo/leaflet-location-picker/src/leaflet-locationpicker.js"></script>
+<script src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/create_from_scratch/leaflet-locationpicker.js"></script>
 <script>
   $('#geoloc').leafletLocationPicker({
     alwaysOpen: true,
@@ -553,9 +552,16 @@ function copy_schema(wichtimeslot){
       friday_timeslots=[]; 
       friday_timeslots= timeslots;
     }
-
+    
+  document.getElementById("firstoption").innerHTML = "Copy Done!";
+  setTimeout(setoption, 2500);
   document.getElementById("days").value="none";
+}
 
+
+function setoption() {
+ // reset text "copy done" to "select day" after 2.5 seconds
+ document.getElementById("firstoption").innerHTML = "Select Day";
 }
 
 
