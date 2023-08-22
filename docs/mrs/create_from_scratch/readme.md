@@ -1,4 +1,4 @@
-touch friendly visual timeslot scheduler for on/off switching?
+Touch friendly visual timeslot scheduler for timed on/off switching?
 
 view index.html live
 
