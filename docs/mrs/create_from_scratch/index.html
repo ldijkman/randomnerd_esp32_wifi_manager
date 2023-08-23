@@ -33,6 +33,14 @@ https://youtu.be/17K2TtYPI_A
 <head>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+<!-- when save to home screen on phone - it is full screen - no annoying adres bar -->
+    <!-- Allow web app to be run in full-screen mode - iOS. -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <!-- Allow web app to be run in full-screen mode - Android. -->
+    <meta name="mobile-web-app-capable" content="yes">
+
 <meta name="description" content="Visual Day scheduler.">
 <meta name="author" content="Copyright Dirk Luberth Dijkman 2023">
  
@@ -159,7 +167,16 @@ body{
 scroll-behavior: smooth;
 </style>
 
-   
+   <script type="text/javascript">
+// When ready...
+window.addEventListener("load",function() {
+   // Set a timeout...
+   setTimeout(function(){
+      // Hide the address bar!
+      window.scrollTo(0, 1);
+   }, 0);
+});
+</script>
 </head>
 <body bgcolor="#f2f2ed">
 
@@ -1681,8 +1698,7 @@ document.addEventListener('DOMContentLoaded', function() {      // do next when 
 
     setInterval(doiteverysecond, 1000); // Milliseconds  call function doiteverysecond() every second
 
-    window.scrollTo(0,500);
-    window.scrollTo(0,10);
+   
 
 }, false);     
 //////////////////////
