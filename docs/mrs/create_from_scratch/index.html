@@ -470,6 +470,12 @@ function id(id) {
   return document.getElementById(id); 
 }
 
+// classname() short for document.getElementsByClassName()
+function classname(classname) { 
+  return document.getElementsByClassName(classname);
+}
+
+
 
 
 // ESP8266 ESP32 webserver should set next on pageload?
@@ -567,18 +573,18 @@ function copy_schema(wichtimeslot){
     }
     
   id("firstoption").innerHTML = "Copy Done!";
-  id("copyokbutton").value = "Copy Done!";
-  
-  setTimeout(setoptiontext, 2500);
+  id("copyokbutton").value = "Sending WebSocket to ESP!";
+  // reset text after 2.5 second
+  setTimeout( () => {    
+      id("copyokbutton").value = "OK";
+      id("firstoption").innerHTML = "Select Day";
+  }, 2500 );
+
   id("days").value="none";
 }
 
 
-function setoptiontext() {
- // reset text "copy done" to "select day" after 2.5 seconds
- id("firstoption").innerHTML = "Select Day";
- id("copyokbutton").value = "OK";
-}
+
 
 
 
@@ -678,7 +684,7 @@ function checkit(wich) {
     id("label_saturday").style.color = "green";
     id("label_saturday").style.borderColor = "green";
   } else {
-    document.getElementById("label_saturday").style.color = "gray";
+    id("label_saturday").style.color = "gray";
     id("label_saturday").style.borderColor = "gray";
   }
 
@@ -1067,21 +1073,21 @@ function drawtimeslots(){
 function showhideeditpopup(showorhide) {
   if (showorhide == "show") {
       id("editpopup").style.display = "block";           // show from function parameter   showhideeditpopup(show);
-      $("body").css("background-color", "#c3c3c3");                           // make body background a little darker so that popup stands out?         
-      //$("#monday").css("background-color", "#dadada");                        
+      document.body.style.backgroundColor="#c3c3c3";                              // make body background a little darker so that popup stands out?         
+                              
   } else if (showorhide == "hide") { 
       id("editpopup").style.display = "none";            // hide from function parameter     showhideeditpopup(hide);
-      $("body").css("background-color", "");                                  // reset body background to lighter shade
-      //$("#monday").css("background-color", "");
+      document.body.style.backgroundColor= "";                                  // reset body background to lighter shade
+     
   }else {
     if (id("editpopup").style.display === "none") {      // toggle = show  showhideeditpopup();
       id("editpopup").style.display = "block";
-      $("body").css("background-color", "#c3c3c3");                           // make body background a little darker so that popup stands out? 
-      //$("#monday").css("background-color", "#dadada");
+      document.body.style.backgroundColor="#c3c3c3";                           // make body background a little darker so that popup stands out? 
+     
     } else {
       id("editpopup").style.display = "none";            // toggle = hide    showhideeditpopup();
-      $("body").css("background-color", "");                                  // reset body background to lighter shade
-      //$("#monday").css("background-color", "");
+      document.body.style.backgroundColor= "";                                   // reset body background to lighter shade
+      
     }
   }
   drawtimeslots(); // if you close by x green selection may be left if not closed bij cancel or save
@@ -1214,7 +1220,7 @@ $( "#outerDiv" ).on( "click", function(event) {
    // $('pre.message').html("new add / edit / save timeslot popup");
    console.log("outerdiv clicked");
    savefromedit=0;
-   let outerDiv = document.getElementById('outerDiv');
+   let outerDiv = id('outerDiv');
    
 
   id('innerDiv').style.width = event.clientX-outerDiv.offsetLeft+'px';
@@ -1605,34 +1611,34 @@ if(self!==top){     // if document is iframed show a message,   Go Full Screen,i
   if(now.getSeconds()<=9)sec="0"+now.getSeconds(); else sec=now.getSeconds();  // a leading zer0 if 0 to 9
 
  for (let i = 0; i < 1; i++) {  
-      document.getElementsByClassName('actualtime')[i].style.left = current+"%";   // time to percentage 0 to 100% set div position
+      classname('actualtime')[i].style.left = current+"%";   // time to percentage 0 to 100% set div position
   
-      document.getElementsByClassName('actualtime')[i].innerHTML = "<div id=\"acttimelabel\" class=\"acttimelabel\" style=\"position: absolute;top:-60px;left:-30px;border: 0px solid green;z-index:-1;\">" +dayName+" "+now.getHours()+":"+min+":"+sec+"</div>"; // set time text on div class actualtime
+      classname('actualtime')[i].innerHTML = "<div id=\"acttimelabel\" class=\"acttimelabel\" style=\"position: absolute;top:-60px;left:-30px;border: 0px solid green;z-index:-1;\">" +dayName+" "+now.getHours()+":"+min+":"+sec+"</div>"; // set time text on div class actualtime
  }
 
  var currents=((times.sunrise.getHours()*60+times.sunrise.getMinutes())/1440)*100; ;
   var sunrisecur=currents;
   for (let i = 0; i < 1; i++) {  
-      document.getElementsByClassName('sunrisel')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
+      classname('sunrisel')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
   
-      document.getElementsByClassName('sunrisel')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunriselabel\" onclick=\"sunriselabelclicked()\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;\"> sunrise "+times.sunrise.getHours()+":"+sunrisemin; +"</div>";// set time text on div class actualtime
+      classname('sunrisel')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunriselabel\" onclick=\"sunriselabelclicked()\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;\"> sunrise "+times.sunrise.getHours()+":"+sunrisemin; +"</div>";// set time text on div class actualtime
  
-      document.getElementsByClassName('evening_shade')[i].style.width= currents+"%";  // gray shade before sunrise
+      classname('evening_shade')[i].style.width= currents+"%";  // gray shade before sunrise
   }
   
 var currents=((times.sunset.getHours()*60+times.sunset.getMinutes())/1440)*100; ;
   var sunsetcur=currents;
   for (let i = 0; i < 1; i++) {  
-      document.getElementsByClassName('sunsetl')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
+      classname('sunsetl')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
   
-      document.getElementsByClassName('sunsetl')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunsetlabel\" onclick=\"sunsetlabelclicked()\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;z-index:0;\"> sunset "+times.sunset.getHours()+":"+sunsetmin+"</div>"; // set time text on div class actualtime
+      classname('sunsetl')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunsetlabel\" onclick=\"sunsetlabelclicked()\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;z-index:0;\"> sunset "+times.sunset.getHours()+":"+sunsetmin+"</div>"; // set time text on div class actualtime
  
-      document.getElementsByClassName('morning_shade')[i].style.width= (100-currents)+"%";  // gray shade before sunrise
+      classname('morning_shade')[i].style.width= (100-currents)+"%";  // gray shade before sunrise
  
-      document.getElementsByClassName('morning_shade')[i].style.left= currents+"%";
+      classname('morning_shade')[i].style.left= currents+"%";
 
-      document.getElementsByClassName('dayshine')[i].style.left= sunrisecur+"%";
-      document.getElementsByClassName('dayshine')[i].style.width= (100-sunrisecur)+(sunsetcur-100)+"%"; 
+      classname('dayshine')[i].style.left= sunrisecur+"%";
+      classname('dayshine')[i].style.width= (100-sunrisecur)+(sunsetcur-100)+"%"; 
   } 
 
 
@@ -1670,7 +1676,7 @@ document.addEventListener('DOMContentLoaded', function() {      // do next when 
     if (daynr==0)daynr=7;          
     console.log("daynr ",daynr);
     // $('.radioday')[daynr-1].checked="true";                                // jquery
-    document.getElementsByClassName('radioday')[daynr-1].checked="true";      // javascript
+    classname('radioday')[daynr-1].checked="true";      // javascript
     // 0=monday ... 6=sunday
     checkit();
 
@@ -1715,7 +1721,7 @@ function dragElement(elmnt) {
       pos3 = 0,
       pos4 = 0;
 
-  let dragHandle = document.getElementById("editpopupheader");
+  let dragHandle = id("editpopupheader");
 
   if (dragHandle !== undefined) {
     // if present, the header is where you move the DIV from:
