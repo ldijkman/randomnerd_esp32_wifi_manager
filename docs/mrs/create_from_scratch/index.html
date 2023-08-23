@@ -556,25 +556,25 @@ function copy_schema(wichtimeslot){
       friday_timeslots= timeslots;
     }
     
-  ById("firstoption").innerHTML = "Copy Done!";
-  ById("copyokbutton").value = "Copy Done!";
+  id("firstoption").innerHTML = "Copy Done!";
+  id("copyokbutton").value = "Copy Done!";
   
   setTimeout(setoptiontext, 2500);
-  ById("days").value="none";
+  id("days").value="none";
 }
 
 
 function setoptiontext() {
  // reset text "copy done" to "select day" after 2.5 seconds
- ById("firstoption").innerHTML = "Select Day";
- ById("copyokbutton").value = "OK";
+ id("firstoption").innerHTML = "Select Day";
+ id("copyokbutton").value = "OK";
 }
 
 
 // and you said you prefer not to use JQuery
 // and now you create your own JaBaDabba script
 // short for 
-function ById(id) { 
+function id(id) { 
   return document.getElementById(id); 
 }
 
@@ -586,110 +586,110 @@ function ById(id) {
 function checkit(wich) {
    console.log("wich ",wich);
   timeslots = [];
-  if (document.getElementById("radio_monday").checked) {
+  if (id("radio_monday").checked) {
     daytext="Mon";
     timeslots = monday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
-    document.getElementById("day").innerHTML = "<h1>Monday</h1>";
-    document.getElementById("copyday").innerHTML = "Monday";
-    //document.getElementById('radio_monday').checked
+    id("day").innerHTML = "<h1>Monday</h1>";
+    id("copyday").innerHTML = "Monday";
+    //id('radio_monday').checked
     console.log("radio_monday");
-    document.getElementById("label_monday").style.color = "green";
-    document.getElementById("label_monday").style.borderColor = "green";
+    id("label_monday").style.color = "green";
+    id("label_monday").style.borderColor = "green";
   } else {
-    document.getElementById("label_monday").style.color = "gray";
-    document.getElementById("label_monday").style.borderColor = "gray";
+    id("label_monday").style.color = "gray";
+    id("label_monday").style.borderColor = "gray";
   }
 
-  if (document.getElementById("radio_tuesday").checked) {
+  if (id("radio_tuesday").checked) {
     daytext="Tue";
     timeslots = tuesday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
-    document.getElementById("day").innerHTML = "<h1>Tuesday</h1>";
-    document.getElementById("copyday").innerHTML = "Tuesday";
-    //document.getElementById('radio_tuesday').checked
+    id("day").innerHTML = "<h1>Tuesday</h1>";
+    id("copyday").innerHTML = "Tuesday";
+    //id('radio_tuesday').checked
     console.log("radio_tuesday");
-    document.getElementById("label_tuesday").style.color = "green";
-    document.getElementById("label_tuesday").style.borderColor = "green";
+    id("label_tuesday").style.color = "green";
+    id("label_tuesday").style.borderColor = "green";
   } else {
-    document.getElementById("label_tuesday").style.color = "gray";
-    document.getElementById("label_tuesday").style.borderColor = "gray";
+    id("label_tuesday").style.color = "gray";
+    id("label_tuesday").style.borderColor = "gray";
   }
 
-  if (document.getElementById("radio_wednesday").checked) {
+  if (id("radio_wednesday").checked) {
     daytext="Wed";
     timeslots = wednesday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
-    document.getElementById("day").innerHTML = "<h1>Wednesday</h1>";
-    document.getElementById("copyday").innerHTML = "Wednesday";
-    //document.getElementById('radio_wednesday').checked
+    id("day").innerHTML = "<h1>Wednesday</h1>";
+    id("copyday").innerHTML = "Wednesday";
+    //id('radio_wednesday').checked
     console.log("radio_wednesday");
-    document.getElementById("label_wednesday").style.color = "green";
-    document.getElementById("label_wednesday").style.borderColor = "green";
+    id("label_wednesday").style.color = "green";
+    id("label_wednesday").style.borderColor = "green";
   } else {
-    document.getElementById("label_wednesday").style.color = "gray";
-    document.getElementById("label_wednesday").style.borderColor = "gray";
+    id("label_wednesday").style.color = "gray";
+    id("label_wednesday").style.borderColor = "gray";
   }
 
-  if (document.getElementById("radio_thursday").checked) {
+  if (id("radio_thursday").checked) {
     daytext="Thu";
     timeslots = thursday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
-    document.getElementById("day").innerHTML = "<h1>Thursday</h1>";
-    document.getElementById("copyday").innerHTML = "Thursday";
-    //document.getElementById('radio_thursday').checked
+    id("day").innerHTML = "<h1>Thursday</h1>";
+    id("copyday").innerHTML = "Thursday";
+    //id('radio_thursday').checked
     console.log("radio_thursday");
-    document.getElementById("label_thursday").style.color = "green";
-    document.getElementById("label_thursday").style.borderColor = 'green'
+    id("label_thursday").style.color = "green";
+    id("label_thursday").style.borderColor = 'green'
   } else {
-    document.getElementById("label_thursday").style.color = "gray";
-    document.getElementById("label_thursday").style.borderColor = "gray";
+    id("label_thursday").style.color = "gray";
+    id("label_thursday").style.borderColor = "gray";
 
   }
 
-  if (document.getElementById("radio_friday").checked) {
+  if (id("radio_friday").checked) {
     daytext="Fri";
     timeslots = friday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
-    document.getElementById("day").innerHTML = "<h1>Friday</h1>";
-    document.getElementById("copyday").innerHTML = "Friday";
-    //document.getElementById('radio_friday').checked
+    id("day").innerHTML = "<h1>Friday</h1>";
+    id("copyday").innerHTML = "Friday";
+    //id('radio_friday').checked
     console.log("radio_friday");
-    document.getElementById("label_friday").style.color = "green";
-    document.getElementById("label_friday").style.borderColor = 'green'
+    id("label_friday").style.color = "green";
+    id("label_friday").style.borderColor = 'green'
   } else {
-    document.getElementById("label_friday").style.color = "gray";
-    document.getElementById("label_friday").style.borderColor = 'gray'
+    id("label_friday").style.color = "gray";
+    id("label_friday").style.borderColor = 'gray'
   }
 
-  if (document.getElementById("radio_saturday").checked) {
+  if (id("radio_saturday").checked) {
     daytext="Sat";
     timeslots = saturday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
-    document.getElementById("day").innerHTML = "<h1>Saturday</h1>";
-     document.getElementById("copyday").innerHTML = "Saturday"; 
-    //document.getElementById('radio_saturday').checked
+    id("day").innerHTML = "<h1>Saturday</h1>";
+    id("copyday").innerHTML = "Saturday"; 
+    //id('radio_saturday').checked
     console.log("radio_saturday");
-    document.getElementById("label_saturday").style.color = "green";
-    document.getElementById("label_saturday").style.borderColor = "green";
+    id("label_saturday").style.color = "green";
+    id("label_saturday").style.borderColor = "green";
   } else {
     document.getElementById("label_saturday").style.color = "gray";
-    document.getElementById("label_saturday").style.borderColor = "gray";
+    id("label_saturday").style.borderColor = "gray";
   }
 
-  if (document.getElementById("radio_sunday").checked) {
+  if (id("radio_sunday").checked) {
     daytext="Sun";
     timeslots = sunday_timeslots;                           // load selected day in timeslots
     drawtimeslots();
-    document.getElementById("day").innerHTML = "<h1>Sunday</h1>";
-    document.getElementById("copyday").innerHTML = "Sunday"; 
-    //document.getElementById('radio_saturday').checked
+    id("day").innerHTML = "<h1>Sunday</h1>";
+    id("copyday").innerHTML = "Sunday"; 
+    //id('radio_saturday').checked
     console.log("radio_sunday");
-    document.getElementById("label_sunday").style.color = "green";
-    document.getElementById("label_sunday").style.borderColor = "green";
+    id("label_sunday").style.color = "green";
+    id("label_sunday").style.borderColor = "green";
   } else {
-    document.getElementById("label_sunday").style.color = "gray";
-    document.getElementById("label_sunday").style.borderColor = "gray";
+    id("label_sunday").style.color = "gray";
+    id("label_sunday").style.borderColor = "gray";
   }
 }
 
@@ -735,10 +735,10 @@ function deletebutton(){
 //////////////////////////////////////////////////////////////////////////////////////////////
 function cancelbutton(){
   showhideeditpopup();
-  document.getElementById('innerDiv').style.left='';   // erase edit timeslot green div drawing???????
-  document.getElementById('innerDiv').style.width='';
-  document.getElementById('startlabel').innerHTML='';
-  document.getElementById('endlabel').innerHTML='';
+  id('innerDiv').style.left='';   // erase edit timeslot green div drawing???????
+  id('innerDiv').style.width='';
+  id('startlabel').innerHTML='';
+  id('endlabel').innerHTML='';
   
    savefromedit = 0;  
    selected_highlight = -1;                              // erase edit timeslot highlight
@@ -774,13 +774,13 @@ function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="
 
 
     $('#addoredit').text("EDIT TimeSlot");
-    document.getElementById("deletebutton").disabled = false;   // enablee the delete button
-    document.getElementById("deletebutton").hidden = false;     // not hide the delete button, show delete button
+    id("deletebutton").disabled = false;   // enablee the delete button
+    id("deletebutton").hidden = false;     // not hide the delete button, show delete button
     showhideeditpopup();                                        // show edit popup
 
     // wich holds the array position of first data we need in minutes
-    document.getElementById("ontime").value=toHoursAndMinutes(timeslots[wich]);  // get minute data from timeslot array and convert to hh:mm for text input field
-    document.getElementById("offtime").value=toHoursAndMinutes(timeslots[wich+1]);
+    id("ontime").value=toHoursAndMinutes(timeslots[wich]);  // get minute data from timeslot array and convert to hh:mm for text input field
+    id("offtime").value=toHoursAndMinutes(timeslots[wich+1]);
     savefromedit=1;                                 // a flag for savebutton
 // if changes need to modify the timeslot array data
  
@@ -797,13 +797,13 @@ function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="
 //////////////////////////////////////////////////////////////////////////////////////////
 function savetimeslot() {
 
-     if(document.getElementById("offtime").value == "00:00"){
-        document.getElementById("offtime").value="24:00";                         // if offtime is 00:00 set it to 24:00
+     if(id("offtime").value == "00:00"){
+        id("offtime").value="24:00";                         // if offtime is 00:00 set it to 24:00
          console.log("change 00:00 to 24:00");
   }
     
-    var onhhmm = document.getElementById("ontime").value;
-    var offhhmm = document.getElementById("offtime").value;
+    var onhhmm = id("ontime").value;
+    var offhhmm = id("offtime").value;
     console.log("onval, offval", onhhmm, offhhmm);
 
     showhideeditpopup();          // hide edit popup
@@ -814,12 +814,12 @@ function savetimeslot() {
       // here from a save click from possible modified timeslot save
       // edit timeslot overwrite values in timeslot array
         console.log("timeslotpointer",timeslotpointer);
-        timeslots[timeslotpointer] = hhmm_to_minutes(document.getElementById("ontime").value);     // change the values in the timeslot array
-        timeslots[timeslotpointer+1] = hhmm_to_minutes(document.getElementById("offtime").value);  // hh:mm to minutes
+        timeslots[timeslotpointer] = hhmm_to_minutes(id("ontime").value);     // change the values in the timeslot array
+        timeslots[timeslotpointer+1] = hhmm_to_minutes(id("offtime").value);  // hh:mm to minutes
         savefromedit=0;
   }else{
         // push / add values pair to a new timeslot array             hh:mm to minutes
-        timeslots.push(hhmm_to_minutes(document.getElementById("ontime").value) , hhmm_to_minutes(document.getElementById("offtime").value));
+        timeslots.push(hhmm_to_minutes(id("ontime").value) , hhmm_to_minutes(id("offtime").value));
   }
 
 
@@ -837,7 +837,7 @@ timeslotsnested = timeslots.reduce((a, c, i) => {
   return i % 2 === 0 ? a.concat([timeslots.slice(i, i + 2)]) : a;
 }, []);
 //$('pre.message2').html("timeslotsnested"+JSON.stringify(timeslotsnested)); //jquery
-document.getElementById('message2').innerHTML = ("timeslotsnested"+JSON.stringify(timeslotsnested));//javascript
+id('message2').innerHTML = ("timeslotsnested"+JSON.stringify(timeslotsnested));//javascript
 console.log("timeslotsnested ",timeslotsnested);
 
 /*
@@ -853,7 +853,7 @@ length: 5
 // sort a nested array???
 sorted=timeslotsnested.sort((a,b) => a[0] - b[0]);
 //$('pre.message3').html("nestedsorted"+JSON.stringify(sorted));  //jquery
-document.getElementById('message3').innerHTML = ("nestedsorted"+JSON.stringify(sorted));//javascript
+id('message3').innerHTML = ("nestedsorted"+JSON.stringify(sorted));//javascript
 
 console.log("nestedsorted?",sorted);
 /*
@@ -895,7 +895,7 @@ for (let i = 0; i < timeslots.length; i=i+2) {
       cannot create that endpoint,\n`
       +toHoursAndMinutes(timeslots[i+3])+
       ` not reached`
-      +document.getElementById("offtime").value+
+      +id("offtime").value+
       `\n`
       + toHoursAndMinutes(timeslots[i+1]) +
       `-`
@@ -983,10 +983,10 @@ function drawtimeslots(){
 // draw timeslots array
  
  
-  document.getElementById('innerDiv').style.left='';   // erase edit timeslot???????
-  document.getElementById('innerDiv').style.width='';
-  document.getElementById('startlabel').innerHTML='';
-  document.getElementById('endlabel').innerHTML='';
+  id('innerDiv').style.left='';   // erase edit timeslot???????
+  id('innerDiv').style.width='';
+  id('startlabel').innerHTML='';
+  id('endlabel').innerHTML='';
  // draw timeslots array
   $("div.timeslot").remove(); // remove all previous generated divs with classname timeslot 
   $("div.slabel").remove(); // remove all previous generated divs with classname timeslot 
@@ -1061,20 +1061,20 @@ function drawtimeslots(){
 ////////////////////////////////////////
 function showhideeditpopup(showorhide) {
   if (showorhide == "show") {
-      document.getElementById("editpopup").style.display = "block";           // show from function parameter   showhideeditpopup(show);
+      id("editpopup").style.display = "block";           // show from function parameter   showhideeditpopup(show);
       $("body").css("background-color", "#c3c3c3");                           // make body background a little darker so that popup stands out?         
       //$("#monday").css("background-color", "#dadada");                        
   } else if (showorhide == "hide") { 
-      document.getElementById("editpopup").style.display = "none";            // hide from function parameter     showhideeditpopup(hide);
+      id("editpopup").style.display = "none";            // hide from function parameter     showhideeditpopup(hide);
       $("body").css("background-color", "");                                  // reset body background to lighter shade
       //$("#monday").css("background-color", "");
   }else {
-    if (document.getElementById("editpopup").style.display === "none") {      // toggle = show  showhideeditpopup();
-      document.getElementById("editpopup").style.display = "block";
+    if (id("editpopup").style.display === "none") {      // toggle = show  showhideeditpopup();
+      id("editpopup").style.display = "block";
       $("body").css("background-color", "#c3c3c3");                           // make body background a little darker so that popup stands out? 
       //$("#monday").css("background-color", "#dadada");
     } else {
-      document.getElementById("editpopup").style.display = "none";            // toggle = hide    showhideeditpopup();
+      id("editpopup").style.display = "none";            // toggle = hide    showhideeditpopup();
       $("body").css("background-color", "");                                  // reset body background to lighter shade
       //$("#monday").css("background-color", "");
     }
@@ -1202,8 +1202,8 @@ $( "#outerDiv" ).on( "click", function(event) {
   }
 
    $('#addoredit').text("Add New TimeSlot");                 // text on showhideeditpopup changes from add or edit timeslot
-   document.getElementById("deletebutton").disabled = true;  // greyout disable the delete button
-   document.getElementById("deletebutton").hidden = true;    // hide the delete button
+   id("deletebutton").disabled = true;  // greyout disable the delete button
+   id("deletebutton").hidden = true;    // hide the delete button
    showhideeditpopup("show");
 
    // $('pre.message').html("new add / edit / save timeslot popup");
@@ -1212,7 +1212,7 @@ $( "#outerDiv" ).on( "click", function(event) {
    let outerDiv = document.getElementById('outerDiv');
    
 
-  document.getElementById('innerDiv').style.width = event.clientX-outerDiv.offsetLeft+'px';
+  id('innerDiv').style.width = event.clientX-outerDiv.offsetLeft+'px';
   console.log("mouse click x position on outerdiv ",event.clientX-outerDiv.offsetLeft);
   console.log("outerDiv width ",outerDiv.offsetWidth);
          
@@ -1225,8 +1225,8 @@ $( "#outerDiv" ).on( "click", function(event) {
   var hhmmplus15=toHoursAndMinutes(clickposinminutes+15);
   if(clickposinminutes+15>=1440)hhmmplus15="24:00";
   console.log("hhmm ",hhmm);
-  document.getElementById("ontime").value=hhmm;               // set on time textfield
-  document.getElementById("offtime").value=hhmmplus15;        // set off time textfield
+  id("ontime").value=hhmm;               // set on time textfield
+  id("offtime").value=hhmmplus15;        // set off time textfield
 
   drawtemp();
 });
@@ -1324,13 +1324,13 @@ function drawtemp (){
   // document.getElementById("offtime").value;                                    // get time from off text field
   
   
-  if(document.getElementById("offtime").value == "00:00"){
-        document.getElementById("offtime").value="24:00";                         // if offtime is 00:00 set it to 24:00
+  if(id("offtime").value == "00:00"){
+        id("offtime").value="24:00";                         // if offtime is 00:00 set it to 24:00
   }
 
   
-  var startminutes = hhmm_to_minutes(document.getElementById("ontime").value);    // convert hh:mm to minutes                       
-  var endminutes = hhmm_to_minutes(document.getElementById("offtime").value);     // convert hh:mm to minutes  
+  var startminutes = hhmm_to_minutes(id("ontime").value);    // convert hh:mm to minutes                       
+  var endminutes = hhmm_to_minutes(id("offtime").value);     // convert hh:mm to minutes  
 
   console.log("start / endminutes",startminutes," / ",endminutes)
 
@@ -1342,18 +1342,18 @@ function drawtemp (){
 // better not in pixels /////////////////////////////
       var startpos=map_range(startminutes,  0,1440, 0,(outerDiv.offsetWidth));   // scale startminutes in  range 0...1440 to div size
       var endpos=map_range(endminutes,  0,1440, 0,(outerDiv.offsetWidth));       // scale endminutes in  range 0...1440 to div size
-      document.getElementById('innerDiv').style.left=(startpos)+'px';
-      document.getElementById('innerDiv').style.width=(endpos-startpos)+'px';
+      id('innerDiv').style.left=(startpos)+'px';
+      id('innerDiv').style.width=(endpos-startpos)+'px';
 // do left and width in % not in px  
 // do it again better in % above in px did strange on screen rotate
       var startpos = map_range(startminutes,  0,1440, 0,100);                    // scale startminutes in  range 0...1440 to 0 to 100%
       var endpos = map_range(endminutes,  0,1440, 0,100);                        // scale endminutes in  range 0...1440 to 0 to 100%
-      document.getElementById('innerDiv').style.left=(startpos)+'%';             // set left%
-      document.getElementById('innerDiv').style.width=(endpos-startpos)+'%';     // set width %
+      id('innerDiv').style.left=(startpos)+'%';             // set left%
+      id('innerDiv').style.width=(endpos-startpos)+'%';     // set width %
 //////////////////////////////////////////////////
 
-  document.getElementById('startlabel').innerHTML=document.getElementById("ontime").value;      // write hh:mm to label
-  document.getElementById('endlabel').innerHTML=document.getElementById("offtime").value;       // write hh:mm to label
+  id('startlabel').innerHTML=id("ontime").value;      // write hh:mm to label
+  id('endlabel').innerHTML=id("offtime").value;       // write hh:mm to label
 
 }
 
@@ -1484,8 +1484,8 @@ var moon;
 // var lat=52.7354;
 // var lon=5.1790;
 function dogeoloc(){
-  var lat=document.getElementById('lat').value;
-  var lon=document.getElementById('lon').value;
+  var lat=id('lat').value;
+  var lon=id('lon').value;
   console.log(lat," : ",lon);
   times = SunCalc.getTimes(new Date(),lat,lon);
  
@@ -1653,7 +1653,7 @@ document.addEventListener('DOMContentLoaded', function() {      // do next when 
     $('#ontime').clockTimePicker({alwaysSelectHoursFirst:true});  // activate analog timepicker popup for id ontime text field
     $('#offtime').clockTimePicker({alwaysSelectHoursFirst:true}); // activate analog timepicker popup for id offtime text field
         
-    dragElement(document.getElementById("editpopup"));            // make editpopup draggable by mouse and touch
+    dragElement(id("editpopup"));            // make editpopup draggable by mouse and touch
 
     drawtemp();
     domessage();
@@ -1685,13 +1685,13 @@ document.addEventListener('DOMContentLoaded', function() {      // do next when 
 // show or hide About popup
 ////////////////////////////
 function showhideabout() {
-  if (document.getElementById("aboutDIV").style.display === "none") {
-    document.getElementById("aboutDIV").style.display = "block";
+  if (id("aboutDIV").style.display === "none") {
+    id("aboutDIV").style.display = "block";
      // should be something to block scrolling of body 
      // only popup scroll
      // https://codepen.io/anon/pen/oEMmrm
   } else {
-    document.getElementById("aboutDIV").style.display = "none";
+    id("aboutDIV").style.display = "none";
   }
 }
 
