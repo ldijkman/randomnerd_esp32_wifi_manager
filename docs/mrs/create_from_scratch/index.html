@@ -281,8 +281,8 @@ int ts_9 = ts[9]; // 1260
 
 
 <center>
-<pre class="gofullscreenmessage" style="font-size : 17px;"><!-- this text will be set if device screen framed --></pre>  
-<pre class="pleaserotatetolandscape" style="font-size : 17px;"><!-- this text will be set if device screen is in portrait,  Rotate device to LandScape? --></pre>  
+<pre class="gofullscreenmessage" id="gofullscreenmessage" style="font-size : 17px;"><!-- this text will be set if device screen framed --></pre>  
+<pre class="pleaserotatetolandscape" id="pleaserotatetolandscape" style="font-size : 17px;"><!-- this text will be set if device screen is in portrait,  Rotate device to LandScape? --></pre>  
 
 <br>
 
@@ -784,7 +784,7 @@ function timeslotclicked(wich){   // div onclick gives/returns wich,   onclick="
  
 
 
-    $('#addoredit').text("EDIT TimeSlot");
+    id("addoredit").innerHTML="EDIT TimeSlot";
     id("deletebutton").disabled = false;   // enablee the delete button
     id("deletebutton").hidden = false;     // not hide the delete button, show delete button
     showhideeditpopup();                                        // show edit popup
@@ -1193,7 +1193,8 @@ $( ".timeslot" ).on( "click", function() {
                                                                          
 Figlet font Standard https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/ 
 */
-$( "#outerDiv" ).on( "click", function(event) {
+// $("#outerDiv").on("click", function(event) { // jquery
+id( "outerDiv" ).addEventListener("click", function(event){    // javascript
   //event.stopPropagation(); 
   //event.preventDefault();
   selected_highlight = -1;        // erase edit timeslot highlight
@@ -1212,7 +1213,7 @@ $( "#outerDiv" ).on( "click", function(event) {
     return;                       // i want to return to the timeslotdivclick
   }
 
-   $('#addoredit').text("Add New TimeSlot");                 // text on showhideeditpopup changes from add or edit timeslot
+   id("addoredit").innerHTML="Add New TimeSlot";                 // text on showhideeditpopup changes from add or edit timeslot
    id("deletebutton").disabled = true;  // greyout disable the delete button
    id("deletebutton").hidden = true;    // hide the delete button
    showhideeditpopup("show");
@@ -1580,20 +1581,18 @@ function doiteverysecond() {
   // console.log("websocket.readyState ",websocket.readyState;
 
   if(window.innerHeight > window.innerWidth){
-        $('pre.pleaserotatetolandscape').html("<h4>Rotate device to LandScape?</h4>");
+        id('pleaserotatetolandscape').innerHTML="<h4>Rotate device to LandScape?</h4>";
   }else{
         // erase rotatemessage if in landscape"
-        $('pre.pleaserotatetolandscape').html("");
+        id('pleaserotatetolandscape').innerHTML="";
   }
 
 
-if(self!==top){     // if document is iframed show a message,   Go Full Screen,it works Better!
-    //document.write('<h3><a href="https://run.plnkr.co/plunks/p7xyOMhDtuTc49aZ/" target="fullscreen">Go Full Screen,it works Better!</a></h3>');
-        $('pre.gofullscreenmessage').html(`<h3><a href="https://run.plnkr.co/plunks/p7xyOMhDtuTc49aZ/" target="fullscreen">Go Full Screen,it works Better!</a></h3>`);
-  }else{
-        // erase
-       $('pre.gofullscreenmessage').html("");
-} 
+  if(self!==top){     // if document is iframed show a message,   Go Full Screen,it works Better!
+        id("gofullscreenmessage").innerHTML='<h3><a href="https://run.plnkr.co/plunks/p7xyOMhDtuTc49aZ/" target="fullscreen">Go Full Screen,it works Better!</a></h3>';
+  }else{      // erase
+        id("gofullscreenmessage").innerHTML="";
+  } 
 
 
   const now = new Date();
