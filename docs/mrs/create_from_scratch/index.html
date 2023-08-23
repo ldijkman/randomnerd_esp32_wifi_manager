@@ -23,6 +23,7 @@ https://youtu.be/17K2TtYPI_A
   https://jsfiddle.net/luberth/cx7ftgqd/
   https://playcode.io/luberth      
   https://luberth.playcode.io/
+  https://electricstorm.w3spaces.com/visual/scheduler.html
 
  use google chrome browser inspect to see more, and console messages
 -->
@@ -555,19 +556,28 @@ function copy_schema(wichtimeslot){
       friday_timeslots= timeslots;
     }
     
-  document.getElementById("firstoption").innerHTML = "Copy Done!";
-  document.getElementById("copyokbutton").value = "Copy Done!";
+  ById("firstoption").innerHTML = "Copy Done!";
+  ById("copyokbutton").value = "Copy Done!";
   
   setTimeout(setoptiontext, 2500);
-  document.getElementById("days").value="none";
+  ById("days").value="none";
 }
 
 
 function setoptiontext() {
  // reset text "copy done" to "select day" after 2.5 seconds
- document.getElementById("firstoption").innerHTML = "Select Day";
- document.getElementById("copyokbutton").value = "OK";
+ ById("firstoption").innerHTML = "Select Day";
+ ById("copyokbutton").value = "OK";
 }
+
+
+// and you said you pprefer not to use JQuery
+// and now you create your own JaBaDabba script
+// short for 
+function ById(id) { 
+  return document.getElementById(id); 
+}
+
 
 
 /////////////////////////////////////////////////////
@@ -1025,13 +1035,13 @@ function drawtimeslots(){
           +label_opacity+  // next child startlabel takes same opacity
           `%;">
           <div  class="startlabel" style="position: absolute; color: green; background-color: green; height: 0px; width: 1px; left: -20px; top: 15px;">`
-          +toHoursAndMinutes(timeslots[i])+
+          +toHoursAndMinutes(timeslots[i])+   // want to remove leading zero from timelabel
           `</div></div>
           <div class="elabel" style="position: absolute; color: red; background-color: red; height: 20px; width: 1px; left: 100%; top: 55px;;opacity:`
           +label_opacity+  // next child endlabel takes same opacity
           `%;">
           <div class="endlabel" style="position: absolute; color: red; background-color: red; height: 0px; width: 1px; left: -20px; top: 30px;">`
-          +toHoursAndMinutes(timeslots[i+1])+
+          +toHoursAndMinutes(timeslots[i+1])+  // want to remove leading zero from timelabel
           `</div>
           </div>
           </div>`
