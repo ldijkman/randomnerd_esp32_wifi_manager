@@ -489,9 +489,9 @@ function id(id) {
   return document.getElementById(id); 
 }
 
-// classname() short for document.getElementsByClassName()
-function classname(classname) { 
-  return document.getElementsByClassName(classname);
+// Class() short for document.getElementsByClass()
+function Class(Classname) { 
+  return document.getElementsByClass(Classname);
 }
 
 
@@ -1019,11 +1019,11 @@ function drawtimeslots(){
   id('startlabel').innerHTML='';
   id('endlabel').innerHTML='';
  // draw timeslots array
-  $("div.timeslot").remove(); // remove all previous generated divs with classname timeslot 
-  $("div.slabel").remove(); // remove all previous generated divs with classname timeslot 
-  $("div.elabel").remove(); // remove all previous generated divs with classname timeslot 
-  $("div.startlabel").remove(); // remove all previous generated divs with classname timeslot 
-  $("div.endlabel").remove(); // remove all previous generated divs with classname timeslot 
+  $("div.timeslot").remove(); // remove all previous generated divs with Class timeslot 
+  $("div.slabel").remove(); // remove all previous generated divs with Class timeslot 
+  $("div.elabel").remove(); // remove all previous generated divs with Class timeslot 
+  $("div.startlabel").remove(); // remove all previous generated divs with Class timeslot 
+  $("div.endlabel").remove(); // remove all previous generated divs with Class timeslot 
   for (let i = 0; i < timeslots.length; i=i+2) {
     console.log("timeslots[i] and [i+1]", timeslots[i]," ",timeslots[i+1]);
    
@@ -1537,16 +1537,16 @@ sunsetStr = times.sunset.getHours() + ':' + sunsetmin;
 
 var currents=((times.sunrise.getHours()*60+times.sunrise.getMinutes())/1440)*100; ;
   for (let i = 0; i < 1; i++) {  
-   //document.getElementsByClassName('sunrisel')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
+   //document.getElementsByClass('sunrisel')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
   
-   //document.getElementsByClassName('sunrisel')[i].innerHTML = "<br><br><br>sunrise "+times.sunrise.getHours()+":"+sunrisemin; // set time text on div class actualtime
+   //document.getElementsByClass('sunrisel')[i].innerHTML = "<br><br><br>sunrise "+times.sunrise.getHours()+":"+sunrisemin; // set time text on div class actualtime
   }
   
 var currents=((times.sunset.getHours()*60+times.sunset.getMinutes())/1440)*100; ;
   for (let i = 0; i < 1; i++) {  
-   //document.getElementsByClassName('sunsetl')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
+   //document.getElementsByClass('sunsetl')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
   
-   //document.getElementsByClassName('sunsetl')[i].innerHTML = "<br><br><br>sunset "+times.sunset.getHours()+":"+sunsetmin; // set time text on div class actualtime
+   //document.getElementsByClass('sunsetl')[i].innerHTML = "<br><br><br>sunset "+times.sunset.getHours()+":"+sunsetmin; // set time text on div class actualtime
   }  
 
 // get position of the sun (azimuth and altitude) at today's sunrise
@@ -1563,10 +1563,10 @@ console.log("sunset "+sunsetStr);
 
 //console.log(sunrisePos);
 //console.log(sunriseAzimuth);
-//document.getElementsByClassName('sunrise')[0].innerHTML =("<a href='http://www.google.com/search?q=52.7354,5.1790'>52.7354, 5.1790 </a> sunrise "+sunriseStr)+" ";
-//document.getElementsByClassName('sunset')[0].textContent =(" sunset "+sunsetStr)+" ";
-//document.getElementsByClassName('sunrise')[1].innerHTML =("<a href='http://www.google.com/search?q=52.7354,5.1790'>52.7354, 5.1790 </a> sunrise "+sunriseStr+" ");
-//document.getElementsByClassName('sunset')[1].textContent =(" sunset "+sunsetStr)+" ";  
+//document.getElementsByClass('sunrise')[0].innerHTML =("<a href='http://www.google.com/search?q=52.7354,5.1790'>52.7354, 5.1790 </a> sunrise "+sunriseStr)+" ";
+//document.getElementsByClass('sunset')[0].textContent =(" sunset "+sunsetStr)+" ";
+//document.getElementsByClass('sunrise')[1].innerHTML =("<a href='http://www.google.com/search?q=52.7354,5.1790'>52.7354, 5.1790 </a> sunrise "+sunriseStr+" ");
+//document.getElementsByClass('sunset')[1].textContent =(" sunset "+sunsetStr)+" ";  
 
 /*  
 const sunrise = document.querySelectorAll('.sunrise');
@@ -1630,34 +1630,34 @@ function doiteverysecond() {
   if(now.getSeconds()<=9)sec="0"+now.getSeconds(); else sec=now.getSeconds();  // a leading zer0 if 0 to 9
 
  for (let i = 0; i < 1; i++) {  
-      classname('actualtime')[i].style.left = current+"%";   // time to percentage 0 to 100% set div position
+      Class('actualtime')[i].style.left = current+"%";   // time to percentage 0 to 100% set div position
   
-      classname('actualtime')[i].innerHTML = "<div id=\"acttimelabel\" class=\"acttimelabel\" style=\"position: absolute;top:-60px;left:-30px;border: 0px solid green;z-index:-1;\">" +dayName+" "+now.getHours()+":"+min+":"+sec+"</div>"; // set time text on div class actualtime
+      Class('actualtime')[i].innerHTML = "<div id=\"acttimelabel\" class=\"acttimelabel\" style=\"position: absolute;top:-60px;left:-30px;border: 0px solid green;z-index:-1;\">" +dayName+" "+now.getHours()+":"+min+":"+sec+"</div>"; // set time text on div class actualtime
  }
 
  var currents=((times.sunrise.getHours()*60+times.sunrise.getMinutes())/1440)*100; ;
   var sunrisecur=currents;
   for (let i = 0; i < 1; i++) {  
-      classname('sunrisel')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
+      Class('sunrisel')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
   
-      classname('sunrisel')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunriselabel\" onclick=\"sunriselabelclicked()\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;\"> sunrise "+times.sunrise.getHours()+":"+sunrisemin; +"</div>";// set time text on div class actualtime
+      Class('sunrisel')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunriselabel\" onclick=\"sunriselabelclicked()\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;\"> sunrise "+times.sunrise.getHours()+":"+sunrisemin; +"</div>";// set time text on div class actualtime
  
-      classname('evening_shade')[i].style.width= currents+"%";  // gray shade before sunrise
+      Class('evening_shade')[i].style.width= currents+"%";  // gray shade before sunrise
   }
   
 var currents=((times.sunset.getHours()*60+times.sunset.getMinutes())/1440)*100; ;
   var sunsetcur=currents;
   for (let i = 0; i < 1; i++) {  
-      classname('sunsetl')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
+      Class('sunsetl')[i].style.left = currents+"%";   // time to percentage 0 to 100% set div position
   
-      classname('sunsetl')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunsetlabel\" onclick=\"sunsetlabelclicked()\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;z-index:0;\"> sunset "+times.sunset.getHours()+":"+sunsetmin+"</div>"; // set time text on div class actualtime
+      Class('sunsetl')[i].innerHTML = "<div id=\"sunriselabel\" class=\"sunsetlabel\" onclick=\"sunsetlabelclicked()\" style=\"position: absolute;top:-35px;left:-20px;border: 0px solid green;z-index:0;\"> sunset "+times.sunset.getHours()+":"+sunsetmin+"</div>"; // set time text on div class actualtime
  
-      classname('morning_shade')[i].style.width= (100-currents)+"%";  // gray shade before sunrise
+      Class('morning_shade')[i].style.width= (100-currents)+"%";  // gray shade before sunrise
  
-      classname('morning_shade')[i].style.left= currents+"%";
+      Class('morning_shade')[i].style.left= currents+"%";
 
-      classname('dayshine')[i].style.left= sunrisecur+"%";
-      classname('dayshine')[i].style.width= (100-sunrisecur)+(sunsetcur-100)+"%"; 
+      Class('dayshine')[i].style.left= sunrisecur+"%";
+      Class('dayshine')[i].style.width= (100-sunrisecur)+(sunsetcur-100)+"%"; 
   } 
 
 
@@ -1695,7 +1695,7 @@ document.addEventListener('DOMContentLoaded', function() {      // do next when 
     if (daynr==0)daynr=7;          
     console.log("daynr ",daynr);
     // $('.radioday')[daynr-1].checked="true";                                // jquery
-    classname('radioday')[daynr-1].checked="true";      // javascript
+    Class('radioday')[daynr-1].checked="true";      // javascript
     // 0=monday ... 6=sunday
     checkit();
 
@@ -1917,7 +1917,7 @@ Visual Scheduler for irrigation, sprinklers, lights, wifi relays, wifi switches<
   irrigation Scheduler, Sprinkler Scheduler, Light Scheduler, WiFi relays Scheduler, WiFi switches Scheduler<br> 
   Time Activated Relays - Relay Control on a Schedule<br>
   daily scheduler, weekly scheduler, timed switching<br>
-  etcetera <a href="https://www.youtube.com/watch?v=mfJhMfOPWdE" target="blahblah">BlahBlah!</a><br>
+  visual timed automation, etcetera <a href="https://www.youtube.com/watch?v=mfJhMfOPWdE" target="blahblah">BlahBlah!</a><br>
   <br>
   Youtube Video <a href="https://youtu.be/GQpa_UIErT0" target="youtube">https://youtu.be/GQpa_UIErT0</a><br>
   Do not forget to Subsribe? ;-)<br>
