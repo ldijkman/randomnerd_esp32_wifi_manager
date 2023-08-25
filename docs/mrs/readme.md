@@ -2,7 +2,9 @@ visual day scheduler, irrigation scheduler, light scheduler, wifi switch schedul
 
 https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/
 
-create from scratch
+BETTER create from scratch
+
+https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/create_from_scratch/
 
  https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/create_from_scratch/index.html
 
