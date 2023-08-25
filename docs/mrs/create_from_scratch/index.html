@@ -1696,8 +1696,8 @@ var currents=((times.sunset.getHours()*60+times.sunset.getMinutes())/1440)*100; 
 document.addEventListener('DOMContentLoaded', function() {      // do next when document is loaded
 
     // https://github.com/loebi-ch/jquery-clock-timepicker
-    $('#ontime').clockTimePicker({alwaysSelectHoursFirst:true});  // activate analog timepicker popup for id ontime text field
-    $('#offtime').clockTimePicker({alwaysSelectHoursFirst:true}); // activate analog timepicker popup for id offtime text field
+    $('#ontime').clockTimePicker({alwaysSelectHoursFirst:true,labeltext:"<font style='font-size: 15px;'> ON time</font><br>"});  // activate analog timepicker popup for id ontime text field
+    $('#offtime').clockTimePicker({alwaysSelectHoursFirst:true,labeltext:"<font style='font-size: 15px;'> OFF time</font><br>"}); // activate analog timepicker popup for id offtime text field
         
     dragElement(id("editpopup"));            // make editpopup draggable by mouse and touch
 
