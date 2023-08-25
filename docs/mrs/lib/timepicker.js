@@ -70,7 +70,8 @@ that it looks on all device more or less the same
 			required: false,
 			separator: ':',
 			useDurationPlusSign: false,
-			vibrate: true
+			vibrate: true,
+			labeltext:''
 		}, typeof options == 'object' ? options : {});
 
 
@@ -162,6 +163,7 @@ that it looks on all device more or less the same
 			var clockInnerRadius = clockOuterRadius - 29;
 			var isTimeChanged = false;
 			var lastMouseWheelTimestamp = 0;
+			
 
 
 
@@ -292,7 +294,7 @@ that it looks on all device more or less the same
 			var inputElement = element;
 			if (isitaMobile()) {
 
-				inputElement = $('<div class="clock-timepicker-mobile-time">');
+				inputElement = $('<div class="clock-timepicker-mobile-time"><span>'+settings.labeltext+'</span>');
 				inputElement.css('width', '100%')
 							.css('fontFamily', settings.fonts.fontFamily)
 							.css('fontSize', '40px')
