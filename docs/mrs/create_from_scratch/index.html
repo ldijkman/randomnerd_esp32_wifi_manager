@@ -475,7 +475,7 @@ Touch drag edit popup should work<br>
 <br>
 <br>
 <br>
-<div style="width:100%;font-size:1.25vw;">
+<div style="width:100%;font-size:1vw;">
 /*
 <pre>
  __      ___                 _        _____      _              _       _           
@@ -1021,7 +1021,7 @@ function domessage(){
 // https://hemel.waarnemen.com/applets/missiemaan.cgi
 // https://www.kalender-365.nl/maan/actuele-maanstand.html
 // they say 6% i get 15%
-var moonval;
+var moonval=moon.phase;
 if(moon.phase > 0.5)moonval=1-moon.phase; // moon.phase  0.9220658851746119
 console.log("moonval",moonval);
 // moonval=0.25;                          // 0.07797258947334718; i get 16% other sites say 6%
@@ -1040,7 +1040,7 @@ $('pre.message').html(`
     <br>moon.phase 0 to 1, 0,5 is full moon?<br>`
     +moon.phase+'<br>Moon visible '
     +moonvisible+
-    `% (maybe not correct)</p>`);
+    `% (not correct, not square)</p>`);
 
 }
 
