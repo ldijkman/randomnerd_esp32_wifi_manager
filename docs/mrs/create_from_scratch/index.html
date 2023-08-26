@@ -398,7 +398,19 @@ Sunday
 <input type="button" value="Chrome inspect clear console " onclick="console.clear()"><br>
 Open Chrome Inspect Console = Ctrl + Shift + j<br>
 <br>
-<br>
+Zoom test<br>
+
+<input type="range" style="width:90%;height:100px;"  min="50" max="200" value="100" oninput="setZoom(this.value)"list=tickmarks>
+<datalist id=tickmarks>
+<option>0</option>
+<option>50</option>
+<option>75</option>
+<option>100 </option>
+<option>125</option>
+<option>150</option>
+<option>175</option>
+<option>200</option>
+</datalist><br>
 
 <hr width="40%">
 
@@ -626,7 +638,9 @@ function copy_schema(wichtimeslot){
 
 
 
-
+  function setZoom(value) {
+        document.body.style.zoom = value+'%';
+    };
 
 
 
@@ -1932,7 +1946,7 @@ function dragElement(elmnt) {
   // begin aboutdiv HTML
   ///////////////////////
   -->
-
+<input type="range" min="50" max="200" value="100" onchange="setZoom(this.value)">
   <div id="aboutDIV" style="position: fixed;
   width: 98%;
   top:0%;
