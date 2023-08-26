@@ -1071,16 +1071,16 @@ function drawtimeslots(){
 
 // want to remove leading zero from timelabel
 var ontext = toHoursAndMinutes(timeslots[i]);
-console.log("ontext.left(1) ",ontext.left(1));
+console.log("ontext.left(1) ",ontext.left(1)+" "+ontext);
 if (ontext.left(1)=="0"){ontext=ontext.substring(1);} // want to remove leading zero from timelabel
-console.log("ontext.left(1) ",ontext.left(1));
+console.log("ontext.left(1) ",ontext.left(1)+" "+ontext);
 
 
 // want to remove leading zero from timelabel
 var offtext = toHoursAndMinutes(timeslots[i+1]);
-console.log("offtext.left(1) ",offtext.left(1));
+console.log("offtext.left(1) ",offtext.left(1)+" "+offtext);
 if (offtext.left(1)=="0"){offtext=offtext.substring(1);} // want to remove leading zero from timelabel
-console.log("offtext.left(1) ",offtext.left(1));
+console.log("offtext.left(1) ",offtext.left(1)+" "+offtext);
 
 
 
@@ -2001,7 +2001,7 @@ Visual Scheduler for irrigation, sprinklers, lights, wifi relays, wifi switches<
   <br>
   Free for personal use.<br> 
   Not free for commercial use.<br>
-  Copyright Dirk Luberth Dijkman 2023<br> 
+  Copyright Dirk Luberth Dijkman 2023 ... <script>document.write(new Date().getFullYear())</script><br> 
   <br>
   <br>
   <button onclick="showhideabout()" style="color:green;">Accept!</button><br>
@@ -2026,7 +2026,8 @@ Visual Scheduler for irrigation, sprinklers, lights, wifi relays, wifi switches<
 <small><small><small>
 Free for personal use.<br> 
 Not free for commercial use.<br>
-Copyright Dirk Luberth Dijkman 2023</small></small></small>
+Copyright Dirk Luberth Dijkman 2023 ... <script>document.write(new Date().getFullYear())</script></small></small></small>
+<!-- https://stackoverflow.com/questions/4562587/shortest-way-to-print-current-year-in-a-website -->
 </body>
 </html>
 
