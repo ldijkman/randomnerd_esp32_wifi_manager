@@ -1023,6 +1023,13 @@ var selected_highlight;
 
 
 
+// var num = "1008px".left(4);
+// https://stackoverflow.com/questions/490508/left-function-in-javascript-or-jquery
+String.prototype.left = function(n) {
+    return this.substring(0, n);
+}
+
+
 /////////////////////////////////////
 // drawtimeslots
 /////////////////////////////////////
@@ -1058,6 +1065,21 @@ function drawtimeslots(){
         timeslot_opacity = 40;
     }      
 
+// want to remove leading zero from timelabel
+var ontext = toHoursAndMinutes(timeslots[i]);
+console.log("ontext.left(1) ",ontext.left(1));
+if (ontext.left(1)=="0"){ontext=ontext.substring(1);} // want to remove leading zero from timelabel
+console.log("ontext.left(1) ",ontext.left(1));
+
+
+// want to remove leading zero from timelabel
+var offtext = toHoursAndMinutes(timeslots[i+1]);
+console.log("offtext.left(1) ",offtext.left(1));
+if (offtext.left(1)=="0"){offtext=offtext.substring(1);} // want to remove leading zero from timelabel
+console.log("offtext.left(1) ",offtext.left(1));
+
+
+
     //debugger;
 
       // problem with opacity , timetext labels
@@ -1082,13 +1104,13 @@ function drawtimeslots(){
           +label_opacity+  // next child startlabel takes same opacity
           `%;">
           <div  class="startlabel" style="position: absolute; color: green; background-color: green; height: 0px; width: 1px; left: -20px; top: 15px;">`
-          +toHoursAndMinutes(timeslots[i])+   // want to remove leading zero from timelabel
+          +ontext+   
           `</div></div>
           <div class="elabel" style="position: absolute; color: red; background-color: red; height: 20px; width: 1px; left: 100%; top: 55px;;opacity:`
           +label_opacity+  // next child endlabel takes same opacity
           `%;">
           <div class="endlabel" style="position: absolute; color: red; background-color: red; height: 0px; width: 1px; left: -20px; top: 30px;">`
-          +toHoursAndMinutes(timeslots[i+1])+  // want to remove leading zero from timelabel
+          +offtext+  
           `</div>
           </div>
           </div>`
