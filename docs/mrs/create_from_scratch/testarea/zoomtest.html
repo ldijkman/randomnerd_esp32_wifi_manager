@@ -669,6 +669,10 @@ function copy_schema(wichtimeslot){
 
   function setZoom(value) {
         document.body.style.zoom = value+'%';
+          // https://github.com/loebi-ch/jquery-clock-timepicker
+    $('#ontime').clockTimePicker({alwaysSelectHoursFirst:true,labeltext:"<font style='font-size: 15px;'> ON time</font><br>"});  // activate analog timepicker popup for id ontime text field
+    $('#offtime').clockTimePicker({alwaysSelectHoursFirst:true,labeltext:"<font style='font-size: 15px;'> OFF time</font><br>"}); // activate analog timepicker popup for id offtime text field
+      
     };
 
 
