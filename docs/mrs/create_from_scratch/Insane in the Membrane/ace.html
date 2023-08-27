@@ -283,7 +283,7 @@ Figlet font Pagga https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/
     color: #eee;
     //resize: both;
   }
- Ask developer@githubsupport.com to Free Electra ?!  
+
   #tree {
     position: absolute;
     top: 48px;
@@ -293,7 +293,9 @@ Figlet font Pagga https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/
     width:100px;
     padding: 8px;
      background-color: lightgrey;
+     height:100%;
     //resize: both;
+     overflow: scroll;
   }
 /*
   #editor,
@@ -438,10 +440,10 @@ Figlet font Pagga https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0/
 
   #iframe {
     top: 48px;
-    height: 82%;
+    height: 100%;
     width: 100%;
     display: inline-block;
-  resize: both;
+    resize: both;
   }
 
 #drag {
@@ -3157,9 +3159,9 @@ var isResizing = true;
 
   document.onmousemove = function(e) {
     // we don't want to do anything if we aren't resizing.
-   console.log("isResizing 1");  
+   //console.log("isResizing 1");  
    if (isResizing) {
-  console.log("isResizing 2");  
+  ///console.log("isResizing 2");  
     var offsetRight = container.clientWidth - (e.clientX - container.offsetLeft);
     left.style.right = offsetRight + "px";
     right.style.width = offsetRight + "px";
@@ -3453,7 +3455,7 @@ console.log("EggDate Day of Year ",getDayOfYear(new Date())); // 👉️ 32
 
 
 
-  <br><br><br><br><br><br><br><br><br><br><br>
+  <br>
 <div id="tablegenerator" style="display:none;">
 
 <!DOCTYPE html>
@@ -4066,13 +4068,13 @@ ol li {
 </div>
 
 <script src="examples.js"></script> 
-
-</body>
-</html>
-</div>
 <!-- 
 https://ldijkman.github.io/Electra/ 
 Copyright Electra Electric Storm 2022
 -->
+</body>
+</html>
+
+
 
 
