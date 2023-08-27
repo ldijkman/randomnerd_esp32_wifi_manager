@@ -2067,23 +2067,23 @@ Copyright Dirk Luberth Dijkman 2023 ... <script>document.write(new Date().getFul
 
 
 <br><br>
+<!--
 webcam for sound in my youtune videos screen recordings<br>
-right mouse => picture in picture
-<video id="video" width="160px" height="120px" autoplay></video>
+-->
+<button class="btn btn-primary" id="button">Display Webcam feed in Picture-in-Picture mode</button> 
 <script>
+const button = document.getElementById('button');
 
-
-            var video = document.getElementById('video'),
-                vendorUrl = window.URL || window.webkitURL;
-            if (navigator.mediaDevices.getUserMedia) {
-                navigator.mediaDevices.getUserMedia({ video: true })
-                    .then(function (stream) {
-                        video.srcObject = stream;
-                    }).catch(function (error) {
-                        console.log("Something went wrong!");
-                    });
-            }
- 
+button.addEventListener('click', async () => {
+  const video= document.createElement('video');
+  //video.muted = true;
+  video.srcObject = await navigator.mediaDevices.getUserMedia({ video: true });
+  video.play();
+  video.addEventListener('loadedmetadata', () => {
+    video.requestPictureInPicture()
+    .catch(console.error)
+  });
+});
     </script>
 </body>
 </html>
