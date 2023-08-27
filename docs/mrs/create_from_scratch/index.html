@@ -1459,6 +1459,7 @@ function drawtemp (){
 
 ////////////////////////////////////////
 // create the slider numbers and scale
+// https://codepen.io/ldijkman/pen/XWyBPpG
 ///////////////////////////////////////
 var pips = 96;                                // 24hour x 4quarters
 
@@ -1479,7 +1480,7 @@ for (i = 0; i <= pips; i = i + 1) {
       "</span>\n"
   );
 
-  ruler.css({ left: "" + ((100 / pips) * i).toFixed(1) + "%" });
+  ruler.css({ left: "" + ((100 / pips) * i).toFixed(3) + "%" });
   ruler.css({ position: "absolute" });
 
   ruler.css({ top: "32px" });
@@ -1493,21 +1494,25 @@ for (i = 0; i <= pips; i = i + 1) {
     $(".ruler-line").eq(i).css("height", "35px");       // hour line
     $(".ruler-line").eq(i).css("width", "2px");
     $(".ruler-line").eq(i).css("background", "black");
+    $(".ruler-line").eq(i).css("left", "-1px");
   }
   if (imod4 == 1) {
     $(".ruler-line").eq(i).css("height", "10px");       // 15 minute line
     $(".ruler-line").eq(i).css("width", "1px");
     $(".ruler-line").eq(i).css("background", "gray");
+    $(".ruler-line").eq(i).css("left", "-0.5px");
   }
   if (imod4 == 2) {
     $(".ruler-line").eq(i).css("height", "20px");       // 30 minute line
     $(".ruler-line").eq(i).css("width", "1px");
     $(".ruler-line").eq(i).css("background", "gray");
+    $(".ruler-line").eq(i).css("left", "-0.5px");
   }
   if (imod4 == 3) {
     $(".ruler-line").eq(i).css("height", "10px");       // 45 minute line
     $(".ruler-line").eq(i).css("width", "1px");
     $(".ruler-line").eq(i).css("background", "gray");
+    $(".ruler-line").eq(i).css("left", "-0.5px");
   }
 }
 
