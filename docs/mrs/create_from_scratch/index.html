@@ -42,8 +42,10 @@ less updated
 
   <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/ldijkman/randomnerd_esp32_wifi_manager/main/Electra.jpg">
   <!-- on my android icon is also shown on home screen, if saved to home screen -->
-
- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<!--
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  -->
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- when save to home screen on phone - it is full screen - no annoying adres bar -->
     <!-- Allow web app to be run in full-screen mode - iOS. -->
@@ -78,7 +80,7 @@ less updated
     
 
 <style>
-  #editpopup {
+  #editpopup {          /* # = id */
   position: fixed;
   left:40%;
   top:30%;
@@ -91,7 +93,7 @@ less updated
   display: none;  
 }
 
-#editpopupheader {
+#editpopupheader {      /* # = id */
   padding: 5px;
   cursor: move;
   z-index: 10;
@@ -100,11 +102,11 @@ less updated
   z-index:1001;  /* i do not know what the zindex of the world map picker is, its high like 1000 */
 }
 
-.clock-timepicker-popup{
+.clock-timepicker-popup{    /* . = class */
   opacity:90%;
   }
 
-#outerDiv {           /* # = id */
+#outerDiv {                 /* # = id */
   position:relative;
   width:100%;
   height:50px;
@@ -113,7 +115,7 @@ less updated
   cursor: pointer;
 
 }
-.outerDiv {        /* . = class */
+.outerDiv {               /* . = class */
   width:100%;
   height:50px;
   border: 1px solid black;
@@ -129,14 +131,14 @@ less updated
   z-index:500;
  
 }
-.ruler-line {
+.ruler-line {               /* . = class */
   background: #999;
   top: -30px;
   position: absolute;
   left: 50%;
 }
 
-.ruler-number {
+.ruler-number {               /* . = class */
   position: absolute;
   top: -50px;
   left: 50%;
@@ -146,7 +148,7 @@ less updated
 }
 
 
-.evening_shade {
+.evening_shade {               /* . = class */
  position:absolute;height:20px;background-color:gray;opacity:20%;top:-20px; 
  width: 5%; 
 }
@@ -181,20 +183,7 @@ body{
 
 
 </style>
-<style>
-scroll-behavior: smooth;
-</style>
 
-   <script type="text/javascript">
-// When ready...
-window.addEventListener("load",function() {
-   // Set a timeout...
-   setTimeout(function(){
-      // Hide the address bar!
-      window.scrollTo(0, 1);
-   }, 4000);
-});
-</script>
 </head>
 <body bgcolor="#f2f2ed">
 
@@ -1104,6 +1093,13 @@ if (offtext.left(1)=="0"){offtext=offtext.substring(1);} // want to remove leadi
 console.log("offtext.left(1) ",offtext.left(1)+" "+offtext);
 
 
+// fontsize for time labels underneath the timeslots
+// maybe if slots are close together, change fontsze to smaller
+// or nouislider has a join merging https://refreshless.com/nouislider/examples/#section-merging-tooltips
+// or do a webkit rotate label
+var fontsize;          // nochange     
+// var fontsize = 12;  // px
+
 
     //debugger;
 
@@ -1128,13 +1124,17 @@ console.log("offtext.left(1) ",offtext.left(1)+" "+offtext);
           <div class="slabel" style="position: absolute; color: green; background-color: green; height: 20px; width: 1px; left: 0%; top: 55px;opacity:`
           +label_opacity+  // next child startlabel takes same opacity
           `%;">
-          <div  class="startlabel" style="position: absolute; color: green; background-color: green; height: 0px; width: 1px; left: -20px; top: 15px;">`
+          <div  class="startlabel" style="position: absolute; color: green; background-color: green; height: 0px; width: 1px; left: -17px; top: 15px;font-size:`
+          +fontsize+
+          `px;">`
           +ontext+   
           `</div></div>
-          <div class="elabel" style="position: absolute; color: red; background-color: red; height: 20px; width: 1px; left: 100%; top: 55px;;opacity:`
+          <div class="elabel" style="position: absolute; color: red; background-color: red; height: 20px; width: 1px; left: 100%; top: 55px;opacity:`
           +label_opacity+  // next child endlabel takes same opacity
           `%;">
-          <div class="endlabel" style="position: absolute; color: red; background-color: red; height: 0px; width: 1px; left: -20px; top: 30px;">`
+          <div class="endlabel" style="position: absolute; color: red; background-color: red; height: 0px; width: 1px; left: -17px; top: 30px;font-size:`
+          +fontsize+
+          `px;">`
           +offtext+  
           `</div>
           </div>
