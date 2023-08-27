@@ -32,6 +32,9 @@ less updated
   https://sites.google.com/view/visual-scheduler-touch-friendl/home
 
  use google chrome browser inspect to see more, and console messages
+
+maybe add a coockie for lat lon location
+ https://www.w3schools.com/js/js_cookies.asp
 -->
 
 <!DOCTYPE html>
@@ -1029,7 +1032,7 @@ $('pre.message').html(`
     <br>moon.phase 0 to 1, 0,5 is full moon?<br>`
     +moon.phase+'<br>Moon visible '
     +moonvisible+
-    `% (not correct, not square)</p>`);
+    `% (not correct, not square)</p>`);  // not squares, circle segments
 
 }
 
@@ -2061,6 +2064,27 @@ Free for personal use.<br>
 Not free for commercial use.<br>
 Copyright Dirk Luberth Dijkman 2023 ... <script>document.write(new Date().getFullYear())</script></small></small></small>
 <!-- https://stackoverflow.com/questions/4562587/shortest-way-to-print-current-year-in-a-website -->
+
+
+<br><br>
+webcam for sound in my youtune videos screen recordings<br>
+right mouse => picture in picture
+<video id="video" width="160px" height="120px" autoplay></video>
+<script>
+
+
+            var video = document.getElementById('video'),
+                vendorUrl = window.URL || window.webkitURL;
+            if (navigator.mediaDevices.getUserMedia) {
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then(function (stream) {
+                        video.srcObject = stream;
+                    }).catch(function (error) {
+                        console.log("Something went wrong!");
+                    });
+            }
+ 
+    </script>
 </body>
 </html>
 
