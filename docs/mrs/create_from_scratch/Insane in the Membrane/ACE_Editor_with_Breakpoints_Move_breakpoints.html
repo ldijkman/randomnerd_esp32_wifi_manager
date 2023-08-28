@@ -1,0 +1,217 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>ACE Editor with Breakpoints Move breakpoints as code changes. #1282</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.9.6/ace.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.9.6/theme-monokai.min.js"></script>
+
+<style>
+  body {
+  margin: 40px;
+}
+
+.app_editor {
+  height: 600px;
+}
+
+.ace_gutter-cell.ace_breakpoint{ 
+    border-radius: 20px 0px 0px 20px; 
+    box-shadow: 0px 0px 1px 1px #248c46 inset; 
+  color:black;
+  background-color:rgba(255,255,0,0.81); 
+  /*rgb with opacity has no effect on foreground color black */
+        }
+  
+}
+</style>
+
+  </head>
+
+  <body>
+    
+ACE Editor with Breakpoints Move breakpoints as code changes. #1282<br> https://github.com/ajaxorg/ace/issues/1282     <br> 
+<br>
+<a href="https://run.plnkr.co/plunks/pcCGoIZuUvEM8LKb/" target="insaneinthemembrane">helpme please https://run.plnkr.co/plunks/pcCGoIZuUvEM8LKb/</a><br>
+<a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs/create_from_scratch/Insane%20in%20the%20Membrane/" target="insaneinthemembrane">https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs/create_from_scratch/Insane%20in%20the%20Membrane/</a><br>
+<br> 
+<b>click on the <big><big>LEFT</big> </big>of the line numbers on the gutter to mark lines</b>
+sometimes you have to click twice<br>
+1 to get focus on the editor <br>
+2 to mark unmark a linenumber<br>
+<br>
+then try to add and remove textlines and see the marked lines change<br>
+need this for jumpscroll jump up and jump down TM ;-)
+
+
+
+
+
+<div id="editor1" class="app_editor"> 
+ACE Editor with Breakpoints Move breakpoints as code changes. #1282
+https://github.com/ajaxorg/ace/issues/1282
+
+helpme please https://run.plnkr.co/plunks/pcCGoIZuUvEM8LKb/
+
+  https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs/create_from_scratch/Insane%20in%20the%20Membrane/
+
+click on the left of the line numbers on the gutter to mark lines
+then try to add and remove textlines and see the marked lines change
+need this for JumpScroll Jump up and Jump down TM ;-)
+  
+made BParray[] for easy marked linenubers
+note ACE start at 0 wich is line 1 in the editor
+see console for the info  
+
+</div>
+
+
+
+
+
+<script>
+
+///////////////////////////////////////////////////////////
+//
+// used sources
+//
+// https://ourcodeworld.com/articles/read/1052/how-to-add-toggle-breakpoints-on-the-ace-editor-gutter
+//
+// https://github.com/ajaxorg/ace/issues/1282
+//
+// this made by Dirk Luberth Dijkman
+// https://codepen.io/ldijkman/pen/NWexRpo
+//
+// https://plnkr.co/edit/owlVS1XioRN3EKGx?preview
+//
+/////////////////////////////////////////////////////////////////////
+
+
+
+var editor = ace.edit("editor1");
+
+editor.setTheme("ace/theme/monokai");
+// inline must be true to syntax highlight PHP without opening <?php tag
+editor.getSession().setMode({
+  path: "ace/mode/php",
+  inline: true
+});
+
+ // mark the lines test
+ editor.session.setBreakpoint(4); //test for line 5
+ editor.session.setBreakpoint(6); //test for line 7
+
+
+var breakpointsArrayNew = [];
+var BParray = [];
+
+editor.on("guttermousedown", function (e) {
+  var target = e.domEvent.target;
+  if (target.className.indexOf("ace_gutter-cell") == -1) return;
+  if (!editor.isFocused()) return;
+  // if you click outside the editor, you have to click twice
+  // 1 to get focus 
+  // 2 to select/deselect
+
+  // console.log(e.clientX > 25 + target.getBoundingClientRect().left);
+  // console.log(e.clientX, 25 + target.getBoundingClientRect().left);
+  // console.log(e.clientX);
+
+  if (e.clientX > 25 + target.getBoundingClientRect().left) return; // maybe a limmit for right side gutter fold unfold click things
+
+  breakpointsArrayNew = e.editor.session.getBreakpoints(row, 0);
+
+  var row = e.getDocumentPosition().row;
+
+  if (typeof breakpointsArrayNew[row] === typeof undefined) {
+    e.editor.session.setBreakpoint(row);  // set breakpoint
+  } else {
+    e.editor.session.clearBreakpoint(row); //clear breakpoint
+    e.stop();
+  }
+
+  //console.log("breakpointsArrayNew ", breakpointsArrayNew);
+  //console.log("breakpointsArrayNew.length ", breakpointsArrayNew.length);
+  BParray = [];
+
+  for (let i = 0; i <= breakpointsArrayNew.length; i++) {
+    if (typeof breakpointsArrayNew[i] !== typeof undefined) {
+      // not undefined
+      //console.log("breakpointsArrayNew[i] ", i,breakpointsArrayNew[i]);
+      BParray.push(i);
+    }
+  }
+  console.log("BParray ", BParray);
+});
+
+editor.on("change", function (e) {
+  if (e.lines.length > 1 && (e.action === "insert" || e.action === "remove")) {
+    const breakpointsArrayOld = editor.session.getBreakpoints();
+    let breakpointsArrayNew = [];
+
+    const amountOfLinesAffected = e.lines.length - 1;
+    const startRow = e.start.row;
+    const endRow = e.end.row;
+
+    for (const key of Object.keys(breakpointsArrayOld)) {
+      let breakpointRow = parseInt(key);
+
+      if (e.action === "insert") {
+        // new lines
+        if (breakpointRow > startRow) {
+          // breakpoint forward
+          breakpointsArrayNew[breakpointRow + amountOfLinesAffected] =
+            "ace_breakpoint";
+        } else {
+          // unaffected by insert
+          breakpointsArrayNew[breakpointRow] = "ace_breakpoint";
+        }
+      } else if (e.action === "remove") {
+        // removed lines
+        if (breakpointRow > startRow && breakpointRow <= endRow) {
+          // breakpoint removed
+        } else if (breakpointRow >= endRow) {
+          // breakpoint behind
+          breakpointsArrayNew[breakpointRow - amountOfLinesAffected] =
+            "ace_breakpoint";
+        } else {
+          // unaffected by remove
+          breakpointsArrayNew[breakpointRow] = "ace_breakpoint";
+        }
+      }
+    }
+
+    // remove all old breakpoints
+    for (const key of Object.keys(breakpointsArrayOld)) {
+      let breakpointRow = parseInt(key);
+      editor.session.clearBreakpoint(breakpointRow);
+    }
+
+    // add all new breakpoints
+    for (const key of Object.keys(breakpointsArrayNew)) {
+      let breakpointRow = parseInt(key);
+      editor.session.setBreakpoint(breakpointRow);
+      //console.log("breakpointsArrayNew",breakpointsArrayNew);
+    }
+  }
+  
+  BParray = [];
+
+  for (let i = 0; i <= breakpointsArrayNew.length; i++) {
+    if (typeof breakpointsArrayNew[i] !== typeof undefined) {
+      // not undefined
+      //console.log("breakpointsArrayNew[i] ", i,breakpointsArrayNew[i]);
+      BParray.push(i);
+    }
+  }
+  console.log("BParray ", BParray);
+});
+
+
+
+</script>
+
+
+
+  </body>
+</html>
