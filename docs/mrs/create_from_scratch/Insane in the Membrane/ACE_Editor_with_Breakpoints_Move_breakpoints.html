@@ -44,8 +44,9 @@ then try to add and remove textlines and see the marked lines change<br>
 need this for jumpscroll jump up and jump down TM ;-)
 
 
-
-
+<center>
+<pre id="BP">BreakPoints will be set here by javascript</pre>
+</center>
 
 <div id="editor1" class="app_editor"> 
 ACE Editor with Breakpoints Move breakpoints as code changes. #1282
@@ -81,10 +82,22 @@ see console for the info
 //
 // this made by Dirk Luberth Dijkman
 // https://codepen.io/ldijkman/pen/NWexRpo
+//
+// ///////////////////////////////////////////////////////////
+//
+// used sources
+//
+// https://ourcodeworld.com/articles/read/1052/how-to-add-toggle-breakpoints-on-the-ace-editor-gutter
+//
+// https://github.com/ajaxorg/ace/issues/1282
+//
+// this made by Dirk Luberth Dijkman
+// https://codepen.io/ldijkman/pen/NWexRpo
 // https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/docs/mrs/create_from_scratch/Insane%20in%20the%20Membrane/ACE_Editor_with_Breakpoints_Move_breakpoints.html
 // https://plnkr.co/edit/owlVS1XioRN3EKGx?preview
 //
 /////////////////////////////////////////////////////////////////////
+
 
 
 
@@ -121,28 +134,24 @@ editor.on("guttermousedown", function (e) {
 
   breakpointsArrayNew = e.editor.session.getBreakpoints(row, 0);
 
-  var row = e.getDocumentPosition().row;
+  var row = e.getDocumentPosition().row;       // on wich linenumber is clicked
 
-  if (typeof breakpointsArrayNew[row] === typeof undefined) {
+  if (typeof breakpointsArrayNew[row] === typeof undefined) {  //  if row is undefined in breakpoints array
     e.editor.session.setBreakpoint(row);  // set breakpoint
-  } else {
+  } else {                                                     //  else row is defined breakpoint
     e.editor.session.clearBreakpoint(row); //clear breakpoint
     e.stop();
   }
 
   //console.log("breakpointsArrayNew ", breakpointsArrayNew);
   //console.log("breakpointsArrayNew.length ", breakpointsArrayNew.length);
-  BParray = [];
 
-  for (let i = 0; i <= breakpointsArrayNew.length; i++) {
-    if (typeof breakpointsArrayNew[i] !== typeof undefined) {
-      // not undefined
-      //console.log("breakpointsArrayNew[i] ", i,breakpointsArrayNew[i]);
-      BParray.push(i);
-    }
-  }
-  console.log("BParray ", BParray);
+    makeBParray();
+  
 });
+
+
+
 
 editor.on("change", function (e) {
   if (e.lines.length > 1 && (e.action === "insert" || e.action === "remove")) {
@@ -195,19 +204,28 @@ editor.on("change", function (e) {
     }
   }
   
-  BParray = [];
-
-  for (let i = 0; i <= breakpointsArrayNew.length; i++) {
-    if (typeof breakpointsArrayNew[i] !== typeof undefined) {
-      // not undefined
-      //console.log("breakpointsArrayNew[i] ", i,breakpointsArrayNew[i]);
-      BParray.push(i);
-    }
-  }
-  console.log("BParray ", BParray);
+  makeBParray();
+  
 });
 
 
+
+
+function makeBParray(){
+   
+  BParray = [];
+
+  for (let i = 0; i <= breakpointsArrayNew.length; i++) {
+      if (typeof breakpointsArrayNew[i] !== typeof undefined) {
+          // not undefined
+          //console.log("breakpointsArrayNew[i] ", i,breakpointsArrayNew[i]);
+          BParray.push(i);
+      }
+  }
+  
+  console.log("BParray ", BParray);
+  document.getElementById("BP").innerHTML=("breakpoints BParray "+ BParray);
+}
 
 </script>
 
