@@ -380,6 +380,9 @@ function makeBParray(){
    
   BParray = [];
   
+	if(breakpointsArrayNew.length==0){
+    breakpointsArrayNew=editor.session.getBreakpoints(); //for startup demo
+	}
 
   for (let i = 0; i <= breakpointsArrayNew.length; i++) {
       if (typeof breakpointsArrayNew[i] !== typeof undefined) {
@@ -404,8 +407,7 @@ var jumppos=0;
 function JumpScroll(){
   var position=BParray[jumppos];
     document.getElementById("BP").innerHTML=("<h1>JumpScroll (TM ;-) To Marked Line Number "+(position+1)+"</h1>"+BParray);
-     if(BParray[jumppos]===  undefined)document.getElementById("BP").innerHTML=("<h1>please first click left of a linenumber to make a JumpMark</h1>");
-		ace.edit("editor1").focus(); //To focus the ace editor
+    ace.edit("editor1").focus(); //To focus the ace editor
     ace.edit("editor1").renderer.$cursorLayer.showCursor(); // sometimes gives back a blinking cursor
     
     ace.edit("editor1").scrollToLine(position+1, true, true, );
@@ -426,8 +428,7 @@ function JumpUp(){
 	  var position=BParray[jumppos];
 
     document.getElementById("BP").innerHTML=("<h1>Jumped Up "+(position+1)+"</h1>"+BParray);
-		 if(BParray[jumppos]===  undefined)document.getElementById("BP").innerHTML=("<h1>please first click left of a linenumber to make a JumpMark</h1>");
-    ace.edit("editor1").focus(); //To focus the ace editor
+		ace.edit("editor1").focus(); //To focus the ace editor
     ace.edit("editor1").renderer.$cursorLayer.showCursor(); // sometimes gives back a blinking cursor
     
 		ace.edit("editor1").scrollToLine(position+1, true, true, );
@@ -443,7 +444,6 @@ function JumpDown(){
 		var position=BParray[jumppos];
     
 		document.getElementById("BP").innerHTML=("<h1>Jumped Down "+BParray[jumppos]+"</h1>"+BParray);
-		 if(BParray[jumppos]===  undefined)document.getElementById("BP").innerHTML=("<h1>please first click left of a linenumber to make a JumpMark</h1>");
     ace.edit("editor1").focus(); //To focus the ace editor
     ace.edit("editor1").renderer.$cursorLayer.showCursor(); // sometimes gives back a blinking cursor
     
@@ -452,10 +452,12 @@ function JumpDown(){
 }	
   
 
-	 ace.edit("editor1").moveCursorTo(0,0);
- ace.edit("editor1").session.insert(ace.edit("editor1").getCursorPosition(), "hello\n hello please mark or unmark a bookmark first\n by clicking left of a linenumber\n\n");
-
-  
+	 	ace.edit("editor1").moveCursorTo(0,0);
+ 		editor.session.insert(ace.edit("editor1").getCursorPosition(), "hello\n hello please mark or unmark a bookmark first\n by clicking left of a linenumber\n\n");
+ 		editor.session.setBreakpoint(1); //test for line 5
+  	
+		makeBParray(); //for demo load
+	
 	</script>
 
 
