@@ -1,5 +1,3 @@
-
-
 <!--
 	
 how-to-add-toggle-breakpoints-on-the-ace-editor-gutter
@@ -11,234 +9,276 @@ https://www.youtube.com/watch?v=XhzpxjuwZy0
 
 -->
 
- 
-
-<!doctype html>
+<!DOCTYPE html>
 
 <html>
+  <head>
+    <title>
+      ACE Editor with BreakPoints, Move BreakPoints as code changes. #1282
+      JumpMarks ScrollMarks BookMarks JumpScroll
+    </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.9.6/ace.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.9.6/theme-monokai.min.js"></script>
+
+    <style>
+      		body {
+      			margin: 4px;
+      		}
+
+      		.app_editor {
+      			height: 600px;
+      		}
+
+      		.ace_gutter-cell.ace_breakpoint {
+      			border-radius: 20px 0px 0px 20px;
+      			box-shadow: 0px 0px 1px 1px #248c46 inset;
+      			color: black;
+      			background-color: rgba(255, 255, 0, 0.81);
+      			/*rgb with opacity has no effect on foreground color black */
+      		}
+
+      }
+
+      		}
+    </style>
+  </head>
+
+  <body>
+    <br />
+
+    <center>
+      <input
+        type="button"
+        value="JumpScroll to marked lines"
+        onclick="JumpScroll()"
+      />
+      <input type="button" value="JumpUp" onclick="JumpUp()" />
+      <input type="button" value="JumpDown" onclick="JumpDown()" />
+      <pre id="BP">BreakPoints will be set here by javascript</pre>
+    </center>
+
+    <div id="editor1" class="app_editor">text editor</div>
+
+    <script>
+      /////////////////////////////////////////////////////////////
+      //
+      // used sources
+      //
+      // https://ourcodeworld.com/articles/read/1052/how-to-add-toggle-breakpoints-on-the-ace-editor-gutter
+      //
+      // https://github.com/ajaxorg/ace/issues/1282
+      //
+      // this made by Dirk Luberth Dijkman
+      // https://codepen.io/ldijkman/pen/NWexRpo
+      // https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/docs/mrs/create_from_scratch/Insane%20in%20the%20Membrane/ACE_Editor_with_Breakpoints_Move_breakpoints.html
+      // https://plnkr.co/edit/owlVS1XioRN3EKGx?preview
+      //
+      /////////////////////////////////////////////////////////////////////
+
+      var editor = ace.edit('editor1');
+
+      editor.setTheme('ace/theme/monokai');
+      // inline must be true to syntax highlight PHP without opening <?php tag
+      editor.getSession().setMode({
+        path: 'ace/mode/php',
+        inline: true,
+      });
+
+      var breakpointsArrayNew = [];
+
+      var BParray = [];
+
+      editor.on('guttermousedown', function (e) {
+        var target = e.domEvent.target;
+        if (target.className.indexOf('ace_gutter-cell') == -1) return;
+        if (!editor.isFocused()) return;
+        // if you click outside the editor, you have to click twice
+        // 1 to get focus
+        // 2 to select/deselect
+
+        // console.log(e.clientX > 25 + target.getBoundingClientRect().left);
+        // console.log(e.clientX, 25 + target.getBoundingClientRect().left);
+        // console.log(e.clientX);
+
+        if (e.clientX > 25 + target.getBoundingClientRect().left) return; // maybe a limmit for right side gutter fold unfold click things
+
+        breakpointsArrayNew = e.editor.session.getBreakpoints(row, 0);
+
+        var row = e.getDocumentPosition().row; // on wich linenumber is clicked
+
+        if (typeof breakpointsArrayNew[row] === typeof undefined) {
+          //  if row is undefined in breakpoints array
+          e.editor.session.setBreakpoint(row); // set breakpoint
+        } else {
+          //  else row is defined breakpoint
+          e.editor.session.clearBreakpoint(row); //clear breakpoint
+          e.stop();
+        }
+
+        //console.log("breakpointsArrayNew ", breakpointsArrayNew);
+        //console.log("breakpointsArrayNew.length ", breakpointsArrayNew.length);
+
+        makeBParray();
+      });
+
+      editor.on('change', function (e) {
+        if (
+          e.lines.length > 1 &&
+          (e.action === 'insert' || e.action === 'remove')
+        ) {
+          const breakpointsArrayOld = editor.session.getBreakpoints();
+          let breakpointsArrayNew = [];
+
+          const amountOfLinesAffected = e.lines.length - 1;
+          const startRow = e.start.row;
+          const endRow = e.end.row;
+
+          for (const key of Object.keys(breakpointsArrayOld)) {
+            let breakpointRow = parseInt(key);
+
+            if (e.action === 'insert') {
+              // new lines
+              if (breakpointRow > startRow) {
+                // breakpoint forward
+                breakpointsArrayNew[breakpointRow + amountOfLinesAffected] =
+                  'ace_breakpoint';
+              } else {
+                // unaffected by insert
+                breakpointsArrayNew[breakpointRow] = 'ace_breakpoint';
+              }
+            } else if (e.action === 'remove') {
+              // removed lines
+              if (breakpointRow > startRow && breakpointRow <= endRow) {
+                // breakpoint removed
+              } else if (breakpointRow >= endRow) {
+                // breakpoint behind
+                breakpointsArrayNew[breakpointRow - amountOfLinesAffected] =
+                  'ace_breakpoint';
+              } else {
+                // unaffected by remove
+                breakpointsArrayNew[breakpointRow] = 'ace_breakpoint';
+              }
+            }
+          }
+
+          // remove all old breakpoints
+          for (const key of Object.keys(breakpointsArrayOld)) {
+            let breakpointRow = parseInt(key);
+            editor.session.clearBreakpoint(breakpointRow);
+          }
+
+          // add all new breakpoints
+          for (const key of Object.keys(breakpointsArrayNew)) {
+            let breakpointRow = parseInt(key);
+            editor.session.setBreakpoint(breakpointRow);
+            //console.log("breakpointsArrayNew",breakpointsArrayNew);
+          }
+        }
+
+        makeBParray();
+      });
+
+      function makeBParray() {
+        BParray = [];
+
+        if (breakpointsArrayNew.length == 0) {
+          breakpointsArrayNew = editor.session.getBreakpoints(); //for startup demo, to load breakpoints set by code
+        }
+
+        for (let i = 0; i <= breakpointsArrayNew.length; i++) {
+          if (typeof breakpointsArrayNew[i] !== typeof undefined) {
+            // not undefined
+            //console.log("breakpointsArrayNew[i] ", i,breakpointsArrayNew[i]);
+            BParray.push(i);
+          }
+        }
+
+        console.log('BParray ', BParray);
+        document.getElementById('BP').innerHTML =
+          '<h3>breakpoints BParray ' + BParray + '</h3>';
+      }
+
+      var jumppos = 0;
+
+      function JumpScroll() {
+        var position = BParray[jumppos];
+        document.getElementById('BP').innerHTML =
+          '<h1>JumpScroll (TM ;-) To Marked Line Number ' +
+          (position + 1) +
+          '</h1>' +
+          BParray;
+        ace.edit('editor1').focus(); //To focus the ace editor
+        ace.edit('editor1').renderer.$cursorLayer.showCursor(); // sometimes gives back a blinking cursor
+
+        ace.edit('editor1').scrollToLine(position + 1, true, true);
+        ace.edit('editor1').gotoLine(position + 1, 0, true);
+        jumppos = jumppos + 1;
+
+        console.log('jumppos', jumppos);
+        if (jumppos >= BParray.length) {
+          jumppos = 0;
+        }
+        console.log('BParray.length', BParray.length);
+        console.log('jumppos', jumppos);
+      }
+
+      function JumpUp() {
+        var message = '';
+        jumppos = jumppos - 1;
+        if (jumppos < 0) {
+          jumppos = 0;
+          message = ' First JumpMark / ScrollMark';
+        }
+
+        var position = BParray[jumppos];
+
+        document.getElementById('BP').innerHTML =
+          '<h1>Jumped Up ' + (position + 1) + message + '</h1>' + BParray;
+        ace.edit('editor1').focus(); //To focus the ace editor
+        ace.edit('editor1').renderer.$cursorLayer.showCursor(); // sometimes gives back a blinking cursor
+
+        ace.edit('editor1').scrollToLine(position + 1, true, true);
+        ace.edit('editor1').gotoLine(position + 1, 0, true);
+      }
+
+      function JumpDown() {
+        var message = '';
+        jumppos = jumppos + 1;
+        if (jumppos >= BParray.length) {
+          jumppos = BParray.length - 1;
+          message = ' Last JumpMark / ScrollMark';
+        }
+
+        var position = BParray[jumppos];
+
+        document.getElementById('BP').innerHTML =
+          '<h1>Jumped Down ' + (position + 1) + message + '</h1>' + BParray;
+        ace.edit('editor1').focus(); //To focus the ace editor
+        ace.edit('editor1').renderer.$cursorLayer.showCursor(); // sometimes gives back a blinking cursor
+
+        ace.edit('editor1').scrollToLine(position + 1, true, true);
+        ace.edit('editor1').gotoLine(position + 1, 0, true);
+      }
+
+      var paste = `
+
+
+if you edit a file thousands of lines, jump bookmarks may be handy
+ACE Editor with Breakpoints Move breakpoints as code changes. #1282
+https://github.com/ajaxorg/ace/issues/1282
+
+helpme please https://run.plnkr.co/plunks/pcCGoIZuUvEM8LKb/
+https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs/create_from_scratch/Insane%20in%20the%20Membrane/
+
+click on the LEFT of the line numbers on the gutter to mark lines
+sometimes you have to click twice
+1 to get focus on the editor
+2 to mark unmark a linenumber
+
+then try to add and remove textlines and see the marked lines change
+need this for jumpscroll jump up and jump down TM ;-)
 
-<head>
-	<title>ACE Editor with Breakpoints Move breakpoints as code changes. #1282</title>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.9.6/ace.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.9.6/theme-monokai.min.js"></script>
 
-	<style>
-		body {
-			margin: 4px;
-		}
-
-		.app_editor {
-			height: 600px;
-		}
-
-		.ace_gutter-cell.ace_breakpoint {
-			border-radius: 20px 0px 0px 20px;
-			box-shadow: 0px 0px 1px 1px #248c46 inset;
-			color: black;
-			background-color: rgba(255, 255, 0, 0.81);
-			/*rgb with opacity has no effect on foreground color black */
-		}
-
-}
-
-		}
-	</style>
-
-</head>
-
-<body>
-	if you edit a file thousands of lines, jump bookmarks may be handy<br>
-ACE Editor with Breakpoints Move breakpoints as code changes. #1282 <br>
-https://github.com/ajaxorg/ace/issues/1282 <br>
-	<br>
-	<a href="https://run.plnkr.co/plunks/pcCGoIZuUvEM8LKb/" target="insaneinthemembrane">helpme please
-		https://run.plnkr.co/plunks/pcCGoIZuUvEM8LKb/</a><br>
-	<a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs/create_from_scratch/Insane%20in%20the%20Membrane/"
-		target="insaneinthemembrane">https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs/create_from_scratch/Insane%20in%20the%20Membrane/</a><br>
-	<br>
-	<b>click on the <big><big>LEFT</big> </big>of the line numbers on the gutter to mark lines</b><br>
-sometimes you have to click twice<br>
-1 to get focus on the editor <br>
-2 to mark unmark a linenumber<br>
-	<br>
-then try to add and remove textlines and see the marked lines change<br>
-need this for jumpscroll jump up and jump down TM ;-) 
-
-
-	<center>
-		<input type ="button" value="JumpScroll to marked lines" onclick="JumpScroll()">
-		<input type ="button" value="JumpUp" onclick="JumpUp()">
-		<input type ="button" value="JumpDown" onclick="JumpDown()">
-		<pre id="BP">BreakPoints will be set here by javascript</pre>
-	</center>
-
-	<div id="editor1" class="app_editor">
-		ACE Editor with Breakpoints Move breakpoints as code changes. #1282
-		https://github.com/ajaxorg/ace/issues/1282
-
-		helpme please https://run.plnkr.co/plunks/pcCGoIZuUvEM8LKb/
-
-		https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs/create_from_scratch/Insane%20in%20the%20Membrane/
-
-		click on the left of the line numbers on the gutter to mark lines
-		then try to add and remove textlines and see the marked lines change
-		need this for JumpScroll Jump up and Jump down TM ;-)
-
-		made BParray[] for easy marked linenubers
-		note ACE start at 0 wich is line 1 in the editor
-		see console for the info
-
-		ACE Editor with Breakpoints Move breakpoints as code changes. #1282
-		https://github.com/ajaxorg/ace/issues/1282
-
-		helpme please https://run.plnkr.co/plunks/pcCGoIZuUvEM8LKb/
-
-		https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs/create_from_scratch/Insane%20in%20the%20Membrane/
-
-		click on the left of the line numbers on the gutter to mark lines
-		then try to add and remove textlines and see the marked lines change
-		need this for JumpScroll Jump up and Jump down TM ;-)
-
-		made BParray[] for easy marked linenubers
-		note ACE start at 0 wich is line 1 in the editor
-		see console for the info
-
-		ACE Editor with Breakpoints Move breakpoints as code changes. #1282
-		https://github.com/ajaxorg/ace/issues/1282
-
-		helpme please https://run.plnkr.co/plunks/pcCGoIZuUvEM8LKb/
-
-		https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs/create_from_scratch/Insane%20in%20the%20Membrane/
-
-		click on the left of the line numbers on the gutter to mark lines
-		then try to add and remove textlines and see the marked lines change
-		need this for JumpScroll Jump up and Jump down TM ;-)
-
-		made BParray[] for easy marked linenubers
-		note ACE start at 0 wich is line 1 in the editor
-		see console for the info
-
-		ACE Editor with Breakpoints Move breakpoints as code changes. #1282
-		https://github.com/ajaxorg/ace/issues/1282
-
-		helpme please https://run.plnkr.co/plunks/pcCGoIZuUvEM8LKb/
-
-		https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs/create_from_scratch/Insane%20in%20the%20Membrane/
-
-		click on the left of the line numbers on the gutter to mark lines
-		then try to add and remove textlines and see the marked lines change
-		need this for JumpScroll Jump up and Jump down TM ;-)
-
-		made BParray[] for easy marked linenubers
-		note ACE start at 0 wich is line 1 in the editor
-		see console for the info
-
-		ACE Editor with Breakpoints Move breakpoints as code changes. #1282
-		https://github.com/ajaxorg/ace/issues/1282
-
-		helpme please https://run.plnkr.co/plunks/pcCGoIZuUvEM8LKb/
-
-		https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs/create_from_scratch/Insane%20in%20the%20Membrane/
-
-		click on the left of the line numbers on the gutter to mark lines
-		then try to add and remove textlines and see the marked lines change
-		need this for JumpScroll Jump up and Jump down TM ;-)
-
-		made BParray[] for easy marked linenubers
-		note ACE start at 0 wich is line 1 in the editor
-		see console for the info
-		ACE Editor with Breakpoints Move breakpoints as code changes. #1282
-		https://github.com/ajaxorg/ace/issues/1282
-
-		helpme please https://run.plnkr.co/plunks/pcCGoIZuUvEM8LKb/
-
-		https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs/create_from_scratch/Insane%20in%20the%20Membrane/
-
-		click on the left of the line numbers on the gutter to mark lines
-		then try to add and remove textlines and see the marked lines change
-		need this for JumpScroll Jump up and Jump down TM ;-)
-
-		made BParray[] for easy marked linenubers
-		note ACE start at 0 wich is line 1 in the editor
-		see console for the info
-
-		ACE Editor with Breakpoints Move breakpoints as code changes. #1282
-		https://github.com/ajaxorg/ace/issues/1282
-
-		helpme please https://run.plnkr.co/plunks/pcCGoIZuUvEM8LKb/
-
-		https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs/create_from_scratch/Insane%20in%20the%20Membrane/
-
-		click on the left of the line numbers on the gutter to mark lines
-		then try to add and remove textlines and see the marked lines change
-		need this for JumpScroll Jump up and Jump down TM ;-)
-
-		made BParray[] for easy marked linenubers
-		note ACE start at 0 wich is line 1 in the editor
-		see console for the info
-
-		ACE Editor with Breakpoints Move breakpoints as code changes. #1282
-		https://github.com/ajaxorg/ace/issues/1282
-
-		helpme please https://run.plnkr.co/plunks/pcCGoIZuUvEM8LKb/
-
-		https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs/create_from_scratch/Insane%20in%20the%20Membrane/
-
-		click on the left of the line numbers on the gutter to mark lines
-		then try to add and remove textlines and see the marked lines change
-		need this for JumpScroll Jump up and Jump down TM ;-)
-
-		made BParray[] for easy marked linenubers
-		note ACE start at 0 wich is line 1 in the editor
-		see console for the info
-
-		ACE Editor with Breakpoints Move breakpoints as code changes. #1282
-		https://github.com/ajaxorg/ace/issues/1282
-
-		helpme please https://run.plnkr.co/plunks/pcCGoIZuUvEM8LKb/
-
-		https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs/create_from_scratch/Insane%20in%20the%20Membrane/
-
-		click on the left of the line numbers on the gutter to mark lines
-		then try to add and remove textlines and see the marked lines change
-		need this for JumpScroll Jump up and Jump down TM ;-)
-
-		made BParray[] for easy marked linenubers
-		note ACE start at 0 wich is line 1 in the editor
-		see console for the info
-
-		ACE Editor with Breakpoints Move breakpoints as code changes. #1282
-		https://github.com/ajaxorg/ace/issues/1282
-
-		helpme please https://run.plnkr.co/plunks/pcCGoIZuUvEM8LKb/
-
-		https://github.com/ldijkman/randomnerd_esp32_wifi_manager/tree/main/docs/mrs/create_from_scratch/Insane%20in%20the%20Membrane/
-
-		click on the left of the line numbers on the gutter to mark lines
-		then try to add and remove textlines and see the marked lines change
-		need this for JumpScroll Jump up and Jump down TM ;-)
-
-		made BParray[] for easy marked linenubers
-		note ACE start at 0 wich is line 1 in the editor
-		see console for the info
-	</div>
-
-
-
-
-
-	<script>
-		///////////////////////////////////////////////////////////
-//
-// used sources
-//
-// https://ourcodeworld.com/articles/read/1052/how-to-add-toggle-breakpoints-on-the-ace-editor-gutter
-//
-// https://github.com/ajaxorg/ace/issues/1282
-//
-// this made by Dirk Luberth Dijkman
-// https://codepen.io/ldijkman/pen/NWexRpo
-//
 // ///////////////////////////////////////////////////////////
 //
 // used sources
@@ -255,217 +295,37 @@ need this for jumpscroll jump up and jump down TM ;-)
 /////////////////////////////////////////////////////////////////////
 
 
-
-
-var editor = ace.edit("editor1");
-
-editor.setTheme("ace/theme/monokai");
-// inline must be true to syntax highlight PHP without opening <?php tag
-editor.getSession().setMode({
-  path: "ace/mode/php",
-  inline: true
-});
-
- // mark the lines test
- editor.session.setBreakpoint(6); //test for line 5
- editor.session.setBreakpoint(21); //test for line 7
- editor.session.setBreakpoint(36); //test for line 5
- editor.session.setBreakpoint(51); //test for line 7
- editor.session.setBreakpoint(66); //test for line 5
- editor.session.setBreakpoint(80); //test for line 7
- editor.session.setBreakpoint(95); //test for line 7
- editor.session.setBreakpoint(125); //test for line 7
- editor.session.setBreakpoint(140); //test for line 7
-
-var breakpointsArrayNew = [];
-
-var BParray = [];
+`; // end var paste
 
 
 
-editor.on("guttermousedown", function (e) {
-  var target = e.domEvent.target;
-  if (target.className.indexOf("ace_gutter-cell") == -1) return;
-  if (!editor.isFocused()) return;
-  // if you click outside the editor, you have to click twice
-  // 1 to get focus 
-  // 2 to select/deselect
+      editor.setFontSize('14px');
 
-  // console.log(e.clientX > 25 + target.getBoundingClientRect().left);
-  // console.log(e.clientX, 25 + target.getBoundingClientRect().left);
-  // console.log(e.clientX);
+      ace.edit('editor1').moveCursorTo(0, 0);
 
-  if (e.clientX > 25 + target.getBoundingClientRect().left) return; // maybe a limmit for right side gutter fold unfold click things
-
-  breakpointsArrayNew = e.editor.session.getBreakpoints(row, 0);
-
-  var row = e.getDocumentPosition().row;       // on wich linenumber is clicked
-
-  if (typeof breakpointsArrayNew[row] === typeof undefined) {  //  if row is undefined in breakpoints array
-    e.editor.session.setBreakpoint(row);  // set breakpoint
-  } else {                                                     //  else row is defined breakpoint
-    e.editor.session.clearBreakpoint(row); //clear breakpoint
-    e.stop();
-  }
-
-  //console.log("breakpointsArrayNew ", breakpointsArrayNew);
-  //console.log("breakpointsArrayNew.length ", breakpointsArrayNew.length);
-
-    makeBParray();
-  
-});
-
-
-
-
-editor.on("change", function (e) {
-  if (e.lines.length > 1 && (e.action === "insert" || e.action === "remove")) {
-    const breakpointsArrayOld = editor.session.getBreakpoints();
-    let breakpointsArrayNew = [];
-
-    const amountOfLinesAffected = e.lines.length - 1;
-    const startRow = e.start.row;
-    const endRow = e.end.row;
-
-    for (const key of Object.keys(breakpointsArrayOld)) {
-      let breakpointRow = parseInt(key);
-
-      if (e.action === "insert") {
-        // new lines
-        if (breakpointRow > startRow) {
-          // breakpoint forward
-          breakpointsArrayNew[breakpointRow + amountOfLinesAffected] =
-            "ace_breakpoint";
-        } else {
-          // unaffected by insert
-          breakpointsArrayNew[breakpointRow] = "ace_breakpoint";
-        }
-      } else if (e.action === "remove") {
-        // removed lines
-        if (breakpointRow > startRow && breakpointRow <= endRow) {
-          // breakpoint removed
-        } else if (breakpointRow >= endRow) {
-          // breakpoint behind
-          breakpointsArrayNew[breakpointRow - amountOfLinesAffected] =
-            "ace_breakpoint";
-        } else {
-          // unaffected by remove
-          breakpointsArrayNew[breakpointRow] = "ace_breakpoint";
-        }
+      // lets make a huge text file in editor
+      for (let i = 0; i <= 250; i++) {
+        editor.session.insert(
+          ace.edit('editor1').getCursorPosition(),
+          'hello\n hello please mark or unmark a bookmark first\n by clicking left of a linenumber\n\n' +
+            paste
+        );
       }
-    }
 
-    // remove all old breakpoints
-    for (const key of Object.keys(breakpointsArrayOld)) {
-      let breakpointRow = parseInt(key);
-      editor.session.clearBreakpoint(breakpointRow);
-    }
+      // mark the lines test
+      editor.session.setBreakpoint(1); //test for line 5
 
-    // add all new breakpoints
-    for (const key of Object.keys(breakpointsArrayNew)) {
-      let breakpointRow = parseInt(key);
-      editor.session.setBreakpoint(breakpointRow);
-      //console.log("breakpointsArrayNew",breakpointsArrayNew);
-    }
-  }
-  
-  makeBParray();
-  
-});
+      editor.session.setBreakpoint(4975); //test for line 5
+      editor.session.setBreakpoint(9000); //test for line 7
+      editor.session.setBreakpoint(18000); //test for line 5
+      editor.session.setBreakpoint(35000); //test for line 7
+      editor.session.setBreakpoint(49999); //test for line 5
+      editor.session.setBreakpoint(66000); //test for line 7
+      editor.session.setBreakpoint(75075); //test for line 7
+      editor.session.setBreakpoint(80254); //test for line 7
+      editor.session.setBreakpoint(99045); //test for line 7
 
-
-
-
-
-function makeBParray(){
-   
-  BParray = [];
-  
-	if(breakpointsArrayNew.length==0){
-    breakpointsArrayNew=editor.session.getBreakpoints(); //for startup demo, to load breakpoints set by code
-	}
-
-  for (let i = 0; i <= breakpointsArrayNew.length; i++) {
-      if (typeof breakpointsArrayNew[i] !== typeof undefined) {
-          // not undefined
-          //console.log("breakpointsArrayNew[i] ", i,breakpointsArrayNew[i]);
-          BParray.push(i);
-      }
-  }
-  
-  console.log("BParray ", BParray);
-  document.getElementById("BP").innerHTML=("<h3>breakpoints BParray "+ BParray+"</h3>");
-}
-
-
-
-
-
-
-var jumppos=0;
-
-
-function JumpScroll(){
-  var position=BParray[jumppos];
-    document.getElementById("BP").innerHTML=("<h1>JumpScroll (TM ;-) To Marked Line Number "+(position+1)+"</h1>"+BParray);
-    ace.edit("editor1").focus(); //To focus the ace editor
-    ace.edit("editor1").renderer.$cursorLayer.showCursor(); // sometimes gives back a blinking cursor
-    
-    ace.edit("editor1").scrollToLine(position+1, true, true, );
-    ace.edit("editor1").gotoLine(position+1, 0, true);
-    jumppos=jumppos+1;
-
-    console.log("jumppos",jumppos);
-    if(jumppos >= BParray.length){jumppos=0;}
-    console.log("BParray.length",BParray.length);
-    console.log("jumppos",jumppos);
-}
-
-
-function JumpUp(){
-	var message="";
-    jumppos=jumppos-1;
-		if(jumppos < 0 ){jumppos=0;message=" First JumpMark"}
-
-	  var position=BParray[jumppos];
-
-    document.getElementById("BP").innerHTML=("<h1>Jumped Up "+(position+1)+message+"</h1>"+BParray);
-		ace.edit("editor1").focus(); //To focus the ace editor
-    ace.edit("editor1").renderer.$cursorLayer.showCursor(); // sometimes gives back a blinking cursor
-    
-		ace.edit("editor1").scrollToLine(position+1, true, true, );
-    ace.edit("editor1").gotoLine(position+1, 0, true);
-
-}	
-
-  
-function JumpDown(){
-	var message="";
-	  jumppos=jumppos+1;
-		if(jumppos >= BParray.length) {jumppos=(BParray.length)-1;message=" Last JumpMark"}
-	
-		var position=BParray[jumppos];
-    
-		document.getElementById("BP").innerHTML=("<h1>Jumped Down "+(position+1)+message+"</h1>"+BParray);
-    ace.edit("editor1").focus(); //To focus the ace editor
-    ace.edit("editor1").renderer.$cursorLayer.showCursor(); // sometimes gives back a blinking cursor
-    
-		ace.edit("editor1").scrollToLine(position+1, true, true, );
-    ace.edit("editor1").gotoLine(position+1, 0, true);
-}	
-  
-
-	 	ace.edit("editor1").moveCursorTo(0,0);
- 		editor.session.insert(ace.edit("editor1").getCursorPosition(), "hello\n hello please mark or unmark a bookmark first\n by clicking left of a linenumber\n\n");
- 		editor.session.setBreakpoint(1); //test for line 5
-  	
-		makeBParray(); //for startup demo, to load breakpoints set by code
-
-	
-	</script>
-
-
-
-</body>
-
+      makeBParray(); //for startup demo, to load breakpoints set by code
+    </script>
+  </body>
 </html>
