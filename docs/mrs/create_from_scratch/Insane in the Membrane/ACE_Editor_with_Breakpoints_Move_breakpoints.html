@@ -381,7 +381,7 @@ function makeBParray(){
   BParray = [];
   
 	if(breakpointsArrayNew.length==0){
-    breakpointsArrayNew=editor.session.getBreakpoints(); //for startup demo
+    breakpointsArrayNew=editor.session.getBreakpoints(); //for startup demo, to load breakpoints set by code
 	}
 
   for (let i = 0; i <= breakpointsArrayNew.length; i++) {
@@ -422,12 +422,13 @@ function JumpScroll(){
 
 
 function JumpUp(){
+	var message="";
     jumppos=jumppos-1;
-		if(jumppos < 0 ) jumppos=0;
+		if(jumppos < 0 ){jumppos=0;message=" First JumpMark"}
 
 	  var position=BParray[jumppos];
 
-    document.getElementById("BP").innerHTML=("<h1>Jumped Up "+(position+1)+"</h1>"+BParray);
+    document.getElementById("BP").innerHTML=("<h1>Jumped Up "+(position+1)+message+"</h1>"+BParray);
 		ace.edit("editor1").focus(); //To focus the ace editor
     ace.edit("editor1").renderer.$cursorLayer.showCursor(); // sometimes gives back a blinking cursor
     
@@ -438,12 +439,13 @@ function JumpUp(){
 
   
 function JumpDown(){
+	var message="";
 	  jumppos=jumppos+1;
-		if(jumppos >= BParray.length) {jumppos=(BParray.length)-1;}
+		if(jumppos >= BParray.length) {jumppos=(BParray.length)-1;message=" Last JumpMark"}
 	
 		var position=BParray[jumppos];
     
-		document.getElementById("BP").innerHTML=("<h1>Jumped Down "+BParray[jumppos]+"</h1>"+BParray);
+		document.getElementById("BP").innerHTML=("<h1>Jumped Down "+(position+1)+message+"</h1>"+BParray);
     ace.edit("editor1").focus(); //To focus the ace editor
     ace.edit("editor1").renderer.$cursorLayer.showCursor(); // sometimes gives back a blinking cursor
     
@@ -456,7 +458,8 @@ function JumpDown(){
  		editor.session.insert(ace.edit("editor1").getCursorPosition(), "hello\n hello please mark or unmark a bookmark first\n by clicking left of a linenumber\n\n");
  		editor.session.setBreakpoint(1); //test for line 5
   	
-		makeBParray(); //for demo load
+		makeBParray(); //for startup demo, to load breakpoints set by code
+
 	
 	</script>
 
