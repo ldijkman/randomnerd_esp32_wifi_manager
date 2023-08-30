@@ -21,83 +21,70 @@ https://www.youtube.com/watch?v=XhzpxjuwZy0
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.9.6/theme-monokai.min.js"></script>
 
     <style>
-      		body {
-      			margin: 4px;
-      		}
-
-      		.app_editor {
-      			height: 600px;
-      		}
-
-      		.ace_gutter-cell.ace_breakpoint {
-      			border-radius: 20px 0px 0px 20px;
-      			box-shadow: 0px 0px 1px 1px #248c46 inset;
-      			color: black;
-      			background-color: rgba(255, 255, 0, 0.81);
-      			/*rgb with opacity has no effect on foreground color black */
-      		}
-          .ace_breakpoint.tooltip:hover span {
-    display: inline;
-    position: absolute;
-    top: 10px;
-    left: 25px;
-    outline: none;
-    text-decoration: none;
-    font-size: 70%;
-    color: #000;
-
-    opacity: 1;
-}
-     .mydivouter {
-    position: relative;
-  }
-
-  .mydivoverlap {
-    position: relative;
-    z-index: 1000;
-  }
-
-  .mybuttonoverlap {
-    position: absolute;
-    z-index: 2000;
-    top: -40px;
-    //display: none;
-    left: -25px;
-  }
-
-  .mybuttonoverlap2 {
-    position: absolute;
-    z-index: 2000;
-    top: -1px;
-    //display: none;
-    left: -25px;
-  }
-
-  .mydivouter:hover .mybuttonoverlap {
-    display: block;
-  }
-
-  .mydivouter:hover .mybuttonoverlap2 {
-    display: block;
-  }
-        .mydiv {
-         position: relative;
-        display: none;
-        background-color: salmon;
-        color: white;
+      body {
+        margin: 4px;
       }
 
+      .app_editor {
+        height: 600px;
+      }
 
+      .ace_gutter-cell.ace_breakpoint {
+        border-radius: 20px 0px 0px 20px;
+        box-shadow: 0px 0px 1px 1px #248c46 inset;
+        color: black;
+        background-color: rgba(255, 255, 0, 0.81);
+        /*rgb with opacity has no effect on foreground color black */
+      }
+      .ace_breakpoint.tooltip:hover span {
+        display: inline;
+        position: absolute;
+        top: 10px;
+        left: 25px;
+        outline: none;
+        text-decoration: none;
+        font-size: 70%;
+        color: #000;
+
+        opacity: 1;
+      }
+
+      .GutterButtonDiv {
+        position: relative;
+      }
+
+      .GutterUpButton {
+        position: absolute;
+        z-index: 2000;
+        top: -40px;
+        //display: none;
+        left: -25px;
+      }
+
+      .GutterDownButton {
+        position: absolute;
+        z-index: 2000;
+        top: -1px;
+        //display: none;
+        left: -25px;
+      }
+
+      .GutterButtonDiv:hover .GutterUpButton {
+        display: block;
+      }
+
+      .GutterButtonDiv:hover .GutterDownButton {
+        display: block;
+      }
+ 
     </style>
   </head>
 
   <body>
-     <center>
-    
-    <h1>a HUGE text file 100 Thousand lines</h1>
-    <div class="block" id ="block">hi</div>
+    <center>
+      <h1>a HUGE text file 100 Thousand lines</h1>
+      <div class="block" id="block">hi</div>
 
-   
       <input
         type="button"
         value="JumpScroll to marked lines"
@@ -161,11 +148,7 @@ https://www.youtube.com/watch?v=XhzpxjuwZy0
           //  if row is undefined in breakpoints array
           e.editor.session.setBreakpoint(row); // set breakpoint
 
-
-//create_up_down_near_marked_linenumber(row);
-
-
-
+          //create_up_down_near_marked_linenumber(row);
         } else {
           //  else row is defined breakpoint
           e.editor.session.clearBreakpoint(row); //clear breakpoint
@@ -235,8 +218,7 @@ https://www.youtube.com/watch?v=XhzpxjuwZy0
         makeBParray();
       });
 
-
-///////////////////////////////////////////////////
+      ///////////////////////////////////////////////////
       function makeBParray() {
         BParray = [];
 
@@ -255,14 +237,11 @@ https://www.youtube.com/watch?v=XhzpxjuwZy0
         console.log('BParray ', BParray);
         document.getElementById('BP').innerHTML =
           '<h3>breakpoints BParray ' + BParray + '</h3>';
-          
-
       }
 
       var jumppos = 0;
 
-
-//////////////////////////////////////////////////////////////////
+      //////////////////////////////////////////////////////////////////
       function JumpScroll() {
         var position = BParray[jumppos];
         document.getElementById('BP').innerHTML =
@@ -285,7 +264,7 @@ https://www.youtube.com/watch?v=XhzpxjuwZy0
         console.log('jumppos', jumppos);
       }
 
-////////////////////////////////////////////////////////////////////
+      ////////////////////////////////////////////////////////////////////
       function JumpUp() {
         var message = '';
         jumppos = jumppos - 1;
@@ -324,61 +303,53 @@ https://www.youtube.com/watch?v=XhzpxjuwZy0
         ace.edit('editor1').gotoLine(position + 1, 0, true);
       }
 
+      //////////////////////////////////////////////////////////////
+      // add up down button to breakpoint linenumber not working correct
+      // maybe should be something like
+      // if there are breakpoints in current vew
+      // then append up down button to line breakpoint
+      //////////////////////////////////////////////////////////////
+      function create_up_down_near_marked_linenumber(row) {
+        const div = document.createElement('div');
 
-
-
-
-//////////////////////////////////////////////////////////////
-// add up down button to breakpoint linenumber not working correct
-// maybe should be something like 
-// if there are breakpoints in current vew
-// then append up down button to line breakpoint
-//////////////////////////////////////////////////////////////
-function create_up_down_near_marked_linenumber(row){
-
-const div = document.createElement('div');
-          
-div.innerHTML = `<button type="button" 
+        div.innerHTML =
+          `<button type="button" 
 title="scrollup to previous marked line &#010;
 you understand the idea&#010;
 maybe keep this centered in the view" 
 style="font-size: 10px;color:yellow;background:#50504B;" 
-onclick="JumpUp(`+row+`)" 
-class="mybuttonoverlap btn btn-info">&#11165;
+onclick="JumpUp(` +
+          row +
+          `)" 
+class="GutterUpButton">&#11165;
 </button>
 <button type="button" 
 title="scrolldown to next marked line &#010;
 you understand the idea&#010;
 maybe keep this centered in the view"  
 style="font-size: 10px;color:yellow;background:#50504B;" 
-onclick="JumpDown(`+row+`)" 
-class="mybuttonoverlap2 btn btn-info">&#11167;
+onclick="JumpDown(` +
+          row +
+          `)" 
+class="GutterDownButton">&#11167;
 </button>
 `;
-    
-// set style
-div.style.float = 'left';
-// div.style.background ="";
-// div.style.padding ="1px";
-// div.style.margin ="1px";
-// div.style.border = "";
-// better to use CSS though - just set class
 
-div.setAttribute('id','buttest_'+row); // and make sure myclass has some styles in css
-div.setAttribute('class', 'mydivouter '+row);
+        // set style
+        div.style.float = 'left';
+        // div.style.background ="";
+        // div.style.padding ="1px";
+        // div.style.margin ="1px";
+        // div.style.border = "";
+        // better to use CSS though - just set class
 
-var nodeList = document.querySelectorAll(".ace_gutter-cell");
-// console.log("nodeList",nodeList);
-nodeList[row+1].appendChild(div);
+        div.setAttribute('id', 'buttest_' + row); // and make sure myclass has some styles in css
+        div.setAttribute('class', 'GutterButtonDiv ' + row);
 
-}
-
-
-
-
-
-
-
+        var nodeList = document.querySelectorAll('.ace_gutter-cell');
+        // console.log("nodeList",nodeList);
+        nodeList[row + 1].appendChild(div);
+      }
 
       var paste = `
 
@@ -417,8 +388,6 @@ need this for jumpscroll jump up and jump down TM ;-)
 
 `; // end var paste
 
-
-
       editor.setFontSize('14px');
 
       ace.edit('editor1').moveCursorTo(0, 0);
@@ -427,34 +396,30 @@ need this for jumpscroll jump up and jump down TM ;-)
       for (let i = 0; i <= 2550; i++) {
         editor.session.insert(
           ace.edit('editor1').getCursorPosition(),
-          i+' x Hello\n      Hello, please mark or unmark a bookmark first\n      By clicking left of a linenumber\n\n' +
+          i +
+            ' x Hello\n      Hello, please mark or unmark a bookmark first\n      By clicking left of a linenumber\n\n' +
             paste
         );
       }
 
       // mark the lines test
-      editor.session.setBreakpoint(1); //test for line 
-      editor.session.setBreakpoint(4954); //test for line 
-      editor.session.setBreakpoint(9010); //test for line 
-      editor.session.setBreakpoint(17980); //test for line 
-      editor.session.setBreakpoint(35023); //test for line 
-      editor.session.setBreakpoint(49999); //test for line 
-      editor.session.setBreakpoint(65989); //test for line 
-      editor.session.setBreakpoint(75076); //test for line 
-      editor.session.setBreakpoint(80263); //test for line 
-      editor.session.setBreakpoint(99022); //test for line 
+      editor.session.setBreakpoint(1); //test for line
+      editor.session.setBreakpoint(4954); //test for line
+      editor.session.setBreakpoint(9010); //test for line
+      editor.session.setBreakpoint(17980); //test for line
+      editor.session.setBreakpoint(35023); //test for line
+      editor.session.setBreakpoint(49999); //test for line
+      editor.session.setBreakpoint(65989); //test for line
+      editor.session.setBreakpoint(75076); //test for line
+      editor.session.setBreakpoint(80263); //test for line
+      editor.session.setBreakpoint(99022); //test for line
 
       makeBParray(); //for startup demo, to load breakpoints set by code
 
-document.addEventListener("DOMContentLoaded", (event) => {
-  console.log("DOM fully loaded and parsed");
-  create_up_down_near_marked_linenumber(19);
-});
-
-
-
-
-
+      document.addEventListener('DOMContentLoaded', (event) => {
+        console.log('DOM fully loaded and parsed');
+        create_up_down_near_marked_linenumber(19);
+      });
     </script>
   </body>
 </html>
