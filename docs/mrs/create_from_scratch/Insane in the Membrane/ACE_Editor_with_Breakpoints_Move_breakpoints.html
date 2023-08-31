@@ -76,14 +76,12 @@ https://www.youtube.com/watch?v=XhzpxjuwZy0
       .GutterButtonDiv:hover .GutterDownButton {
         display: block;
       }
- 
     </style>
   </head>
 
   <body>
     <center>
       <h1>a HUGE text file 100 Thousand lines</h1>
-      <div class="block" id="block">hi</div>
 
       <input
         type="button"
@@ -126,6 +124,11 @@ https://www.youtube.com/watch?v=XhzpxjuwZy0
 
       var BParray = [];
 
+      var jumppos = 0;
+
+      /////////////////////////////////////////////////////////////////////
+      // editor.on('guttermousedown'
+      /////////////////////////////////////////////////////////////////////
       editor.on('guttermousedown', function (e) {
         var target = e.domEvent.target;
         if (target.className.indexOf('ace_gutter-cell') == -1) return;
@@ -161,6 +164,9 @@ https://www.youtube.com/watch?v=XhzpxjuwZy0
         makeBParray();
       });
 
+      //////////////////////////////////////////////////////////////////////
+      // editor.on('change',
+      /////////////////////////////////////////////////////////////////////
       editor.on('change', function (e) {
         if (
           e.lines.length > 1 &&
@@ -218,7 +224,9 @@ https://www.youtube.com/watch?v=XhzpxjuwZy0
         makeBParray();
       });
 
-      ///////////////////////////////////////////////////
+      //////////////////////////////////////////////////////////////////////
+      // makeBParray()
+      /////////////////////////////////////////////////////////////////////
       function makeBParray() {
         BParray = [];
 
@@ -234,14 +242,14 @@ https://www.youtube.com/watch?v=XhzpxjuwZy0
           }
         }
 
-        console.log('BParray ', BParray);
+        // console.log('BParray ', BParray);
         document.getElementById('BP').innerHTML =
           '<h3>breakpoints BParray ' + BParray + '</h3>';
       }
 
-      var jumppos = 0;
-
-      //////////////////////////////////////////////////////////////////
+      //////////////////////////////////////////////////////////////////////
+      // JumpScroll()
+      /////////////////////////////////////////////////////////////////////
       function JumpScroll() {
         var position = BParray[jumppos];
         document.getElementById('BP').innerHTML =
@@ -264,7 +272,9 @@ https://www.youtube.com/watch?v=XhzpxjuwZy0
         console.log('jumppos', jumppos);
       }
 
-      ////////////////////////////////////////////////////////////////////
+      //////////////////////////////////////////////////////////////////////
+      // JumpUp()
+      /////////////////////////////////////////////////////////////////////
       function JumpUp() {
         var message = '';
         jumppos = jumppos - 1;
@@ -284,6 +294,9 @@ https://www.youtube.com/watch?v=XhzpxjuwZy0
         ace.edit('editor1').gotoLine(position + 1, 0, true);
       }
 
+      //////////////////////////////////////////////////////////////////////
+      // JumpDown()
+      /////////////////////////////////////////////////////////////////////
       function JumpDown() {
         var message = '';
         jumppos = jumppos + 1;
@@ -416,10 +429,53 @@ need this for jumpscroll jump up and jump down TM ;-)
 
       makeBParray(); //for startup demo, to load breakpoints set by code
 
+      //////////////////////////////////////////////////////////////////////
+      // DOMContentLoaded
+      /////////////////////////////////////////////////////////////////////
       document.addEventListener('DOMContentLoaded', (event) => {
         console.log('DOM fully loaded and parsed');
         create_up_down_near_marked_linenumber(19);
-      });
+
+        ////////////////////////////////////////////////////////////////////////
+
+        const boxWrapper = document.querySelectorAll('.app_editor');
+        const cellWrapper = document.querySelectorAll('.ace_gutter-cell');
+        const box = document.createElement('div');
+
+        box.innerHTML = ` 
+<input type="button" value="Up  " onclick="JumpUp()" />
+<br><br>
+<input type="button" value="Down" onclick="JumpDown()" />
+`;
+        box.style.position = 'relative';
+        box.style.backgroundColor = '';
+        box.style.color = 'black';
+        box.style.heigth = '13vh';
+        box.style.top = '35vh';
+        box.style.left = '90%';
+        box.style.opacity = '40%';
+
+        box.classList.add('box');
+
+        boxWrapper[0].appendChild(box);
+
+        /////////////////////////////////////////////////////////////////////////
+      }); // end  document.addEventListener('DOMContentLoaded', (event) => {
+
+      /////////////////////////////////////////////////////////////
+      //
+      // used sources
+      //
+      // https://ourcodeworld.com/articles/read/1052/how-to-add-toggle-breakpoints-on-the-ace-editor-gutter
+      //
+      // https://github.com/ajaxorg/ace/issues/1282
+      //
+      // this made by Dirk Luberth Dijkman
+      // https://codepen.io/ldijkman/pen/NWexRpo
+      // https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/docs/mrs/create_from_scratch/Insane%20in%20the%20Membrane/ACE_Editor_with_Breakpoints_Move_breakpoints.html
+      // https://plnkr.co/edit/owlVS1XioRN3EKGx?preview
+      //
+      /////////////////////////////////////////////////////////////////////
     </script>
   </body>
 </html>
