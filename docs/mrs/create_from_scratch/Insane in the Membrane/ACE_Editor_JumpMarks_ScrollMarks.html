@@ -89,8 +89,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/ext-spellcheck.min.js"></script>
 
  
- 
- 
+
+
+ <script type="text/javascript" src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ace-colorpicker-min.js" ></script>
+ <link rel="stylesheet" href="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ace-colorpicker.css" />
  
   <style>
     * {
@@ -2508,7 +2510,10 @@ https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fldijkman.github
 var editor = ace.edit("editor");
 editor.setTheme("ace/theme/vibrant_ink");
 //editor.getSession().setMode("ace/mode/html");
-editor.session.setMode("ace/mode/html");
+//editor.session.setMode("ace/mode/html");
+  editor.session.setMode("ace/mode/html", function() {
+        LoadColorPicker()
+      })
 editor.getSession().setUseWorker(true);
         ace.edit("editor").setOptions({
           enableLinking: true
@@ -3197,6 +3202,12 @@ function showAbout() {
   }
 }
 
+
+  function LoadColorPicker() {
+    console.log("load colorpicker now in function LoadColorPicker");
+    window.editor = ace.edit("editor");
+    AceColorPicker.load(ace, editor);
+  }
 
     </script>
 
