@@ -11,7 +11,7 @@ https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/create_from_scratch
 ---
 
 ### The Best Editor ;-)
-[Video The Best Editor ]([http://chaoscollective.org](https://youtu.be/lZW8KM6svH8?si=8jUMf4XIVXVXdxXA)
+[Video The Best Editor ](https://youtu.be/lZW8KM6svH8?si=8jUMf4XIVXVXdxXA)
 
 
 https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/create_from_scratch/Insane%20in%20the%20Membrane/ACE_Editor_JumpMarks_ScrollMarks.html
