@@ -92,6 +92,9 @@
  <script type="text/javascript" src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ace-colorpicker-min.js" ></script>
  <link rel="stylesheet" href="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ace-colorpicker.css" />
  
+<script type="text/javascript" src="https://jscolor.com/release/2.5/jscolor-2.5.1/jscolor.js"></script>
+
+
   <style>
     * {
       margin: 0;
@@ -3416,13 +3419,16 @@ function BGColor() {
   border-radius:10px;
   margin-top: 10px;
   display:none;
-  z-index:9999;
+  z-index:50;
   overflow-y:scroll; 
   
   overscroll-behavior: contain;    
   color-scheme:normal;">
 
-     <h1>Override BGColor Editor</h1>
+
+
+
+     <h1>Override Theme BGColor Editor</h1>
      <textarea rows="12" cols="60">
     
   <script>
@@ -3437,11 +3443,28 @@ function BGColor() {
 
 
 </textarea>
+<br>
 
 
+
+
+
+<script>
+  function setcolor(setcolor){
+    console.log("setcolor",setcolor);
+    editor.container.style.background=setcolor; 
+  }
+</script>
   <br>
-  <input type="button" onclick="BGColor()" value="OK!">
-  <br><br></div><br><br><br><br><br><br>
+
+
+Color: <input value="rgba(51,153,255,1)" data-jscolor="{}" name="myColorInput"
+			oninput="setcolor(this.jscolor.toString());console.log(this.jscolor.toString() + ' ' + this.name)">
+  <br>
+ 
+  <br>
+   <input type="button" onclick="BGColor()" value="&nbsp;&nbsp;OK!&nbsp;&nbsp;">
+  </div><br><br><br><br><br><br>
 </div>
 </div>
  
