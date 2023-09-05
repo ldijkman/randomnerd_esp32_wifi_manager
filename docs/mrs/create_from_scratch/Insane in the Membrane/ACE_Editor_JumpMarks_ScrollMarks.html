@@ -91,8 +91,10 @@
 
  <script type="text/javascript" src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ace-colorpicker-min.js" ></script>
  <link rel="stylesheet" href="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ace-colorpicker.css" />
- 
+<!-- 
 <script type="text/javascript" src="https://jscolor.com/release/2.5/jscolor-2.5.1/jscolor.js"></script>
+-->
+<script type="text/javascript" src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/jscolor.js"></script>
 
 
   <style>
@@ -203,7 +205,7 @@
 
     .GutterUpButton {
       position: absolute;
-      z-index: 2000;
+      z-index: 40;
       top: -40px;
       //display: none;
       left: -20px;
@@ -211,7 +213,7 @@
 
     .GutterDownButton {
       position: absolute;
-      z-index: 2000;
+      z-index: 40;
       top: -1px;
       //display: none;
       left: -20px;
@@ -2984,7 +2986,7 @@ need this for jumpscroll jump up and jump down TM ;-)
         box.style.padding = '5px';
         //box.style.Margin = '15px';
         //box.style.width = '6%';
-        box.style.zIndex = 1000;
+        box.style.zIndex = 49;
         box.classList.add('box');
 
         boxWrapper[0].appendChild(box);
@@ -3422,7 +3424,7 @@ function BGColor() {
   border-radius:10px;
   margin-top: 10px;
   display:none;
-  z-index:50;
+  z-index:55;
   overflow-y:scroll; 
   
   overscroll-behavior: contain;    
@@ -3467,7 +3469,7 @@ BGColor?!: <input value="rgba(51,153,255,1)" data-jscolor="{}" name="myColorInpu
  
   <br>
    <input type="button" onclick="BGColor()" value="&nbsp;&nbsp;OK!&nbsp;&nbsp;">
-  </div><br><br><br><br><br><br>
+  </div><br>
 </div>
 </div>
  
