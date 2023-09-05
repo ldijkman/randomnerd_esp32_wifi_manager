@@ -1,4 +1,4 @@
-<!-- 
+<!--
   ACE looks like a <textarea> 
       But it is A very powefull Editor
       multiline, multi cursor edit
@@ -326,7 +326,10 @@
 <!-- now working -->
 
 
-<input type="button" value="&nbsp;About&nbsp;" style="float:right;padding:2px;" onclick="showAbout()" title="Show About">
+
+<input type="button" value="&nbsp;About&nbsp;" style="float:right;margin:2px;" onclick="showAbout()" title="Show About">
+
+<input type="button" value="&nbsp;BGColor&nbsp;" style="float:right;margin:2px;" onclick="BGColor()" title="Override Editor BackGroundColor">
 
 
 <div id="wrap">
@@ -853,7 +856,7 @@ Figlet font Big <a href="https://run.plnkr.co/plunks/ZEkhoGgs4ntDZzT0" target="A
   console.clear();
 
 // and Luberth said he prefers not to use JQuery
-// and now he creates his own JaBaDabba script
+// and now he Luberth Creates his own AbraCadaBra JaBaDabba Script
 // id() short for document.getElementById()
 // makes the code much better readable for me even better as JQquery $()
 //
@@ -3250,6 +3253,24 @@ function showAbout() {
 }
 
 
+
+/////////////////////////////
+// show or hide BGColorDiv
+////////////////////////////
+function BGColor() {
+  if (document.getElementById("BGColorDiv").style.display === "none") {
+   document.getElementById("BGColorDiv").style.display = "block";
+     // should be something to block scrolling of body 
+     // only popup scroll
+     // https://codepen.io/anon/pen/oEMmrm
+  } else {
+   document.getElementById("BGColorDiv").style.display = "none";
+  }
+}
+
+
+
+
   function LoadColorPicker() {
     console.log("load colorpicker now in function LoadColorPicker");
     window.editor = ace.edit("editor");
@@ -3265,6 +3286,9 @@ function showAbout() {
 	
 
     </script>
+
+
+
 
 
 <!--
@@ -3290,7 +3314,6 @@ function showAbout() {
   height:90%;
   overscroll-behavior: contain;    
   color-scheme:normal;">
- 
 
      <h1>ACE Editor with JumpMarks ScrollMarks</h1>
 
@@ -3367,12 +3390,75 @@ function showAbout() {
 
 
 
+
+
+
+
+
+
+<!--
+  ////////////////////////
+  // begin BGColorDiv
+  ///////////////////////
+  -->
+</div></div></div></div>
+  <div id="BGColorDiv" style="position: fixed;
+  width: 70%;
+  top:10%;
+  height:60%;
+  left:20%;
+  padding: 10px 0;
+  text-align: center;
+  background-color: lightgray;
+  color:black;
+  borderColor:black;
+  border:5px solid;
+  border-radius:10px;
+  margin-top: 10px;
+  display:none;
+  z-index:9999;
+  overflow-y:scroll; 
+  
+  overscroll-behavior: contain;    
+  color-scheme:normal;">
+
+     <h1>Override BGColor Editor</h1>
+     <textarea rows="12" cols="60">
+    
+  <script>
+  editor.container.style.background="gray"; 
+  </script>
+  override editor themes background color
+  i think the white is sometimes 
+  too much Google alike eye hurting bright white
+  i do not like the white Google pages
+  and black is sometime too black
+  NOT YET READY, Sorry
+
+
+</textarea>
+
+
+  <br>
+  <input type="button" onclick="BGColor()" value="OK!">
+  <br><br></div><br><br><br><br><br><br>
+</div>
+</div>
+ 
+<!--
+  //////////////////////
+  // end  BGColorDiv
+  //////////////////////
+  -->
+
+
+
   </body>
 </html>
 
 <!--
 David Bird G6EJD would say it like next:
- 
+
 This software, the ideas and concepts is Copyright (c) Dirk Luberh Dijkman Bangert 30 Andijk The Netherlands 2023 and beyond.
 All rights to this software are reserved.
 
@@ -3396,4 +3482,3 @@ Elon Musk do not use this scheduler to launch your trip to Mars
 
 https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fldijkman.github.io%2Frandomnerd_esp32_wifi_manager%2Fmrs%2Fcreate_from_scratch%2Findex.html
 -->
- 
