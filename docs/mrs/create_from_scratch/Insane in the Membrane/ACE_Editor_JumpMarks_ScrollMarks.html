@@ -66,7 +66,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/mode-html.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/mode-javascript.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/mode-css.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/mode-plain_text.min.js" integrity="sha512-NyxLJrkArPeXhbuXzTLHVfYHYqq45rMVJM4CwuVd+gmkX6TGce8zyP8TFvEdsyv0eA4x72QX7qKmbBsSqMxIyA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/mode-c_cpp.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/snippets/html.min.js"></script>
@@ -87,8 +87,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/ext-keybinding_menu.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/ext-spellcheck.min.js"></script>
-
- 
 
 
  <script type="text/javascript" src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ace-colorpicker-min.js" ></script>
@@ -168,8 +166,11 @@
     }
 
     #status {
+      position:absolute;
       padding: 0px 0;
-      height: 15px;
+      height: 55px;
+      width:100%;
+      z-index:100000;
     }
 
     .ace_gutter-cell.ace_breakpoint {
@@ -243,7 +244,7 @@
 
 
 
-<di id="menu">
+<div id="menu">
 &nbsp;&nbsp;
 <button  
         onclick='save()'
@@ -332,9 +333,7 @@
 <center>
   ACE editor HTML preview, visual scheduler touch friendly, JumpMarks, ScrollMarks, BookMarks, Breakpoints move as code is edited
   <pre id="BP">BreakPoints will be set here by javascript</pre>
-<div id="status">
-	<p><i class="fa fa-spinner fa-spin fa-fw"></i> generating preview</p>
-</div>
+
 </center>
 </div>
 </div>
@@ -2472,7 +2471,12 @@ https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fldijkman.github
 
 
 <div class="resizer" id="dragMe"></div>
-<div id="preview"></div>
+<div id="preview">
+<div id="status">
+	<p><i class="fa fa-spinner fa-spin fa-fw"></i> generating preview</p>
+</div>
+
+</div>
 </div>
 
 
@@ -2514,12 +2518,11 @@ editor.setTheme("ace/theme/vibrant_ink");
   editor.session.setMode("ace/mode/html", function() {
         LoadColorPicker()
       })
-editor.getSession().setUseWorker(true);
-        ace.edit("editor").setOptions({
-          enableLinking: true
-        });
+
+ 
 
 
+	// --
 
 
 
@@ -2527,7 +2530,8 @@ editor.getSession().setUseWorker(true);
 
 function myFunction(){	
 	
-	$("#status p").delay(500).fadeOut(2000);
+  $("#preview").empty();
+	$("#status p").delay(500).fadeOut(2500);
 	
 	var code = editor.getValue();
 	
@@ -2565,6 +2569,9 @@ $('#search-form .search-terms').on('keydown', function(e){
 });
 
 $("#editor").on('keyup', function(e) {
+ 
+
+
 	    var code = (e.keyCode || e.which);
 
     // do nothing if it's an arrow key
@@ -2580,9 +2587,9 @@ $("#editor").on('keyup', function(e) {
 		timeout = null;
 	}
 
-	$("#preview").empty();
-	timeout = setTimeout(myFunction, 500)
 
+	timeout = setTimeout(myFunction, 2500)
+	
 });
 
 
@@ -2691,8 +2698,15 @@ var breakpointsArrayNew = [];
           }
         }
 
+ //myFunction(); // refresh page
         makeBParray();
-      });
+       
+      }); 
+      // en editor onchange
+
+
+
+
 
       //////////////////////////////////////////////////////////////////////
       // makeBParray()
@@ -2926,7 +2940,7 @@ need this for jumpscroll jump up and jump down TM ;-)
 
 // set the breakpoints jumpmarks scrollmarks bookmarks anchors
 // BParray copied from the ace webpage editor infoline at the top
- var BParray = [2,41,85,191,230,427,508,519,554,575,650,765,776,800,828,862,999,1045,1053,1159,1378,1388,1403,1420,1669,1751,1787,1807,1929,2089];
+ var BParray = [2,41,85,191,230,427,538,508,519,554,575,650,765,776,800,828,862,999,1045,1053,1159,1378,1388,1403,1420,1669,1751,1787,1807,1929,2089];
 
        for (let i = 0; i < BParray.length; i++) {
           editor.session.setBreakpoint(BParray[i].toString());  // set each breakpoint
@@ -3088,6 +3102,9 @@ document.addEventListener('DOMContentLoaded', function () {
         // Attach the listeners to document
         document.addEventListener('mousemove', mouseMoveHandler);
         document.addEventListener('mouseup', mouseUpHandler);
+
+
+        
     };
 
     const mouseMoveHandler = function (e) {
@@ -3129,6 +3146,36 @@ document.addEventListener('DOMContentLoaded', function () {
 // resize divs side by side by mousedrag
 // https://phuoc.ng/collection/html-dom/create-resizable-split-views/
 /////////////////////////////////////////////////////////////////////////
+
+edito.require("ace/ext/language_tools");
+   editor.require('ace/ext/ext-linking'); // not sure if this is correct ace/ext/linking
+
+	editor.setOptions({
+		// -- ext-language_tools --
+	  enableBasicAutocompletion: true,
+		enableLiveAutocompletion: true,
+		enableSnippets: true, // for pre-defined auto-completion snippets
+		// --
+		enableLinking: true,
+		// --
+		enableFreeSpacePreviews: true,
+	});
+
+	editor.on("linkHover",function(data){
+		if(data && data.token && data.token.type == "link"){
+			$(editor.container).find(".ace_content").css({cursor: "pointer"});
+		}else{
+			$(editor.container).find(".ace_content").css({cursor: "text"});
+		}
+	});
+	editor.on("linkClick",function(data){
+		if(data && data.token && data.token.type == "link"){
+			console.log("CLICK", data);
+			$(editor.container).find(".ace_content").css({cursor: "text"});
+			window.open(data.token.value, "_blank");
+		}
+	});
+
 });
 
    function pretty() {
@@ -3164,7 +3211,7 @@ document.addEventListener('DOMContentLoaded', function () {
           enableBasicAutocompletion: true,
           enableSnippets: true,
           enableLiveAutocompletion: true,
-          enableLinking: true
+          
         });
         document.getElementById("butsuggest").style = "background-color:#CAFFC8FF;color:gray;" //greenisch
       }
@@ -3180,7 +3227,7 @@ document.addEventListener('DOMContentLoaded', function () {
           enableBasicAutocompletion: true,
           enableSnippets: true,
           enableLiveAutocompletion: true,
-          enableLinking: true
+          
       });
       document.getElementById("butsuggest").style = "background-color:#CAFFC8FF;color:gray;" //greenisch
     }
@@ -3208,6 +3255,14 @@ function showAbout() {
     window.editor = ace.edit("editor");
     AceColorPicker.load(ace, editor);
   }
+
+  //JavaScript function to play the beep sound
+  function play() { 
+	var beepsound = new Audio( 
+'https://www.myinstants.com/media/sounds/eastwood_mday_HO93B1I.mp3'); 
+		beepsound.play(); 
+	} 
+	
 
     </script>
 
@@ -3258,29 +3313,31 @@ function showAbout() {
    Sources used<br>
    <hr>
   
-  <a href="https://github.com/ajaxorg/ace" target="ace">https://github.com/ajaxorg/ace</a>
+  <a href="https://github.com/ajaxorg/ace" target="ajaxorg-ace">https://github.com/ajaxorg/ace</a>
   <br>
-  <a href="https://ace.c9.io" target="ace1">https://ace.c9.io</a>
+  <a href="https://ace.c9.io" target="ace_cloud9">https://ace.c9.io</a>
   <br>
-  <a href="https://ace.c9.io/build/kitchen-sink.html" target="ace2">https://ace.c9.io/build/kitchen-sink.html</a>
+  <a href="https://ace.c9.io/build/kitchen-sink.html" target="kitchen-sink">https://ace.c9.io/build/kitchen-sink.html</a>
   <br>
-  <a href="https://github.com/ajaxorg/ace/issues/1282" target="ace3">https://github.com/ajaxorg/ace/issues/1282</a>
+  <a href="https://github.com/ajaxorg/ace/issues/1282" target="ace-issues">https://github.com/ajaxorg/ace/issues/1282</a>
   <br>
   <br>
   <a href="https://ourcodeworld.com/articles/read/1052/how-to-add-toggle-breakpoints-on-the-ace-editor-gutter" target="ourcode">https://ourcodeworld.com/articles/read/1052/how-to-add-toggle-breakpoints-on-the-ace-editor-gutter</a>
   <br>
   <br>
-  <a href="https://www.codehim.com/text-input/simple-wysiwyg-with-ace-editor/" target="wysiwyg">https://www.codehim.com/text-input/simple-wysiwyg-with-ace-editor</a>
+  <a href="https://www.codehim.com/text-input/simple-wysiwyg-with-ace-editor/" target="simple-wysiwyg-with-ace-editor">https://www.codehim.com/text-input/simple-wysiwyg-with-ace-editor</a>
   <br>
   <br>
-  <a href="https://phuoc.ng/collection/html-dom/create-resizable-split-views/" target="resize">https://phuoc.ng/collection/html-dom/create-resizable-split-views</a>
+ <a href="https://github.com/easylogic/ace-colorpicker" target="ace-colorpicker">https://github.com/easylogic/ace-colorpicker</a>
   <br>
   <br>
-  <a href="https://www.w3schools.com" target="w3schools">www.w3schools.com</a>
-  <br><br>
+  <a href="https://phuoc.ng/collection/html-dom/create-resizable-split-views/" target="create-resizable-split-views">https://phuoc.ng/collection/html-dom/create-resizable-split-views</a>
+  <br>
+  <br>
+  <a href="https://www.w3schools.com" target="w3schools">www.w3schools.com</a><br>
+  <br>
   <a href="https://stackoverflow.com" target="stackoverflow">stackoverflow.com</a><br>
   <br>
-  <hr>
   <br> 
   <a href="https://facebook.com/luberth.dijkman" target="facebook">facebook.com/luberth.dijkman</a><br>
   <br>
