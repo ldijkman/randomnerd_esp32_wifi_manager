@@ -246,7 +246,7 @@ window.onbeforeunload = function() {
 .ace_selected-word {
     border: 1px solid red;
 }
-  
+
   </style>
 </head>
 
@@ -3027,24 +3027,24 @@ need this for jumpscroll jump up and jump down TM ;-)
         const box = document.createElement('div');
 
         box.innerHTML = ` 
-        <input type="button" value="&nbsp;&#8648;&nbsp;" onclick="Jumptotop()" title="First JumpMark" />
+        <input type="button" value="&uuarr;" style="font-size:16px;width:25px;" onclick="Jumptotop()" title="First JumpMark" />
 <br><br>
-<input type="button" value="Up  " onclick="JumpUp()" title="Next JumpMark Up" />
+<input type="button" value="&uarr;" style="font-size:16px;width:25px;" onclick="JumpUp()" title="Next JumpMark Up" />
 <br><br>
-<input type="button" value="Down" onclick="JumpDown()" title="Next JumpMark Down"/>
+<input type="button" value="&darr;" style="font-size:16px;width:25px;" onclick="JumpDown()" title="Next JumpMark Down"/>
 <br><br>
-<input type="button" value="&nbsp;&#8650;&nbsp;" onclick="Jumptobottom()" title="Last JumpMark" />
+<input type="button" value="&ddarr;" style="font-size:16px;width:25px;" onclick="Jumptobottom()" title="Last JumpMark" />
 
-`;
+`;      box.id="buttmenu";
         box.style.position = 'absolute';
         box.style.backgroundColor = 'yellow';
         box.style.color = 'black';
         //box.style.heigth = '30px';
         box.style.top = '40%';
-        box.style.right = '5%';
+        box.style.right = '20px';
         //box.style.right = "5px";
-        box.style.opacity = '75%';
-        box.style.padding = '5px';
+       box.style.opacity = '50%';
+        box.style.padding = '3px';
         //box.style.Margin = '15px';
         //box.style.width = '6%';
         box.style.zIndex = 49;
@@ -3350,7 +3350,22 @@ function BGColor() {
 		beepsound.play(); 
 	} 
 	
-
+editor.commands.addCommand({
+    name: "JumpUp",
+    exec: JumpUp,
+    bindKey: {
+        win: "ctrl-u",
+        mac: "cmd-u"
+    }
+});
+editor.commands.addCommand({
+    name: "JumpDown",
+    exec: JumpDown,
+    bindKey: {
+        win: "ctrl-d",
+        mac: "cmd-d"
+    }
+});
     </script>
 
 
