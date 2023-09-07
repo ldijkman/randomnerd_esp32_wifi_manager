@@ -3012,14 +3012,8 @@ need this for jumpscroll jump up and jump down TM ;-)
 
       makeBParray(); //for startup demo, to load breakpoints set by code
 
-      //////////////////////////////////////////////////////////////////////
-      // DOMContentLoaded
-      /////////////////////////////////////////////////////////////////////
-      document.addEventListener('DOMContentLoaded', (event) => {
-        console.log('DOM fully loaded and parsed');
-        create_up_down_near_marked_linenumber(19);
+       
 
-        ////////////////////////////////////////////////////////////////////////
 
  function floatbuttons(){
         const boxWrapper = document.querySelectorAll('.app_editor');
@@ -3052,7 +3046,24 @@ need this for jumpscroll jump up and jump down TM ;-)
 
         boxWrapper[0].appendChild(box);
 }
-        floatbuttons();
+
+
+
+
+
+
+
+      //////////////////////////////////////////////////////////////////////
+      // DOMContentLoaded
+      /////////////////////////////////////////////////////////////////////
+      document.addEventListener('DOMContentLoaded', (event) => {
+        console.log('DOM fully loaded and parsed');
+        create_up_down_near_marked_linenumber(19);
+
+        ////////////////////////////////////////////////////////////////////////
+
+
+       
 
         editor.setOption(editor.$options.animatedScroll.name, true);
         
@@ -3366,6 +3377,12 @@ editor.commands.addCommand({
         mac: "cmd-d"
     }
 });
+
+
+
+floatbuttons();
+
+
     </script>
 
 
