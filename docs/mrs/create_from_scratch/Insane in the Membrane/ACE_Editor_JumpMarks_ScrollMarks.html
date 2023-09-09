@@ -344,10 +344,17 @@ window.onbeforeunload = function() {
         onClick='FindandMark()' 
         style="background-color:orange;color:black;font-weight: bold;" 
         title="
-        Find and Mark&#013; &#010;
+        ---&#013; &#010;Find and Mark&#013; &#010;
         Search for&#013; &#010; 
         function, eventlisten, <style, <body, <scri, </scri, </html &#013; &#010;
-        and Creates JumpMarks&#013; &#010;">
+        and Creates JumpMarks, ScrollMarks&#013; &#010;
+        ---JumpUp and JumpDown---&#013; &#010;">
+
+
+<input type="search" value="<scri" size="8" id="searchinput" title="input SearchText to Create JumpMarks" style="color:black;background-color:lightgray;">
+<button onclick="(Find_and_Mark(searchinput.value))"  title="input SearchText to Create Jumpmarks"><=SearchMark</button>
+
+<input type="button" value="ClearMarks" onClick='' title="not yet Clear All JumpMarks not yet">
 
 
 
@@ -3434,7 +3441,7 @@ function Find_and_Mark(what){
   var selectarray=editor.getSelection().getAllRanges();
   for (let i = 0; i < range; i++) {
       editor.session.setBreakpoint(selectarray[i].start.row);
-      //console.log("selectarray[i].start.row",selectarray[i].start.row);
+      //console.log(what+" selectarray[i].start.row",selectarray[i].start.row);
       BParray.push(selectarray[i].start.row);
   }
 }
