@@ -3410,68 +3410,34 @@ floatbuttons();
 
 
 function FindandMark(){  // when button 4test is pressed
-var range=editor.findAll('function');
-var selectarray=editor.getSelection().getAllRanges();
-for (let i = 0; i < range; i++) {
-    editor.session.setBreakpoint(selectarray[i].start.row);
-    //console.log("selectarray[i].start.row",selectarray[i].start.row);
-    BParray.push(selectarray[i].start.row);
-}
 
-var range=editor.findAll('eventlisten');
- var selectarray=editor.getSelection().getAllRanges();
- for (let i = 0; i < range; i++) {
-    editor.session.setBreakpoint(selectarray[i].start.row);
-    //console.log("selectarray[i].start.row",selectarray[i].start.row);
-    BParray.push(selectarray[i].start.row);
-}
+Find_and_Mark('function');
+Find_and_Mark('eventlisten');
+Find_and_Mark('</style>');
+Find_and_Mark('<body');
+Find_and_Mark('<scri');
+Find_and_Mark('</scri');
+Find_and_Mark('</html>');
 
-var range=editor.findAll('</style>');
- var selectarray=editor.getSelection().getAllRanges();
- for (let i = 0; i < range; i++) {
-    editor.session.setBreakpoint(selectarray[i].start.row);
-    //console.log("selectarray[i].start.row",selectarray[i].start.row);
-    BParray.push(selectarray[i].start.row);
-}
-
-
-var range=editor.findAll('<body');
- var selectarray=editor.getSelection().getAllRanges();
- for (let i = 0; i < range; i++) {
-    editor.session.setBreakpoint(selectarray[i].start.row);
-    //console.log("selectarray[i].start.row",selectarray[i].start.row);
-    BParray.push(selectarray[i].start.row);
-}
-
-var range=editor.findAll('<scri');
- var selectarray=editor.getSelection().getAllRanges();
- for (let i = 0; i < range; i++) {
-    editor.session.setBreakpoint(selectarray[i].start.row);
-    //console.log("selectarray[i].start.row",selectarray[i].start.row);
-    BParray.push(selectarray[i].start.row);
-}
-var range=editor.findAll('</scri');
- var selectarray=editor.getSelection().getAllRanges();
- for (let i = 0; i < range; i++) {
-    editor.session.setBreakpoint(selectarray[i].start.row);
-    //console.log("selectarray[i].start.row",selectarray[i].start.row);
-    BParray.push(selectarray[i].start.row);
-}
-var range=editor.findAll('</html>');
- var selectarray=editor.getSelection().getAllRanges();
- for (let i = 0; i < range; i++) {
-    editor.session.setBreakpoint(selectarray[i].start.row);
-    //console.log("selectarray[i].start.row",selectarray[i].start.row);
-    BParray.push(selectarray[i].start.row);
-}
  makeBParray();
  Jumptotop();
         
 }
 
 
+function Find_and_Mark(what){
+  var range=editor.findAll(what);
+  var selectarray=editor.getSelection().getAllRanges();
+  for (let i = 0; i < range; i++) {
+      editor.session.setBreakpoint(selectarray[i].start.row);
+      //console.log("selectarray[i].start.row",selectarray[i].start.row);
+      BParray.push(selectarray[i].start.row);
+  }
+}
 
-    </script>
+
+
+</script>
 
 
 
