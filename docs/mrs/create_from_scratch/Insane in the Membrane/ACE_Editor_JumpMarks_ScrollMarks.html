@@ -129,6 +129,8 @@ window.onbeforeunload = function() {
       width: 100%;
       color:gray;
       //background: #ccc;
+      padding: 1px;
+      margin:1px;
 
     }
 
@@ -351,18 +353,18 @@ window.onbeforeunload = function() {
         ---JumpUp and JumpDown---&#013; &#010;">
 
 
-<input type="search" value="<scri" size="8" id="searchinput" title="input SearchText to Create JumpMarks" style="color:black;background-color:#BFEABE;">
+<input type="search" value="<scri" size="8" id="searchinput" onsearch="Find_and_Mark(searchinput.value);Jumptotop();" title="input SearchText to Create JumpMarks" style="color:black;background-color:#BFEABE;">
 <button onclick="Find_and_Mark(searchinput.value);Jumptotop();"  style="color:#BFEABE;" title="input SearchText to Create Jumpmarks"><=SearchMark</button>
 
 <input type="button" value="ClearAllMarks" onClick='ClearAllBreakPoints();Jumptotop();' title="Clear All JumpMarks">
 
 
 
+<input type="button" value="&nbsp;BGColor&nbsp;" style="" onclick="BGColor()" title="Override Editor BackGroundColor">
 
 
-<input type="button" value="&nbsp;About&nbsp;" style="float:right;margin:2px;" onclick="showAbout()" title="Show About">
+<input type="button" value="&nbsp;About&nbsp;" style="" onclick="showAbout()" title="Show About">
 
-<input type="button" value="&nbsp;BGColor&nbsp;" style="float:right;margin:2px;" onclick="BGColor()" title="Override Editor BackGroundColor">
 
 
 <div id="wrap">
@@ -3500,6 +3502,8 @@ function ClearAllBreakPoints(){
  Do not forget to Subscribe at the end of the video ?! ;-)<br>
   <iframe width="560" height="315" src="https://www.youtube.com/embed/lZW8KM6svH8?si=ar21NQ5BwrNFqVU7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><br>
  Do not forget to Subscribe at the end of the video ?! ;-)<br>
+ SearchMark<br>
+ <iframe width="560" height="315" src="https://www.youtube.com/embed/6SmqA4E7D4o?si=OBRnmZvNPD56FHhA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><br>
   <br>
   
   <br>
