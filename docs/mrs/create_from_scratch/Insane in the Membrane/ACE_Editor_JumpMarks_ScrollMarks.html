@@ -1,4 +1,11 @@
 <!--
+test BParray input from url
+https://codepen.io/ldijkman/pen/YzdNrxp?BParray=[2,41,85,191,230,427,508,519,554,575,650,765,776,800,828,862,999,1045,1053,1159,1378,1388,1403,1420,1669,1751,1787,1807,1929,2089]
+
+
+
+
+
   ACE looks like a <textarea> 
       But it is A very powefull Editor
       multiline, multi cursor edit
@@ -308,11 +315,11 @@ window.onbeforeunload = function() {
  <button onclick='pretty()' id="pretty"
         style="background-color:;" 
         title="beatify pretty print format &#013; &#010; organize the text better" disabled>pretty</button>
-        <input type="button" value="Undo" onClick='ace.edit("editor").execCommand("undo");' title="undo">
-        <input type="button" value="Redo" onClick='ace.edit("editor").execCommand("redo");' title="redo">
+        <input type="button" value="Undo" onClick='ace.edit("editor").execCommand("undo");' title="undo&#013;CTRL + Z">
+        <input type="button" value="Redo" onClick='ace.edit("editor").execCommand("redo");' title="redo&#013;CTRL + SHIFT + Z">
 
-  <input type="button" value="Search" onClick='ace.edit("editor").execCommand("find");' title="search">
-  <input type="button" value="Replace" onClick='ace.edit("editor").execCommand("replace");' title="search and replace">
+  <input type="button" value="Search" onClick='ace.edit("editor").execCommand("find");' title="search&#013;CTRL+F">
+  <input type="button" value="Replace" onClick='ace.edit("editor").execCommand("replace");' title="search and replace&#013;CTRL+H">
 
         <input type="button" value="fold" onClick='ace.edit("editor").execCommand("foldAllComments")' title="fold multiline comments">
         <input type="button" value="unfold" onClick='ace.edit("editor").execCommand("unfoldall")' title="unfoldall comments">
@@ -331,6 +338,14 @@ window.onbeforeunload = function() {
 <input type="button" value="&nbsp;F1&nbsp;" onClick='editor.execCommand("openCommandPallete")' title="show F1 key shortcut keys popup">
 <input type="button" value="ShortCuts" onClick=' editor.execCommand("showKeyboardShortcuts")' title="show shortcut keys popup">
 <!-- now working -->
+
+        <input type="button" 
+        value="Find&Mark" 
+        onClick='FindandMark()' 
+        style="background-color:orange;color:black;font-weight: bold;" 
+        title="Find and Mark&#013; &#010;editor.findAll();&#013; &#010;&#013; &#010;JumpMarks&#013; &#010; function, eventlisten, <style, <body,<scri, </scri, </html &#013; &#010;">
+
+
 
 
 
@@ -2638,7 +2653,7 @@ var breakpointsArrayNew = [];
           //  if row is undefined in breakpoints array
           e.editor.session.setBreakpoint(row); // set breakpoint
 
-          //create_up_down_near_marked_linenumber(row);
+          // create_up_down_near_marked_linenumber(row);
         } else {
           //  else row is defined breakpoint
           e.editor.session.clearBreakpoint(row); //clear breakpoint
@@ -2999,7 +3014,7 @@ need this for jumpscroll jump up and jump down TM ;-)
 
 // set the breakpoints jumpmarks scrollmarks bookmarks anchors
 // BParray copied from the ace webpage editor infoline at the top
- var BParray = [2,41,85,191,230,427,538,508,519,554,575,650,765,776,800,828,862,999,1045,1053,1159,1378,1388,1403,1420,1669,1751,1787,1807,1929,2089];
+ var BParray = [2,41,85,191,230,427,538,508,519,554,575,650,765,776,800,828,862,999,1045,1053,1159,1378,1388,1403,1420,1669,1751,1787,1807,1929,1965,2089];
 
        for (let i = 0; i < BParray.length; i++) {
           editor.session.setBreakpoint(BParray[i].toString());  // set each breakpoint
@@ -3032,7 +3047,7 @@ need this for jumpscroll jump up and jump down TM ;-)
         box.style.top = '40%';
         box.style.right = '20px';
         //box.style.right = "5px";
-       box.style.opacity = '50%';
+       box.style.opacity = '30%';
         box.style.padding = '3px';
         //box.style.Margin = '15px';
         //box.style.width = '6%';
@@ -3053,7 +3068,7 @@ need this for jumpscroll jump up and jump down TM ;-)
       /////////////////////////////////////////////////////////////////////
       document.addEventListener('DOMContentLoaded', (event) => {
         console.log('DOM fully loaded and parsed');
-        create_up_down_near_marked_linenumber(19);
+      //  create_up_down_near_marked_linenumber(19);
 
         ////////////////////////////////////////////////////////////////////////
 
@@ -3376,6 +3391,84 @@ editor.commands.addCommand({
 
 
 floatbuttons();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function FindandMark(){  // when button 4test is pressed
+var range=editor.findAll('function');
+var selectarray=editor.getSelection().getAllRanges();
+for (let i = 0; i < range; i++) {
+    editor.session.setBreakpoint(selectarray[i].start.row);
+    //console.log("selectarray[i].start.row",selectarray[i].start.row);
+    BParray.push(selectarray[i].start.row);
+}
+
+var range=editor.findAll('eventlisten');
+ var selectarray=editor.getSelection().getAllRanges();
+ for (let i = 0; i < range; i++) {
+    editor.session.setBreakpoint(selectarray[i].start.row);
+    //console.log("selectarray[i].start.row",selectarray[i].start.row);
+    BParray.push(selectarray[i].start.row);
+}
+
+var range=editor.findAll('</style>');
+ var selectarray=editor.getSelection().getAllRanges();
+ for (let i = 0; i < range; i++) {
+    editor.session.setBreakpoint(selectarray[i].start.row);
+    //console.log("selectarray[i].start.row",selectarray[i].start.row);
+    BParray.push(selectarray[i].start.row);
+}
+
+
+var range=editor.findAll('<body');
+ var selectarray=editor.getSelection().getAllRanges();
+ for (let i = 0; i < range; i++) {
+    editor.session.setBreakpoint(selectarray[i].start.row);
+    //console.log("selectarray[i].start.row",selectarray[i].start.row);
+    BParray.push(selectarray[i].start.row);
+}
+
+var range=editor.findAll('<scri');
+ var selectarray=editor.getSelection().getAllRanges();
+ for (let i = 0; i < range; i++) {
+    editor.session.setBreakpoint(selectarray[i].start.row);
+    //console.log("selectarray[i].start.row",selectarray[i].start.row);
+    BParray.push(selectarray[i].start.row);
+}
+var range=editor.findAll('</scri');
+ var selectarray=editor.getSelection().getAllRanges();
+ for (let i = 0; i < range; i++) {
+    editor.session.setBreakpoint(selectarray[i].start.row);
+    //console.log("selectarray[i].start.row",selectarray[i].start.row);
+    BParray.push(selectarray[i].start.row);
+}
+var range=editor.findAll('</html>');
+ var selectarray=editor.getSelection().getAllRanges();
+ for (let i = 0; i < range; i++) {
+    editor.session.setBreakpoint(selectarray[i].start.row);
+    //console.log("selectarray[i].start.row",selectarray[i].start.row);
+    BParray.push(selectarray[i].start.row);
+}
+ makeBParray();
+ Jumptotop();
+        
+}
+
 
 
     </script>
