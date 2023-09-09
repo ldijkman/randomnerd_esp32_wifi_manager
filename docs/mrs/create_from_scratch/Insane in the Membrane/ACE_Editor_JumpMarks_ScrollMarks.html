@@ -352,9 +352,9 @@ window.onbeforeunload = function() {
 
 
 <input type="search" value="<scri" size="8" id="searchinput" title="input SearchText to Create JumpMarks" style="color:black;background-color:lightgray;">
-<button onclick="(Find_and_Mark(searchinput.value))"  title="input SearchText to Create Jumpmarks"><=SearchMark</button>
+<button onclick="Find_and_Mark(searchinput.value);Jumptotop();"  title="input SearchText to Create Jumpmarks"><=SearchMark</button>
 
-<input type="button" value="ClearMarks" onClick='' title="not yet Clear All JumpMarks not yet">
+<input type="button" value="ClearAllMarks" onClick='ClearAllBreakPoints();Jumptotop();' title="Clear All JumpMarks">
 
 
 
@@ -3446,7 +3446,16 @@ function Find_and_Mark(what){
   }
 }
 
+function ClearAllBreakPoints(){
 
+  for (const key of Object.keys(editor.session.getBreakpoints())) {
+      let breakpointRow = parseInt(key);
+      editor.session.clearBreakpoint(breakpointRow);
+  }
+  breakpointsArrayNew = [];
+  BParray = []; 
+  makeBParray();
+}
 
 </script>
 
