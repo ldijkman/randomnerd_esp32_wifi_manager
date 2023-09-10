@@ -287,11 +287,25 @@ window.onbeforeunload = function() {
     border-left: 1px solid;
 }
 
-
-.ace-selection {
+/*not working?*/
+.* .ace-selection .*{
   background-color: red important;
+   border: 1px solid red;
 }
 
+
+/*
+ better vissibility for start and end {  } when cusrsor next to it red border around start and end 
+ same for <script start and end
+*/ 
+  .ace_editor .ace_marker-layer .ace_bracket {
+  
+   background: rgba(255,255,0,0.25);
+   border: 1px solid red;
+   //padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;
+   //border-collapse: 10px;
+    
+  }
   </style>
 </head>
 
