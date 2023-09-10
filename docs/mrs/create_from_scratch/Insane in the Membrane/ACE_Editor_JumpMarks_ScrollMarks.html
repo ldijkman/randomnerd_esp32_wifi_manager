@@ -76,6 +76,8 @@ window.onbeforeunload = function() {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/ext-prompt.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/ext-language_tools.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ext-language_tools.js"></script>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/mode-html.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/mode-javascript.min.js"></script>
@@ -368,7 +370,7 @@ window.onbeforeunload = function() {
 
  <button onclick='pretty()' id="pretty"
         style="background-color:;" 
-        title="beatify pretty print format &#013; &#010; organize the text better" disabled>pretty</button>
+        title="beatify pretty print format &#013; &#010; organize the text better" >pretty</button>
         <input type="button" value="Undo" onClick='ace.edit("editor").execCommand("undo");' title="undo&#013;CTRL + Z">
         <input type="button" value="Redo" onClick='ace.edit("editor").execCommand("redo");' title="redo&#013;CTRL + SHIFT + Z">
 
@@ -431,7 +433,7 @@ window.onbeforeunload = function() {
 
 
 <div class="container">
-<div id="editor" class="app_editor"><textarea><!--
+<div id="editor" class="app_editor"><textarea style="width:100%;" hidden><!--
 BParray=[2,41,85,191,230,427,508,519,554,575,650,765,776,800,828,862,999,1045,1053,1159,1378,1388,1403,1420,1669,1751,1787,1807,1929,2089];
 ScrollMarks, JumpMarks, mark or unmark by mouseclick left of linenumbers     https://codepen.io/ldijkman/pen/poqbbqa
      
@@ -2612,7 +2614,7 @@ var StatusBar = ace.require("ace/ext/statusbar").StatusBar;
         LoadColorPicker()
       })
 
- 
+
 
 
 	// --
@@ -2640,7 +2642,7 @@ function myFunction(){
 	iframe.contentWindow.document.close();
 	
 	// $("#preview").html(code);
-	
+
 }
 
 myFunction();
@@ -2822,6 +2824,7 @@ var breakpointsArrayNew = [];
         // console.log('BParray ', BParray);
        document.getElementById('BP').innerHTML =
         'JumpMarks BParray=[' + BParray + "];";
+
       }
 
       //////////////////////////////////////////////////////////////////////
@@ -3147,7 +3150,7 @@ need this for jumpscroll jump up and jump down TM ;-)
 
         editor.setOption(editor.$options.animatedScroll.name, true);
         
- 
+
 
         /////////////////////////////////////////////////////////////////////////
       }); // end  document.addEventListener('DOMContentLoaded', (event) => {
@@ -3307,8 +3310,8 @@ document.addEventListener('DOMContentLoaded', function () {
 // https://phuoc.ng/collection/html-dom/create-resizable-split-views/
 /////////////////////////////////////////////////////////////////////////
 
-editor.require("ace/ext/language_tools");
-   editor.require('ace/ext/ext-linking'); // not sure if this is correct ace/ext/linking
+ace.require("ace/ext/language_tools");
+  ace.require('ace/ext/ext-linking'); // not sure if this is correct ace/ext/linking
 
 	editor.setOptions({
 		// -- ext-language_tools --
@@ -3335,6 +3338,8 @@ editor.require("ace/ext/language_tools");
 			window.open(data.token.value, "_blank");
 		}
 	});
+
+
 
 });
 
@@ -3499,6 +3504,7 @@ function FindandMark(){  // when button 4test is pressed
    tempAlert("<h3>Think i Marked  LineNumbers!</h3>",1500);
   makeBParray();
   Jumptotop();      
+  
 }
 
 
@@ -3539,6 +3545,19 @@ function tempAlert(msg,duration)  // timed autohide alert
     setTimeout(function(){el.parentNode.removeChild(el);},duration);
     document.body.appendChild(el);
 }
+
+// i dont know set a timeout otherwise it disapears
+setTimeout(function(){
+     editor.session.setAnnotations([
+ {
+        row: 4,
+        column: 1,
+        type: "warning",
+        text: "Click Left of LineNumber to Mark or UnMark for JumpScroll "
+
+    }
+]);
+},10000);
 
 </script>
 
@@ -3782,3 +3801,4 @@ Elon Musk do not use this scheduler to launch your trip to Mars
 
 https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fldijkman.github.io%2Frandomnerd_esp32_wifi_manager%2Fmrs%2Fcreate_from_scratch%2Findex.html
 -->
+
