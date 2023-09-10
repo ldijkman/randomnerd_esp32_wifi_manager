@@ -102,6 +102,7 @@ window.onbeforeunload = function() {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/ext-spellcheck.min.js"></script>
 
+<script src="https://www.unpkg.com/ace-builds@latest/src-noconflict/ext-statusbar.js"></script>
 
  <script type="text/javascript" src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ace-colorpicker-min.js" ></script>
  <link rel="stylesheet" href="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ace-colorpicker.css" />
@@ -254,6 +255,36 @@ window.onbeforeunload = function() {
 
 .ace_selected-word {
     border: 1px solid red;
+}
+
+[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    background-color: var(--color);
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23777'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>");
+    background-size: 20px 20px;
+    height: 20px;
+    width: 20px;
+  
+  --color:red;
+  
+}
+
+#statusBar {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 8px;
+    height: 20px;
+    background-color: black;
+    color: gray;
+}
+.ace_status-indicator {
+    color: gray;
+    position: absolute;
+    right: 0;
+    border-left: 1px solid;
 }
 
   </style>
@@ -2551,6 +2582,9 @@ https://search.google.com/test/mobile-friendly?url=https%3A%2F%2Fldijkman.github
 
 var editor = ace.edit("editor");
 editor.setTheme("ace/theme/vibrant_ink");
+var StatusBar = ace.require("ace/ext/statusbar").StatusBar;
+// create a simple selection status indicator
+//var statusBar = new StatusBar(editor, document.getElementById("statusBar"));
 //editor.getSession().setMode("ace/mode/html");
 //editor.session.setMode("ace/mode/html");
   editor.session.setMode("ace/mode/html", function() {
@@ -2803,6 +2837,7 @@ var breakpointsArrayNew = [];
         if (jumppos < 0) {
           jumppos = 0;
           message = ' First JumpMark / ScrollMark';
+          tempAlert("<h3>First JumpMark / ScrollMark!</h3>",1500);
         }
 
         var position = BParray[jumppos];
@@ -2825,6 +2860,7 @@ var breakpointsArrayNew = [];
         if (jumppos >= BParray.length) {
           jumppos = BParray.length - 1;
           message = ' Last JumpMark / ScrollMark';
+           tempAlert("<h3>Last JumpMark / ScrollMark!</h3>",1500);
         }
 
         var position = BParray[jumppos];
@@ -3250,7 +3286,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // https://phuoc.ng/collection/html-dom/create-resizable-split-views/
 /////////////////////////////////////////////////////////////////////////
 
-edito.require("ace/ext/language_tools");
+editor.require("ace/ext/language_tools");
    editor.require('ace/ext/ext-linking'); // not sure if this is correct ace/ext/linking
 
 	editor.setOptions({
@@ -3423,18 +3459,17 @@ floatbuttons();
 
 
 function FindandMark(){  // when button 4test is pressed
-
-Find_and_Mark('function');
-Find_and_Mark('eventlisten');
-Find_and_Mark('</style>');
-Find_and_Mark('<body');
-Find_and_Mark('<scri');
-Find_and_Mark('</scri');
-Find_and_Mark('</html>');
-
- makeBParray();
- Jumptotop();
-        
+  Find_and_Mark('function');
+  Find_and_Mark('eventlisten');
+  Find_and_Mark('</style>');
+  Find_and_Mark('<body');
+  Find_and_Mark('<scri');
+  Find_and_Mark('</scri');
+  Find_and_Mark('</html>');
+  document.getElementById("statusBar").innerHTML="did find and Mark!";
+   tempAlert("<h3>Maybe Marked some LineNumbers!</h3>",1500);
+  makeBParray();
+  Jumptotop();      
 }
 
 
@@ -3446,10 +3481,12 @@ function Find_and_Mark(what){
       //console.log(what+" selectarray[i].start.row",selectarray[i].start.row);
       BParray.push(selectarray[i].start.row);
   }
+  document.getElementById("statusBar").innerHTML="Marked "+ (range+1)+" LineNumbers!";
+
 }
 
-function ClearAllBreakPoints(){
 
+function ClearAllBreakPoints(){
   for (const key of Object.keys(editor.session.getBreakpoints())) {
       let breakpointRow = parseInt(key);
       editor.session.clearBreakpoint(breakpointRow);
@@ -3457,6 +3494,20 @@ function ClearAllBreakPoints(){
   breakpointsArrayNew = [];
   BParray = []; 
   makeBParray();
+  document.getElementById("statusBar").innerHTML="Erased Marked LineNumbers!";
+  tempAlert("<h1>Marked Lines Cleared</h1>",1500);
+}
+
+
+function tempAlert(msg,duration)  // timed autohide alert
+{
+    var el = document.createElement("div");
+    var top=parseInt((window.innerHeight - 150) / 2)+$(window).scrollTop() + 'px';  // try to align alert popup in middle of window
+    var left=parseInt((window.innerWidth - 500) / 2) + 'px';
+    el.setAttribute("style","border-radius:15px;height:;width:;padding:10px;margin:10px;position:absolute;top:"+top+";left:"+left+";background-color:gray;color:black;z-index: 50; transition-duration: 1s;transition: opacity 1s;");
+    el.innerHTML = msg;
+    setTimeout(function(){el.parentNode.removeChild(el);},duration);
+    document.body.appendChild(el);
 }
 
 </script>
@@ -3658,7 +3709,7 @@ GutterBGColor?!: <input value="rgba(51,153,255,1)" data-jscolor="{}" name="myCol
   //////////////////////
   -->
 
-
+<marquee id="statusBar" scrollamount="3">ACE Rocks!</marquee>
 
   </body>
 </html>
