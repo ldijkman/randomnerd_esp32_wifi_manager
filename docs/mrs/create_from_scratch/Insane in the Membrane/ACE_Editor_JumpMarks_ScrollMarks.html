@@ -287,6 +287,11 @@ window.onbeforeunload = function() {
     border-left: 1px solid;
 }
 
+
+.ace-selection {
+  background-color: red important;
+}
+
   </style>
 </head>
 
@@ -330,7 +335,7 @@ window.onbeforeunload = function() {
             <option value="C_CPP">C and C++</option>
           </select>
 
-      
+<!--     
           <select id="ace-theme" size="1" style="width: 100px;" title="select a theme colorscheme">
             <optgroup label="bright"><option value="textmate">textmate</option>
               <option value="chrome">chrome</option>
@@ -342,6 +347,8 @@ window.onbeforeunload = function() {
               <option value="vibrant_ink" selected>vibrant_ink</option></optgroup><optgroup label="  "> </optgroup>
              <optgroup label="More?!, Use Settings Button"> </optgroup>
           </select>
+-->
+<select id="ace-theme" size="1" style="width: 100px;" title="select a theme colorscheme"><optgroup label="Bright"><option value="ace/theme/chrome">Chrome</option><option value="ace/theme/clouds">Clouds</option><option value="ace/theme/crimson_editor">Crimson Editor</option><option value="ace/theme/dawn">Dawn</option><option value="ace/theme/dreamweaver">Dreamweaver</option><option value="ace/theme/eclipse">Eclipse</option><option value="ace/theme/github">GitHub</option><option value="ace/theme/iplastic">IPlastic</option><option value="ace/theme/solarized_light">Solarized Light</option><option value="ace/theme/textmate">TextMate</option><option value="ace/theme/tomorrow">Tomorrow</option><option value="ace/theme/xcode">XCode</option><option value="ace/theme/kuroir">Kuroir</option><option value="ace/theme/katzenmilch">KatzenMilch</option><option value="ace/theme/sqlserver">SQL Server</option></optgroup><optgroup label="Dark"><option value="ace/theme/ambiance">Ambiance</option><option value="ace/theme/chaos">Chaos</option><option value="ace/theme/clouds_midnight">Clouds Midnight</option><option value="ace/theme/dracula">Dracula</option><option value="ace/theme/cobalt">Cobalt</option><option value="ace/theme/gruvbox">Gruvbox</option><option value="ace/theme/gob">Green on Black</option><option value="ace/theme/idle_fingers">idle Fingers</option><option value="ace/theme/kr_theme">krTheme</option><option value="ace/theme/merbivore">Merbivore</option><option value="ace/theme/merbivore_soft">Merbivore Soft</option><option value="ace/theme/mono_industrial">Mono Industrial</option><option value="ace/theme/monokai">Monokai</option><option value="ace/theme/nord_dark">Nord Dark</option><option value="ace/theme/one_dark">One Dark</option><option value="ace/theme/pastel_on_dark">Pastel on dark</option><option value="ace/theme/solarized_dark">Solarized Dark</option><option value="ace/theme/terminal">Terminal</option><option value="ace/theme/tomorrow_night">Tomorrow Night</option><option value="ace/theme/tomorrow_night_blue">Tomorrow Night Blue</option><option value="ace/theme/tomorrow_night_bright">Tomorrow Night Bright</option><option value="ace/theme/tomorrow_night_eighties">Tomorrow Night 80s</option><option value="ace/theme/twilight">Twilight</option><option value="ace/theme/vibrant_ink" selected>Vibrant Ink</option></optgroup></select>
 
           <button onclick='suggestonoff()' id="butsuggest" title="suggest on / off">Suggest</button>
 
@@ -384,8 +391,8 @@ window.onbeforeunload = function() {
         ---JumpUp and JumpDown---&#013; &#010;">
 
 
-<input type="search" value="<scri" size="8" id="searchinput" onsearch="Find_and_Mark(searchinput.value);Jumptotop();" title="input SearchText to Create JumpMarks" style="color:black;background-color:#BFEABE;">
-<button onclick="Find_and_Mark(searchinput.value);Jumptotop();"  style="color:#BFEABE;" title="input SearchText to Create Jumpmarks"><=SearchMark</button>
+<input type="search" value="<scri" size="8" id="searchinput" onsearch="Find_and_Mark(searchinput.value);Jumptotop();tempAlert('<h3>SearchMark Done</h3>',1500);" title="input SearchText to Create JumpMarks" style="color:black;background-color:#BFEABE;">
+<button onclick="Find_and_Mark(searchinput.value);Jumptotop();tempAlert('<h3>SearchMark Done</h3>',1500);"  style="color:#BFEABE;" title="input SearchText to Create Jumpmarks"><=SearchMark</button>
 
 <input type="button" value="ClearAllMarks" onClick='ClearAllBreakPoints();Jumptotop();' title="Clear All JumpMarks">
 
@@ -3203,7 +3210,7 @@ function download(filename, text) {
     id.addEventListener('change', function(e) {
       console.log((document.getElementById('ace-theme').value).toLowerCase());
       e.preventDefault();
-      ace.edit("editor").setTheme('ace/theme/' + (document.getElementById('ace-theme').value).toLowerCase());
+      ace.edit("editor").setTheme('' + (document.getElementById('ace-theme').value).toLowerCase());
     floatbuttons();
     });
 
@@ -3459,15 +3466,23 @@ floatbuttons();
 
 
 function FindandMark(){  // when button 4test is pressed
+   
   Find_and_Mark('function');
+  
   Find_and_Mark('eventlisten');
+  
   Find_and_Mark('</style>');
+  
   Find_and_Mark('<body');
+  
   Find_and_Mark('<scri');
+  
   Find_and_Mark('</scri');
+ 
   Find_and_Mark('</html>');
+  
   document.getElementById("statusBar").innerHTML="did find and Mark!";
-   tempAlert("<h3>Maybe Marked some LineNumbers!</h3>",1500);
+   tempAlert("<h3>Think i Marked  LineNumbers!</h3>",1500);
   makeBParray();
   Jumptotop();      
 }
@@ -3481,8 +3496,9 @@ function Find_and_Mark(what){
       //console.log(what+" selectarray[i].start.row",selectarray[i].start.row);
       BParray.push(selectarray[i].start.row);
   }
-  document.getElementById("statusBar").innerHTML="Marked "+ (range+1)+" LineNumbers!";
-
+  //document.getElementById("statusBar").innerHTML="Marked "+ (range+1)+" LineNumbers!";
+   //console.log("range",range);
+  //return range;
 }
 
 
@@ -3495,7 +3511,7 @@ function ClearAllBreakPoints(){
   BParray = []; 
   makeBParray();
   document.getElementById("statusBar").innerHTML="Erased Marked LineNumbers!";
-  tempAlert("<h1>Marked Lines Cleared</h1>",1500);
+  tempAlert("<h3>Marked Lines Cleared</h3>",1500);
 }
 
 
@@ -3637,7 +3653,7 @@ function tempAlert(msg,duration)  // timed autohide alert
   <div id="BGColorDiv" style="position: fixed;
   width: 70%;
   top:10%;
-  height:60%;
+  height:;
   left:20%;
   padding: 10px 0;
   text-align: center;
@@ -3681,9 +3697,17 @@ function tempAlert(msg,duration)  // timed autohide alert
     editor.container.style.background=setcolor; 
   }
 
-    function setcolorgutterbg(setcolor){
+  function setcolorgutterbg(setcolor){
     console.log("setcolor",setcolor); 
     document.querySelector(".ace_gutter").style.background=setcolor;
+  }
+// selection color change is not working ok
+  function setcolorselection(setcolor){
+    console.log("setcolor",setcolor); 
+    document.querySelector(".ace_selection").style.background=setcolor;
+    document.querySelector(".ace_selection .ace_start").style.background=setcolor;
+    document.querySelectorAll(".ace_marker-layer.ace_selection").style.background=setcolor;
+     
   }
 </script>
 
@@ -3695,11 +3719,15 @@ EditorBGColor?!: <input value="rgba(51,153,255,1)" data-jscolor="{}" name="myCol
   <br><br><br>
 GutterBGColor?!: <input value="rgba(51,153,255,1)" data-jscolor="{}" name="myColorInput"
 			oninput="setcolorgutterbg(this.jscolor.toString());console.log(this.jscolor.toString() + ' ' + this.name)">
-  <br>
+  <br><br><br>
+selectioncolor?!: <input value="rgba(51,153,255,1)" data-jscolor="{}" name="myColorInput"
+			oninput="setcolorselection(this.jscolor.toString());console.log(this.jscolor.toString() + ' ' + this.name)">
+ 
+ <br>
  
   <br>
    <input type="button" onclick="BGColor()" value="&nbsp;&nbsp;OK!&nbsp;&nbsp;">
-  </div><br>
+  </div><br><br><br>
 </div>
 </div>
  
