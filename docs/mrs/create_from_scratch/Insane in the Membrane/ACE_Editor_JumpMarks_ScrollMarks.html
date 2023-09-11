@@ -401,10 +401,15 @@ window.onbeforeunload = function() {
        <button onclick='ace.edit("editor").setFontSize(parseInt(ace.edit("editor").getFontSize())+1);document.getElementById("fontSize").value=editor.getFontSize()' title="FontSize +">&nbsp;+&nbsp;</button>
 
 
- <input type="button" value="Settings" onClick='ace.edit("editor").execCommand("showSettingsMenu");' title="show settings menu">
+ <input type="button" value="Settings" onClick='ace.edit("editor").execCommand("showSettingsMenu");' 
+ title="Show ACE Settings Menu">
 <!-- now working -->
-<input type="button" value="&nbsp;F1&nbsp;" onClick='editor.execCommand("openCommandPallete")' title="show F1 key shortcut keys popup">
-<input type="button" value="ShortCuts" onClick=' editor.execCommand("showKeyboardShortcuts")' title="show shortcut keys popup">
+<input type="button" value="&nbsp;F1&nbsp;" onClick='editor.execCommand("openCommandPallete")' 
+ title="Show F1 Better KeyBoard ShortCuts popup Menu&#010;
+ if use F1 button, must have focus on Editor">
+ 
+<input type="button" value="ShortCuts" onClick=' editor.execCommand("showKeyboardShortcuts")' 
+title="Show KeyBoard ShortCuts popup Menu">
 <!-- now working -->
 
         <input type="button" 
@@ -414,19 +419,24 @@ window.onbeforeunload = function() {
         title="
         ---&#013; &#010;Find and Mark&#013; &#010;
         Search for&#013; &#010; 
-        function, eventlisten, <style, <body, <scri, </scri, <selec </html &#013; &#010;
+        function, eventlisten, <style, <body, <scri, </scri, <selec, </html &#013; &#010;
         and Creates JumpMarks, ScrollMarks&#013; &#010;
         ---JumpUp and JumpDown---&#013; &#010;">
 
 
-<input type="search" value="<scri" size="8" id="searchinput" onsearch="Find_and_Mark(searchinput.value);Jumptotop();tempAlert('<h3>SearchMark Done</h3>',1500);" title="input SearchText to Create JumpMarks" style="color:black;background-color:#BFEABE;">
+<input type="search" value="<scri" size="8" id="searchinput" onsearch="Find_and_Mark(searchinput.value);Jumptotop();tempAlert('<h3>SearchMark Done</h3>',1500);" 
+title="input SearchText to Create JumpMarks&#010;
+Type func in this textfield &#010;
+and press Enter button&#010;
+and all funtions will be marked in the editor&#010;" 
+style="color:black;background-color:#BFEABE;">
 <button onclick="Find_and_Mark(searchinput.value);Jumptotop();tempAlert('<h3>SearchMark Done</h3>',1500);"  style="color:#BFEABE;" title="input SearchText to Create Jumpmarks"><=Search&Mark</button>
 
 <input type="button" value="ClearAllMarks" onClick='ClearAllBreakPoints();Jumptotop();' title="Clear All JumpMarks">
 
 
 
-<input type="button" value="&nbsp;BGColor&nbsp;" style="" onclick="BGColor()" title="Override Editor BackGroundColor">
+<input type="button" value="&nbsp;Colors&nbsp;" style="" onclick="BGColor()" title="Override Editor BackGroundColor">
 
 
 <input type="button" value="&nbsp;About&nbsp;" style="" onclick="showAbout()" title="Show About">
@@ -3619,7 +3629,9 @@ setTimeout(function(){
  SearchMark<br>
  <iframe width="560" height="315" src="https://www.youtube.com/embed/6SmqA4E7D4o?si=OBRnmZvNPD56FHhA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><br>
   <br>
-  
+  Override Theme Colors<br>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/LKHT42LGuDw" title="ace editor override theme colors" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <br>
   <br>
   <center>
   <hr>
@@ -3755,25 +3767,31 @@ setTimeout(function(){
     const addCSS = css => document.head.appendChild(document.createElement("style")).innerHTML=css; 
     addCSS(".ace_editor .ace_marker-layer .ace_selection{ background-color:"+setcolor+"; }")     
   }
+  function setcolorbreakpointbg(setcolor){
+       const addCSS = css => document.head.appendChild(document.createElement("style")).innerHTML=css; 
+    addCSS(".ace_gutter-cell.ace_breakpoint{ background-color:"+setcolor+"; }")  
+  }
 </script>
 
 <br>
 
 <!-- https://jscolor.com/sandbox/ -->
-EditorBGColor?!: <input value="rgba(255,155,0,1)" data-jscolor="{}" name="myColorInput"
+Editor BGColor?!: <input value="rgba(255,155,0,1)" data-jscolor="{}" name="myColorInput"
 			oninput="setcolor(this.jscolor.toString());console.log(this.jscolor.toString() + ' ' + this.name)">
   <br><br><br>
-GutterBGColor?!: <input value="rgba(255,155,0,1)" data-jscolor="{}" name="myColorInput"
+Gutter BGColor?!: <input value="rgba(255,155,0,1)" data-jscolor="{}" name="myColorInput"
 			oninput="setcolorgutterbg(this.jscolor.toString());console.log(this.jscolor.toString() + ' ' + this.name)">
   <br>NightWing Says: Not CSS Style but CSS Rule<br><br>
-selectioncolor?!: <input value="rgba(255,155,0,1)" data-jscolor="{}" name="myColorInput"
+selection color?!: <input value="rgba(255,155,0,1)" data-jscolor="{}" name="myColorInput"
 			oninput="setcolorselection(this.jscolor.toString());console.log(this.jscolor.toString() + ' ' + this.name)">
- 
  <br>
- 
-  <br>
-   <input type="button" onclick="BGColor()" value="&nbsp;&nbsp;OK!&nbsp;&nbsp;">
-  </div><br><br><br>
+ <br>
+ BreakPoint color?!: <input value="rgba(255,155,0,1)" data-jscolor="{}" name="myColorInput"
+			oninput="setcolorbreakpointbg(this.jscolor.toString());console.log(this.jscolor.toString() + ' ' + this.name)">
+ <br>
+ <br>
+ <input type="button" onclick="BGColor()" value="&nbsp;&nbsp;OK!&nbsp;&nbsp;">
+ </div><br><br><br>
 </div>
 </div>
  
