@@ -68,6 +68,7 @@ window.onbeforeunload = function() {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.1/worker-html.min.js" integrity="sha512-BCEbWkyA7mJ8/LR10B2iljTkPbXE8AhkWfJ7RgudTvGdr7Cn1FpNQsvqfp0jmYIpYL13liMvjjq6DtVAVusTew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.9.1/ext-keybinding_menu.min.js" integrity="sha512-M8GvsdIx/Smfkxbx2SZam38kR6lSNdiQusbzqj4Wq+GLsKkBqYgdJqVUkq81lTvqdGJU8AdOoUHdlrEmSP30vA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/ace.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.8.0/ext-linking.js"></script>
@@ -369,8 +370,12 @@ window.onbeforeunload = function() {
           <button onclick='suggestonoff()' id="butsuggest" title="suggest on / off">Suggest</button>
 
  <button onclick='pretty()' id="pretty"
-        style="background-color:;" 
-        title="beatify pretty print format &#013; &#010; organize the text better" >pretty</button>
+        style="background-color:#FC8D8D;color:red;" 
+        title="Beautify Pretty Format Text &#013; &#010; 
+        Does Not work Nice &#013; &#010;
+        in Mixed Mode HTML CSS JavaScript &#013; &#010;
+        Organize the text better" >Pretty</button>
+
         <input type="button" value="Undo" onClick='ace.edit("editor").execCommand("undo");' title="undo&#013;CTRL + Z">
         <input type="button" value="Redo" onClick='ace.edit("editor").execCommand("redo");' title="redo&#013;CTRL + SHIFT + Z">
 
@@ -402,7 +407,7 @@ window.onbeforeunload = function() {
         title="
         ---&#013; &#010;Find and Mark&#013; &#010;
         Search for&#013; &#010; 
-        function, eventlisten, <style, <body, <scri, </scri, </html &#013; &#010;
+        function, eventlisten, <style, <body, <scri, </scri, <selec </html &#013; &#010;
         and Creates JumpMarks, ScrollMarks&#013; &#010;
         ---JumpUp and JumpDown---&#013; &#010;">
 
@@ -3493,6 +3498,8 @@ function FindandMark(){  // when button 4test is pressed
   Find_and_Mark('</style>');
   
   Find_and_Mark('<body');
+
+  Find_and_Mark('<select');
   
   Find_and_Mark('<scri');
   
@@ -3738,8 +3745,9 @@ setTimeout(function(){
   function setcolorselection(setcolor){
     console.log("setcolor",setcolor); 
     document.querySelector(".ace_selection").style.background=setcolor;
-    document.querySelector(".ace_selection .ace_start").style.background=setcolor;
-    document.querySelectorAll(".ace_marker-layer.ace_selection").style.background=setcolor;
+    //document.querySelector(".ace_selection .ace_start").style.background=setcolor;
+    //document.querySelectorAll(".ace_marker-layer.ace_selection").style.background=setcolor;
+    
      
   }
 </script>
@@ -3747,13 +3755,13 @@ setTimeout(function(){
 <br>
 
 <!-- https://jscolor.com/sandbox/ -->
-EditorBGColor?!: <input value="rgba(51,153,255,1)" data-jscolor="{}" name="myColorInput"
+EditorBGColor?!: <input value="rgba(255,155,0,1)" data-jscolor="{}" name="myColorInput"
 			oninput="setcolor(this.jscolor.toString());console.log(this.jscolor.toString() + ' ' + this.name)">
   <br><br><br>
-GutterBGColor?!: <input value="rgba(51,153,255,1)" data-jscolor="{}" name="myColorInput"
+GutterBGColor?!: <input value="rgba(255,155,0,1)" data-jscolor="{}" name="myColorInput"
 			oninput="setcolorgutterbg(this.jscolor.toString());console.log(this.jscolor.toString() + ' ' + this.name)">
-  <br><br><br>
-selectioncolor?!: <input value="rgba(51,153,255,1)" data-jscolor="{}" name="myColorInput"
+  <br>i dont know NightWing Says: Not CSS Style but CSS Rule<br>Next selection color does not work<br>
+selectioncolor?!: <input value="rgba(255,155,0,1)" data-jscolor="{}" name="myColorInput"
 			oninput="setcolorselection(this.jscolor.toString());console.log(this.jscolor.toString() + ' ' + this.name)">
  
  <br>
