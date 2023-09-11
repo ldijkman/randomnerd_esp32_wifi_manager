@@ -407,7 +407,7 @@ window.onbeforeunload = function() {
 <input type="button" value="&nbsp;F1&nbsp;" onClick='editor.execCommand("openCommandPallete")' 
  title="Show F1 Better KeyBoard ShortCuts popup Menu&#010;
  if use F1 button, must have focus on Editor">
- 
+
 <input type="button" value="ShortCuts" onClick=' editor.execCommand("showKeyboardShortcuts")' 
 title="Show KeyBoard ShortCuts popup Menu">
 <!-- now working -->
@@ -3206,8 +3206,32 @@ function download(filename, text) {
 }
    
     function save() {
-      download('Visual_Scheduler_Touch_Friendly.html', editor.getValue());
+      download((getISOString(new Date()))+".html", editor.getValue());
     }
+
+
+// https://stackoverflow.com/questions/43670062/get-iso-string-from-a-date-without-time-zone
+// day-month-year-hh_mm_ss html for save
+function getISOString(date)
+{
+let d = new Date(date),
+month = '' + (d.getMonth() + 1),
+day = '' + d.getDate(),
+year = ''+ d.getFullYear(),
+hours = ''+d.getHours(),
+minutes = ''+d.getMinutes(),
+seconds = ''+d.getSeconds();
+month = month.length < 2? '0' + month : month;
+day   = day.length < 2? '0' + day : day;
+hours = hours.length < 2?'0'+hours:hours;
+minutes = minutes.length< 2? '0'+minutes:minutes;
+seconds = seconds.length< 2? '0'+seconds:seconds;
+return ( [day, month, year].join('-')+'-'+[hours,minutes,seconds].join(':')+'');
+}
+console.log(getISOString(new Date()));
+
+
+
 
 // https://plnkr.co/edit/GCLwKqNGqi4R2Fnr?preview
 
