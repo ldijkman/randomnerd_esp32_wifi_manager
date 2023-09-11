@@ -309,7 +309,14 @@ window.onbeforeunload = function() {
    //border-collapse: 10px;
     
   }
+ 
+/*
+  .ace_editor .ace_marker-layer .ace_selection {
+   background: rgba(207,223,86,0.5);
+  }
+*/
   </style>
+
 </head>
 
 <body>
@@ -413,7 +420,7 @@ window.onbeforeunload = function() {
 
 
 <input type="search" value="<scri" size="8" id="searchinput" onsearch="Find_and_Mark(searchinput.value);Jumptotop();tempAlert('<h3>SearchMark Done</h3>',1500);" title="input SearchText to Create JumpMarks" style="color:black;background-color:#BFEABE;">
-<button onclick="Find_and_Mark(searchinput.value);Jumptotop();tempAlert('<h3>SearchMark Done</h3>',1500);"  style="color:#BFEABE;" title="input SearchText to Create Jumpmarks"><=SearchMark</button>
+<button onclick="Find_and_Mark(searchinput.value);Jumptotop();tempAlert('<h3>SearchMark Done</h3>',1500);"  style="color:#BFEABE;" title="input SearchText to Create Jumpmarks"><=Search&Mark</button>
 
 <input type="button" value="ClearAllMarks" onClick='ClearAllBreakPoints();Jumptotop();' title="Clear All JumpMarks">
 
@@ -3744,11 +3751,9 @@ setTimeout(function(){
 // selection color change is not working ok
   function setcolorselection(setcolor){
     console.log("setcolor",setcolor); 
-    document.querySelector(".ace_selection").style.background=setcolor;
-    //document.querySelector(".ace_selection .ace_start").style.background=setcolor;
-    //document.querySelectorAll(".ace_marker-layer.ace_selection").style.background=setcolor;
-    
-     
+    // https://stackoverflow.com/questions/707565/how-do-you-add-css-with-javascript
+    const addCSS = css => document.head.appendChild(document.createElement("style")).innerHTML=css; 
+    addCSS(".ace_editor .ace_marker-layer .ace_selection{ background-color:"+setcolor+"; }")     
   }
 </script>
 
@@ -3760,7 +3765,7 @@ EditorBGColor?!: <input value="rgba(255,155,0,1)" data-jscolor="{}" name="myColo
   <br><br><br>
 GutterBGColor?!: <input value="rgba(255,155,0,1)" data-jscolor="{}" name="myColorInput"
 			oninput="setcolorgutterbg(this.jscolor.toString());console.log(this.jscolor.toString() + ' ' + this.name)">
-  <br>i dont know NightWing Says: Not CSS Style but CSS Rule<br>Next selection color does not work<br>
+  <br>NightWing Says: Not CSS Style but CSS Rule<br><br>
 selectioncolor?!: <input value="rgba(255,155,0,1)" data-jscolor="{}" name="myColorInput"
 			oninput="setcolorselection(this.jscolor.toString());console.log(this.jscolor.toString() + ' ' + this.name)">
  
