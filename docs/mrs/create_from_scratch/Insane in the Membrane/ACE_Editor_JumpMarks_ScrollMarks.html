@@ -413,7 +413,7 @@ title="Show KeyBoard ShortCuts popup Menu">
 <!-- now working -->
 
         <input type="button" 
-        value="Find&Mark" 
+        value="AutoMark" 
         onClick='FindandMark()' 
         style="background-color:orange;color:black;font-weight: bold;" 
         title="
@@ -2231,6 +2231,7 @@ document.addEventListener('DOMContentLoaded', function() {      // do next when 
     setInterval(doiteverysecond, 1000); // Milliseconds  call function doiteverysecond() every second
 
    
+ 
 
 }, false);     
 //////////////////////
@@ -2513,8 +2514,7 @@ Visual Scheduler for irrigation, sprinklers, lights, wifi relays, wifi switches<
 
 <br><br>
 
-<input type="button" onclick="showhideabout()" value="About"><br>
-                                                            
+<input type="button" onclick="showhideabout()" value="About"><br>                                                      
 <!-- Copyright Dirk Luberth Dijkman 2023 -->
 <br><br>
 <small><small><small>
@@ -3226,7 +3226,7 @@ day   = day.length < 2? '0' + day : day;
 hours = hours.length < 2?'0'+hours:hours;
 minutes = minutes.length< 2? '0'+minutes:minutes;
 seconds = seconds.length< 2? '0'+seconds:seconds;
-return ( [day, month, year].join('-')+'-'+[hours,minutes,seconds].join(':')+'');
+return ( [day, month, year].join('-')+'-'+[hours,minutes,seconds].join('_')+'');
 }
 console.log(getISOString(new Date()));
 
@@ -3468,7 +3468,13 @@ function showAbout() {
 function BGColor() {
   if (document.getElementById("BGColorDiv").style.display === "none") {
    document.getElementById("BGColorDiv").style.display = "block";
-     // should be something to block scrolling of body 
+  
+  
+  //var setcolor=document.querySelector('.ace_gutter').style.backgroundColor;     
+  //document.querySelector('#foo').jscolor.fromString(String(setcolor));
+  console.log("setcolor",document.querySelector('.ace_gutter').style.backgroundColor);
+    document.querySelector('#foo').jscolor.fromString("#ff0000");
+      // should be something to block scrolling of body 
      // only popup scroll
      // https://codepen.io/anon/pen/oEMmrm
   } else {
@@ -3672,6 +3678,8 @@ setTimeout(function(){
   <br>
   <a href="https://mkslanc.github.io/ace-playground/#keyboard-shortcuts" target="ace-playground">https://mkslanc.github.io/ace-playground/#keyboard-shortcuts</a>
   <br>
+  <a href="https://github.com/mkslanc" target="ace-playground-2">https://github.com/mkslanc</a>
+  <br>
   <br>
   <a href="https://ourcodeworld.com/articles/read/1052/how-to-add-toggle-breakpoints-on-the-ace-editor-gutter" target="ourcode">https://ourcodeworld.com/articles/read/1052/how-to-add-toggle-breakpoints-on-the-ace-editor-gutter</a>
   <br>
@@ -3700,7 +3708,12 @@ setTimeout(function(){
   <a href="https://plnkr.co/edit/p7xyOMhDtuTc49aZ" target="plunker">//plnkr.co/edit/p7xyOMhDtuTc49aZ</a><br>
   <br>
   <a href="https://github.com/ldijkman/randomnerd_esp32_wifi_manager/discussions" target="discussions">github discussions</a><br>
- 
+ <br>
+ <br>
+ on 12  sept 2023 i found out that<br>
+ Geany has marks <br>
+ click gives + sign on gutter ctrl+, ctrl+. for up down<br> 
+ NotePad++ has Blue Balls as markers F12 Shift+F12 for up down <br>
   <br>
   Free for personal use.<br> 
   Not free for commercial use.<br>
@@ -3781,6 +3794,7 @@ setTimeout(function(){
   }
 
   function setcolorgutterbg(setcolor){
+    console.log("document.querySelector('.ace_gutter').style.backgroundColor",document.querySelector('.ace_gutter').style.backgroundColor);
     console.log("setcolor",setcolor); 
     document.querySelector(".ace_gutter").style.background=setcolor;
   }
@@ -3795,30 +3809,45 @@ setTimeout(function(){
        const addCSS = css => document.head.appendChild(document.createElement("style")).innerHTML=css; 
     addCSS(".ace_gutter-cell.ace_breakpoint{ background-color:"+setcolor+"; }")  
   }
+    function setcolorbreakpointext(setcolor){
+       const addCSS = css => document.head.appendChild(document.createElement("style")).innerHTML=css; 
+    addCSS(".ace_gutter-cell.ace_breakpoint{ color:"+setcolor+"; }")  
+  }
+
+  //document.querySelector('.ace_gutter').style.backgroundColor);
+  //document.getElementById("myColorInput2").jscolor.fromString("#00FF00");
+
+   
 </script>
 
 <br>
 
 <!-- https://jscolor.com/sandbox/ -->
-Editor BGColor?!: <input value="rgba(255,155,0,1)" data-jscolor="{}" name="myColorInput"
+Editor BGColor?!: <input value="rgba(255,155,0,1)" data-jscolor="{}" id="myColorInput1"
 			oninput="setcolor(this.jscolor.toString());console.log(this.jscolor.toString() + ' ' + this.name)">
   <br><br><br>
-Gutter BGColor?!: <input value="rgba(255,155,0,1)" data-jscolor="{}" name="myColorInput"
+Gutter BGColor?!: <input value="" data-jscolor="{}" id="foo"  class="foo"
 			oninput="setcolorgutterbg(this.jscolor.toString());console.log(this.jscolor.toString() + ' ' + this.name)">
   <br>NightWing Says: Not CSS Style but CSS Rule<br><br>
-selection color?!: <input value="rgba(255,155,0,1)" data-jscolor="{}" name="myColorInput"
+selection color?!: <input value="rgba(255,155,0,1)" data-jscolor="{}" id="myColorInput3"
 			oninput="setcolorselection(this.jscolor.toString());console.log(this.jscolor.toString() + ' ' + this.name)">
  <br>
  <br>
- BreakPoint color?!: <input value="rgba(255,155,0,1)" data-jscolor="{}" name="myColorInput"
+ BreakPoint color?!: <input value="rgba(255,155,0,1)" data-jscolor="{}" id="myColorInput4"
 			oninput="setcolorbreakpointbg(this.jscolor.toString());console.log(this.jscolor.toString() + ' ' + this.name)">
+ <br>
+ <br>
+  BreakPoint text color?!: <input value="rgba(255,155,0,1)" data-jscolor="{}" id="myColorInput4"
+			oninput="setcolorbreakpointext(this.jscolor.toString());console.log(this.jscolor.toString() + ' ' + this.name)">
  <br>
  <br>
  <input type="button" onclick="BGColor()" value="&nbsp;&nbsp;OK!&nbsp;&nbsp;">
  </div><br><br><br>
 </div>
 </div>
- 
+
+
+
 <!--
   //////////////////////
   // end  BGColorDiv
