@@ -4,7 +4,7 @@ https://github.com/ukandrewc/Ace-Scrollbars/tree/master
 */
 
 .ace_scrollbar {
-	overflow: hidden;
+	/*overflow: hidden;*/
 }
 
 .ace_scroll-v {
