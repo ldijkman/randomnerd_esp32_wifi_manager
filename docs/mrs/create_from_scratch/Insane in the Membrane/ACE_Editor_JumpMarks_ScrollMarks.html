@@ -261,9 +261,7 @@ window.onbeforeunload = function() {
  // height: 2000px;
 }
 
-.ace_selected-word {
-    border: 1px solid red;
-}
+
 
 [type="search"]::-webkit-search-cancel-button {
     -webkit-appearance: none;
@@ -320,6 +318,10 @@ window.onbeforeunload = function() {
    background: rgba(207,223,86,0.5);
   }
 */
+.ace_editor .ace_marker-layer .ace_selected-word {
+  background: rgba(255,255,0,0.25);
+    border: 1px solid red;
+}
   </style>
 
 </head>
@@ -3853,7 +3855,7 @@ setTimeout(function(){
     addCSS(".ace_editor .ace_marker-layer .ace_selection{ background-color:"+setcolor+"; }")     
   const addCSStwo = css =>document.head.appendChild(document.createElement("style")).innerHTML=css; 
     addCSStwo(".ace_editor .ace_marker-layer .ace_selected-word{ background-color:orange; }") 
-         
+       
   
   }
   function setcolorbreakpointbg(setcolor){
