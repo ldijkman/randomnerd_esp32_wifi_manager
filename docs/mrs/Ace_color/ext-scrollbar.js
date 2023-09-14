@@ -1,3 +1,7 @@
+/*
+https://github.com/ukandrewc/Ace-Scrollbars/tree/master
+*/
+
 function AceScrollbars(e) {
 
 	// Add CSS scrollbars
