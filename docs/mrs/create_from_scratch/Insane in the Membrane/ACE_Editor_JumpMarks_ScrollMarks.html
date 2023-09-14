@@ -115,6 +115,11 @@ window.onbeforeunload = function() {
 <script type="text/javascript" src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/jscolor.js"></script>
 
 
+<script type="text/javascript" src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ext-scrollbar.js"></script>
+ <link rel="stylesheet" href="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ext-scrollbar.css" />
+
+
+
   <style>
     * {
       margin: 0;
@@ -3141,7 +3146,7 @@ need this for jumpscroll jump up and jump down TM ;-)
         box.style.color = 'black';
         //box.style.heigth = '30px';
         box.style.top = '40%';
-        box.style.right = '20px';
+        box.style.right = '35px';
         //box.style.right = "5px";
        box.style.opacity = '30%';
         box.style.padding = '3px';
@@ -3390,12 +3395,42 @@ ace.require("ace/ext/language_tools");
 
 });
 
+		new AceScrollbars(editor);
+
+		function indentCode() { 
+			let p = editor.selection.getCursor()
+			beauty.beautify(editor.session)
+			editor.selection.moveToPosition(p)
+		}
+
+		function loadSource() {
+			editor.setValue(name)
+			beauty.beautify(editor.session)
+			editor.navigateFileStart()
+			editor.focus()
+		}
+
+		function saveSource() {
+			indentCode()
+			getSource()
+		}
+
+		function getSource() {
+			name = editor.getValue()
+		}
+
    function pretty() {
       var beautify = ace.require("ace/ext/beautify"); // get reference to extension
       var editor = ace.edit("editor"); // get reference to editor
       beautify.beautify(editor.session);
     }
 
+   const addCSS = css => document.head.appendChild(document.createElement("style")).innerHTML=css; 
+    addCSS(".ace_editor .ace_marker-layer .ace_selection{ background-color:orange; }")     
+        
+              const addCSStwo = css =>document.head.appendChild(document.createElement("style")).innerHTML=css; 
+    addCSStwo(".ace_editor .ace_marker-layer .ace_selected-word{ background-color:orange; }") 
+         
 
  // https://github.com/ajaxorg/ace/blob/master/demo/keyboard_shortcuts.html#L35
     // add command to lazy-load keybinding_menu extension
@@ -3666,7 +3701,9 @@ setTimeout(function(){
   NotePad++ has Blue balls<br>
   <iframe width="560" height="315" src="https://www.youtube.com/embed/Af4vI6neklQ" title="How to Use Bookmarks Smartly in Notepad++ Text Editor- [Increase Your Productivity]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   <br>
-  <br>
+  ace editor highlight code position vertical scrollbar<br>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/OMbZ_-kfY2M" title="ace editor highlight code position vertical scrollbar" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <br><br>
   <center>
   <hr>
    Sources used<br>
@@ -3812,6 +3849,10 @@ setTimeout(function(){
     // https://stackoverflow.com/questions/707565/how-do-you-add-css-with-javascript
     const addCSS = css => document.head.appendChild(document.createElement("style")).innerHTML=css; 
     addCSS(".ace_editor .ace_marker-layer .ace_selection{ background-color:"+setcolor+"; }")     
+  const addCSStwo = css =>document.head.appendChild(document.createElement("style")).innerHTML=css; 
+    addCSStwo(".ace_editor .ace_marker-layer .ace_selected-word{ background-color:orange; }") 
+         
+  
   }
   function setcolorbreakpointbg(setcolor){
        const addCSS = css => document.head.appendChild(document.createElement("style")).innerHTML=css; 
