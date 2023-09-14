@@ -155,4 +155,5 @@ function AceScrollbars(e) {
 		e.style.display = d
 		e.previousElementSibling.style.display = d
 	}
+	resizeScroll()
 }
