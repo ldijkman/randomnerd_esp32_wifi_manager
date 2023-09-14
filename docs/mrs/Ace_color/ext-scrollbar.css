@@ -1,0 +1,57 @@
+
+/*
+https://github.com/ukandrewc/Ace-Scrollbars/tree/master
+*/
+
+.ace_scrollbar {
+	overflow: hidden;
+}
+
+.ace_scroll-v {
+	z-index: 1000;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 12px;
+	width: 30px;
+	background: whitesmoke
+}
+
+.ace_thumb-v {
+	background: darkgray;
+}
+
+.ace_scroll-h {
+	z-index: 1000;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 12px;
+	background: yellow 
+}
+
+.ace_thumb-h {
+	background: gainsboro
+}
+
+.ace_map-row {
+	z-index: 1001;
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	right: 0;
+	width: 35px;
+	height: 4px;
+	background: greenyellow;
+}
+
+.ace_map-item {
+	z-index: 1002;
+	position: absolute;
+	pointer-events: none;
+	right: 4px;
+	width: 20px;
+	height: 4px;
+	background: cornflowerblue
+}
