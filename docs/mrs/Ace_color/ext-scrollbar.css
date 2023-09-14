@@ -4,7 +4,7 @@ https://github.com/ukandrewc/Ace-Scrollbars/tree/master
 */
 
 .ace_scrollbar {
-	ooverflow: hidden;
+	overflow: hidden;
 }
 
 .ace_scroll-v {
@@ -21,7 +21,7 @@ https://github.com/ukandrewc/Ace-Scrollbars/tree/master
 	background: darkgray;
 }
 
-.ace_scroll-h {
+.aace_scroll-h {
 	z-index: 1000;
 	position: absolute;
 	left: 0;
@@ -31,7 +31,7 @@ https://github.com/ukandrewc/Ace-Scrollbars/tree/master
 	background: yellow 
 }
 
-.ace_thumb-h {
+.aace_thumb-h {
 	background: lightgray
 }
 
