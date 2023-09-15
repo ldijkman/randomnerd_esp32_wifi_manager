@@ -67,7 +67,7 @@ function AceScrollbars(e) {
 	let vStart = -1
 
 	let vs = sc[0]
-	let tv = document.getElementById("ace_bar-v")
+	let tv = document.getElementById("ace_bar-v")    // tv is the gray view on scrollbar, should match the editor view position
 
 	vs.addEventListener("scroll", function () {//think it needes an offset here if editor does not start at top 0 of document
 		tv.style.top = (vs.scrollTop-document.getElementById("editor").offsetTop) * vScale + "px"
@@ -96,7 +96,8 @@ function AceScrollbars(e) {
 	})
 
 	tv.previousElementSibling.addEventListener("mousedown", function (e) {
-		vs.scrollTop = e.clientY / vScale
+		// my editor does not start at zero because of my non editor buttons menu so offset needed
+    vs.scrollTop = (e.clientY-document.getElementById("editor").offsetTop) / vScale
 	})
 
 	// Horizontal
