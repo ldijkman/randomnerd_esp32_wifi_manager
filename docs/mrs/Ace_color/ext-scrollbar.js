@@ -54,7 +54,7 @@ function AceScrollbars(e) {
 			}
 		}
 		mc.innerHTML = ht
-		let rScale = e.renderer.lineHeight * hScale
+		let rScale = e.renderer.lineHeight * vScale
 		mr.style.top = e.getCursorPosition().row * rScale + "px"
 	}
 
@@ -145,7 +145,7 @@ function AceScrollbars(e) {
 			showScroll(th, false)
 		}
 
-		rScale = e.renderer.lineHeight * hScale
+		rScale = e.renderer.lineHeight * vScale
 		console.log("e.renderer.lineHeight",e.renderer.lineHeight);
 		gWidth = e.renderer.gutterWidth
 		th.previousElementSibling.style.left = gWidth + "px"
