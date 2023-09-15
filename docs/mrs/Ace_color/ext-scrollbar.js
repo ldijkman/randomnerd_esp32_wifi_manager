@@ -54,7 +54,6 @@ function AceScrollbars(e) {
 			}
 		}
 		mc.innerHTML = ht
-		let rScale = e.renderer.lineHeight * vScale
 		mr.style.top = e.getCursorPosition().row * rScale + "px"
 	}
 
@@ -157,5 +156,8 @@ function AceScrollbars(e) {
 		e.style.display = d
 		e.previousElementSibling.style.display = d
 	}
+
+
+
 	resizeScroll()
 }
