@@ -173,5 +173,5 @@ function AceScrollbars(e) {
 
 
 
-	resizeScroll()
+	resizeScroll() // luberth added this on startup scrollbar was not ok only after resize window it was ok
 }
