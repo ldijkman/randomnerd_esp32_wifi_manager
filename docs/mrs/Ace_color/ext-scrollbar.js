@@ -145,6 +145,7 @@ function AceScrollbars(e) {
 		}
 
 		rScale = e.renderer.lineHeight * vScale
+		console.log("e.renderer.lineHeight",e.renderer.lineHeight);
 		gWidth = e.renderer.gutterWidth
 		th.previousElementSibling.style.left = gWidth + "px"
 		showMapItems()
