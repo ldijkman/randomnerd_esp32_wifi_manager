@@ -58,24 +58,29 @@ function AceScrollbars(e) {
 			for (r of e.$search.findAll(e.session)) {
 				if (r.start.row != lr) {
 					ht += "<div class='ace_map-item' style='top:" + (r.start.row * rScale) + "px'></div>"
+					console.log("rScale",rScale);
 					lr = r.start.row
 				}
 			}
 		}
 		mc.innerHTML = ht
-		mr.style.top = e.getCursorPosition().row * rScale + "px"
+		mr.style.top = (e.getCursorPosition().row * rScale)+ "px"
+		console.log("rScale2",rScale);
 	}
 
 	// Vertical
 	let rScale = 1
+		
 	let vScale = 1
 	let vStart = -1
 
 	let vs = sc[0]
 	let tv = document.getElementById("ace_bar-v")    // tv is the gray view on scrollbar, should match the editor view position
 
-	vs.addEventListener("scroll", function () {//think it needes an offset here if editor does not start at top 0 of document
+	vs.addEventListener("scroll", function (e) {//think it needes an offset here if editor does not start at top 0 of document
 		tv.style.top = (vs.scrollTop-document.getElementById("editor").offsetTop) * vScale + "px"
+	//tv.style.top = (vs.scrollTop-e.offsetTop) * vScale + "px"
+
 	})
 
 	// Drag events
@@ -84,7 +89,7 @@ function AceScrollbars(e) {
 		vStart = e.clientY
     //console.log("e.clientY",e.clientY);
     //console.log("mc.offsetTop+'px'",mc.offsetTop);
-    console.log("mc.offsetTop+'px'",document.getElementById("editor").offsetTop);
+    console.log("offsetTop",document.getElementById("editor").offsetTop);
     
 	})
 
@@ -102,9 +107,11 @@ function AceScrollbars(e) {
 
 	tv.previousElementSibling.addEventListener("mousedown", function (e) {
 		// my editor does not start at zero because of my non editor buttons menu so offset needed
-    vs.scrollTop = (e.clientY-document.getElementById("editor").offsetTop) / vScale
-	})
+     vs.scrollTop = (e.clientY-document.getElementById("editor").offsetTop) / vScale
+	   //vs.scrollTop = (e.clientY-e.offsetTop) / vScale
 
+	})
+/*
 	// Horizontal
 	let hScale = 1
 	let hStart = -1
@@ -137,7 +144,7 @@ function AceScrollbars(e) {
 	th.previousElementSibling.addEventListener("mousedown", function (e) {
 		hs.scrollLeft = e.clientX / hScale
 	})
-
+*/
 	resizeScroll = function () {
 		vScale = vs.clientHeight / vs.scrollHeight
 		if (vs.clientHeight) {
@@ -147,7 +154,7 @@ function AceScrollbars(e) {
 		else {
 			showScroll(tv, false)
 		}
-
+/*
 		hScale = hs.clientWidth / hs.scrollWidth
 		if (hs.clientWidth) {
 			th.style.width = (hs.clientWidth * hScale) + "px"
@@ -157,7 +164,7 @@ function AceScrollbars(e) {
 		else {
 			showScroll(th, false)
 		}
-
+*/
 		rScale = e.renderer.lineHeight * vScale
 		console.log("e.renderer.lineHeight",e.renderer.lineHeight);
 		gWidth = e.renderer.gutterWidth
