@@ -1,5 +1,9 @@
 /*
 https://github.com/ukandrewc/Ace-Scrollbars/tree/master
+
+changes
+https://plnkr.co/edit/Digj5Fw7D6hxaTU4
+
 */
 
 function AceScrollbars(e) {
@@ -65,14 +69,18 @@ function AceScrollbars(e) {
 	let vs = sc[0]
 	let tv = document.getElementById("ace_bar-v")
 
-	vs.addEventListener("scroll", function () {
-		tv.style.top = vs.scrollTop * vScale + "px"
+	vs.addEventListener("scroll", function () {//think it needes an offset here if editor does not start at top 0 of document
+		tv.style.top = (vs.scrollTop-document.getElementById("editor").offsetTop) * vScale + "px"
 	})
 
 	// Drag events
 	tv.addEventListener("pointerdown", function (e) {
 		tv.setPointerCapture(e.pointerId)
 		vStart = e.clientY
+    //console.log("e.clientY",e.clientY);
+    //console.log("mc.offsetTop+'px'",mc.offsetTop);
+    console.log("mc.offsetTop+'px'",document.getElementById("editor").offsetTop);
+    
 	})
 
 	tv.addEventListener("pointermove", function (e) {
