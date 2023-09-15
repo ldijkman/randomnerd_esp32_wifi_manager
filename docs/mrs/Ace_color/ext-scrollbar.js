@@ -54,6 +54,7 @@ function AceScrollbars(e) {
 			}
 		}
 		mc.innerHTML = ht
+		rScale = e.renderer.lineHeight * vScale
 		mr.style.top = e.getCursorPosition().row * rScale + "px"
 	}
 
