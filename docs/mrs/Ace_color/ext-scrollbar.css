@@ -20,7 +20,7 @@ https://github.com/ukandrewc/Ace-Scrollbars/tree/master
 .ace_thumb-v {
 	background: darkgray;
 }
-
+/*
 .ace_scroll-h {
 	z-index: 1000;
 	position: absolute;
@@ -34,7 +34,7 @@ https://github.com/ukandrewc/Ace-Scrollbars/tree/master
 .ace_thumb-h {
 	background: lightgray
 }
-
+*/
 .ace_map-row {
 	z-index: 1001;
 	position: absolute;
