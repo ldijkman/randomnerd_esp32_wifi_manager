@@ -3,6 +3,11 @@ https://github.com/ukandrewc/Ace-Scrollbars/tree/master
 
 changes
 https://plnkr.co/edit/Digj5Fw7D6hxaTU4
+my editor does not start at mousepos y zero
+so i treid to make an offset for that
+
+still a problem with scrollbar viewport on fontsize
+only seems to work ok at fontsize 12
 
 */
 
