@@ -169,7 +169,7 @@ function map_range(value, low1, high1, low2, high2) {
 			showScroll(tv, false)
 		}
 /*
-		hScale = hs.clientWidth / hs.scrollWidth
+		hScale = hs.clientWidth / hs.scrollWidth 
 		if (hs.clientWidth) {
 			th.style.width = (hs.clientWidth * hScale) + "px"
 			th.style.left = (hs.scrollLeft * hScale) + gWidth + "px"
