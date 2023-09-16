@@ -69,8 +69,8 @@ function map_range(value, low1, high1, low2, high2) {
 			e.$search.setOptions(op)
 			let lr = -1
 			for (r of e.$search.findAll(e.session)) {
-				if (r.start.row != lr) {
-					ht += "<div class='ace_map-item' style='top:" +  (map_range(r.start.row ,0,editor.session.getLength(), 0,100)) + "%'></div>"
+				if (r.start.row != lr) {                                                     // 40 lines for editor view?
+					ht += "<div class='ace_map-item' style='top:" +  (map_range(r.start.row ,0,editor.session.getLength()+50, 0,100)) + "%'></div>"
 					// luberth thinks, i do not know maybe better in % no px
 					console.log("rScale",rScale);
 					lr = r.start.row
@@ -78,7 +78,7 @@ function map_range(value, low1, high1, low2, high2) {
 			}
 		}
 		mc.innerHTML = ht
-		mr.style.top = map_range(e.getCursorPosition().row,0,editor.session.getLength(), 0,100)+"%"
+		mr.style.top = map_range(e.getCursorPosition().row,0,editor.session.getLength()+50, 0,100)+"%"
 		console.log("rScale2",rScale);
 	}
 
@@ -169,7 +169,7 @@ function map_range(value, low1, high1, low2, high2) {
 			showScroll(tv, false)
 		}
 /*
-		hScale = hs.clientWidth / hs.scrollWidth 
+		hScale = hs.clientWidth / hs.scrollWidth
 		if (hs.clientWidth) {
 			th.style.width = (hs.clientWidth * hScale) + "px"
 			th.style.left = (hs.scrollLeft * hScale) + gWidth + "px"
