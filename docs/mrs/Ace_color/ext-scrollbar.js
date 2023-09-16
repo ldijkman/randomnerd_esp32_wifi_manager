@@ -92,7 +92,8 @@ function map_range(value, low1, high1, low2, high2) {
 	let tv = document.getElementById("ace_bar-v")    // tv is the gray view on scrollbar, should match the editor view position
 
 	vs.addEventListener("scroll", function (e) {//think it needes an offset here if editor does not start at top 0 of document
-		tv.style.top = (vs.scrollTop-document.getElementById("editor").offsetTop) * vScale + "px"
+	//	tv.style.top = (vs.scrollTop-document.getElementById("editor").offsetTop) * vScale + "px"
+		tv.style.top = (map_range(vs.scrollTop-document.getElementById("editor").offsetTop,0,document.getElementById("editor").offsetBottom,0,100))+"%"
 	//tv.style.top = (vs.scrollTop-e.offsetTop) * vScale + "px"
 
 	})
