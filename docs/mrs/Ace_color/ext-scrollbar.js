@@ -47,6 +47,19 @@ function AceScrollbars(e) {
 		h = setTimeout(showMapItems, 250)
 	})
 
+	///////////////////////////////////////////////////////////////////////////
+// arduino alike map function == Re-maps a number from one range to another. 
+// https://www.arduino.cc/reference/en/language/functions/math/map/ 
+// https://stackoverflow.com/questions/5649803/remap-or-map-function-in-javascript
+// scale range 1 into range2 bar range to 0 to 1440 minute range  
+// or 
+// scale a minutevalue in range 0 to 1440 minutes to 0% to 100%,  used for left and width of timeslot divs
+///////////////////////////////////////////////////////////////////////////////
+function map_range(value, low1, high1, low2, high2) {
+    return (low2 + (high2 - low2) * (value - low1) / (high1 - low1)).toFixed(3);   // to 3 decimals, Math.round did not scale right
+}
+
+
 	showMapItems = function () {
 		let ht = ""
 		let tx = e.getCopyText()
@@ -57,14 +70,15 @@ function AceScrollbars(e) {
 			let lr = -1
 			for (r of e.$search.findAll(e.session)) {
 				if (r.start.row != lr) {
-					ht += "<div class='ace_map-item' style='top:" + (r.start.row * rScale) + "px'></div>"
+					ht += "<div class='ace_map-item' style='top:" +  (map_range(r.start.row ,0,editor.session.getLength(), 0,100)) + "%'></div>"
+					// luberth thinks, i do not know maybe better in % no px
 					console.log("rScale",rScale);
 					lr = r.start.row
 				}
 			}
 		}
 		mc.innerHTML = ht
-		mr.style.top = (e.getCursorPosition().row * rScale)+ "px"
+		mr.style.top = map_range(e.getCursorPosition().row,0,editor.session.getLength(), 0,100)+"%"
 		console.log("rScale2",rScale);
 	}
 
