@@ -111,14 +111,14 @@ function AceScrollbars(e) {
 	   //vs.scrollTop = (e.clientY-e.offsetTop) / vScale
 
 	})
-/*
+
 	// Horizontal
 	let hScale = 1
 	let hStart = -1
 
 	let hs = sc[1]
 	let th = document.getElementById("ace_bar-h")
-
+/*
 	hs.addEventListener("scroll", function () {
 		th.style.left = (hs.scrollLeft * hScale) + gWidth + "px"
 	})
