@@ -6,6 +6,7 @@ https://github.com/ukandrewc/Ace-Scrollbars/blob/master/src/ext-scrollbar.js
 changes made by luberth
 https://plnkr.co/plunk/EYJWlWGjCdjNoui8
 https://plnkr.co/edit/Digj5Fw7D6hxaTU4
+
 my editor does not start at mousepos/windowpos y zero
 so i treid to make an offset for that
 
