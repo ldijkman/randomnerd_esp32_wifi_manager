@@ -77,12 +77,17 @@ function map_range(value, low1, high1, low2, high2) {
 			let op = e.getLastSearchOptions()
 			op.needle = e.getCopyText()
 			e.$search.setOptions(op)
-			let lr = -1
+			let lr = -1	
+			let nr_lines_vissible = editor.renderer.getLastVisibleRow() - editor.renderer.getFirstVisibleRow(); 
 			for (r of e.$search.findAll(e.session)) {
-				if (r.start.row != lr) {                                                     // 40 lines for editor view?
-					ht += "<div class='ace_map-item' style='top:" +  (map_range(r.start.row ,0,editor.session.getLength()+50, 0,100)) + "%'></div>"
+				if (r.start.row != lr) {       
+				                                           // nr_lines_vissible 40 lines for editor view?
+					ht += "<div class='ace_map-item' style='top:" +  (map_range(r.start.row ,0,editor.session.getLength()+nr_lines_vissible, 0,100)) + "%'></div>"
 					// luberth thinks, i do not know maybe better in % no px
 					console.log("rScale",rScale);
+					console.log("getFirstVisibleRow",editor.renderer.getFirstVisibleRow());
+					console.log("getLastVisibleRow",editor.renderer.getLastVisibleRow());
+					
 					lr = r.start.row
 				}
 			}
@@ -115,6 +120,7 @@ function map_range(value, low1, high1, low2, high2) {
     		//console.log("e.clientY",e.clientY);
     		//console.log("mc.offsetTop+'px'",mc.offsetTop);
     		console.log("offsetTop",document.getElementById("editor").offsetTop);
+				console.log();
     
 	})
 
