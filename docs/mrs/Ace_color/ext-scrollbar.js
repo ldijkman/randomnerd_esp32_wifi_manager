@@ -54,7 +54,7 @@ function AceScrollbars(e) {
 		h = setTimeout(showMapItems, 250)
 	})
 
-	///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////
 // arduino alike map function == Re-maps a number from one range to another. 
 // https://www.arduino.cc/reference/en/language/functions/math/map/ 
 // https://stackoverflow.com/questions/5649803/remap-or-map-function-in-javascript
@@ -101,7 +101,7 @@ function map_range(value, low1, high1, low2, high2) {
 	vs.addEventListener("scroll", function (e) {//think it needes an offset here if editor does not start at top 0 of document
 		tv.style.top = (vs.scrollTop-document.getElementById("editor").offsetTop) * vScale + "px"
 		tv.style.top = (map_range(vs.scrollTop-document.getElementById("editor").offsetTop,0,document.getElementById("editor").offsetBottom,0,100))+"%"
-	//tv.style.top = (vs.scrollTop-e.offsetTop) * vScale + "px"
+		//tv.style.top = (vs.scrollTop-e.offsetTop) * vScale + "px"
 
 	})
 
@@ -109,9 +109,9 @@ function map_range(value, low1, high1, low2, high2) {
 	tv.addEventListener("pointerdown", function (e) {
 		tv.setPointerCapture(e.pointerId)
 		vStart = e.clientY
-    //console.log("e.clientY",e.clientY);
-    //console.log("mc.offsetTop+'px'",mc.offsetTop);
-    console.log("offsetTop",document.getElementById("editor").offsetTop);
+    		//console.log("e.clientY",e.clientY);
+    		//console.log("mc.offsetTop+'px'",mc.offsetTop);
+    		console.log("offsetTop",document.getElementById("editor").offsetTop);
     
 	})
 
@@ -129,8 +129,8 @@ function map_range(value, low1, high1, low2, high2) {
 
 	tv.previousElementSibling.addEventListener("mousedown", function (e) {
 		// my editor does not start at zero because of my non editor buttons menu so offset needed
-     vs.scrollTop = (e.clientY-document.getElementById("editor").offsetTop) / vScale
-	   //vs.scrollTop = (e.clientY-e.offsetTop) / vScale
+     		vs.scrollTop = (e.clientY-document.getElementById("editor").offsetTop) / vScale
+	   	//vs.scrollTop = (e.clientY-e.offsetTop) / vScale
 
 	})
 
