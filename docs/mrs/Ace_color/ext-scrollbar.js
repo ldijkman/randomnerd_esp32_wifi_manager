@@ -1,13 +1,19 @@
 /*
-https://github.com/ukandrewc/Ace-Scrollbars/tree/master
+original:
+https://github.com/ukandrewc/Ace-Scrollbars
+https://github.com/ukandrewc/Ace-Scrollbars/blob/master/src/ext-scrollbar.js
 
-changes
+changes made by luberth
+https://plnkr.co/plunk/EYJWlWGjCdjNoui8
 https://plnkr.co/edit/Digj5Fw7D6hxaTU4
-my editor does not start at mousepos y zero
+my editor does not start at mousepos/windowpos y zero
 so i treid to make an offset for that
 
-still a problem with scrollbar viewport on fontsize
+problem with scrollbar viewport on fontsize
 only seems to work ok at fontsize 12
+treid to change from pixel positions to percent positions
+not perfect yet
+but works a bit better i think
 
 */
 
