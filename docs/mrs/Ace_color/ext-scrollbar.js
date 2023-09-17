@@ -21,6 +21,8 @@ but works a bit better i think
 
 function AceScrollbars(e) {
 
+	let editor = e;
+
 	// Add CSS scrollbars
 	e.container.insertAdjacentHTML("beforeend", "<div id='ace_pre-v' class='ace_scroll-v'></div><div id='ace_bar-v' class='ace_scroll-v ace_thumb-v'></div>")
 	e.container.insertAdjacentHTML("beforeend", "<div id='ace_pre-h' class='ace_scroll-h'></div><div id='ace_bar-h' class='ace_scroll-h ace_thumb-h'></div>")
@@ -52,6 +54,7 @@ function AceScrollbars(e) {
 	let h = 0
 	e.on("changeSelection", function () {
 		clearTimeout(h)
+		// console.log(e.id,"e.id change");
 		h = setTimeout(showMapItems, 250)
 	})
 
@@ -112,7 +115,15 @@ function map_range(value, low1, high1, low2, high2) {
 		vStart = e.clientY
     		//console.log("e.clientY",e.clientY);
     		//console.log("mc.offsetTop+'px'",mc.offsetTop);
-    		console.log("offsetTop",document.getElementById("editor").offsetTop);
+
+				// i do not know, i think i should not use next for get offset
+				// think it should be e from function AceScrollbars(e) 
+    		console.log("editor offsetTop",document.getElementById("editor").offsetTop);
+    		//console.log("edito1r offsetTop",document.getElementById("editor1").offsetTop);
+    		//console.log("editor.id",editor.id);
+				//let idid=editor.id;
+				//console.log("idid offsetTop",document.getElementById(idid).offsetTop);
+    
     
 	})
 
@@ -171,7 +182,9 @@ function map_range(value, low1, high1, low2, high2) {
 	resizeScroll = function () {
 		vScale = vs.clientHeight / vs.scrollHeight
 		if (vs.clientHeight) {
-			tv.style.height = (vs.clientHeight * vScale) + "px"
+			//tv.style.height = (vs.clientHeight * vScale) + "px"
+			tv.style.height =map_range(vs.clientHeight* vScale,0,vs.clientHeight , 0,100)+ "%";
+
 			showScroll(tv, true)
 		}
 		else {
