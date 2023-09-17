@@ -84,9 +84,9 @@ function map_range(value, low1, high1, low2, high2) {
 				                                           // nr_lines_vissible 40 lines for editor view?
 					ht += "<div class='ace_map-item' style='top:" +  (map_range(r.start.row ,0,editor.session.getLength()+nr_lines_vissible, 0,100)) + "%'></div>"
 					// luberth thinks, i do not know maybe better in % no px
-					console.log("rScale",rScale);
-					console.log("getFirstVisibleRow",editor.renderer.getFirstVisibleRow());
-					console.log("getLastVisibleRow",editor.renderer.getLastVisibleRow());
+					//console.log("rScale",rScale);
+					//console.log("getFirstVisibleRow",editor.renderer.getFirstVisibleRow());
+					//console.log("getLastVisibleRow",editor.renderer.getLastVisibleRow());
 					
 					lr = r.start.row
 				}
@@ -94,7 +94,7 @@ function map_range(value, low1, high1, low2, high2) {
 		}
 		mc.innerHTML = ht
 		mr.style.top = map_range(e.getCursorPosition().row,0,editor.session.getLength()+50, 0,100)+"%"
-		console.log("rScale2",rScale);
+		//console.log("rScale2",rScale);
 	}
 
 	// Vertical
@@ -119,7 +119,7 @@ function map_range(value, low1, high1, low2, high2) {
 		vStart = e.clientY
     		//console.log("e.clientY",e.clientY);
     		//console.log("mc.offsetTop+'px'",mc.offsetTop);
-    		console.log("offsetTop",document.getElementById("editor").offsetTop);
+    		//console.log("offsetTop",document.getElementById("editor").offsetTop);
 				console.log();
     
 	})
@@ -197,7 +197,7 @@ function map_range(value, low1, high1, low2, high2) {
 		}
 */
 		rScale = e.renderer.lineHeight * vScale
-		console.log("e.renderer.lineHeight",e.renderer.lineHeight);
+		//console.log("e.renderer.lineHeight",e.renderer.lineHeight);
 		gWidth = e.renderer.gutterWidth
 		th.previousElementSibling.style.left = gWidth + "px"
 		showMapItems()
