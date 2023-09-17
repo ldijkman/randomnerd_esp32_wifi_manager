@@ -17,6 +17,8 @@ treid to change from pixel positions to percent positions
 not perfect yet
 but works a bit better i think
 
+https://m.facebook.com/luberth.dijkman
+
 */
 
 function AceScrollbars(e) {
