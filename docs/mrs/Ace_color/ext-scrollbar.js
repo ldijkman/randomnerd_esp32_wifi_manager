@@ -4,6 +4,7 @@ https://github.com/ukandrewc/Ace-Scrollbars
 https://github.com/ukandrewc/Ace-Scrollbars/blob/master/src/ext-scrollbar.js
 
 changes made by luberth
+https://github.com/ldijkman/randomnerd_esp32_wifi_manager/blob/main/docs/mrs/Ace_color/ext-scrollbar.js
 https://plnkr.co/plunk/EYJWlWGjCdjNoui8
 https://plnkr.co/edit/Digj5Fw7D6hxaTU4
 
