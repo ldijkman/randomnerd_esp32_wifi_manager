@@ -4,18 +4,21 @@ https://github.com/ukandrewc/Ace-Scrollbars/tree/master
 */
 
 
-.ace_scrollbar {
-	/*overflow: hidden;*/
+.ace_scrollbar-v {  /* hide vertical scrollbar */
+	overflow: hidden;
 }
-
+.ace_scrollbar-h {  /*  */
+	width: 100%;
+}
 .ace_scroll-v {
 	z-index: 1000;
 	position: absolute;
 	top: 0;
-	right: 0;
+	right: 4px;
 	bottom: 12px;
 	width: 30px;
-	background: #D2CECE;
+  border: 1px solid gray;]
+	//background: #D2CECE;
 }
 
 .ace_thumb-v {
@@ -41,7 +44,7 @@ https://github.com/ukandrewc/Ace-Scrollbars/tree/master
 	position: absolute;
 	pointer-events: none;
 	top: 0;
-	right: 0;
+	right: 4px;
 	width: 30px;
 	height: 2px;
 	background: greenyellow;
@@ -51,7 +54,7 @@ https://github.com/ukandrewc/Ace-Scrollbars/tree/master
 	z-index: 1002;
 	position: absolute;
 	pointer-events: none;
-	right: 4px;
+	right: 10px;
 	width: 20px;
 	height: 2px;
 	background: cornflowerblue
