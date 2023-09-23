@@ -115,10 +115,19 @@ window.onbeforeunload = function() {
 <script type="text/javascript" src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/jscolor.js"></script>
 
 
-<script type="text/javascript" src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ext-scrollbar.js"></script>
- <link rel="stylesheet" href="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ext-scrollbar.css" />
+<!--
+ <script type="text/javascript" src="ext-scrollbar.js"></script>
+ -->
+ 
+ <script type="text/javascript" src="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ext-scrollbar.js"></script>
 
 
+<link rel="stylesheet" href="https://ldijkman.github.io/randomnerd_esp32_wifi_manager/mrs/Ace_color/ext-scrollbar.css" />
+
+<script src="https://ldijkman.github.io/Ace-Editor-Click-Link-window.open-URL/hoverlink.js"></script>  
+<!--  https://github.com/ldijkman/Ace-Editor-Click-Link-window.open-URL/tree/main/docs -->
+
+    
 
   <style>
     * {
@@ -322,6 +331,21 @@ window.onbeforeunload = function() {
   background: rgba(255,255,0,0.25);
     border: 1px solid red;
 }
+
+ .ace_search.right {
+    border-radius: 0px 0px 0px 5px;
+    border-right: 0 none;
+    right: 25px;
+    top: 25px;
+}
+.ace_link_marker {
+      position: absolute;
+      border-bottom: 5px solid red;
+      //background:aqua;
+      opacity:50%;
+      
+}
+
   </style>
 
 </head>
@@ -2645,6 +2669,20 @@ var StatusBar = ace.require("ace/ext/statusbar").StatusBar;
       })
 
 
+    HoverLink = require("hoverlink").HoverLink
+    editor.hoverLink = new HoverLink(editor);
+
+
+  
+editor.hoverLink.on("open", function() {
+  // alert("trying to open")
+  console.log("trying to open",editor.hoverLink.link.value);
+  
+  if(editor.hoverLink.isOpen){
+      window.open(editor.hoverLink.link.value);
+ }
+  console.log("this.link",editor.hoverLink.isOpen);
+})
 
 
 	// --
@@ -3707,9 +3745,20 @@ setTimeout(function(){
   has a bit of a scaling fault<br>
   more or less coreect at fontsize 12<br>
   mouseclick on vertical scrollbar is not correct position<br>
+  click is off position because of my non ace menu<br>
+  editor does not start at top of screen<br>
+  in next plunkr example click postion is ok<br>
   <a href="https://plnkr.co/plunk/EYJWlWGjCdjNoui8" target="ace_custom_scrollbar">https://plnkr.co/plunk/EYJWlWGjCdjNoui8</a><br>
   <iframe width="560" height="315" src="https://www.youtube.com/embed/OMbZ_-kfY2M" title="ace editor highlight code position vertical scrollbar" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  <br><br>
+  <br>
+  <br>
+  changed ace custom scrollbar from pixels to percent<br>
+  not perect yet<br>
+  but looks like it works better<br>
+  also in different font sizes<br>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/YjZ-waKmJbc" title="ace editor custom scrollbar" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+   <br>
+  <br>
   <center>
   <hr>
    Sources used<br>
