@@ -1,6 +1,4 @@
 
-/*  https://www.jsdelivr.com/package/npm/ace-colorpicker */
-
 var AceColorPicker = (function () {
 'use strict';
 
@@ -9465,7 +9463,7 @@ var ColorView = function () {
                     // LINK : https://github.com/ajaxorg/ace/blob/cbcb78c3a7c5e642d615a9f5665a44dbb94d3e92/lib/ace/mode/scss_highlight_rules.js#L43-L48
                     rules[stateName].unshift({
                         token: "color",
-                        regex: "blue|green|red"
+                        regex: "blue|green|red|dutchorange"
                     });
                 }
             }
