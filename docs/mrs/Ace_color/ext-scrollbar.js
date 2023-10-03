@@ -83,11 +83,15 @@ function AceScrollbars(e) {
 
 	showMapItems = function () {
 		let ht = ""
+		// next e.getCopyText() could return a string of all selected words on a newline, 
+		// split into array and get [0]
 		let tx = e.getCopyText().split(/\r?\n/)[0];//e.getCopyText();// could return a string of all sellected words on a newline split into array
 		console.log("tx ",tx);
 		if (tx != "") {
 			let op = e.getLastSearchOptions()
-			op.needle = e.getCopyText().split(/\r?\n/)[0];// could return a string of all sellected words on a newline split into array
+			// next e.getCopyText() could return a string of all selected words on a newline, 
+			// split into array and get [0]
+			op.needle = e.getCopyText().split(/\r?\n/)[0];			
 			console.log("op.needle ",op.needle);
 			e.$search.setOptions(op)
 			let lr = -1	
@@ -97,9 +101,9 @@ function AceScrollbars(e) {
 				                                           // nr_lines_vissible 40 lines for editor view?
 					ht += "<div class='ace_map-item' style='top:" +  (map_range(r.start.row ,0,editor.session.getLength()+nr_lines_vissible, 0,100)) + "%'></div>"
 					// luberth thinks, i do not know maybe better in % no px
-					//console.log("rScale",rScale);
-					//console.log("getFirstVisibleRow",editor.renderer.getFirstVisibleRow());
-					//console.log("getLastVisibleRow",editor.renderer.getLastVisibleRow());
+					// console.log("rScale",rScale);
+					// console.log("getFirstVisibleRow",editor.renderer.getFirstVisibleRow());
+					// console.log("getLastVisibleRow",editor.renderer.getLastVisibleRow());
 					
 					lr = r.start.row
 				}
@@ -107,7 +111,7 @@ function AceScrollbars(e) {
 		}
 		id("ace_map").innerHTML = ht
 		id("ace_map-row").style.top = map_range(e.getCursorPosition().row,0,editor.session.getLength()+50, 0,100)+"%"
-		//console.log("rScale2",rScale);
+		// console.log("rScale2",rScale);
 	}
 
 	// Vertical
@@ -117,14 +121,15 @@ function AceScrollbars(e) {
 	let vStart = -1
 
 	let vs = sc[0]
-	let tv = id("ace_bar-v")    // tv is the gray view on scrollbar, should match the editor view position
+	let tv = id("ace_bar-v")    // tv is the gray view / handle on scrollbar, should match the editor view position
 
 	vs.addEventListener("scroll", function (e) {//think it needes an offset here if editor does not start at top 0 of document
 	//	tv.style.top = (vs.scrollTop-document.getElementById("editor").offsetTop) * vScale + "px"
-		tv.style.top = (map_range(vs.scrollTop-id("editor").offsetTop,0,vs.scrollHeight+vs.clientHeight,0,100))+"%"
-		//tv.style.top = (vs.scrollTop-e.offsetTop) * vScale + "px"
+	tv.style.top = (map_range(vs.scrollTop-id("editor").offsetTop,0,vs.scrollHeight+vs.clientHeight,0,100))+"%"
+	// tv.style.top = (vs.scrollTop-e.offsetTop) * vScale + "px"
 
 	})
+
 
 	// Drag events
 	tv.addEventListener("pointerdown", function (e) {
@@ -151,8 +156,8 @@ function AceScrollbars(e) {
 
 	tv.previousElementSibling.addEventListener("mousedown", function (e) {
 		// my editor does not start at zero because of my non editor buttons menu so offset needed
-     		vs.scrollTop = (e.clientY-id("editor").offsetTop) / vScale
-	   	//vs.scrollTop = (e.clientY-e.offsetTop) / vScale
+    vs.scrollTop = (e.clientY-id("editor").offsetTop) / vScale
+	  // vs.scrollTop = (e.clientY-e.offsetTop) / vScale
 
 	})
 
@@ -174,7 +179,7 @@ function AceScrollbars(e) {
 		}
 
 		rScale = e.renderer.lineHeight * vScale
-		//console.log("e.renderer.lineHeight",e.renderer.lineHeight);
+		// console.log("e.renderer.lineHeight",e.renderer.lineHeight);
 		gWidth = e.renderer.gutterWidth
 		th.previousElementSibling.style.left = gWidth + "px"
 		showMapItems()
