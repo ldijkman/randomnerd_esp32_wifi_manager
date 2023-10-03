@@ -87,7 +87,7 @@ function AceScrollbars(e) {
 		console.log("tx ",tx);
 		if (tx != "") {
 			let op = e.getLastSearchOptions()
-			op.needle = e.ggetSelectedText().split(/\r?\n/)[0];// could return a string of all sellected words on a newline split into array
+			op.needle = e.getCopyText().split(/\r?\n/)[0];// could return a string of all sellected words on a newline split into array
 			console.log("op.needle ",op.needle);
 			e.$search.setOptions(op)
 			let lr = -1	
