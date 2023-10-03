@@ -70,7 +70,7 @@ function AceScrollbars(e) {
 	let h = 0
 	e.on("changeSelection", function () {
 		clearTimeout(h)
-		h = setTimeout(showMapItems, 250)
+		h = setTimeout(showMapItems, 500)
 	})
 
 
