@@ -84,9 +84,11 @@ function AceScrollbars(e) {
 	showMapItems = function () {
 		let ht = ""
 		let tx = e.getCopyText().split(/\r?\n/)[0];//e.getCopyText();// could return a string of all sellected words on a newline split into array
+		console.log("tx ",tx);
 		if (tx != "") {
 			let op = e.getLastSearchOptions()
 			op.needle = e.ggetSelectedText().split(/\r?\n/)[0];// could return a string of all sellected words on a newline split into array
+			console.log("op.needle ",op.needle);
 			e.$search.setOptions(op)
 			let lr = -1	
 			let nr_lines_vissible = editor.renderer.getLastVisibleRow() - editor.renderer.getFirstVisibleRow(); 
