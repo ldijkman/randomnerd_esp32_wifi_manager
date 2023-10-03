@@ -86,7 +86,7 @@ function AceScrollbars(e) {
 		let tx = e.getCopyText().split(/\r?\n/)[0];//e.getCopyText()
 		if (tx != "") {
 			let op = e.getLastSearchOptions()
-			op.needle = e.getCopyText()
+			op.needle = e.ggetSelectedText().split(/\r?\n/)[0];
 			e.$search.setOptions(op)
 			let lr = -1	
 			let nr_lines_vissible = editor.renderer.getLastVisibleRow() - editor.renderer.getFirstVisibleRow(); 
