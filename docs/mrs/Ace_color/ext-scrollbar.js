@@ -83,7 +83,7 @@ function AceScrollbars(e) {
 
 	showMapItems = function () {
 		let ht = ""
-		let tx = e.getSelectedText().split(/\r?\n/)[0];//e.getCopyText()
+		let tx = e.getCopyText().split(/\r?\n/)[0];//e.getCopyText()
 		if (tx != "") {
 			let op = e.getLastSearchOptions()
 			op.needle = e.getCopyText()
