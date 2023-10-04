@@ -110,7 +110,7 @@ function AceScrollbars(e) {
 			}
 		}
 		id("ace_map").innerHTML = ht
-		id("ace_map-row").style.top = map_range(e.getCursorPosition().row,0,editor.session.getLength()+50, 0,100)+"%"
+		document.getElementById("ace_map-row").style.top = map_range(e.getCursorPosition().row,0,editor.session.getLength()+50, 0,100)+"%"
 		// console.log("rScale2",rScale);
 	}
 
