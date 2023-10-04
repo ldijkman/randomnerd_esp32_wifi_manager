@@ -27,21 +27,26 @@ https://m.facebook.com/luberth.dijkman
 
 function AceScrollbars(e) {
 
-function id(id) {
-  return document.getElementById(id);
-}
-
-function classname(classname) {
-  return document.getElementsByClassName(classname);
-}
-
 ///////////////////////////////////////////////////////////////////////////
 // arduino alike map function == Re-maps a number from one range to another. 
 // https://www.arduino.cc/reference/en/language/functions/math/map/ 
 ///////////////////////////////////////////////////////////////////////////////
-function map_range(value, low1, high1, low2, high2) {
+ map_range = function(value, low1, high1, low2, high2) {
     return (low2 + (high2 - low2) * (value - low1) / (high1 - low1)).toFixed(3);   // to 3 decimals, Math.round did not scale right
 }
+
+
+id = function (id) {
+  return document.getElementById(id);
+}
+classname = function (classname) {
+  return document.getElementsByClassName(classname);
+}
+
+
+
+
+
 	// Add CSS scrollbars
 	e.container.insertAdjacentHTML("beforeend", "<div id='ace_pre-v' class='ace_scroll-v'></div><div id='ace_bar-v' class='ace_scroll-v ace_thumb-v'></div>")
 	e.container.insertAdjacentHTML("beforeend", "<div id='ace_pre-h' class='ace_scroll-h'></div><div id='ace_bar-h' class='ace_scroll-h ace_thumb-h'></div>")
@@ -111,7 +116,7 @@ function map_range(value, low1, high1, low2, high2) {
 			}
 		}
 		id("ace_map").innerHTML = ht
-		document.getElementById("ace_map-row").style.top = map_range(e.getCursorPosition().row,0,editor.session.getLength()+50, 0,100)+"%"
+		id("ace_map-row").style.top = map_range(e.getCursorPosition().row,0,editor.session.getLength()+50, 0,100)+"%"
 		// console.log("rScale2",rScale);
 	}
 
