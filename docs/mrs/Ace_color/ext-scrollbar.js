@@ -105,7 +105,7 @@ classname = function (classname) {
 			for (r of e.$search.findAll(e.session)) {
 				if (r.start.row != lr) {       
 				                                           // nr_lines_vissible 40 lines for editor view?
-					ht += "<div class='ace_map-item' style='top:" +  (map_range(r.start.row ,0,editor.session.getLength()+nr_lines_vissible, 0,100)) + "%'></div>"
+					ht += "<div class='ace_map-item' style='top:" +  (map_range(r.start.row ,0,editor.session.getLength()+nr_lines_vissible, 0,100)) + "%;'></div>"
 					// luberth thinks, i do not know maybe better in % no px
 					// console.log("rScale",rScale);
 					// console.log("getFirstVisibleRow",editor.renderer.getFirstVisibleRow());
@@ -115,7 +115,22 @@ classname = function (classname) {
 				}
 			}
 		}
-		id("ace_map").innerHTML = ht
+		let nr_lines_vissible = editor.renderer.getLastVisibleRow() - editor.renderer.getFirstVisibleRow(); 
+		
+var alarm="";
+    //get warnings errors?
+//console.log("editor.getSession().getAnnotations()",editor.getSession().getAnnotations());
+//console.log("editor.getSession().getAnnotations().length",editor.getSession().getAnnotations().length);
+for (let i = 0; i < e.getSession().getAnnotations().length; i=i+1) {
+console.log("errors/warnings on line ",
+editor.getSession().getAnnotations()[i].row,
+" type=",
+editor.getSession().getAnnotations()[i].type);
+
+	alarm += "<div class='ace_map-item' style='top:" +  (map_range(e.getSession().getAnnotations()[i].row ,0,editor.session.getLength()+nr_lines_vissible, 0,100)) + "%;background-color:red;'></div>"
+				
+}
+		id("ace_map").innerHTML = ht+alarm;
 		id("ace_map-row").style.top = map_range(e.getCursorPosition().row,0,editor.session.getLength()+50, 0,100)+"%"
 		// console.log("rScale2",rScale);
 	}
