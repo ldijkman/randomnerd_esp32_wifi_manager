@@ -122,7 +122,7 @@ classname = function (classname) {
 		//console.log("editor.getSession().getAnnotations().length",editor.getSession().getAnnotations().length);
 		for (let i = 0; i < e.getSession().getAnnotations().length; i=i+1) {
 		        if(editor.getSession().getAnnotations()[i].type=="info"){
-				alarm += "<div class='ace_map-item' style='top:" +  (map_range(e.getSession().getAnnotations()[i].row ,0,editor.session.getLength()+nr_lines_vissible, 0,100)) + "%;background-color:white;'></div>"
+				alarm += "<div class='ace_map-item' style='top:" +  (map_range(e.getSession().getAnnotations()[i].row ,0,editor.session.getLength()+nr_lines_vissible, 0,100)) + "%;background-color:purple;'></div>"
 			}
 			if(editor.getSession().getAnnotations()[i].type=="error"){
 				alarm += "<div class='ace_map-item' style='top:" +  (map_range(e.getSession().getAnnotations()[i].row ,0,editor.session.getLength()+nr_lines_vissible, 0,100)) + "%;background-color:red;'></div>"
