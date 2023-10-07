@@ -124,9 +124,9 @@ classname = function (classname) {
 		        if(editor.getSession().getAnnotations()[i].type=="info"){
 				alarm += "<div class='ace_map-item' style='top:" +  (map_range(e.getSession().getAnnotations()[i].row ,0,editor.session.getLength()+nr_lines_vissible, 0,100)) + "%;background-color:purple;'></div>"
 			}
-			if(editor.getSession().getAnnotations()[i].type=="error"){
+			else if(editor.getSession().getAnnotations()[i].type=="error"){
 				alarm += "<div class='ace_map-item' style='top:" +  (map_range(e.getSession().getAnnotations()[i].row ,0,editor.session.getLength()+nr_lines_vissible, 0,100)) + "%;background-color:red;'></div>"
-			}else{
+			}else{            
 				alarm += "<div class='ace_map-item' style='top:" +  (map_range(e.getSession().getAnnotations()[i].row ,0,editor.session.getLength()+nr_lines_vissible, 0,100)) + "%;background-color:yellow;'></div>"
 			}				
 		}
