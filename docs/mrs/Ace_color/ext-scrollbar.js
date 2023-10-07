@@ -80,7 +80,10 @@ classname = function (classname) {
 	})
 
 
-
+	// error warning change
+	e.getSession().on("changeAnnotation", function() {
+  		resizeScroll(); // redraw vertical scrollbar on error changes
+	});
 
 
 
@@ -115,13 +118,13 @@ classname = function (classname) {
 				}
 			}
 		}
-		let nr_lines_vissible = editor.renderer.getLastVisibleRow() - editor.renderer.getFirstVisibleRow(); 
+		let nr_lines_vissible = e.renderer.getLastVisibleRow() - e.renderer.getFirstVisibleRow(); 
 		var alarm="";
     		//get warnings errors?
 		//console.log("editor.getSession().getAnnotations()",editor.getSession().getAnnotations());
 		//console.log("editor.getSession().getAnnotations().length",editor.getSession().getAnnotations().length);
 		for (let i = 0; i < e.getSession().getAnnotations().length; i=i+1) {
-		        if(editor.getSession().getAnnotations()[i].type=="info"){
+		        if(e.getSession().getAnnotations()[i].type=="info"){
 				alarm += "<div class='ace_map-item' style='top:" +  (map_range(e.getSession().getAnnotations()[i].row ,0,editor.session.getLength()+nr_lines_vissible, 0,100)) + "%;background-color:pink;'></div>"
 			}
 			else if(editor.getSession().getAnnotations()[i].type=="error"){
